@@ -12,32 +12,60 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-12-10 21:11+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
-"Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
+"Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: include/class_sinapsDiffusionHandlerJob.inc:322
-#: include/class_sinapsDiffusionHandlerJob.inc:343
+#: personal/sinaps/class_sinapsUser.inc:27
+#: personal/sinaps/class_sinapsUser.inc:28
+#: personal/sinaps/class_sinapsUser.inc:44
+#: config/sinaps/class_sinapsConfig.inc:228
+msgid "Sinaps"
+msgstr "Sinaps"
+
+#: personal/sinaps/class_sinapsUser.inc:29
+msgid "Used to send acquisition request for users"
+msgstr "Utilisé pour envoyer une demande d'acquisition aux utilisateurs"
+
+#: personal/sinaps/class_sinapsUser.inc:50
+msgid ""
+"This tab takes care of sending Acquisition event to Sinaps whenever a user "
+"is modified."
+msgstr ""
+"Cet onglet permet d’envoyer un événement d’acquisition à Sinaps chaque fois "
+"qu’un utilisateur est modifié."
+
+#: personal/sinaps/class_sinapsUser.inc:53
+msgid "Force Sinaps Acquisition"
+msgstr "Forcer une Acquisition Sinaps"
+
+#: personal/sinaps/class_sinapsUser.inc:53
+msgid "Send Acquisition data even if data was not modified in FusionDirectory"
+msgstr ""
+"Envoyer les données d'acquisition même si les données n'ont pas été "
+"modifiées dans FusionDirectory"
+
+#: include/class_sinapsDiffusionHandlerJob.inc:326
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 "Impossible d'obtenir la méthode de mot de passe pour le compte \"%s\". Le "
 "compte n'a pas été verrouillé !"
 
-#: include/class_sinapsDiffusionHandlerJob.inc:339
+#: include/class_sinapsDiffusionHandlerJob.inc:342
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 "La méthode de mot de passe \"%s\" a échoué. Le compte \"%s\" n'a pas été "
 "verrouillé !"
 
-#: include/class_sinapsDiffusionHandlerJob.inc:346
+#: include/class_sinapsDiffusionHandlerJob.inc:345
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
@@ -252,13 +280,6 @@ msgstr "Méthodes de contact"
 msgid "LDAP"
 msgstr "LDAP"
 
-#: config/sinaps/class_sinapsConfig.inc:228
-#: personal/sinaps/class_sinapsUser.inc:27
-#: personal/sinaps/class_sinapsUser.inc:28
-#: personal/sinaps/class_sinapsUser.inc:44
-msgid "Sinaps"
-msgstr "Sinaps"
-
 #: config/sinaps/class_sinapsConfig.inc:229
 #: config/sinaps/class_sinapsConfig.inc:230
 msgid "XPath"
@@ -273,25 +294,3 @@ msgstr "Onglet"
 #: config/sinaps/class_sinapsConfig.inc:230
 msgid "Field"
 msgstr "Champ"
-
-#: personal/sinaps/class_sinapsUser.inc:29
-msgid "Used to send acquisition request for users"
-msgstr "Utilisé pour envoyer une demande d'acquisition aux utilisateurs"
-
-#: personal/sinaps/class_sinapsUser.inc:50
-msgid ""
-"This tab takes care of sending Acquisition event to Sinaps whenever a user "
-"is modified."
-msgstr ""
-"Cet onglet permet d’envoyer un événement d’acquisition à Sinaps chaque fois "
-"qu’un utilisateur est modifié."
-
-#: personal/sinaps/class_sinapsUser.inc:53
-msgid "Force Sinaps Acquisition"
-msgstr "Forcer une Acquisition Sinaps"
-
-#: personal/sinaps/class_sinapsUser.inc:53
-msgid "Send Acquisition data even if data was not modified in FusionDirectory"
-msgstr ""
-"Envoyer les données d'acquisition même si les données n'ont pas été "
-"modifiées dans FusionDirectory"

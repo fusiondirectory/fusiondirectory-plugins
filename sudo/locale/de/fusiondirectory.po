@@ -11,32 +11,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
-"Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
+"Language-Team: German (https://app.transifex.com/fusiondirectory/teams/12202/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/sudo/class_sudoManagement.inc:28 admin/sudo/class_sudo.inc:32
+#: admin/sudo/class_sudo.inc:32 admin/sudo/class_sudoManagement.inc:28
 #: config/sudo/class_sudoConfig.inc:40
 msgid "Sudo"
 msgstr "Sudo"
-
-#: admin/sudo/class_sudoManagement.inc:29
-msgid "Sudo management"
-msgstr "SUDO-Verwaltung"
-
-#: admin/sudo/class_sudoManagement.inc:30
-msgid "Manage sudo roles"
-msgstr ""
-
-#: admin/sudo/class_sudoManagement.inc:44
-msgid "Default"
-msgstr "Vorgabe"
 
 #: admin/sudo/class_sudo.inc:33 admin/sudo/class_sudo.inc:37
 msgid "Sudo role"
@@ -134,6 +122,18 @@ msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
 
+#: admin/sudo/class_sudoManagement.inc:29
+msgid "Sudo management"
+msgstr "SUDO-Verwaltung"
+
+#: admin/sudo/class_sudoManagement.inc:30
+msgid "Manage sudo roles"
+msgstr ""
+
+#: admin/sudo/class_sudoManagement.inc:44
+msgid "Default"
+msgstr "Vorgabe"
+
 #: admin/sudo/class_sudoOption.inc:77
 msgid "Unknown option"
 msgstr "Unbekannte Option"
@@ -148,27 +148,27 @@ msgstr "Die sudo-Option '%s' ist ungültig!"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: admin/sudo/class_sudoOption.inc:337
+#: admin/sudo/class_sudoOption.inc:338
 msgid "Options"
 msgstr "Optionen"
 
-#: admin/sudo/class_sudoOption.inc:338
+#: admin/sudo/class_sudoOption.inc:339
 msgid "Sudo options"
 msgstr "Sudo-Optionen"
 
-#: admin/sudo/class_sudoOption.inc:350
+#: admin/sudo/class_sudoOption.inc:351
 msgid "Available options"
 msgstr "Verfügbare Optionen"
 
-#: admin/sudo/class_sudoOption.inc:353
+#: admin/sudo/class_sudoOption.inc:354
 msgid "Option"
 msgstr "Option"
 
-#: admin/sudo/class_sudoOption.inc:353
+#: admin/sudo/class_sudoOption.inc:354
 msgid "Add a new sudo option"
 msgstr "Eine neue sudo-Option hinzufügen"
 
-#: admin/sudo/class_sudoOption.inc:358 admin/sudo/class_sudoOption.inc:360
+#: admin/sudo/class_sudoOption.inc:359 admin/sudo/class_sudoOption.inc:361
 msgid "Used sudo role options"
 msgstr "Benutzte sudo Rollenoptionen"
 

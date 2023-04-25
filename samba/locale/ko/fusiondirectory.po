@@ -4,41 +4,388 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2018
-# Choi Chris <chulwon.choi@gmail.com>, 2020
+# Choi Chris <chulwon.choi@gmail.com>, 2021
+# fusiondirectory <contact@fusiondirectory.org>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:02+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
-"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2021\n"
+"Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: include/class_smbHash.inc:381
-msgid ""
-"Your PHP install does not have the mhash() nor the hash function. Cannot do "
-"MD4 hashes."
-msgstr "PHP 설치에는 mhash () 또는 해시 함수가 없습니다. MD4 해시를 수행 할 수 없습니다."
+#: personal/samba/class_sambaAccount.inc:31
+msgid "Samba Munged Dial"
+msgstr "삼바 Munged Dial"
 
-#: admin/samba/class_sambaDomainManagement.inc:37
-msgid "Samba domains"
+#: personal/samba/class_sambaAccount.inc:155
+#: admin/groups/samba/class_sambaGroup.inc:28
+#: admin/systems/samba/class_sambaSystemTab.inc:29
+#: config/samba/class_sambaPluginConfig.inc:27
+msgid "Samba"
+msgstr "삼바"
+
+#: personal/samba/class_sambaAccount.inc:156
+#: config/samba/class_sambaPluginConfig.inc:41
+msgid "Samba settings"
+msgstr "삼바 설정"
+
+#: personal/samba/class_sambaAccount.inc:182
+msgid "Samba profile"
+msgstr "삼바 프로필"
+
+#: personal/samba/class_sambaAccount.inc:188
+#: personal/samba/class_sambaAccount.inc:221
+msgid "Home directory drive"
+msgstr "홈 디렉토리 드라이브"
+
+#: personal/samba/class_sambaAccount.inc:188
+#: personal/samba/class_sambaAccount.inc:221
+msgid "Letter for the home drive"
+msgstr "홈 드라이브 문자"
+
+#: personal/samba/class_sambaAccount.inc:193
+#: personal/samba/class_sambaAccount.inc:226
+msgid "Home directory path"
+msgstr "홈 디렉토리 경로"
+
+#: personal/samba/class_sambaAccount.inc:193
+#: personal/samba/class_sambaAccount.inc:226
+msgid "UNC path for the home drive"
+msgstr "홈 드라이브의 UNC 경로"
+
+#: personal/samba/class_sambaAccount.inc:198
+#: admin/groups/samba/class_sambaGroup.inc:44
+#: admin/groups/samba/class_sambaGroup.inc:47
+#: admin/systems/samba/class_sambaSystemTab.inc:53
+msgid "Domain"
+msgstr "도메"
+
+#: personal/samba/class_sambaAccount.inc:198
+#: admin/systems/samba/class_sambaSystemTab.inc:53
+msgid "Samba domain name"
+msgstr "삼바 도메인 이름"
+
+#: personal/samba/class_sambaAccount.inc:202
+msgid "Script path"
+msgstr "스크립트 경로"
+
+#: personal/samba/class_sambaAccount.inc:202
+msgid "Login script path"
+msgstr "로그인 스크립트 경로"
+
+#: personal/samba/class_sambaAccount.inc:206
+#: personal/samba/class_sambaAccount.inc:231
+msgid "Profile path"
+msgstr "프로필 경로"
+
+#: personal/samba/class_sambaAccount.inc:206
+#: personal/samba/class_sambaAccount.inc:231
+msgid "UNC profile path"
+msgstr "UNC 프로파일 경로"
+
+#: personal/samba/class_sambaAccount.inc:213
+msgid "Terminal server"
+msgstr "터미널 서버"
+
+#: personal/samba/class_sambaAccount.inc:217
+msgid "Allow login on terminal server"
+msgstr "터미널 서버에서 로그인 허용"
+
+#: personal/samba/class_sambaAccount.inc:236
+msgid "Inherit client config"
+msgstr "클라이언트 구성 상속"
+
+#: personal/samba/class_sambaAccount.inc:236
+msgid "Inherit client configuration"
+msgstr "클라이언트 구성 상속"
+
+#: personal/samba/class_sambaAccount.inc:240
+msgid "Initial progam"
+msgstr "초기화 프로그램"
+
+#: personal/samba/class_sambaAccount.inc:240
+msgid "Program to start after connecting"
+msgstr "연결 후 시작되는 프로그램"
+
+#: personal/samba/class_sambaAccount.inc:244
+msgid "Working directory"
+msgstr "작업 디렉토리"
+
+#: personal/samba/class_sambaAccount.inc:244
+msgid "Basic working directory"
+msgstr "기본 작업 디렉토리"
+
+#: personal/samba/class_sambaAccount.inc:248
+msgid "Connection timeout"
+msgstr "접속 시간 초과"
+
+#: personal/samba/class_sambaAccount.inc:248
+msgid "Timeout when connecting to terminal server"
+msgstr "터미널 서버에 연결할 때 시간 초과"
+
+#: personal/samba/class_sambaAccount.inc:253
+msgid "Disconnection timeout"
+msgstr "연결 끊기 시간 초과"
+
+#: personal/samba/class_sambaAccount.inc:253
+msgid "Timeout before disconnecting from terminal server"
+msgstr "터미널 서버에서 연결을 끊기 전 시간 초과"
+
+#: personal/samba/class_sambaAccount.inc:258
+msgid "Idle timeout"
+msgstr "유휴 시간 초과"
+
+#: personal/samba/class_sambaAccount.inc:258
+msgid "Idle timeout before disconnecting from terminal server"
+msgstr "터미널 서버에서 연결을 끊기 전에 유휴 시간 초과"
+
+#: personal/samba/class_sambaAccount.inc:263
+msgid "Connect client drives at logon"
+msgstr "로그온시 클라이언트 드라이브 연결"
+
+#: personal/samba/class_sambaAccount.inc:263
+msgid "Drive to connect after login"
+msgstr "로그인 후 연결할 드라이브"
+
+#: personal/samba/class_sambaAccount.inc:267
+msgid "Connect client printers at logon"
+msgstr "로그온 시 클라이언트 프린터 연결"
+
+#: personal/samba/class_sambaAccount.inc:267
+msgid "Printers to connect after login"
+msgstr "로그인 후 연결할 프린터"
+
+#: personal/samba/class_sambaAccount.inc:271
+msgid "Default to main client printer"
+msgstr "기본 클라이언트 프린터로 기본 설정"
+
+#: personal/samba/class_sambaAccount.inc:271
+msgid "Default printer for this client"
+msgstr "이 클라이언트의 기본 프린터"
+
+#: personal/samba/class_sambaAccount.inc:275
+msgid "Shadowing"
+msgstr "쉐도"
+
+#: personal/samba/class_sambaAccount.inc:278
+msgid "disabled"
+msgstr "미사용"
+
+#: personal/samba/class_sambaAccount.inc:278
+msgid "input on, notify on"
+msgstr "입력, 알림"
+
+#: personal/samba/class_sambaAccount.inc:278
+msgid "input on, notify off"
+msgstr "입력, 알림 끄기"
+
+#: personal/samba/class_sambaAccount.inc:279
+msgid "input off, notify on"
+msgstr "입력 해제, 알림"
+
+#: personal/samba/class_sambaAccount.inc:279
+msgid "input off, nofify off"
+msgstr "입력 해제, 알림 해제"
+
+#: personal/samba/class_sambaAccount.inc:282
+msgid "On broken or timed out"
+msgstr "고장 또는 시간 초과"
+
+#: personal/samba/class_sambaAccount.inc:282
+msgid "What happen if disconnected or timeout"
+msgstr "연결이 끊어지거나 시간이 초과되면 어떻게 됩니까?"
+
+#: personal/samba/class_sambaAccount.inc:285
+msgid "disconnect"
+msgstr "연결 끊김"
+
+#: personal/samba/class_sambaAccount.inc:285
+msgid "reset"
+msgstr "초기화"
+
+#: personal/samba/class_sambaAccount.inc:288
+msgid "Reconnect if disconnected"
+msgstr "연결이 끊긴 경우 다시 연결"
+
+#: personal/samba/class_sambaAccount.inc:291
+msgid "from any client"
+msgstr "모든 클라이언트에서"
+
+#: personal/samba/class_sambaAccount.inc:291
+msgid "from previous client only"
+msgstr "이전 클라이언트에서만"
+
+#: personal/samba/class_sambaAccount.inc:303
+msgid "Access options"
+msgstr "액세스 옵션"
+
+#: personal/samba/class_sambaAccount.inc:307
+msgid "Enforce password change"
+msgstr "비밀번호 변경 시행"
+
+#: personal/samba/class_sambaAccount.inc:307
+msgid "Force the user to change his password"
+msgstr "사용자가 비밀번호를 변경하도록 강제"
+
+#: personal/samba/class_sambaAccount.inc:312
+msgid "The password never expire"
+msgstr "비밀번호가 만료되지 않습니다"
+
+#: personal/samba/class_sambaAccount.inc:312
+msgid "The password will never expire"
+msgstr "비밀번호는 만료되지 않습니다"
+
+#: personal/samba/class_sambaAccount.inc:317
+msgid "Login from windows client requires no password"
+msgstr "Windows 클라이언트에서 로그인 할 때 비밀번호가 필요하지 않습니다"
+
+#: personal/samba/class_sambaAccount.inc:317
+msgid "Login from a client without a password"
+msgstr "비밀번호없이 클라이언트에서 로그인"
+
+#: personal/samba/class_sambaAccount.inc:322
+msgid "Lock samba account"
+msgstr "삼바 계정 잠금"
+
+#: personal/samba/class_sambaAccount.inc:322
+msgid "Lock the account"
+msgstr "계정 잠금"
+
+#: personal/samba/class_sambaAccount.inc:327
+msgid "Cannot change password"
+msgstr "비밀번호를 변경할 수 없습니다"
+
+#: personal/samba/class_sambaAccount.inc:327
+msgid "Not allowed to change password"
+msgstr "비밀번호를 변경할 수 없습니다"
+
+#: personal/samba/class_sambaAccount.inc:331
+msgid "Account expiration"
+msgstr "계정 만료"
+
+#: personal/samba/class_sambaAccount.inc:331
+msgid "When does the account expire"
+msgstr "계정은 언제 만료됩니까"
+
+#: personal/samba/class_sambaAccount.inc:339
+msgid "Samba logon times"
+msgstr "삼바 로그온 횟수"
+
+#: personal/samba/class_sambaAccount.inc:339
+msgid "What is the allowed time to connect"
+msgstr "연결이 허용되는 시간은 얼마입니까"
+
+#: personal/samba/class_sambaAccount.inc:340
+msgid "Edit settings"
+msgstr "설정 편집"
+
+#: personal/samba/class_sambaAccount.inc:356
+msgid "System trust"
+msgstr "시스템 신뢰"
+
+#: personal/samba/class_sambaAccount.inc:362
+msgid "Allow connection from these workstations only"
+msgstr "이 워크스테이션에서만 연결 허용"
+
+#: personal/samba/class_sambaAccount.inc:362
+msgid "Only allow this user to connect to this list of hosts"
+msgstr " 호스트 리스트에 만 접속 허용"
+
+#: personal/samba/class_sambaAccount.inc:465
+#: personal/samba/class_sambaAccount.inc:475
+#, php-format
+msgid "Field \"%s\" is required when \"%s\" is filled! Fill both field or empty them."
+msgstr "\"%s\"가 채워지면 \"%s\" 필드가 필요합니다! 필드를 모두 채우거나 비웁니다."
+
+#: personal/samba/class_sambaAccount.inc:486
+msgid "The windows user manager allows eight clients at maximum!"
+msgstr "Windows 사용자 관리자는 최대 8명의 클라이언트를 허용합니다!"
+
+#: personal/samba/class_sambaAccount.inc:510
+#: admin/groups/samba/class_sambaGroup.inc:138
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr "정의되지 않은 Samba SID가 감지되었습니다. 이 문제를 수동으로 수정하십시오!"
+
+#: personal/samba/class_sambaAccount.inc:541
+msgid ""
+"Cannot convert primary group to samba group: group cannot be identified!"
+msgstr "기본 그룹을 삼바 그룹으로 변환 할 수 없습니다: 그룹을 식별 할 수 없습니다!"
+
+#: personal/samba/class_sambaAccount.inc:561
+msgid ""
+"Cannot convert primary group to samba group: group samba tab is disabled!"
+msgstr "기본 그룹을 삼바 그룹으로 변환 할 수 없습니다: 그룹 삼바 탭이 비활성화되었습니다!"
+
+#: admin/groups/samba/class_sambaGroup.inc:29
+msgid "Samba group settings"
+msgstr "삼바 그룹 설정"
+
+#: admin/groups/samba/class_sambaGroup.inc:47
+msgid "Samba domain"
 msgstr "삼바 도메인"
 
-#: admin/samba/class_sambaDomainManagement.inc:38
-msgid "Samba domain management"
-msgstr "삼바 도메인 관리"
+#: admin/groups/samba/class_sambaGroup.inc:51
+msgid "Samba information"
+msgstr "삼바 정보"
 
-#: admin/samba/class_sambaDomainManagement.inc:39
-msgid "Manage Samba domains"
-msgstr ""
+#: admin/groups/samba/class_sambaGroup.inc:58
+msgid "Group type"
+msgstr "그룹 유형"
+
+#: admin/groups/samba/class_sambaGroup.inc:58
+msgid "Samba group type"
+msgstr "삼바 그룹 유형"
+
+#: admin/groups/samba/class_sambaGroup.inc:62
+#: admin/groups/samba/class_sambaGroup.inc:121
+msgid "Samba group"
+msgstr "삼바 그룹"
+
+#: admin/groups/samba/class_sambaGroup.inc:62
+#: admin/groups/samba/class_sambaGroup.inc:121
+msgid "Domain admins"
+msgstr "도메인 관리자"
+
+#: admin/groups/samba/class_sambaGroup.inc:62
+#: admin/groups/samba/class_sambaGroup.inc:121
+msgid "Domain users"
+msgstr "도메인 사용자"
+
+#: admin/groups/samba/class_sambaGroup.inc:62
+#: admin/groups/samba/class_sambaGroup.inc:121
+msgid "Domain guests"
+msgstr "도메인 게스트"
+
+#: admin/groups/samba/class_sambaGroup.inc:106
+msgid "Cannot find group SID in your configuration!"
+msgstr "구성에서 그룹 SID를 찾을 수 없습니다!"
+
+#: admin/groups/samba/class_sambaGroup.inc:121
+#, php-format
+msgid "Special group (%d)"
+msgstr "특수 그룹 (%d)"
+
+#: admin/systems/samba/class_sambaSystemTab.inc:30
+msgid "Windows workstation information"
+msgstr "Windows 워크스테이션 정보"
+
+#: admin/systems/samba/class_sambaSystemTab.inc:44
+#: admin/samba/class_sambaDomain.inc:48
+msgid "Properties"
+msgstr "설정"
+
+#: admin/systems/samba/class_argonautEventSambaShares.inc:27
+msgid "Update Samba Shares"
+msgstr "삼바 공유 업데이트"
 
 #: admin/samba/class_sambaDomain.inc:26 admin/samba/class_sambaDomain.inc:27
 #: admin/samba/class_sambaDomain.inc:31
@@ -48,11 +395,6 @@ msgstr "삼바 도메인"
 #: admin/samba/class_sambaDomain.inc:32
 msgid "Samba domain settings"
 msgstr "삼바 도메인 설"
-
-#: admin/samba/class_sambaDomain.inc:48
-#: admin/systems/samba/class_sambaSystemTab.inc:44
-msgid "Properties"
-msgstr "설정"
 
 #: admin/samba/class_sambaDomain.inc:51
 msgid "Domain name"
@@ -185,106 +527,27 @@ msgstr "컴퓨터 비밀번호 변경 거부"
 msgid "Allow Machine Password changes (default: 0 => off)"
 msgstr "컴퓨터 암호 변경 허용 (기본값 : 0 => 꺼짐)"
 
-#: admin/groups/samba/class_sambaGroup.inc:28
-#: admin/systems/samba/class_sambaSystemTab.inc:29
-#: config/samba/class_sambaPluginConfig.inc:27
-#: personal/samba/class_sambaAccount.inc:158
-msgid "Samba"
-msgstr "삼바"
-
-#: admin/groups/samba/class_sambaGroup.inc:29
-msgid "Samba group settings"
-msgstr "삼바 그룹 설정"
-
-#: admin/groups/samba/class_sambaGroup.inc:44
-#: admin/groups/samba/class_sambaGroup.inc:47
-#: admin/systems/samba/class_sambaSystemTab.inc:53
-#: personal/samba/class_sambaAccount.inc:201
-msgid "Domain"
-msgstr "도메"
-
-#: admin/groups/samba/class_sambaGroup.inc:47
-msgid "Samba domain"
+#: admin/samba/class_sambaDomainManagement.inc:37
+msgid "Samba domains"
 msgstr "삼바 도메인"
 
-#: admin/groups/samba/class_sambaGroup.inc:51
-msgid "Samba information"
-msgstr "삼바 정보"
+#: admin/samba/class_sambaDomainManagement.inc:38
+msgid "Samba domain management"
+msgstr "삼바 도메인 관리"
 
-#: admin/groups/samba/class_sambaGroup.inc:58
-msgid "Group type"
-msgstr "그룹 유형"
+#: admin/samba/class_sambaDomainManagement.inc:39
+msgid "Manage Samba domains"
+msgstr "Samba 도메인 관리"
 
-#: admin/groups/samba/class_sambaGroup.inc:58
-msgid "Samba group type"
-msgstr "삼바 그룹 유형"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:122
-msgid "Samba group"
-msgstr "삼바 그룹"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:122
-msgid "Domain admins"
-msgstr "도메인 관리자"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:122
-msgid "Domain users"
-msgstr "도메인 사용자"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:122
-msgid "Domain guests"
-msgstr "도메인 게스트"
-
-#: admin/groups/samba/class_sambaGroup.inc:108
-msgid "Configuration error"
-msgstr "설정 에러"
-
-#: admin/groups/samba/class_sambaGroup.inc:108
-msgid "Cannot find group SID in your configuration!"
-msgstr "구성에서 그룹 SID를 찾을 수 없습니다!"
-
-#: admin/groups/samba/class_sambaGroup.inc:122
-#, php-format
-msgid "Special group (%d)"
-msgstr "특수 그룹 (%d)"
-
-#: admin/groups/samba/class_sambaGroup.inc:138
-#: personal/samba/class_sambaAccount.inc:512
-#: personal/samba/class_sambaAccount.inc:542
-#: personal/samba/class_sambaAccount.inc:563
-msgid "Warning"
-msgstr "ㅗ"
-
-#: admin/groups/samba/class_sambaGroup.inc:138
-#: personal/samba/class_sambaAccount.inc:512
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr "정의되지 않은 Samba SID가 감지되었습니다. 이 문제를 수동으로 수정하십시오!"
-
-#: admin/systems/samba/class_argonautEventSambaShares.inc:27
-msgid "Update Samba Shares"
-msgstr "삼바 공유 업데이트"
-
-#: admin/systems/samba/class_sambaSystemTab.inc:30
-msgid "Windows workstation information"
-msgstr "Windows 워크스테이션 정보"
-
-#: admin/systems/samba/class_sambaSystemTab.inc:53
-#: personal/samba/class_sambaAccount.inc:201
-msgid "Samba domain name"
-msgstr "삼바 도메인 이름"
+#: include/class_smbHash.inc:385
+msgid ""
+"Your PHP install does not have the mhash() nor the hash function. Cannot do "
+"MD4 hashes."
+msgstr "PHP 설치에는 mhash () 또는 해시 함수가 없습니다. MD4 해시를 수행 할 수 없습니다."
 
 #: config/samba/class_sambaPluginConfig.inc:28
 msgid "Samba plugin configuration"
 msgstr "삼바 플러그인 구성"
-
-#: config/samba/class_sambaPluginConfig.inc:41
-#: personal/samba/class_sambaAccount.inc:159
-msgid "Samba settings"
-msgstr "삼바 설정"
 
 #: config/samba/class_sambaPluginConfig.inc:44
 msgid "Samba ID mapping"
@@ -348,285 +611,11 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:75
 msgid "Depend upon POSIX tab"
-msgstr ""
+msgstr "POSIX 탭에 따라"
 
 #: config/samba/class_sambaPluginConfig.inc:75
 msgid "Whether the Samba user tab should depend upon the POSIX tab"
-msgstr ""
-
-#: personal/samba/class_sambaAccount.inc:31
-msgid "Samba Munged Dial"
-msgstr "삼바 Munged Dial"
-
-#: personal/samba/class_sambaAccount.inc:185
-msgid "Samba profile"
-msgstr "삼바 프로필"
-
-#: personal/samba/class_sambaAccount.inc:191
-#: personal/samba/class_sambaAccount.inc:224
-msgid "Home directory drive"
-msgstr "홈 디렉토리 드라이브"
-
-#: personal/samba/class_sambaAccount.inc:191
-#: personal/samba/class_sambaAccount.inc:224
-msgid "Letter for the home drive"
-msgstr "홈 드라이브 문자"
-
-#: personal/samba/class_sambaAccount.inc:196
-#: personal/samba/class_sambaAccount.inc:229
-msgid "Home directory path"
-msgstr "홈 디렉토리 경로"
-
-#: personal/samba/class_sambaAccount.inc:196
-#: personal/samba/class_sambaAccount.inc:229
-msgid "UNC path for the home drive"
-msgstr "홈 드라이브의 UNC 경로"
-
-#: personal/samba/class_sambaAccount.inc:205
-msgid "Script path"
-msgstr "스크립트 경로"
-
-#: personal/samba/class_sambaAccount.inc:205
-msgid "Login script path"
-msgstr "로그인 스크립트 경로"
-
-#: personal/samba/class_sambaAccount.inc:209
-#: personal/samba/class_sambaAccount.inc:234
-msgid "Profile path"
-msgstr "프로필 경로"
-
-#: personal/samba/class_sambaAccount.inc:209
-#: personal/samba/class_sambaAccount.inc:234
-msgid "UNC profile path"
-msgstr "UNC 프로파일 경로"
-
-#: personal/samba/class_sambaAccount.inc:216
-msgid "Terminal server"
-msgstr "터미널 서버"
-
-#: personal/samba/class_sambaAccount.inc:220
-msgid "Allow login on terminal server"
-msgstr "터미널 서버에서 로그인 허용"
-
-#: personal/samba/class_sambaAccount.inc:239
-msgid "Inherit client config"
-msgstr "클라이언트 구성 상속"
-
-#: personal/samba/class_sambaAccount.inc:239
-msgid "Inherit client configuration"
-msgstr "클라이언트 구성 상속"
-
-#: personal/samba/class_sambaAccount.inc:243
-msgid "Initial progam"
-msgstr "초기화 프로그램"
-
-#: personal/samba/class_sambaAccount.inc:243
-msgid "Program to start after connecting"
-msgstr "연결 후 시작되는 프로그램"
-
-#: personal/samba/class_sambaAccount.inc:247
-msgid "Working directory"
-msgstr "작업 디렉토리"
-
-#: personal/samba/class_sambaAccount.inc:247
-msgid "Basic working directory"
-msgstr "기본 작업 디렉토리"
-
-#: personal/samba/class_sambaAccount.inc:251
-msgid "Connection timeout"
-msgstr "접속 시간 초과"
-
-#: personal/samba/class_sambaAccount.inc:251
-msgid "Timeout when connecting to terminal server"
-msgstr "터미널 서버에 연결할 때 시간 초과"
-
-#: personal/samba/class_sambaAccount.inc:256
-msgid "Disconnection timeout"
-msgstr "연결 끊기 시간 초과"
-
-#: personal/samba/class_sambaAccount.inc:256
-msgid "Timeout before disconnecting from terminal server"
-msgstr "터미널 서버에서 연결을 끊기 전 시간 초과"
-
-#: personal/samba/class_sambaAccount.inc:261
-msgid "Idle timeout"
-msgstr "유휴 시간 초과"
-
-#: personal/samba/class_sambaAccount.inc:261
-msgid "Idle timeout before disconnecting from terminal server"
-msgstr "터미널 서버에서 연결을 끊기 전에 유휴 시간 초과"
-
-#: personal/samba/class_sambaAccount.inc:266
-msgid "Connect client drives at logon"
-msgstr "로그온시 클라이언트 드라이브 연결"
-
-#: personal/samba/class_sambaAccount.inc:266
-msgid "Drive to connect after login"
-msgstr "로그인 후 연결할 드라이브"
-
-#: personal/samba/class_sambaAccount.inc:270
-msgid "Connect client printers at logon"
-msgstr "로그온 시 클라이언트 프린터 연결"
-
-#: personal/samba/class_sambaAccount.inc:270
-msgid "Printers to connect after login"
-msgstr "로그인 후 연결할 프린터"
-
-#: personal/samba/class_sambaAccount.inc:274
-msgid "Default to main client printer"
-msgstr "기본 클라이언트 프린터로 기본 설정"
-
-#: personal/samba/class_sambaAccount.inc:274
-msgid "Default printer for this client"
-msgstr "이 클라이언트의 기본 프린터"
-
-#: personal/samba/class_sambaAccount.inc:278
-msgid "Shadowing"
-msgstr "쉐도"
-
-#: personal/samba/class_sambaAccount.inc:281
-msgid "disabled"
-msgstr "미사용"
-
-#: personal/samba/class_sambaAccount.inc:281
-msgid "input on, notify on"
-msgstr "입력, 알림"
-
-#: personal/samba/class_sambaAccount.inc:281
-msgid "input on, notify off"
-msgstr "입력, 알림 끄기"
-
-#: personal/samba/class_sambaAccount.inc:282
-msgid "input off, notify on"
-msgstr "입력 해제, 알림"
-
-#: personal/samba/class_sambaAccount.inc:282
-msgid "input off, nofify off"
-msgstr "입력 해제, 알림 해제"
-
-#: personal/samba/class_sambaAccount.inc:285
-msgid "On broken or timed out"
-msgstr "고장 또는 시간 초과"
-
-#: personal/samba/class_sambaAccount.inc:285
-msgid "What happen if disconnected or timeout"
-msgstr "연결이 끊어지거나 시간이 초과되면 어떻게 됩니까?"
-
-#: personal/samba/class_sambaAccount.inc:288
-msgid "disconnect"
-msgstr "연결 끊김"
-
-#: personal/samba/class_sambaAccount.inc:288
-msgid "reset"
-msgstr "초기화"
-
-#: personal/samba/class_sambaAccount.inc:291
-msgid "Reconnect if disconnected"
-msgstr "연결이 끊긴 경우 다시 연결"
-
-#: personal/samba/class_sambaAccount.inc:294
-msgid "from any client"
-msgstr "모든 클라이언트에서"
-
-#: personal/samba/class_sambaAccount.inc:294
-msgid "from previous client only"
-msgstr "이전 클라이언트에서만"
-
-#: personal/samba/class_sambaAccount.inc:306
-msgid "Access options"
-msgstr "액세스 옵션"
-
-#: personal/samba/class_sambaAccount.inc:310
-msgid "Enforce password change"
-msgstr "비밀번호 변경 시행"
-
-#: personal/samba/class_sambaAccount.inc:310
-msgid "Force the user to change his password"
-msgstr "사용자가 비밀번호를 변경하도록 강제"
-
-#: personal/samba/class_sambaAccount.inc:315
-msgid "The password never expire"
-msgstr "비밀번호가 만료되지 않습니다"
-
-#: personal/samba/class_sambaAccount.inc:315
-msgid "The password will never expire"
-msgstr "비밀번호는 만료되지 않습니다"
-
-#: personal/samba/class_sambaAccount.inc:320
-msgid "Login from windows client requires no password"
-msgstr "Windows 클라이언트에서 로그인 할 때 비밀번호가 필요하지 않습니다"
-
-#: personal/samba/class_sambaAccount.inc:320
-msgid "Login from a client without a password"
-msgstr "비밀번호없이 클라이언트에서 로그인"
-
-#: personal/samba/class_sambaAccount.inc:325
-msgid "Lock samba account"
-msgstr "삼바 계정 잠금"
-
-#: personal/samba/class_sambaAccount.inc:325
-msgid "Lock the account"
-msgstr "계정 잠금"
-
-#: personal/samba/class_sambaAccount.inc:330
-msgid "Cannot change password"
-msgstr "비밀번호를 변경할 수 없습니다"
-
-#: personal/samba/class_sambaAccount.inc:330
-msgid "Not allowed to change password"
-msgstr "비밀번호를 변경할 수 없습니다"
-
-#: personal/samba/class_sambaAccount.inc:334
-msgid "Account expiration"
-msgstr "계정 만료"
-
-#: personal/samba/class_sambaAccount.inc:334
-msgid "When does the account expire"
-msgstr "계정은 언제 만료됩니까"
-
-#: personal/samba/class_sambaAccount.inc:342
-msgid "Samba logon times"
-msgstr "삼바 로그온 횟수"
-
-#: personal/samba/class_sambaAccount.inc:342
-msgid "What is the allowed time to connect"
-msgstr "연결이 허용되는 시간은 얼마입니까"
-
-#: personal/samba/class_sambaAccount.inc:343
-msgid "Edit settings"
-msgstr "설정 편집"
-
-#: personal/samba/class_sambaAccount.inc:359
-msgid "System trust"
-msgstr "시스템 신뢰"
-
-#: personal/samba/class_sambaAccount.inc:365
-msgid "Allow connection from these workstations only"
-msgstr "이 워크스테이션에서만 연결 허용"
-
-#: personal/samba/class_sambaAccount.inc:365
-msgid "Only allow this user to connect to this list of hosts"
-msgstr " 호스트 리스트에 만 접속 허용"
-
-#: personal/samba/class_sambaAccount.inc:480
-#: personal/samba/class_sambaAccount.inc:487
-#, php-format
-msgid "Field \"%s\" is required when \"%s\" is filled! Fill both field or empty them."
-msgstr "\"%s\"가 채워지면 \"%s\" 필드가 필요합니다! 필드를 모두 채우거나 비웁니다."
-
-#: personal/samba/class_sambaAccount.inc:495
-msgid "The windows user manager allows eight clients at maximum!"
-msgstr "Windows 사용자 관리자는 최대 8명의 클라이언트를 허용합니다!"
-
-#: personal/samba/class_sambaAccount.inc:543
-msgid ""
-"Cannot convert primary group to samba group: group cannot be identified!"
-msgstr "기본 그룹을 삼바 그룹으로 변환 할 수 없습니다: 그룹을 식별 할 수 없습니다!"
-
-#: personal/samba/class_sambaAccount.inc:564
-msgid ""
-"Cannot convert primary group to samba group: group samba tab is disabled!"
-msgstr "기본 그룹을 삼바 그룹으로 변환 할 수 없습니다: 그룹 삼바 탭이 비활성화되었습니다!"
+msgstr "Samba 사용자 탭이 POSIX 탭에 종속되어야하는지 여부"
 
 #: personal/samba/sambaLogonHours.tpl.c:2
 msgid "Specify the hours this user is allowed to log in"

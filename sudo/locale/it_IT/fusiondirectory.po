@@ -5,39 +5,27 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2019
-# Paola Penati <paola.penati@fusiondirectory.org>, 2019
+# Paola Penati <paola.penati@opensides.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
-"Last-Translator: Paola Penati <paola.penati@fusiondirectory.org>, 2019\n"
-"Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2019\n"
+"Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/sudo/class_sudoManagement.inc:28 admin/sudo/class_sudo.inc:32
+#: admin/sudo/class_sudo.inc:32 admin/sudo/class_sudoManagement.inc:28
 #: config/sudo/class_sudoConfig.inc:40
 msgid "Sudo"
 msgstr "Sudo"
-
-#: admin/sudo/class_sudoManagement.inc:29
-msgid "Sudo management"
-msgstr "Gestione di Sudo"
-
-#: admin/sudo/class_sudoManagement.inc:30
-msgid "Manage sudo roles"
-msgstr "Gestisci i ruoli sudo"
-
-#: admin/sudo/class_sudoManagement.inc:44
-msgid "Default"
-msgstr "Default"
 
 #: admin/sudo/class_sudo.inc:33 admin/sudo/class_sudo.inc:37
 msgid "Sudo role"
@@ -140,6 +128,18 @@ msgstr ""
 "Fine dell'intervallo di tempo per il quale la voce è valida (lasciare vuoto "
 "per disabilitare)"
 
+#: admin/sudo/class_sudoManagement.inc:29
+msgid "Sudo management"
+msgstr "Gestione di Sudo"
+
+#: admin/sudo/class_sudoManagement.inc:30
+msgid "Manage sudo roles"
+msgstr "Gestisci i ruoli sudo"
+
+#: admin/sudo/class_sudoManagement.inc:44
+msgid "Default"
+msgstr "Default"
+
 #: admin/sudo/class_sudoOption.inc:77
 msgid "Unknown option"
 msgstr "Opzione sconosciuta"
@@ -154,27 +154,27 @@ msgstr "L'opzione di sudo '%s' non è valida !"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: admin/sudo/class_sudoOption.inc:337
+#: admin/sudo/class_sudoOption.inc:338
 msgid "Options"
 msgstr "Opzioni"
 
-#: admin/sudo/class_sudoOption.inc:338
+#: admin/sudo/class_sudoOption.inc:339
 msgid "Sudo options"
 msgstr "Opzioni di Sudo"
 
-#: admin/sudo/class_sudoOption.inc:350
+#: admin/sudo/class_sudoOption.inc:351
 msgid "Available options"
 msgstr "Opzioni disponibili"
 
-#: admin/sudo/class_sudoOption.inc:353
+#: admin/sudo/class_sudoOption.inc:354
 msgid "Option"
 msgstr "Opzione"
 
-#: admin/sudo/class_sudoOption.inc:353
+#: admin/sudo/class_sudoOption.inc:354
 msgid "Add a new sudo option"
 msgstr "Aggiungi una nuova opzione sudo"
 
-#: admin/sudo/class_sudoOption.inc:358 admin/sudo/class_sudoOption.inc:360
+#: admin/sudo/class_sudoOption.inc:359 admin/sudo/class_sudoOption.inc:361
 msgid "Used sudo role options"
 msgstr "Opzioni utilizzate del ruolo sudo"
 

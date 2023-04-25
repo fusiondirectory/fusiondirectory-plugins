@@ -8,14 +8,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
-"Language-Team: Indonesian (https://www.transifex.com/fusiondirectory/teams/12202/id/)\n"
+"Language-Team: Indonesian (https://app.transifex.com/fusiondirectory/teams/12202/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: html/class_expiredUserPostpone.inc:70
+msgid "This token is invalid"
+msgstr ""
+
+#: html/class_expiredUserPostpone.inc:73
+msgid "Token is missing from URL"
+msgstr ""
+
+#: html/class_expiredUserPostpone.inc:242
+msgid "Contact your administrator, there was a problem with mail server"
+msgstr ""
+
+#: html/class_expiredUserPostpone.inc:251
+#, php-format
+msgid "Did not find an account with login \"%s\""
+msgstr ""
+
+#: html/class_expiredUserPostpone.inc:254
+#, php-format
+msgid "Found multiple accounts with login \"%s\""
+msgstr ""
 
 #: config/user-reminder/class_userReminderConfig.inc:27
 msgid "Reminder"
@@ -231,28 +253,6 @@ msgstr ""
 msgid ""
 "Dear %1$s,\n"
 " your account %2$s has expired.\n"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:59
-msgid "This token is invalid"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:62
-msgid "Token is missing from URL"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:230
-msgid "Contact your administrator, there was a problem with mail server"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:239
-#, php-format
-msgid "Did not find an account with login \"%s\""
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:242
-#, php-format
-msgid "Found multiple accounts with login \"%s\""
 msgstr ""
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:2

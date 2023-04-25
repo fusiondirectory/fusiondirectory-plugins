@@ -12,284 +12,97 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 19:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
-"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/dhcp/class_dhcpPlugin.inc:31 admin/dhcp/class_dhcpManagement.inc:27
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:38
+#: admin/systems/class_dhcpSystem.inc:33
+msgid ""
+"The DHCP configuration or subsection in which this host should be added"
+msgstr "이 호스트를 추가해야하는 DHCP 구성 또는 하위 섹션"
+
+#: admin/systems/class_dhcpSystem.inc:37
+#: admin/systems/class_dhcpSystem.inc:117
+msgid "The Mac address to use in the DHCP host record"
+msgstr "DHCP 호스트 레코드에 사용할 Mac 주소"
+
+#: admin/systems/class_dhcpSystem.inc:41
+#: admin/systems/class_dhcpSystem.inc:122
+msgid "The IP address to use in the DHCP host record"
+msgstr "DHCP 호스트 레코드에 사용할 IP 주소"
+
+#: admin/systems/class_dhcpSystem.inc:55
+msgid "Parent"
+msgstr "Parent"
+
+#: admin/systems/class_dhcpSystem.inc:56
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:35
+msgid "Mac"
+msgstr "Mac"
+
+#: admin/systems/class_dhcpSystem.inc:57
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:34
+msgid "IP"
+msgstr "IP"
+
+#: admin/systems/class_dhcpSystem.inc:235
+#, php-format
+msgid ""
+"\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
+"DHCP configuration"
+msgstr "\"%s\"은 (%s 이후로 \"%s\"에 의해) 잠겨 있으며 이 DHCP 구성에 대한 수정사항을 저장할 수 없습니다"
+
+#: admin/systems/class_dhcpSystem.inc:260
+msgid "Value is not an array"
+msgstr ""
+
+#: admin/systems/class_dhcpSystem.inc:297
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:38
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:38
-#: admin/systems/class_dhcpSystem.inc:291 config/dhcp/class_dhcpConfig.inc:41
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:38
+#: admin/dhcp/class_dhcpManagement.inc:27 admin/dhcp/class_dhcpPlugin.inc:32
+#: config/dhcp/class_dhcpConfig.inc:41
 msgid "DHCP"
 msgstr "DHCP"
 
-#: admin/dhcp/class_dhcpPlugin.inc:34
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:41
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:41
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:41
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:257
-msgid "Name"
-msgstr "명칭"
+#: admin/systems/class_dhcpSystem.inc:298
+msgid "Edit the DHCP zones of a system"
+msgstr "시스템의 DHCP 영역 편집"
 
-#: admin/dhcp/class_dhcpPlugin.inc:34
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:41
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:41
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:41
-msgid "Name of this DHCP configuration"
-msgstr "DHCP 구성의 이름"
+#: admin/systems/class_dhcpSystem.inc:312
+msgid "DHCP zones"
+msgstr "DHCP 영역"
 
-#: admin/dhcp/class_dhcpPlugin.inc:39
-msgid "Options"
-msgstr "옵션"
+#: admin/systems/class_dhcpSystem.inc:316
+msgid "DHCP hosts declared for this system"
+msgstr "이 시스템에 대해 선언 된 DHCP 호스트"
 
-#: admin/dhcp/class_dhcpPlugin.inc:39
-msgid "The DHCP options"
-msgstr "DHCP 옵션"
-
-#: admin/dhcp/class_dhcpPlugin.inc:47
-msgid "Statements"
-msgstr "표현법"
-
-#: admin/dhcp/class_dhcpPlugin.inc:47
-msgid "The DHCP statements"
-msgstr "DHCP 문"
-
-#: admin/dhcp/class_dhcpPlugin.inc:53
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:54
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:92
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:53
-msgid "Comments"
-msgstr "코멘트"
-
-#: admin/dhcp/class_dhcpPlugin.inc:53
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:54
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:92
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:53
-msgid "Comments about this DHCP object"
-msgstr "DHCP 객체에 대한 설명"
-
-#: admin/dhcp/class_dhcpManagement.inc:28
-msgid "DHCP Management"
-msgstr "DHCP 관리"
-
-#: admin/dhcp/class_dhcpManagement.inc:29
-msgid "Manage DHCP configurations"
-msgstr ""
-
-#: admin/dhcp/class_dhcpManagement.inc:31
-msgid "Systems"
-msgstr "시스템"
-
-#: admin/dhcp/class_dhcpSectionCreationDialog.inc:52
-msgid "Section"
-msgstr "섹션"
-
-#: admin/dhcp/class_dhcpSectionCreationDialog.inc:52
-msgid "Choose section type to create"
-msgstr "생성할 섹션 유형 선택"
-
-#: admin/dhcp/class_dhcpSectionCreationDialog.inc:88
-msgid "Create new DHCP section"
-msgstr "DHCP 섹션 만들기"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:51
-#: admin/dhcp/class_dhcpConfiguration.inc:52
-#: admin/dhcp/class_dhcpConfiguration.inc:55
-#: config/dhcp/class_dhcpConfig.inc:27
-msgid "DHCP configuration"
-msgstr "DHCP 구성"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:74
-msgid "DHCP Objects"
-msgstr "DHCP 개체"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:80
-msgid "The DHCP sections handled by this server"
-msgstr "이 서버에서 처리하는 DHCP 섹션"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:91
-msgid "Logging"
-msgstr "로깅"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:92
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:377
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:417
-msgid "Global options"
-msgstr "글로벌 옵션"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:93
-msgid "Class"
-msgstr "클래스"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:94
-msgid "Subclass"
-msgstr "하위 클래스"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:95
-#: admin/dhcp/sections/class_dhcpHost.inc:40
-msgid "Host"
-msgstr "호스트"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:96
-msgid "Group"
-msgstr "그룹"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:97
-#: admin/dhcp/sections/class_dhcpPool.inc:38
-msgid "Pool"
-msgstr "풀"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:98
-#: admin/dhcp/sections/class_dhcpSubnet.inc:38
-msgid "Subnet"
-msgstr "서브넷"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:99
-msgid "Failover peer"
-msgstr "장애조치 피어"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:100
-msgid "Shared network"
-msgstr "공유 네트워크"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:101
-msgid "DNS update key"
-msgstr "DNS 업데이트 키"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:102
-msgid "DNS update zones"
-msgstr "DNS 업데이트 영역"
-
-#: admin/dhcp/sections/class_dhcpHost.inc:28
-#: admin/dhcp/sections/class_dhcpHost.inc:29
-msgid "DHCP host"
-msgstr "DHCP 호스트"
-
-#: admin/dhcp/sections/class_dhcpHost.inc:43
-#: admin/dhcp/sections/class_dhcpHost.inc:52
-msgid "The client hardware address"
-msgstr "클라이언트 하드웨어 주소"
-
-#: admin/dhcp/sections/class_dhcpHost.inc:46
-msgid "The hardware address type"
-msgstr "하드웨어 주소 유형"
-
-#: admin/dhcp/sections/class_dhcpHost.inc:49
-msgid "Ethernet"
-msgstr "이더넷"
-
-#: admin/dhcp/sections/class_dhcpHost.inc:49
-msgid "FDDI"
-msgstr "FDDI"
-
-#: admin/dhcp/sections/class_dhcpHost.inc:49
-msgid "Token Ring"
-msgstr "토큰 링"
-
-#: admin/dhcp/sections/class_dhcpHost.inc:59
-msgid "Hardware address"
-msgstr "하드웨어 주소"
-
-#: admin/dhcp/sections/class_dhcpHost.inc:90
+#: admin/systems/class_dhcpSystem.inc:381
 #, php-format
-msgid "\"%s\" is not a valid IP address."
-msgstr "\"%s\"은(는) 유효한 IP 주소가 아닙니다."
+msgid "The ip %s is not in the network %s/%d"
+msgstr "IP %s이 (가) 네트워크 %s / %d에 없습니다"
 
-#: admin/dhcp/sections/class_dhcpSharedNetwork.inc:26
-#: admin/dhcp/sections/class_dhcpSharedNetwork.inc:27
-msgid "DHCP shared network"
-msgstr "DHCP 공유 네트워크"
-
-#: admin/dhcp/sections/class_dhcpPool.inc:26
-#: admin/dhcp/sections/class_dhcpPool.inc:27
-msgid "DHCP pool"
-msgstr "DHCP 풀"
-
-#: admin/dhcp/sections/class_dhcpPool.inc:42
-#: admin/dhcp/sections/class_dhcpSubnet.inc:47
-msgid "Range"
-msgstr "범위"
-
-#: admin/dhcp/sections/class_dhcpPool.inc:42
-#: admin/dhcp/sections/class_dhcpSubnet.inc:47
-msgid ""
-"The starting & ending IP Addresses in the range (inclusive), separated by a "
-"space; if the range only contains one address, then just the address can be "
-"specified. Each range is defined as a separate value."
-msgstr ""
-"시작 및 끝 IP 주소 범위에서 (포함), 공백으로 구분; 범위에 주소가 하나만 있으면 주소만 지정할 수 있습니다. 각 범위는 별도의 "
-"값으로 정의됩니다."
-
-#: admin/dhcp/sections/class_dhcpPool.inc:50
-msgid "Permit list"
-msgstr "허가 목록"
-
-#: admin/dhcp/sections/class_dhcpPool.inc:50
-msgid ""
-"This attribute contains the permit lists associated with a pool. Each permit"
-" list is defined as a separate value."
-msgstr "이 속성은 풀과 연관된 허용 목록을 포함합니다. 각 허가 목록은 별도의 값으로 정의됩니다."
-
-#: admin/dhcp/sections/class_dhcpGroup.inc:26
-#: admin/dhcp/sections/class_dhcpGroup.inc:27
-msgid "DHCP group"
-msgstr "DHCP 그룹"
-
-#: admin/dhcp/sections/class_dhcpClass.inc:26
-#: admin/dhcp/sections/class_dhcpClass.inc:27
-msgid "DHCP class"
-msgstr "DHCP 클래스"
-
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:26
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:27
-msgid "DHCP DNS update key"
-msgstr "DHCP DNS 업데이트 키"
-
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:45
-msgid "Algorithm"
-msgstr "알고리즘"
-
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:45
-msgid "Algorithm to generate TSIG Key"
-msgstr "TSIG 키를 생성하는 알고리즘"
-
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:50
-msgid "Secret"
-msgstr "시크릿"
-
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:50
-msgid "Secret to generate TSIG Key"
-msgstr "TSIG 키를 생성하는 시크릿"
-
-#: admin/dhcp/sections/class_dhcpService.inc:26
-#: admin/dhcp/sections/class_dhcpService.inc:27
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:26
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:27
+#: admin/dhcp/sections/class_dhcpService.inc:26
+#: admin/dhcp/sections/class_dhcpService.inc:27
 msgid "DHCP service"
 msgstr "DHCP 서비스"
 
-#: admin/dhcp/sections/class_dhcpService.inc:45
-msgid "DHCP Primary"
-msgstr "DHCP 기본"
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:42
+msgid "DHCP configurations"
+msgstr "DHCP 구성"
 
-#: admin/dhcp/sections/class_dhcpService.inc:45
-msgid "Primary DHCP server"
-msgstr "기본 DHCP 서버"
-
-#: admin/dhcp/sections/class_dhcpService.inc:46
-msgid "DHCP Secondary"
-msgstr "DHCP 보조"
-
-#: admin/dhcp/sections/class_dhcpService.inc:46
-msgid "Secondary DHCP server"
-msgstr "보조 DHCP 서버"
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:47
+msgid ""
+"The DN of dhcpService object(s) which contain the configuration information"
+msgstr "구성 정보가 들어있는 dhcpService 개체의 DN입니다"
 
 #: admin/dhcp/sections/class_dhcpSubClass.inc:26
 #: admin/dhcp/sections/class_dhcpSubClass.inc:27
@@ -300,6 +113,21 @@ msgstr "DHCP 하위 클래스"
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:27
 msgid "DHCP failover peer"
 msgstr "DHCP 장애조치 피어"
+
+#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:41
+#: admin/dhcp/sections/class_dhcpDnsZone.inc:41
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:41
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:263
+#: admin/dhcp/class_dhcpPlugin.inc:35
+msgid "Name"
+msgstr "명칭"
+
+#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:41
+#: admin/dhcp/sections/class_dhcpDnsZone.inc:41
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:41
+#: admin/dhcp/class_dhcpPlugin.inc:35
+msgid "Name of this DHCP configuration"
+msgstr "DHCP 구성의 이름"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:45
 msgid "Primary server"
@@ -397,28 +225,35 @@ msgstr "로드밸런스 시간"
 msgid "Cutoff time in seconds, after which load balance is disabled"
 msgstr "로드 밸런스가 비활성화된 후 차단 시간 (초)"
 
-#: admin/dhcp/sections/class_dhcpSubnet.inc:26
-#: admin/dhcp/sections/class_dhcpSubnet.inc:27
-msgid "DHCP subnet"
-msgstr "DHCP 서브넷"
+#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:92
+#: admin/dhcp/sections/class_dhcpDnsZone.inc:53
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:54
+#: admin/dhcp/class_dhcpPlugin.inc:54
+msgid "Comments"
+msgstr "코멘트"
 
-#: admin/dhcp/sections/class_dhcpSubnet.inc:41
-msgid "Mask length"
-msgstr "마스크 길이"
+#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:92
+#: admin/dhcp/sections/class_dhcpDnsZone.inc:53
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:54
+#: admin/dhcp/class_dhcpPlugin.inc:54
+msgid "Comments about this DHCP object"
+msgstr "DHCP 객체에 대한 설명"
 
-#: admin/dhcp/sections/class_dhcpSubnet.inc:41
-msgid ""
-"The subnet mask length for the subnet. The mask can be easily computed from "
-"this length."
-msgstr "서브넷의 서브넷 마스크 길이입니다. 이 길이로 마스크를 쉽게 계산할 수 있습니다."
+#: admin/dhcp/sections/class_dhcpService.inc:45
+msgid "DHCP Primary"
+msgstr "DHCP 기본"
 
-#: admin/dhcp/sections/class_dhcpSubnet.inc:56
-msgid "Network address"
-msgstr "네트워크 주소"
+#: admin/dhcp/sections/class_dhcpService.inc:45
+msgid "Primary DHCP server"
+msgstr "기본 DHCP 서버"
 
-#: admin/dhcp/sections/class_dhcpSubnet.inc:56
-msgid "Network address of this subnet"
-msgstr "이 서브넷의 네트워크 주소"
+#: admin/dhcp/sections/class_dhcpService.inc:46
+msgid "DHCP Secondary"
+msgstr "DHCP 보조"
+
+#: admin/dhcp/sections/class_dhcpService.inc:46
+msgid "Secondary DHCP server"
+msgstr "보조 DHCP 서버"
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:26
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:27
@@ -441,19 +276,148 @@ msgstr "Tsig 키"
 msgid "The TSig key DN"
 msgstr "TSig 키 DN"
 
+#: admin/dhcp/sections/class_dhcpGroup.inc:26
+#: admin/dhcp/sections/class_dhcpGroup.inc:27
+msgid "DHCP group"
+msgstr "DHCP 그룹"
+
+#: admin/dhcp/sections/class_dhcpHost.inc:28
+#: admin/dhcp/sections/class_dhcpHost.inc:29
+msgid "DHCP host"
+msgstr "DHCP 호스트"
+
+#: admin/dhcp/sections/class_dhcpHost.inc:40
+#: admin/dhcp/class_dhcpConfiguration.inc:95
+msgid "Host"
+msgstr "호스트"
+
+#: admin/dhcp/sections/class_dhcpHost.inc:43
+#: admin/dhcp/sections/class_dhcpHost.inc:52
+msgid "The client hardware address"
+msgstr "클라이언트 하드웨어 주소"
+
+#: admin/dhcp/sections/class_dhcpHost.inc:46
+msgid "The hardware address type"
+msgstr "하드웨어 주소 유형"
+
+#: admin/dhcp/sections/class_dhcpHost.inc:49
+msgid "Ethernet"
+msgstr "이더넷"
+
+#: admin/dhcp/sections/class_dhcpHost.inc:49
+msgid "FDDI"
+msgstr "FDDI"
+
+#: admin/dhcp/sections/class_dhcpHost.inc:49
+msgid "Token Ring"
+msgstr "토큰 링"
+
+#: admin/dhcp/sections/class_dhcpHost.inc:59
+msgid "Hardware address"
+msgstr "하드웨어 주소"
+
+#: admin/dhcp/sections/class_dhcpHost.inc:92
+#, php-format
+msgid "\"%s\" is not a valid IP address."
+msgstr "\"%s\"은(는) 유효한 IP 주소가 아닙니다."
+
+#: admin/dhcp/sections/class_dhcpClass.inc:26
+#: admin/dhcp/sections/class_dhcpClass.inc:27
+msgid "DHCP class"
+msgstr "DHCP 클래스"
+
+#: admin/dhcp/sections/class_dhcpSubnet.inc:26
+#: admin/dhcp/sections/class_dhcpSubnet.inc:27
+msgid "DHCP subnet"
+msgstr "DHCP 서브넷"
+
+#: admin/dhcp/sections/class_dhcpSubnet.inc:38
+#: admin/dhcp/class_dhcpConfiguration.inc:98
+msgid "Subnet"
+msgstr "서브넷"
+
+#: admin/dhcp/sections/class_dhcpSubnet.inc:41
+msgid "Mask length"
+msgstr "마스크 길이"
+
+#: admin/dhcp/sections/class_dhcpSubnet.inc:41
+msgid ""
+"The subnet mask length for the subnet. The mask can be easily computed from "
+"this length."
+msgstr "서브넷의 서브넷 마스크 길이입니다. 이 길이로 마스크를 쉽게 계산할 수 있습니다."
+
+#: admin/dhcp/sections/class_dhcpSubnet.inc:47
+#: admin/dhcp/sections/class_dhcpPool.inc:42
+msgid "Range"
+msgstr "범위"
+
+#: admin/dhcp/sections/class_dhcpSubnet.inc:47
+#: admin/dhcp/sections/class_dhcpPool.inc:42
+msgid ""
+"The starting & ending IP Addresses in the range (inclusive), separated by a "
+"space; if the range only contains one address, then just the address can be "
+"specified. Each range is defined as a separate value."
+msgstr ""
+"시작 및 끝 IP 주소 범위에서 (포함), 공백으로 구분; 범위에 주소가 하나만 있으면 주소만 지정할 수 있습니다. 각 범위는 별도의 "
+"값으로 정의됩니다."
+
+#: admin/dhcp/sections/class_dhcpSubnet.inc:56
+msgid "Network address"
+msgstr "네트워크 주소"
+
+#: admin/dhcp/sections/class_dhcpSubnet.inc:56
+msgid "Network address of this subnet"
+msgstr "이 서브넷의 네트워크 주소"
+
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:26
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:27
+msgid "DHCP DNS update key"
+msgstr "DHCP DNS 업데이트 키"
+
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:45
+msgid "Algorithm"
+msgstr "알고리즘"
+
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:45
+msgid "Algorithm to generate TSIG Key"
+msgstr "TSIG 키를 생성하는 알고리즘"
+
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:50
+msgid "Secret"
+msgstr "시크릿"
+
+#: admin/dhcp/sections/class_dhcpTSigKey.inc:50
+msgid "Secret to generate TSIG Key"
+msgstr "TSIG 키를 생성하는 시크릿"
+
+#: admin/dhcp/sections/class_dhcpPool.inc:26
+#: admin/dhcp/sections/class_dhcpPool.inc:27
+msgid "DHCP pool"
+msgstr "DHCP 풀"
+
+#: admin/dhcp/sections/class_dhcpPool.inc:38
+#: admin/dhcp/class_dhcpConfiguration.inc:97
+msgid "Pool"
+msgstr "풀"
+
+#: admin/dhcp/sections/class_dhcpPool.inc:50
+msgid "Permit list"
+msgstr "허가 목록"
+
+#: admin/dhcp/sections/class_dhcpPool.inc:50
+msgid ""
+"This attribute contains the permit lists associated with a pool. Each permit"
+" list is defined as a separate value."
+msgstr "이 속성은 풀과 연관된 허용 목록을 포함합니다. 각 허가 목록은 별도의 값으로 정의됩니다."
+
+#: admin/dhcp/sections/class_dhcpSharedNetwork.inc:26
+#: admin/dhcp/sections/class_dhcpSharedNetwork.inc:27
+msgid "DHCP shared network"
+msgstr "DHCP 공유 네트워크"
+
 #: admin/dhcp/class_DhcpSectionsAttribute.inc:33
 msgid "Object"
 msgstr "오브젝트"
-
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:34
-#: admin/systems/class_dhcpSystem.inc:57
-msgid "IP"
-msgstr "IP"
-
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:35
-#: admin/systems/class_dhcpSystem.inc:56
-msgid "Mac"
-msgstr "Mac"
 
 #: admin/dhcp/class_DhcpSectionsAttribute.inc:47
 msgid "Expand DHCP subnet"
@@ -463,85 +427,117 @@ msgstr "DHCP 서브넷 확장"
 msgid "Expand"
 msgstr "확장"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:57
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:58
 msgid "Fold DHCP subnet"
 msgstr "DHCP 서브넷 축소"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:58
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:59
 msgid "Fold"
 msgstr "축소"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:122
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:123
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:125
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:126
 msgid "Insert new DHCP section"
 msgstr "DHCP 섹션 삽입"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:432
-msgid "Error"
-msgstr "오류"
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:385
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:425
+#: admin/dhcp/class_dhcpConfiguration.inc:92
+msgid "Global options"
+msgstr "글로벌 옵션"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:432
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:440
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
 msgstr "DHCP 구성 집합을 알 수 없습니다. 시스템 관리자에게 문의하십시오."
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:42
-msgid "DHCP configurations"
+#: admin/dhcp/class_dhcpManagement.inc:28
+msgid "DHCP Management"
+msgstr "DHCP 관리"
+
+#: admin/dhcp/class_dhcpManagement.inc:29
+msgid "Manage DHCP configurations"
+msgstr ""
+
+#: admin/dhcp/class_dhcpManagement.inc:31
+msgid "Systems"
+msgstr "시스템"
+
+#: admin/dhcp/class_dhcpSectionCreationDialog.inc:55
+msgid "Section"
+msgstr "섹션"
+
+#: admin/dhcp/class_dhcpSectionCreationDialog.inc:55
+msgid "Choose section type to create"
+msgstr "생성할 섹션 유형 선택"
+
+#: admin/dhcp/class_dhcpSectionCreationDialog.inc:100
+msgid "Create new DHCP section"
+msgstr "DHCP 섹션 만들기"
+
+#: admin/dhcp/class_dhcpConfiguration.inc:51
+#: admin/dhcp/class_dhcpConfiguration.inc:52
+#: admin/dhcp/class_dhcpConfiguration.inc:55
+#: config/dhcp/class_dhcpConfig.inc:27
+msgid "DHCP configuration"
 msgstr "DHCP 구성"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:47
-msgid ""
-"The DN of dhcpService object(s) which contain the configuration information"
-msgstr "구성 정보가 들어있는 dhcpService 개체의 DN입니다"
+#: admin/dhcp/class_dhcpConfiguration.inc:74
+msgid "DHCP Objects"
+msgstr "DHCP 개체"
 
-#: admin/systems/class_dhcpSystem.inc:33
-msgid ""
-"The DHCP configuration or subsection in which this host should be added"
-msgstr "이 호스트를 추가해야하는 DHCP 구성 또는 하위 섹션"
+#: admin/dhcp/class_dhcpConfiguration.inc:80
+msgid "The DHCP sections handled by this server"
+msgstr "이 서버에서 처리하는 DHCP 섹션"
 
-#: admin/systems/class_dhcpSystem.inc:37
-#: admin/systems/class_dhcpSystem.inc:117
-msgid "The Mac address to use in the DHCP host record"
-msgstr "DHCP 호스트 레코드에 사용할 Mac 주소"
+#: admin/dhcp/class_dhcpConfiguration.inc:91
+msgid "Logging"
+msgstr "로깅"
 
-#: admin/systems/class_dhcpSystem.inc:41
-#: admin/systems/class_dhcpSystem.inc:122
-msgid "The IP address to use in the DHCP host record"
-msgstr "DHCP 호스트 레코드에 사용할 IP 주소"
+#: admin/dhcp/class_dhcpConfiguration.inc:93
+msgid "Class"
+msgstr "클래스"
 
-#: admin/systems/class_dhcpSystem.inc:55
-msgid "Parent"
-msgstr "Parent"
+#: admin/dhcp/class_dhcpConfiguration.inc:94
+msgid "Subclass"
+msgstr "하위 클래스"
 
-#: admin/systems/class_dhcpSystem.inc:235
-#, php-format
-msgid ""
-"\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
-"DHCP configuration"
-msgstr "\"%s\"은 (%s 이후로 \"%s\"에 의해) 잠겨 있으며 이 DHCP 구성에 대한 수정사항을 저장할 수 없습니다"
+#: admin/dhcp/class_dhcpConfiguration.inc:96
+msgid "Group"
+msgstr "그룹"
 
-#: admin/systems/class_dhcpSystem.inc:258
-#, php-format
-msgid "The value for multivaluated field \"%s\" is not an array"
-msgstr "다중화된 필드 \"%s\"의 값은 배열이 아닙니다."
+#: admin/dhcp/class_dhcpConfiguration.inc:99
+msgid "Failover peer"
+msgstr "장애조치 피어"
 
-#: admin/systems/class_dhcpSystem.inc:292
-msgid "Edit the DHCP zones of a system"
-msgstr "시스템의 DHCP 영역 편집"
+#: admin/dhcp/class_dhcpConfiguration.inc:100
+msgid "Shared network"
+msgstr "공유 네트워크"
 
-#: admin/systems/class_dhcpSystem.inc:306
-msgid "DHCP zones"
-msgstr "DHCP 영역"
+#: admin/dhcp/class_dhcpConfiguration.inc:101
+msgid "DNS update key"
+msgstr "DNS 업데이트 키"
 
-#: admin/systems/class_dhcpSystem.inc:310
-msgid "DHCP hosts declared for this system"
-msgstr "이 시스템에 대해 선언 된 DHCP 호스트"
+#: admin/dhcp/class_dhcpConfiguration.inc:102
+msgid "DNS update zones"
+msgstr "DNS 업데이트 영역"
 
-#: admin/systems/class_dhcpSystem.inc:374
-#, php-format
-msgid "The ip %s is not in the network %s/%d"
-msgstr "IP %s이 (가) 네트워크 %s / %d에 없습니다"
+#: admin/dhcp/class_dhcpPlugin.inc:40
+msgid "Options"
+msgstr "옵션"
+
+#: admin/dhcp/class_dhcpPlugin.inc:40
+msgid "The DHCP options"
+msgstr "DHCP 옵션"
+
+#: admin/dhcp/class_dhcpPlugin.inc:48
+msgid "Statements"
+msgstr "표현법"
+
+#: admin/dhcp/class_dhcpPlugin.inc:48
+msgid "The DHCP statements"
+msgstr "DHCP 문"
 
 #: config/dhcp/class_dhcpConfig.inc:28
 msgid "FusionDirectory dhcp plugin configuration"

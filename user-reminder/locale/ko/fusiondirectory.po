@@ -5,26 +5,48 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Choi Chris <chulwon.choi@gmail.com>, 2019
+# Choi Chris <chulwon.choi@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
-"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
+"Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: html/class_expiredUserPostpone.inc:70
+msgid "This token is invalid"
+msgstr "토큰이 유효하지 않습니다."
+
+#: html/class_expiredUserPostpone.inc:73
+msgid "Token is missing from URL"
+msgstr "URL에서 토큰이 누락되었습니다"
+
+#: html/class_expiredUserPostpone.inc:242
+msgid "Contact your administrator, there was a problem with mail server"
+msgstr "메일 서버에 문제가 발생핬습니다. 관리자에게 문의바랍니다."
+
+#: html/class_expiredUserPostpone.inc:251
+#, php-format
+msgid "Did not find an account with login \"%s\""
+msgstr "로그인 계정 \"%s\"을 찾을 수 없습니다."
+
+#: html/class_expiredUserPostpone.inc:254
+#, php-format
+msgid "Found multiple accounts with login \"%s\""
+msgstr "로그인 계정 \"%s\"이 여러 개 있습니다."
+
 #: config/user-reminder/class_userReminderConfig.inc:27
 msgid "Reminder"
-msgstr ""
+msgstr "리마인더"
 
 #: config/user-reminder/class_userReminderConfig.inc:28
 msgid "User reminder"
@@ -206,38 +228,38 @@ msgstr ""
 
 #: config/user-reminder/class_userReminderConfig.inc:150
 msgid "Expiration email settings"
-msgstr ""
+msgstr "만료 이메일 설정"
 
 #: config/user-reminder/class_userReminderConfig.inc:153
 msgid "Send an email"
-msgstr ""
+msgstr "이메일 전송"
 
 #: config/user-reminder/class_userReminderConfig.inc:153
 msgid "Whether to send an email after expiration to inform the user"
-msgstr ""
+msgstr "만료 후 사용자에게 알리기 위해 이메일을 보낼지 여부"
 
 #: config/user-reminder/class_userReminderConfig.inc:158
 msgid "Forward to the manager"
-msgstr ""
+msgstr "관리자에게 전달"
 
 #: config/user-reminder/class_userReminderConfig.inc:158
 msgid "Forward account expiration to the manager"
-msgstr ""
+msgstr "관리자에게 계정 만료 전달"
 
 #: config/user-reminder/class_userReminderConfig.inc:163
 msgid "Subject of the expiration email"
-msgstr ""
+msgstr "만료 이메일의 제목"
 
 #: config/user-reminder/class_userReminderConfig.inc:165
 msgid "[FusionDirectory] Your account has expired"
-msgstr ""
+msgstr "[FusionDirectory] 귀하의 계정이 만료되었습니다"
 
 #: config/user-reminder/class_userReminderConfig.inc:169
 #, php-format
 msgid ""
 "Body of the expiration email, sent when the user has expired. Use %s for the"
 " cn and uid."
-msgstr ""
+msgstr "사용자가 만료되었을 때 전송되는 만료 전자 메일의 본문입니다. cn 및 uid에  %s를 사용하십시오."
 
 #: config/user-reminder/class_userReminderConfig.inc:171
 #, php-format
@@ -245,28 +267,8 @@ msgid ""
 "Dear %1$s,\n"
 " your account %2$s has expired.\n"
 msgstr ""
-
-#: html/class_expiredUserPostpone.inc:59
-msgid "This token is invalid"
-msgstr "토큰이 유효하지 않습니다."
-
-#: html/class_expiredUserPostpone.inc:62
-msgid "Token is missing from URL"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:230
-msgid "Contact your administrator, there was a problem with mail server"
-msgstr "메일 서버에 문제가 발생핬습니다. 관리자에게 문의바랍니다."
-
-#: html/class_expiredUserPostpone.inc:239
-#, php-format
-msgid "Did not find an account with login \"%s\""
-msgstr "로그인 계정 \"%s\"을 찾을 수 없습니다."
-
-#: html/class_expiredUserPostpone.inc:242
-#, php-format
-msgid "Found multiple accounts with login \"%s\""
-msgstr "로그인 계정 \"%s\"이 여러 개 있습니다."
+"%1$s 님께, \n"
+"귀하의 계정 %2$s이 만료되었습니다.\n"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5

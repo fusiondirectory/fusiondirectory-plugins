@@ -11,35 +11,390 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:02+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
-"Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: include/class_smbHash.inc:381
+#: personal/samba/class_sambaAccount.inc:31
+msgid "Samba Munged Dial"
+msgstr "Samba – přístup přes vytáčené spojení"
+
+#: personal/samba/class_sambaAccount.inc:155
+#: admin/groups/samba/class_sambaGroup.inc:28
+#: admin/systems/samba/class_sambaSystemTab.inc:29
+#: config/samba/class_sambaPluginConfig.inc:27
+msgid "Samba"
+msgstr "Samba"
+
+#: personal/samba/class_sambaAccount.inc:156
+#: config/samba/class_sambaPluginConfig.inc:41
+msgid "Samba settings"
+msgstr "Nastavení pro Samba"
+
+#: personal/samba/class_sambaAccount.inc:182
+msgid "Samba profile"
+msgstr "Profil Samba"
+
+#: personal/samba/class_sambaAccount.inc:188
+#: personal/samba/class_sambaAccount.inc:221
+msgid "Home directory drive"
+msgstr "Disk s domovskou složkou"
+
+#: personal/samba/class_sambaAccount.inc:188
+#: personal/samba/class_sambaAccount.inc:221
+msgid "Letter for the home drive"
+msgstr "Písmenko domovského disku"
+
+#: personal/samba/class_sambaAccount.inc:193
+#: personal/samba/class_sambaAccount.inc:226
+msgid "Home directory path"
+msgstr "Popis umístění domovské složky"
+
+#: personal/samba/class_sambaAccount.inc:193
+#: personal/samba/class_sambaAccount.inc:226
+msgid "UNC path for the home drive"
+msgstr "Umístění (v UNC zápisu) domovského disku"
+
+#: personal/samba/class_sambaAccount.inc:198
+#: admin/groups/samba/class_sambaGroup.inc:44
+#: admin/groups/samba/class_sambaGroup.inc:47
+#: admin/systems/samba/class_sambaSystemTab.inc:53
+msgid "Domain"
+msgstr "Doména"
+
+#: personal/samba/class_sambaAccount.inc:198
+#: admin/systems/samba/class_sambaSystemTab.inc:53
+msgid "Samba domain name"
+msgstr "Název Samba domény"
+
+#: personal/samba/class_sambaAccount.inc:202
+msgid "Script path"
+msgstr "Popis umístění skriptu"
+
+#: personal/samba/class_sambaAccount.inc:202
+msgid "Login script path"
+msgstr "Cesta ke skriptu po spuštění"
+
+#: personal/samba/class_sambaAccount.inc:206
+#: personal/samba/class_sambaAccount.inc:231
+msgid "Profile path"
+msgstr "Popis umístění profilu"
+
+#: personal/samba/class_sambaAccount.inc:206
+#: personal/samba/class_sambaAccount.inc:231
+msgid "UNC profile path"
+msgstr "Cesta k profilu v UNC zápisu"
+
+#: personal/samba/class_sambaAccount.inc:213
+msgid "Terminal server"
+msgstr "Terminálový server"
+
+#: personal/samba/class_sambaAccount.inc:217
+msgid "Allow login on terminal server"
+msgstr "povolit přihlašování k terminálovému serveru"
+
+#: personal/samba/class_sambaAccount.inc:236
+msgid "Inherit client config"
+msgstr "Převzít nastavení klienta"
+
+#: personal/samba/class_sambaAccount.inc:236
+msgid "Inherit client configuration"
+msgstr "Převzít nastavení klienta"
+
+#: personal/samba/class_sambaAccount.inc:240
+msgid "Initial progam"
+msgstr "Úvodní program"
+
+#: personal/samba/class_sambaAccount.inc:240
+msgid "Program to start after connecting"
+msgstr "Program, který spustit po navázání spojení"
+
+#: personal/samba/class_sambaAccount.inc:244
+msgid "Working directory"
+msgstr "Pracovní složka"
+
+#: personal/samba/class_sambaAccount.inc:244
+msgid "Basic working directory"
+msgstr "Základní pracovní složka"
+
+#: personal/samba/class_sambaAccount.inc:248
+msgid "Connection timeout"
+msgstr "Časový limit spojení"
+
+#: personal/samba/class_sambaAccount.inc:248
+msgid "Timeout when connecting to terminal server"
+msgstr "Nejdelší přijatelná doba čekání na spojení s terminálovým serverem"
+
+#: personal/samba/class_sambaAccount.inc:253
+msgid "Disconnection timeout"
+msgstr "Časový limit odpojení"
+
+#: personal/samba/class_sambaAccount.inc:253
+msgid "Timeout before disconnecting from terminal server"
+msgstr "Prodleva odpojení od terminálového serveru"
+
+#: personal/samba/class_sambaAccount.inc:258
+msgid "Idle timeout"
+msgstr "Nejdelší přijatelná doba nečinnosti"
+
+#: personal/samba/class_sambaAccount.inc:258
+msgid "Idle timeout before disconnecting from terminal server"
+msgstr ""
+"Doba nečinnosti, po jejímž uplynutí dojde k samočinnému odpojení od "
+"terminálového serveru"
+
+#: personal/samba/class_sambaAccount.inc:263
+msgid "Connect client drives at logon"
+msgstr "při přihlášení připojit klientovy síťové disky"
+
+#: personal/samba/class_sambaAccount.inc:263
+msgid "Drive to connect after login"
+msgstr "Jednotka, kterou připojit po přihlášení"
+
+#: personal/samba/class_sambaAccount.inc:267
+msgid "Connect client printers at logon"
+msgstr "při přihlášení připojit klientovy síťové tiskárny"
+
+#: personal/samba/class_sambaAccount.inc:267
+msgid "Printers to connect after login"
+msgstr "Tiskárny, které připojit po přihlášení"
+
+#: personal/samba/class_sambaAccount.inc:271
+msgid "Default to main client printer"
+msgstr "nastavit hlavní tiskárnu klienta jako výchozí"
+
+#: personal/samba/class_sambaAccount.inc:271
+msgid "Default printer for this client"
+msgstr "Výchozí tiskárna pro tohoto klienta"
+
+#: personal/samba/class_sambaAccount.inc:275
+msgid "Shadowing"
+msgstr "skrývání"
+
+#: personal/samba/class_sambaAccount.inc:278
+msgid "disabled"
+msgstr "zakázáno"
+
+#: personal/samba/class_sambaAccount.inc:278
+msgid "input on, notify on"
+msgstr "vstup a oznamování zapnuty"
+
+#: personal/samba/class_sambaAccount.inc:278
+msgid "input on, notify off"
+msgstr "vstup zapnut, oznamování vypnuto"
+
+#: personal/samba/class_sambaAccount.inc:279
+msgid "input off, notify on"
+msgstr "vstup vypnut, oznamování zapnuto"
+
+#: personal/samba/class_sambaAccount.inc:279
+msgid "input off, nofify off"
+msgstr "vstup i oznamování vypnuty"
+
+#: personal/samba/class_sambaAccount.inc:282
+msgid "On broken or timed out"
+msgstr "v případě výpadku či vypršení časového limitu spojení"
+
+#: personal/samba/class_sambaAccount.inc:282
+msgid "What happen if disconnected or timeout"
+msgstr "Co nastane v případě odpojení či překročení časového limitu"
+
+#: personal/samba/class_sambaAccount.inc:285
+msgid "disconnect"
+msgstr "odpojit"
+
+#: personal/samba/class_sambaAccount.inc:285
+msgid "reset"
+msgstr "resetovat"
+
+#: personal/samba/class_sambaAccount.inc:288
+msgid "Reconnect if disconnected"
+msgstr "v případě odpojení připojit znovu"
+
+#: personal/samba/class_sambaAccount.inc:291
+msgid "from any client"
+msgstr "z jakéhokoli počítače"
+
+#: personal/samba/class_sambaAccount.inc:291
+msgid "from previous client only"
+msgstr "pouze z naposledy použitého počítače"
+
+#: personal/samba/class_sambaAccount.inc:303
+msgid "Access options"
+msgstr "možnosti přístupu"
+
+#: personal/samba/class_sambaAccount.inc:307
+msgid "Enforce password change"
+msgstr "Vynutit změnu hesla"
+
+#: personal/samba/class_sambaAccount.inc:307
+msgid "Force the user to change his password"
+msgstr "Přimět uživatele ke změně hesla"
+
+#: personal/samba/class_sambaAccount.inc:312
+msgid "The password never expire"
+msgstr "Heslo je platné stále"
+
+#: personal/samba/class_sambaAccount.inc:312
+msgid "The password will never expire"
+msgstr "Platnost hesla nikdy neskončí"
+
+#: personal/samba/class_sambaAccount.inc:317
+msgid "Login from windows client requires no password"
+msgstr "přihlášení z klienta s MS Windows nevyžaduje heslo"
+
+#: personal/samba/class_sambaAccount.inc:317
+msgid "Login from a client without a password"
+msgstr "Přihlášení z klienta bez hesla"
+
+#: personal/samba/class_sambaAccount.inc:322
+msgid "Lock samba account"
+msgstr "uzamknout účet Samby"
+
+#: personal/samba/class_sambaAccount.inc:322
+msgid "Lock the account"
+msgstr "Uzamknout účet"
+
+#: personal/samba/class_sambaAccount.inc:327
+msgid "Cannot change password"
+msgstr "heslo nepůjde změnit"
+
+#: personal/samba/class_sambaAccount.inc:327
+msgid "Not allowed to change password"
+msgstr "Změna hesla není dovolena"
+
+#: personal/samba/class_sambaAccount.inc:331
+msgid "Account expiration"
+msgstr "Skončení platnosti účtu"
+
+#: personal/samba/class_sambaAccount.inc:331
+msgid "When does the account expire"
+msgstr "Kdy skončí platnost účtu"
+
+#: personal/samba/class_sambaAccount.inc:339
+msgid "Samba logon times"
+msgstr "časová rozmezí pro přihlašování k Sambě"
+
+#: personal/samba/class_sambaAccount.inc:339
+msgid "What is the allowed time to connect"
+msgstr "Ve kterých časech je dovoleno se připojit"
+
+#: personal/samba/class_sambaAccount.inc:340
+msgid "Edit settings"
+msgstr "Upravit nastavení"
+
+#: personal/samba/class_sambaAccount.inc:356
+msgid "System trust"
+msgstr "systém důvěryhodnosti"
+
+#: personal/samba/class_sambaAccount.inc:362
+msgid "Allow connection from these workstations only"
+msgstr "povolit připojení pouze z těchto pracovních stanic"
+
+#: personal/samba/class_sambaAccount.inc:362
+msgid "Only allow this user to connect to this list of hosts"
+msgstr "Tomuto uživateli povolit připojení pouze na počítače z tohoto seznamu"
+
+#: personal/samba/class_sambaAccount.inc:465
+#: personal/samba/class_sambaAccount.inc:475
+#, php-format
+msgid "Field \"%s\" is required when \"%s\" is filled! Fill both field or empty them."
+msgstr ""
+"Kolonka „%s“ je vyžadováno pokud je vyplněno „%s“! Vyplňte buď obě nebo ani "
+"jednu z nich."
+
+#: personal/samba/class_sambaAccount.inc:486
+msgid "The windows user manager allows eight clients at maximum!"
+msgstr "Správce uživatelských účtů v MS Windows povoluje maximálně 8 klientů!"
+
+#: personal/samba/class_sambaAccount.inc:510
+#: admin/groups/samba/class_sambaGroup.inc:138
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr ""
+"Zjištěno nedefinované SID Samby. Prosím opravte tento problém ručním zásahem"
+" do nastavení!"
+
+#: personal/samba/class_sambaAccount.inc:541
 msgid ""
-"Your PHP install does not have the mhash() nor the hash function. Cannot do "
-"MD4 hashes."
+"Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
-"Vaše instalace PHP neobsahuje mhash() ani funkci hash. Nelze tedy vytvářet "
-"otisky algoritmem MD4."
+"Nemohu převést primární skupinu na skupinu Samby: skupinu se nepodařilo "
+"identifikovat!"
 
-#: admin/samba/class_sambaDomainManagement.inc:37
-msgid "Samba domains"
-msgstr "Domény Samba"
-
-#: admin/samba/class_sambaDomainManagement.inc:38
-msgid "Samba domain management"
-msgstr "Správa Samba domény"
-
-#: admin/samba/class_sambaDomainManagement.inc:39
-msgid "Manage Samba domains"
+#: personal/samba/class_sambaAccount.inc:561
+msgid ""
+"Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""
+"Nedaří se převést hlavní skupinu na samba skupinu: panel samba skupiny je "
+"vypnutý!"
+
+#: admin/groups/samba/class_sambaGroup.inc:29
+msgid "Samba group settings"
+msgstr "Nastavení skupiny pro službu Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:47
+msgid "Samba domain"
+msgstr "Samba doména"
+
+#: admin/groups/samba/class_sambaGroup.inc:51
+msgid "Samba information"
+msgstr "Informace o Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:58
+msgid "Group type"
+msgstr "Typ skupiny"
+
+#: admin/groups/samba/class_sambaGroup.inc:58
+msgid "Samba group type"
+msgstr "typ skupiny Samby"
+
+#: admin/groups/samba/class_sambaGroup.inc:62
+#: admin/groups/samba/class_sambaGroup.inc:121
+msgid "Samba group"
+msgstr "skupina v Sambě"
+
+#: admin/groups/samba/class_sambaGroup.inc:62
+#: admin/groups/samba/class_sambaGroup.inc:121
+msgid "Domain admins"
+msgstr "Správci domény"
+
+#: admin/groups/samba/class_sambaGroup.inc:62
+#: admin/groups/samba/class_sambaGroup.inc:121
+msgid "Domain users"
+msgstr "Doménoví uživatelé"
+
+#: admin/groups/samba/class_sambaGroup.inc:62
+#: admin/groups/samba/class_sambaGroup.inc:121
+msgid "Domain guests"
+msgstr "doménoví hosté"
+
+#: admin/groups/samba/class_sambaGroup.inc:106
+msgid "Cannot find group SID in your configuration!"
+msgstr "Ve vaší konfiguraci nelze nalézt SID skupiny!"
+
+#: admin/groups/samba/class_sambaGroup.inc:121
+#, php-format
+msgid "Special group (%d)"
+msgstr "speciální skupina (%d)"
+
+#: admin/systems/samba/class_sambaSystemTab.inc:30
+msgid "Windows workstation information"
+msgstr "Informace o počítači s MS Windows"
+
+#: admin/systems/samba/class_sambaSystemTab.inc:44
+#: admin/samba/class_sambaDomain.inc:48
+msgid "Properties"
+msgstr "Vlastnosti"
+
+#: admin/systems/samba/class_argonautEventSambaShares.inc:27
+msgid "Update Samba Shares"
+msgstr "Aktualizovat Samba sdílení"
 
 #: admin/samba/class_sambaDomain.inc:26 admin/samba/class_sambaDomain.inc:27
 #: admin/samba/class_sambaDomain.inc:31
@@ -49,11 +404,6 @@ msgstr "Samba doména"
 #: admin/samba/class_sambaDomain.inc:32
 msgid "Samba domain settings"
 msgstr "Nastavení Samba domény"
-
-#: admin/samba/class_sambaDomain.inc:48
-#: admin/systems/samba/class_sambaSystemTab.inc:44
-msgid "Properties"
-msgstr "Vlastnosti"
 
 #: admin/samba/class_sambaDomain.inc:51
 msgid "Domain name"
@@ -199,108 +549,29 @@ msgstr "odmítnout změnu hesla stroje"
 msgid "Allow Machine Password changes (default: 0 => off)"
 msgstr "Umožnit změnu hesel počítačů (výchozí: 0 => neumožnit)"
 
-#: admin/groups/samba/class_sambaGroup.inc:28
-#: admin/systems/samba/class_sambaSystemTab.inc:29
-#: config/samba/class_sambaPluginConfig.inc:27
-#: personal/samba/class_sambaAccount.inc:158
-msgid "Samba"
-msgstr "Samba"
+#: admin/samba/class_sambaDomainManagement.inc:37
+msgid "Samba domains"
+msgstr "Domény Samba"
 
-#: admin/groups/samba/class_sambaGroup.inc:29
-msgid "Samba group settings"
-msgstr "Nastavení skupiny pro službu Samba"
+#: admin/samba/class_sambaDomainManagement.inc:38
+msgid "Samba domain management"
+msgstr "Správa Samba domény"
 
-#: admin/groups/samba/class_sambaGroup.inc:44
-#: admin/groups/samba/class_sambaGroup.inc:47
-#: admin/systems/samba/class_sambaSystemTab.inc:53
-#: personal/samba/class_sambaAccount.inc:201
-msgid "Domain"
-msgstr "Doména"
-
-#: admin/groups/samba/class_sambaGroup.inc:47
-msgid "Samba domain"
-msgstr "Samba doména"
-
-#: admin/groups/samba/class_sambaGroup.inc:51
-msgid "Samba information"
-msgstr "Informace o Samba"
-
-#: admin/groups/samba/class_sambaGroup.inc:58
-msgid "Group type"
-msgstr "Typ skupiny"
-
-#: admin/groups/samba/class_sambaGroup.inc:58
-msgid "Samba group type"
-msgstr "typ skupiny Samby"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:122
-msgid "Samba group"
-msgstr "skupina v Sambě"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:122
-msgid "Domain admins"
-msgstr "Správci domény"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:122
-msgid "Domain users"
-msgstr "Doménoví uživatelé"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:122
-msgid "Domain guests"
-msgstr "doménoví hosté"
-
-#: admin/groups/samba/class_sambaGroup.inc:108
-msgid "Configuration error"
-msgstr "Chyba v nastavení"
-
-#: admin/groups/samba/class_sambaGroup.inc:108
-msgid "Cannot find group SID in your configuration!"
-msgstr "Ve vaší konfiguraci nelze nalézt SID skupiny!"
-
-#: admin/groups/samba/class_sambaGroup.inc:122
-#, php-format
-msgid "Special group (%d)"
-msgstr "speciální skupina (%d)"
-
-#: admin/groups/samba/class_sambaGroup.inc:138
-#: personal/samba/class_sambaAccount.inc:512
-#: personal/samba/class_sambaAccount.inc:542
-#: personal/samba/class_sambaAccount.inc:563
-msgid "Warning"
-msgstr "Varování"
-
-#: admin/groups/samba/class_sambaGroup.inc:138
-#: personal/samba/class_sambaAccount.inc:512
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
+#: admin/samba/class_sambaDomainManagement.inc:39
+msgid "Manage Samba domains"
 msgstr ""
-"Zjištěno nedefinované SID Samby. Prosím opravte tento problém ručním zásahem"
-" do nastavení!"
 
-#: admin/systems/samba/class_argonautEventSambaShares.inc:27
-msgid "Update Samba Shares"
-msgstr "Aktualizovat Samba sdílení"
-
-#: admin/systems/samba/class_sambaSystemTab.inc:30
-msgid "Windows workstation information"
-msgstr "Informace o počítači s MS Windows"
-
-#: admin/systems/samba/class_sambaSystemTab.inc:53
-#: personal/samba/class_sambaAccount.inc:201
-msgid "Samba domain name"
-msgstr "Název Samba domény"
+#: include/class_smbHash.inc:385
+msgid ""
+"Your PHP install does not have the mhash() nor the hash function. Cannot do "
+"MD4 hashes."
+msgstr ""
+"Vaše instalace PHP neobsahuje mhash() ani funkci hash. Nelze tedy vytvářet "
+"otisky algoritmem MD4."
 
 #: config/samba/class_sambaPluginConfig.inc:28
 msgid "Samba plugin configuration"
 msgstr "Nastavení zásuvného modulu Samba"
-
-#: config/samba/class_sambaPluginConfig.inc:41
-#: personal/samba/class_sambaAccount.inc:159
-msgid "Samba settings"
-msgstr "Nastavení pro Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:44
 msgid "Samba ID mapping"
@@ -377,288 +648,6 @@ msgstr ""
 #: config/samba/class_sambaPluginConfig.inc:75
 msgid "Whether the Samba user tab should depend upon the POSIX tab"
 msgstr ""
-
-#: personal/samba/class_sambaAccount.inc:31
-msgid "Samba Munged Dial"
-msgstr "Samba – přístup přes vytáčené spojení"
-
-#: personal/samba/class_sambaAccount.inc:185
-msgid "Samba profile"
-msgstr "Profil Samba"
-
-#: personal/samba/class_sambaAccount.inc:191
-#: personal/samba/class_sambaAccount.inc:224
-msgid "Home directory drive"
-msgstr "Disk s domovskou složkou"
-
-#: personal/samba/class_sambaAccount.inc:191
-#: personal/samba/class_sambaAccount.inc:224
-msgid "Letter for the home drive"
-msgstr "Písmenko domovského disku"
-
-#: personal/samba/class_sambaAccount.inc:196
-#: personal/samba/class_sambaAccount.inc:229
-msgid "Home directory path"
-msgstr "Popis umístění domovské složky"
-
-#: personal/samba/class_sambaAccount.inc:196
-#: personal/samba/class_sambaAccount.inc:229
-msgid "UNC path for the home drive"
-msgstr "Umístění (v UNC zápisu) domovského disku"
-
-#: personal/samba/class_sambaAccount.inc:205
-msgid "Script path"
-msgstr "Popis umístění skriptu"
-
-#: personal/samba/class_sambaAccount.inc:205
-msgid "Login script path"
-msgstr "Cesta ke skriptu po spuštění"
-
-#: personal/samba/class_sambaAccount.inc:209
-#: personal/samba/class_sambaAccount.inc:234
-msgid "Profile path"
-msgstr "Popis umístění profilu"
-
-#: personal/samba/class_sambaAccount.inc:209
-#: personal/samba/class_sambaAccount.inc:234
-msgid "UNC profile path"
-msgstr "Cesta k profilu v UNC zápisu"
-
-#: personal/samba/class_sambaAccount.inc:216
-msgid "Terminal server"
-msgstr "Terminálový server"
-
-#: personal/samba/class_sambaAccount.inc:220
-msgid "Allow login on terminal server"
-msgstr "povolit přihlašování k terminálovému serveru"
-
-#: personal/samba/class_sambaAccount.inc:239
-msgid "Inherit client config"
-msgstr "Převzít nastavení klienta"
-
-#: personal/samba/class_sambaAccount.inc:239
-msgid "Inherit client configuration"
-msgstr "Převzít nastavení klienta"
-
-#: personal/samba/class_sambaAccount.inc:243
-msgid "Initial progam"
-msgstr "Úvodní program"
-
-#: personal/samba/class_sambaAccount.inc:243
-msgid "Program to start after connecting"
-msgstr "Program, který spustit po navázání spojení"
-
-#: personal/samba/class_sambaAccount.inc:247
-msgid "Working directory"
-msgstr "Pracovní složka"
-
-#: personal/samba/class_sambaAccount.inc:247
-msgid "Basic working directory"
-msgstr "Základní pracovní složka"
-
-#: personal/samba/class_sambaAccount.inc:251
-msgid "Connection timeout"
-msgstr "Časový limit spojení"
-
-#: personal/samba/class_sambaAccount.inc:251
-msgid "Timeout when connecting to terminal server"
-msgstr "Nejdelší přijatelná doba čekání na spojení s terminálovým serverem"
-
-#: personal/samba/class_sambaAccount.inc:256
-msgid "Disconnection timeout"
-msgstr "Časový limit odpojení"
-
-#: personal/samba/class_sambaAccount.inc:256
-msgid "Timeout before disconnecting from terminal server"
-msgstr "Prodleva odpojení od terminálového serveru"
-
-#: personal/samba/class_sambaAccount.inc:261
-msgid "Idle timeout"
-msgstr "Nejdelší přijatelná doba nečinnosti"
-
-#: personal/samba/class_sambaAccount.inc:261
-msgid "Idle timeout before disconnecting from terminal server"
-msgstr ""
-"Doba nečinnosti, po jejímž uplynutí dojde k samočinnému odpojení od "
-"terminálového serveru"
-
-#: personal/samba/class_sambaAccount.inc:266
-msgid "Connect client drives at logon"
-msgstr "při přihlášení připojit klientovy síťové disky"
-
-#: personal/samba/class_sambaAccount.inc:266
-msgid "Drive to connect after login"
-msgstr "Jednotka, kterou připojit po přihlášení"
-
-#: personal/samba/class_sambaAccount.inc:270
-msgid "Connect client printers at logon"
-msgstr "při přihlášení připojit klientovy síťové tiskárny"
-
-#: personal/samba/class_sambaAccount.inc:270
-msgid "Printers to connect after login"
-msgstr "Tiskárny, které připojit po přihlášení"
-
-#: personal/samba/class_sambaAccount.inc:274
-msgid "Default to main client printer"
-msgstr "nastavit hlavní tiskárnu klienta jako výchozí"
-
-#: personal/samba/class_sambaAccount.inc:274
-msgid "Default printer for this client"
-msgstr "Výchozí tiskárna pro tohoto klienta"
-
-#: personal/samba/class_sambaAccount.inc:278
-msgid "Shadowing"
-msgstr "skrývání"
-
-#: personal/samba/class_sambaAccount.inc:281
-msgid "disabled"
-msgstr "zakázáno"
-
-#: personal/samba/class_sambaAccount.inc:281
-msgid "input on, notify on"
-msgstr "vstup a oznamování zapnuty"
-
-#: personal/samba/class_sambaAccount.inc:281
-msgid "input on, notify off"
-msgstr "vstup zapnut, oznamování vypnuto"
-
-#: personal/samba/class_sambaAccount.inc:282
-msgid "input off, notify on"
-msgstr "vstup vypnut, oznamování zapnuto"
-
-#: personal/samba/class_sambaAccount.inc:282
-msgid "input off, nofify off"
-msgstr "vstup i oznamování vypnuty"
-
-#: personal/samba/class_sambaAccount.inc:285
-msgid "On broken or timed out"
-msgstr "v případě výpadku či vypršení časového limitu spojení"
-
-#: personal/samba/class_sambaAccount.inc:285
-msgid "What happen if disconnected or timeout"
-msgstr "Co nastane v případě odpojení či překročení časového limitu"
-
-#: personal/samba/class_sambaAccount.inc:288
-msgid "disconnect"
-msgstr "odpojit"
-
-#: personal/samba/class_sambaAccount.inc:288
-msgid "reset"
-msgstr "resetovat"
-
-#: personal/samba/class_sambaAccount.inc:291
-msgid "Reconnect if disconnected"
-msgstr "v případě odpojení připojit znovu"
-
-#: personal/samba/class_sambaAccount.inc:294
-msgid "from any client"
-msgstr "z jakéhokoli počítače"
-
-#: personal/samba/class_sambaAccount.inc:294
-msgid "from previous client only"
-msgstr "pouze z naposledy použitého počítače"
-
-#: personal/samba/class_sambaAccount.inc:306
-msgid "Access options"
-msgstr "možnosti přístupu"
-
-#: personal/samba/class_sambaAccount.inc:310
-msgid "Enforce password change"
-msgstr "Vynutit změnu hesla"
-
-#: personal/samba/class_sambaAccount.inc:310
-msgid "Force the user to change his password"
-msgstr "Přimět uživatele ke změně hesla"
-
-#: personal/samba/class_sambaAccount.inc:315
-msgid "The password never expire"
-msgstr "Heslo je platné stále"
-
-#: personal/samba/class_sambaAccount.inc:315
-msgid "The password will never expire"
-msgstr "Platnost hesla nikdy neskončí"
-
-#: personal/samba/class_sambaAccount.inc:320
-msgid "Login from windows client requires no password"
-msgstr "přihlášení z klienta s MS Windows nevyžaduje heslo"
-
-#: personal/samba/class_sambaAccount.inc:320
-msgid "Login from a client without a password"
-msgstr "Přihlášení z klienta bez hesla"
-
-#: personal/samba/class_sambaAccount.inc:325
-msgid "Lock samba account"
-msgstr "uzamknout účet Samby"
-
-#: personal/samba/class_sambaAccount.inc:325
-msgid "Lock the account"
-msgstr "Uzamknout účet"
-
-#: personal/samba/class_sambaAccount.inc:330
-msgid "Cannot change password"
-msgstr "heslo nepůjde změnit"
-
-#: personal/samba/class_sambaAccount.inc:330
-msgid "Not allowed to change password"
-msgstr "Změna hesla není dovolena"
-
-#: personal/samba/class_sambaAccount.inc:334
-msgid "Account expiration"
-msgstr "Skončení platnosti účtu"
-
-#: personal/samba/class_sambaAccount.inc:334
-msgid "When does the account expire"
-msgstr "Kdy skončí platnost účtu"
-
-#: personal/samba/class_sambaAccount.inc:342
-msgid "Samba logon times"
-msgstr "časová rozmezí pro přihlašování k Sambě"
-
-#: personal/samba/class_sambaAccount.inc:342
-msgid "What is the allowed time to connect"
-msgstr "Ve kterých časech je dovoleno se připojit"
-
-#: personal/samba/class_sambaAccount.inc:343
-msgid "Edit settings"
-msgstr "Upravit nastavení"
-
-#: personal/samba/class_sambaAccount.inc:359
-msgid "System trust"
-msgstr "systém důvěryhodnosti"
-
-#: personal/samba/class_sambaAccount.inc:365
-msgid "Allow connection from these workstations only"
-msgstr "povolit připojení pouze z těchto pracovních stanic"
-
-#: personal/samba/class_sambaAccount.inc:365
-msgid "Only allow this user to connect to this list of hosts"
-msgstr "Tomuto uživateli povolit připojení pouze na počítače z tohoto seznamu"
-
-#: personal/samba/class_sambaAccount.inc:480
-#: personal/samba/class_sambaAccount.inc:487
-#, php-format
-msgid "Field \"%s\" is required when \"%s\" is filled! Fill both field or empty them."
-msgstr ""
-"Kolonka „%s“ je vyžadováno pokud je vyplněno „%s“! Vyplňte buď obě nebo ani "
-"jednu z nich."
-
-#: personal/samba/class_sambaAccount.inc:495
-msgid "The windows user manager allows eight clients at maximum!"
-msgstr "Správce uživatelských účtů v MS Windows povoluje maximálně 8 klientů!"
-
-#: personal/samba/class_sambaAccount.inc:543
-msgid ""
-"Cannot convert primary group to samba group: group cannot be identified!"
-msgstr ""
-"Nemohu převést primární skupinu na skupinu Samby: skupinu se nepodařilo "
-"identifikovat!"
-
-#: personal/samba/class_sambaAccount.inc:564
-msgid ""
-"Cannot convert primary group to samba group: group samba tab is disabled!"
-msgstr ""
-"Nedaří se převést hlavní skupinu na samba skupinu: panel samba skupiny je "
-"vypnutý!"
 
 #: personal/samba/sambaLogonHours.tpl.c:2
 msgid "Specify the hours this user is allowed to log in"

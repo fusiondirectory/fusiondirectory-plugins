@@ -3,35 +3,27 @@
 # This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2023
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
-"Language-Team: Russian Petrine orthography (https://www.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
+"Language-Team: Russian Petrine orthography (https://app.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru@petr1708\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: admin/sudo/class_sudoManagement.inc:28 admin/sudo/class_sudo.inc:32
+#: admin/sudo/class_sudo.inc:32 admin/sudo/class_sudoManagement.inc:28
 #: config/sudo/class_sudoConfig.inc:40
 msgid "Sudo"
-msgstr ""
-
-#: admin/sudo/class_sudoManagement.inc:29
-msgid "Sudo management"
-msgstr ""
-
-#: admin/sudo/class_sudoManagement.inc:30
-msgid "Manage sudo roles"
-msgstr ""
-
-#: admin/sudo/class_sudoManagement.inc:44
-msgid "Default"
 msgstr ""
 
 #: admin/sudo/class_sudo.inc:33 admin/sudo/class_sudo.inc:37
@@ -44,15 +36,15 @@ msgstr ""
 
 #: admin/sudo/class_sudo.inc:69
 msgid "Name"
-msgstr ""
+msgstr "Фамилия"
 
 #: admin/sudo/class_sudo.inc:69
 msgid "Name of the role"
-msgstr ""
+msgstr "Имя роли"
 
 #: admin/sudo/class_sudo.inc:74
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
 #: admin/sudo/class_sudo.inc:74
 msgid "Description for the new sudo role"
@@ -86,7 +78,7 @@ msgstr ""
 
 #: admin/sudo/class_sudo.inc:101
 msgid "Systems"
-msgstr ""
+msgstr "Системы"
 
 #: admin/sudo/class_sudo.inc:101
 msgid "A host name, IP address or IP network"
@@ -94,7 +86,7 @@ msgstr ""
 
 #: admin/sudo/class_sudo.inc:107
 msgid "Users and groups"
-msgstr ""
+msgstr "Пользователи и группы"
 
 #: admin/sudo/class_sudo.inc:108
 msgid ""
@@ -103,7 +95,7 @@ msgstr ""
 
 #: admin/sudo/class_sudo.inc:112
 msgid "Priority"
-msgstr ""
+msgstr "Приоритет"
 
 #: admin/sudo/class_sudo.inc:112
 msgid "This rule priority compared to others"
@@ -127,6 +119,18 @@ msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
 
+#: admin/sudo/class_sudoManagement.inc:29
+msgid "Sudo management"
+msgstr ""
+
+#: admin/sudo/class_sudoManagement.inc:30
+msgid "Manage sudo roles"
+msgstr ""
+
+#: admin/sudo/class_sudoManagement.inc:44
+msgid "Default"
+msgstr ""
+
 #: admin/sudo/class_sudoOption.inc:77
 msgid "Unknown option"
 msgstr ""
@@ -139,29 +143,29 @@ msgstr ""
 #: admin/sudo/class_sudoOption.inc:138
 #, php-format
 msgid "%s (%s)"
-msgstr ""
-
-#: admin/sudo/class_sudoOption.inc:337
-msgid "Options"
-msgstr ""
+msgstr "%s (%s)"
 
 #: admin/sudo/class_sudoOption.inc:338
+msgid "Options"
+msgstr "Параметры"
+
+#: admin/sudo/class_sudoOption.inc:339
 msgid "Sudo options"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:350
+#: admin/sudo/class_sudoOption.inc:351
 msgid "Available options"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:353
+#: admin/sudo/class_sudoOption.inc:354
 msgid "Option"
-msgstr ""
+msgstr "Опции"
 
-#: admin/sudo/class_sudoOption.inc:353
+#: admin/sudo/class_sudoOption.inc:354
 msgid "Add a new sudo option"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:358 admin/sudo/class_sudoOption.inc:360
+#: admin/sudo/class_sudoOption.inc:359 admin/sudo/class_sudoOption.inc:361
 msgid "Used sudo role options"
 msgstr ""
 

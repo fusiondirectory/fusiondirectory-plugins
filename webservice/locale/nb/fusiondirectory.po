@@ -8,86 +8,88 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:06+0000\n"
-"Language-Team: Norwegian Bokmål (https://www.transifex.com/fusiondirectory/teams/12202/nb/)\n"
+"Language-Team: Norwegian Bokmål (https://app.transifex.com/fusiondirectory/teams/12202/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: include/webservice/class_fdRPCService.inc:103
+#: include/webservice/class_fdRPCService.inc:119
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:113
+#: include/webservice/class_fdRPCService.inc:129
 #, php-format
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:161
+#: include/webservice/class_fdRPCService.inc:177
 msgid "Your password has expired, please set a new one."
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:165
+#: include/webservice/class_fdRPCService.inc:181
 msgid "Account expired. Please contact your system administrator!"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:362
-#: include/webservice/class_fdRPCService.inc:445
+#: include/webservice/class_fdRPCService.inc:235
+#, php-format
+msgid "Cannot get a lock on %s. It has been locked by %s."
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:407
+#: include/webservice/class_fdRPCService.inc:491
 msgid "Plugin"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:543
+#: include/webservice/class_fdRPCService.inc:643
 #, php-format
 msgid "Field \"%s\" is not multi-valuated"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:558
+#: include/webservice/class_fdRPCService.inc:658
 #, php-format
 msgid "Unknown field \"%s\""
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:616
-#, php-format
-msgid "Cannot delete %s. It has been locked by %s."
-msgstr ""
-
-#: include/webservice/class_fdRPCService.inc:660
-#: include/webservice/class_fdRPCService.inc:689
+#: include/webservice/class_fdRPCService.inc:819
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:685
+#: include/webservice/class_fdRPCService.inc:843
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:692
+#: include/webservice/class_fdRPCService.inc:846
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:730
-#: include/webservice/class_fdRPCService.inc:739
+#: include/webservice/class_fdRPCService.inc:888
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:742
+#: include/webservice/class_fdRPCService.inc:895
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:761
-#: include/webservice/class_fdRPCService.inc:786
+#: include/webservice/class_fdRPCService.inc:912
+msgid "Archive action is not available: archive plugin is not installed"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:958
+#: include/webservice/class_fdRPCService.inc:983
 msgid "Password recovery is not activated"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:796
+#: include/webservice/class_fdRPCService.inc:993
 msgid "This token is invalid"
 msgstr ""
 
