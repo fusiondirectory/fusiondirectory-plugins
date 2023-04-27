@@ -33,6 +33,9 @@ class publicFormPage extends standAlonePage
   protected $providedMultiValueAttributes;
   protected $alteredAttributes;
 
+  // Path to our securimage library
+  protected $securimageLibPath = 'securimage/securimage.php';
+
   function __construct ($interactive = TRUE)
   {
     parent::__construct($interactive);
@@ -223,7 +226,7 @@ class publicFormPage extends standAlonePage
 
     /* Check Captcha */
     if (isset($this->form['fdPublicFormCaptcha']) && ($this->form['fdPublicFormCaptcha'] == 'TRUE')) {
-      require_once($config->get_cfg_value('PublicFormSecurimagePath'));
+      require_once($this->securimageLibPath);
       $securimage = new Securimage();
       if (!$securimage->check($_POST['captcha_code'])) {
         $error = new FusionDirectoryError(htmlescape(_('Captcha code was wrong!')));
@@ -329,9 +332,7 @@ class publicFormPage extends standAlonePage
     }
 
     if (isset($_GET['captcha'])) {
-      /* We cannot use securimage_show.php and securimage_play.php because they cannot access our session
-       * So we use publicform.php?captcha=show and publicform.php?captcha=play instead */
-      require_once($config->get_cfg_value('PublicFormSecurimagePath'));
+      require_once($this->securimageLibPath);
 
       /* Showing or playing captcha */
       switch ($_GET['captcha']) {
@@ -375,8 +376,8 @@ class publicFormPage extends standAlonePage
       $smarty->assign('template_dialog', $templateOutput);
 
       if (isset($this->form['fdPublicFormCaptcha']) && ($this->form['fdPublicFormCaptcha'] == 'TRUE')) {
-        require_once($config->get_cfg_value('PublicFormSecurimagePath'));
-        $smarty->assign('captcha', ['securimage_uri' => $config->get_cfg_value('PublicFormSecurimageURI', 'securimage/')]);
+        require_once($this->securimageLibPath);
+        $smarty->assign('captcha', ['securimage_uri' => $this->securimageLibPath]);
       }
     }
 
