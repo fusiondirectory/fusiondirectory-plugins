@@ -120,12 +120,6 @@ class publicForm extends simplePlugin
     $this->typeChanged();
     $this->attributesAccess['fdPublicFormTemplateType']->setSubmitForm('typeChanged');
 
-    if ($config->get_cfg_value('PublicFormSecurimagePath', '') == '') {
-      $this->attributesAccess['fdPublicFormCaptcha']->setDisabled(TRUE);
-      $this->attributesAccess['fdPublicFormCaptcha']->setValue(FALSE);
-      $this->attributesAccess['fdPublicFormCaptcha']->setVisible(FALSE);
-    }
-
     $this->attributesAccess['publicLink']->setAllowHTML(TRUE);
     if ($this->cn != '') {
       $this->publicLink = sprintf('<a href="%1$s">%1$s</a>', URL::buildAbsoluteUrl('/publicform.php?form='.$this->cn));
