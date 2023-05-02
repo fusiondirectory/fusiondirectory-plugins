@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2017  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 
 class mailMethodCyrus extends mailMethod
 {
-  protected $ServerList   = [];
   protected $imap_handle  = NULL;
   protected $quota_loaded = FALSE;
 
@@ -33,50 +32,39 @@ class mailMethodCyrus extends mailMethod
 
   protected $enableQuota            = TRUE;
   protected $enableVacationRange    = FALSE;
-  protected $enableFolderTypes      = FALSE;
+  protected $enableGroupACLs        = TRUE;
 
   protected function init ()
   {
+    $cfg = $this->getServerConfig();
+
+    if (isset($cfg['useSlashes']) && ($cfg['useSlashes'] === 'TRUE')) {
+      $this->useSlashesInId = TRUE;
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Enabled', '<b>MAIL:</b> useSlashesInId');
+    } else {
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Disabled', '<b>MAIL:</b> useSlashesInId');
+    }
+
     parent::init();
-    $this->ServerList = parent::getMailServers();
   }
 
-  public function connect ()
+  public function connect (): bool
   {
     global $config;
     parent::connect();
+    $this->connected = FALSE;
 
-    if (!count($this->ServerList)) {
-      $this->error = _("There are no IMAP compatible mail servers defined!");
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-          "<b>IMAP: No mail servers configured, check systems->server->service->imap.</b>", "");
+    $cfg = $this->getServerConfig();
+    if ($cfg === FALSE) {
       return FALSE;
-    } elseif (!isset($this->ServerList[$this->parent->gosaMailServer])) {
-      $this->error = _("Mail server for this account is invalid!");
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-          "<b>IMAP: The selected mail server '".$this->parent->gosaMailServer."' is invalid.</b>", "");
-      return FALSE;
-    } else {
-      $cfg = $this->ServerList[$this->parent->gosaMailServer];
-    }
-
-    /* For some reason, hiding errors with @ does not wor here... */
-    if (!isset($cfg['connect'])) {
-      $cfg['connect']   = "";
-    }
-    if (!isset($cfg['admin'])) {
-      $cfg['admin']     = "";
-    }
-    if (!isset($cfg['password'])) {
-      $cfg['password']  = "";
     }
 
     /* Setting connect timeout to 10 seconds,
         else the FusionDirectory UI may freeze for 60 seconds.
        (PHP default is 'default_socket_timeout = 60') */
-    $timeout = $config->get_cfg_value("imapTimeout", 10);
+    $timeout = $config->get_cfg_value('imapTimeout', 10);
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $timeout,
-          "<b>IMAP: Setting imap connect timeout to</b> (seconds)");
+          '<b>IMAP: Setting imap connect timeout to</b> (seconds)');
     imap_timeout(1, $timeout);
 
     $this->imap_handle = @imap_open($cfg['connect'], $cfg['admin'], $cfg['password'], OP_HALFOPEN);
@@ -88,7 +76,6 @@ class mailMethodCyrus extends mailMethod
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
         "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
 
-      $this->connected = FALSE;
       return FALSE;
     }
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>successful</b>",
@@ -101,18 +88,21 @@ class mailMethodCyrus extends mailMethod
   public function account_exists ()
   {
     if (!$this->is_connected() || !$this->imap_handle) {
-      trigger_error("Method not connected, catch error.");
+      trigger_error('Method not connected, catch error.');
       return [];
     }
 
     /* Get server config */
-    $cfg  = $this->ServerList[$this->parent->gosaMailServer];
-    $list = @imap_listmailbox($this->imap_handle, $cfg["connect"], $this->account_id);
+    $cfg  = $this->getServerConfig();
+    if ($cfg === FALSE) {
+      return FALSE;
+    }
+    $list = @imap_listmailbox($this->imap_handle, $cfg['connect'], $this->account_id);
     $res  = (is_array($list) && count($list));
     if ($res) {
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>IMAP: Account exists in imap server.</b>");
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->account_id, '<b>IMAP: Account exists in imap server.</b>');
     } else {
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>IMAP: Account seems NOT to exists in imap server.</b>");
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->account_id, '<b>IMAP: Account seems NOT to exists in imap server.</b>');
     }
     return $res;
   }
@@ -238,14 +228,19 @@ class mailMethodCyrus extends mailMethod
     }
 
     if (!imap_set_quota($this->imap_handle, $this->account_id, $this->quotaValue)) {
-      msg_dialog::display(_("IMAP error"), sprintf(_("Cannot modify IMAP mailbox quota: %s"),
-            '<br><br><i>'.imap_last_error().'</i>'), ERROR_DIALOG);
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('Cannot modify IMAP mailbox quota: %s'),
+          imap_last_error()
+        ))
+      );
+      $error->display();
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>",
-          "<b>IMAP: Set account quota</b> on server '".$this->parent->gosaMailServer."' <b>".imap_last_error()."</b>");
+          "<b>IMAP: Set account quota</b> on server '".$this->mailServer."' <b>".imap_last_error()."</b>");
       return FALSE;
     }
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>",
-        "<b>IMAP: Set account quota</b> on server :".$this->parent->gosaMailServer);
+        "<b>IMAP: Set account quota</b> on server :".$this->mailServer);
     return TRUE;
   }
 
@@ -260,30 +255,28 @@ class mailMethodCyrus extends mailMethod
     }
 
     $this->build_account_id();
+
     if ($this->is_connected()) {
-      $cfg  = $this->ServerList[$this->parent->gosaMailServer];
-      $list = imap_listmailbox($this->imap_handle, $cfg["connect"], $this->account_id);
+      $cfg  = $this->getServerConfig();
+      if ($cfg === FALSE) {
+        return FALSE;
+      }
+      $list = imap_listmailbox($this->imap_handle, $cfg['connect'], $this->account_id);
       if ($list === FALSE) {
-        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
-          "<b>IMAP: Add/Update account</b> on server :".$this->parent->gosaMailServer);
-        if (!imap_createmailbox($this->imap_handle, $cfg["connect"].$this->account_id)) {
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->account_id,
+          'IMAP: Add account on server '.$this->mailServer);
+        if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->account_id)) {
           $this->error = imap_last_error();
           return FALSE;
         }
 
         /* Autocreate configured default folders */
-        $folders = $config->get_cfg_value('cyrusAutocreateFolders', NULL);
-        if ($folders !== NULL) {
-          $cyrus_delim = ($this->cyrusUseSlashes ? '/' : '.');
-
-          // Walk thru list of specified folders
-          foreach ($folders as $folder) {
-            @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<b>'.$this->account_id.'</b>',
-              '<b>IMAP: Add/Update account folder '.$folder.'</b> on server :'.$this->parent->gosaMailServer);
-            if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->account_id.$cyrus_delim.$folder)) {
-              $this->error = imap_last_error();
-              return FALSE;
-            }
+        foreach ($cfg['autocreate'] as $folder) {
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $folder,
+            'IMAP: Add account folder on server '.$this->mailServer);
+          if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->create_folder_id($folder))) {
+            $this->error = imap_last_error();
+            return FALSE;
           }
         }
       }
@@ -301,9 +294,13 @@ class mailMethodCyrus extends mailMethod
       return FALSE;
     }
 
+    $cfg = $this->getServerConfig();
+    if ($cfg === FALSE) {
+      return FALSE;
+    }
+
     $this->build_account_id();
 
-    $cfg = $this->ServerList[$this->parent->gosaMailServer];
     @imap_setacl($this->imap_handle, $this->account_id, $cfg["admin"], "lrswipcda");
 
     if ($config->get_cfg_value("cyrusDeleteMailbox", "TRUE") == "TRUE") {
@@ -312,9 +309,14 @@ class mailMethodCyrus extends mailMethod
         return FALSE;
       }
     } else {
-      msg_dialog::display(_("Mail info"),
-        sprintf(_("LDAP entry has been removed but cyrus mailbox (%s) is kept.\nPlease delete it manually!"),
-        $this->account_id), INFO_DIALOG);
+      msg_dialog::display(
+        _('Mail info'),
+        nl2br(htmlescape(sprintf(
+          _("LDAP entry has been removed but cyrus mailbox (%s) is kept.\nPlease delete it manually!"),
+          $this->account_id
+        ))),
+        INFO_DIALOG
+      );
     }
     return TRUE;
   }
@@ -328,21 +330,23 @@ class mailMethodCyrus extends mailMethod
 
     $result = [];
 
-    /* Get server config */
-    $cfg = $this->ServerList[$this->parent->gosaMailServer];
+    $cfg = $this->getServerConfig();
+    if ($cfg === FALSE) {
+      return FALSE;
+    }
 
     /* Create search string
        And prepare replacements
      */
     if (preg_match("/\@/", $this->account_id)) {
-      if ($this->cyrusUseSlashes) {
+      if ($this->useSlashesInId) {
         $search = preg_replace("/\@/", "/*@", $this->account_id);
       } else {
         $search = preg_replace("/\@/", ".*@", $this->account_id);
       }
       $with_domain = TRUE;
     } else {
-      if ($this->cyrusUseSlashes) {
+      if ($this->useSlashesInId) {
         $search = $this->account_id."/*";
       } else {
         $search = $this->account_id.".*";
@@ -375,7 +379,7 @@ class mailMethodCyrus extends mailMethod
           mb_convert_encoding($str, "UTF-8", "UTF7-IMAP"));
         $result[] = $str;
       }
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, trim(implode($result, ", "), ", "),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, trim(implode(', ', $result)),
           "<b>IMAP: Received mailbox folders.</b>");
       $this->error = imap_last_error();
     } else {
@@ -395,45 +399,71 @@ class mailMethodCyrus extends mailMethod
 
   /*! \brief  Returns configured acls
    */
-  public function getFolderACLs ($folder_acls)
+  public function getFolderACLs (): array
   {
     $this->reset_error();
 
+    if (!$this->is_connected() || !$this->imap_handle) {
+      trigger_error("Method not connected, catch error.");
+      return [];
+    }
+
     /* imap_getacl available? */
     if (!function_exists('imap_getacl')) {
-      $this->error = _("The module imap_getacl is not implemented!");
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "The imap_getacl module is missing!",
-          "<b>IMAP: Cannot set folder acls.</b>");
-      return $folder_acls;
+      $this->error = _('The module imap_getacl is not implemented!');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'The imap_getacl module is missing!',
+          '<b>IMAP: Cannot set folder acls</b>');
+      return [];
     }
 
-    /* Get ACLs and merge them with the already given acls (ldap)
-     */
+    /* Get ACLs */
     $this->build_account_id();
     $acls = imap_getacl($this->imap_handle, $this->account_id);
-    foreach ($acls as $user => $acl) {
-      if ($user == "anyone") {
-        // Map to internal placeholder
-        $user = "__anyone__";
-      }
-      $folder_acls[$user] = $acl;
-    }
 
-    /* Merge given ACL with acl mapping
-       This ensures that no ACL will accidentally overwritten by fusiondirectory.
-     */
-    foreach ($folder_acls as $user => $acl) {
+    foreach ($acls as &$acl) {
+      $acl = $this->expandAndSortACL($acl);
       if (!isset($this->acl_mapping[$acl])) {
+        /* Merge given ACL with acl mapping
+           This ensures that no ACL will accidentally be overwritten
+         */
         $this->acl_mapping[$acl] = $acl;
       }
     }
+    unset($acl);
 
-    return $folder_acls;
+    if (!isset($acls['anyone'])) {
+      $acls['anyone'] = '';
+    }
+
+    return $acls;
+  }
+
+  /*! \brief Put ACLs rights always in the same order and expand legacy rights
+   */
+  protected function expandAndSortACL (string $acl): string
+  {
+    $letters = 'lrswipkxtea';
+    if (strpos($acl, 'c') !== FALSE) {
+      /* Expand c to kx */
+      $acl .= 'kx';
+    }
+    if (strpos($acl, 'd') !== FALSE) {
+      /* Expand d to xte */
+      $acl .= 'xte';
+    }
+    $res = '';
+    foreach (str_split($letters) as $letter) {
+      if (strpos($acl, $letter) !== FALSE) {
+        $res .= $letter;
+      }
+    }
+
+    return $res;
   }
 
   /*! \brief  Write ACLs back to imap or what ever
    */
-  public function setFolderACLs ($permissions)
+  public function setFolderACLs (array $acls): bool
   {
     $this->reset_error();
 
@@ -444,6 +474,8 @@ class mailMethodCyrus extends mailMethod
           "<b>IMAP: Cannot set folder acls.</b>");
       return FALSE;
     }
+
+    $this->build_account_id();
 
     /* Get list of subfolders */
     $folders = $this->getMailboxList();
@@ -467,7 +499,7 @@ class mailMethodCyrus extends mailMethod
     foreach ($folders as $subfolder) {
       $folder_id = $this->create_folder_id($subfolder);
 
-      foreach ($permissions as $user => $acl) {
+      foreach ($acls as $user => $acl) {
         imap_setacl($this->imap_handle, $folder_id, $user, $acl);
         @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $folder_id." -> ".$user.": ".$acl,
             "<b>IMAP: Setting new folder permissions.</b>");
@@ -489,9 +521,12 @@ class mailMethodCyrus extends mailMethod
 
     /* Try to login into sieve
      */
-    $cfg    = $this->ServerList[$this->parent->gosaMailServer];
-    $sieve  = new sieve($cfg["sieve_server"], $cfg["sieve_port"], $this->getUAttribValue(),
-                        $cfg["password"], $cfg["admin"], $cfg["sieve_option"]);
+    $cfg    = $this->getServerConfig();
+    if ($cfg === FALSE) {
+      return FALSE;
+    }
+    $sieve  = new sieve($cfg["sieve_server"], $cfg["sieve_port"], $cfg["admin"],
+                        $cfg["password"], $this->getUAttribValue(), $cfg["sieve_option"]);
     if (!$sieve->sieve_login()) {
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $sieve->error_raw, "<b>SIEVE: login failed.</b>");
       $this->error = $sieve->error_raw;
@@ -531,7 +566,7 @@ class mailMethodCyrus extends mailMethod
         } else {
           $new_name = "non_fusiondirectory_".date("Ymd_H-i-s");
           $sieve->sieve_sendscript($new_name, $script);
-          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->sieve->error_raw,
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $sieve->error_raw,
               "<b>SIEVE</b>: Non FusionDirectory sieve script. <b>Creating backup of the current sieve script '".$new_name."'.</b>");
         }
       }
@@ -598,32 +633,26 @@ class mailMethodCyrus extends mailMethod
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=fdCyrusServer)',
-                  ['cn', 'fdCyrusConnect', 'fdCyrusAdmin', 'fdCyrusPassword', 'fdCyrusSieveServer']);
+                  [
+                    'cn','fdCyrusConnect','fdCyrusAdmin','fdCyrusPassword',
+                    'fdCyrusSieveServer','fdCyrusUseSlashes','fdCyrusAutocreateFolders'
+                  ]);
     while ($attrs = $ldap->fetch()) {
-
-      /* Check if the given fdCyrusSieveServer is in the new style "{cn:port/option}"
-         or the old style just "cn".
-       */
-      if (preg_match("/\{/", $attrs['fdCyrusSieveServer'][0])) {
-        sscanf($attrs['fdCyrusSieveServer'][0], '{%[^{}:]:%d%[^{}]}', $sieve_server, $sieve_port, $sieve_option);
-      } else {
-        $sieve_server = $attrs['fdCyrusSieveServer'][0];
-        $sieve_option = "";
-        $sieve_port   = "";
-      }
+      sscanf($attrs['fdCyrusSieveServer'][0], '{%[^{}:]:%d/%[^{}]}', $sieve_server, $sieve_port, $sieve_option);
 
       $serverList[$attrs['cn'][0]] = [
-        "server_dn"     => $attrs['dn'],
-        "connect"       => $attrs['fdCyrusConnect'][0],
-        "admin"         => $attrs['fdCyrusAdmin'][0],
-        "password"      => $attrs['fdCyrusPassword'][0],
-        "sieve_server"  => $sieve_server,
-        "sieve_option"  => $sieve_option,
-        "sieve_port"    => $sieve_port
+        'server_dn'     => $attrs['dn'],
+        'connect'       => $attrs['fdCyrusConnect'][0],
+        'admin'         => $attrs['fdCyrusAdmin'][0],
+        'password'      => $attrs['fdCyrusPassword'][0],
+        'useSlashes'    => ($attrs['fdCyrusUseSlashes'][0] ?? 'FALSE'),
+        'autocreate'    => ($attrs['fdCyrusAutocreateFolders'] ?? []),
+        'sieve_server'  => $sieve_server,
+        'sieve_option'  => $sieve_option,
+        'sieve_port'    => $sieve_port
       ];
     }
 
     return $serverList;
   }
 }
-?>

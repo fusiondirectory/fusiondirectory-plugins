@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018 FusionDirectory
+  Copyright (C) 2014-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,19 +20,16 @@
 
 class faiScript extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['top','FAIclass','FAIscript'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Script'),
       'plDescription' => _('FAI script'),
+      'plObjectClass' => ['FAIclass','FAIscript'],
+      'plFilter'      => '(objectClass=FAIscript)',
       'plObjectType'  => [
         'faiScript' => [
           'name'        => _('FAI script'),
-          'filter'      => 'objectClass=FAIscript',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiScriptRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-script&size=16'
@@ -43,7 +40,7 @@ class faiScript extends faiSimplePluginClass
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -99,17 +96,17 @@ class faiScript extends faiSimplePluginClass
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
     $this->attributesAccess['scripts']->setLinearRendering(FALSE);
   }
 
-  protected function shouldSave ()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -117,4 +114,3 @@ class faiScript extends faiSimplePluginClass
     return $errors;
   }
 }
-?>

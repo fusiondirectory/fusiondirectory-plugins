@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+  Copyright (C) 2012-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,12 +20,31 @@
 
 class terminalGeneric extends workstationGeneric
 {
-  var $objectclasses = ['fdTerminal', 'ieee802Device'];
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'   => _('Terminal'),
+      'plDescription' => _('Terminal information'),
+      'plObjectClass' => ['fdTerminal', 'ieee802Device'],
+      'plFilter'      => '(objectClass=fdTerminal)',
+      'plObjectType'  => ['terminal' =>
+        [
+          'name'        => _('Terminal'),
+          'description' => _('Terminal'),
+          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
+          'ou'          => get_ou('terminalRDN'),
+        ]
+      ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    ];
+  }
 
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ($word = NULL, $rdn = NULL)
+  static function getAttributesInfo ($word = NULL, $rdn = NULL): array
   {
     if ($word === NULL) {
       $word = _('terminal');
@@ -35,27 +54,4 @@ class terminalGeneric extends workstationGeneric
     }
     return parent::getAttributesInfo($word, $rdn);
   }
-
-  /* Return plugin information for acl handling */
-  static function plInfo ()
-  {
-    return [
-      'plShortName'   => _('Terminal'),
-      'plDescription' => _('Terminal information'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => ['terminal' =>
-        [
-          'name'        => _('Terminal'),
-          'description' => _('Terminal'),
-          'filter'      => 'objectClass=fdTerminal',
-          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
-          'ou'          => get_ou('terminalRDN'),
-        ]
-      ],
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    ];
-  }
 }
-
-?>

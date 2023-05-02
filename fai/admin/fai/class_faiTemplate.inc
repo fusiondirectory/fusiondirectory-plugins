@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
     global $config;
     if (isset($attrs['dn'])) {
@@ -64,7 +64,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Not saving anything into base node */
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
   }
 
@@ -106,7 +106,8 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     }
     $ldap->add($attrs);
     if (!$ldap->success()) {
-      msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+      $error = new SimplePluginLdapError($this, $dn, LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+      $error->display();
     }
   }
 
@@ -128,7 +129,10 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
       $used_cn = [];
       foreach ($this->value as $value) {
         if (isset($used_cn[$value['cn']])) {
-          return sprintf(_('There are several files with the same path: %s'), $value['cn']);
+          return new SimplePluginCheckError(
+            $this,
+            htmlescape(sprintf(_('There are several files with the same path: %s'), $value['cn']))
+          );
         }
         $used_cn[$value['cn']] = TRUE;
       }
@@ -138,17 +142,16 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
 
 class faiTemplate extends faiSimplePluginClass
 {
-  var $objectclasses    = ['top','FAIclass','FAItemplate'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Template'),
       'plDescription' => _('FAI template'),
+      'plObjectClass' => ['FAIclass','FAItemplate'],
+      'plFilter'      => '(objectClass=FAItemplate)',
       'plObjectType'  => [
         'faiTemplate' => [
           'name'        => _('FAI template'),
-          'filter'      => 'objectClass=FAItemplate',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiTemplateRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-template&size=16'
@@ -159,7 +162,7 @@ class faiTemplate extends faiSimplePluginClass
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -187,13 +190,13 @@ class faiTemplate extends faiSimplePluginClass
     ];
   }
 
-  protected function shouldSave ()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -201,4 +204,3 @@ class faiTemplate extends faiSimplePluginClass
     return $errors;
   }
 }
-?>

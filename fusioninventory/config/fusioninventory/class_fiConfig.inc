@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018 FusionDirectory
+  Copyright (C) 2013-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,26 +18,25 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class fiConfig extends simplePlugin
+class fiConfig extends multiPluginSection
 {
-  var $objectclasses  = ["fdInventoryPluginConf"];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
-      "plShortName"     => _("FusionInventory configuration"),
-      "plDescription"   => _("FusionDirectory FusionInventory plugin configuration"),
-      "plCategory"      => ["configuration"],
-      "plObjectType"    => ["smallConfig"],
+      'plShortName'     => _('FusionInventory configuration'),
+      'plDescription'   => _('FusionDirectory FusionInventory plugin configuration'),
+      'plObjectClass'   => ['fdInventoryPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'fusioninventory' => [
         'name'  => _('FusionInventory'),
         'attrs' => [
           new StringAttribute(
@@ -56,4 +55,3 @@ class fiConfig extends simplePlugin
     ];
   }
 }
-?>

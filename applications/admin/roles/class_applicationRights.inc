@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018  FusionDirectory
+  Copyright (C) 2014-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,15 +20,15 @@
 
 class applicationRights extends simplePlugin
 {
-  var $objectclasses = ['fdApplicationRights'];
+  protected $displayHeader  = TRUE;
 
-  var $displayHeader = TRUE;
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Applications'),
       'plDescription' => _('Applications allowed for this role'),
+      'plSmallIcon'   => 'geticon.php?context=mimetypes&icon=application-x-executable&size=16',
+      'plObjectClass' => ['fdApplicationRights'],
       'plObjectType'  => ['role'],
       'plForeignKeys' => [
         'fdApplicationAllowed' => 'webApplication',
@@ -38,7 +38,7 @@ class applicationRights extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -68,4 +68,3 @@ class applicationRights extends simplePlugin
     );
   }
 }
-?>

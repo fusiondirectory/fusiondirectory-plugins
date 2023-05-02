@@ -1,0 +1,253 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"PO-Revision-Date: 2021-02-16 15:45+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2021\n"
+"Language-Team: Vietnamese (Viet Nam) (https://app.transifex.com/fusiondirectory/teams/12202/vi_VN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: admin/subscriptions/class_subscriptionsManagement.inc:40
+#: config/subscriptions/class_subscriptionsConfig.inc:27
+#: config/subscriptions/class_subscriptionsConfig.inc:40
+msgid "Subscriptions"
+msgstr ""
+
+#: admin/subscriptions/class_subscriptionsManagement.inc:41
+msgid "Subscription management"
+msgstr ""
+
+#: admin/subscriptions/class_subscriptionsManagement.inc:42
+msgid "Manage subscriptions"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:27
+#: admin/subscriptions/class_subscription.inc:28
+#: admin/subscriptions/class_subscription.inc:31
+msgid "Subscription"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:45
+msgid "Information"
+msgstr "Thông tin"
+
+#: admin/subscriptions/class_subscription.inc:48
+msgid "Name"
+msgstr "Tên"
+
+#: admin/subscriptions/class_subscription.inc:48
+msgid "Name to identify this subscription"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:50
+msgid "Description"
+msgstr "Mô tả"
+
+#: admin/subscriptions/class_subscription.inc:50
+msgid "Description of this subscription"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:54
+#: config/subscriptions/class_subscriptionsConfig.inc:54
+msgid "Type"
+msgstr "Loại"
+
+#: admin/subscriptions/class_subscription.inc:54
+#: config/subscriptions/class_subscriptionsConfig.inc:54
+msgid "Subscription type"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:58
+msgid "Contract"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:58
+msgid "Contract identifier from Dolibarr"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:64
+#: admin/subscriptions/class_subscription.inc:67
+msgid "Login"
+msgstr "Đăng nhập"
+
+#: admin/subscriptions/class_subscription.inc:67
+msgid "Login for this subscription"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:71
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: admin/subscriptions/class_subscription.inc:77
+msgid "Status"
+msgstr "Trạng thái"
+
+#: admin/subscriptions/class_subscription.inc:80
+msgid "Active"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:80
+msgid "Whether this subscription is active"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:84
+msgid "Start date"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:84
+msgid "Start date of this subscription"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:88
+msgid "End date"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:88
+msgid "End date of this subscription"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:94
+msgid "Repositories"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:97
+msgid "Apt repository"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:101
+msgid "RPM distribution"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:107
+msgid "Export"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:110
+msgid "Subscription file"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:110
+msgid "Generate the subscription file to send to the client"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:111
+#: admin/subscriptions/class_subscription.inc:115
+#: admin/subscriptions/class_subscription.inc:119
+#: admin/subscriptions/class_subscription.inc:123
+msgid "Generate"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:114
+msgid "APT auth.conf"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:114
+msgid ""
+"Generate the auth.conf file to send to the client if he uses Debian or a "
+"derivate"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:118
+msgid "APT"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:118
+msgid ""
+"Generate the fusiondirectory-subscription.list file to send to the client if"
+" he uses an Apt based distribution"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:122
+msgid "RPM"
+msgstr ""
+
+#: admin/subscriptions/class_subscription.inc:122
+msgid ""
+"Generate the fusiondirectory-subscription.repo file to send to the client if"
+" he uses an RPM based distribution"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:28
+msgid "FusionDirectory subscriptions plugin configuration"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:44
+msgid "Subscription RDN"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:44
+msgid "Branch in which subscriptions will be stored"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:50
+msgid "Subscription types and their labels"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:58
+#: config/subscriptions/class_subscriptionsConfig.inc:84
+#: config/subscriptions/class_subscriptionsConfig.inc:107
+msgid "Label"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:58
+msgid "Label shown for this type"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:64
+msgid "Subscription types"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:72
+#: config/subscriptions/class_subscriptionsConfig.inc:91
+msgid "Apt repositories"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:76
+#: config/subscriptions/class_subscriptionsConfig.inc:103
+msgid "Path"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:76
+#: config/subscriptions/class_subscriptionsConfig.inc:103
+msgid "Repository path"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:80
+msgid "Distribution"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:80
+msgid "Distribution name"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:84
+#: config/subscriptions/class_subscriptionsConfig.inc:107
+msgid "Label shown for this repository"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:99
+#: config/subscriptions/class_subscriptionsConfig.inc:113
+msgid "Rpm repositories"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:120
+msgid "Repositories host"
+msgstr ""
+
+#: config/subscriptions/class_subscriptionsConfig.inc:120
+msgid "Host for the repositories, to use in auth.conf"
+msgstr ""

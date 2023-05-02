@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+  Copyright (C) 2017 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,20 +20,21 @@
 
 class sympaAliasPartage extends simplePlugin
 {
-  var $displayHeader  = TRUE;
-  var $objectclasses  = ['fdRenaterPartageSympaAlias'];
+  protected $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
-      'plShortName'    => _('Partage'),
-      'plDescription'  => _('Partage sympa options'),
-      'plObjectType'   => ['sympaAlias'],
-      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Partage'),
+      'plDescription'   => _('Partage sympa options'),
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=renater-partage&size=16',
+      'plObjectClass'   => ['fdRenaterPartageSympaAlias'],
+      'plObjectType'    => ['sympaAlias'],
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -128,34 +129,35 @@ class sympaAliasPartage extends simplePlugin
 
   public function mailServerChanged ()
   {
-    /* Intialize the used mailMethod */
-    if ($this->gosaMailServer == '') {
-      $method = 'mailMethod';
-    } else {
-      $method = mailMethod::getServerMethod($this->gosaMailServer);
-    }
-    $this->mailMethod = mailMethod::getInstance($method, $this, 'sympaAlias');
-    $this->mailMethod->fixAttributesOnLoad();
+    $this->mailMethod = mailMethod::getInstanceFromServer($this->gosaMailServer, $this, 'sympaAlias');
   }
 
-  function check ()
+  function check (): array
   {
-    $messages = parent::check();
+    $errors = parent::check();
 
     if (!$this->is_template && is_object($this->mailMethod)) {
-      $messages = array_merge($messages, $this->mailMethod->check());
+      $errors = array_merge($errors, $this->mailMethod->check());
     }
 
-    return $messages;
+    return $errors;
   }
 
-  protected function shouldSave ()
+  protected function shouldSave (): bool
   {
     /* mail method might have something to save */
     return TRUE;
   }
 
-  public function ldap_save ()
+  /*!
+  *  \brief Should the mail method create the mailbox? (mail server change or tab activation)
+  */
+  public function isMailboxCreation (): bool
+  {
+    return (!$this->initially_was_account || $this->attributesAccess['gosaMailServer']->hasChanged());
+  }
+
+  public function ldap_save (): array
   {
     if (!empty($this->attrs)) {
       $errors = parent::ldap_save();
@@ -170,10 +172,16 @@ class sympaAliasPartage extends simplePlugin
     if (!$this->is_template) {
       $this->mailMethod->connect();
       if (!$this->mailMethod->is_connected()) {
-        $errors[] = sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error());
+        $errors[] = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error()))
+        );
       } else {
         if (!$this->mailMethod->updateMailbox()) {
-          $errors[] = sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error());
+          $errors[] = new SimplePluginError(
+            $this,
+            htmlescape(sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error()))
+          );
         }
       }
     }
@@ -194,12 +202,22 @@ class sympaAliasPartage extends simplePlugin
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {
       if (!$this->mailMethod->connect()) {
-        msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox, mail method cannot connect: %s'),
-              $this->mailMethod->get_error()), ERROR_DIALOG);
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot remove mailbox, mail method cannot connect: %s'),
+            $this->mailMethod->get_error()
+          ))
+        );
+        $error->display();
       } else {
         if (!$this->mailMethod->deleteMailbox()) {
-          msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox: %s'),
-                $this->mailMethod->get_error()), ERROR_DIALOG);
+          $error = new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Cannot remove mailbox: %s'),
+              $this->mailMethod->get_error()
+            ))
+          );
+          $error->display();
         }
       }
     }

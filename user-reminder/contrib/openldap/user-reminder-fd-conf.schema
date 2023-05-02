@@ -95,6 +95,30 @@ attributetype ( 1.3.6.1.4.1.38414.59.1.15 NAME 'fdUserReminderUseAlternate'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.59.1.16 NAME 'fdUserReminderExpiration'
+  DESC 'FusionDirectory - User reminder expiration emails'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.17 NAME 'fdUserReminderExpirationSubject'
+  DESC 'Fusion Directory - User reminder expired email subject'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.18 NAME 'fdUserReminderExpirationBody'
+  DESC 'Fusion Directory - User reminder expired email body'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.19 NAME 'fdUserReminderForwardExpiration'
+  DESC 'FusionDirectory - User reminder, forward expiration emails to manager'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
 # Object Class
 
 objectclass ( 1.3.6.1.4.1.38414.59.2.1 NAME 'fdUserReminderPluginConf'
@@ -107,4 +131,5 @@ objectclass ( 1.3.6.1.4.1.38414.59.2.1 NAME 'fdUserReminderPluginConf'
   fdUserReminderConfirmationSubject $ fdUserReminderConfirmationBody $
   fdUserReminderAlertSubject        $ fdUserReminderAlertBody $
   fdUserReminderPpolicyAlertSubject $ fdUserReminderPpolicyAlertBody $
-  fdUserReminderForwardPpolicyAlert $ fdUserReminderUseAlternate ) )
+  fdUserReminderForwardPpolicyAlert $ fdUserReminderUseAlternate $
+  fdUserReminderExpiration $ fdUserReminderExpirationSubject $ fdUserReminderExpirationBody $ fdUserReminderForwardExpiration) )

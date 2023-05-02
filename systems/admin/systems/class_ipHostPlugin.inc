@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018 FusionDirectory
+  Copyright (C) 2016-2017 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,6 +25,8 @@
  */
 class ipHostPlugin extends simplePlugin
 {
+  protected $networkAttributesReadOnly = FALSE;
+
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
@@ -41,7 +43,7 @@ class ipHostPlugin extends simplePlugin
   }
 
   /* Used by prepare_save and template::apply */
-  public function mergeObjectClasses (array $oc)
+  public function mergeObjectClasses (array $oc): array
   {
     $objectclasses = $oc;
     if (empty($this->ipHostNumber)) {
@@ -50,5 +52,22 @@ class ipHostPlugin extends simplePlugin
       $objectclasses[] = 'ipHost';
     }
     return parent::mergeObjectClasses($objectclasses);
+  }
+
+  public function setNetworkAttributesReadOnly (bool $networkAttributesReadOnly)
+  {
+    $this->networkAttributesReadOnly = $networkAttributesReadOnly;
+  }
+
+  public function attrIsWriteable ($attr): bool
+  {
+    if (!is_object($attr)) {
+      $attr = $this->attributesAccess[$attr];
+    }
+    if ($this->networkAttributesReadOnly && in_array($attr->getLdapName(), ['ipHostNumber','macAddress'])) {
+      return FALSE;
+    } else {
+      return parent::attrIsWriteable($attr);
+    }
   }
 }

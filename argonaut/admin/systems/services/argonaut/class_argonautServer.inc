@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,11 +21,7 @@
 
 class argonautServer extends simpleService
 {
-  /* This plugin only writes its objectClass */
-  var $objectclasses  = ["argonautServer"];
-
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     $acls = parent::generatePlProvidedAcls(static::getAttributesInfo());
     unset($acls['simpleServiceStart']);
@@ -35,15 +31,16 @@ class argonautServer extends simpleService
       'plShortName'   => _('Argonaut server'),
       'plDescription' => _('Argonaut server').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=argonaut&size=16',
+      'plObjectClass' => ['argonautServer'],
 
       'plProvidedAcls'  => $acls,
     ];
   }
 
-    /*!
+  /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return  [
       'server' => [
@@ -135,7 +132,7 @@ class argonautServer extends simpleService
   {
     parent::__construct($dn, $parent);
     if ($this->argonautServerToken == '') {
-      $this->argonautServerToken = md5(random_int(0, PHP_INT_MAX));
+      $this->argonautServerToken = md5((string)random_int(0, PHP_INT_MAX));
     }
     $this->attributesAccess['argonautProtocol']->setManagedAttributes(
       [
@@ -148,7 +145,7 @@ class argonautServer extends simpleService
     );
   }
 
-  /*! \brief Get service information for serverService plugin */
+  /*! \brief Get service information */
   function getListEntry ()
   {
     $fields = parent::getListEntry();
@@ -161,4 +158,3 @@ class argonautServer extends simpleService
     return $fields;
   }
 }
-?>

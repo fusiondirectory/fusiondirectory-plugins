@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018 FusionDirectory
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,30 +18,20 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class dsaManagement extends simpleManagement
+class dsaManagement extends management
 {
-  // Tab definition
-  protected $objectTypes  = ['simpleSecurityObject'];
-
-  protected $departmentBrowser      = TRUE;
-  protected $departmentRootVisible  = TRUE;
-  protected $baseMode               = TRUE;
-
-  /* Return plugin information for acl handling */
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('DSA'),
-      'plDescription' => _('DSA management'),
+      'plTitle'       => _('DSA management'),
+      'plDescription' => _('Manage simple security objects'),
       'plIcon'        => 'geticon.php?context=applications&icon=dsa&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 55,
       'plCategory'    => ['dsa' => ['description'  => _('DSA'),
                                               'objectClass'  => ['simpleSecurityObject']]],
       'plManages'     => ['simpleSecurityObject'],
-
-      'plProvidedAcls' => []
     ];
   }
 }
-?>

@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018 FusionDirectory
+  Copyright (C) 2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,15 +18,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class newsletterConfig extends simplePlugin
+class newsletterConfig extends multiPluginSection
 {
-  var $objectclasses  = ['fdNewsletterPluginConf'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Newsletter configuration'),
       'plDescription'   => _('FusionDirectory newsletter plugin configuration'),
+      'plObjectClass'   => ['fdNewsletterPluginConf'],
       'plCategory'      => ['configuration'],
       'plObjectType'    => ['smallConfig'],
 
@@ -34,10 +33,10 @@ class newsletterConfig extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'newsletter' => [
         'name'  => _('Newsletter'),
         'attrs' => [
           new SetAttribute(
@@ -52,4 +51,3 @@ class newsletterConfig extends simplePlugin
     ];
   }
 }
-?>

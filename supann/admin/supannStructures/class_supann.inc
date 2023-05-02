@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+  Copyright (C) 2012-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ class supann
 {
   static $choices_for = [];
 
-  static function get_prefixed_choices_for ($shortname)
+  static function get_prefixed_choices_for (string $shortname, $processLabel = 'supann::truncate_label')
   {
     $dir  = @opendir(SUPANN_DIR);
     $m    = [];
@@ -31,7 +31,7 @@ class supann
     while ($file = readdir($dir)) {
       if (preg_match('/^'.$shortname.'_(.+)$/', $file, $m)) {
         $prefix = $m[1];
-        $res[$prefix] =& static::get_choices_for($file);
+        $res[$prefix] =& static::get_choices_for($file, '', $processLabel);
       }
     }
     closedir($dir);
@@ -39,7 +39,7 @@ class supann
     return $res;
   }
 
-  static function &get_choices_for ($type, $prefix = '')
+  static function &get_choices_for (string $type, string $prefix = '', $processLabel = 'supann::truncate_label')
   {
     if (isset(static::$choices_for[$prefix.$type])) {
       return static::$choices_for[$prefix.$type];
@@ -49,20 +49,22 @@ class supann
     if (file_exists(SUPANN_DIR.'/'.$type)) {
       $entiteList = fopen(SUPANN_DIR.'/'.$type, 'r');
       if ($entiteList === FALSE) {
-        msg_dialog::display(
-          _("File error"),
-          sprintf(_("Cannot read file: '%s'"), SUPANN_DIR.'/'.$type),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot read file: "%s"'),
+            SUPANN_DIR.'/'.$type
+          ))
         );
+        $error->display();
         return [[], []];
       }
       while (($line = fgets($entiteList)) !== FALSE) {
         $line = trim($line);
         if (!preg_match('/^#/', $line) && !empty($line)) {
-          $entite_line = preg_split('/;/', $line);
+          $entite_line = explode(';', $line, 2);
 
           $entity_codes[]   = $prefix.$entite_line[0];
-          $entity_labels[]  = static::truncate_label($entite_line[1]);
+          $entity_labels[]  = $processLabel($entite_line[1]);
         }
       }
       fclose($entiteList);
@@ -72,7 +74,7 @@ class supann
     return static::$choices_for[$prefix.$type];
   }
 
-  /* return the 64 first chars and "…" after if text is longer */
+  /*! \brief Returns the $len first chars and "…" after if text is longer */
   static function truncate_label ($str, $len = 50)
   {
     if (mb_strlen($str) > $len) {

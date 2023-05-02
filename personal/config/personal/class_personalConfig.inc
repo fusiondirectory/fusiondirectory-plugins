@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018 FusionDirectory
+  Copyright (C) 2015-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,16 +18,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class personalConfig extends simplePlugin
+class personalConfig extends multiPluginSection
 {
-  var $objectclasses  = ['fdPersonalPluginConf'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Personal configuration'),
       'plDescription'   => _('FusionDirectory personal plugin configuration'),
-      'plSelfModify'    => FALSE,
+      'plObjectClass'   => ['fdPersonalPluginConf'],
       'plCategory'      => ['configuration'],
       'plObjectType'    => ['smallConfig'],
 
@@ -35,10 +33,10 @@ class personalConfig extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'personal' => [
         'name'  => _('Personal'),
         'attrs' => [
           new BooleanAttribute(
@@ -50,4 +48,3 @@ class personalConfig extends simplePlugin
     ];
   }
 }
-?>

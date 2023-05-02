@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018  FusionDirectory
+
+  Copyright (C) 2015-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,15 +21,14 @@
 
 class mixedGroup extends simplePlugin
 {
-  var $objectclasses  = ['posixGroup'];
   protected $locks    = [];
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Posix group'),
       'plDescription' => _('Posix group settings'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['posixGroup'],
       'plObjectType'  => ['ogroup-user'],
       'plPriority'    => 1,
 
@@ -36,7 +36,7 @@ class mixedGroup extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -96,7 +96,7 @@ class mixedGroup extends simplePlugin
       $this->trustMode = 'byhost';
     }
 
-    $this->attributesAccess['gidNumber']->setUnique(TRUE);
+    $this->attributesAccess['gidNumber']->setUnique('whole');
     $this->attributesAccess['force_id']->setInLdap(FALSE);
     $this->attributesAccess['force_id']->setManagedAttributes(
       [
@@ -109,19 +109,22 @@ class mixedGroup extends simplePlugin
     );
   }
 
-  function check ()
+  function check (): array
   {
     global $config;
-    $message = parent::check();
+    $errors = parent::check();
 
     /* Check ID's if they are forced by user */
     if ($this->force_id) {
-      if ($this->gidNumber < $config->get_cfg_value("minId")) {
-        $message[] = msgPool::toosmall(_("GID"), $config->get_cfg_value("minId"));
+      if ($this->gidNumber < $config->get_cfg_value('minId')) {
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['gidNumber'],
+          msgPool::toosmall(_('GID'), $config->get_cfg_value('minId'))
+        );
       }
     }
 
-    return $message;
+    return $errors;
   }
 
   function resetCopyInfos ()
@@ -133,16 +136,22 @@ class mixedGroup extends simplePlugin
     $this->gidNumber = "";
   }
 
-  function prepare_save ()
+  function prepare_save (): array
   {
     global $config;
     $ldap = $config->get_ldap_link();
     $members    = $this->parent->getBaseObject()->member;
     $memberUid  = [];
     foreach ($members as $dn) {
-      $ldap->cat($dn, ['uid']);
+      $ldap->cat($dn, ['uid','memberUid']);
       $attrs = $ldap->fetch();
-      $memberUid[] = $attrs['uid'][0];
+      if (isset($attrs['uid'][0])) {
+        $memberUid[] = $attrs['uid'][0];
+      }
+      if (isset($attrs['memberUid'][0])) {
+        unset($attrs['memberUid']['count']);
+        $memberUid = array_merge_unique($memberUid, $attrs['memberUid']);
+      }
     }
     $this->memberUid = $memberUid;
 
@@ -175,12 +184,12 @@ class mixedGroup extends simplePlugin
     return $errors;
   }
 
-  function save ()
+  function save (): array
   {
     $errors = parent::save();
 
     foreach ($this->locks as $lock) {
-      del_lock($lock);
+      Lock::deleteByObject($lock);
     }
     $this->locks = [];
 
@@ -197,5 +206,3 @@ class mixedGroup extends simplePlugin
     $this->attributesAccess['memberUid']->searchAndRemove($uid);
   }
 }
-
-?>

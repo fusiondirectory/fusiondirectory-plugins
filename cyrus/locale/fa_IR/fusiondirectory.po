@@ -8,26 +8,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2022-07-28 17:06+0000\n"
-"PO-Revision-Date: 2016-08-29 15:07+0000\n"
-"Language-Team: Persian (Iran) (https://www.transifex.com/fusiondirectory/teams/12202/fa_IR/)\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"PO-Revision-Date: 2018-08-13 19:51+0000\n"
+"Language-Team: Persian (Iran) (https://app.transifex.com/fusiondirectory/teams/12202/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa_IR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:30
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:31
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:27
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:28
 msgid "Cyrus (IMAP/POP3)"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:31
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:28
 msgid "Services"
 msgstr ""
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:45
-msgid "Cyrus settings"
+msgid "Connection"
 msgstr ""
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:48
@@ -86,7 +86,7 @@ msgid "Admin user password"
 msgstr ""
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:86
-msgid "Sieve settings"
+msgid "Sieve"
 msgstr ""
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:89
@@ -105,50 +105,60 @@ msgstr ""
 msgid "Options for contacting Cyrus sieve server"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:50
-msgid "There are no IMAP compatible mail servers defined!"
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:113
+msgid "Settings"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:55
-msgid "Mail server for this account is invalid!"
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:116
+msgid "Use UNIX style"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
-msgid "IMAP error"
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:116
+msgid "Determines if \"foo/bar\" or \"foo.bar\" should be used as namespaces in IMAP"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:122
+msgid "Autocreate folders"
+msgstr ""
+
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:122
+msgid ""
+"List of personal IMAP folders that should be created along initial account "
+"creation."
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:233
 #, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:313
 msgid "Mail info"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:316
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
 #, php-format
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:404
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:442
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:413
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:472
 msgid "The module imap_getacl is not implemented!"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:510
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:545
 #, php-format
 msgid "Cannot retrieve SIEVE script: %s"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:578
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:613
 #, php-format
 msgid "Cannot store SIEVE script: %s"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:585
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:620
 #, php-format
 msgid "Cannot activate SIEVE script: %s"
 msgstr ""

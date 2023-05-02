@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018 FusionDirectory
+  Copyright (C) 2011-2020 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,17 +22,19 @@ class argonautDNSConfig extends simpleService
 {
   protected static $showActions = FALSE;
 
-  var $objectclasses  = ['argonautDNSConfig'];
-
   /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Argonaut DNS settings'),
       'plDescription'   => _('Argonaut DNS settings').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=argonaut-dns&size=16',
+      'plObjectClass'   => ['argonautDNSConfig'],
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo()),
+      'plForeignKeys'   => [
+        'argonautLdap2zoneSlaveZones' => ['dnsZone','zoneName','(argonautLdap2zoneSlaveZones=%oldvalue%|*)']
+      ],
     ];
   }
 
@@ -40,12 +42,8 @@ class argonautDNSConfig extends simpleService
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    $zoneAttributeClass = 'StringAttribute';
-    if (class_available('ZoneNameAttribute')) {
-      $zoneAttributeClass = 'ZoneNameAttribute';
-    }
     return  [
       'main' => [
         'name'  => _('Ldap2zone global settings'),
@@ -113,56 +111,15 @@ class argonautDNSConfig extends simpleService
         'name'  => _('Ldap2zone slave settings'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new OrderedArrayAttribute(
-            new PipeSeparatedCompositeAttribute(
-              _('Manage DNS Slaves'),
-              'argonautLdap2zoneSlaveZones',
-              [
-                new $zoneAttributeClass(
-                  _('zone'), _('DNS zone this server should be declared as slave of'),
-                  'Ldap2zoneSlaveZone', TRUE
-                ),
-                new StringAttribute(
-                  _('master'), _('Master IP(s) for this zone'),
-                  'Ldap2zoneSlaveMaster', TRUE
-                ),
-                new BooleanAttribute(
-                  _('reverses'), _('This server should be slave of reverses zones as well'),
-                  'Ldap2zoneSlaveReverses', TRUE,
-                  TRUE, '',
-                  'reverse', 'noreverse'
-                )
-              ],
-              '',
-              _('DNS slaves')
-            ),
+          new ArgonautSlaveZonesAttribute(
+            _('DNS slaves'), _('Manage DNS Slaves'),
+            'argonautLdap2zoneSlaveZones',
             FALSE,
             [],
             TRUE
-          )
+          ),
         ]
       ]
     ];
-  }
-
-  function __construct ($dn = NULL, $parent = NULL)
-  {
-    global $config;
-    $attributesInfo = $this->getAttributesInfo();
-    try {
-      $zones = objects::ls('dnsZone', NULL, NULL, '', TRUE);
-    } catch (NonExistingObjectTypeException $e) {
-      $zones = [];
-    }
-    if (!empty($zones)) {
-      $attributes = $attributesInfo['slave']['attrs'][0]->attribute->attributes;
-      $attributes[0] = new SelectAttribute(
-        _('zone'), _('DNS zone this server should be declared as slave of'),
-        'Ldap2zoneSlaveZone', TRUE,
-        $zones
-      );
-      $attributesInfo['slave']['attrs'][0]->attribute->setAttributes($attributes);
-    }
-    parent::__construct($dn, $parent, $attributesInfo);
   }
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-20 17:43+0100\n"
+"POT-Creation-Date: 2020-03-20 17:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin/systems/debconf/class_debconfStartup.inc:33
-#: admin/debconfProfile/class_debconfProfileManagement.inc:32
+#: admin/systems/debconf/class_debconfStartup.inc:31
+#: admin/debconfProfile/class_debconfProfileManagement.inc:34
 msgid "Debconf"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:34
+#: admin/systems/debconf/class_debconfStartup.inc:32
 msgid "Debconf preseed startup"
 msgstr ""
 
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Debian release to install"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileManagement.inc:33
+#: admin/debconfProfile/class_debconfProfileManagement.inc:35
 msgid "Debconf profile management"
 msgstr ""
 
@@ -81,41 +81,36 @@ msgid ""
 "name for the template.<br/>"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:167
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:171
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:163
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:168
 msgid "Debconf profile"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:168
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:164
 msgid "Debconf profile information"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:186
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
-#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:182
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:185
 msgid "Name"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
 msgid "Import a debconf file"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:185
 msgid "Name of this debconf template"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
 msgid "Entries"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:195
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:191
 msgid "Debconf template answers"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:210
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:206
 msgid "Import"
-msgstr ""
-
-#: admin/debconfProfile/debconfProfile-filter.tpl.c:2
-msgid "Filter"
 msgstr ""

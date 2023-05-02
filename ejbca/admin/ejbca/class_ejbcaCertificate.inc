@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2014-2018 FusionDirectory
+
+  Copyright (C) 2014-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,11 +21,7 @@
 
 class ejbcaCertificate extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = [];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('EJBCA certificate'),
@@ -40,7 +37,7 @@ class ejbcaCertificate extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -61,19 +58,18 @@ class ejbcaCertificate extends simplePlugin
     ];
   }
 
-  function renderAttributes ($readOnly = FALSE)
+  function renderAttributes (bool $readOnly = FALSE)
   {
     parent::renderAttributes(TRUE);
   }
 
-  function save ()
+  function save (): array
   {
     return [];
   }
 
-  function remove ($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     return [];
   }
 }
-?>

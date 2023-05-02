@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,12 +21,7 @@
 
 class pgpServerInfo extends simplePlugin
 {
-  var $mainTab = TRUE;
-  /* This plugin only writes its objectClass */
-  var $objectclasses = ['pgpServerInfo'];
-
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('GPG server info'),
@@ -33,10 +29,10 @@ class pgpServerInfo extends simplePlugin
       'plSection'     => 'conf',
       'plPriority'    => 5,
       'plIcon'        => 'geticon.php?context=applications&icon=gpg&size=48',
-      'plObjectType'    => [
+      'plObjectClass' => ['pgpServerInfo'],
+      'plObjectType'  => [
         'pgpServerInfo' => [
           'name'        => _('GPG server info'),
-          'filter'      => 'objectClass=pgpServerInfo',
           'icon'        => 'geticon.php?context=applications&icon=gpg&size=16',
           'aclCategory' => 'configuration',
         ]
@@ -47,7 +43,7 @@ class pgpServerInfo extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
     return [
@@ -84,7 +80,7 @@ class pgpServerInfo extends simplePlugin
     ];
   }
 
-  protected function ldap_save ()
+  protected function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -99,9 +95,10 @@ class pgpServerInfo extends simplePlugin
     if (!$ldap->count()) {
       @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->pgpBaseKeySpaceDN, "Creating branch");
       $ldap->cd($config->current['BASE']);
-      $ldap->create_missing_trees($this->pgpBaseKeySpaceDN);
-      if (!$ldap->success()) {
-        $errors[] = msgPool::ldaperror($ldap->get_error(), $this->pgpBaseKeySpaceDN, LDAP_MOD, get_class());
+      try {
+        $ldap->create_missing_trees($this->pgpBaseKeySpaceDN);
+      } catch (FusionDirectoryError $error) {
+        $errors[] = SimplePluginError::relocate($this, $error);
       }
     }
     /* Delete the old branch if empty */
@@ -123,5 +120,19 @@ class pgpServerInfo extends simplePlugin
     }
     return $errors;
   }
+
+  static function mainInc ($classname = NULL, $entry_dn = NULL, $tabs = FALSE, $edit_mode = TRUE, $objectType = FALSE)
+  {
+    global $config;
+
+    if ($classname === NULL) {
+      $classname = get_called_class();
+    }
+
+    if ($entry_dn === NULL) {
+      $entry_dn = 'cn=pgpServerInfo,'.$config->current['BASE'];
+    }
+
+    parent::mainInc($classname, $entry_dn, $tabs, $edit_mode, $objectType);
+  }
 }
-?>

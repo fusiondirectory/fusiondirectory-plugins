@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,13 +21,13 @@
 
 class faiPackageConfiguration extends simplePlugin
 {
-  var $ignore_account = TRUE;
+  protected $ignore_account = TRUE;
 
   protected $packageName;
   protected $debconfAttributesTypes;
   protected $generatedDebconfAttributes;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('FAI package configuration'),
@@ -56,7 +56,8 @@ class faiPackageConfiguration extends simplePlugin
     $q = new supportDaemon();
     $ret = $q->FAI_get_packages($release, ['package','template'], [$this->packageName], 0, 1, TRUE);
     if ($q->is_error()) {
-      msg_dialog::display(_('Infrastructure service'), msgPool::siError($q->get_error()), ERROR_DIALOG);
+      $error = new FusionDirectoryError(msgPool::siError($q->get_error()));
+      $error->display();
     }
 
     $tpl = '';
@@ -252,19 +253,19 @@ class faiPackageConfiguration extends simplePlugin
     $this->debconfAttributesTypes[$infos['Name']] = $infos['Type'];
   }
 
-  function execute ()
+  public function render (): string
   {
     $smarty = get_smarty();
     $acl    = $this->aclGetPermissions('FAIpartitions');
     $smarty->assign('FAIpackageACL', $acl);
-    return parent::execute().
+    return parent::render().
       '<p class="plugbottom">'.
       '  <input type="submit" name="SaveObjectConfig" value="'.msgPool::applyButton().'"/>'.
-      '  <input type="submit" name="CancelObjectConfig" value="'.msgPool::cancelButton().'"/>'.
+      '  <input type="submit" formnovalidate="formnovalidate" name="CancelObjectConfig" value="'.msgPool::cancelButton().'"/>'.
       '</p>';
   }
 
-  function save ()
+  function save (): array
   {
     $tmp = [];
     foreach ($this->attributesAccess as $name => $attribute) {
@@ -278,4 +279,3 @@ class faiPackageConfiguration extends simplePlugin
     return $tmp;
   }
 }
-?>

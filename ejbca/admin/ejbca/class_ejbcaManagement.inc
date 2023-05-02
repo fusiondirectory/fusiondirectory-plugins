@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018 FusionDirectory
+
+  Copyright (C) 2014-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,53 +19,65 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ejbcaManagement extends simpleManagement
+class ejbcaManagement extends management
 {
-  protected $objectTypes      = ['ejbcaCertificate'];
-  protected $autoActions      = FALSE;
+  public static $skipSnapshots  = TRUE;
+  protected $skipCpHandler      = TRUE;
 
-  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'userCertificate'];
+  public $neededAttrs = ['userCertificate;binary' => 1];
 
-  public static $skipSnapshots = TRUE;
+  /* Default columns - no description for certificates */
+  public static $columns = [
+    ['ObjectTypeColumn', []],
+    ['LinkColumn',       ['attributes' => 'nameAttr',    'label' => 'Name']],
+    ['ActionsColumn',    ['label' => 'Actions']],
+  ];
 
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('EJBCA'),
-      'plDescription' => _('EJBCA certificates management'),
+      'plTitle'       => _('EJBCA certificates management'),
+      'plDescription' => _('Manage EJBCA certificates'),
       'plIcon'        => 'geticon.php?context=applications&icon=ejbca&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 50,
       'plManages'     => ['ejbcaCertificate'],
-
-      'plProvidedAcls' => []
     ];
   }
 
-  function configureHeadpage ()
+  protected function configureActions ()
   {
-    parent::configureHeadpage();
-    unset($this->headpage->xmlData['actionmenu']['action'][0]);
-    $downloadAction =
-      [
-        'name'  => 'download',
-        'type'  => 'entry',
-        'image' => 'geticon.php?context=actions&amp;icon=download&amp;size=16',
-        'label' => _('Download'),
-        'acl'   => 'ejbcaCertificate/ejbcaCertificate[r]',
-      ];
-    array_unshift($this->headpage->xmlData['actiontriggers']['action'], $downloadAction);
-    $this->registerAction('download', 'downloadEntry');
+    parent::configureActions();
+
+    /* Remove create menu */
+    foreach ($this->actions['new']->listActions() as $actionName) {
+      unset($this->actionHandlers[$actionName]);
+    }
+    unset($this->actions['new']);
+
+    /* Add download action */
+    $this->registerAction(
+      new Action(
+        'download',
+        _('Download'),
+        'geticon.php?context=actions&icon=download&size=16',
+        '1',
+        'downloadEntry',
+        ['ejbcaCertificate/ejbcaCertificate/r'],
+        FALSE,
+        TRUE
+      )
+    );
   }
 
-  function downloadEntry ($action, array $targets)
+  function downloadEntry (array $action)
   {
-    $entry = $this->headpage->getEntry($targets[0]);
-    session::set('binary', $entry['userCertificate;binary'][0]);
+    $entry = $this->listing->getEntry($action['targets'][0]);
+    session::set('binary', $entry['userCertificate;binary']);
     session::set('binarytype', 'octet-stream');
-    session::set('binaryfile', $entry['cn'][0].'.der');
+    session::set('binaryfile', $entry['cn'].'.der');
     header('location: getbin.php');
     exit();
   }
 }
-?>

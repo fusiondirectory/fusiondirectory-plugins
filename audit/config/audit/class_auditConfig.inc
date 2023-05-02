@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018 FusionDirectory
+  Copyright (C) 2015-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,15 +18,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class auditConfig extends simplePlugin
+class auditConfig extends multiPluginSection
 {
-  var $objectclasses  = ['fdAuditPluginConf'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Audit configuration'),
       'plDescription'   => _('FusionDirectory audit plugin configuration'),
+      'plObjectClass'   => ['fdAuditPluginConf'],
       'plCategory'      => ['configuration'],
       'plObjectType'    => ['smallConfig'],
 
@@ -34,10 +33,10 @@ class auditConfig extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'audit' => [
         'name'  => _('Audit'),
         'attrs' => [
           new StringAttribute(
@@ -51,7 +50,7 @@ class auditConfig extends simplePlugin
               'fdAuditActions', TRUE,
               logging::$validActions
             ),
-            ['modify','create','remove']
+            ['security','modify','create','remove']
           ),
           new IntAttribute(
             _('Days to keep'), _('Number of days of audit to keep in the LDAP when cleaning'),
@@ -63,4 +62,3 @@ class auditConfig extends simplePlugin
     ];
   }
 }
-?>

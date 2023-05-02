@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+  Copyright (C) 2003  Cajus Pollmeier
+  Copyright (C) 2012-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,25 +21,21 @@
 
 class componentGeneric extends ipHostPlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['device', 'ieee802Device'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Component'),
       'plDescription' => _('Component information'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['device', 'ieee802Device'],
       'plObjectType'  => [
         'component' => [
           'name'        => _('Network device'),
           'description' => _('Network device'),
-          'filter'      => '(&(objectClass=ieee802Device)(objectClass=device))',
           'icon'        => 'geticon.php?context=devices&icon=network-device&size=16',
           'ou'          => get_ou('componentRDN'),
         ]
       ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -47,12 +44,13 @@ class componentGeneric extends ipHostPlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
+          new BaseSelectorAttribute(get_ou('componentRDN')),
           new HostNameAttribute(
             _('Name'), _('The name of the component'),
             'cn', TRUE
@@ -61,25 +59,10 @@ class componentGeneric extends ipHostPlugin
             _('Description'), _('A short description of the component'),
             'description', FALSE
           ),
-          new BaseSelectorAttribute(get_ou("componentRDN")),
-        ]
-      ],
-      'network' => [
-        'name'      => _('Network settings'),
-        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => [
-          new IPAttribute(
-            _('IP address'), _('IP address this system uses'),
-            'ipHostNumber', TRUE
-          ),
-          new MacAddressAttribute(
-            _('Mac address'), _('Mac address of this system'),
-            'macAddress', FALSE
-          ),
+          new HiddenArrayAttribute('ipHostNumber', TRUE),
+          new HiddenArrayAttribute('macAddress', FALSE),
         ],
       ],
     ];
   }
 }
-
-?>

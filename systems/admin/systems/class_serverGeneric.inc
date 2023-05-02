@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+  Copyright (C) 2012-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,9 +20,28 @@
 
 class serverGeneric extends workstationGeneric
 {
-  var $objectclasses = ['fdServer', 'ieee802Device'];
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'   => _('Server'),
+      'plDescription' => _('Server information'),
+      'plObjectClass' => ['fdServer', 'ieee802Device'],
+      'plFilter'      => '(objectClass=fdServer)',
+      'plObjectType'  => [
+        'server' => [
+          'name'        => _('Server'),
+          'description' => _('Server'),
+          'icon'        => 'geticon.php?context=devices&icon=server&size=16',
+          'ou'          => get_ou('serverRDN'),
+        ]
+      ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
-  static function getAttributesInfo ($word = NULL, $rdn = NULL)
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    ];
+  }
+
+  static function getAttributesInfo ($word = NULL, $rdn = NULL): array
   {
     if ($word === NULL) {
       $word = _('server');
@@ -32,25 +51,4 @@ class serverGeneric extends workstationGeneric
     }
     return parent::getAttributesInfo($word, $rdn);
   }
-
-  static function plInfo ()
-  {
-    return [
-      'plShortName'   => _('Server'),
-      'plDescription' => _('Server information'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => [
-        'server' => [
-          'name'        => _('Server'),
-          'description' => _('Server'),
-          'filter'      => 'objectClass=fdServer',
-          'icon'        => 'geticon.php?context=devices&icon=server&size=16',
-          'ou'          => get_ou('serverRDN'),
-          'tabClass'    => 'servtabs',
-        ]
-      ],
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    ];
-  }
 }
-?>

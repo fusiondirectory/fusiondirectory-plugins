@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,19 +18,48 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class MacsAttribute extends GenericDialogAttribute
+class ArgonautTargetsAttribute extends SystemsAttribute
 {
-  protected $dialogClass = 'SystemSelectDialog';
+  /**
+   * @var array<string|null>
+   */
+  protected $valueDns = [];
 
-  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $display_attr = 'cn', $acl = '')
+  public function __construct (string $label, string $description, string $ldapName, bool $required, array $objectTypes = ['terminal', 'workstation', 'server'], array $defaultValue = [], string $store_attr = 'macAddress', string $display_attr = 'cn', array $filterElementDefinitions = NULL, string $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'macAddress', $display_attr, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $objectTypes, $defaultValue, $store_attr, $display_attr, $filterElementDefinitions, $acl);
+  }
+
+  protected function fillDisplayValueFrom ($i, $attrs)
+  {
+    parent::fillDisplayValueFrom($i, $attrs);
+    $this->valueDns[$i] = ($attrs['dn'] ?? NULL);
+  }
+
+  public function setValue ($value)
+  {
+    $this->valueDns = [];
+    parent::setValue($value);
+  }
+
+  protected function removeValue ($row)
+  {
+    parent::removeValue($row);
+    unset($this->valueDns[$row]);
+  }
+
+  public function getDnList (): array
+  {
+    return $this->valueDns;
   }
 }
 
-class argonautAction extends simplePlugin
+class argonautAction extends ManagementDialog
 {
-  static function plInfo ()
+  protected $post_cancel = 'abort_event_dialog';
+  protected $post_finish = 'save_event_dialog';
+
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Argonaut task'),
@@ -45,7 +74,7 @@ class argonautAction extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $events = argonautEventTypes::get_event_types();
     return [
@@ -102,7 +131,7 @@ class argonautAction extends simplePlugin
       'targets' => [
         'name'  => _('Targets'),
         'attrs' => [
-          new MacsAttribute(
+          new ArgonautTargetsAttribute(
             '', _('Targets for this task'),
             'targets', TRUE
           )
@@ -111,10 +140,10 @@ class argonautAction extends simplePlugin
     ];
   }
 
-  public function __construct ($action, array $targets, $scheduled)
+  public function __construct (management $parent, string $action, array $targets, bool $scheduled)
   {
     global $config;
-    parent::__construct($config->current['BASE']);
+    parent::__construct($config->current['BASE'], NULL, $parent);
 
     $this->attributesAccess['scheduled']->setManagedAttributes(
       [
@@ -152,23 +181,41 @@ class argonautAction extends simplePlugin
     parent::loadAttributes();
   }
 
-  function execute ()
+  public function check (): array
   {
-    return parent::execute().$this->getFooter();
+    $errors = parent::check();
+
+    foreach ($this->attributesAccess['targets']->getDnList() as $dn) {
+      if (!$this->acl_is_createable($dn)) {
+        $errors[] = new SimplePluginPermissionError(
+          $this->attributesAccess['targets'],
+          htmlescape(sprintf(_('Not enough permission to schedule an action for %s'), $dn))
+        );
+      }
+    }
+
+    return $errors;
   }
 
-  /*! \brief  Returns the plugin footer (save cancel), displayed in the template.
-    @return String  HTML footer part.
-   */
-  protected function getFooter ()
+  protected function handleFinish ()
   {
-    if (!$this->displayPlugin) {
-      return '';
+    $msgs = $this->check();
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return;
     }
-    return  '<p class="plugbottom">'.
-            ' <input type="submit" name="save_event_dialog" value="'.msgPool::saveButton().'"/>'.
-            ' <input type="submit" name="abort_event_dialog" value="'.msgPool::cancelButton().'"/>'.
-            '</p>';
+    if ($this->parent->siActive) {
+      $o_queue = new supportDaemon();
+      $o_queue->append($this);
+      if ($o_queue->is_error()) {
+        $error = new FusionDirectoryError(msgPool::siError($o_queue->get_error()));
+        $error->display();
+      }
+      $this->parent->closeDialogs();
+    } else {
+      $error = new FusionDirectoryError(_('Could not send action to argonaut server'));
+      $error->display();
+    }
   }
 
   /*! brief  Returns an array containing all attributes \
@@ -193,4 +240,3 @@ class argonautAction extends simplePlugin
     return $ret;
   }
 }
-?>

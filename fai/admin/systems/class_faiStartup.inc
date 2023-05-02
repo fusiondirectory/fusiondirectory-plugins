@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -34,39 +34,37 @@ class FAIreleaseAttribute extends SelectAttribute
     }
     parent::setValue($value);
     if (isset($this->plugin)) {
-      $this->plugin->attributesAccess['FAIclass']->attributes['profil']->setChoices($this->plugin->cache['PROFILES'][$value]);
-      $this->plugin->attributesAccess['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value]);
+      $this->plugin->attributesAccess['FAIclass']->attributes['profil']->setChoices($this->plugin->cache['PROFILES'][$value] ?? []);
+      $this->plugin->attributesAccess['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value] ?? []);
     }
   }
 
   function setParent (&$plugin)
   {
     parent::setParent($plugin);
-    $this->setChoices(array_keys($this->plugin->cache['SERVERS']));
+    $this->setChoices(array_keys($this->plugin->cache['SERVERS'] ?? []));
   }
 }
 
 class faiStartup extends simplePlugin
 {
-  var $displayHeader = TRUE;
+  protected $displayHeader  = TRUE;
 
-  /* attribute list for save action */
-  var $objectclasses  = ["FAIobject"];
-
-  var $inheritance    = ["gosaGroupOfNames" => "member"];
+  var $inheritance    = ['gosaGroupOfNames' => 'member'];
   var $sdaemon_available;
 
   var $cache = [];
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('FAI'),
       'plDescription'   => _('Full automated installation'),
-      'plSelfModify'    => FALSE,
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=fai&size=16',
       'plPriority'      => 9,
+      'plObjectClass'   => ['FAIobject'],
       'plObjectType'    => ['workstation', 'server', 'ogroup-dynamic'],
-      'plForeignKeys'  => [
+      'plForeignKeys'   => [
         'FAIclass'   => [
           ['faiProfile', 'cn', '(FAIclass=%oldvalue% :*)'],
         ],
@@ -76,7 +74,7 @@ class faiStartup extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -118,7 +116,7 @@ class faiStartup extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
   }
 
-  function foreignKeyCheck ($field, $fieldvalue, $source)
+  function foreignKeyCheck (string $field, $fieldvalue, array $source)
   {
     if ($field == 'FAIclass') {
       if ($this->attributesAccess['FAIclass']->attributes['profil']->getValue() == $fieldvalue) {
@@ -130,7 +128,7 @@ class faiStartup extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
   {
     if ($field == 'FAIclass') {
       if ($this->attributesAccess['FAIclass']->attributes['profil']->getValue() == $oldvalue) {
@@ -152,7 +150,7 @@ class faiStartup extends simplePlugin
       $this->cache['SERVERS'] = [];
       foreach ($tmp as $entry) {
         if ($entry['INSTALL'] != 'install') {
-            continue;
+          continue;
         }
         $rel = $entry['FAI_RELEASE'];
         if (!isset($this->cache['SERVERS'][$rel])) {
@@ -178,5 +176,3 @@ class faiStartup extends simplePlugin
     }
   }
 }
-
-?>

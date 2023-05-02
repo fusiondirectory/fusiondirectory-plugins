@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+  Copyright (C) 2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,11 +20,25 @@
 
 class spamAssassinAccount extends simplePlugin
 {
-  var $displayHeader = TRUE;
-  var $objectclasses = ['fdSpamAssassinUser'];
+  protected $displayHeader  = TRUE;
+
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'     => _('SpamAssassin'),
+      'plDescription'   => _('Edit user\'s spam rules'),
+      'plIcon'          => 'geticon.php?context=applications&icon=spamassassin&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=spamassassin&size=16',
+      'plSelfModify'    => TRUE,
+      'plObjectClass'   => ['fdSpamAssassinUser'],
+      'plObjectType'    => ['user'],
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    ];
+  }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -58,19 +72,4 @@ class spamAssassinAccount extends simplePlugin
       ]
     ];
   }
-
-  static function plInfo ()
-  {
-    return [
-      'plShortName'     => _('SpamAssassin'),
-      'plDescription'   => _('Edit user\'s spam rules'),
-      'plSelfModify'    => TRUE,
-      'plObjectType'    => ['user'],
-      'plIcon'          => 'geticon.php?context=applications&icon=spamassassin&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=spamassassin&size=16',
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    ];
-  }
 }
-?>

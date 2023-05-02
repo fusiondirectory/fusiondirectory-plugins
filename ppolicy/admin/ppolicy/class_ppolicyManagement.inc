@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2014-2015 Dhatim
-  Copyright (C) 2014-2018 FusionDirectory
+  Copyright (C) 2014-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,22 +20,18 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ppolicyManagement extends simpleManagement
+class ppolicyManagement extends management
 {
-  protected $objectTypes  = ['ppolicy'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Password policies'),
-      'plDescription' => _('Password policies management'),
+      'plTitle'       => _('Password policies management'),
+      'plDescription' => _('Manage password policies'),
       'plIcon'        => 'geticon.php?context=applications&icon=ppolicy&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 57,
       'plManages'     => ['ppolicy'],
-
-      'plProvidedAcls' => []
     ];
   }
 }
-?>

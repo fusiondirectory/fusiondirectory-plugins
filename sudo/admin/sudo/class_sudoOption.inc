@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ class UsedOptionAttribute extends CompositeAttribute
     $this->attributes[$name]->setParent($this->plugin);
   }
 
-  function loadAttrValue ($attrs)
+  function loadAttrValue (array $attrs)
   {
     if (isset($attrs[$this->getLdapName()])) {
       $values = $attrs[$this->getLdapName()];
@@ -85,12 +85,12 @@ class UsedOptionAttribute extends CompositeAttribute
     }
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
-    return $value;
+    return [$value];
   }
 
-  function writeValues ($values)
+  function writeValues (array $values)
   {
     return array_values($values);
   }
@@ -120,10 +120,10 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     $this->setInLdap(FALSE);
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     $id = $this->getLdapName();
-    $button = '<input type="submit" name="add'.$id.'" id="add'.$id.'"'.
+    $button = '<input type="submit" formnovalidate="formnovalidate" name="add'.$id.'" id="add'.$id.'"'.
                 ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}"/>';
     $display = parent::renderFormInput();
@@ -162,20 +162,16 @@ class ListSudoOptionAttribute extends SetAttribute
     parent::__construct(new StringAttribute(preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $name), $desc, $name, FALSE, $defaultValue, $acl));
   }
 
-  function getValue ()
-  {
-    if (count($this->value) <= 0) {
-      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'=';
-    } elseif (count($this->value) > 1) {
-      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'="'.implode(' ', $this->value).'"';
-    } else {
-      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'='.$this->value[0];
-    }
-  }
-
   function computeLdapValue ()
   {
-    return $this->getValue();
+    $values = $this->getValue();
+    if (count($values) <= 0) {
+      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'=';
+    } elseif (count($this->value) > 1) {
+      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'="'.implode(' ', $values).'"';
+    } else {
+      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'='.$values[0];
+    }
   }
 
   function setValue ($value)
@@ -196,7 +192,7 @@ class ListSudoOptionAttribute extends SetAttribute
   }
 }
 
-class SudoOptionAttribute extends Attribute
+class SudoOptionAttribute extends \FusionDirectory\Core\SimplePlugin\Attribute
 {
   private $type;
 
@@ -234,17 +230,20 @@ class SudoOptionAttribute extends Attribute
     $error = parent::check();
     if (!empty($error)) {
       return $error;
-    } elseif ($this->type == "INTEGER") {
+    } elseif ($this->type == 'INTEGER') {
       if (!is_numeric($this->value) && !empty($this->value)) {
-        return msgPool::invalid($this->getLabel(), $this->value);
+        return new SimplePluginCheckError(
+          $this,
+          SimplePluginCheckError::invalidValue('Value is not an integer')
+        );
       }
     }
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     $id = $this->getLdapName();
-    $value = htmlentities($this->value['value'], ENT_COMPAT, 'UTF-8');
+    $value = htmlescape($this->value['value']);
     $smarty = get_smarty();
     $smarty->assign("boolStringOptions", ["FALSE","TRUE","STRING"]);
     $smarty->assign("boolIntOptions", ["FALSE","TRUE","INTEGER"]);
@@ -269,6 +268,8 @@ class SudoOptionAttribute extends Attribute
       </select>';
       $display .= '<input type="text" name="'.$id.'_value" id="'.$id.'_value" value="'.$value.'"'.
           ($selected == "STRING" ? '' : 'disabled="disabled"').'/>';
+    } else {
+      throw new SimplePluginError($this, 'Invalid sudo option type');
     }
     return $this->renderAcl($display);
   }
@@ -318,6 +319,8 @@ class SudoOptionAttribute extends Attribute
           $option = "!".$option;
         }
       }
+    } else {
+      throw new SimplePluginError($this, 'Invalid sudo option type');
     }
 
     return $option;
@@ -329,14 +332,21 @@ class SudoOptionAttribute extends Attribute
  */
 class sudoOption extends simplePlugin
 {
-  var $displayHeader = FALSE;
-  var $objectclasses = [];
-
-  // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function plInfo (): array
   {
     return [
-      // Attributes are grouped by section
+      'plShortName'   => _('Options'),
+      'plDescription' => _('Sudo options'),
+      'plObjectType'  => ['sudo'],
+      'plPriority'    => 2,
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    ];
+  }
+
+  static function getAttributesInfo (): array
+  {
+    return [
       'available_options' => [
         'name'  => _('Available options'),
         'attrs' => [
@@ -355,7 +365,7 @@ class sudoOption extends simplePlugin
     ];
   }
 
-  function execute ()
+  public function render (): string
   {
     $script = <<<SCRIPT
   <script type="text/javascript">
@@ -375,7 +385,7 @@ class sudoOption extends simplePlugin
    -->
   </script>
 SCRIPT;
-    return $script.parent::execute();
+    return $script.parent::render();
   }
 
   /*!  \brief   Escape special chars in function parameters.
@@ -411,18 +421,4 @@ SCRIPT;
     }
     return $str;
   }
-
-  static function plInfo ()
-  {
-    return [
-      'plShortName'   => _('Options'),
-      'plDescription' => _('Sudo options'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => ['sudo'],
-      'plPriority'    => 2,
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    ];
-  }
 }
-?>

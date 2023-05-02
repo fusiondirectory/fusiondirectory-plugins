@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018  FusionDirectory
+
+  Copyright (C) 2014-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -43,7 +44,7 @@ class SocialAccountAttribute extends CompositeAttribute
     );
   }
 
-  function getArrayValue ()
+  function getArrayValue (): array
   {
     $handlerClass = 'socialHandler_'.$this->attributes[0]->getValue();
     if (!class_available($handlerClass)) {
@@ -61,7 +62,10 @@ class SocialAccountAttribute extends CompositeAttribute
     }
     $handlerClass = 'socialHandler_'.$this->attributes[0]->getValue();
     if (!class_available($handlerClass)) {
-      return 'Social handler "'.$handlerClass.'" does not exists';
+      return new SimplePluginCheckError(
+        $this,
+        htmlescape(sprintf(_('Social handler "%s" does not exists'), $handlerClass))
+      );
     }
     $handler      = new $handlerClass();
     $value = $this->attributes[1]->getValue();
@@ -69,22 +73,28 @@ class SocialAccountAttribute extends CompositeAttribute
       $value = $handler->validate($this->attributes[1]->getValue());
       $this->attributes[1]->setValue($value);
     } catch (socialHandlerInvalidValueException $e) {
-      return $e->getMessage();
+      return new SimplePluginCheckError(
+        $this,
+        htmlescape($e->getMessage()),
+        0,
+        $e
+      );
     }
   }
 }
 
 class personalInfo extends simplePlugin
 {
-  var $displayHeader = TRUE;
-  var $objectclasses = ['fdPersonalInfo'];
+  protected $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Personal'),
       'plDescription'   => _('Personal information'),
+      'plFilter'        => '(objectClass=fdPersonalInfo)',
       'plSelfModify'    => TRUE,
+      'plObjectClass'   => ['fdPersonalInfo'],
       'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=applications&icon=user-info&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=user-info&size=16',
@@ -94,7 +104,7 @@ class personalInfo extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -117,7 +127,9 @@ class personalInfo extends simplePlugin
           new DateAttribute(
             _('Date of birth'), _('Date of birth'),
             'dateOfBirth', FALSE,
-            'Y-m-d', ''
+            'Y-m-d', '',
+            // min and max:
+            NULL, 'now'
           ),
           new SelectAttribute(
             _('Sex'), _('Gender'),
@@ -165,4 +177,3 @@ class personalInfo extends simplePlugin
     ];
   }
 }
-?>

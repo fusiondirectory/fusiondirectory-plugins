@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -132,7 +132,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
     parent::setValue($values);
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
     $values = parent::readValues($value);
     if (!isset($values[8])) {
@@ -153,20 +153,19 @@ class serviceRepository extends simpleService
 {
   protected static $showActions = FALSE;
 
-  var $objectclasses  = ['FAIrepositoryServer'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Package repository'),
       'plDescription' => _('Package repository information'),
       'plIcon'        => 'geticon.php?context=mimetypes&icon=package-x-generic&size=16',
+      'plObjectClass' => ['FAIrepositoryServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -205,7 +204,7 @@ class serviceRepository extends simpleService
     return preg_match('/'.preg_quote($distribution, '/').'$/', $attrs['FAIrepository'][0]);
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     $errors = parent::ldap_save();
 
@@ -226,25 +225,26 @@ class serviceRepository extends simpleService
     return $errors;
   }
 
-  static function createBranch ($distribution, $release)
+  static function createBranch (string $distribution, string $release)
   {
     global $config;
 
     // Check if FAI branch is here
-    $fai  = "ou=$distribution,".get_ou('faiBaseRDN').$config->current['BASE'];
+    $fai  = 'ou='.ldap_escape_dn($distribution).','.get_ou('faiBaseRDN').$config->current['BASE'];
     $ldap = $config->get_ldap_link();
     $ldap->cat($fai, ['dn']);
     if (!$ldap->count()) {
       $ldap->cd($config->current['BASE']);
-      $ldap->create_missing_trees($fai);
-      if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $fai, LDAP_ADD, get_class()), LDAP_ERROR);
+      try {
+        $ldap->create_missing_trees($fai);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
         return;
       }
     }
 
     // Check if FAI release branch is here
-    $dn = "ou=$release,$fai";
+    $dn = 'ou='.ldap_escape_dn($release).','.$fai;
     $ldap->cat($dn, ['dn']);
     if (!$ldap->count()) {
       $ldap->cd($dn);
@@ -253,13 +253,15 @@ class serviceRepository extends simpleService
         // Add classes OUs
         foreach (['Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'Partition'] as $type) {
           $ldap->cd($dn);
-          $ldap->create_missing_trees(get_ou('fai'.$type.'RDN').$dn);
-          if (!$ldap->success()) {
-            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), get_ou('fai'.$type.'RDN').$dn, LDAP_ADD, get_class()), LDAP_ERROR);
+          try {
+            $ldap->create_missing_trees(get_ou('fai'.$type.'RDN').$dn);
+          } catch (FusionDirectoryError $error) {
+            $error->display();
           }
         }
       } else {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+        $error = new FusionDirectoryLdapError($dn, LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+        $error->display();
       }
     }
   }
@@ -269,7 +271,7 @@ class serviceRepository extends simpleService
    *
    * \return array All configured repository servers
   */
-  static function getServers ()
+  static function getServers (): array
   {
     global $config;
 
@@ -306,7 +308,7 @@ class serviceRepository extends simpleService
    *
    * \return array All configured customs releases based on the given release
   */
-  static function getCustomReleases ($release)
+  static function getCustomReleases (string $release): array
   {
     $list     = [];
     $servers  = static::getServers();
@@ -320,13 +322,13 @@ class serviceRepository extends simpleService
     return array_values($list);
   }
 
-  static function getParentServers ($distribution, $dn = NULL)
+  static function getParentServers (string $distribution, string $dn = NULL): array
   {
     global $config;
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.$distribution.'|*))', ['dn','cn']);
+    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.ldap_escape_f($distribution).'|*))', ['dn','cn']);
 
     $ret = [];
     while ($attr = $ldap->fetch()) {
@@ -340,12 +342,12 @@ class serviceRepository extends simpleService
     return $ret;
   }
 
-  static function getReleaseList ($distribution)
+  static function getReleaseList (string $distribution): array
   {
     global $config;
 
     $ldap = $config->get_ldap_link();
-    $ldap->cd('ou='.$distribution.','.get_ou('faiBaseRDN').$config->current['BASE']);
+    $ldap->cd('ou='.ldap_escape_dn($distribution).','.get_ou('faiBaseRDN').$config->current['BASE']);
     $ldap->search('(objectClass=FAIbranch)', ['ou'], 'one');
 
     $list = [];
@@ -355,4 +357,3 @@ class serviceRepository extends simpleService
     return $list;
   }
 }
-?>

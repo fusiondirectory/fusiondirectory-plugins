@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2011-2018 FusionDirectory
+  Copyright (C) 2011-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,20 +21,19 @@
 
 class serviceQuota extends simpleService
 {
-  var $objectclasses = ['quotaService'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Quota service'),
       'plDescription' => _('Quota service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=quota&size=16',
+      'plObjectClass' => ['quotaService'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -162,7 +161,6 @@ class serviceQuota extends simpleService
     $this->attributesAccess['quotaMsgCharsetSupport']->setChoices(
       array_keys($charsets), array_values($charsets)
     );
-
   }
 
   function getShares ()
@@ -186,4 +184,3 @@ class serviceQuota extends simpleService
     return objects::ls('server', NULL, NULL, '(objectClass=goLdapServer)');
   }
 }
-?>

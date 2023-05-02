@@ -8,89 +8,107 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2022-07-28 17:06+0000\n"
-"PO-Revision-Date: 2016-08-29 15:24+0000\n"
-"Language-Team: Uyghur (https://www.transifex.com/fusiondirectory/teams/12202/ug/)\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"PO-Revision-Date: 2018-08-13 20:06+0000\n"
+"Language-Team: Uyghur (https://app.transifex.com/fusiondirectory/teams/12202/ug/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ug\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/class_webserviceConfig.inc:28
-msgid "Webservice configuration"
-msgstr ""
-
-#: config/class_webserviceConfig.inc:29
-msgid "FusionDirectory webservice plugin configuration"
-msgstr ""
-
-#: config/class_webserviceConfig.inc:42
-msgid "Webservice"
-msgstr ""
-
-#: config/class_webserviceConfig.inc:45
-msgid "Force SSL"
-msgstr ""
-
-#: config/class_webserviceConfig.inc:45
-msgid "Allow only HTTPS JSON-RPC requests"
-msgstr ""
-
-#: html/jsonrpc.php:55
+#: include/webservice/class_fdRPCService.inc:119
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
 msgstr ""
 
-#: html/jsonrpc.php:65
+#: include/webservice/class_fdRPCService.inc:129
 #, php-format
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr ""
 
-#: html/jsonrpc.php:342 html/jsonrpc.php:425
+#: include/webservice/class_fdRPCService.inc:177
+msgid "Your password has expired, please set a new one."
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:181
+msgid "Account expired. Please contact your system administrator!"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:235
+#, php-format
+msgid "Cannot get a lock on %s. It has been locked by %s."
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:407
+#: include/webservice/class_fdRPCService.inc:491
 msgid "Plugin"
 msgstr ""
 
-#: html/jsonrpc.php:522
+#: include/webservice/class_fdRPCService.inc:643
 #, php-format
 msgid "Field \"%s\" is not multi-valuated"
 msgstr ""
 
-#: html/jsonrpc.php:537
+#: include/webservice/class_fdRPCService.inc:658
 #, php-format
 msgid "Unknown field \"%s\""
 msgstr ""
 
-#: html/jsonrpc.php:592
-#, php-format
-msgid "Cannot delete %s. It has been locked by %s."
-msgstr ""
-
-#: html/jsonrpc.php:639 html/jsonrpc.php:668
+#: include/webservice/class_fdRPCService.inc:819
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:664
+#: include/webservice/class_fdRPCService.inc:843
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:671
+#: include/webservice/class_fdRPCService.inc:846
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:709 html/jsonrpc.php:718
+#: include/webservice/class_fdRPCService.inc:888
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr ""
 
-#: html/jsonrpc.php:721
+#: include/webservice/class_fdRPCService.inc:895
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr ""
 
-#: html/jsonrpc.php:765
+#: include/webservice/class_fdRPCService.inc:912
+msgid "Archive action is not available: archive plugin is not installed"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:958
+#: include/webservice/class_fdRPCService.inc:983
+msgid "Password recovery is not activated"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:993
 msgid "This token is invalid"
+msgstr ""
+
+#: config/class_webserviceConfig.inc:26
+msgid "Webservice configuration"
+msgstr ""
+
+#: config/class_webserviceConfig.inc:27
+msgid "FusionDirectory webservice plugin configuration"
+msgstr ""
+
+#: config/class_webserviceConfig.inc:40
+msgid "Webservice"
+msgstr ""
+
+#: config/class_webserviceConfig.inc:43
+msgid "Force SSL"
+msgstr ""
+
+#: config/class_webserviceConfig.inc:43
+msgid "Allow only HTTPS JSON-RPC requests"
 msgstr ""

@@ -20,32 +20,30 @@
 
 class phoneGeneric extends ipHostPlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['fdPhone', 'ieee802Device'];
-
   var $inheritance = ['gosaGroupOfNames' => 'member'];
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Phone'),
       'plDescription' => _('Phone information'),
+      'plObjectClass' => ['fdPhone', 'ieee802Device'],
+      'plFilter'      => '(objectClass=fdPhone)',
       'plObjectType'  => [
         'phone' => [
           'name'        => _('Phone'),
           'description' => _('Phone hardware'),
-          'filter'      => 'objectClass=fdPhone',
           'icon'        => 'geticon.php?context=devices&icon=telephone&size=16',
           'ou'          => get_ou('phoneRDN'),
         ]
       ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -60,6 +58,8 @@ class phoneGeneric extends ipHostPlugin
             _('Description'), _('A short description of the phone'),
             'description', FALSE
           ),
+          new HiddenArrayAttribute('ipHostNumber', FALSE),
+          new HiddenArrayAttribute('macAddress', FALSE),
         ]
       ],
       'phone' => [
@@ -73,27 +73,8 @@ class phoneGeneric extends ipHostPlugin
             _('Telephone Number'), _('The telephone number of the phone'),
             'telephoneNumber', FALSE
           ),
-        ]
-      ],
-      'network' => [
-        'name'      => _('Network settings'),
-        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => [
-          new SetAttribute(
-            new IPAttribute(
-              _('IP address'), _('IP addresses this system uses (v4 or v6)'),
-              'ipHostNumber', FALSE
-            )
-          ),
-          new SetAttribute(
-            new MacAddressAttribute(
-              _('Mac address'), _('Mac address of this system'),
-              'macAddress', FALSE
-            )
-          ),
         ],
       ],
     ];
   }
 }
-?>

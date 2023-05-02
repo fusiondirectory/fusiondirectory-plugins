@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,22 +20,27 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautQueue extends simpleManagement
+class argonautQueue extends management
 {
-  protected $departmentBrowser      = FALSE;
-  protected $departmentRootVisible  = FALSE;
-  protected $baseMode               = FALSE;
-
-  protected $autoFilter       = FALSE;
-  protected $autoActions      = FALSE;
-
-  protected $skipCpHandler    = TRUE;
+  protected $skipCpHandler     = TRUE;
 
   public static $skipSnapshots = TRUE;
 
-  var $read_only = FALSE;
-  var $acl_base;
-  protected $aclCategory = 'argonautQueue/';
+  public static $skipTemplates = TRUE;
+
+  public $o_queue;
+
+  public $siActive = TRUE;
+
+  /* Default columns */
+  public static $columns = [
+    ['ArgonautQueueColumn', ['attributes' => 'MACADDRESS',  'label' => 'Target']],
+    ['ArgonautQueueColumn', ['attributes' => 'HEADERTAG',   'label' => 'Task']],
+    ['ArgonautQueueColumn', ['attributes' => 'PERIODIC',    'label' => 'Period']],
+    ['ArgonautQueueColumn', ['attributes' => 'TIMESTAMP',   'label' => 'Schedule']],
+    ['ArgonautQueueColumn', ['attributes' => 'STATUS',      'label' => 'Status']],
+    ['ActionsColumn',       ['label' => 'Actions']],
+  ];
 
   static function plInfo ()
   {
@@ -54,34 +60,132 @@ class argonautQueue extends simpleManagement
 
   function __construct ()
   {
-    global $config;
-    $this->filterXMLPath  = get_template_path('deploy-filter.xml', TRUE, dirname(__FILE__));
-    $this->listXMLPath    = get_template_path('deploy-list.xml', TRUE, dirname(__FILE__));
+    parent::__construct([]);
 
-    parent::__construct();
-
-    $this->o_queue  = new supportDaemon();
-    $this->acl_base = $config->current['BASE'];
+    $this->o_queue = new supportDaemon();
   }
 
-  function configureHeadpage ()
+  protected function setUpListing ()
   {
-    parent::configureHeadpage();
-    $this->registerAction('processNow', 'processNow');
-    $this->registerAction('abort',      'abortEvent');
-    $this->registerAction('import',     'importEvents');
-    $this->registerAction('showError',  'showErrorEntry');
-    $this->registerAction('retry',      'retryAction');
-    $this->registerAction('saveEvent',  'saveEventDialog');
-
-    $this->headpage->registerElementFilter('hostName',        'argonautQueue::filterHostName');
-    $this->headpage->registerElementFilter('filterTask',      'argonautQueue::filterTask');
-    $this->headpage->registerElementFilter('filterPeriod',    'argonautQueue::filterPeriod');
-    $this->headpage->registerElementFilter('filterSchedule',  'argonautQueue::filterSchedule');
-    $this->headpage->registerElementFilter('filterStatus',    'argonautQueue::filterStatus');
+    /* Set baseMode to FALSE */
+    $this->listing  = new managementListing($this, FALSE);
   }
 
-  function importEvents ()
+  protected function setUpFilter (array $filterElementDefinitions)
+  {
+    $this->filter   = new argonautQueueFilter($this);
+  }
+
+  protected function configureActions ()
+  {
+    $this->registerAction(new HiddenAction('cancel',          'cancelEdit'));
+    $this->registerAction(new HiddenAction('cancelDelete',    'cancelEdit'));
+    $this->registerAction(new HiddenAction('removeConfirmed', 'removeConfirmed'));
+    $this->registerAction(new HiddenAction('configure',       'configureDialog'));
+
+    $this->registerAction(
+      new Action(
+        'import', _('Import'), 'geticon.php?context=actions&icon=document-import&size=16',
+        '0', 'importEvents',
+        ['argonautQueue/argonautQueue/c']
+      )
+    );
+
+    $this->registerAction(
+      new Action(
+        'remove', _('Remove'), 'geticon.php?context=actions&icon=edit-delete&size=16',
+        '+', 'removeRequested',
+        ['argonautQueue/argonautQueue/d']
+      )
+    );
+
+    $this->actions['remove']->setSeparator(TRUE);
+
+    $this->registerAction(
+      new Action(
+        'abort', _('Abort'), 'geticon.php?context=actions&icon=process-stop&size=16',
+        '+', 'abortEvent',
+        ['argonautQueue/argonautQueue/deploymentQueue:w']
+      )
+    );
+
+    $this->actions['abort']->setSeparator(TRUE);
+
+    $this->registerAction(
+      new Action(
+        'processNow', _('Process now'), 'geticon.php?context=types&icon=action&size=16',
+        '+', 'processNow',
+        ['argonautQueue/argonautQueue/deploymentQueue:w']
+      )
+    );
+
+    $this->registerAction(
+      new Action(
+        'retry', _('Retry'), 'geticon.php?context=actions&icon=view-refresh&size=16',
+        '1', 'retryAction',
+        ['argonautQueue/argonautQueue/deploymentQueue:w'],
+        FALSE, TRUE
+      )
+    );
+
+    $this->registerAction(
+      new Action(
+        'showError', '', '',
+        '1', 'showErrorEntry',
+        [],
+        FALSE, FALSE
+      )
+    );
+
+    $this->actions['processNow']->setEnableFunction([$this, 'enableProcessNow']);
+    $this->actions['abort']->setEnableFunction([$this, 'enableAbort']);
+    $this->actions['retry']->setEnableFunction([$this, 'enableRetry']);
+    $this->actions['remove']->setEnableFunction([$this, 'enableRemove']);
+  }
+
+  function enableProcessNow ($action, ListingEntry $entry = NULL): bool
+  {
+    if ($entry === NULL) {
+      return TRUE;
+    } else {
+      /* If PAUSED or WAITING add execution action */
+      return in_array($entry['STATUS'], ['paused','waiting']);
+    }
+  }
+
+  function enableAbort ($action, ListingEntry $entry = NULL): bool
+  {
+    if ($entry === NULL) {
+      return TRUE;
+    } else {
+      /* If PROCESSING add abort action */
+      return (in_array($entry['STATUS'], ['processing']) && preg_match('/install/', $entry['HEADERTAG']));
+    }
+  }
+
+  function enableRetry ($action, ListingEntry $entry = NULL): bool
+  {
+    if ($entry === NULL) {
+      return TRUE;
+    } else {
+      /* If ERROR add retry action */
+      return in_array($entry['STATUS'], ['error']);
+    }
+  }
+
+  function enableRemove ($action, ListingEntry $entry = NULL): bool
+  {
+    if ($entry === NULL) {
+      return TRUE;
+    } else {
+      return (
+        in_array($entry['STATUS'], ['waiting','error','processed']) ||
+        (in_array($entry['STATUS'], ['processing']) && !preg_match('/install/', $entry['HEADERTAG']))
+      );
+    }
+  }
+
+  function importEvents (array $action)
   {
     $this->dialogObject = new argonautImportFile($this);
   }
@@ -89,18 +193,17 @@ class argonautQueue extends simpleManagement
   /*! \brief    Queue selected objects to be removed.
    *            Checks ACLs, Locks and ask for confirmation.
    */
-  protected function removeEntryRequested ($action, array $target, array $all)
+  protected function removeEntryRequested (array $action)
   {
-    $nodelete   = [];
-    $disallowed = [];
-    $this->dns  = [];
+    $nodelete         = [];
+    $disallowed       = [];
+    $this->currentDns = [];
 
-    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $target, 'Entry removal requested!');
+    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $action['targets'], 'Entry removal requested!');
 
     // Check permissons for each target
-    foreach ($target as $dn) {
-      $tmp  = $this->headpage->getEntry($dn);
-      $task = $tmp['EVENT'];
+    foreach ($action['targets'] as $dn) {
+      $task = $this->listing->getEntry($dn);
 
       /* Create a printable job name/description */
       $infos = argonautEventTypes::get_event_info($task['HEADERTAG']);
@@ -113,8 +216,8 @@ class argonautQueue extends simpleManagement
       if ($this->acl_is_removeable($task['TARGETDN'])) {
         /* Only remove WAITING or ERROR entries */
         if (in_array($task['STATUS'], ['waiting','error','processed']) ||
-            ($task['STATUS'] == 'processing' && !preg_match('/install/', $task['HEADERTAG'])) ) {
-          $this->dns[] = $dn;
+            ($task['STATUS'] == 'processing' && !preg_match('/install/', $task['HEADERTAG']))) {
+          $this->currentDns[] = $dn;
         } else {
           $nodelete[] = $j_name;
         }
@@ -123,20 +226,25 @@ class argonautQueue extends simpleManagement
       }
     }
     if (count($nodelete)) {
-      msg_dialog::display(_('Remove'),
-          sprintf(_('The following jobs couldn\'t be deleted, they have to be aborted: %s'),
-            '<br/>'.msgPool::buildList($nodelete)), INFO_DIALOG);
+      msg_dialog::display(
+        _('Remove'),
+        sprintf(
+          htmlescape(_('The following jobs couldn\'t be deleted, they have to be aborted: %s')),
+          '<br/>'.msgPool::buildList($nodelete)
+        ),
+        INFO_DIALOG
+      );
     }
     if (count($disallowed)) {
-      msg_dialog::display(_('Permission'), msgPool::permDelete($disallowed), INFO_DIALOG);
+      $error = new FusionDirectoryPermissionError(msgPool::permDelete($disallowed));
+      $error->display();
     }
 
     // We've at least one entry to delete.
-    if (count($this->dns)) {
+    if (count($this->currentDns)) {
       $objects = [];
-      foreach ($this->dns as $dn) {
-        $tmp  = $this->headpage->getEntry($dn);
-        $task = $tmp['EVENT'];
+      foreach ($this->currentDns as $dn) {
+        $task = $this->listing->getEntry($dn);
         $infos = argonautEventTypes::get_event_info($task['HEADERTAG']);
         if ($infos) {
           $objects[] = [
@@ -163,14 +271,14 @@ class argonautQueue extends simpleManagement
     }
   }
 
-  function removeEntryConfirmed ($action, array $target, array $all)
+  function removeConfirmed (array $action)
   {
     timezone::get_default_timezone();
     $ids = [];
-    foreach ($this->dns as $dn) {
-      $entry  = $this->headpage->getEntry($dn);
-      if ($this->acl_is_removeable($entry['EVENT']['TARGETDN'])) {
-        $ids[]  = $entry['EVENT']['ID'];
+    foreach ($this->currentDns as $dn) {
+      $entry  = $this->listing->getEntry($dn);
+      if ($this->acl_is_removeable($entry['TARGETDN'])) {
+        $ids[]  = $entry['ID'];
       }
     }
     $this->o_queue->remove_entries($ids);
@@ -178,81 +286,48 @@ class argonautQueue extends simpleManagement
 
   /*! \brief  Force queue job to be aborted.
    */
-  function abortEvent ($action, array $target)
+  function abortEvent (array $action)
   {
     $macs     = [];
     $taskids  = [];
-    $headpage = $this->getHeadpage();
-    foreach ($target as $id) {
-      $tmp        = $headpage->getEntry($id);
-      $macs[]     = $tmp['MACADDRESS'][0];
-      $taskids[]  = $tmp['EVENT']['ID'];
+    foreach ($action['targets'] as $id) {
+      $tmp        = $this->listing->getEntry($id);
+      $macs[]     = $tmp['MACADDRESS'];
+      $taskids[]  = $tmp['ID'];
     }
 
     $this->o_queue->append_call('wakeup', $macs, []);
     if ($this->o_queue->is_error()) {
-      msg_dialog::display(_('Info'), sprintf(_('%s'), $this->o_queue->get_error()), INFO_DIALOG);
+      msg_dialog::display(_('Info'), nl2br(htmlescape($this->o_queue->get_error())), INFO_DIALOG);
     }
     // Removing the task.
     $this->o_queue->remove_entries($taskids);
   }
 
-  function processNow ($action, array $target)
+  function processNow (array $action)
   {
-    $this->execute_queue_entries($target);
+    $this->execute_queue_entries($action['targets']);
   }
 
-  function retryAction ($action, array $target)
+  function retryAction (array $action)
   {
-    $entry = $this->getHeadpage()->getEntry($target[0]);
-    $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], [$entry['MACADDRESS'][0]], FALSE);
+    $entry = $this->listing->getEntry($action['targets'][0]);
+    $this->dialogObject = new argonautAction($this, $entry['HEADERTAG'], [$entry['MACADDRESS']], FALSE);
   }
 
-  function showErrorEntry ($action, array $target)
+  function showErrorEntry (array $action)
   {
-    if (count($target) == 1) {
-      $entry  = $this->headpage->getEntry($target[0]);
-      $event  = $entry['EVENT'];
-      msg_dialog::display(_('Error detail'), $event['ERROR']);
+    if (count($action['targets']) == 1) {
+      $entry  = $this->listing->getEntry($action['targets'][0]);
+      msg_dialog::display(_('Error detail'), htmlescape($entry['ERROR']), INFO_DIALOG);
     }
   }
 
-  function detectPostActions ()
-  {
-    $action = parent::detectPostActions();
-    if (isset($_POST['import_abort'])) {
-      $action['action'] = 'cancel';
-    } elseif (isset($_POST['save_event_dialog'])) {
-      $action['action'] = 'saveEvent';
-    } elseif (isset($_POST['abort_event_dialog'])) {
-      $action['action'] = 'cancel';
-    }
-    return $action;
-  }
-
-  /*! \brief  Save event dialogs.
-   *          And append the new Argonaut event.
-   */
-  function saveEventDialog ()
-  {
-    $this->dialogObject->save_object();
-    $msgs = $this->dialogObject->check();
-    if (count($msgs)) {
-      msg_dialog::displayChecks($msgs);
-      return;
-    }
-    $this->o_queue->append($this->dialogObject);
-    if ($this->o_queue->is_error()) {
-      msg_dialog::display(_('Infrastructure service'), msgPool::siError($this->o_queue->get_error()), ERROR_DIALOG);
-    }
-    $this->closeDialogs();
-  }
-
-  protected function getTabFooter ()
+  protected function getTabFooter (): string
   {
     if ($this->dialogObject instanceof faiLogView) {
       return  '<p class="plugbottom">'.
-              ' <input type="submit" name="edit_cancel" value="'.msgPool::backButton().'"/>'.
+              ' <input type="submit" formnovalidate="formnovalidate" name="edit_cancel" value="'.msgPool::backButton().'"/>'.
               '</p>';
     } else {
       return parent::getTabFooter();
@@ -262,13 +337,12 @@ class argonautQueue extends simpleManagement
   /*! \brief  Force queue job to be done as far as possible.
    *  @return Boolean TRUE in case of success, else FALSE.
    */
-  private function execute_queue_entries ($ids)
+  private function execute_queue_entries (array $ids): bool
   {
     /* Only allow execution of paused or waiting entries */
     $update_ids = [];
     foreach ($ids as $id) {
-      $tmp    = $this->headpage->getEntry($id);
-      $entry  = $tmp['EVENT'];
+      $entry  = $this->listing->getEntry($id);
       if (in_array($entry['STATUS'], ['paused','waiting'])) {
         $update_ids[] = $entry['ID'];
       }
@@ -277,112 +351,18 @@ class argonautQueue extends simpleManagement
     /* Tell the daemon that we want to update some entries */
     if (count($update_ids)) {
       if (!$this->o_queue->process_entries_now($update_ids)) {
-        msg_dialog::display(_('Error'), sprintf(_('Cannot update queue entries.')), ERROR_DIALOG);
+        $error = new FusionDirectoryError(htmlescape(_('Cannot update queue entries.')));
+        $error->display();
         return FALSE;
       }
     }
+
     return TRUE;
   }
 
-  private function acl_is_removeable ($dn)
+  private function acl_is_removeable (string $dn): bool
   {
-    if ($this->read_only) {
-      return FALSE;
-    }
     $ui = get_userinfo();
-    return (strpos($ui->get_permissions($dn, $this->aclCategory.get_class($this), '0'), 'd') !== FALSE);
-  }
-
-  static function filterHostName ($mac, $name = '', $targetdn = '', $targettype = '')
-  {
-    $text = '';
-    if (isset($name[0]) && $name[0] != 'none') {
-      $text = $name[0].' ('.$mac[0].')';
-    } else {
-      $text = $mac[0];
-    }
-    if (!empty($targetdn[0]) && !empty($targettype[0])) {
-      return objects::link($targetdn[0], $targettype[0], '', $text, TRUE);
-    } else {
-      return htmlentities($text, ENT_COMPAT, 'UTF-8');
-    }
-  }
-
-  static function filterTask ($tag, $progress)
-  {
-    $tag      = $tag[0];
-    $progress = $progress[0];
-    $str      = $tag;
-
-    /* Check if this event exists as Daemon class
-     * In this case, display a more accurate entry.
-     */
-    $infos = argonautEventTypes::get_event_info($tag);
-    if ($infos) {
-      $str = $infos['name'];
-
-      if (mb_strlen($str) > 20) {
-        $str = mb_substr($str, 0, 18)."...";
-      }
-
-      $str = htmlentities($str, ENT_COMPAT, 'UTF-8');
-
-      if (isset($infos['listimg']) && !empty($infos['listimg'])) {
-        $str = $infos['listimg']."&nbsp;".$str;
-      }
-    }
-    if ($progress) {
-        $str .= "&nbsp;(".htmlentities($progress, ENT_COMPAT, 'UTF-8')."%)";
-    }
-    return $str;
-  }
-
-  static function filterPeriod ($periodic = [])
-  {
-    $period = "&nbsp;-";
-    if (isset($periodic[0]) && !preg_match("/none/i", $periodic[0])) {
-      $tmp = explode("_", $periodic[0]);
-      if (count($tmp) == 2) {
-        $period = htmlentities($tmp[0], ENT_COMPAT, 'UTF-8')."&nbsp;".htmlentities(_($tmp[1]), ENT_COMPAT, 'UTF-8');
-      }
-    }
-    return $period;
-  }
-
-  static function filterSchedule ($stamp)
-  {
-    if ($stamp['0'] == '19700101000000') {
-      return _('immediately');
-    } else {
-      return date('d.m.Y H:i:s', strtotime($stamp[0]));
-    }
-  }
-
-  static function filterStatus ($row, $status, $substatus)
-  {
-    $status     = $status[0];
-    $substatus  = $substatus[0];
-
-    if ($status == 'waiting') {
-      $status = '<img class="center" src="geticon.php?context=status&icon=task-waiting&size=16" alt="clock"/>&nbsp;'._('Waiting');
-    }
-    if ($status == 'error') {
-      $status = '<input class="center" type="image" src="geticon.php?context=status&icon=task-failure&size=16" title="'._('Show error').'" '.
-                'name="listing_showError_'.$row.'" style="padding:1px"/>'._('Error');
-    }
-    if ($status == 'processed') {
-      $status = '<img class="center" src="geticon.php?context=status&icon=task-complete&size=16" alt=""/>&nbsp;'._('Processed');
-    }
-
-    /* Special handling for all entries that have
-       STATUS == "processing" && PROGRESS == NUMERIC
-     */
-    if ($status == 'processing' && $substatus) {
-        $status = $substatus;
-    } elseif ($status == 'processing') {
-        $status = preg_replace('/ /', '&nbsp;', _('in progress'));
-    }
-    return $status;
+    return (strpos($ui->get_permissions($dn, 'argonautQueue/argonautQueue', '0'), 'd') !== FALSE);
   }
 }
-?>

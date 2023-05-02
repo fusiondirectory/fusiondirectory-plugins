@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+  Copyright (C) 2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,18 @@ require_once('variables.inc');
 
 class expiredUserPostpone extends standAlonePage
 {
-  function readLdapConfig ()
+  protected $forward_postpone;
+  protected $alert_delay;
+  protected $postpone_days;
+  protected $mail_subject;
+  protected $mail_body;
+  protected $from_mail;
+  protected $use_alternate;
+
+  protected $message;
+  protected $uid;
+
+  protected function readLdapConfig (): bool
   {
     global $config;
     $this->forward_postpone = ($config->get_cfg_value('userReminderForwardConfirmation', 'TRUE') == 'TRUE');
@@ -42,28 +53,28 @@ class expiredUserPostpone extends standAlonePage
   function execute ()
   {
     global $error_collector, $error_collector_mailto;
+
     if (!$this->activated) {
       return;
     }
+
+    $success        = TRUE;
+    $this->message  = [];
 
     if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_GET['token'])) {
       // Check if the token match
       $this->uid = $_GET['uid'];
       if ($this->checkToken($_GET['token'])) {
-        $this->message = [];
         $this->postponeExpiration();
-        if (!empty($this->message)) {
-          msg_dialog::displayChecks($this->message);
-        }
       } else {
         $this->message[] = _('This token is invalid');
       }
+    } else {
+      $this->message[] = _('Token is missing from URL');
     }
 
-    $success = TRUE;
     /* Do we need to show error messages? */
-    if (count($this->message) != 0) {
-      /* Show error message and continue editing */
+    if (!empty($this->message)) {
       msg_dialog::displayChecks($this->message);
       $success = FALSE;
     }
@@ -138,9 +149,37 @@ class expiredUserPostpone extends standAlonePage
       return;
     }
     $userTabs = objects::open($dn, 'user');
-    $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
-    $date->add(new DateInterval('P'.$this->postpone_days.'D'));
-    $userTabs->by_object['posixAccount']->shadowExpire = $date;
+    if (
+      isset($userTabs->by_object['posixAccount']) &&
+      $userTabs->by_object['posixAccount']->is_account &&
+      ($userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getValue() != '')
+    ) {
+      $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
+      $date->add(new DateInterval('P'.$this->postpone_days.'D'));
+      $userTabs->by_object['posixAccount']->shadowExpire = $date;
+    }
+    if (
+      isset($userTabs->by_object['supannAccountStatus']) &&
+      $userTabs->by_object['supannAccountStatus']->is_account
+    ) {
+      $supannRessourceEtatDateValues = [];
+      foreach ($userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate as $line) {
+        list ($label, $state, $substate, $start, $end) = $userTabs->by_object['supannAccountStatus']->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
+        if (($label == 'COMPTE') && ($state == 'A') && ($end != '')) {
+          /* Postpone enddate */
+          $date = new DateTime($end);
+          $date->add(new DateInterval('P'.$this->postpone_days.'D'));
+          if ($substate != 'SupannSursis') {
+            /* Set start date to current date if substate changed */
+            $start = date('Ymd');
+          }
+          $supannRessourceEtatDateValues[] = '{COMPTE}A:SupannSursis:'.$start.':'.$date->format('Ymd');
+        } else {
+          $supannRessourceEtatDateValues[] = $line;
+        }
+      }
+      $userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate = $supannRessourceEtatDateValues;
+    }
     $error = $userTabs->save();
     if (!empty($error)) {
       $this->message = $error;
@@ -150,17 +189,15 @@ class expiredUserPostpone extends standAlonePage
 
     $cn             = $userTabs->getBaseObject()->cn;
     $manager_dn     = $userTabs->getBaseObject()->manager;
+    $email_address  = '';
     if (isset($userTabs->by_object['mailAccount'])) {
       $email_address  = $userTabs->by_object['mailAccount']->mail;
     } elseif ($this->use_alternate && isset($userTabs->by_object['mailAccount']) && !empty($userTabs->by_object['mailAccount']->gosaMailAlternateAddress)) {
-      $email_address  = $userTabs->by_object['mailAccount']->gosaMailAlternateAddress;
+      $email_address  = reset($userTabs->by_object['mailAccount']->gosaMailAlternateAddress);
     } elseif (isset($userTabs->by_object['supannAccount']) && !empty($userTabs->by_object['supannAccount']->supannAutreMail)) {
-      $email_address  = $userTabs->by_object['supannAccount']->supannAutreMail;
+      $email_address  = reset($userTabs->by_object['supannAccount']->supannAutreMail);
     } elseif (isset($userTabs->by_object['personalInfo']) && !empty($userTabs->by_object['personalInfo']->fdPrivateMail)) {
       $email_address  = $userTabs->by_object['personalInfo']->fdPrivateMail;
-    }
-    if (is_array($email_address)) {
-      $email_address = reset($email_address);
     }
 
     $manager_mail = '';
@@ -168,7 +205,7 @@ class expiredUserPostpone extends standAlonePage
       $ldap = $config->get_ldap_link();
       if (empty($manager_dn)) {
         $ldap->cat($userTabs->getBaseObject()->base, ['manager']);
-        if ($attrs = $ldap->fetch() && isset($attrs['manager'][0])) {
+        if (($attrs = $ldap->fetch()) && isset($attrs['manager'][0])) {
           $manager_dn = $attrs['manager'][0];
         }
       }

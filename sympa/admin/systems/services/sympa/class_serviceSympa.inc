@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+  Copyright (C) 2012-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,25 +21,22 @@
 
 class serviceSympa extends simpleService
 {
-  /* This plugin only writes its objectClass */
-  var $objectclasses  = ["sympaServer"];
-
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Sympa Server'),
       'plDescription' => _('Sympa Server').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=sympa&size=16',
+      'plObjectClass' => ['sympaServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-    /*!
+  /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return  [
       'main' => [
@@ -62,4 +59,3 @@ class serviceSympa extends simpleService
     ];
   }
 }
-?>

@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018 FusionDirectory
+
+  Copyright (C) 2014-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,28 +19,26 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ejbcaConfig extends simplePlugin
+class ejbcaConfig extends multiPluginSection
 {
-  var $objectclasses  = ["fdEjbcaPluginConf"];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
-      "plShortName"     => _("EJBCA plugin configuration"),
-      "plDescription"   => _("FusionDirectory ejbca plugin configuration"),
-      "plSelfModify"    => FALSE,
-      "plCategory"      => ["configuration"],
-      "plObjectType"    => ["smallConfig"],
+      'plShortName'     => _('EJBCA plugin configuration'),
+      'plDescription'   => _('FusionDirectory ejbca plugin configuration'),
+      'plObjectClass'   => ['fdEjbcaPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
-      'main' => [
-        'name'  => _('EJBCA plugin'),
+      'ejbca' => [
+        'name'  => _('EJBCA'),
         'attrs' => [
           new StringAttribute(
             _('EJBCA RDN'), _('Branch in which ejbca certificates are stored'),
@@ -51,4 +50,3 @@ class ejbcaConfig extends simplePlugin
     ];
   }
 }
-?>

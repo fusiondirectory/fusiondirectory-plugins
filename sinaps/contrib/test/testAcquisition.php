@@ -90,10 +90,10 @@ function codeEntiteToldapUuidCallback ($codeEntite)
   );
   if (empty($entites)) {
     $error = 'Could not find entity '.$codeEntite;
-    die($error);
+    die ($error);
   } elseif (count($entites) > 1) {
     $error = 'Multiple entite matches codeEntite '.$codeEntite;
-    die($error);
+    die ($error);
   } else {
     $entite = reset($entites);
     foreach ($entite['supannRefId'] as $supannRefId) {
@@ -102,7 +102,7 @@ function codeEntiteToldapUuidCallback ($codeEntite)
       }
     }
     $error = 'Could not find any UUID for '.$entite['dn'];
-    die($error);
+    die ($error);
   }
 }
 
@@ -166,7 +166,6 @@ try {
   $answer = sinapsDiffusionHandlerJob::sendPostRequest($configuration['fdSinapsAcquisitionURL'], $configuration['fdSinapsLogin'], $configuration['fdSinapsPassword'], $xml);
 
   echo "Answer:\n$answer\n";
-
 } catch (jsonRPCClientRequestErrorException $e) {
   die($e->getMessage());
 } catch (jsonRPCClientNetworkErrorException $e) {

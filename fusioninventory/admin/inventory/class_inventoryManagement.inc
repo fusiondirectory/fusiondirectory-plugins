@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,71 +19,47 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class inventoryManagement extends simpleManagement
+class inventoryManagement extends management
 {
-  protected $departmentBrowser      = FALSE;
-  protected $departmentRootVisible  = FALSE;
-  protected $baseMode               = FALSE;
-  protected $skipCpHandler          = TRUE;
-  protected $autoActions            = FALSE;
-  protected $autoFilterAttributes   = ['dn', 'cn', 'macAddress'];
+  protected $skipCpHandler      = TRUE;
+  public static $skipSnapshots  = TRUE;
 
-  protected $objectTypes = ['inventory'];
+  /* Default columns */
+  public static $columns = [
+    ['ObjectTypeColumn',               []],
+    ['LinkColumn',                     ['attributes' => 'cn',             'label' => 'IP']],
+    ['LinkColumn',                     ['attributes' => 'macAddress',     'label' => 'Macs']],
+    ['InventoryOperatingSystemColumn', ['label' => 'Operating Systems']],
+    ['ActionsColumn',                  ['label' => 'Actions']],
+  ];
 
-  public static $skipSnapshots = TRUE;
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Inventory objects'),
+      'plTitle'       => _('Inventory objects'),
       'plDescription' => _('Browse inventory objects'),
       'plIcon'        => 'geticon.php?context=applications&icon=fusioninventory&size=48',
       'plSection'     => 'reporting',
       'plPriority'    => 5,
       'plManages'     => ['inventory'],
-
-      'plProvidedAcls' => []
     ];
   }
 
-  function __construct ()
+  protected function setUpListing ()
   {
-    $this->listXMLPath  = get_template_path('inventory-list.xml', TRUE, dirname(__FILE__));
-    parent::__construct();
+    /* Disable base mode */
+    $this->listing  = new managementListing($this, FALSE);
   }
 
-  function configureHeadpage ()
+  protected function configureActions ()
   {
-    parent::configureHeadpage();
-    $this->headpage->registerElementFilter('filterOS', 'inventoryManagement::filterOS');
-  }
+    parent::configureActions();
 
-  static function filterOS ()
-  {
-    $pid    = func_get_arg(0);
-    $row    = func_get_arg(1);
-    $dn     = func_get_arg(2);
-    $trans  = [];
-
-    global $config;
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($dn);
-    $ldap->search('(objectClass=fdInventoryOPERATINGSYSTEM)', ['fdInventoryNAME','fdInventoryFQDN'], 'one');
-    while ($attrs = $ldap->fetch()) {
-      $link = $attrs['fdInventoryNAME'][0];
-      if (isset($attrs['fdInventoryFQDN'][0])) {
-        $link .= ' ('.$attrs['fdInventoryFQDN'][0].')';
-      }
-      $trans[] = $link;
+    /* Remove create menu */
+    foreach ($this->actions['new']->listActions() as $actionName) {
+      unset($this->actionHandlers[$actionName]);
     }
-
-    $trans  = join("<br/>\n", $trans);
-
-    if ($trans != "") {
-      return '<a href="?plug='.$_GET['plug'].'&amp;PID='.$pid.'&amp;act=listing_edit_'.$row.'" title="'.$dn.'">'.$trans.'</a>';
-    }
-
-    return '';
+    unset($this->actions['new']);
   }
 }
-?>

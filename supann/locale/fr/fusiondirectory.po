@@ -4,294 +4,340 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2018
-# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019
+# MCMic, 2020
+# fusiondirectory <contact@fusiondirectory.org>, 2021
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021
+# Thibault Paul M Dockx, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2022-07-28 17:06+0000\n"
-"PO-Revision-Date: 2016-08-29 15:22+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
-"Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"PO-Revision-Date: 2018-08-13 20:04+0000\n"
+"Last-Translator: Thibault Paul M Dockx, 2023\n"
+"Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/supannStructures/class_etablissement.inc:32
-#: personal/supann/class_supannAccount.inc:335
-#: personal/supann/class_supannAccount.inc:374
-msgid "Establishment"
-msgstr "Établissement"
-
-#: admin/supannStructures/class_etablissement.inc:33
-msgid "SupAnn Establishment Settings"
-msgstr "Paramètres de l'établissement SupAnn"
-
-#: admin/supannStructures/class_etablissement.inc:35
-msgid "SupAnn Establishment"
-msgstr "Établissement SupAnn"
-
-#: admin/supannStructures/class_etablissement.inc:52
-msgid "Properties"
-msgstr "Propriétés"
-
-#: admin/supannStructures/class_etablissement.inc:55
-msgid "Root establishment"
-msgstr "Établissement racine"
-
-#: admin/supannStructures/class_etablissement.inc:55
-msgid "Set this establishment as the root one"
-msgstr "Définit cette établissement comme établissement racine"
-
-#: admin/supannStructures/class_etablissement.inc:59
-#: admin/supannStructures/class_entite.inc:55
-msgid "Name"
-msgstr "Nom"
-
-#: admin/supannStructures/class_etablissement.inc:59
-msgid "The name to write in the o attribute for this establishment"
-msgstr "Nom à écrire dans l'attribut 'o' pour cet établissement"
-
-#: admin/supannStructures/class_etablissement.inc:63
-#: admin/supannStructures/class_entite.inc:59
-msgid "Description"
-msgstr "Description"
-
-#: admin/supannStructures/class_etablissement.inc:63
-msgid "A short description of this establishment"
-msgstr "Courte description de cette établissement"
-
-#: admin/supannStructures/class_etablissement.inc:69
-#: admin/supannStructures/class_etablissement.inc:72
-msgid "Location"
-msgstr "Lieu"
-
-#: admin/supannStructures/class_etablissement.inc:72
-msgid "Usually the city where this establishment is"
-msgstr "Habituellement la ville où se situe l’établissement"
-
-#: admin/supannStructures/class_etablissement.inc:76
-msgid "Address"
-msgstr "Adresse"
-
-#: admin/supannStructures/class_etablissement.inc:76
-msgid "The postal address of this establishment"
-msgstr "L’adresse postale de l’établissement"
-
-#: admin/supannStructures/class_etablissement.inc:80
-#: admin/supannStructures/class_entite.inc:68
-msgid "Telephone"
-msgstr "Téléphone"
-
-#: admin/supannStructures/class_etablissement.inc:80
-msgid "Phone number of this establishment"
-msgstr "Le numéro de téléphone de l’établissement"
-
-#: admin/supannStructures/class_etablissement.inc:84
-#: admin/supannStructures/class_entite.inc:72
-msgid "Fax"
-msgstr "Fax"
-
-#: admin/supannStructures/class_etablissement.inc:84
-msgid "Fax number of this establishment"
-msgstr "Le numéro de fax de l’établissement"
-
-#: admin/supannStructures/class_etablissement.inc:90
-msgid "SupAnn properties"
-msgstr "Propriétés SupAnn"
-
-#: admin/supannStructures/class_etablissement.inc:93
-msgid "Establishment code"
-msgstr "Code établissement"
-
-#: admin/supannStructures/class_etablissement.inc:93
-msgid "The code of this establishment (must have a prefix between {})"
-msgstr "Le code de cet établissement (doit avoir un préfixe entre { })"
-
-#: admin/supannStructures/class_etablissement.inc:98
-msgid "Establishment type"
-msgstr "Type d'établissement"
-
-#: admin/supannStructures/class_etablissement.inc:98
-msgid "The SupAnn type that best fits this Establishment"
-msgstr "Le type SupAnn qui correspond le mieux à cet établissement"
-
-#: admin/supannStructures/class_etablissement.inc:102
-msgid "SupAnn code"
-msgstr "Code SupAnn"
-
-#: admin/supannStructures/class_etablissement.inc:102
-msgid "The SupAnn code for this establishment"
-msgstr "Le code SupAnn de cet établissement"
-
-#: admin/supannStructures/class_etablissement.inc:108
-#: admin/supannStructures/class_entite.inc:95
-msgid "Parent entities"
-msgstr " Entité parente "
-
-#: admin/supannStructures/class_etablissement.inc:108
-#: admin/supannStructures/class_entite.inc:95
-msgid "The parent entities of this entity"
-msgstr "Les entité parente de cette entité"
-
-#: admin/supannStructures/class_etablissement.inc:114
-#: admin/supannStructures/class_entite.inc:101
-msgid "Reference IDs"
-msgstr "Identifiants de référence"
-
-#: admin/supannStructures/class_etablissement.inc:114
-#: admin/supannStructures/class_entite.inc:101
-msgid "supannRefId - IDs/links for this entity on other systems"
-msgstr "supannRefId - IDs/liens pour cet entité sur d'autres systèmes"
-
-#: admin/supannStructures/class_etablissement.inc:122
-msgid "Legal name"
-msgstr "Nom officiel"
-
-#: admin/supannStructures/class_etablissement.inc:122
-msgid "The legal name of this establishment"
-msgstr "Le nom légal de cet établissement"
-
-#: admin/supannStructures/class_etablissement.inc:126
-msgid "Home page URI"
-msgstr "Site web officiel"
-
-#: admin/supannStructures/class_etablissement.inc:126
-msgid "The URI of this establishment website home page"
-msgstr "L’URI du site web de cet établissement"
-
-#: admin/supannStructures/class_etablissement.inc:130
-msgid "Institution URI"
-msgstr "Site web de l'institution"
-
-#: admin/supannStructures/class_etablissement.inc:130
-msgid "The URI of this establishment institution website"
-msgstr "L’URI du site web de l’institution de cet établissement"
-
-#: admin/supannStructures/class_etablissement.inc:134
-msgid "White pages URI"
-msgstr "Annuaire pages blanches"
-
-#: admin/supannStructures/class_etablissement.inc:134
-msgid "The URI of this establishment white pages"
-msgstr "L’URI des pages blanches de cet établissement"
-
-#: admin/supannStructures/class_etablissement.inc:186
-#: admin/supannStructures/class_etablissement.inc:259
-msgid "LDAP error"
-msgstr "Erreur LDAP"
-
-#: admin/supannStructures/class_supannStructuresManagement.inc:35
-msgid "SupAnn structures"
-msgstr "Structures SupAnn"
-
-#: admin/supannStructures/class_supannStructuresManagement.inc:36
-msgid "SupAnn structures management"
-msgstr "Gestion des structures SupAnn"
-
-#: admin/supannStructures/class_supann.inc:53
-msgid "File error"
-msgstr "Erreur de fichier"
-
-#: admin/supannStructures/class_supann.inc:54
-#, php-format
-msgid "Cannot read file: '%s'"
-msgstr "Impossible de lire le fichier : '%s'"
-
-#: admin/supannStructures/class_entite.inc:32
-#: admin/supannStructures/class_entite.inc:52
-#: personal/supann/class_supannAccount.inc:463
-msgid "Entity"
-msgstr "Entité"
-
-#: admin/supannStructures/class_entite.inc:33
-msgid "SupAnn Entity Settings"
-msgstr "Paramètres de l’entité SupAnn"
-
-#: admin/supannStructures/class_entite.inc:35
-msgid "SupAnn Entity"
-msgstr "Entité SupAnn"
-
-#: admin/supannStructures/class_entite.inc:55
-msgid "The name to write in the ou attribute for this entity"
-msgstr "Nom à écrire dans l'attribut 'ou' pour cette entité"
-
-#: admin/supannStructures/class_entite.inc:59
-msgid "Short description of this entity"
-msgstr "Courte description de cette entité"
-
-#: admin/supannStructures/class_entite.inc:65
-msgid "Administrative information"
-msgstr "Informations administratives"
-
-#: admin/supannStructures/class_entite.inc:68
-msgid "Phone number of this entity"
-msgstr "Numéro de téléphone pour cette entité"
-
-#: admin/supannStructures/class_entite.inc:72
-msgid "Fax number of this entity"
-msgstr "Numéro de fax pour cette entité"
-
-#: admin/supannStructures/class_entite.inc:76
-msgid "Postal address"
-msgstr "Adresse postale"
-
-#: admin/supannStructures/class_entite.inc:76
-msgid "Postal address of this entity"
-msgstr "Adresse postale de cette entité"
-
-#: admin/supannStructures/class_entite.inc:82
-msgid "SupAnn information"
-msgstr "Informations SupAnn"
-
-#: admin/supannStructures/class_entite.inc:85
-#: personal/supann/class_supannAccount.inc:459
-msgid "Entity type"
-msgstr "Type d’entité"
-
-#: admin/supannStructures/class_entite.inc:85
-msgid "The SupAnn type that best fits this entity"
-msgstr "Le type SupAnn qui correspond le mieux à cette entité"
-
-#: admin/supannStructures/class_entite.inc:89
-msgid "Entity code"
-msgstr "Code entité"
-
-#: admin/supannStructures/class_entite.inc:89
-msgid "The SupAnn code of this entity"
-msgstr "Le code SupAnn de cette entité"
-
-#: config/supann/class_supannConfig.inc:28
-msgid "SupAnn configuration"
-msgstr "Configuration SupAnn"
-
+#: admin/groups/supann/class_supannGroup.inc:28
 #: config/supann/class_supannConfig.inc:29
-msgid "FusionDirectory SupAnn plugin configuration"
-msgstr "Configuration du plugin SupAnn"
-
-#: config/supann/class_supannConfig.inc:41
-#: personal/supann/class_supannAccount.inc:224
+#: config/supann/class_supannConfig.inc:51
+#: personal/supann/class_supannAccount.inc:32
 msgid "SupAnn"
 msgstr "SupAnn"
 
-#: config/supann/class_supannConfig.inc:44
+#: admin/groups/supann/class_supannGroup.inc:29
+msgid "SupAnn group"
+msgstr "Groupe SupAnn"
+
+#: admin/groups/supann/class_supannGroup.inc:41
+msgid "Information"
+msgstr "Informations"
+
+#: admin/groups/supann/class_supannGroup.inc:44
+#: personal/supann/class_supannCMS.inc:108
+#: personal/supann/class_supannCMS.inc:118
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:69
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:62
+#: personal/supann/class_supannAccountStatus.inc:87
+msgid "End date"
+msgstr "Date de fin"
+
+#: admin/groups/supann/class_supannGroup.inc:44
+msgid "Date at which the validity of this group ends"
+msgstr "Date à laquelle la validité de ce groupe prend fin"
+
+#: admin/groups/supann/class_supannGroup.inc:49
+msgid "Readers"
+msgstr "Lecteurs"
+
+#: admin/groups/supann/class_supannGroup.inc:49
+msgid "Users or groups allowed to read the member list of this group"
+msgstr ""
+"Utilisateurs ou groupes autorisés à lire la liste des membres de ce groupe"
+
+#: admin/groups/supann/class_supannGroup.inc:53
+msgid "Admins"
+msgstr "Administrateurs"
+
+#: admin/groups/supann/class_supannGroup.inc:53
+msgid "Users or groups allowed to edit this group"
+msgstr "Utilisateurs ou groupes autorisés à éditer ce groupe"
+
+#: admin/groups/supann/class_supannGroup.inc:58
+#: personal/supann/class_supannAccount.inc:72
+msgid "Ref ids"
+msgstr "Ids de références"
+
+#: admin/groups/supann/class_supannGroup.inc:58
+#: personal/supann/class_supannAccount.inc:72
+msgid "supannRefId - IDs/links for this user on other systems"
+msgstr "supannRefId - ID / liens pour cet utilisateur sur d'autres systèmes"
+
+#: admin/supannStructures/class_etablissement.inc:33
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:32
+#: personal/supann/class_supannAccount.inc:208
+#: personal/supann/class_supannAccount.inc:408
+msgid "Establishment"
+msgstr "Établissement"
+
+#: admin/supannStructures/class_etablissement.inc:34
+msgid "SupAnn Establishment Settings"
+msgstr "Paramètres de l'établissement SupAnn"
+
+#: admin/supannStructures/class_etablissement.inc:38
+msgid "SupAnn Establishment"
+msgstr "Établissement SupAnn"
+
+#: admin/supannStructures/class_etablissement.inc:55
+msgid "Properties"
+msgstr "Propriétés"
+
+#: admin/supannStructures/class_etablissement.inc:58
+msgid "Root establishment"
+msgstr "Établissement racine"
+
+#: admin/supannStructures/class_etablissement.inc:58
+msgid "Set this establishment as the root one"
+msgstr "Définir cet établissement comme établissement racine"
+
+#: admin/supannStructures/class_etablissement.inc:62
+#: admin/supannStructures/class_entite.inc:51
+msgid "Name"
+msgstr "Nom"
+
+#: admin/supannStructures/class_etablissement.inc:62
+msgid "The name to write in the o attribute for this establishment"
+msgstr "Le nom à écrire dans l'attribut 'o' pour cet établissement"
+
+#: admin/supannStructures/class_etablissement.inc:66
+#: admin/supannStructures/class_entite.inc:55
+msgid "Description"
+msgstr "Description"
+
+#: admin/supannStructures/class_etablissement.inc:66
+msgid "A short description of this establishment"
+msgstr "Une courte description de cet établissement"
+
+#: admin/supannStructures/class_etablissement.inc:72
+#: admin/supannStructures/class_etablissement.inc:83
+msgid "Location"
+msgstr "Lieu"
+
+#: admin/supannStructures/class_etablissement.inc:75
+#: admin/supannStructures/class_entite.inc:64
+msgid "Telephone"
+msgstr "Téléphone"
+
+#: admin/supannStructures/class_etablissement.inc:75
+msgid "Phone number of this establishment"
+msgstr "Le numéro de téléphone de cet établissement"
+
+#: admin/supannStructures/class_etablissement.inc:79
+#: admin/supannStructures/class_entite.inc:68
+msgid "Fax"
+msgstr "Fax"
+
+#: admin/supannStructures/class_etablissement.inc:79
+msgid "Fax number of this establishment"
+msgstr "Le numéro de fax de cet établissement"
+
+#: admin/supannStructures/class_etablissement.inc:83
+msgid "Usually the city where this establishment is"
+msgstr "Habituellement la ville où se situe l’établissement"
+
+#: admin/supannStructures/class_etablissement.inc:87
+#: personal/supann/class_supannAccount.inc:152
+msgid "Address"
+msgstr "Adresse"
+
+#: admin/supannStructures/class_etablissement.inc:87
+msgid "The postal address of this establishment"
+msgstr "L’adresse postale de cet établissement"
+
+#: admin/supannStructures/class_etablissement.inc:93
+msgid "SupAnn properties"
+msgstr "Propriétés SupAnn"
+
+#: admin/supannStructures/class_etablissement.inc:97
+msgid "Establishment code"
+msgstr "Code établissement"
+
+#: admin/supannStructures/class_etablissement.inc:97
+msgid "The code of this establishment (must have a prefix between {})"
+msgstr "Le code de cet établissement (doit avoir un préfixe entre { })"
+
+#: admin/supannStructures/class_etablissement.inc:103
+msgid "Establishment type"
+msgstr "Type d'établissement"
+
+#: admin/supannStructures/class_etablissement.inc:103
+msgid "The SupAnn type that best fits this Establishment"
+msgstr "Le type SupAnn qui correspond le mieux à cet établissement"
+
+#: admin/supannStructures/class_etablissement.inc:107
+msgid "SupAnn code"
+msgstr "Code SupAnn"
+
+#: admin/supannStructures/class_etablissement.inc:107
+msgid "The SupAnn code for this establishment"
+msgstr "Le code SupAnn de cet établissement"
+
+#: admin/supannStructures/class_etablissement.inc:113
+#: admin/supannStructures/class_entite.inc:91
+msgid "Parent entities"
+msgstr "Entités parentes"
+
+#: admin/supannStructures/class_etablissement.inc:113
+#: admin/supannStructures/class_entite.inc:91
+msgid "The parent entities of this entity"
+msgstr "Les entités parentes de cette entité"
+
+#: admin/supannStructures/class_etablissement.inc:119
+#: admin/supannStructures/class_entite.inc:97
+msgid "Reference IDs"
+msgstr "Ids de référence"
+
+#: admin/supannStructures/class_etablissement.inc:119
+#: admin/supannStructures/class_entite.inc:97
+msgid "supannRefId - IDs/links for this entity on other systems"
+msgstr "supannRefId - ID / liens pour cette entité sur d'autres systèmes"
+
+#: admin/supannStructures/class_etablissement.inc:127
+msgid "Legal name"
+msgstr "Nom officiel"
+
+#: admin/supannStructures/class_etablissement.inc:127
+msgid "The legal name of this establishment"
+msgstr "Le nom officiel de cet établissement"
+
+#: admin/supannStructures/class_etablissement.inc:131
+msgid "Home page URI"
+msgstr "Site web officiel"
+
+#: admin/supannStructures/class_etablissement.inc:131
+msgid "The URI of this establishment website home page"
+msgstr "L’URI du site web de cet établissement"
+
+#: admin/supannStructures/class_etablissement.inc:135
+msgid "Institution URI"
+msgstr "Site web de l'institution"
+
+#: admin/supannStructures/class_etablissement.inc:135
+msgid "The URI of this establishment institution website"
+msgstr "L’URI du site web de l’institution de cet établissement"
+
+#: admin/supannStructures/class_etablissement.inc:139
+msgid "White pages URI"
+msgstr "Annuaire pages blanches"
+
+#: admin/supannStructures/class_etablissement.inc:139
+msgid "The URI of this establishment white pages"
+msgstr "L’URI des pages blanches de cet établissement"
+
+#: admin/supannStructures/class_supannStructuresManagement.inc:38
+msgid "SupAnn structures"
+msgstr "Structures SupAnn"
+
+#: admin/supannStructures/class_supannStructuresManagement.inc:39
+msgid "SupAnn structures management"
+msgstr "Gestion des structures SupAnn"
+
+#: admin/supannStructures/class_supann.inc:54
+#, php-format
+msgid "Cannot read file: \"%s\""
+msgstr "Impossible de lire le fichier : \"%s\""
+
+#: admin/supannStructures/class_entite.inc:27
+#: admin/supannStructures/class_entite.inc:48
+#: personal/supann/class_supannAccount.inc:298
+#: personal/supann/class_supannAccount.inc:414
+msgid "Entity"
+msgstr "Entité"
+
+#: admin/supannStructures/class_entite.inc:28
+msgid "SupAnn Entity Settings"
+msgstr "Paramètres de l’entité SupAnn"
+
+#: admin/supannStructures/class_entite.inc:31
+msgid "SupAnn Entity"
+msgstr "Entité SupAnn"
+
+#: admin/supannStructures/class_entite.inc:51
+msgid "The name to write in the ou attribute for this entity"
+msgstr "Le nom à écrire dans l'attribut 'ou' pour cette entité"
+
+#: admin/supannStructures/class_entite.inc:55
+msgid "Short description of this entity"
+msgstr "Une courte description de cette entité"
+
+#: admin/supannStructures/class_entite.inc:61
+msgid "Administrative information"
+msgstr "Informations administratives"
+
+#: admin/supannStructures/class_entite.inc:64
+msgid "Phone number of this entity"
+msgstr "Le numéro de téléphone de l’entité"
+
+#: admin/supannStructures/class_entite.inc:68
+msgid "Fax number of this entity"
+msgstr "Le numéro de fax de l’entité"
+
+#: admin/supannStructures/class_entite.inc:72
+msgid "Postal address"
+msgstr "Adresse postale"
+
+#: admin/supannStructures/class_entite.inc:72
+msgid "Postal address of this entity"
+msgstr "L’adresse postale de l’entité"
+
+#: admin/supannStructures/class_entite.inc:78
+msgid "SupAnn information"
+msgstr "Informations SupAnn"
+
+#: admin/supannStructures/class_entite.inc:81
+#: personal/supann/class_supannAccount.inc:294
+msgid "Entity type"
+msgstr "Type d’entité"
+
+#: admin/supannStructures/class_entite.inc:81
+msgid "The SupAnn type that best fits this entity"
+msgstr "Le type SupAnn qui correspond le mieux à cette entité"
+
+#: admin/supannStructures/class_entite.inc:85
+msgid "Entity code"
+msgstr "Code entité"
+
+#: admin/supannStructures/class_entite.inc:85
+msgid "The SupAnn code of this entity"
+msgstr "Le code SupAnn de cette entité"
+
+#: config/supann/class_supannConfig.inc:30
+msgid "SupAnn configuration"
+msgstr "Configuration SupAnn"
+
+#: config/supann/class_supannConfig.inc:31
+msgid "FusionDirectory SupAnn plugin configuration"
+msgstr "Configuration du plugin SupAnn "
+
+#: config/supann/class_supannConfig.inc:55
 msgid "SupAnn RDN"
 msgstr "Branche SupAnn"
 
-#: config/supann/class_supannConfig.inc:44
+#: config/supann/class_supannConfig.inc:55
 msgid "Branch in which SupAnn structures will be stored"
-msgstr "Branche où seront stockés les structures SupAnn"
+msgstr "Branche où seront stockées les structures SupAnn"
 
-#: config/supann/class_supannConfig.inc:49
+#: config/supann/class_supannConfig.inc:60
 msgid "SupAnn mail for recovery"
-msgstr "Attribut mail SupAnn utilise pour récupérer son mot de passe"
+msgstr "Récupération du mot de passe par supannMailPerso"
 
-#: config/supann/class_supannConfig.inc:49
+#: config/supann/class_supannConfig.inc:60
 msgid ""
 "Allow the use of mail addresses from the personal mail address field from "
 "SupAnn account for password recovery"
@@ -299,347 +345,527 @@ msgstr ""
 "Autoriser les utilisateurs à utiliser leur adresse de courriel SupAnn "
 "personnelle pour la récupération de leur mot de passe"
 
-#: personal/supann/class_supannAccount.inc:36
-#: personal/supann/class_supannAccount.inc:119
-msgid "None"
-msgstr "Aucun"
+#: config/supann/class_supannConfig.inc:65
+msgid "Show mailForwardingAddress field"
+msgstr "Afficher le champ Adresse de réacheminement du courrier"
 
-#: personal/supann/class_supannAccount.inc:116
+#: config/supann/class_supannConfig.inc:65
+msgid "Show the field mailForwardingAddress as an editable field"
+msgstr "Afficher le champ mailForwardingAddress en tant que champ modifiable"
+
+#: config/supann/class_supannConfig.inc:71
+#: config/supann/class_supannConfig.inc:93
+#: config/supann/class_supannConfig.inc:115
+msgid "Custom types and their labels"
+msgstr "Types personnalisés et leurs étiquettes"
+
+#: config/supann/class_supannConfig.inc:75
+#: config/supann/class_supannConfig.inc:97
+#: config/supann/class_supannConfig.inc:119
+#: config/supann/class_supannConfig.inc:220
+#: config/supann/class_supannConfig.inc:351
+#: personal/supann/class_supannCMS.inc:103
+#: personal/supann/class_supannCMS.inc:113
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:44
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:37
+msgid "Type"
+msgstr "Type"
+
+#: config/supann/class_supannConfig.inc:75
+msgid "String that will be stored between {} in supannMailPrive"
+msgstr "Chaîne qui sera stockée entre {} dans supannMailPrive"
+
+#: config/supann/class_supannConfig.inc:79
+#: config/supann/class_supannConfig.inc:101
+#: config/supann/class_supannConfig.inc:123
+#: config/supann/class_supannConfig.inc:151
+#: config/supann/class_supannConfig.inc:196
+#: config/supann/class_supannConfig.inc:224
+#: config/supann/class_supannConfig.inc:271
+#: config/supann/class_supannConfig.inc:328
+#: config/supann/class_supannConfig.inc:355
+msgid "Label"
+msgstr "Étiquette"
+
+#: config/supann/class_supannConfig.inc:79
+#: config/supann/class_supannConfig.inc:101
+#: config/supann/class_supannConfig.inc:123
+#: config/supann/class_supannConfig.inc:224
+#: config/supann/class_supannConfig.inc:355
+msgid "Label shown for this type"
+msgstr "Étiquette affichée pour ce type"
+
+#: config/supann/class_supannConfig.inc:85
+msgid "Custom supannMailPrive types"
+msgstr "Types personnalisés de supannMailPrive"
+
+#: config/supann/class_supannConfig.inc:97
+msgid "String that will be stored between {} in supannTelephonePrive"
+msgstr "Chaîne qui sera stockée entre {} dans supannTelephonePrive"
+
+#: config/supann/class_supannConfig.inc:107
+msgid "Custom supannTelephonePrive types"
+msgstr "Types personnalisés de supannTelephonePrive"
+
+#: config/supann/class_supannConfig.inc:119
+msgid "String that will be stored between {} in supannAdressePostalePrivee"
+msgstr "Chaîne qui sera stockée entre {} dans supannAdressePostalePrivee"
+
+#: config/supann/class_supannConfig.inc:129
+msgid "Custom supannAdressePostalePrivee types"
+msgstr "Types personnalisés supannAdressePostalePrivee"
+
+#: config/supann/class_supannConfig.inc:138
+#: config/supann/class_supannConfig.inc:169
+#: personal/supann/class_supannAccountStatus.inc:55
+#: personal/supann/class_supannAccountStatus.inc:70
+#: personal/supann/class_supannAccountStatus.inc:130
+msgid "Status"
+msgstr "État"
+
+#: config/supann/class_supannConfig.inc:143
+msgid "Custom resources and their labels"
+msgstr "Ressources personnalisées et leurs étiquettes"
+
+#: config/supann/class_supannConfig.inc:147
+#: personal/supann/class_supannAccountStatus.inc:64
+#: personal/supann/class_supannAccountStatus.inc:129
+msgid "Resource"
+msgstr "Ressource"
+
+#: config/supann/class_supannConfig.inc:147
+msgid "String that will be stored between {} in supannRessourceEtatDate"
+msgstr "Chaîne qui sera stockée entre {} dans supannRessourceEtatDate"
+
+#: config/supann/class_supannConfig.inc:151
+msgid "Label shown for this resource"
+msgstr "Étiquette affichée pour cette ressource"
+
+#: config/supann/class_supannConfig.inc:157
+msgid "Custom resources"
+msgstr "Ressources personnalisées"
+
+#: config/supann/class_supannConfig.inc:165
+msgid "Allowed substates for an account"
+msgstr "Sous-états autorisés pour un compte"
+
+#: config/supann/class_supannConfig.inc:169
+msgid "Active status this substatus is tied to"
+msgstr "État actif auquel ce sous-état est lié"
+
+#: config/supann/class_supannConfig.inc:172
+#: personal/supann/class_supannAccountStatus.inc:73
+#: personal/supann/class_supannAccountStatus.inc:251
+msgid "Active"
+msgstr "Actif"
+
+#: config/supann/class_supannConfig.inc:172
+#: personal/supann/class_supannAccountStatus.inc:73
+#: personal/supann/class_supannAccountStatus.inc:258
+msgid "Inactive"
+msgstr "Inactif"
+
+#: config/supann/class_supannConfig.inc:172
+#: personal/supann/class_supannAccountStatus.inc:73
+msgid "Suspended"
+msgstr "Suspendu"
+
+#: config/supann/class_supannConfig.inc:175
+#: config/supann/class_supannConfig.inc:192
+#: personal/supann/class_supannAccountStatus.inc:76
+#: personal/supann/class_supannAccountStatus.inc:131
+msgid "Substatus"
+msgstr "Sous-état"
+
+#: config/supann/class_supannConfig.inc:175
+#: config/supann/class_supannConfig.inc:192
+msgid "LDAP value for this substatus"
+msgstr "Valeur LDAP pour ce sous-état"
+
+#: config/supann/class_supannConfig.inc:181
+msgid "Substates"
+msgstr "Sous-états"
+
+#: config/supann/class_supannConfig.inc:188
+msgid "Labels for custom substates"
+msgstr "Étiquettes pour les sous-états personnalisés"
+
+#: config/supann/class_supannConfig.inc:196
+msgid "Label shown for this substatus"
+msgstr "Étiquette affichée pour ce sous-état"
+
+#: config/supann/class_supannConfig.inc:202
+msgid "Custom labels"
+msgstr "Étiquettes personnalisées"
+
+#: config/supann/class_supannConfig.inc:211
+#: config/supann/class_supannConfig.inc:387
+#: personal/supann/class_supannCMS.inc:33
+msgid "Multiservice card"
+msgstr "Carte multi service"
+
+#: config/supann/class_supannConfig.inc:216
+msgid ""
+"Card types and their labels. Please prefix with {ORIGIN} for non standard "
+"types."
+msgstr ""
+"Types de cartes et leurs étiquettes. Veuillez préfixer avec {ORIGIN} pour "
+"les types non standard."
+
+#: config/supann/class_supannConfig.inc:220
+msgid "Card type"
+msgstr "Type de carte"
+
+#: config/supann/class_supannConfig.inc:230
+msgid "Card types"
+msgstr "Types de cartes"
+
+#: config/supann/class_supannConfig.inc:247
+msgid "Card sources"
+msgstr "Source des cartes"
+
+#: config/supann/class_supannConfig.inc:247
+msgid "Multi service card possible sources, with format system@domain"
+msgstr ""
+"Sources possibles pour les cartes multi-services au format système@domaine"
+
+#: config/supann/class_supannConfig.inc:255
+msgid "Allowed formats for multiservice cards"
+msgstr "Formats autorisés pour les cartes multi services"
+
+#: config/supann/class_supannConfig.inc:259
+msgid "Technology"
+msgstr "Technologie"
+
+#: config/supann/class_supannConfig.inc:259
+msgid "Technology name in uppercase"
+msgstr "Nom de la technologie en majuscule"
+
+#: config/supann/class_supannConfig.inc:265
+msgid "Encoding"
+msgstr "Encodage"
+
+#: config/supann/class_supannConfig.inc:265
+msgid "Encoding name in uppercase"
+msgstr "Nom d'encodage en majuscules"
+
+#: config/supann/class_supannConfig.inc:271
+msgid "Format label"
+msgstr "Étiquette de format"
+
+#: config/supann/class_supannConfig.inc:280
+msgid "Card formats"
+msgstr "Formats de carte"
+
+#: config/supann/class_supannConfig.inc:288
+msgid "Domains for card applications"
+msgstr "Domaines d'application de la carte"
+
+#: config/supann/class_supannConfig.inc:292
+msgid "Option"
+msgstr "Option"
+
+#: config/supann/class_supannConfig.inc:292
+msgid "Attribute option to use, starting with x-"
+msgstr "Option d'attribut à utiliser, en commençant par x-"
+
+#: config/supann/class_supannConfig.inc:298
+#: personal/supann/class_supannCMS.inc:115
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:47
+msgid "Domain"
+msgstr "Domaine"
+
+#: config/supann/class_supannConfig.inc:298
+msgid "Domain to use"
+msgstr "Domaine à utiliser"
+
+#: config/supann/class_supannConfig.inc:306
+msgid "Card application domains"
+msgstr "Domaines d'application de la carte"
+
+#: config/supann/class_supannConfig.inc:315
+#: personal/supann/class_supannAccount.inc:315
+#: personal/supann/class_supannAccount.inc:329
+msgid "Consent"
+msgstr "Consentement"
+
+#: config/supann/class_supannConfig.inc:320
+msgid "Objects which may be used as tag in supannConsentement"
+msgstr "Objets qui peuvent être utilisés comme balise dans supannConsentement"
+
+#: config/supann/class_supannConfig.inc:324
+msgid "Object"
+msgstr "Objet"
+
+#: config/supann/class_supannConfig.inc:324
+msgid "Consent object"
+msgstr "Objet de consentement"
+
+#: config/supann/class_supannConfig.inc:328
+msgid "Label shown for this object"
+msgstr "Libellé affiché pour cet objet"
+
+#: config/supann/class_supannConfig.inc:334
+msgid "Consent objects"
+msgstr "Objets de consentement"
+
+#: config/supann/class_supannConfig.inc:347
+msgid "Types which may be used as value in supannConsentement"
+msgstr "Types qui peuvent être utilisés comme valeur dans supannConsentement"
+
+#: config/supann/class_supannConfig.inc:351
+msgid "Consent type"
+msgstr "Type de consentement"
+
+#: config/supann/class_supannConfig.inc:361
+msgid "Consent types"
+msgstr "Types de consentement"
+
+#: config/supann/class_supannConfig.inc:379
+msgid "Features"
+msgstr "Caractéristiques"
+
+#: config/supann/class_supannConfig.inc:382
+#: personal/supann/class_supannAccountStatus.inc:35
+msgid "SupAnn status"
+msgstr "État SupAnn"
+
+#: config/supann/class_supannConfig.inc:382
+msgid "Show SupAnn status tab"
+msgstr "Afficher l'onglet Statut de SupAnn"
+
+#: config/supann/class_supannConfig.inc:387
+msgid "Show Multiservice card tab"
+msgstr "Afficher l'onglet Carte multiservice"
+
+#: config/supann/class_supannConfig.inc:392
+#: personal/supann/class_supannFC.inc:33
+msgid "France Connect"
+msgstr "France Connect"
+
+#: config/supann/class_supannConfig.inc:392
+msgid "Show France Connect tab"
+msgstr "Afficher l'onglet France Connect"
+
+#: personal/supann/class_supannFC.inc:34
+msgid "France Connect identity"
+msgstr "Identité France Connect"
+
+#: personal/supann/class_supannFC.inc:50
+msgid "Civil status"
+msgstr "Etat civil"
+
+#: personal/supann/class_supannFC.inc:53
+msgid "Birth name"
+msgstr "Nom de naissance"
+
+#: personal/supann/class_supannFC.inc:53
+msgid "Last name from birth"
+msgstr "Nom de naissance"
+
+#: personal/supann/class_supannFC.inc:57
+msgid "First names"
+msgstr "Prénoms"
+
+#: personal/supann/class_supannFC.inc:57
+msgid "Space separated first names"
+msgstr "Prénoms séparés par un espace"
+
+#: personal/supann/class_supannFC.inc:61
+msgid "Date of birth"
+msgstr "Date de naissance"
+
+#: personal/supann/class_supannFC.inc:68
+msgid "Gender"
+msgstr "Genre"
+
+#: personal/supann/class_supannFC.inc:70
+msgid "Other"
+msgstr "Autre"
+
+#: personal/supann/class_supannFC.inc:70
+msgid "Female"
+msgstr "Féminin"
+
+#: personal/supann/class_supannFC.inc:70
+msgid "Male"
+msgstr "mâle"
+
+#: personal/supann/class_supannFC.inc:73
+msgid "Country of birth"
+msgstr "pays de naissance"
+
+#: personal/supann/class_supannFC.inc:73
+msgid "INSEE code of country of birth"
+msgstr "Code INSEE du pays de naissance"
+
+#: personal/supann/class_supannFC.inc:81
+msgid "City of birth"
+msgstr "Ville de naissance"
+
+#: personal/supann/class_supannFC.inc:81
+msgid "INSEE code of city of birth, if in France"
+msgstr "Code INSEE de la ville de naissance, si en France"
+
+#: personal/supann/class_supannFC.inc:91
+msgid "OpenID Connect"
+msgstr "OpenID Connect"
+
+#: personal/supann/class_supannFC.inc:95
+msgid "Subject"
+msgstr "Sujet"
+
+#: personal/supann/class_supannFC.inc:95
+msgid "Subject from OpenID Connect standard in the France Connect system"
+msgstr "Objet de la norme OpenID Connect dans le système France Connect"
+
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:36
 msgid "Licence"
 msgstr "Licence"
 
-#: personal/supann/class_supannAccount.inc:116
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:36
 msgid "Master"
 msgstr "Master"
 
-#: personal/supann/class_supannAccount.inc:116
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:36
 msgid "Ph.D."
 msgstr "Doctorat"
 
-#: personal/supann/class_supannAccount.inc:116
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:36
 msgid "Another class of degree"
 msgstr "Autre type de diplôme"
 
-#: personal/supann/class_supannAccount.inc:116
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:36
 msgid "Post-graduate year"
-msgstr "Année post diplôme"
+msgstr "Année post-diplôme"
 
-#: personal/supann/class_supannAccount.inc:119
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:39
 msgid "1st year"
 msgstr "1ère année"
 
-#: personal/supann/class_supannAccount.inc:119
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:39
 msgid "2nd year"
 msgstr "2ème année"
 
-#: personal/supann/class_supannAccount.inc:119
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:39
 msgid "3rd year"
 msgstr "3ème année"
 
-#: personal/supann/class_supannAccount.inc:120
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:40
 msgid "4th year"
 msgstr "4ème année"
 
-#: personal/supann/class_supannAccount.inc:120
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:40
 msgid "5th year"
 msgstr "5ème année"
 
-#: personal/supann/class_supannAccount.inc:120
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:40
 msgid "6th year"
 msgstr "6ème année"
 
-#: personal/supann/class_supannAccount.inc:121
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:41
 msgid "7th year"
 msgstr "7ème année"
 
-#: personal/supann/class_supannAccount.inc:121
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:41
 msgid "8th year"
 msgstr "8ème année"
 
-#: personal/supann/class_supannAccount.inc:121
+#: personal/supann/class_SupannCursusAnneeAttribute.inc:41
 msgid "9th year"
 msgstr "9ème année"
 
-#: personal/supann/class_supannAccount.inc:225
-msgid "SupAnn information management plugin"
-msgstr "Plugin de gestion des informations SupAnn"
-
-#: personal/supann/class_supannAccount.inc:242
-msgid "Identity"
-msgstr "Identité"
-
-#: personal/supann/class_supannAccount.inc:245
-msgid "Civilite"
-msgstr "Civilité"
-
-#: personal/supann/class_supannAccount.inc:245
-msgid "supannCivilite - Civility for this person"
-msgstr "Civilité pour cette personne"
-
-#: personal/supann/class_supannAccount.inc:250
-msgid "Alias login"
-msgstr "Alias de l'identifiant"
-
-#: personal/supann/class_supannAccount.inc:250
-msgid "supannAliasLogin - An alias for the login of this user"
-msgstr "supannAliasLogin - Alias de l'identifiant de connexion"
-
-#: personal/supann/class_supannAccount.inc:254
-msgid "eduPersonPrincipalName"
-msgstr "Nom principal eduPerson"
-
-#: personal/supann/class_supannAccount.inc:254
-msgid ""
-"eduPersonPrincipalName - A name that looks like <id>@<domain> which is "
-"unique for this domain, and has not be assigned to anyone else recently"
-msgstr ""
-"eduPersonPrincipalName - identifiant similaire à <id>@<domain>qui est unique"
-" pour le domaine  et qui n'a jamais été attribué récemment "
-
-#: personal/supann/class_supannAccount.inc:258
-msgid "Nickname"
-msgstr "Surnom"
-
-#: personal/supann/class_supannAccount.inc:258
-msgid "eduPersonNickname - Can contain a nickname for this user"
-msgstr "eduPersonNickName - peut contenir un surnom pour cet utilisateur"
-
-#: personal/supann/class_supannAccount.inc:263
-msgid "Ref ids"
-msgstr "Ids de références"
-
-#: personal/supann/class_supannAccount.inc:263
-msgid "supannRefId - IDs/links for this user on other systems"
-msgstr "supannRefId - ID / liens pour cet utilisateur sur d'autres systèmes"
-
-#: personal/supann/class_supannAccount.inc:273
-msgid "Contact"
-msgstr "Contact"
-
-#: personal/supann/class_supannAccount.inc:277
-msgid "Other phone numbers"
-msgstr "Autre numéros de téléphone"
-
-#: personal/supann/class_supannAccount.inc:277
-msgid "supannAutreTelephone - Other phone numbers for this user"
-msgstr ""
-"supannAutreTelephone - Autres numéros de téléphone pour cet utilisateur"
-
-#: personal/supann/class_supannAccount.inc:283
-msgid "Other mail addresses"
-msgstr "Autres adresses courriel"
-
-#: personal/supann/class_supannAccount.inc:283
-msgid ""
-"supannAutreMail - Other mail addresses for this user. Each must be unique"
-msgstr ""
-"supannAutreMail - Autres adresses de courriel pour cet utilisateur. Chacune "
-"doit être unique"
-
-#: personal/supann/class_supannAccount.inc:289
-msgid "Personal mail addresses"
-msgstr "Adresse courriel personnelle"
-
-#: personal/supann/class_supannAccount.inc:289
-msgid "supannMailPerso - Personal mail addresses for this user"
-msgstr ""
-"supannMailPerso - Adresse de courriel personnelle pour cet utilisateur"
-
-#: personal/supann/class_supannAccount.inc:294
-msgid "Red list"
-msgstr "Liste rouge"
-
-#: personal/supann/class_supannAccount.inc:294
-msgid "supannListeRouge - Should this person be on the red list"
-msgstr ""
-"supannListeRouge - Cette personne ne doit pas apparaître dans les annuaires "
-"pages blanches"
-
-#: personal/supann/class_supannAccount.inc:300
-msgid "Assignment"
-msgstr "Affectation"
-
-#: personal/supann/class_supannAccount.inc:303
-msgid "Primary assignment"
-msgstr "Affectation principale"
-
-#: personal/supann/class_supannAccount.inc:303
-msgid "supannEntiteAffectationPrincipale - Main assignment of the person"
-msgstr ""
-"supannEntiteAffectationPrincipale - Affectation principale de la personne"
-
-#: personal/supann/class_supannAccount.inc:308
-msgid "Assignments"
-msgstr "Affectations"
-
-#: personal/supann/class_supannAccount.inc:308
-#: personal/supann/class_supannAccount.inc:463
-msgid ""
-"supannEntiteAffectation - Represents assignments of the person in an "
-"institution, a component, service, etc."
-msgstr ""
-"supannEntiteAffectation - représente les affectations de la personne dans "
-"une institution, d'un composant, le service, etc."
-
-#: personal/supann/class_supannAccount.inc:314
-msgid "Entity types"
-msgstr "Type d’entité"
-
-#: personal/supann/class_supannAccount.inc:314
-msgid ""
-"supannTypeEntiteAffectation - Types of the entities this person is assigned "
-"to"
-msgstr ""
-"supannTypeEntiteAffectation - Types d'entités auxquelles cette personne est "
-"assignée"
-
-#: personal/supann/class_supannAccount.inc:321
-msgid "Affiliation"
-msgstr "Affiliation"
-
-#: personal/supann/class_supannAccount.inc:324
-msgid "Primary affiliation"
-msgstr "Affiliation principale"
-
-#: personal/supann/class_supannAccount.inc:324
-msgid "eduPersonPrimaryAffiliation - Main status of the person"
-msgstr "eduPersonPrimaryAffiliation - Le statut principal de la personne"
-
-#: personal/supann/class_supannAccount.inc:329
-msgid "Affiliations"
-msgstr "Affiliations"
-
-#: personal/supann/class_supannAccount.inc:329
-msgid ""
-"eduPersonAffiliation - Status of the person: student, BIATOSS, teacher, "
-"contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc."
-msgstr ""
-"eduPersonAffiliation - statut de la personne : étudiant, BIATOSS, "
-"enseignant, sous contrat, retraité, personnel hébergé (CNRS, INSERM, etc.), "
-"un ancien étudiant, etc."
-
-#: personal/supann/class_supannAccount.inc:335
-msgid ""
-"supannEtablissement - Institution or unit of administrative attachment of "
-"the person"
-msgstr ""
-"supannEtablissement - institution ou unité de rattachement administratif de "
-"la personne"
-
-#: personal/supann/class_supannAccount.inc:342
-msgid "Student profile"
-msgstr "Profil étudiant"
-
-#: personal/supann/class_supannAccount.inc:345
-msgid "INE code"
-msgstr "Code INE"
-
-#: personal/supann/class_supannAccount.inc:345
-msgid "supannCodeINE - INE code of this student"
-msgstr "supannCodeINE - code INE de l'étudiant"
-
-#: personal/supann/class_supannAccount.inc:349
-msgid "Student ID"
-msgstr "Identifiant étudiant"
-
-#: personal/supann/class_supannAccount.inc:349
-msgid "supannEtuId - Scolarity id"
-msgstr "supannEtuId - identifiant scolaire"
-
-#: personal/supann/class_supannAccount.inc:355
-msgid "Student registrations"
-msgstr "Inscriptions de l'étudiant"
-
-#: personal/supann/class_supannAccount.inc:370
-msgid "supannEtuInscription - Registrations for this student"
-msgstr "supannEtuInscription - Inscriptions pour cet étudiant"
-
-#: personal/supann/class_supannAccount.inc:374
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:32
 msgid ""
 "supannEtablissement - Etablissement in which this registration was done"
 msgstr ""
 "supannEtablissement - Établissement dans lequel l'inscription a été faite"
 
-#: personal/supann/class_supannAccount.inc:378
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:36
+#: personal/supann/class_supannAccount.inc:409
 msgid "Year"
 msgstr "Année"
 
-#: personal/supann/class_supannAccount.inc:378
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:36
 msgid "supannEtuAnneeInscription - The year this registration will begin"
 msgstr "supannEtuAnneeInscription - Année d'inscription"
 
-#: personal/supann/class_supannAccount.inc:383
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:41
+#: personal/supann/class_supannAccount.inc:410
 msgid "Registration type"
 msgstr "Type d'inscription"
 
-#: personal/supann/class_supannAccount.inc:383
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:41
 msgid "supannEtuRegimeInscription - The type of this registration"
 msgstr "supannEtuRegimeInscription - Type d'inscription"
 
-#: personal/supann/class_supannAccount.inc:387
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:45
 msgid "Disciplinary Sector"
 msgstr "Secteur disciplinaire"
 
-#: personal/supann/class_supannAccount.inc:387
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:45
 msgid "supannEtuSecteurDisciplinaire - Disciplinary sector education diploma"
 msgstr ""
 "supannEtuSecteurDisciplinaire - Secteur disciplinaire de diplôme ou "
 "d'enseignement"
 
-#: personal/supann/class_supannAccount.inc:391
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:49
+#: personal/supann/class_supannAccount.inc:412
 msgid "Diploma type"
 msgstr "Type de diplôme"
 
-#: personal/supann/class_supannAccount.inc:391
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:49
 msgid "supannEtuTypeDiplome - Type of diploma"
 msgstr "supannEtuTypeDiplome - Type de diplôme"
 
-#: personal/supann/class_supannAccount.inc:395
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:53
 msgid "Curriculum year "
 msgstr "Année cursus"
 
-#: personal/supann/class_supannAccount.inc:395
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:53
 msgid ""
 "supannEtuCursusAnnee - Type of curriculum (L, M, D or X, ...) and the year "
 "in the diploma."
 msgstr ""
-"supannEtuCursusAnnee - précise le type de cursus (L, M, D ou X, etc.) ainsi "
+"supannEtuCursusAnnee - Précise le type de cursus (L, M, D ou X, etc.) ainsi "
 "que l'année dans le diplôme"
 
-#: personal/supann/class_supannAccount.inc:399
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:57
 msgid "Entity assignment"
-msgstr "Entités affectées"
+msgstr "Entité affectée"
 
-#: personal/supann/class_supannAccount.inc:399
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:57
 msgid "supannEntiteAffectation - To wich entities does this user belong to"
 msgstr ""
-"supannEntiteAffectation - A quelles entités cette utilisateur est assigné"
+"supannEntiteAffectation - À quelles entités appartient cet utilisateur"
 
-#: personal/supann/class_supannAccount.inc:403
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:61
+#: personal/supann/class_supannAccount.inc:415
 msgid "Diploma"
 msgstr "Diplôme"
 
-#: personal/supann/class_supannAccount.inc:403
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:61
 msgid "supannEtuDiplome - Diploma prepared by the student"
 msgstr "supannEtuDiplome - Diplôme préparé par l'étudiant"
 
-#: personal/supann/class_supannAccount.inc:407
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:65
+#: personal/supann/class_supannAccount.inc:416
 msgid "Step"
 msgstr "Étape"
 
-#: personal/supann/class_supannAccount.inc:407
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:65
 msgid ""
 "supannEtuEtape - Step can be considered a split (semester, year, etc.) in "
 "time of education leading to a diploma"
 msgstr ""
-"supannEtuEtape - fractionnement (semestre, année, etc.) dans le temps d'un "
+"supannEtuEtape - Fractionnement (semestre, année, etc.) dans le temps d'un "
 "enseignement conduisant à un diplôme"
 
-#: personal/supann/class_supannAccount.inc:411
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:69
 msgid "educational element"
 msgstr "Élément pédagogique"
 
-#: personal/supann/class_supannAccount.inc:411
+#: personal/supann/class_SupannEtuInscriptionAttribute.inc:69
 msgid ""
 "supannEtuElementPedagogique - Generic description of the content of "
 "education with a high level of granularity"
@@ -647,63 +873,559 @@ msgstr ""
 "supannEtuElementPedagogique - Description générique du contenu d'un "
 "enseignement ayant le niveau de granularité désiré"
 
-#: personal/supann/class_supannAccount.inc:425
+#: personal/supann/class_supannAccount.inc:33
+msgid "SupAnn information management plugin"
+msgstr "Plugin de gestion des informations SupAnn"
+
+#: personal/supann/class_supannAccount.inc:51
+msgid "Identity"
+msgstr "Identité"
+
+#: personal/supann/class_supannAccount.inc:54
+msgid "Civilite"
+msgstr "Civilité"
+
+#: personal/supann/class_supannAccount.inc:54
+msgid "supannCivilite - Civility for this person"
+msgstr "supannCivilite - Civilité pour cette personne"
+
+#: personal/supann/class_supannAccount.inc:59
+msgid "Alias login"
+msgstr "Alias de l'identifiant"
+
+#: personal/supann/class_supannAccount.inc:59
+msgid "supannAliasLogin - An alias for the login of this user"
+msgstr "supannAliasLogin - Un alias de l'identifiant de connexion"
+
+#: personal/supann/class_supannAccount.inc:63
+msgid "eduPersonPrincipalName"
+msgstr "Nom principal eduPerson"
+
+#: personal/supann/class_supannAccount.inc:63
+msgid ""
+"eduPersonPrincipalName - A name that looks like <id>@<domain> which is "
+"unique for this domain, and has not be assigned to anyone else recently"
+msgstr ""
+"eduPersonPrincipalName - Identifiant similaire à <id>@<domaine> qui est "
+"unique pour le domaine et qui n'a pas été attribué récemment"
+
+#: personal/supann/class_supannAccount.inc:67
+msgid "Nickname"
+msgstr "Surnom"
+
+#: personal/supann/class_supannAccount.inc:67
+msgid "eduPersonNickname - Can contain a nickname for this user"
+msgstr "eduPersonNickName - Peut contenir un surnom pour cet utilisateur"
+
+#: personal/supann/class_supannAccount.inc:82
+msgid "Contact"
+msgstr "Contact"
+
+#: personal/supann/class_supannAccount.inc:86
+msgid "Other phone numbers"
+msgstr "Autres numéros de téléphone"
+
+#: personal/supann/class_supannAccount.inc:86
+msgid "supannAutreTelephone - Other phone numbers for this user"
+msgstr ""
+"supannAutreTelephone - Autres numéros de téléphone pour cet utilisateur"
+
+#: personal/supann/class_supannAccount.inc:92
+msgid "supannTelephonePrive - Private phone numbers for this user"
+msgstr ""
+"supannTelephonePrive - numéros de téléphone privés pour cet utilisateur"
+
+#: personal/supann/class_supannAccount.inc:96
+msgid "Phone number type"
+msgstr "Type de numéro de téléphone"
+
+#: personal/supann/class_supannAccount.inc:100
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: personal/supann/class_supannAccount.inc:107
+msgid "Private phone numbers"
+msgstr "Numéros de téléphone privés"
+
+#: personal/supann/class_supannAccount.inc:112
+msgid "Other email addresses"
+msgstr "Autres adresses e-mail"
+
+#: personal/supann/class_supannAccount.inc:112
+msgid ""
+"supannAutreMail - Other email addresses for this user. Each must be unique"
+msgstr ""
+"supannAutreMail - Autres adresses de courriel pour cet utilisateur. Chacune "
+"doit être unique"
+
+#: personal/supann/class_supannAccount.inc:118
+msgid "Personal email addresses"
+msgstr "Adresses e-mail personnelles"
+
+#: personal/supann/class_supannAccount.inc:118
+msgid "supannMailPerso - Personal email addresses for this user"
+msgstr "supannMailPerso - Adresses e-mail personnelles de cet utilisateur"
+
+#: personal/supann/class_supannAccount.inc:124
+msgid "supannMailPrive - Private email addresses for this user"
+msgstr "supannMailPrive - Adresses e-mail privées de cet utilisateur"
+
+#: personal/supann/class_supannAccount.inc:128
+msgid "Email address type"
+msgstr "Type d'adresse e-mail"
+
+#: personal/supann/class_supannAccount.inc:132
+msgid "Email address"
+msgstr "Adresse de courriel"
+
+#: personal/supann/class_supannAccount.inc:139
+msgid "Private email addresses"
+msgstr "Adresses e-mail privées"
+
+#: personal/supann/class_supannAccount.inc:144
+msgid "supannAdressePostalePrivee - Private addresses for this user"
+msgstr ""
+"supannAdressePostalePrivee - Adresses postales privées de cet utilisateur"
+
+#: personal/supann/class_supannAccount.inc:148
+msgid "Address type"
+msgstr "Type d'adresse"
+
+#: personal/supann/class_supannAccount.inc:159
+msgid "Private addresses"
+msgstr "Adresses privées"
+
+#: personal/supann/class_supannAccount.inc:163
+msgid "Red list"
+msgstr "Liste rouge"
+
+#: personal/supann/class_supannAccount.inc:163
+msgid "supannListeRouge - Should this person be on the red list"
+msgstr "supannListeRouge - Si cette personne doit être sur liste rouge"
+
+#: personal/supann/class_supannAccount.inc:167
+msgid "Forward messages to"
+msgstr "Transférer les messages vers"
+
+#: personal/supann/class_supannAccount.inc:167
+msgid "Addresses to which messages should be forwarded"
+msgstr "Adresses vers laquelle les messages doivent être redirigés"
+
+#: personal/supann/class_supannAccount.inc:173
+msgid "Assignment"
+msgstr "Affectation"
+
+#: personal/supann/class_supannAccount.inc:176
+msgid "Primary assignment"
+msgstr "Affectation principale"
+
+#: personal/supann/class_supannAccount.inc:176
+msgid "supannEntiteAffectationPrincipale - Main assignment of the person"
+msgstr ""
+"supannEntiteAffectationPrincipale - Affectation principale de la personne"
+
+#: personal/supann/class_supannAccount.inc:181
+msgid "Assignments"
+msgstr "Affectations"
+
+#: personal/supann/class_supannAccount.inc:181
+#: personal/supann/class_supannAccount.inc:298
+msgid ""
+"supannEntiteAffectation - Represents assignments of the person in an "
+"institution, a component, service, etc."
+msgstr ""
+"supannEntiteAffectation - Représente les affectations de la personne dans "
+"une institution, un composant, un service, etc."
+
+#: personal/supann/class_supannAccount.inc:187
+msgid "Entity types"
+msgstr "Types d’entité"
+
+#: personal/supann/class_supannAccount.inc:187
+msgid ""
+"supannTypeEntiteAffectation - Types of the entities this person is assigned "
+"to"
+msgstr ""
+"supannTypeEntiteAffectation - Types des entités auxquelles cette personne "
+"est affectée"
+
+#: personal/supann/class_supannAccount.inc:194
+msgid "Affiliation"
+msgstr "Affiliation"
+
+#: personal/supann/class_supannAccount.inc:197
+msgid "Primary affiliation"
+msgstr "Affiliation principale"
+
+#: personal/supann/class_supannAccount.inc:197
+msgid "eduPersonPrimaryAffiliation - Main status of the person"
+msgstr "eduPersonPrimaryAffiliation - Le statut principal de la personne"
+
+#: personal/supann/class_supannAccount.inc:202
+msgid "Affiliations"
+msgstr "Affiliations"
+
+#: personal/supann/class_supannAccount.inc:202
+msgid ""
+"eduPersonAffiliation - Status of the person: student, BIATOSS, teacher, "
+"contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc."
+msgstr ""
+"eduPersonAffiliation - Statut de la personne : étudiant, BIATOSS, "
+"enseignant, sous contrat, retraité, personnel hébergé (CNRS, INSERM, etc.), "
+"un ancien étudiant, etc."
+
+#: personal/supann/class_supannAccount.inc:208
+msgid ""
+"supannEtablissement - Institution or unit of administrative attachment of "
+"the person"
+msgstr ""
+"supannEtablissement - Institution ou unité de rattachement administratif de "
+"la personne"
+
+#: personal/supann/class_supannAccount.inc:213
+msgid "Parrain"
+msgstr "Parrain"
+
+#: personal/supann/class_supannAccount.inc:213
+msgid "supannParrainDN - Person or structure responsible for this user"
+msgstr ""
+"supannParrainDN - Personne ou structure responsable de cet utilisateur"
+
+#: personal/supann/class_supannAccount.inc:220
+msgid "Student profile"
+msgstr "Profil étudiant"
+
+#: personal/supann/class_supannAccount.inc:223
+msgid "INE code"
+msgstr "Code INE"
+
+#: personal/supann/class_supannAccount.inc:223
+msgid "supannCodeINE - INE code of this student"
+msgstr "supannCodeINE - Code INE de l'étudiant"
+
+#: personal/supann/class_supannAccount.inc:227
+msgid "Student ID"
+msgstr "Identifiant étudiant"
+
+#: personal/supann/class_supannAccount.inc:227
+msgid "supannEtuId - Scolarity id"
+msgstr "supannEtuId - Identifiant scolaire"
+
+#: personal/supann/class_supannAccount.inc:233
+msgid "Student registrations"
+msgstr "Inscriptions de l'étudiant"
+
+#: personal/supann/class_supannAccount.inc:248
+msgid "supannEtuInscription - Registrations for this student"
+msgstr "supannEtuInscription - Inscriptions pour cet étudiant"
+
+#: personal/supann/class_supannAccount.inc:260
 msgid "Personal profile"
 msgstr "Profil personnel"
 
-#: personal/supann/class_supannAccount.inc:428
+#: personal/supann/class_supannAccount.inc:263
 msgid "Personal ID"
 msgstr "Identifiant personnel"
 
-#: personal/supann/class_supannAccount.inc:428
+#: personal/supann/class_supannAccount.inc:263
 msgid "supannEmpId - Employee identifier"
 msgstr "supannEmpId - Identifiant de l'employé"
 
-#: personal/supann/class_supannAccount.inc:432
+#: personal/supann/class_supannAccount.inc:267
 msgid "Personal corps"
 msgstr "Corps d'appartenance"
 
-#: personal/supann/class_supannAccount.inc:432
+#: personal/supann/class_supannAccount.inc:267
 msgid "supannEmpCorps"
-msgstr "supannEmpCorps - corps d'appartenance d'un agent"
+msgstr "supannEmpCorps - Corps d'appartenance d'un agent"
 
-#: personal/supann/class_supannAccount.inc:437
+#: personal/supann/class_supannAccount.inc:272
 msgid "Activity"
 msgstr "Activité"
 
-#: personal/supann/class_supannAccount.inc:437
+#: personal/supann/class_supannAccount.inc:272
 msgid "supannActivite - Category of profession"
-msgstr "supannActivite - catégorie de métier, branche d'activité"
+msgstr "supannActivite - Catégorie de métier, branche d'activité"
 
-#: personal/supann/class_supannAccount.inc:444
+#: personal/supann/class_supannAccount.inc:279
 msgid "Roles"
 msgstr "Rôles"
 
-#: personal/supann/class_supannAccount.inc:451
+#: personal/supann/class_supannAccount.inc:286
 msgid "supannRoleEntite"
 msgstr ""
 "supannRoleEntite - attribut composite. Chaque valeur précise un rôle "
 "spécifique dans une entité (rôle structurel et/ou électif)"
 
-#: personal/supann/class_supannAccount.inc:455
+#: personal/supann/class_supannAccount.inc:290
 msgid "Generic role"
 msgstr "Rôle générique"
 
-#: personal/supann/class_supannAccount.inc:455
+#: personal/supann/class_supannAccount.inc:290
 msgid "supannRoleGenerique - Generic role of the person in the facility"
 msgstr ""
-"supannRoleGenerique - Rôles génériques de la personne dans l'établissement"
+"supannRoleGenerique - Rôle générique de la personne dans l'établissement"
 
-#: personal/supann/class_supannAccount.inc:459
+#: personal/supann/class_supannAccount.inc:294
 msgid "supannTypeEntiteAffectation - type of the assigned entity"
-msgstr ""
-"supannTypeEntiteAffectation - Types d'entités auxquelles cette personne est "
-"assignée"
+msgstr "supannTypeEntiteAffectation - Type de l’entité affectée"
 
-#: personal/supann/class_supannAccount.inc:569
+#: personal/supann/class_supannAccount.inc:320
+msgid "supannConsentement - user consent on the usage of his information"
+msgstr ""
+"supannConsentement - consentement de l'utilisateur sur l'utilisation de ses "
+"informations"
+
+#: personal/supann/class_supannAccount.inc:411
+msgid "Sector"
+msgstr "Secteur"
+
+#: personal/supann/class_supannAccount.inc:413
+msgid "Curriculum"
+msgstr "Curriculum"
+
+#: personal/supann/class_supannAccount.inc:417
+msgid "Element"
+msgstr "Element"
+
+#: personal/supann/class_supannAccount.inc:424
+#: personal/supann/class_supannAccount.inc:459
+msgid "Personal"
+msgstr "Personnel"
+
+#: personal/supann/class_supannAccount.inc:425
+#: personal/supann/class_supannAccount.inc:460
+msgid "Legal representative"
+msgstr "Représentant légal"
+
+#: personal/supann/class_supannAccount.inc:426
+#: personal/supann/class_supannAccount.inc:461
+msgid "Professional"
+msgstr "Professionnel"
+
+#: personal/supann/class_supannAccount.inc:427
+#: personal/supann/class_supannAccount.inc:462
+msgid "Temporary"
+msgstr "Temporaire"
+
+#: personal/supann/class_supannAccount.inc:440
+msgid "Personal mobile"
+msgstr "GSM personnel"
+
+#: personal/supann/class_supannAccount.inc:441
+msgid "Personal landline"
+msgstr "Ligne fixe personnelle"
+
+#: personal/supann/class_supannAccount.inc:442
+msgid "Legal guardian mobile"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:443
+msgid "Legal guardian landline"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:444
+msgid "Professional mobile"
+msgstr "GSM professionnel"
+
+#: personal/supann/class_supannAccount.inc:445
+msgid "Professional landline"
+msgstr "Ligne fixe professionnelle"
+
+#: personal/supann/class_supannAccount.inc:446
+msgid "Emergency phone"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:548
 msgid ""
 "\"member\" and \"affiliate\" values are incompatible for "
 "eduPersonAffiliation. Please remove one of them."
 msgstr ""
 "Les valeurs \"member\" et \"affiliate\" sont incompatibles pour "
-"eduPersonAffiliation. Veuillez en retirer un."
+"eduPersonAffiliation. Veuillez retirer l’une des deux."
+
+#: personal/supann/class_SupannPrefixedSelectAttribute.inc:56
+msgid "None"
+msgstr "Aucun"
+
+#: personal/supann/class_supannCMS.inc:34
+msgid "SupAnn CMS management"
+msgstr "Gestion des cartes multi services SupAnn"
+
+#: personal/supann/class_supannCMS.inc:50
+#: personal/supann/class_supannCMS.inc:60
+msgid "Cards"
+msgstr "Cartes"
+
+#: personal/supann/class_supannCMS.inc:60
+msgid "SupAnn CMS Affectation"
+msgstr "Cartes de l'utilisateur"
+
+#: personal/supann/class_supannCMS.inc:72
+#: personal/supann/class_supannCMS.inc:79
+msgid "Applications"
+msgstr "Applications"
+
+#: personal/supann/class_supannCMS.inc:79
+msgid "SupAnn CMS Application Affectation"
+msgstr "Affectation des applications à la carte"
+
+#: personal/supann/class_supannCMS.inc:104
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:49
+msgid "Format"
+msgstr "Format"
+
+#: personal/supann/class_supannCMS.inc:105
+#: personal/supann/class_supannCMS.inc:116
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:54
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:52
+msgid "Id"
+msgstr "Id"
+
+#: personal/supann/class_supannCMS.inc:106
+#: personal/supann/class_supannCMS.inc:117
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:58
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:56
+msgid "Valid"
+msgstr "Valide"
+
+#: personal/supann/class_supannCMS.inc:107
+#: personal/supann/class_supannCMS.inc:114
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:64
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:42
+msgid "Source"
+msgstr "Source"
+
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:44
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:37
+msgid "supannCMSType - Card type"
+msgstr "supannCMSType - Type de carte"
+
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:49
+msgid "Card format"
+msgstr "Format de la carte"
+
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:54
+msgid "Card id"
+msgstr "Identifiant de la carte"
+
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:58
+msgid "Card validity"
+msgstr "Validité de la carte"
+
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:64
+msgid "Card managing system and establishment"
+msgstr "Système de gestion de carte et établissement"
+
+#: personal/supann/class_SupannCMSAffectationAttribute.inc:69
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:62
+msgid "End of validity date, if any"
+msgstr "Date de fin de validité, le cas échéant"
+
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:42
+msgid "Card management system and establishment"
+msgstr ""
+
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:47
+msgid "Application domain"
+msgstr "Domaine d'application"
+
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:52
+msgid "Application id"
+msgstr "ID d'application"
+
+#: personal/supann/class_SupannCMSAppAffectationAttribute.inc:56
+msgid "Application validity"
+msgstr "Validité de l'application"
+
+#: personal/supann/class_supannAccountStatus.inc:36
+msgid "SupAnn status management"
+msgstr "Gestion des états SupAnn"
+
+#: personal/supann/class_supannAccountStatus.inc:60
+msgid "State of the account and associated resources"
+msgstr "État du compte et des ressources associées"
+
+#: personal/supann/class_supannAccountStatus.inc:64
+msgid "Which resource this state concerns"
+msgstr "Quelle ressource cet état concerne"
+
+#: personal/supann/class_supannAccountStatus.inc:67
+#: personal/supann/class_supannAccountStatus.inc:116
+msgid "Account"
+msgstr "Compte"
+
+#: personal/supann/class_supannAccountStatus.inc:67
+#: personal/supann/class_supannAccountStatus.inc:116
+msgid "Mail"
+msgstr "Courriel"
+
+#: personal/supann/class_supannAccountStatus.inc:70
+msgid "Active status"
+msgstr "État actif"
+
+#: personal/supann/class_supannAccountStatus.inc:81
+msgid "Start date"
+msgstr "Date de début"
+
+#: personal/supann/class_supannAccountStatus.inc:81
+msgid "Date this status started"
+msgstr "Date à laquelle cet état a commencé"
+
+#: personal/supann/class_supannAccountStatus.inc:87
+msgid "Date this status will end"
+msgstr "Date à laquelle cet état prendra fin"
+
+#: personal/supann/class_supannAccountStatus.inc:132
+msgid "Begin"
+msgstr "Début"
+
+#: personal/supann/class_supannAccountStatus.inc:133
+msgid "End"
+msgstr "Fin"
+
+#: personal/supann/class_supannAccountStatus.inc:193
+#, php-format
+msgid "Resource \"%s\" is present more than once in supannRessourceEtatDate"
+msgstr ""
+"La ressource \"%s\" est présente plusieurs fois dans supannRessourceEtatDate"
+
+#: personal/supann/class_supannAccountStatus.inc:250
+msgid "Anticipated"
+msgstr "Anticipé"
+
+#: personal/supann/class_supannAccountStatus.inc:252
+msgid "Extension"
+msgstr "Sursis"
+
+#: personal/supann/class_supannAccountStatus.inc:255
+msgid "Pre-created"
+msgstr ""
+
+#: personal/supann/class_supannAccountStatus.inc:256
+msgid "Created"
+msgstr "Créé"
+
+#: personal/supann/class_supannAccountStatus.inc:257
+msgid "Expired"
+msgstr "Expiré"
+
+#: personal/supann/class_supannAccountStatus.inc:259
+msgid "Data deletion"
+msgstr "Suppression des données"
+
+#: personal/supann/class_supannAccountStatus.inc:260
+msgid "Account deletion"
+msgstr "Suppression définitive"
+
+#: personal/supann/class_supannAccountStatus.inc:263
+msgid "Locked"
+msgstr "Verrouillé"
+
+#: personal/supann/class_supannAccountStatus.inc:264
+msgid "Administrative lock"
+msgstr "Verrouillage administratif"
+
+#: personal/supann/class_supannAccountStatus.inc:265
+msgid "Technical lock"
+msgstr "Verrouillage technique"

@@ -1,9 +1,9 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class MungedAttribute extends Attribute
+class MungedAttribute extends \FusionDirectory\Core\SimplePlugin\Attribute
 {
   protected $mungedObject;
   protected $attrList;
@@ -35,7 +35,7 @@ class MungedAttribute extends Attribute
     $this->flagList     = $flagList;
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
     if (isset($attrs[$this->getLdapName()])) {
       $this->setValue($this->inputValue($attrs[$this->getLdapName()][0]));
@@ -127,48 +127,47 @@ class SambaFlagsAttribute extends FlagsAttribute
 
 class WinstationsAttribute extends SystemsAttribute
 {
-  protected $dialogClass = 'WinstationSelectDialog';
-}
-
-class WinstationSelectDialog extends GenericSelectDialog
-{
-  protected $dialogClass = 'winstationSelect';
-}
-
-class winstationSelect extends simpleSelectManagement
-{
-  protected $objectTypes = [
-    'winstation'
-  ];
-  protected $autoFilterAttributes = ['dn', 'cn', 'uid', 'description'];
-}
-
-class sambaAccount extends simplePlugin
-{
-  var $objectclasses = ['sambaSamAccount'];
-
-  var $displayHeader = TRUE;
-
-  var $SID      = "";
-  var $ridBase  = 0;
-
-  static function plInfo ()
+  function __construct (string $label, string $description, string $ldapName, bool $required, array $objectTypes = ['workstation'], array $defaultValue = [], string $store_attr = 'cn', string $display_attr = 'cn', string $acl = '')
   {
+    $filterElementDefinitions = [
+      ['TabFilterElement',    []],
+      ['FixedFilterElement',  ['(objectClass=sambaSamAccount)']],
+    ];
+    parent::__construct($label, $description, $ldapName, $required, $objectTypes, $defaultValue, $store_attr, $display_attr, $filterElementDefinitions, $acl);
+  }
+}
+
+class sambaAccount extends simplePlugin implements UserTabLockingAction
+{
+  protected $displayHeader  = TRUE;
+
+  static function plInfo (): array
+  {
+    global $config;
+
+    if ($config->get_cfg_value('sambaDependsOnPosix', 'TRUE') !== 'FALSE') {
+      $plDepends = ['posixAccount'];
+    } else {
+      $plDepends = [];
+    }
+
     return [
       'plShortName'     => _('Samba'),
       'plDescription'   => _('Samba settings'),
+      'plFilter'        => '(objectClass=sambaSamAccount)',
       'plIcon'          => 'geticon.php?context=applications&icon=samba&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=samba&size=16',
       'plSelfModify'    => TRUE,
-      'plDepends'       => ['posixAccount'],
+      'plDepends'       => $plDepends,
       'plPriority'      => 5,
+      'plObjectClass'   => ['sambaSamAccount'],
       'plObjectType'    => ['user'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     static $letters = [];
     if (empty($letters)) {
@@ -372,6 +371,9 @@ class sambaAccount extends simplePlugin
   function __construct ($dn = NULL, $baseobject = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
+
+    parent::__construct($dn, $baseobject, $parent, $mainTab);
+
     // User wants me to fake the idMappings? This is useful for
     //  making winbind resolve the user names in a reasonable amount
     //  of time in combination with larger databases.
@@ -379,9 +381,9 @@ class sambaAccount extends simplePlugin
       $this->objectclasses[] = 'sambaIdmapEntry';
     }
 
-    parent::__construct($dn, $baseobject, $parent, $mainTab);
 
-    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($config->data['SERVERS']['SAMBA']));
+    $domains = sambaDomainManagement::getSambaDomains();
+    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($domains));
     $this->attributesAccess['TsLogin']->setManagedAttributes(
       [
         'disable' => [
@@ -419,31 +421,14 @@ class sambaAccount extends simplePlugin
     $this->attributesAccess['fd_pwdCantChange']->setInitialValue($value);
     $this->attributesAccess['fd_pwdCantChange']->setValue($value);
 
-    // Get samba domain and its sid/rid base
-    if ($this->sambaSID != "") {
-      $this->SID = preg_replace("/-[^-]+$/", "", $this->sambaSID);
-      $ldap = $config->get_ldap_link();
-      $ldap->cd($config->current['BASE']);
-      $ldap->search("(&(objectClass=sambaDomain)(sambaSID=$this->SID))", ["sambaAlgorithmicRidBase","sambaDomainName"]);
-      if ($ldap->count() != 0) {
-        $attrs = $ldap->fetch();
-        if (isset($attrs['sambaAlgorithmicRidBase'])) {
-          $this->ridBase = $attrs['sambaAlgorithmicRidBase'][0];
-        } else {
-          $this->ridBase = $config->get_cfg_value("sambaRidBase");
+    /* Get samba domain */
+    if ($this->sambaSID != '') {
+      $SID = preg_replace('/-[^-]+$/', '', $this->sambaSID);
+      foreach ($domains as $name => $domain) {
+        if ($domain['SID'] == $SID) {
+          $this->sambaDomainName = $name;
+          break;
         }
-        if ($this->sambaDomainName == "") {
-          $this->sambaDomainName = $attrs['sambaDomainName'][0];
-        }
-      } else {
-        // Fall back to a 'DEFAULT' domain, if none was found in LDAP.
-        if ($this->sambaDomainName == "") {
-          $this->sambaDomainName = "DEFAULT";
-        }
-
-        // Nothing in ldap, use configured sid and rid values.
-        $this->ridBase  = $config->get_cfg_value("sambaRidBase");
-        $this->SID      = $config->get_cfg_value("sambaSid");
       }
     }
 
@@ -464,40 +449,48 @@ class sambaAccount extends simplePlugin
     parent::resetCopyInfos();
 
     /* Set a new SID */
-    $this->sambaSID = "";
+    $this->sambaSID = '';
   }
 
-
   /* Check for input problems */
-  function check ()
+  function check (): array
   {
-    $messages = parent::check();
+    $errors = parent::check();
 
     /* sambaHomePath requires sambaHomeDrive and vice versa */
     if (!empty($this->sambaHomePath) && empty($this->sambaHomeDrive)) {
-      $messages[] = sprintf(
-        _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
-        $this->attributesAccess['sambaHomeDrive']->getLabel(),
-        $this->attributesAccess['sambaHomePath']->getLabel()
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['sambaHomeDrive'],
+        htmlescape(sprintf(
+          _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
+          $this->attributesAccess['sambaHomeDrive']->getLabel(),
+          $this->attributesAccess['sambaHomePath']->getLabel()
+        ))
       );
     }
     if (!empty($this->sambaHomeDrive) && empty($this->sambaHomePath)) {
-      $messages[] = sprintf(
-        _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
-        $this->attributesAccess['sambaHomePath']->getLabel(),
-        $this->attributesAccess['sambaHomeDrive']->getLabel()
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['sambaHomePath'],
+        htmlescape(sprintf(
+          _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
+          $this->attributesAccess['sambaHomePath']->getLabel(),
+          $this->attributesAccess['sambaHomeDrive']->getLabel()
+        ))
       );
     }
 
     /* Too many workstations? Windows usrmgr only supports eight */
     if (count($this->attributesAccess['sambaUserWorkstations']->attributes[0]->getValue()) >= 8) {
-      $messages[] = _('The windows user manager allows eight clients at maximum!');
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['sambaUserWorkstations'],
+        htmlescape(_('The windows user manager allows eight clients at maximum!'))
+      );
     }
 
-    return $messages;
+    return $errors;
   }
 
-  function prepare_save ()
+  function prepare_save (): array
   {
     global $config;
 
@@ -506,43 +499,48 @@ class sambaAccount extends simplePlugin
       return $errors;
     }
 
-    /* Load uid and gid of this 'dn' */
-    $posixAccount = $this->parent->by_object['posixAccount'];
-    $uidNumber    = $posixAccount->uidNumber;
-    $gidNumber    = $posixAccount->gidNumber;
+    if ($this->is_template) {
+      /* Skip synchronisations and generations on templates */
+      return $errors;
+    }
 
     // Generate rid / primaryGroupId
-    if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
-      msg_dialog::display(_("Warning"), _("Undefined Samba SID detected. Please fix this problem manually!"), WARNING_DIALOG);
+    $domains = sambaDomainManagement::getSambaDomains();
+    if (!isset($domains[$this->sambaDomainName]['SID'])) {
+      $error = new SimplePluginError($this, htmlescape(_('Undefined Samba SID detected. Please fix this problem manually!')));
+      $error->display();
     } else {
-      $this->SID      = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'];
-      $this->ridBase  = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
-    }
-
-    // Need to generate a new uniqe uid/gid combination?
-    if (($this->sambaSID == "") || $this->attributesAccess['sambaDomainName']->hasChanged()) {
-      $ldap = $config->get_ldap_link();
-      $uidNumber_tmp = $uidNumber;
-      do {
-        $sid = $this->SID."-".($uidNumber_tmp * 2 + $this->ridBase);
+      // Need to generate a new unique uid/gid combination?
+      if (($this->sambaSID == '') || $this->attributesAccess['sambaDomainName']->hasChanged()) {
+        $SIDBase  = $domains[$this->sambaDomainName]['SID'];
+        $ridBase  = $domains[$this->sambaDomainName]['RIDBASE'];
+        $ldap = $config->get_ldap_link();
         $ldap->cd($config->current['BASE']);
-        $ldap->search("(sambaSID=$sid)", ["sambaSID"]);
-        $uidNumber_tmp++;
-      } while ($ldap->count() > 0);
-      $this->attrs['sambaSID'] = $sid;
+        if ($config->get_cfg_value('sambaDependsOnPosix', 'TRUE') !== 'FALSE') {
+          $tmpNumber = $this->parent->by_object['posixAccount']->uidNumber;
+        } else {
+          $tmpNumber = 1;
+        }
+        do {
+          $sambaSID = $SIDBase.'-'.($tmpNumber * 2 + $ridBase);
+          $ldap->search('(sambaSID='.$sambaSID.')', ['sambaSID']);
+          $tmpNumber++;
+        } while ($ldap->count() > 0);
+        $this->attrs['sambaSID'] = $sambaSID;
+      }
     }
 
-    if (!$this->is_template) {
+    if (isset($this->parent->by_object['posixAccount']) && $this->parent->by_object['posixAccount']->is_account) {
       $ldap = $config->get_ldap_link();
       // Check for users primary group
       $ldap->cd($config->current['BASE']);
-      $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$gidNumber."))", ["cn"]);
+      $ldap->search('(&(objectClass=posixGroup)(gidNumber='.$this->parent->by_object['posixAccount']->gidNumber.'))', ['cn']);
       if ($ldap->count() != 1) {
-        msg_dialog::display(
-          _("Warning"),
-          _("Cannot convert primary group to samba group: group cannot be identified!"),
-          WARNING_DIALOG
+        $error = new SimplePluginError(
+          $this,
+          htmlescape(_('Cannot convert primary group to samba group: group cannot be identified!'))
         );
+        $error->display();
       } else {
         $attrs = $ldap->fetch();
         try {
@@ -559,11 +557,10 @@ class sambaAccount extends simplePlugin
           $this->attrs['sambaPrimaryGroupSID'] = $tabGroup->by_object['sambaGroup']->sambaSID;
         } else {
           if ($config->get_cfg_value('sambaPrimaryGroupWarning') == 'TRUE') {
-            msg_dialog::display(
-              _('Warning'),
-              _('Cannot convert primary group to samba group: group samba tab is disabled!'),
-              WARNING_DIALOG
+            $warning = new FusionDirectoryWarning(
+              htmlescape(_('Cannot convert primary group to samba group: group samba tab is disabled!'))
             );
+            $warning->display();
           }
         }
       }
@@ -578,18 +575,21 @@ class sambaAccount extends simplePlugin
 
     if ($this->parent->getBaseObject()->attributesAccess['userPassword']->hasChanged()) {
       $password = $this->parent->getBaseObject()->attributesAccess['userPassword']->getClear();
-      $smbHash = new smbHash();
-      if ($config->get_cfg_value('sambaGenLMPassword', 'FALSE') == 'TRUE') {
-        $this->attrs['sambaLMPassword'] = $smbHash->lmhash($password);
-      } else {
-        $this->attrs['sambaLMPassword'] = [];
-      }
-      $this->attrs['sambaNTPassword'] = $smbHash->nthash($password);
-      $this->attrs['sambaPwdLastSet'] = date('U');
+      if ($password !== '' ) {
+        $smbHash = new smbHash();
+        if ($config->get_cfg_value('sambaGenLMPassword', 'FALSE') == 'TRUE') {
+          $this->attrs['sambaLMPassword'] = $smbHash->lmhash($password);
+        } else {
+          $this->attrs['sambaLMPassword'] = [];
+        }
+        $this->attrs['sambaNTPassword'] = $smbHash->nthash($password);
+        $this->attrs['sambaPwdLastSet'] = date('U');
 
-      $this->attrs['sambaBadPasswordCount'] = '0';
-      $this->attrs['sambaBadPasswordTime']  = '0';
+        $this->attrs['sambaBadPasswordCount'] = '0';
+        $this->attrs['sambaBadPasswordTime']  = '0';
+      }
     }
+
 
     // Handle "sambaKickoffTime"
     if ($config->get_cfg_value('sambaExpirationSync') == 'samba') {
@@ -614,29 +614,49 @@ class sambaAccount extends simplePlugin
     return $errors;
   }
 
-  function adapt_from_template ($attrs, $skip = [])
+  function adapt_from_template (array $attrs, array $skip = [])
   {
     parent::adapt_from_template($attrs, $skip);
 
     $this->sambaSID = "";
   }
 
-  function callHook ($cmd, array $addAttrs = [], &$returnOutput = [], &$returnCode = NULL)
-  {
-    $addAttrs['passwordMethod'] = $this->parent->getBaseObject()->attributesAccess['userPassword']->getMethod();
-    $addAttrs['userLocked']     = $this->parent->getBaseObject()->attributesAccess['userPassword']->isLocked();
-    $addAttrs['passwordClear']  = $this->parent->getBaseObject()->attributesAccess['userPassword']->getClear();
-    return parent::callHook($cmd, $addAttrs, $returnOutput, $returnCode);
-  }
-
   /* Returns TRUE if this attribute should be asked in the creation by template dialog */
-  function showInTemplate ($attr, $templateAttrs)
+  function showInTemplate (string $attr, array $templateAttrs): bool
   {
     if (in_array($attr, $this->attributesAccess['sambaMungedDial']->getAttrList())) {
       return FALSE;
     }
     return parent::showInTemplate($attr, $templateAttrs);
   }
-}
 
-?>
+  public function fillLockingLDAPAttrs (string $mode, array &$modify)
+  {
+    global $config;
+
+    if (!isset($this->attrs['sambaNTPassword'][0])) {
+      return;
+    }
+
+    $modify['sambaNTPassword'] = $this->attrs['sambaNTPassword'][0];
+    if ($config->get_cfg_value('sambaGenLMPassword', 'FALSE') == 'TRUE') {
+      $modify['sambaLMPassword'] = $this->attrs['sambaLMPassword'][0];
+    } else {
+      $modify['sambaLMPassword'] = [];
+    }
+    foreach (['sambaNTPassword', 'sambaLMPassword'] as $attr) {
+      if (is_array($modify[$attr])) {
+        continue;
+      }
+      if ($mode == 'LOCK') {
+        /* Lock entry */
+        if (!preg_match('/^\!/', $modify[$attr])) {
+          $modify[$attr] = '!'.$modify[$attr];
+        }
+      } else {
+        /* Unlock entry */
+        $modify[$attr] = preg_replace('/^\!/', '', $modify[$attr]);
+      }
+    }
+  }
+}

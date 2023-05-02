@@ -4,7 +4,7 @@ $Id$
 
   This code is part of LDAP Account Manager (http://www.sourceforge.net/projects/lam)
   Copyright (C) 2004 - 2006 Roland Gruber
-  Copyright (C) 2013-2018 FusionDirectory Project
+  Copyright (C) 2013-2016 FusionDirectory Project
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -33,11 +33,12 @@ $Id$
 /**
 * Calculates NT and LM hashes.
 *
-* The important functions are lmhash ($password) and nthash ($password).
+* The important functions are lmhash($password) and nthash($password).
 *
 * @package lam
 */
-class smbHash {
+class smbHash
+{
 
   // Contants used in lanlam hash calculations
   // Ported from SAMBA/source/libsmb/smbdes.c:perm1[56]
@@ -137,12 +138,15 @@ class smbHash {
   */
   private function x ($i)
   {
-    if ($i < 0) return 4294967296 - $i;
-    else return $i;
+    if ($i < 0) {
+      return 4294967296 - $i;
+    } else {
+      return $i;
+    }
   }
 
   /**
-  * @param integer count
+  * @param integer $count
   * @param array $data
   * @return array
   */
@@ -156,8 +160,8 @@ class smbHash {
   }
 
   /**
-  * @param array in input data
-  * @param array p permutation
+  * @param array $in input data
+  * @param array $p permutation
   * @return array
   */
   private function permute ($in, $p, $n)
@@ -207,7 +211,9 @@ class smbHash {
       $d = $this->lshift($this->sc[$i], $d);
 
       $cd = $c;
-      for ($k = 0; $k < sizeof($d); $k++) $cd[] = $d[$k];
+      for ($k = 0; $k < sizeof($d); $k++) {
+        $cd[] = $d[$k];
+      }
       $ki[$i] = $this->permute($cd, $this->perm2, 48);
     }
 
@@ -220,6 +226,8 @@ class smbHash {
       $r[$i] = $pd1[32 + $i];
     }
 
+    $b  = [];
+    $cb = [];
     for ($i = 0; $i < 16; $i++) {
       $er = $this->permute($r, $this->perm4, 48);
       if ($forw) {
@@ -251,11 +259,17 @@ class smbHash {
       }
       $pcb = $this->permute($cb, $this->perm5, 32);
       $r2 = $this->mxor($l, $pcb);
-      for ($k = 0; $k < 32; $k++) $l[$k] = $r[$k];
-      for ($k = 0; $k < 32; $k++) $r[$k] = $r2[$k];
+      for ($k = 0; $k < 32; $k++) {
+        $l[$k] = $r[$k];
+      }
+      for ($k = 0; $k < 32; $k++) {
+        $r[$k] = $r2[$k];
+      }
     }
     $rl = $r;
-    for ($i = 0; $i < sizeof($l); $i++) $rl[] = $l[$i];
+    for ($i = 0; $i < sizeof($l); $i++) {
+      $rl[] = $l[$i];
+    }
     return $this->permute($rl, $this->perm6, 64);
   }
 
@@ -263,18 +277,18 @@ class smbHash {
    * str_to_key
    *
    * @param string $str
-   * @return string key
+   * @return array key
    */
   private function str_to_key ($str)
   {
     $key[0] = $this->unsigned_shift_r($str[0], 1);
-    $key[1] = (($str[0] & 0x01) << 6) | $this->unsigned_shift_r($str[1], 2);
-    $key[2] = (($str[1] & 0x03) << 5) | $this->unsigned_shift_r($str[2], 3);
-    $key[3] = (($str[2] & 0x07) << 4) | $this->unsigned_shift_r($str[3], 4);
-    $key[4] = (($str[3] & 0x0F) << 3) | $this->unsigned_shift_r($str[4], 5);
-    $key[5] = (($str[4] & 0x1F) << 2) | $this->unsigned_shift_r($str[5], 6);
-    $key[6] = (($str[5] & 0x3F) << 1) | $this->unsigned_shift_r($str[6], 7);
-    $key[7] = $str[6] & 0x7F;
+    $key[1] = (((int)$str[0] & 0x01) << 6) | $this->unsigned_shift_r($str[1], 2);
+    $key[2] = (((int)$str[1] & 0x03) << 5) | $this->unsigned_shift_r($str[2], 3);
+    $key[3] = (((int)$str[2] & 0x07) << 4) | $this->unsigned_shift_r($str[3], 4);
+    $key[4] = (((int)$str[3] & 0x0F) << 3) | $this->unsigned_shift_r($str[4], 5);
+    $key[5] = (((int)$str[4] & 0x1F) << 2) | $this->unsigned_shift_r($str[5], 6);
+    $key[6] = (((int)$str[5] & 0x3F) << 1) | $this->unsigned_shift_r($str[6], 7);
+    $key[7] = (int)$str[6] & 0x7F;
     for ($i = 0; $i < 8; $i++) {
       $key[$i] = ($key[$i] << 1);
     }
@@ -284,26 +298,28 @@ class smbHash {
   /**
    * smb_hash
    *
-   * @param unknown_type $in
-   * @param unknown_type $key
-   * @param unknown_type $forw
-   * @return unknown
+   * @param array $in
+   * @param mixed $key
+   * @param mixed $forw
+   * @return array
    */
   private function smb_hash ($in, $key, $forw)
   {
     $key2 = $this->str_to_key($key);
 
+    $inb  = [];
+    $keyb = [];
     for ($i = 0; $i < 64; $i++) {
       $inb[$i] = ($in[$i / 8] & (1 << (7 - ($i % 8)))) ? 1 : 0;
       $keyb[$i] = ($key2[$i / 8] & (1 << (7 - ($i % 8)))) ? 1 : 0;
-      $outb[$i] = 0;
     }
     $outb = $this->doHash($inb, $keyb, $forw);
+    $out = [];
     for ($i = 0; $i < 8; $i++) {
       $out[$i] = 0;
     }
     for ($i = 0; $i < 64; $i++) {
-      if ( $outb[$i] )  {
+      if ($outb[$i]) {
         $out[$i / 8] |= (1 << (7 - ($i % 8)));
       }
     }
@@ -313,8 +329,8 @@ class smbHash {
   /**
    * E_P16
    *
-   * @param unknown_type $in
-   * @return unknown
+   * @param mixed $in
+   * @return array
    */
   private function E_P16 ($in)
   {
@@ -388,7 +404,4 @@ class smbHash {
     }
     return $a;
   }
-
 }
-
-?>

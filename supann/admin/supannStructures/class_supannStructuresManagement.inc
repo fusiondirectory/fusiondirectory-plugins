@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+
+  Copyright (C) 2012-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,18 +19,20 @@
   Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannStructuresManagement extends simpleManagement
+class supannStructuresManagement extends management
 {
-  protected $objectTypes = ['etablissement', 'entite'];
+  public static $skipTemplates = FALSE;
 
-  protected $autoFilterAttributes = ['dn', 'ou', 'o', 'description', 'supannCodeEntite', 'supannCodeEntiteParent'];
+  public static $columns = [
+    ['ObjectTypeColumn', []],
+    ['LinkColumn',       ['attributes' => 'nameAttr',               'label' => 'Name']],
+    ['LinkColumn',       ['attributes' => 'supannCodeEntite',       'label' => 'supannCodeEntite']],
+    ['LinkColumn',       ['attributes' => 'supannCodeEntiteParent', 'label' => 'Parent']],
+    ['LinkColumn',       ['attributes' => 'description',            'label' => 'Description']],
+    ['ActionsColumn',    ['label' => 'Actions']],
+  ];
 
-  protected $departmentBrowser      = FALSE;
-  protected $departmentRootVisible  = FALSE;
-  protected $baseMode               = FALSE;
-
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('SupAnn structures'),
@@ -43,29 +46,9 @@ class supannStructuresManagement extends simpleManagement
     ];
   }
 
-  function parseXML ($file)
+  protected function setUpListing ()
   {
-    $data = parent::parseXML($file);
-    $data['list']['table']['layout'] = '|20px;c|||||150px;r|';
-    $columns = [
-      [
-        'label'         => 'supannCodeEntite',
-        'sortAttribute' => 'supannCodeEntite',
-        'sortType'      => 'string',
-        'value'         => '%{filter:link(row,dn,"%s",supannCodeEntite)}',
-        'export'        => 'true',
-      ],
-      [
-        'label'         => 'supannCodeEntiteParent',
-        'sortAttribute' => 'supannCodeEntiteParent',
-        'sortType'      => 'string',
-        'value'         => '%{filter:link(row,dn,"%s",supannCodeEntiteParent)}',
-        'export'        => 'true',
-      ],
-    ];
-    array_splice($data['list']['table']['column'], 2, 0, $columns);
-    return $data;
+    /* Set baseMode to FALSE */
+    $this->listing  = new managementListing($this, FALSE);
   }
 }
-
-?>

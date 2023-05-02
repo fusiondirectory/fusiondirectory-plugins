@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+  Copyright (C) 2013-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,25 +20,23 @@
 
 class ipmiClient extends simplePlugin
 {
-  var $objectclasses  = ['ipmiClient'];
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('IPMI client'),
       'plDescription'   => _('Edit IPMI client settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=ipmi&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ipmi&size=16',
-      'plSelfModify'    => FALSE,
-      'plCategory'      => ['workstation','server'],
+      'plObjectClass'   => ['ipmiClient'],
       'plObjectType'    => ['workstation','server'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -62,5 +60,3 @@ class ipmiClient extends simplePlugin
     ];
   }
 }
-
-?>

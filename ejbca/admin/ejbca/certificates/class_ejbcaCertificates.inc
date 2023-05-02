@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018 FusionDirectory
+  Copyright (C) 2014-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,15 +20,16 @@
 
 class ejbcaCertificates extends simplePlugin
 {
-  var $displayHeader = TRUE;
-  var $objectclasses = ['fdEjbcaCertificates'];
+  protected $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('EJBCA'),
       'plDescription'   => _('Assign EJBCA certificates to a user'),
+      'plFilter'        => '(objectClass=fdEjbcaCertificates)',
       'plSelfModify'    => TRUE,
+      'plObjectClass'   => ['fdEjbcaCertificates'],
       'plObjectType'    => ['user','server','workstation','terminal','printer','component','phone','mobilePhone'],
       'plIcon'          => 'geticon.php?context=applications&icon=ejbca&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ejbca&size=16',
@@ -41,14 +42,14 @@ class ejbcaCertificates extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
         'name'  => _('EJBCA certs'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new EjbcaUserCertsAttribute(
+          new EjbcaCertsAttribute(
             '', _('Certificates associated to this object'),
             'fdEjbcaCertDN', TRUE
           )
@@ -57,4 +58,3 @@ class ejbcaCertificates extends simplePlugin
     ];
   }
 }
-?>

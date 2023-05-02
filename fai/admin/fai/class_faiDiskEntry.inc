@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -36,43 +36,40 @@ class PartitionDialog extends GenericDialog
     $this->plugin     = $simplePlugin;
     $this->dialog = new $this->dialogClass($partition, $simplePlugin, $simplePlugin->FAIdiskType);
 
-    $this->dialog->set_acl_base($simplePlugin->acl_base);
+    $this->dialog->base = $simplePlugin->base;
     $this->dialog->set_acl_category('fai');
     if (!empty($partition)) {
       $this->initialDialogValue = $partition;
     }
   }
 
-  function dialog_execute ()
+  protected function handleFinish ()
   {
-    $this->dialog->save_object();
-    return $this->dialog->execute();
-  }
-
-  function handle_finish ()
-  {
-    $this->dialog->save_object();
+    $this->dialog->update();
 
     $msgs = $this->dialog->check();
-    if (!count($msgs)) {
-      $new_partition = $this->dialog->save();
-      $msgs = $this->plugin->check_disks($new_partition);
-    }
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
-      return $this->dialog->execute();
+      return;
+    }
+
+    $new_partition = $this->dialog->save();
+    $msgs = $this->plugin->check_disks($new_partition);
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return;
     }
 
     $this->attribute->updatePartition($new_partition);
-    return FALSE;
+    unset($this->dialog);
   }
 
-  function handle_cancel ()
+  protected function handleCancel ()
   {
     if ($this->initialDialogValue !== NULL) {
       $this->attribute->addPartition($this->initialDialogValue);
     }
-    return FALSE;
+    unset($this->dialog);
   }
 }
 
@@ -85,12 +82,12 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
     parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
   }
 
   /* Not saving anything into base node */
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
   }
 
@@ -142,11 +139,13 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
      */
     if (isset($list[$this->postValue[$key]['cn']])) {
       $used = implode(',', array_values($list[$this->postValue[$key]['cn']]));
-      msg_dialog::display(
-        _('Error'),
-        sprintf(_('The partition cannot be deleted while it is used in the "%s" disk definition!'), $used),
-        ERROR_DIALOG
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('The partition cannot be deleted while it is used in the "%s" disk definition!'),
+          $used
+        ))
       );
+      $error->display();
     } else {
       unset($this->postValue[$key]);
     }
@@ -181,9 +180,8 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
         $old_cn     = $this->value[$part['FAIpartitionNr']]['cn'];
         $new_cn     = $part['cn'];
         $lvmDevices = $this->plugin->lvmDevices;
-        if (isset($lvmDevices[$old_cn])) {
-          unset($lvmDevices[$old_cn]);
-          $lvmDevices[$new_cn]      = $new_cn;
+        if (($key = array_search($old_cn, $lvmDevices)) !== FALSE) {
+          $lvmDevices[$key]         = $new_cn;
           $this->plugin->lvmDevices = $lvmDevices;
         }
       }
@@ -211,7 +209,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
       $used[$key] = $part['FAIpartitionNr'];
     }
     $id = 1;
-    while (in_array($id, $used) && $id < 16 ) {
+    while (in_array($id, $used) && $id < 16) {
       $id++;
     }
     return $id;
@@ -222,7 +220,7 @@ class faiDiskEntry extends simplePlugin
 {
   protected $is_edit = FALSE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Partition table entry'),
@@ -233,7 +231,7 @@ class faiDiskEntry extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -372,7 +370,7 @@ class faiDiskEntry extends simplePlugin
           if (preg_match('/^preserve_reinstall:(.*)$/', $option, $m)) {
             $preserve = preg_split('/,/', $m[1], -1, PREG_SPLIT_NO_EMPTY);
             foreach ($preserve as $presflag) {
-              if (isset($disk['partitions'][$bootflag])) {
+              if (isset($disk['partitions'][$presflag])) {
                 $disk['partitions'][$presflag]['preserve'] = 'reinstall';
               }
             }
@@ -400,16 +398,16 @@ class faiDiskEntry extends simplePlugin
     parent::loadAttributes();
   }
 
-  function execute ()
+  public function render (): string
   {
     $smarty = get_smarty();
     $acl    = $this->aclGetPermissions('FAIpartitions');
     $smarty->assign('FAIpartitionsACL', $acl);
-    parent::execute();
+    parent::render();
 
     $buttons = '<p class="plugbottom">
                   <input type="submit" name="SaveDisk" value="'.msgPool::saveButton().'">
-                  <input type="submit" name="CancelDisk" value="'.msgPool::cancelButton().'" >
+                  <input type="submit" formnovalidate="formnovalidate" name="CancelDisk" value="'.msgPool::cancelButton().'" >
                 </p>';
     if ($this->displayPlugin) {
       return $this->header.$smarty->fetch($this->templatePath).$buttons;
@@ -418,7 +416,7 @@ class faiDiskEntry extends simplePlugin
     }
   }
 
-  function save ()
+  function save (): array
   {
     $tmp = [];
     $tmp['cn']          = $this->cn;
@@ -516,7 +514,7 @@ class faiDiskEntry extends simplePlugin
   /* Returns a list of available partitions that are useable in
    *  lvm disk setups.
    */
-  function getAvailablePartitions ()
+  function getAvailablePartitions (): array
   {
     $may  = [];
     $used = [];
@@ -589,4 +587,3 @@ class faiDiskEntry extends simplePlugin
     return $msgs;
   }
 }
-?>

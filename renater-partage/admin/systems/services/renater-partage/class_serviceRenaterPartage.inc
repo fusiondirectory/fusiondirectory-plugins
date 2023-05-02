@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+  Copyright (C) 2016-2017  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,20 +20,19 @@
 
 class serviceRenaterPartage extends simpleMailMethodService
 {
-  var $objectclasses = ['fdRenaterPartageServer'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Renater Partage'),
       'plDescription'   => _('Renater Partage'),
       'plIcon'          => 'geticon.php?context=applications&icon=renater-partage&size=16',
+      'plObjectClass'   => ['fdRenaterPartageServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return  [
       'main' => [
@@ -48,12 +47,6 @@ class serviceRenaterPartage extends simpleMailMethodService
             _('User Agent'), _('User Agent to use to contact the Renater Partage API'),
             'fdRenaterPartageServerUserAgent', TRUE,
             'FusionDirectory'
-          ),
-          new SelectAttribute(
-            _('Mailbox deletion'), _('What to do with the PARTAGE account when mail tab is deactivated or user is deleted'),
-            'fdRenaterPartageServerDeletionType', TRUE,
-            [  'delete',   'disable'], '',
-            [_('Delete'),_('Disable')]
           ),
         ]
       ],
@@ -100,4 +93,3 @@ class serviceRenaterPartage extends simpleMailMethodService
     $this->attributesAccess['fdRenaterPartageServerMailDomain']->setLinearRendering(FALSE);
   }
 }
-?>

@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018  FusionDirectory
+  Copyright (C) 2014-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,17 +20,16 @@
 
 class faiVariable extends faiSimplePluginClass
 {
-  var $objectclasses = ['top','FAIclass','FAIvariable'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Variable'),
       'plDescription' => _('FAI variable'),
+      'plObjectClass' => ['FAIclass','FAIvariable'],
+      'plFilter'      => '(objectClass=FAIvariable)',
       'plObjectType'  => [
         'faiVariable' => [
           'name'        => _('FAI variable'),
-          'filter'      => 'objectClass=FAIvariable',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiVariableRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-variable&size=16'
@@ -41,7 +40,7 @@ class faiVariable extends faiSimplePluginClass
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -91,17 +90,17 @@ class faiVariable extends faiSimplePluginClass
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
     $this->attributesAccess['variables']->setLinearRendering(FALSE);
   }
 
-  protected function shouldSave ()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -109,4 +108,3 @@ class faiVariable extends faiSimplePluginClass
     return $errors;
   }
 }
-?>

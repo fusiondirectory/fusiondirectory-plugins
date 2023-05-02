@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018  FusionDirectory
+
+  Copyright (C) 2017-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,24 +21,19 @@
 
 class supannStructureExt extends simplePlugin
 {
-  var $objectclasses = ['fdSupannExt'];
-
-  var $mainTab = TRUE;
-
-  /* Return plugin information */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('SUPANN-Ext'),
       'plDescription' => _('SUPANN Non-Official Extension'),
       'plObjectType'  => ['entite', 'etablissement'],
+      'plObjectClass' => ['fdSupannExt'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'validity' => [
@@ -124,7 +120,7 @@ class supannStructureExt extends simplePlugin
     $this->attributesAccess['fdSupannRelationEntite']->attribute->attributes[2]->setChoices($code_entites, $label_entites);
   }
 
-  function check ()
+  function check (): array
   {
     $errors = parent::check();
 
@@ -133,17 +129,18 @@ class supannStructureExt extends simplePlugin
       ($this->attributesAccess['fdSupannEndDate']->getValue() != '') &&
       ($this->attributesAccess['fdSupannStartDate']->getDateValue() > $this->attributesAccess['fdSupannEndDate']->getDateValue())
       ) {
-      $errors[] = _('Start date must be smaller than end date');
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['fdSupannEndDate'],
+        htmlescape(sprintf(_('End date "%s" is older than start date "%s"'), $this->attributesAccess['fdSupannEndDate']->getDateValue()->format('Y-m-d'), $this->attributesAccess['fdSupannStartDate']->getDateValue()->format('Y-m-d')))
+      );
     }
 
     return $errors;
   }
 
-  protected function prepare_save ()
+  protected function prepare_save (): array
   {
     $this->attributesAccess['fdSupannRelationEntite']->supannPrepareSave();
     return parent::prepare_save();
   }
 }
-
-?>

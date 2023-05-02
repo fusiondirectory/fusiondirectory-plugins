@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2014-2015 Dhatim
-  Copyright (C) 2014-2018 FusionDirectory
+  Copyright (C) 2014-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,28 +20,26 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ppolicyConfig extends simplePlugin
+class ppolicyConfig extends multiPluginSection
 {
-  var $objectclasses  = ["fdPpolicyPluginConf"];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
-      "plShortName"     => _("Ppolicy plugin configuration"),
-      "plDescription"   => _("FusionDirectory ppolicy plugin configuration"),
-      "plSelfModify"    => FALSE,
-      "plCategory"      => ["configuration"],
-      "plObjectType"    => ["smallConfig"],
+      'plShortName'     => _('Ppolicy plugin configuration'),
+      'plDescription'   => _('FusionDirectory ppolicy plugin configuration'),
+      'plObjectClass'   => ['fdPpolicyPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
-      'main' => [
-        'name'  => _('Ppolicy plugin'),
+      'ppolicy' => [
+        'name'  => _('Ppolicy'),
         'attrs' => [
           new StringAttribute(
             _('Ppolicy RDN'), _('Branch in which ppolicies will be stored'),
@@ -48,13 +47,24 @@ class ppolicyConfig extends simplePlugin
             'ou=ppolicies'
           ),
           new StringAttribute(
-            _('Default ppolicy cn'), _('What you put as default ppolicy in the overlay config'),
-            'fdPpolicyDefaultCn', FALSE,
-            'default'
+            _('Default ppolicy dn'), _('What you put as default ppolicy in the overlay config'),
+            'fdPpolicyDefaultDn', FALSE
           ),
+          new HiddenAttribute('fdPpolicyDefaultCn'),
         ]
       ],
     ];
   }
+
+  public static function fixAttributesOnLoad (multiPlugin $multiPlugin)
+  {
+    global $config;
+
+    if (!empty($multiPlugin->fdPpolicyDefaultCn)) {
+      if (empty($multiPlugin->fdPpolicyDefaultDn)) {
+        $multiPlugin->fdPpolicyDefaultDn = 'cn='.$multiPlugin->fdPpolicyDefaultCn.','.get_ou('ppolicyRDN').$config->current['BASE'];
+      }
+      $multiPlugin->fdPpolicyDefaultCn = '';
+    }
+  }
 }
-?>

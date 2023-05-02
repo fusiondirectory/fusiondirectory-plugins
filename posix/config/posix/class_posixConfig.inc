@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018 FusionDirectory
+
+  Copyright (C) 2015-2022 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,26 +21,24 @@
 
 class posixConfig extends simplePlugin
 {
-  var $objectclasses = [];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
-      'plShortName'     => _('POSIX configuration'),
+      'plShortName'     => _('POSIX'),
+      'plTitle'         => _('POSIX configuration'),
       'plDescription'   => _('FusionDirectory POSIX plugin configuration'),
-      'plSelfModify'    => FALSE,
-      'plCategory'      => ['configuration'],
-      'plObjectType'    => ['smallConfig'],
+      'plPriority'      => 4,
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
-        'name'  => _('Posix'),
+        'name'  => _('POSIX'),
         'class' => ['critical'],
         'attrs' => [
           new StringAttribute(
@@ -135,10 +134,10 @@ class posixConfig extends simplePlugin
     );
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->attributesAccess['fdDefaultShell']->setChoices($this->fdShells);
+    return TRUE;
   }
 }
-?>

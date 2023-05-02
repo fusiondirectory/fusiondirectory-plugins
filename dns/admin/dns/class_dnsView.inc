@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+  Copyright (C) 2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,16 +20,14 @@
 
 class dnsView extends simplePlugin
 {
-  var $objectclasses = ['fdDNSView'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('DNS view'),
       'plDescription' => _('DNS view'),
+      'plObjectClass' => ['fdDNSView'],
       'plObjectType'  => ['dnsView' => [
         'name'        => _('DNS view'),
-        'filter'      => '(objectClass=fdDNSView)',
         'ou'          => get_ou('dnsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16'
       ]],
@@ -38,7 +36,7 @@ class dnsView extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [

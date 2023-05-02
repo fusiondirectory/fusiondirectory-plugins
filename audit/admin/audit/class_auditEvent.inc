@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2015-2018 FusionDirectory
+
+  Copyright (C) 2015-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,43 +19,31 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class UserLinkAttribute extends DisplayLDAPAttribute
-{
-  function renderFormInput ()
-  {
-    try {
-      return objects::link($this->value, 'user');
-    } catch (NonExistingLdapNodeException $e) {
-      return '<a><img src="geticon.php?context=status&amp;icon=dialog-warning&amp;size=16" alt="warning" class="center"/>&nbsp;'.sprintf(_('Unknown user: %s'), $this->value).'</a>';
-    }
-  }
-}
-
 class auditEvent extends simplePlugin
 {
   public $base;
 
-  var $objectclasses = ['fdAuditEvent'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Audit event'),
       'plDescription' => _('An event like ldap modification which was registered by audit plugin'),
+      'plObjectClass' => ['fdAuditEvent'],
       'plObjectType'  => ['auditEvent' => [
         'name'        => _('Audit event'),
-        'filter'      => 'objectClass=fdAuditEvent',
         'icon'        => 'geticon.php?context=applications&icon=audit&size=16',
         'ou'          => get_ou('auditRDN'),
         'mainAttr'    => FALSE,
       ]],
+      'plSearchAttrs' => ['fdAuditAction','fdAuditAuthorDN','fdAuditAuthorIP','fdAuditObjectType',
+        'fdAuditObject','fdAuditAttributes','fdAuditResult'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -65,12 +54,13 @@ class auditEvent extends simplePlugin
             _('Time'), _('Date and time this event happened'),
             'fdAuditDateTime', TRUE
           ),
-          new DisplayLDAPAttribute(_('Action'),       _('Action type'),     'fdAuditAction',      TRUE),
-          new UserLinkAttribute(_('Author'),       _('Action author'),   'fdAuditAuthorDN',    TRUE),
-          new DisplayLDAPAttribute(_('Object type'),  _('Object type'),     'fdAuditObjectType',  TRUE),
-          new DisplayLDAPAttribute(_('Object'),       _('Target object'),   'fdAuditObject',      TRUE),
-          new DisplayLDAPArrayAttribute(_('Attributes'), _('Target attributes'), 'fdAuditAttributes', FALSE),
-          new DisplayLDAPAttribute(_('Result'),       _('Result or error'), 'fdAuditResult',      FALSE),
+          new DisplayLDAPAttribute(_('Action'),           _('Action type'),               'fdAuditAction',      TRUE),
+          new ObjectLinkAttribute(_('Author'),            _('Action author'),             'fdAuditAuthorDN',    TRUE, 'user'),
+          new DisplayLDAPAttribute(_('Author IP'),        _('Action author IP address'),  'fdAuditAuthorIP',    FALSE),
+          new DisplayLDAPAttribute(_('Object type'),      _('Object type'),               'fdAuditObjectType',  TRUE),
+          new DisplayLDAPAttribute(_('Object'),           _('Target object'),             'fdAuditObject',      TRUE),
+          new DisplayLDAPArrayAttribute(_('Attributes'),  _('Target attributes'),         'fdAuditAttributes',  FALSE),
+          new DisplayLDAPAttribute(_('Result'),           _('Result or error'),           'fdAuditResult',      FALSE),
         ]
       ],
     ];
@@ -79,12 +69,12 @@ class auditEvent extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
   {
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
-    $this->fdAuditId = random_int(0, PHP_INT_MAX);
+    $this->fdAuditId        = random_int(0, PHP_INT_MAX);
+    $this->fdAuditAuthorIP  = ($_SERVER['REMOTE_ADDR'] ?? '');
   }
 
-  function compute_dn ()
+  function compute_dn (): string
   {
     return $this->create_unique_dn('fdAuditDateTime', get_ou('auditRDN').$this->base);
   }
 }
-?>

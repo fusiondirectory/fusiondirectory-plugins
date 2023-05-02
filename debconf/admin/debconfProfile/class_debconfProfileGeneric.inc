@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -51,6 +51,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
         $this->attributes[$cn] = new StringAttribute($cn, $desc, "debconfentry_$cn", FALSE, $default);
         $this->attributes[$cn]->setInLdap(FALSE);
         $this->attributes[$cn]->setAcl($this->getAcl());
+        /* Ignored fields: choices,extendedDescription */
       }
     }
     $ldap->cd("ou=questions,".$this->plugin->dn);
@@ -61,9 +62,11 @@ class DebconfEntriesAttribute extends CompositeAttribute
         if (isset($this->attributes[$cn])) {
           $this->attributes[$cn]->setValue($entry['value'][0]);
           // set initialValue
-          $this->attributes[$cn]->loadValue(NULL);
+          $this->attributes[$cn]->loadValue([]);
+          /* Ignored fields: flags,owners,template */
         } else {
-          msg_dialog::display(_("Error"),  _("There is no template for this profile"), ERROR_DIALOG);
+          $error = new SimplePluginError($this, htmlescape(_('There is no template for this profile')));
+          $error->display();
         }
       }
     }
@@ -77,9 +80,15 @@ class DebconfEntriesAttribute extends CompositeAttribute
       $dn = "cn=$cn,ou=questions,".$this->plugin->dn;
       $ldap->cat($dn, ["objectClass"]);
       if ($ldap->count() != 1) {
-        msg_dialog::display(_("Error"),
-          sprintf(_("Can't find entry %s in LDAP for profile %s"), $cn, $this->plugin->dn),
-          ERROR_DIALOG);
+        $error = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(
+            _('Can\'t find entry %s in LDAP for profile %s'),
+            $cn,
+            $this->plugin->dn
+          ))
+        );
+        $error->display();
       } else {
         $attrs = [
           'value' => [$attribute->getValue()],
@@ -112,7 +121,7 @@ class DebconfImportAttribute extends FileAttribute
     $tmp = str_replace("\n", "", $str);
     // removing spaces
     $tmp = str_replace(" ", "", $tmp);
-    if (preg_match( "/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
+    if (preg_match("/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
                     $config->current['BASE']."/",
                     // searching for dn: containing the template name
                     $tmp, $matches) > 0) {
@@ -130,17 +139,21 @@ class DebconfImportAttribute extends FileAttribute
         $ldap->import_complete_ldif($str, FALSE, FALSE);
         $this->plugin->initially_was_account = TRUE;
       } catch (FusionDirectoryException $e) {
-        msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
+        $error = new SimplePluginError($this, htmlescape($e->getMessage()), 0, $e);
+        $error->display();
       }
     } else {
-      msg_dialog::display(_("LDIF error"),  "Could not found template name in the ldif ".
-                                            "was expecting ou=<b>name</b>,ou=templates,".
-                                            get_ou("debconfRDN").$config->current['BASE'],
-                                            ERROR_DIALOG);
+      $error = new SimplePluginError(
+        $this,
+        "Could not find template name in the ldif ".
+          "was expecting ou=<b>name</b>,ou=templates,".
+          htmlescape(get_ou("debconfRDN").$config->current['BASE'])
+      );
+      $error->display();
     }
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     global $config;
     return sprintf(_("In order to import a debconf file, please run the following command : <br/>".
@@ -152,19 +165,15 @@ class DebconfImportAttribute extends FileAttribute
 
 class debconfProfileGeneric extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses   = ["top","organizationalUnit"];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Debconf profile'),
       'plDescription' => _('Debconf profile information'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['organizationalUnit'],
+      'plFilter'      => '(&(objectClass=organizationalUnit)(!(objectClass=gosaDepartment)))',
       'plObjectType'  => ['debconfProfile' => [
         'name'      => _('Debconf profile'),
-        'filter'    => '(&(objectClass=organizationalUnit)(!(objectClass=gosaDepartment)))',
         'ou'        => get_ou('debconfRDN'),
         'icon'      => 'geticon.php?context=applications&icon=debconf&size=16',
         'mainAttr'  => 'ou',
@@ -173,7 +182,7 @@ class debconfProfileGeneric extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       // Attributes are grouped by section
@@ -197,7 +206,7 @@ class debconfProfileGeneric extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['ou']->setUnique(TRUE);
+    $this->attributesAccess['ou']->setUnique('one');
     if (count($this->attributesAccess['debconfEntries']->attributes) == 0) {
       unset($this->attributesInfo['entries']);
       $this->attributesAccess['ou']->setVisible(FALSE);
@@ -209,7 +218,7 @@ class debconfProfileGeneric extends simplePlugin
     }
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     $errors = parent::ldap_save();
     if (!empty($errors)) {
@@ -218,6 +227,6 @@ class debconfProfileGeneric extends simplePlugin
     if (isset($this->attributesInfo['entries'])) {
       $this->attributesInfo['entries']['attrs']['debconfEntries']->saveInLdap();
     }
+    return [];
   }
 }
-?>

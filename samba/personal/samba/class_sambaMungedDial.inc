@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -194,7 +194,10 @@ class sambaMungedDial
 
     /* Encode paramName to UTF-16 */
     if (function_exists("recode")) {
+      /* PHP<7.4 */
+      // phpcs:disable PHPCompatibility.FunctionUse.RemovedFunctions, PHPCompatibility.Extensions.RemovedExtensions
       $utfName = recode("ISO8859-15..UTF-16", $paramName);
+      // phpcs:enable
     } else {
       $utfName = iconv("ISO8859-15", "UTF-16BE", $paramName);
     }
@@ -280,7 +283,7 @@ class sambaMungedDial
 
       /* If string parameter, convert */
       if (in_array($ctxParmName, $this->stringParams)) {
-          $ctxParm = sambaMungedDial::hexstr($ctxParm);
+        $ctxParm = sambaMungedDial::hexstr($ctxParm);
       }
       /* If time parameter, convert */
       if (in_array($ctxParmName, $this->timeParams)) {
@@ -348,7 +351,7 @@ class sambaMungedDial
   /* Sets Terminal-Server-Login value: enabled/disabled */
   function setTsLogin ($checked)
   {
-    $flag = substr($this->ctx['CtxCfgFlags1'], 5, 1);
+    $flag = (int)substr($this->ctx['CtxCfgFlags1'], 5, 1);
 
     if ($checked) {
       $flag &= 0xFE;
@@ -369,7 +372,7 @@ class sambaMungedDial
   /* sets Broken-Connection value: disconnect/reset */
   function setBrokenConn ($checked)
   {
-    $flag = substr($this->ctx['CtxCfgFlags1'], 5, 1);
+    $flag = (int)substr($this->ctx['CtxCfgFlags1'], 5, 1);
 
     if ($checked) {
       $flag |= 4;
@@ -390,7 +393,7 @@ class sambaMungedDial
   /* sets Reconnection value: from any client/from previous client only */
   function setReConn ($checked)
   {
-    $flag = substr($this->ctx['CtxCfgFlags1'], 5, 1);
+    $flag = (int)substr($this->ctx['CtxCfgFlags1'], 5, 1);
 
     if ($checked) {
       $flag |= 2;
@@ -517,7 +520,7 @@ class sambaMungedDial
   function setCtxMaxConnectionTimeF ($checked)
   {
     if ($checked) {
-      unset($this->ctx['CtxMaxConnectionTime']);
+      unset ($this->ctx['CtxMaxConnectionTime']);
     }
   }
 
@@ -532,7 +535,7 @@ class sambaMungedDial
   function setCtxMaxDisconnectionTimeF ($checked)
   {
     if ($checked) {
-      unset($this->ctx['CtxMaxDisconnectionTime']);
+      unset ($this->ctx['CtxMaxDisconnectionTime']);
     }
   }
 
@@ -547,8 +550,7 @@ class sambaMungedDial
   function setCtxMaxIdleTimeF ($checked)
   {
     if ($checked) {
-      unset($this->ctx['CtxMaxIdleTime']);
+      unset ($this->ctx['CtxMaxIdleTime']);
     }
   }
 }
-?>

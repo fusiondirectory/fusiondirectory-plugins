@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018  FusionDirectory
+
+  Copyright (C) 2015-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,110 +19,109 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class dnsManagement extends simpleManagement
+class dnsManagement extends management
 {
-  protected $objectTypes  = ['dnsZone', 'dnsView', 'dnsAcl'];
+  public $neededAttrs = ['sOARecord' => '*'];
 
-  protected $departmentBrowser      = TRUE;
-  protected $departmentRootVisible  = TRUE;
-  protected $baseMode               = TRUE;
+  /* Default columns */
+  public static $columns = [
+    ['ObjectTypeColumn',     []],
+    ['LinkColumn',           ['attributes' => 'nameAttr',             'label' => 'Name']],
+    ['ActionsColumn',        ['label' => 'Actions']],
+  ];
 
-  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'zoneName', 'relativeDomainName', 'sOARecord'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('DNS'),
-      'plDescription' => _('DNS Management'),
+      'plTitle'       => _('DNS Management'),
+      'plDescription' => _('Manage DNS zones and views'),
       'plIcon'        => 'geticon.php?context=applications&icon=dns&size=48',
       'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 10]],
       'plPriority'    => 1,
       'plManages'     => ['dnsZone', 'dnsView', 'dnsAcl'],
-
-      'plProvidedAcls'  => []
     ];
   }
 
-  function configureHeadpage ()
+  protected function configureActions ()
   {
-    parent::configureHeadpage();
+    parent::configureActions();
+
     if (class_available('supportDaemon')) {
-      $this->registerAction('zonerefresh', 'ldap2zoneRefresh');
-      array_splice(
-        $this->headpage->xmlData['actionmenu']['action'],
-        2,
-        0,
-        [
-          [
-            'name'  => 'zonerefresh',
-            'type'  => 'entry',
-            'image' => 'geticon.php?context=actions&icon=view-refresh&size=16',
-            'label' => 'Refresh Zone',
-            'acl'   => 'dnsZone/dnsZone[w]',
-          ]
-        ]
+      $this->registerAction(
+        new Action(
+          'zonerefresh',
+          _('Refresh Zone'),
+          'geticon.php?context=actions&icon=view-refresh&size=16',
+          '+',
+          'ldap2zoneRefresh',
+          ['w'],
+          TRUE,
+          TRUE,
+          ['dnsZone']
+        )
       );
-      array_splice(
-        $this->headpage->xmlData['actiontriggers']['action'],
-        2,
-        0,
-        [
-          [
-            'name'  => 'zonerefresh',
-            'type'  => 'entry',
-            'image' => 'geticon.php?context=actions&icon=view-refresh&size=16',
-            'label' => 'Refresh Zone',
-            'acl'   => '%acl[w]',
-          ]
-        ]
-      );
+      $this->actions['zonerefresh']->setSeparator(TRUE);
     }
   }
 
-  function ldap2zoneRefresh ($action, $targets)
+  function ldap2zoneRefresh ($action)
   {
-    if (empty($targets)) {
-      return;
-    }
-    foreach ($targets as $zoneDn) {
-      $entry = $this->getHeadpage()->getEntry($zoneDn);
-      list($fqdn) = explode(' ', $entry['sOARecord'][0]);
-      $servers = static::findServerByFQDN($fqdn, $zoneDn);
-      if (count($servers) > 1) {
-        msg_dialog::display(_('Could not run ldap2zone'), _('More than one server matches the SOA'), ERROR_DIALOG);
-      } elseif (count($servers) == 0) {
-        msg_dialog::display(_('Could not run ldap2zone'), _('Could not find the primary server'), ERROR_DIALOG);
-      } else {
-        $serverTabs = objects::open(key($servers), 'server');
-        if ($serverTabs->by_object['argonautClient']->is_account) {
-          $s_daemon = new supportDaemon();
-          if ($s_daemon->is_error()) {
-            msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-            );
-          } else {
-            $target   = $serverTabs->getBaseObject()->macAddress;
-            if (is_array($target)) {
-              $target = $target[0];
-            }
-            $zoneName = $entry['zoneName'][0];
-            $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zoneName]]);
-            if ($s_daemon->is_error()) {
-              msg_dialog::display(_('Could not get run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
-            } else {
-              msg_dialog::display(_('Ldap2zone'), sprintf(_('Ldap2Zone called for zone "%s"'), $zoneName), INFO_DIALOG);
-            }
-          }
-        } else {
-          msg_dialog::display(_('Error'), _('Argonaut client needs to be activated to use ldap2zone remotely'), ERROR_DIALOG);
+    foreach ($action['targets'] as $zoneDn) {
+      $entry = $this->listing->getEntry($zoneDn);
+      if (strcasecmp($entry->type, 'dnsZone') != 0) {
+        /* Only refresh zones */
+        throw new FusionDirectoryException(sprintf(_('Invalid target "%s" passed for action "%s"'), $zoneDn, _('Refresh Zone')));
+      }
+      list ($fqdn) = explode(' ', $entry['sOARecord'][0]);
+      try {
+        $servers = static::findServerByFQDN($fqdn, $zoneDn);
+        if (count($servers) > 1) {
+          throw new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Could not run ldap2zone: %s'),
+              _('More than one server matches the SOA')
+            ))
+          );
+        } elseif (count($servers) == 0) {
+          throw new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Could not run ldap2zone: %s'),
+              sprintf(_('Could not find the primary server "%s"'), $fqdn)
+            ))
+          );
         }
+        $serverTabs = objects::open(key($servers), 'server');
+        if (!$serverTabs->by_object['argonautClient']->isActiveOrInherited()) {
+          throw new FusionDirectoryError(htmlescape(_('Argonaut client needs to be activated to use ldap2zone remotely')));
+        }
+        $s_daemon = new supportDaemon();
+        if ($s_daemon->is_error()) {
+          throw new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        }
+        $target   = $serverTabs->getBaseObject()->macAddress;
+        if (is_array($target)) {
+          if (count($target) === 0) {
+            throw new SimplePluginError($this, _('Cannot use argonaut client on a system without a Mac address'));
+          }
+          $target = $target[0];
+        }
+        $zoneName = $entry['zoneName'][0];
+        $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zoneName]]);
+        if ($s_daemon->is_error()) {
+          throw new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        }
+        msg_dialog::display(_('Ldap2zone'), htmlescape(sprintf(_('Ldap2Zone called for zone "%s"'), $zoneName)), INFO_DIALOG);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
       }
     }
   }
 
-  public static function findServerByFQDN ($fqdn, $zoneDn = NULL)
+  public static function findServerByFQDN ($fqdn, $zoneDn = NULL): array
   {
     global $config;
-    list($serverCn, $serverZone) = explode('.', $fqdn, 2);
+    list ($serverCn, $serverZone) = explode('.', $fqdn, 2);
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ips = [];
@@ -146,4 +146,3 @@ class dnsManagement extends simpleManagement
     return [];
   }
 }
-?>

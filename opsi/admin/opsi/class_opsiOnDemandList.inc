@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018 FusionDirectory
+
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,18 +21,15 @@
 
 class opsiOnDemandList extends opsiSoftwareList
 {
-  var $objectclasses   = ['opsiOnDemandList'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('OPSI ondemand list'),
       'plDescription' => _('OPSI on demand software list'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi-on-demand&size=16',
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['opsiOnDemandList'],
       'plObjectType'  => ['opsiOnDemandList' => [
         'name'    => _('OPSI ondemand list'),
-        'filter'  => 'objectClass=opsiOnDemandList',
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi-on-demand&size=16',
       ]],
@@ -43,7 +41,7 @@ class opsiOnDemandList extends opsiSoftwareList
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -81,7 +79,7 @@ class opsiOnDemandList extends opsiSoftwareList
   {
     simplePlugin::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
   }
 
   public function server_changed ($opsi_args = NULL)
@@ -92,4 +90,3 @@ class opsiOnDemandList extends opsiSoftwareList
     return parent::server_changed($opsi_args);
   }
 }
-?>

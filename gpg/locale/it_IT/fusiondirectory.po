@@ -4,137 +4,126 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2016
+# fusiondirectory <contact@fusiondirectory.org>, 2018
+# Paola <paola.penati@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2022-07-28 17:06+0000\n"
-"PO-Revision-Date: 2016-08-29 15:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
-"Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"PO-Revision-Date: 2018-08-13 19:54+0000\n"
+"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2019\n"
+"Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
-#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
+#: addons/gpg/class_pgpServerInfo.inc:27 addons/gpg/class_pgpServerInfo.inc:28
+#: addons/gpg/class_pgpServerInfo.inc:35 addons/gpg/class_pgpServerInfo.inc:52
 msgid "GPG server info"
 msgstr "Informazioni sul server GPG"
 
-#: addons/gpg/class_pgpServerInfo.inc:60
+#: addons/gpg/class_pgpServerInfo.inc:56
 msgid "Software"
 msgstr "Programma"
 
-#: addons/gpg/class_pgpServerInfo.inc:60
+#: addons/gpg/class_pgpServerInfo.inc:56
 msgid "Which software this GPG key server is running"
 msgstr "Quale programma è in corso d'esecuzione sul server di chiavi GPG"
 
-#: addons/gpg/class_pgpServerInfo.inc:65
+#: addons/gpg/class_pgpServerInfo.inc:61
 msgid "GPG version"
 msgstr "Versione GPG"
 
-#: addons/gpg/class_pgpServerInfo.inc:65
+#: addons/gpg/class_pgpServerInfo.inc:61
 msgid "Which version of GPG this key server is running"
 msgstr "Quale versione di GPG è in esecuzione su questo server di chiavi GPG"
 
-#: addons/gpg/class_pgpServerInfo.inc:70
+#: addons/gpg/class_pgpServerInfo.inc:66
 msgid "Branch in which keys are stored"
 msgstr "Ramo dell'annuario nel quale saranno immagazzinate le chiavi"
 
-#: addons/gpg/class_pgpServerInfo.inc:74
+#: addons/gpg/class_pgpServerInfo.inc:70
 msgid "Keys RDN"
 msgstr "RDN chiavi"
 
-#: addons/gpg/class_pgpServerInfo.inc:74
+#: addons/gpg/class_pgpServerInfo.inc:70
 msgid "Branch under base in which keys are stored"
 msgstr "Ramo sotto la base nel quale saranno immagazzinate le chiavi"
 
-#: personal/gpg/class_gpgAccount.inc:31
-msgid "GPG keys"
-msgstr "Chiavi GPG"
-
-#: personal/gpg/class_gpgAccount.inc:35
-msgid "GPG keys of this user"
-msgstr "Chiavi GPG di questo utente"
-
-#: personal/gpg/class_gpgAccount.inc:46
+#: personal/gpg/class_gpgAccount.inc:28
 msgid "GPG"
 msgstr "GPG"
 
-#: personal/gpg/class_gpgAccount.inc:47
+#: personal/gpg/class_gpgAccount.inc:29
 msgid "Edit user's GPG IDs"
 msgstr "Modifica gli IDs GPG degli utenti"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
-msgid "Configuration error"
-msgstr "Errore di configurazione"
+#: personal/gpg/class_gpgAccount.inc:44
+msgid "GPG keys"
+msgstr "Chiavi GPG"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+#: personal/gpg/class_gpgAccount.inc:48
+msgid "GPG keys of this user"
+msgstr "Chiavi GPG di questo utente"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:27
+msgid "PGP Key selection"
+msgstr "Selezione Chiave PGP"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:28
+msgid "PGP Key selection for a user"
+msgstr "Selezione chiave PGP per un utente"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:30
+msgid "PGP Key"
+msgstr "Chiave PGP"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:31
+msgid "PGP Key information"
+msgstr "Informazioni Chiave PGP"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:66
 msgid "You need to configure GPG base dn through the addons section first"
 msgstr ""
 "Devi prima di tutto configurare la bse dn per GPG, nella sezione addons"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:90
+msgid "Cert ID"
+msgstr "Cert ID"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:91
 msgid "Key ID"
 msgstr "ID della chiave"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:92
 msgid "User ID"
 msgstr "ID dell'utente"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:93
 msgid "Creation time"
 msgstr "Data di creazione"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:144
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:94
 msgid "Expiration"
 msgstr "Data di scadenza"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:145
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:95
 msgid "Algorithm"
 msgstr "Algoritmo"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:146
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:96
 msgid "Size"
 msgstr "Dimensione"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:147
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:97
 msgid "Revoked"
 msgstr "Revocato"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:148
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:98
 msgid "Disabled"
 msgstr "Disabilitato"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
-msgid "Please select the desired entries"
-msgstr "Seleziona le entries desiderate"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
-msgid "PGP Key"
-msgstr "Chiave PGP"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
-msgid "User"
-msgstr "Utente"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
-msgid "Creation date"
-msgstr "Data di creazione"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
-msgid "Expiration date"
-msgstr "Data di scadenza"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
-msgid "Type"
-msgstr "Tipo"

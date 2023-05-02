@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2011-2018 FusionDirectory project
+  Copyright (C) 2011-2016 FusionDirectory project
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,8 +21,7 @@
 
 class dashboardNetwork extends simplePlugin
 {
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Network'),
@@ -34,7 +33,7 @@ class dashboardNetwork extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'dhcp' => [
@@ -77,11 +76,15 @@ class dashboardNetwork extends simplePlugin
       $objects = objects::ls('server', ['cn' => 'raw', 'dhcpServiceDN' => 1], NULL, '(objectClass=dhcpServer)', TRUE);
     } catch (FusionDirectoryException $e) {
       $objects = [];
-      msg_dialog::display(
-        _('Error'),
-        sprintf(_('Statistics for DHCP could not be computed because of the following error: %s'), $e->getMessage()),
-        ERROR_DIALOG
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('Statistics for DHCP could not be computed because of the following error: %s'),
+          $e->getMessage()
+        )),
+        0,
+        $e
       );
+      $error->display();
     }
 
     $servers = [];
@@ -116,7 +119,7 @@ class dashboardNetwork extends simplePlugin
     $servers  = [];
     $zones    = objects::ls('dnsZone', ['zoneName' => 1, 'sOARecord' => 1], NULL, '', TRUE);
     foreach ($zones as $zonedn => $zone) {
-      list($fqdn)  = explode(' ', $zone['sOARecord']);
+      list ($fqdn)  = explode(' ', $zone['sOARecord']);
       $search = dnsManagement::findServerByFQDN($fqdn, $zonedn);
       foreach ($search as $dn => $name) {
         if (!isset($servers[$dn])) {
@@ -135,4 +138,3 @@ class dashboardNetwork extends simplePlugin
     return array_values($servers);
   }
 }
-?>

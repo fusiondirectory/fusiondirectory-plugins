@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2011-2018 FusionDirectory
+  Copyright (C) 2011-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 
 class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
 {
-  function readValues ($value)
+  function readValues (string $value): array
   {
     $values = parent::readValues($value);
     $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
@@ -36,7 +36,7 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
     return $values;
   }
 
-  function writeValues ($values)
+  function writeValues (array $values)
   {
     if (!empty($values[5])) {
       $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
@@ -91,19 +91,19 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
 
 class quotaAccount extends simplePlugin
 {
-  var $objectclasses = ['systemQuotas'];
+  protected $displayHeader  = TRUE;
 
-  var $displayHeader = TRUE;
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Quota'),
       'plDescription' => _('Plugin for quota support'),
+      'plFilter'      => '(objectClass=systemQuotas)',
       'plIcon'        => 'geticon.php?context=applications&icon=quota&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=quota&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 8,
+      'plObjectClass' => ['systemQuotas'],
       'plObjectType'  => ['user'],
       'plDepends'     => ['posixAccount'],
 
@@ -111,7 +111,7 @@ class quotaAccount extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -239,4 +239,3 @@ class quotaAccount extends simplePlugin
     return FALSE;
   }
 }
-?>

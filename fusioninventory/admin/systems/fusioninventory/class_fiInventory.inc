@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,9 +21,6 @@
 
 class fiInventory extends simplePlugin
 {
-  var $objectclasses  = [];
-  var $displayHeader  = FALSE;
-
   protected $filter = '';
 
   static $sections = [
@@ -60,20 +58,22 @@ class fiInventory extends simplePlugin
     'physicalvolumes' => 'hardware',
     'volumegroups'    => 'software',
     'licenseinfos'    => 'software',
+    'versionprovider' => 'other',
   ];
 
   /* Return plugin information */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Inventory'),
       'plDescription' => _('Inventory Viewer'),
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=fusioninventory&size=16',
       'plPriority'    => 90,
+      'plObjectClass' => ['fdInventoryContent'],
       'plObjectType'  => [
         'workstation', 'server',
         'inventory' => [
           'description' => _('Inventory object'),
-          'filter'      => 'objectClass=fdInventoryContent',
           'mainAttr'    => 'cn',
           'icon'        => 'geticon.php?context=applications&icon=fusioninventory&size=16',
           'name'        => _('Inventory object'),
@@ -81,12 +81,13 @@ class fiInventory extends simplePlugin
           'tabClass'    => 'simpleTabs_noSpecial',
         ]
       ],
+      'plSearchAttrs' => ['cn','ipHostNumber','macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'match' => [
@@ -96,6 +97,7 @@ class fiInventory extends simplePlugin
           new DisplayAttribute(_('System'), _('System entry matching this inventory'), 'matching'),
           new HiddenArrayAttribute('macAddress'),
           new HiddenArrayAttribute('ipHostNumber'),
+          new HiddenArrayAttribute('cn'),
         ],
       ],
       'hardware' => [
@@ -122,6 +124,12 @@ class fiInventory extends simplePlugin
         'attrs'     => [new FakeAttribute('process_infos')],
         'template'  => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
       ],
+      'other' => [
+        'name'      => _('Other'),
+        'class'     => ['fullwidth'],
+        'attrs'     => [new FakeAttribute('other_infos')],
+        'template'  => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
+      ],
     ];
   }
 
@@ -132,9 +140,10 @@ class fiInventory extends simplePlugin
     if (preg_match('/'.preg_quote(get_ou('inventoryRDN').$config->current['BASE'], '/').'$/', $dn)) {
       $this->mainTab        = TRUE;
       $this->objectclasses  = ['fdInventoryContent'];
-      $attributesInfo['hardware']['attrs'][] = new HiddenAttribute('cn');
       $attributesInfo['match']['attrs'][0]->setAllowHTML(TRUE);
     } else {
+      // Remove cn
+      unset($attributesInfo['hardware']['attrs'][3]);
       unset($attributesInfo['match']);
     }
 
@@ -146,7 +155,7 @@ class fiInventory extends simplePlugin
     $this->users_infos    = NULL;
   }
 
-  function execute ()
+  public function render (): string
   {
     if ($this->hardware_infos === NULL) {
       $infos = $this->get_inventory_infos();
@@ -155,20 +164,21 @@ class fiInventory extends simplePlugin
         $this->software_infos = $infos['software'];
         $this->process_infos  = $infos['process'];
         $this->users_infos    = $infos['users'];
+        $this->other_infos    = $infos['other'];
       }
     }
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');
     $smarty->append('css_files', 'plugins/fusioninventory/inventory.css');
-    return parent::execute();
+    return parent::render();
   }
 
-  function save ()
+  function save (): array
   {
     return [];
   }
 
-  function remove ($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     return [];
   }
@@ -239,6 +249,9 @@ class fiInventory extends simplePlugin
     $ldap->cd($dn);
     $ldap->search('(objectClass=*)', ['*'], 'one');
     $infos = [];
+    foreach (array_unique(static::$sections) as $section) {
+      $infos[$section] = [];
+    }
     while ($attrs = $ldap->fetch()) {
       $object = [];
       $cn     = FALSE;
@@ -270,6 +283,9 @@ class fiInventory extends simplePlugin
         continue;
       }
 
+      if (!isset(static::$sections[$class])) {
+        static::$sections[$class] = 'other';
+      }
       if (!isset($infos[static::$sections[$class]][$class])) {
         $infos[static::$sections[$class]][$class] = ['keys' => [], 'objects' => []];
       }
@@ -313,7 +329,7 @@ class fiInventory extends simplePlugin
       return;
     }
     if ($fallbackDn !== NULL) {
-      $this->matching = $attrs['dn'];
+      $this->matching = $fallbackDn;
     } else {
       $templates = [];
       foreach ($systemTypes as $type) {
@@ -355,7 +371,7 @@ class fiInventory extends simplePlugin
 
   function createSystem ()
   {
-    list($type, $dn) = explode(':', $_POST['matching_template'], 2);
+    list ($type, $dn) = explode(':', $_POST['matching_template'], 2);
     $infos = objects::infos($type);
 
     $values = [
@@ -384,4 +400,3 @@ class fiInventory extends simplePlugin
     }
   }
 }
-?>

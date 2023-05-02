@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2014-2018 FusionDirectory
+  Copyright (C) 2014-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,16 +20,14 @@
 
 class webApplication extends simplePlugin
 {
-  var $objectclasses = ['fdWebApplication'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Web application'),
       'plDescription' => _('Web applicationts names, icons and links'),
+      'plObjectClass' => ['fdWebApplication'],
       'plObjectType'  => ['webApplication' => [
         'name'        => _('Web application'),
-        'filter'      => 'objectClass=fdWebApplication',
         'ou'          => get_ou('webappsRDN'),
         'icon'        => 'geticon.php?context=categories&icon=applications-internet&size=16'
       ]],
@@ -38,7 +36,7 @@ class webApplication extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -80,4 +78,3 @@ class webApplication extends simplePlugin
     ];
   }
 }
-?>

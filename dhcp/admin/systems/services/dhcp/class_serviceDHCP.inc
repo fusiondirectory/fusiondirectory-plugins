@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018  FusionDirectory
+  Copyright (C) 2015-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,14 +20,13 @@
 
 class serviceDHCP extends simpleService
 {
-  var $objectclasses = ['dhcpServer'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('DHCP service'),
       'plDescription' => _('DHCP service'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=16',
+      'plObjectClass' => ['dhcpServer'],
       'plForeignKeys' => [
         'dhcpServiceDN' => 'dhcpConfiguration',
       ],
@@ -36,7 +35,7 @@ class serviceDHCP extends simpleService
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -62,4 +61,3 @@ class serviceDHCP extends simpleService
     parent::__construct($dn, $parent, $attributesInfo);
   }
 }
-?>

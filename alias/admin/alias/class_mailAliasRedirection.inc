@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2012-2018 FusionDirectory
+  Copyright (C) 2012-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,31 +20,32 @@
 
 class mailAliasRedirection extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['top', 'mailAliasRedirection'];
-
-  /* Return plugin information for acl handling  */
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Temporary mail redirection'),
       'plDescription' => _('Temporary mail redirection'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['mailAliasRedirection'],
       'plObjectType'  => ['mailAliasRedirection' => [
         'name'        => _('Temporary mail redirection'),
-        'filter'      => 'objectClass=mailAliasRedirection',
         'aclCategory' => 'alias',
         'icon'        => 'geticon.php?context=applications&icon=alias-redirection&size=16',
         'ou'          => get_ou('aliasRDN'),
       ]],
-
+      'plForeignKeys'  => [
+        'mail' => [
+          ['mailAccount','mail', 'mail=%oldvalue%', '*']
+        ],
+        'gosaMailForwardingAddress' => [
+          ['mailAccount', 'gosaMailForwardingAddress', 'gosaMailForwardingAddress=%oldvalue%', '*']
+        ]
+      ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       // Attributes are grouped by section
@@ -81,5 +82,3 @@ class mailAliasRedirection extends simplePlugin
     ];
   }
 }
-
-?>

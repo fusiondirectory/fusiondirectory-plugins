@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018 FusionDirectory
+  Copyright (C) 2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,15 +18,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class communityConfig extends simplePlugin
+class communityConfig extends multiPluginSection
 {
-  var $objectclasses  = ['fdCommunityPluginConf'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Community configuration'),
       'plDescription'   => _('FusionDirectory community plugin configuration'),
+      'plObjectClass'   => ['fdCommunityPluginConf'],
       'plCategory'      => ['configuration'],
       'plObjectType'    => ['smallConfig'],
 
@@ -34,10 +33,10 @@ class communityConfig extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'community' => [
         'name'  => _('Community'),
         'attrs' => [
           new SetAttribute(
@@ -52,4 +51,3 @@ class communityConfig extends simplePlugin
     ];
   }
 }
-?>

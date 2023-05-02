@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2014-2015  Dhatim
-  Copyright (C) 2014-2018  FusionDirectory
+  Copyright (C) 2014-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,11 +20,9 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ppolicyAccount extends simplePlugin
+class ppolicyAccount extends simplePlugin implements UserTabLockingAction
 {
-  var $objectclasses = [];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Password policy'),
@@ -37,7 +36,7 @@ class ppolicyAccount extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -109,7 +108,7 @@ class ppolicyAccount extends simplePlugin
     parent::loadAttributes();
   }
 
-  protected function prepare_save ()
+  protected function prepare_save (): array
   {
     $errors = parent::prepare_save();
     if (!empty($this->pwdReset)) {
@@ -120,10 +119,18 @@ class ppolicyAccount extends simplePlugin
     return $errors;
   }
 
-  function remove ($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     /* ppolicy fields are not real fields, they can’t be removed through ldap_modify
      * It’s not possible to remove ppolicy info from a user node anyway */
+    return [];
+  }
+
+  public function fillLockingLDAPAttrs (string $mode, array &$modify)
+  {
+    if ($mode == 'LOCK') {
+      $modify['pwdAccountLockedTime'] = '000001010000Z';
+    }
+    /* For unlock there is nothing to do as core unlock changes the password it removes ppolicy lock anyway */
   }
 }
-?>

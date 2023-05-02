@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018 FusionDirectory
+
+  Copyright (C) 2016-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,20 +21,21 @@
 
 class userReminderConfig extends simplePlugin
 {
-  var $objectclasses  = ['fdUserReminderPluginConf'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
-      'plShortName'     => _('User reminder'),
+      'plShortName'     => _('Reminder'),
+      'plTitle'         => _('User reminder'),
       'plDescription'   => _('Configuration for the reminder of accounts expiration'),
+      'plObjectClass'   => ['fdUserReminderPluginConf'],
+      'plPriority'      => 16,
       'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -143,19 +145,57 @@ class userReminderConfig extends simplePlugin
             'ou=reminder'
           )
         ]
-      ]
+      ],
+      'email3' => [
+        'name'  => _('Expiration email settings'),
+        'attrs' => [
+          new BooleanAttribute(
+            _('Send an email'), _('Whether to send an email after expiration to inform the user'),
+            'fdUserReminderExpiration', TRUE,
+            FALSE
+          ),
+          new BooleanAttribute(
+            _('Forward to the manager'), _('Forward account expiration to the manager'),
+            'fdUserReminderForwardExpiration', TRUE,
+            TRUE
+          ),
+          new StringAttribute(
+            _('Subject'), _('Subject of the expiration email'),
+            'fdUserReminderExpirationSubject', FALSE,
+            _('[FusionDirectory] Your account has expired')
+          ),
+          new TextAreaAttribute(
+            _('Body (%s are cn and login)'),
+            _('Body of the expiration email, sent when the user has expired. Use %s for the cn and uid.'),
+            'fdUserReminderExpirationBody', FALSE,
+            _('Dear %1$s,'."\n".' your account %2$s has expired.'."\n")
+          ),
+        ]
+      ],
     ];
   }
 
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
+  function __construct (string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE, array $attributesInfo = NULL)
   {
-    parent::__construct($dn, $object, $parent, $mainTab);
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     if (!class_available('ppolicy')) {
       $this->attributesAccess['fdUserReminderForwardPpolicyAlert']->setDisabled(TRUE);
       $this->attributesAccess['fdUserReminderPpolicyAlertSubject']->setDisabled(TRUE);
       $this->attributesAccess['fdUserReminderPpolicyAlertBody']->setDisabled(TRUE);
     }
+
+    $this->attributesAccess['fdUserReminderExpiration']->setManagedAttributes(
+      [
+        'disable' => [
+          FALSE => [
+            'fdUserReminderForwardExpiration',
+            'fdUserReminderExpirationSubject',
+            'fdUserReminderExpirationBody',
+          ]
+        ]
+      ]
+    );
   }
 
   protected function post_save ()
@@ -163,8 +203,11 @@ class userReminderConfig extends simplePlugin
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->create_missing_trees(get_ou('reminderTokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE']);
+    try {
+      $ldap->create_missing_trees(get_ou('reminderTokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE']);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
+    }
     parent::post_save();
   }
 }
-?>

@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018 FusionDirectory
+  Copyright (C) 2013-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ class SubmittingOPSIProductAttribute extends SelectAttribute
   {
   }
 
-  function displayValue ($value)
+  function displayValue ($value): string
   {
     return $value;
   }
@@ -47,7 +47,7 @@ class ProductPropertyAttribute extends CompositeAttribute
   {
   }
 
-  function displayValue ($value)
+  function displayValue ($value): string
   {
     $array = json_decode($value);
     if (is_array($array) && (count($array) == 1)) {
@@ -56,14 +56,14 @@ class ProductPropertyAttribute extends CompositeAttribute
     return $value;
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
-    trigger_error('Should never be called');
+    throw new FusionDirectoryException('Should never be called');
   }
 
-  function writeValues ($values)
+  function writeValues (array $values)
   {
-    trigger_error('Should never be called');
+    throw new FusionDirectoryException('Should never be called');
   }
 
   function inputValue ($value)
@@ -90,23 +90,22 @@ class ProductPropertyAttribute extends CompositeAttribute
 
 class opsiProductProperties extends simplePlugin
 {
-  var $objectclasses = ['opsiProductProperties'];
-
   var $properties = [];
 
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Product properties'),
       'plDescription' => _('Product properties'),
-      'plSelfModify'  => FALSE,
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=opsi&size=16',
+      'plObjectClass' => ['opsiProductProperties'],
       'plObjectType'  => ['opsiProfile'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -148,13 +147,13 @@ class opsiProductProperties extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
-    $this->attributesAccess['fdOpsiProductProperty']->setHeight('auto');
   }
 
-  public function execute ()
+  public function update (): bool
   {
+    parent::update();
     $this->updateProductList();
-    return parent::execute();
+    return TRUE;
   }
 
   private function updateProductList ()
@@ -170,10 +169,8 @@ class opsiProductProperties extends simplePlugin
     if (!isset($this->properties[$productid])) {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
-        msg_dialog::display(
-          _("Could not contact argonaut server"),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
       $properties = $s_daemon->append_call(
@@ -185,10 +182,8 @@ class opsiProductProperties extends simplePlugin
         ]]
       );
       if ($s_daemon->is_error()) {
-        msg_dialog::display(
-          _('Failed to contact OPSI server'),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
       $this->properties[$productid] = [];
@@ -259,4 +254,3 @@ class opsiProductProperties extends simplePlugin
     $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[2]->setAttributes([$attr]);
   }
 }
-?>

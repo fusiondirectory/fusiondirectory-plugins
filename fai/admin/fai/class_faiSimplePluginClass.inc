@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -29,18 +29,17 @@ class faiSimplePluginClass extends simplePlugin
 
     if ($dn == 'new') {
       $ui = get_userinfo();
-      $this->base = dn2base(session::global_is_set('CurrentMainBase') ? 'cn=dummy,'.session::global_get('CurrentMainBase') : $ui->dn);
+      $this->base = $ui->getCurrentBase();
     } else {
       $this->base = dn2base($dn, get_ou(get_class($this).'RDN'));
     }
   }
 
   /* Check supplied data */
-  function check ()
+  function check (): array
   {
     global $config;
-    /* Call common method to give check the hook */
-    $message = parent::check();
+    $errors = parent::check();
 
     /* Ensure that we do not overwrite an allready existing entry */
     $new_dn   = $this->compute_dn();
@@ -48,16 +47,18 @@ class faiSimplePluginClass extends simplePlugin
       $ldap     = $config->get_ldap_link();
       $ldap->cat($new_dn);
       if ($ldap->count() != 0) {
-        $message[] = msgPool::duplicated(_("Name"));
+        $errors[] = new SimplePluginCheckError(
+          $this,
+          msgPool::duplicated(_('Name'))
+        );
       }
     }
 
-    return $message;
+    return $errors;
   }
 
-  function compute_dn ()
+  function compute_dn (): string
   {
     return 'cn='.ldap_escape($this->cn, '', LDAP_ESCAPE_DN).','.get_ou(get_class($this).'RDN').$this->base;
   }
 }
-?>

@@ -4,136 +4,124 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Choi Chris <chulwon.choi@gmail.com>, 2018
+# Choi Chris <chulwon.choi@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2022-07-28 17:06+0000\n"
-"PO-Revision-Date: 2016-08-29 15:12+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
-"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"PO-Revision-Date: 2018-08-13 19:54+0000\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
+"Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
-#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
+#: addons/gpg/class_pgpServerInfo.inc:27 addons/gpg/class_pgpServerInfo.inc:28
+#: addons/gpg/class_pgpServerInfo.inc:35 addons/gpg/class_pgpServerInfo.inc:52
 msgid "GPG server info"
 msgstr "GPG 서버 정보"
 
-#: addons/gpg/class_pgpServerInfo.inc:60
+#: addons/gpg/class_pgpServerInfo.inc:56
 msgid "Software"
 msgstr "소프트웨어"
 
-#: addons/gpg/class_pgpServerInfo.inc:60
+#: addons/gpg/class_pgpServerInfo.inc:56
 msgid "Which software this GPG key server is running"
 msgstr "이 GPG 키 서버가 실행중인 소프트웨어"
 
-#: addons/gpg/class_pgpServerInfo.inc:65
+#: addons/gpg/class_pgpServerInfo.inc:61
 msgid "GPG version"
 msgstr "GPG 버전"
 
-#: addons/gpg/class_pgpServerInfo.inc:65
+#: addons/gpg/class_pgpServerInfo.inc:61
 msgid "Which version of GPG this key server is running"
 msgstr "이 키 서버가 실행중인 GPG 버전"
 
-#: addons/gpg/class_pgpServerInfo.inc:70
+#: addons/gpg/class_pgpServerInfo.inc:66
 msgid "Branch in which keys are stored"
-msgstr "키가 저장되는 지점"
+msgstr "키가 저장되는 브랜치"
 
-#: addons/gpg/class_pgpServerInfo.inc:74
+#: addons/gpg/class_pgpServerInfo.inc:70
 msgid "Keys RDN"
 msgstr "키 RDN"
 
-#: addons/gpg/class_pgpServerInfo.inc:74
+#: addons/gpg/class_pgpServerInfo.inc:70
 msgid "Branch under base in which keys are stored"
 msgstr "키가 저장되어있는베이스 밑의 브랜치"
 
-#: personal/gpg/class_gpgAccount.inc:31
-msgid "GPG keys"
-msgstr "GPG 키"
-
-#: personal/gpg/class_gpgAccount.inc:35
-msgid "GPG keys of this user"
-msgstr "이 사용자의 GPG 키"
-
-#: personal/gpg/class_gpgAccount.inc:46
+#: personal/gpg/class_gpgAccount.inc:28
 msgid "GPG"
 msgstr "GPG"
 
-#: personal/gpg/class_gpgAccount.inc:47
+#: personal/gpg/class_gpgAccount.inc:29
 msgid "Edit user's GPG IDs"
 msgstr "사용자의 GPG ID 수정"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
-msgid "Configuration error"
-msgstr "설정 에러"
+#: personal/gpg/class_gpgAccount.inc:44
+msgid "GPG keys"
+msgstr "GPG 키"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
-msgid "You need to configure GPG base dn through the addons section first"
-msgstr "먼저 addons 섹션을 통해 GPG 기반 dn을 구성해야합니다."
+#: personal/gpg/class_gpgAccount.inc:48
+msgid "GPG keys of this user"
+msgstr "이 사용자의 GPG 키"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
-msgid "Key ID"
-msgstr "키 ID"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:27
+msgid "PGP Key selection"
+msgstr "PGP 키 선택"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
-msgid "User ID"
-msgstr "사용자 ID"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:28
+msgid "PGP Key selection for a user"
+msgstr "사용자를 위한 PGP 키 선택"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
-msgid "Creation time"
-msgstr "생성시간"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:144
-msgid "Expiration"
-msgstr "만료"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:145
-msgid "Algorithm"
-msgstr "알고리즘"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:146
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
-msgid "Size"
-msgstr "크기"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:147
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
-msgid "Revoked"
-msgstr "철회"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:148
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
-msgid "Disabled"
-msgstr "미사용"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
-msgid "Please select the desired entries"
-msgstr "원하는 항목을 선택하십시오."
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:30
 msgid "PGP Key"
 msgstr "PGP 키"
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
-msgid "User"
-msgstr "사용자"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:31
+msgid "PGP Key information"
+msgstr "PGP 키 정보"
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
-msgid "Creation date"
-msgstr "생성일자"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:66
+msgid "You need to configure GPG base dn through the addons section first"
+msgstr "먼저 addons 섹션을 통해 GPG 기반 dn을 구성해야합니다."
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
-msgid "Expiration date"
-msgstr "만료일자"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:90
+msgid "Cert ID"
+msgstr "인증서 ID"
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
-msgid "Type"
-msgstr "타입"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:91
+msgid "Key ID"
+msgstr "키 ID"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:92
+msgid "User ID"
+msgstr "사용자 ID"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:93
+msgid "Creation time"
+msgstr "생성시간"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:94
+msgid "Expiration"
+msgstr "만료"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:95
+msgid "Algorithm"
+msgstr "알고리즘"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:96
+msgid "Size"
+msgstr "크기"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:97
+msgid "Revoked"
+msgstr "철회"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:98
+msgid "Disabled"
+msgstr "미사용"

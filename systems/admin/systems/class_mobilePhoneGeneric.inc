@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018 FusionDirectory
+  Copyright (C) 2013-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,27 +20,24 @@
 
 class mobilePhoneGeneric extends ipHostPlugin
 {
-  var $mainTab = TRUE;
+  var $inheritance = ['gosaGroupOfNames' => 'member'];
 
-  var $objectclasses = ['fdMobilePhone', 'ieee802Device'];
-
-  var $inheritance = ["gosaGroupOfNames" => "member"];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Mobile phone'),
       'plDescription' => _('Mobile phone information'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['fdMobilePhone', 'ieee802Device'],
+      'plFilter'      => '(objectClass=fdMobilePhone)',
       'plObjectType'  => [
         'mobilePhone' => [
           'name'        => _('Mobile phone'),
           'description' => _('Mobile phone'),
-          'filter'      => 'objectClass=fdMobilePhone',
           'icon'        => 'geticon.php?context=devices&icon=phone&size=16',
           'ou'          => get_ou('mobilePhoneRDN'),
         ]
       ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -49,7 +46,7 @@ class mobilePhoneGeneric extends ipHostPlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -64,6 +61,8 @@ class mobilePhoneGeneric extends ipHostPlugin
             _('Description'), _('A short description of the mobile phone'),
             'description', FALSE
           ),
+          new HiddenArrayAttribute('ipHostNumber', FALSE),
+          new HiddenArrayAttribute('macAddress', FALSE),
         ]
       ],
       'phone' => [
@@ -98,21 +97,6 @@ class mobilePhoneGeneric extends ipHostPlugin
           ),
         ]
       ],
-      'network' => [
-        'name'      => _('Network settings'),
-        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => [
-          new IPAttribute(
-            _('IP address'), _('IP address this system uses'),
-            'ipHostNumber', FALSE
-          ),
-          new MacAddressAttribute(
-            _('Mac address'), _('Mac address of this system'),
-            'macAddress', FALSE
-          ),
-        ],
-      ],
     ];
   }
 }
-?>

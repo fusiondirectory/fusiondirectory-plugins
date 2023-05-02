@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2022  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -30,60 +31,15 @@
   does syntax checking and displays the formulars required.
  */
 
-class EpochDaysDateAttribute extends DateAttribute
-{
-  /* 24 * 60 * 60 = 86400 */
-  public static $secondsPerDay = 86400;
-
-  function __construct ($label, $description, $ldapName, $required, $defaultValue = 'now', $acl = '')
-  {
-    parent::__construct($label, $description, $ldapName, $required, '', $defaultValue, $acl);
-  }
-
-  protected function ldapToDate ($ldapValue)
-  {
-    $date = DateTime::createFromFormat('U', $ldapValue * static::$secondsPerDay, timezone::utc());
-    if ($date !== FALSE) {
-      return $date;
-    } else {
-      trigger_error('LDAP value for '.$this->getLdapName().' was not in the right date format.');
-      return new DateTime($ldapValue, timezone::utc());
-    }
-  }
-
-  protected function dateToLdap ($dateValue)
-  {
-    return floor($dateValue->format('U') / static::$secondsPerDay);
-  }
-
-  function getEpochDays ()
-  {
-    if (empty($this->value)) {
-      return 0;
-    } else {
-      try {
-        return $this->dateToLdap($this->getDateValue());
-      } catch (Exception $e) {
-        if (is_object($this->plugin) && $this->plugin->is_template) {
-          return $this->value;
-        } else {
-          throw $e;
-        }
-      }
-    }
-  }
-}
-
 class posixAccount extends simplePlugin
 {
-  var $displayHeader = TRUE;
-  var $objectclasses = ['posixAccount', 'shadowAccount'];
-  protected $locks = [];
+  protected $displayHeader        = TRUE;
 
+  protected $locks                = [];
   protected $fromTemplate         = FALSE;
   protected $savedGroupMembership = [];
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Unix'),
@@ -92,6 +48,9 @@ class posixAccount extends simplePlugin
       'plSmallIcon'   => 'geticon.php?context=applications&icon=os-linux&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 2,
+      'plObjectClass' => ['posixAccount', 'shadowAccount'],
+      /* shadowAccount is not required */
+      'plFilter'      => '(objectClass=posixAccount)',
       'plObjectType'  => ['user'],
       'plForeignKeys' => [
         'gidNumber' => [
@@ -110,7 +69,7 @@ class posixAccount extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
     return [
@@ -157,7 +116,11 @@ class posixAccount extends simplePlugin
         'name'  => _('Group membership'),
         'icon'  => 'geticon.php?context=types&icon=user-group&size=16',
         'attrs' => [
-          new GroupsAttribute('', _('Group membership'), 'groupMembership')
+          new ObjectsAttribute(
+            '', _('Group membership'),
+            'groupMembership', FALSE,
+            ['group']
+          ),
         ]
       ],
       'account' => [
@@ -227,13 +190,7 @@ class posixAccount extends simplePlugin
 
     $this->attributesAccess['gecos']->setVisible(FALSE);
 
-    $this->attributesAccess['trustMode']->setInLdap(FALSE);
-    if (!class_available('systemManagement')) {
-      $this->attributesAccess['trustMode']->setChoices(
-            ['', 'fullaccess'],
-            [_('disabled'), _('full access')]
-      );
-    }
+    //As trustMode is not registered in ldap, only host, this is a way to put back the option to the proper value
     $this->attributesAccess['trustMode']->setManagedAttributes(
       [
         'multiplevalues' => ['notbyhost' => ['','fullaccess']],
@@ -248,8 +205,7 @@ class posixAccount extends simplePlugin
       $this->trustMode = 'byhost';
     }
 
-    $this->attributesAccess['uidNumber']->setUnique(TRUE);
-    $this->attributesAccess['force_ids']->setInLdap(FALSE);
+    $this->attributesAccess['uidNumber']->setUnique('whole');
     $this->attributesAccess['force_ids']->setManagedAttributes(
       [
         'disable' => [
@@ -260,9 +216,7 @@ class posixAccount extends simplePlugin
         ]
       ]
     );
-    $this->attributesAccess['primaryGroup']->setInLdap(FALSE);
 
-    $this->attributesAccess['mustchangepassword']->setInLdap(FALSE);
     $this->attributesAccess['shadowLastChange']->setVisible(FALSE);
     $this->attributesAccess['shadowMax']->setManagedAttributes(
       [
@@ -288,7 +242,6 @@ class posixAccount extends simplePlugin
       $loginShellList[] = $loginShell;
     }
     $this->attributesAccess['loginShell']->setChoices($loginShellList);
-
     $secondaryGroups = [];
     $secondaryGroups[''] = '- '._('automatic').' -';
     $ldap = $config->get_ldap_link();
@@ -300,7 +253,6 @@ class posixAccount extends simplePlugin
     asort($secondaryGroups);
     $this->attributesAccess['primaryGroup']->setChoices(array_keys($secondaryGroups), array_values($secondaryGroups));
 
-    $this->attributesAccess['groupMembership']->setInLdap(FALSE);
     if (class_available('mixedGroup')) {
       $this->attributesAccess['groupMembership']->setDisabled(TRUE);
       $this->attributesAccess['groupMembership']->setVisible(FALSE);
@@ -344,12 +296,11 @@ class posixAccount extends simplePlugin
     } else {
       /* Status is not computed for templates */
       $current = floor(date('U') / EpochDaysDateAttribute::$secondsPerDay);
-
-      $shadowExpire     = $this->attributesAccess['shadowExpire']->getEpochDays();
-      $shadowInactive   = $this->attributesAccess['shadowInactive']->getValue();
-      $shadowMin        = $this->attributesAccess['shadowMin']->getValue();
-      $shadowMax        = $this->attributesAccess['shadowMax']->getValue();
-      $shadowLastChange = $this->attributesAccess['shadowLastChange']->getValue();
+      $shadowExpire     = (int)$this->attributesAccess['shadowExpire']->getEpochDays();
+      $shadowInactive   = (int)$this->attributesAccess['shadowInactive']->getValue();
+      $shadowMin        = (int)$this->attributesAccess['shadowMin']->getValue();
+      $shadowMax        = (int)$this->attributesAccess['shadowMax']->getValue();
+      $shadowLastChange = (int)$this->attributesAccess['shadowLastChange']->getValue();
       if (($current >= $shadowExpire) && ($shadowExpire > 0)) {
         $status = _('expired');
         if ($shadowInactive != '' && ($current - $shadowExpire) < $shadowInactive) {
@@ -364,12 +315,6 @@ class posixAccount extends simplePlugin
       }
       $this->attributesAccess['posixStatus']->setValue($status);
     }
-  }
-
-  function is_this_account ($attrs)
-  {
-    /* shadowAccount is not required */
-    return (isset($attrs['objectClass']) && in_array_ics('posixAccount', $attrs['objectClass']));
   }
 
   function getUid ()
@@ -390,13 +335,15 @@ class posixAccount extends simplePlugin
 
     $this->savedGroupMembership = [];
 
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))', ['cn','gidNumber']);
+    if (!empty($this->gidNumber)) {
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
+      $ldap->search('(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))', ['cn','gidNumber']);
 
-    if ($ldap->count() > 0) {
-      /* The copied user had its own group: switch back to automatic */
-      $this->primaryGroup = 0;
+      if ($ldap->count() > 0) {
+        /* The copied user had its own group: switch back to automatic */
+        $this->primaryGroup = 0;
+      }
     }
 
     $this->force_ids = FALSE;
@@ -406,37 +353,52 @@ class posixAccount extends simplePlugin
     $this->gidNumber = '';
   }
 
-  function check ()
+  function check (): array
   {
     global $config;
 
-    $message = parent::check();
+    $errors = parent::check();
 
     /* Check shadow settings */
     if ($this->shadowWarning !== '') {
       if ($this->shadowMax === '') {
-        $message[] = msgPool::depends('shadowWarning', 'shadowMax');
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['shadowWarning'],
+          msgPool::depends('shadowWarning', 'shadowMax')
+        );
       }
       if ($this->shadowWarning > $this->shadowMax) {
-        $message[] = msgPool::toobig('shadowWarning', 'shadowMax');
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['shadowWarning'],
+          msgPool::toobig('shadowWarning', 'shadowMax')
+        );
       }
       if (($this->shadowMin !== '') && ($this->shadowWarning < $this->shadowMin)) {
-        $message[] = msgPool::toosmall('shadowWarning', 'shadowMin');
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['shadowWarning'],
+          msgPool::toosmall('shadowWarning', 'shadowMin')
+        );
       }
     }
 
     if (($this->shadowInactive !== '') && ($this->shadowMax === '')) {
-      $message[] = msgPool::depends('shadowInactive', 'shadowMax');
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['shadowInactive'],
+        msgPool::depends('shadowInactive', 'shadowMax')
+      );
     }
     if (($this->shadowMin !== '') && ($this->shadowMax !== '') &&
         ($this->shadowMin > $this->shadowMax)) {
-      $message[] = msgPool::toobig('shadowMin', 'shadowMax');
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['shadowMin'],
+        msgPool::toobig('shadowMin', 'shadowMax')
+      );
     }
 
-    return $message;
+    return $errors;
   }
 
-  protected function prepare_save ()
+  protected function prepare_save (): array
   {
     global $config;
 
@@ -517,9 +479,7 @@ class posixAccount extends simplePlugin
           /* When creating a user through a template we bypass ACLs */
           $tabObject->setIgnoreAcls(TRUE);
         }
-
         $baseObject = $tabObject->getBaseObject();
-
         $baseObject->cn           = $groupcn;
         $baseObject->description  = sprintf(_('Group of user %s'), $this->getUid());
         $baseObject->base         = $this->parent->getBaseObject()->base;
@@ -531,7 +491,7 @@ class posixAccount extends simplePlugin
             'uid' => $this->getUid(),
           ];
           $baseObject->attributesAccess['member']->addValue($this->dn, $attrs);
-          $tabObject->gen_tabs();
+          $tabObject->loadTabs();
           $posixTab = $tabObject->by_object['mixedGroup'];
         } else {
           $posixTab = $baseObject;
@@ -586,7 +546,11 @@ class posixAccount extends simplePlugin
       $this->attrs['host'] = ['*'];
     }
 
-    /* Trust accounts */
+    //Handle properly %askme% during template creation
+    $this->setAskMeHostAndTrustMode();
+
+
+    //Register hosts selected within LDAP
     if (($this->trustMode != '') && !in_array('hostObject', $this->attrs['objectClass'])) {
       $this->attrs['objectClass'][] = 'hostObject';
     } elseif (($this->trustMode == '') && (($key = array_search('hostObject', $this->attrs['objectClass'])) !== FALSE)) {
@@ -610,7 +574,7 @@ class posixAccount extends simplePlugin
     return $errors;
   }
 
-  protected function shouldSave ()
+  protected function shouldSave (): bool
   {
     if (parent::shouldSave()) {
       return TRUE;
@@ -621,19 +585,26 @@ class posixAccount extends simplePlugin
     return FALSE;
   }
 
-  function save ()
+  function save (): array
   {
+    //Important to get attrs from ldap fdtemplate and to not register them within ldap afterwards
+    $this->attributesAccess['trustMode']->setInLdap($this->is_template);
+    $this->attributesAccess['force_ids']->setInLdap($this->is_template);
+    $this->attributesAccess['primaryGroup']->setInLdap($this->is_template);
+    $this->attributesAccess['mustchangepassword']->setInLdap($this->is_template);
+    $this->attributesAccess['groupMembership']->setInLdap($this->is_template);
+
     $errors = parent::save();
 
     foreach ($this->locks as $lock) {
-      del_lock($lock);
+      Lock::deleteByObject($lock);
     }
     $this->locks = [];
 
     return $errors;
   }
 
-  protected function ldap_save ()
+  protected function ldap_save (): array
   {
     $errors = parent::ldap_save();
 
@@ -656,7 +627,12 @@ class posixAccount extends simplePlugin
               $errors = array_merge($errors, $msg);
             }
           } catch (FusionDirectoryException $e) {
-            $errors[] = 'Exception: '.$e->getMessage();
+            $errors[] = new SimplePluginError(
+              $this,
+              htmlescape('Exception: '.$e->getMessage()),
+              0,
+              $e
+            );
           }
         }
       }
@@ -674,7 +650,12 @@ class posixAccount extends simplePlugin
               $errors = array_merge($errors, $msg);
             }
           } catch (FusionDirectoryException $e) {
-            $errors[] = 'Exception: '.$e->getMessage();
+            $errors[] = new SimplePluginError(
+              $this,
+              htmlescape('Exception: '.$e->getMessage()),
+              0,
+              $e
+            );
           }
         }
       }
@@ -683,7 +664,7 @@ class posixAccount extends simplePlugin
     return $errors;
   }
 
-  protected function ldap_remove ()
+  protected function ldap_remove (): array
   {
     /* Remove and write to LDAP */
     $errors = parent::ldap_remove();
@@ -698,11 +679,13 @@ class posixAccount extends simplePlugin
       } else {
         $type = 'group';
       }
-      $groups = objects::ls($type, ['cn' => 1, 'memberUid' => '*'], NULL, '(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))');
-      foreach ($groups as $dn => $group) {
-        if (empty($group['memberUid']) || ((count($group['memberUid']) == 1) && ($group['memberUid'][0] == $this->getUid()))) {
-          $tabobject = objects::open($dn, $type);
-          $tabobject->delete();
+      if (!empty($this->gidNumber)) {
+        $groups = objects::ls($type, ['cn' => 1, 'memberUid' => '*'], NULL, '(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))');
+        foreach ($groups as $dn => $group) {
+          if (empty($group['memberUid']) || ((count($group['memberUid']) == 1) && ($group['memberUid'][0] == $this->getUid()))) {
+            $errors = objects::delete($dn, $type, FALSE);
+            msg_dialog::displayChecks($errors);
+          }
         }
       }
     }
@@ -711,11 +694,18 @@ class posixAccount extends simplePlugin
   }
 
   /* Adapt from template, using 'dn' */
-  function adapt_from_template ($attrs, $skip = [])
+  function adapt_from_template (array $attrs, array $skip = [])
   {
     /* Include global link_info */
 
     parent::adapt_from_template($attrs, $skip);
+
+    /* fdTemplates attributes not required within LDAP upon save */
+    $this->attributesAccess['trustMode']->setInLdap(FALSE);
+    $this->attributesAccess['force_ids']->setInLdap(FALSE);
+    $this->attributesAccess['primaryGroup']->setInLdap(FALSE);
+    $this->attributesAccess['mustchangepassword']->setInLdap(FALSE);
+    $this->attributesAccess['groupMembership']->setInLdap(FALSE);
 
     $this->savedGroupMembership = $this->groupMembership;
     if (isset($this->attrs['posixGroups'])) {
@@ -742,7 +732,7 @@ class posixAccount extends simplePlugin
     $this->fromTemplate = TRUE;
   }
 
-  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
   {
     $ret = parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
     if ($field == 'gidNumber') {
@@ -753,6 +743,17 @@ class posixAccount extends simplePlugin
       }
     }
     return $ret;
+  }
+
+  function setAskMeHostAndTrustMode () : void
+  {
+    if ($this->trustMode == '%askme%') {
+      $this->attrs['host'] = ['%askme%'];
+    } elseif (isset($this->host[0]) && !empty($this->host[0])) {
+      if ($this->host[0] == '%askme%') {
+        $this->attrs['trustMode'] = '%askme%';
+      }
+    }
   }
 
   /*!
@@ -791,20 +792,20 @@ class posixAccount extends simplePlugin
        to get real unique values.
      */
     $wait = 10;
-    while ($user = get_lock($attrib)) {
+    while (!empty($locks = Lock::get($attrib))) {
       sleep(1);
 
       /* Oups - timed out */
       if ($wait-- == 0) {
         msg_dialog::display(
           _('Warning'),
-          sprintf(_('Timeout while waiting for lock. Ignoring lock from %s!'), $user),
+          sprintf(_('Timeout while waiting for lock. Ignoring lock from %s!'), $locks[0]->userDn),
           WARNING_DIALOG
         );
         break;
       }
     }
-    add_lock($attrib, $dn);
+    Lock::add($attrib, $dn);
     return static::getNextId($attrib, $dn);
   }
 
@@ -825,7 +826,13 @@ class posixAccount extends simplePlugin
 
     /* Sanity check */
     if ($min >= $max) {
-      msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '.sprintf(_('%sPoolMin >= %sPoolMax!'), $attrib), ERROR_DIALOG);
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('Cannot allocate a free ID: %s'),
+          sprintf(_('%sPoolMin >= %sPoolMax!'), $attrib)
+        ))
+      );
+      $error->display();
       return NULL;
     }
 
@@ -857,7 +864,8 @@ class posixAccount extends simplePlugin
         $ldap->cd('ou=idmap,'.$config->current['BASE']);
         $ldap->add($attrs);
         if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), 'ou=idmap,'.$config->current['BASE'], LDAP_ADD, ERROR_DIALOG));
+          $error = new FusionDirectoryLdapError('ou=idmap,'.$config->current['BASE'], LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+          $error->display();
           return NULL;
         }
         $tries++;
@@ -865,7 +873,8 @@ class posixAccount extends simplePlugin
       }
       /* Bail out if it's not unique */
       if ($ldap->count() != 1) {
-        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('sambaUnixIdPool is not unique!'), ERROR_DIALOG);
+        $error = new FusionDirectoryError(htmlescape(_('Cannot allocate a free ID:').' '._('sambaUnixIdPool is not unique!')));
+        $error->display();
         return NULL;
       }
 
@@ -876,19 +885,22 @@ class posixAccount extends simplePlugin
       $newAttr  = $oldAttr + 1;
 
       /* Sanity check */
-      if ($newAttr >= $max) {
-        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('no ID available!'), ERROR_DIALOG);
-        return NULL;
-      }
-      if ($newAttr < $min) {
-        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('no ID available!'), ERROR_DIALOG);
+      if (($newAttr >= $max) || ($newAttr < $min)) {
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot allocate a free ID: %s'),
+            _('no ID available!')
+          ))
+        );
+        $error->display();
         return NULL;
       }
 
       $ldap->cd($dn);
       $ldap->modify([$attrib => $newAttr]);
       if (!$ldap->success()) {
-        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '.$ldap->get_error(), ERROR_DIALOG);
+        $error = new FusionDirectoryLdapError($dn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
+        $error->display();
         return NULL;
       } else {
         return $oldAttr;
@@ -897,7 +909,8 @@ class posixAccount extends simplePlugin
 
     /* Bail out if we had problems getting the next id */
     if (!$tries) {
-      msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('maximum tries exceeded!'), ERROR_DIALOG);
+      $error = new FusionDirectoryError(htmlescape(_('Cannot allocate a free ID:').' '._('maximum tries exceeded!')));
+      $error->display();
     }
 
     return $id;
@@ -948,7 +961,7 @@ class posixAccount extends simplePlugin
     if (isset($tmp[1])) {
       $hwm = $tmp[1];
     } else {
-      $hwm = pow(2, 32);
+      $hwm = (2 ** 32);
     }
     /* Find out next free id near to UID_BASE */
     for ($id = $base; $id++; $id < $hwm) {
@@ -959,8 +972,7 @@ class posixAccount extends simplePlugin
 
     /* Should not happen */
     if ($id == $hwm) {
-      msg_dialog::display(_('Error'), _('Cannot allocate a free ID!'), ERROR_DIALOG);
-      exit;
+      throw new FatalError(htmlescape(_('Cannot allocate a free ID!')));
     }
   }
 
@@ -1021,4 +1033,3 @@ class posixAccount extends simplePlugin
     return $config->get_cfg_value('uidNumberBase');
   }
 }
-?>

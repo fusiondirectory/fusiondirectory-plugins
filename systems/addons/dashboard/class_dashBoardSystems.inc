@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2011-2018 FusionDirectory project
+  Copyright (C) 2011-2016 FusionDirectory project
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ class dashboardSystems extends simplePlugin
   /* default values */
   var $default_start_computer_id = 0;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Systems'),
@@ -36,7 +36,7 @@ class dashboardSystems extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'stats' => [
@@ -112,11 +112,16 @@ class dashboardSystems extends simplePlugin
         }
       } catch (FusionDirectoryException $e) {
         unset($stats[$key]);
-        msg_dialog::display(
-          _('LDAP error'),
-          sprintf(_('Statistics for type "%s" could not be computed because of the following error: %s'), $stat['type'], $e->getMessage()),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Statistics for type "%s" could not be computed because of the following error: %s'),
+            $stat['type'],
+            $e->getMessage()
+          )),
+          0,
+          $e
         );
+        $error->display();
       }
     }
     unset($stat);
@@ -146,7 +151,7 @@ class dashboardSystems extends simplePlugin
       foreach (['cn','ipHostNumber','argonautProtocol','argonautPort'] as $key) {
         $argonaut_server[$key] = $attrs[$key][0];
       }
-      $argonaut_server['link'] = objects::link(key($argonaut_servers), 'server', 'service_serviceArgonaut', $attrs);
+      $argonaut_server['link'] = objects::link(key($argonaut_servers), 'server', 'service_argonautServer', $attrs);
     }
 
     if (strpos($ui->get_permissions($config->current['BASE'], 'server/argonautClient', ''), 'r') === FALSE) {
@@ -210,7 +215,7 @@ class dashboardSystems extends simplePlugin
       $nb_digits_suffix         = $nb_digits - strlen($prefix);
 
       /* generation of list of suffixe */
-      for ($d = $start_id;$d < pow(10, $nb_digits_suffix);$d++) {
+      for ($d = $start_id;$d < (10 ** $nb_digits_suffix);$d++) {
         /* padding : 34 on 4 digit become : 0034*/
         $array_complete_list[] = str_pad($d, $nb_digits_suffix, "0", STR_PAD_LEFT);
       }
@@ -238,4 +243,3 @@ class dashboardSystems extends simplePlugin
     return $output_next_computer_ids;
   }
 }
-?>

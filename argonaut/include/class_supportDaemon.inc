@@ -98,7 +98,7 @@ class supportDaemon
             'verify_peer'       => TRUE,
             'verify_peer_name'  => TRUE,
           ];
-          $sshaMethod = new passwordMethodssha();
+          $sshaMethod = new passwordMethodSsha();
           $this->http_options['header'] = 'Authorization: Basic '.base64_encode('fd:'.$sshaMethod->generate_hash($ldap_infos['argonautServerToken'][0]));
         }
       }
@@ -166,7 +166,7 @@ class supportDaemon
 
   private function new_state ($state_value)
   {
-    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $this->s_error, date('H.i.s').' Setting state('.$state_value.') to ');
+    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $this->s_error, date('H.i.s').' Setting state ('.$state_value.') to ');
     session::global_set('argonaut_state', [
       'date'  => time(),
       'error' => $this->s_error,
@@ -286,7 +286,7 @@ class supportDaemon
   /*!
    * \brief  Returns the last error.
    *
-   * \return string Returns the last error.
+   * \return string Returns the last error (unescaped)
    */
   public function get_error ()
   {
@@ -299,8 +299,7 @@ class supportDaemon
         $ret .= $msg."\n";
       }
     }
-    $ret = str_replace(" ", "&nbsp;", $ret);
-    return nl2br($ret);
+    return $ret;
   }
 
   /*!
@@ -516,7 +515,6 @@ class supportDaemon
       foreach ($evts as $evt) {
         if (($evt['STATUS'] == "processing") &&
             in_array($evt['HEADERTAG'], ["reinstall","update"])) {
-
           return TRUE;
         }
       }
@@ -607,7 +605,7 @@ class supportDaemon
     $ret = [];
     foreach ($dates as $date) {
       if ($date == "." || $date == "..") {
-          continue;
+        continue;
       }
       $ret[$date]['DATE_STR']  = $date;
       $ret[$date]['REAL_DATE'] = strtotime(preg_replace("/[^0-9]*/", "", $date));
@@ -825,5 +823,3 @@ class supportDaemon
     }
   }
 }
-
-?>

@@ -4,36 +4,35 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2017
-# Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017
+# fusiondirectory <contact@fusiondirectory.org>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2022-07-28 17:06+0000\n"
-"PO-Revision-Date: 2016-08-29 15:07+0000\n"
-"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017\n"
-"Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"PO-Revision-Date: 2018-08-13 19:51+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2020\n"
+"Language-Team: Dutch (https://app.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:30
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:31
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:27
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:28
 msgid "Cyrus (IMAP/POP3)"
 msgstr "Cyrus (IMAP/POP3)"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:31
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:28
 msgid "Services"
 msgstr "Services"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:45
-msgid "Cyrus settings"
-msgstr "Cyrus instellingen"
+msgid "Connection"
+msgstr ""
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:48
 msgid "Connect URL for Cyrus server"
@@ -91,8 +90,8 @@ msgid "Admin user password"
 msgstr "Admin gebruiker paswoord"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:86
-msgid "Sieve settings"
-msgstr "Sieve instellingen"
+msgid "Sieve"
+msgstr ""
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:89
 msgid "Sieve connect URL for Cyrus server"
@@ -110,28 +109,40 @@ msgstr "Poort nummer op dewelke Cyrus sieve server moet gecontacteerd worden"
 msgid "Options for contacting Cyrus sieve server"
 msgstr "Opties voor het contacteren van de Cyrus sieve server"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:50
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr "Er zijn geen IMAP compatibele mail servers gedefinieerd!"
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:113
+msgid "Settings"
+msgstr "Instellingen"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:55
-msgid "Mail server for this account is invalid!"
-msgstr "Mail server voor deze account is ongeldig!"
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:116
+msgid "Use UNIX style"
+msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
-msgid "IMAP error"
-msgstr "IMAP fout"
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:116
+msgid "Determines if \"foo/bar\" or \"foo.bar\" should be used as namespaces in IMAP"
+msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:122
+msgid "Autocreate folders"
+msgstr ""
+
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:122
+msgid ""
+"List of personal IMAP folders that should be created along initial account "
+"creation."
+msgstr ""
+"Lijst van persoonlijke IMAP folders die gecreëerd moeten worden bij de "
+"initiële account creatie."
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:233
 #, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
 msgstr "Kan IMAP mailbox quota niet wijzigen : %s"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:313
 msgid "Mail info"
 msgstr "Mail info"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:316
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
 #, php-format
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
@@ -140,22 +151,22 @@ msgstr ""
 "LDAP invoer is verwijderd, maar cyrus mailbox (%s) wordt bijgehouden. "
 "Gelieve deze handmatig te verwijderen!"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:404
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:442
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:413
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:472
 msgid "The module imap_getacl is not implemented!"
 msgstr "De module imap_getacl is niet geïmplementeerd!"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:510
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:545
 #, php-format
 msgid "Cannot retrieve SIEVE script: %s"
 msgstr "Kan SIEVE script niet vinden : %s"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:578
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:613
 #, php-format
 msgid "Cannot store SIEVE script: %s"
 msgstr "Kan SIEVE script niet opslaan : %s"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:585
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:620
 #, php-format
 msgid "Cannot activate SIEVE script: %s"
 msgstr "Kan SIEVE script niet activeren : %s"

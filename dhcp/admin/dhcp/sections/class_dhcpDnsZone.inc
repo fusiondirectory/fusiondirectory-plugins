@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+  Copyright (C) 2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,19 +20,18 @@
 
 class dhcpDnsZone extends dhcpPlugin
 {
-  public $objectclasses = ['dhcpDnsZone'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'     => _('DHCP DNS update zone'),
       'plDescription'   => _('DHCP DNS update zone'),
       'plCategory'      => ['dhcpConfiguration'],
+      'plObjectClass'   => ['dhcpDnsZone'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [

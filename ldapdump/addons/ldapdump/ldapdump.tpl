@@ -1,6 +1,6 @@
 <div id="{$sectionId}" class="plugin-section{$sectionClasses}">
   <span class="legend">
-    {$section}
+    {if $sectionIcon}<img src="{$sectionIcon|escape}" alt=""/>{/if}{$section|escape}
   </span>
   <div>
     {if $attributes.dump}
@@ -13,7 +13,7 @@
               <li>
             {/if}
               <a href="#" onclick="Effect.toggle('toggle_{$key}', 'blind', {literal}{ duration: 0.3 }{/literal}); return false;">
-                {$node.name}
+                {$node.name|escape}
               </a>
               <div id="toggle_{$key}" style="overflow: visible; display: none;">
                 <table class="listingTable">
@@ -21,7 +21,7 @@
                     {foreach from=$node.attrs key=label item=values}
                       {foreach from=$values item=value}
                         <tr title="{$label}={$value|escape:'html':'UTF-8'}">
-                          <th>{$label}</th>
+                          <th>{$label|escape}</th>
                           <td>{$value|escape:'html':'UTF-8'}</td>
                         </tr>
                       {/foreach}

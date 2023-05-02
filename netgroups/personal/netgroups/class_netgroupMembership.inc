@@ -2,8 +2,8 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
 
-  Copyright (C) 2011 Alejandro Escanero Blanco
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011 Alejandro Escanero Blanco (aescanero@gmail.com)
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,24 +20,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class NetgroupSelectDialog extends GenericSelectDialog
+class netgroupMembership extends simplePlugin
 {
-  protected $dialogClass = 'memberNisnetgroupSelect';
-}
-
-class NetgroupsAttribute extends GroupsAttribute
-{
-  protected $dialogClass = 'NetgroupSelectDialog';
-}
-
-class netgroupMembership extends simplePlugin {
-  var $displayHeader = TRUE;
-  var $objectclasses = ["whatever"];
-  var $id;
-  var $old_id;
+  protected $displayHeader = TRUE;
+  protected $id;
+  protected $old_id;
   protected static $id_attr = 'uid';
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('NIS Netgroup'),
@@ -53,14 +43,18 @@ class netgroupMembership extends simplePlugin {
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'groups' => [
         'name'  => _('Member of the following NIS Netgroups  '),
         'icon'  => 'geticon.php?context=applications&icon=netgroups&size=16',
         'attrs' => [
-          new NetgroupsAttribute('', _('NIS netgroup membership'), 'nisMembership', TRUE)
+          new ObjectsAttribute(
+            '', _('NIS netgroup membership'),
+            'nisMembership', TRUE,
+            ['netgroup']
+          ),
         ]
       ],
     ];
@@ -151,11 +145,12 @@ class netgroupMembership extends simplePlugin {
   }
 
   /* Save data to LDAP, depending on is_account we save or delete */
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
+
     $this->update_id();
-    /* Call parents save to prepare $this->attrs */
+
     $ldap   = $config->get_ldap_link();
     $attrs  = [];
     $attrs['objectClass'] = ['top','nisNetgroup'];
@@ -227,7 +222,7 @@ class netgroupMembership extends simplePlugin {
         $ldap->modify($attrs);
       }
     }
+
+    return [];
   }
 }
-
-?>

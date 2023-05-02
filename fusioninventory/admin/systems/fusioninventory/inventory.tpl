@@ -1,6 +1,6 @@
 <div id="{$sectionId}" class="plugin-section{$sectionClasses}">
   <span class="legend">
-    {$section}
+    {if !empty($sectionIcon)}<img src="{$sectionIcon|escape}" alt=""/>{/if}{$section|escape}
   </span>
   <div>
     {foreach from=$attributes item=infos}
@@ -15,7 +15,7 @@
               <thead>
                 <tr>
                   {foreach from=$info.keys item=label}
-                    <th>{$label}</th>
+                    <th>{$label|escape}</th>
                   {/foreach}
                 </tr>
               </thead>
@@ -25,7 +25,7 @@
                     {foreach from=$info.keys item=key}
                       <td>
                         {if isset($object.$key)}
-                          {$object.$key}
+                          {$object.$key|escape}
                         {else}
                           &nbsp;
                         {/if}

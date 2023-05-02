@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,15 +21,13 @@
 
 class serviceCyrus extends simpleMailMethodService
 {
-  var $objectclasses = ['fdCyrusServer'];
-
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Cyrus (IMAP/POP3)'),
       'plDescription'   => _('Cyrus (IMAP/POP3)').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=cyrus&size=16',
+      'plObjectClass'   => ['fdCyrusServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -38,11 +36,13 @@ class serviceCyrus extends simpleMailMethodService
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
+    global $config;
+
     return  [
       'cyrus' => [
-        'name'  => _('Cyrus settings'),
+        'name'  => _('Connection'),
         'attrs' => [
           new CompositeAttribute(
             _('Connect URL for Cyrus server'),
@@ -83,7 +83,7 @@ class serviceCyrus extends simpleMailMethodService
         ]
       ],
       'sieve' => [
-        'name'  => _('Sieve settings'),
+        'name'  => _('Sieve'),
         'attrs' => [
           new CompositeAttribute(
             _('Sieve connect URL for Cyrus server'),
@@ -107,9 +107,25 @@ class serviceCyrus extends simpleMailMethodService
             '/^{(.*):(\\d+)\\/([^\\/]+)}$/',
             '{%s:%d/%s}'
           )
-        ]
-      ]
+        ],
+      ],
+      'settings' => [
+        'name'  => _('Settings'),
+        'attrs' => [
+          new BooleanAttribute(
+            _('Use UNIX style'), _('Determines if "foo/bar" or "foo.bar" should be used as namespaces in IMAP'),
+            'fdCyrusUseSlashes', FALSE,
+            ($config->get_cfg_value('CyrusUseSlashes') === 'TRUE')
+          ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Autocreate folders'), _('List of personal IMAP folders that should be created along initial account creation.'),
+              'fdCyrusAutocreateFolders', FALSE
+            ),
+            $config->get_cfg_value('CyrusAutocreateFolders', [])
+          ),
+        ],
+      ],
     ];
   }
 }
-?>

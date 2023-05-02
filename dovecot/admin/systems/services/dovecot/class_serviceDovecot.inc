@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+  Copyright (C) 2013-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,14 +20,13 @@
 
 class serviceDovecot extends simpleMailMethodService
 {
-  var $objectclasses = ['fdDovecotServer'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Dovecot (IMAP/POP3)'),
       'plDescription'   => _('Dovecot (IMAP/POP3)').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=dovecot&size=16',
+      'plObjectClass'   => ['fdDovecotServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -36,9 +35,9 @@ class serviceDovecot extends simpleMailMethodService
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-      return  [
+    return [
       'connection' => [
         'name'  => _('Dovecot connection'),
         'attrs' => [
@@ -100,7 +99,6 @@ class serviceDovecot extends simpleMailMethodService
           ),
         ]
       ]
-      ];
+    ];
   }
 }
-?>

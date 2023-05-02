@@ -21,31 +21,29 @@
 
 class workstationGeneric extends ipHostPlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['fdWorkstation', 'ieee802Device'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Workstation'),
       'plDescription' => _('Workstation information'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['fdWorkstation', 'ieee802Device'],
+      'plFilter'      => '(objectClass=fdWorkstation)',
       'plObjectType'  => ['workstation' =>
         [
           'name'        => _('Workstation'),
           'description' => _('Workstation'),
-          'filter'      => 'objectClass=fdWorkstation',
           'ou'          => get_ou('workstationRDN'),
           'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
           'mainAttr'    => 'cn',
         ]
       ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
+
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ($word = NULL, $rdn = NULL)
+  static function getAttributesInfo ($word = NULL, $rdn = NULL): array
   {
     if ($word === NULL) {
       $word = _('workstation');
@@ -83,24 +81,8 @@ class workstationGeneric extends ipHostPlugin
             'locked',
             'unlocked'
           ),
-        ]
-      ],
-      'network' => [
-        'name'      => _('Network settings'),
-        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => [
-          new SetAttribute(
-            new IPAttribute(
-              _('IP address'), _('IP addresses this system uses (v4 or v6)'),
-              'ipHostNumber', TRUE
-            )
-          ),
-          new SetAttribute(
-            new MacAddressAttribute(
-              _('Mac address'), _('Mac address of this system'),
-              'macAddress', FALSE
-            )
-          ),
+          new HiddenArrayAttribute('ipHostNumber', TRUE),
+          new HiddenArrayAttribute('macAddress', FALSE),
         ],
       ],
     ];
@@ -110,7 +92,7 @@ class workstationGeneric extends ipHostPlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
   }
 
   protected function post_remove ()
@@ -124,4 +106,3 @@ class workstationGeneric extends ipHostPlugin
     return parent::post_remove();
   }
 }
-?>

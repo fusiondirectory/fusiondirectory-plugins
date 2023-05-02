@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018 FusionDirectory
+
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,22 +21,18 @@
 
 class opsiSoftwareList extends simplePlugin
 {
-  var $mainTab = TRUE;
-  var $objectclasses   = ['opsiSoftwareList'];
-
   var $macAddress = NULL;
   var $products;
 
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('OPSI list'),
       'plDescription' => _('OPSI software list'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['opsiSoftwareList'],
       'plObjectType'  => ['opsiSoftwareList' => [
         'name'    => _('OPSI software list'),
-        'filter'  => 'objectClass=opsiSoftwareList',
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
       ]],
@@ -47,7 +44,7 @@ class opsiSoftwareList extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -97,7 +94,7 @@ class opsiSoftwareList extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setSubmitForm('product_changed');
   }
 
@@ -110,37 +107,20 @@ class opsiSoftwareList extends simplePlugin
     if (!isset($this->products[$this->fdOpsiServerDn])) {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
-        msg_dialog::display(
-          _("Could not contact argonaut server"),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
-      $ldap = $config->get_ldap_link();
-      $ldap->cat($this->fdOpsiServerDn);
-      if ($attrs = $ldap->fetch()) {
-        if (isset($attrs['macAddress'])) {
-          $this->macAddress = $attrs['macAddress'][0];
-        } else {
-          msg_dialog::display(
-            _("No mac address"),
-            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDn), ERROR_DIALOG
-          );
-          return FALSE;
-        }
-      } else {
-        msg_dialog::display(
-          sprintf(_("Could not find %s in the LDAP"), $this->fdOpsiServerDn),
-          msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
-        );
+      try {
+        $this->macAddress = opsiProfile::getOpsiServerMac($this->fdOpsiServerDn);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
         return FALSE;
       }
       $localboots = $s_daemon->append_call('OPSI.get_localboots', $this->macAddress, ['args' => [$opsi_args]]);
       if ($s_daemon->is_error()) {
-        msg_dialog::display(
-          _('Failed to contact OPSI server'),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
       $this->products[$this->fdOpsiServerDn]['localboots'] = [];
@@ -171,4 +151,3 @@ class opsiSoftwareList extends simplePlugin
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[1]->setChoices($actions);
   }
 }
-?>

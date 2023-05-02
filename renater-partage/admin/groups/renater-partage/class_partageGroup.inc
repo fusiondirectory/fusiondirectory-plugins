@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+  Copyright (C) 2017 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,22 +20,23 @@
 
 class partageGroup extends simplePlugin
 {
-  var $displayHeader  = TRUE;
-  var $objectclasses  = ['fdRenaterPartageGroup'];
+  protected $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'    => _('Partage'),
       'plDescription'  => _('Partage group options'),
+      'plFilter'       => '(objectClass=fdRenaterPartageGroup)',
       'plSmallIcon'    => 'geticon.php?context=applications&icon=renater-partage&size=16',
       'plDepends'      => ['mailGroup'],
+      'plObjectClass'  => ['fdRenaterPartageGroup'],
       'plObjectType'   => ['group', 'ogroup-user'],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [

@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018 FusionDirectory
+
+  Copyright (C) 2014-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -55,22 +56,18 @@ class SubmittingOPSIServerAttribute extends OPSIServerAttribute
 
 class opsiProfile extends simplePlugin
 {
-  var $mainTab = TRUE;
-  var $objectclasses   = ['opsiProfile'];
-
   var $macAddress = NULL;
   var $products;
 
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('OPSI profile'),
       'plDescription' => _('OPSI profile'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=16',
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['opsiProfile'],
       'plObjectType'  => ['opsiProfile' => [
         'name'    => _('OPSI profile'),
-        'filter'  => 'objectClass=opsiProfile',
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi&size=16',
       ]],
@@ -83,7 +80,7 @@ class opsiProfile extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -140,14 +137,44 @@ class opsiProfile extends simplePlugin
           $products[] = $tmp[0];
         }
       } else {
-        msg_dialog::display(
-          sprintf(_("Could not find %s in the LDAP"), $this->fdOpsiServerDn),
-          msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Could not find %s in the LDAP'),
+            $this->fdOpsiServerDn
+          ))
         );
+        $error->display();
         return FALSE;
       }
     }
     return $products;
+  }
+
+  public static function getOpsiServerMac (string $dn): string
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cat($dn);
+    if ($attrs = $ldap->fetch()) {
+      if (isset($attrs['macAddress'])) {
+        return $attrs['macAddress'][0];
+      } else {
+        throw new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Server %s has no mac address configured in the LDAP'),
+            $dn
+          ))
+        );
+      }
+    } else {
+      throw new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('Could not find %s in the LDAP'),
+          $dn
+        ))
+      );
+    }
   }
 
   public function server_changed ()
@@ -156,41 +183,25 @@ class opsiProfile extends simplePlugin
     if (!isset($this->products[$this->fdOpsiServerDn])) {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
-        msg_dialog::display(
-          _("Could not contact argonaut server"),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
-      $ldap = $config->get_ldap_link();
-      $ldap->cat($this->fdOpsiServerDn);
-      if ($attrs = $ldap->fetch()) {
-        if (isset($attrs['macAddress'])) {
-          $this->macAddress = $attrs['macAddress'][0];
-        } else {
-          msg_dialog::display(
-            _("No mac address"),
-            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDn), ERROR_DIALOG
-          );
-          return FALSE;
-        }
-      } else {
-        msg_dialog::display(
-          sprintf(_('Could not find %s in the LDAP'), $this->fdOpsiServerDn),
-          msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
-        );
+      try {
+        $this->macAddress = static::getOpsiServerMac($this->fdOpsiServerDn);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
         return FALSE;
       }
       $netboots = $s_daemon->append_call('OPSI.get_netboots', $this->macAddress, ['args' => [['id','name']]]);
       if ($s_daemon->is_error()) {
-        msg_dialog::display(
-          _('Failed to contact OPSI server'),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
       $this->products[$this->fdOpsiServerDn]['netboots'] = $netboots;
 
+      $ldap = $config->get_ldap_link();
       $ldap->cd($config->current['BASE']);
       $ldap->search('(&(objectClass=opsiSoftwareList)(fdOpsiServerDn='.$this->fdOpsiServerDn.'))', ['cn']);
       $lists = [];
@@ -212,4 +223,3 @@ class opsiProfile extends simplePlugin
     );
   }
 }
-?>

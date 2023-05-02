@@ -21,31 +21,27 @@
 
 class entite extends simplePlugin
 {
-  var $objectclasses = ['top','supannEntite','organizationalUnit'];
-
-  var $mainTab = TRUE;
-
-  /* Return plugin information */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Entity'),
       'plDescription' => _('SupAnn Entity Settings'),
+      'plObjectClass' => ['supannEntite','organizationalUnit'],
       'plObjectType'  => ['entite' => [
         'name'        => _('SupAnn Entity'),
-        'filter'      => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
         'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',
         'nameAttr'    => 'ou',
       ]],
+      'plSearchAttrs' => ['description', 'supannCodeEntiteParent'],
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo(), TRUE)
     ];
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -115,26 +111,45 @@ class entite extends simplePlugin
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite','ou','o']);
+    list($code_entites, $label_entites) = static::listPossibleParentEntities();
 
-    $entity_codes   = [''];
-    $entity_labels  = [''];
-    while ($attrs = $ldap->fetch()) {
-      if (isset($attrs['supannCodeEntite'][0])) {
-        $entity_codes[] = $attrs['supannCodeEntite'][0];
-        if (isset($attrs['ou'][0])) {
-          $entity_labels[] = $attrs['ou'][0]." (".$attrs['supannCodeEntite'][0].")";
-        } else {
-          $entity_labels[] = $attrs['o'][0]." (".$attrs['supannCodeEntite'][0].")";
-        }
-      }
-    }
-    $this->attributesAccess['supannCodeEntiteParent']->attribute->setChoices($entity_codes, $entity_labels);
+    $this->attributesAccess['supannCodeEntiteParent']->attribute->setChoices($code_entites, $label_entites);
 
     $this->attributesAccess['ou']->setUnique('one');
     $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
     $this->attributesAccess['supannRefId']->setUnique('whole', '(objectClass=supannEntite)');
+  }
+
+  static public function listPossibleParentEntities (): array
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite','ou','o','description']);
+
+    $code_entites   = [''];
+    $label_entites  = [''];
+    while ($attrs = $ldap->fetch()) {
+      if (isset($attrs['supannCodeEntite'][0])) {
+        $code_entites[] = $attrs['supannCodeEntite'][0];
+        if (isset($attrs['description'][0])) {
+          $description = $attrs['description'][0];
+          if (mb_strlen($description, 'UTF-8') > 30) {
+            $description = mb_substr($description, 0, 27, 'UTF-8').'...';
+          }
+          $description = ' ('.$description.')';
+        } else {
+          $description = '';
+        }
+        if (isset($attrs['ou'][0])) {
+          $label_entites[] = $attrs['ou'][0].$description;
+        } else {
+          $label_entites[] = $attrs['o'][0].$description;
+        }
+      }
+    }
+
+    return [$code_entites, $label_entites];
   }
 }

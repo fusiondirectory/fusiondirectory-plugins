@@ -1,0 +1,987 @@
+openapi: 3.0.0
+info:
+  description: The FusionDirectory REST API
+  version: 1.0.0
+  title: FusionDirectory
+  contact:
+    email: contact@fusiondirectory.org
+  license:
+    name: GPL2+
+servers:
+  - url: 'http://localhost/fusiondirectory/rest.php/v1'
+security:
+  - session: []
+tags:
+  - name: authentification
+    description: Authentification methods
+  - name: objects
+    description: 'List, get, create, delete objects'
+  - name: attributes
+    description: 'List, get, create, delete attributes'
+  - name: multivaluated
+    description: 'List, get, create, delete attributes'
+  - name: types
+    description: Get information on object types and tabs
+  - name: recovery
+    description: Use password recovery mecanism
+paths:
+  /login:
+    post:
+      operationId: login
+      summary: Login to the API
+      security: []
+      tags:
+        - authentification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: LoginRequest
+              type: object
+              properties:
+                directory:
+                  description: The LDAP directory to log into. Use /directories to get possible values.
+                  type: string
+                  example: "default"
+                user:
+                  description: The user to login as
+                  type: string
+                  example: "fd-admin"
+                password:
+                  description: The password to use
+                  type: string
+                  example: "password"
+              required:
+                - user
+                - password
+      responses:
+        '200':
+          description: An API token
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /directories:
+    get:
+      summary: List possible values for directory parameter for login action
+      operationId: listDirectories
+      security: []
+      tags:
+        - authentification
+      responses:
+        '200':
+          description: The list of LDAP directories that can be specified as directory parameter for /login endpoint
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+              example: {
+                        'default': 'default'
+                      }
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /logout:
+    post:
+      operationId: logout
+      summary: End the currently opened session
+      tags:
+        - authentification
+      responses:
+        '204':
+          description: success
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /token:
+    get:
+      summary: Get session token for current session
+      operationId: getToken
+      tags:
+        - authentification
+      responses:
+        '200':
+          description: An API token
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /types:
+    get:
+      summary: List all types
+      operationId: listTypes
+      tags:
+        - types
+      responses:
+        '200':
+          description: A list of types
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeList'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/types/{type}':
+    get:
+      summary: Get informations on a type
+      operationId: getTypeInfo
+      tags:
+        - types
+      parameters:
+        - $ref: '#/components/parameters/type'
+      responses:
+        '200':
+          description: Information about the type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Type'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/types/{type}/{tab}':
+    get:
+      summary: Get informations on a tab
+      operationId: getTabInfo
+      tags:
+        - types
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/tab'
+      responses:
+        '200':
+          description: Information about the tab
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TabInfo'
+              example: {
+                        "sections": {
+                          "main": {
+                            "name": "Personal info",
+                            "attrs": [
+                              "personalTitle",
+                              "fdNickName",
+                              "fdBadge",
+                              "dateOfBirth",
+                              "gender",
+                              "co",
+                              "fdContractStartDate",
+                              "fdContractEndDate",
+                              "fdPhotoVisible"
+                            ]
+                          },
+                          "contact": {
+                            "name": "Contact",
+                            "attrs": [
+                              "fdSocialAccount",
+                              "fdPrivateMail"
+                            ]
+                          }
+                        },
+                        "sections_order": [
+                          "main",
+                          "contact"
+                        ]
+                      }
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}':
+    get:
+      summary: Search objects of specific type
+      operationId: listObjects
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/base'
+        - $ref: '#/components/parameters/filter'
+        - name: attrs
+          in: query
+          required: false
+          description: "The attributes to return: the keys must be the wanted attributes,
+            and the values can be either 1, '*', 'b64' or 'raw' depending if you want a
+            single value or an array of values. Other values are considered to be 1.
+            'raw' means untouched LDAP value and is only useful for dns.
+            'b64' means an array of base64 encoded values and is mainly useful for binary attributes."
+          schema:
+            type: object
+          style: deepObject
+          explode: true
+          example:
+            sn: 1
+            title: "*"
+        - name: scope
+          in: query
+          required: false
+          description: The scope, defaults to subtree
+          schema:
+            type: string
+            default: "subtree"
+          example: "subtree"
+        - name: templates
+          in: query
+          required: false
+          description: Whether to search for templates instead of standard objects, defaults to false
+          schema:
+            type: boolean
+            default: false
+          example: false
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create an object of specific type
+      operationId: createObject
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: ObjectCreationRequest
+              type: object
+              properties:
+                attrs:
+                  description: The attributes of the object to create, grouped by tab
+                  type: object
+                  example: {
+                            "user": {
+                              "givenName": "John",
+                              "sn": "Smith"
+                            },
+                            "personalInfo": {
+                              "personalTitle": "Dr"
+                            }
+                          }
+                template:
+                  description: The template to use to create the object
+                  type: string
+                  example: "cn=user-template,ou=templates,ou=people,dc=example,dc=com"
+              required:
+                - attrs
+      responses:
+        '201':
+          description: DN of the created object
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}/{dn}':
+    get:
+      summary: List tabs of the object, with name and status
+      operationId: listObjectTabs
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+      responses:
+        '200':
+          description: Tab list
+          content:
+            application/json:
+              schema:
+                title: TabStateList
+                type: array
+                items:
+                  title: TabState
+                  type: object
+                  required: [class,name,active]
+                  properties:
+                    class:
+                      type: string
+                    name:
+                      type: string
+                    active:
+                      type: boolean
+                example: [
+                            {
+                              "class": "roleGeneric",
+                              "name": "Role",
+                              "active": true
+                            },
+                            {
+                              "class": "applicationRights",
+                              "name": "Applications",
+                              "active": false
+                            },
+                            {
+                              "class": "reference",
+                              "name": "References",
+                              "active": true
+                            },
+                            {
+                              "class": "ldapDump",
+                              "name": "LDAP",
+                              "active": true
+                            }
+                          ]
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete the object
+      operationId: deleteObject
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+      responses:
+        '204':
+          description: success
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      summary: Set the object attributes
+      operationId: modifyObject
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+      requestBody:
+        description: The new values for the attributes, grouped by tab
+        content:
+          application/json:
+            schema:
+              type: object
+            example: {
+                      "user": {
+                        "givenName": "John",
+                        "sn": "Smith"
+                      },
+                      "posixAccount": {
+                        "homeDirectory": "/home/john"
+                      }
+                    }
+      responses:
+        '200':
+          description: DN of the modified object
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}/{dn}/templatefields':
+    get:
+      summary: List fields asked to use a specific template
+      operationId: getTemplateFields
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+      responses:
+        '200':
+          description: Attribute list grouped by tab
+          content:
+            application/json:
+              schema:
+                type: object
+              example: {
+                        "user": [
+                          "sn",
+                          "givenName",
+                          "base",
+                          "uid"
+                        ]
+                      }
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}/{dn}/{tab}':
+    get:
+      summary: Get attributes values from object specific tab
+      operationId: getObjectTab
+      tags:
+        - attributes
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+      responses:
+        '200':
+          description: Attribute values
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      summary: Set the object attributes of a specific tab
+      operationId: modifyObjectTab
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+      requestBody:
+        description: The new values for the attributes
+        content:
+          application/json:
+            schema:
+              type: object
+            example: {
+                      "fdNickName": ["Jonny"]
+                    }
+      responses:
+        '200':
+          description: DN of the modified object
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Deactivate the tab
+      operationId: disableTab
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+      responses:
+        '204':
+          description: success
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}/{dn}/{tab}/{attribute}':
+    get:
+      summary: Get a single attribute value(s)
+      operationId: getAttributeValues
+      tags:
+        - attributes
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+        - $ref: '#/components/parameters/attribute'
+      responses:
+        '200':
+          description: The attribute value(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnyThing'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Set attribute value(s)
+      operationId: setAttributeValues
+      tags:
+        - attributes
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+        - $ref: '#/components/parameters/attribute'
+      requestBody:
+        description: The new value(s)
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnyThing'
+            example: ["jsmith@example.com"]
+      responses:
+        '200':
+          description: DN of the modified object
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Reset the attribute to its default value
+      operationId: resetAttributeValue
+      tags:
+        - attributes
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+        - $ref: '#/components/parameters/attribute'
+      responses:
+        '200':
+          description: The attribute new value(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnyThing'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}/{dn}/{tab}/{attribute}/values':
+    patch:
+      summary: Add attribute values. Only on multivaluated attributes.
+      operationId: addAttributeValues
+      tags:
+        - multivaluated
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+        - $ref: '#/components/parameters/attribute'
+      requestBody:
+        description: The values to add
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AnyThing'
+            example: ['jsmith2@example.com']
+      responses:
+        '200':
+          description: DN of the modified object
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete attribute values. Only on multivaluated attributes.
+      operationId: deleteAttributeValues
+      tags:
+        - multivaluated
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+        - $ref: '#/components/parameters/attribute'
+      requestBody:
+        description: The values to remove
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AnyThing'
+            example: ['jsmith2@example.com']
+      responses:
+        '204':
+          description: success
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/userlock/{dn}':
+    get:
+      summary: Get lock state of a user
+      operationId: getLockState
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/dn'
+      responses:
+        '200':
+          description: Whether the user is locked
+          content:
+            application/json:
+              schema:
+                type: boolean
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Set lock state of a user
+      operationId: setLockState
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/dn'
+      requestBody:
+        description: Whether to lock or unlock the user
+        content:
+          application/json:
+            schema:
+              type: boolean
+            example: true
+      responses:
+        '204':
+          description: Success
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/archive/{type}/{dn}':
+    post:
+      summary: Archive an object (delete it)
+      operationId: archiveObject
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+      responses:
+        '204':
+          description: Success
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/recovery':
+    get:
+      summary: Generate recovery token for a user
+      operationId: getRecoveryToken
+      tags:
+        - recovery
+      parameters:
+        - name: email
+          in: query
+          required: true
+          description: The email address of the user
+          schema:
+            type: string
+          example: "email@example.com"
+      responses:
+        '200':
+          description: Token and login
+          content:
+            application/json:
+              schema:
+                title: RecoveryResponse
+                type: object
+                properties:
+                  token:
+                    description: Recovery token
+                    type: string
+                    example: "opaquetokenstring"
+                  login:
+                    description: The login of the user
+                    type: string
+                    example: "fd-admin"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Change a user password using a recovery token
+      operationId: confirmRecoveryPasswordChange
+      tags:
+        - recovery
+      requestBody:
+        description: User information
+        content:
+          application/json:
+            schema:
+              title: RecoveryRequest
+              type: object
+              properties:
+                token:
+                  description: Recovery token
+                  type: string
+                  example: "opaquetokenstring"
+                login:
+                  description: The login of the user
+                  type: string
+                  example: "fd-admin"
+                password1:
+                  description: First password entered by the user
+                  type: string
+                  example: "newpassword"
+                password2:
+                  description: Second password entered by the user
+                  type: string
+                  example: "newpassword"
+              required:
+                - login
+                - password1
+                - password2
+                - token
+      responses:
+        '204':
+          description: Success
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    AnyThing:
+      anyOf:
+        - type: string
+        - type: array
+          items:
+            $ref: '#/components/schemas/AnyThing'
+        - type: object
+    Object:
+      type: object
+      additionalProperties:
+        anyOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          - type: object
+    SearchResult:
+      type: object
+      additionalProperties:
+        anyOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+    Type:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Role"
+        description:
+          type: string
+          example: "Organizational role"
+        mainAttr:
+          type: string
+          example: "cn"
+        nameAttr:
+          type: string
+          example: "cn"
+        icon:
+          type: string
+          example: "geticon.php?context=types&icon=role&size=16"
+        ou:
+          type: string
+          example: "ou=roles,"
+        mainTab:
+          type: string
+          example: "roleGeneric"
+        templateActive:
+          type: boolean
+        snapshotActive:
+          type: boolean
+        aclCategory:
+          type: string
+          example: "role"
+        filter:
+          type: string
+          example: "(&(objectClass=organizationalRole)(!(objectClass=simpleSecurityObject)))"
+        management:
+          type: string
+          example: "groupManagement"
+        filterRDN:
+          type: string
+          example: "(ou:dn:=roles)"
+        tabs:
+          type: array
+          items:
+            $ref: '#/components/schemas/TabDef'
+          example: [{
+                      "class": "roleGeneric",
+                      "name": "Role"
+                    },
+                    {
+                      "class": "applicationRights",
+                      "name": "Applications"
+                    }]
+    TypeList:
+      type: object
+      additionalProperties:
+        type: string
+      example: {"CONFIGURATION":"FusionDirectory configuration","DASHBOARD":"Dashboard","OGROUP":"Group","SPECIAL":"special","ROLE":"Role","USER":"User","LOCALITY":"Locality","DEPARTMENT":"Department","DCOBJECT":"Domain Component","COUNTRY":"Country","ACLROLE":"ACL role","ACLASSIGNMENT":"ACL assignment","ORGANIZATION":"Organization","DOMAIN":"Domain"}
+    TabDef:
+      type: object
+      required: [class,name]
+      properties:
+        class:
+          type: string
+        name:
+          type: string
+    TabInfo:
+      type: object
+      properties:
+        sections:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/SectionInfo'
+        sections_order:
+          type: array
+          example: ["main","members"]
+          items:
+            type: string
+    SectionInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Information"
+        attrs:
+          type: array
+          example: ["base","cn","description","telephoneNumber","facsimileTelephoneNumber"]
+          items:
+            type: string
+    Error:
+      required:
+        - message
+      properties:
+        message:
+          type: string
+  parameters:
+    base:
+      name: base
+      example: "dc=example,dc=com"
+      description: The LDAP base to use
+      in: query
+      schema:
+        type: string
+    filter:
+      name: filter
+      example: "(cn=a*)"
+      description: An LDAP filter to search with
+      in: query
+      schema:
+        type: string
+    type:
+      name: type
+      in: path
+      example: "user"
+      required: true
+      description: An object type
+      schema:
+        type: string
+    dn:
+      name: dn
+      in: path
+      example: "uid=jsmith,ou=people,dc=example,dc=com"
+      required: true
+      description: The dn of an existing object
+      schema:
+        type: string
+    tab:
+      name: tab
+      in: path
+      example: "personalInfo"
+      required: true
+      description: An existing tab class
+      schema:
+        type: string
+    attribute:
+      name: attribute
+      in: path
+      example: "fdPrivateMail"
+      required: true
+      description: The attribute
+      schema:
+        type: string
+  securitySchemes:
+    session:
+      type: apiKey
+      name: Session-Token
+      in: header

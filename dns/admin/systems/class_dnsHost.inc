@@ -29,7 +29,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     $this->zoneDn = $zoneDn;
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
   }
 
@@ -100,7 +100,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     }
   }
 
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
     if ($this->plugin->is_template) {
       $attrs[$this->getLdapName()] = array_map(
@@ -114,32 +114,46 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  function postLdapSave ($ldap)
+  function postLdapSave ($ldap): array
   {
+    global $ui;
+
     if ($this->plugin->is_template) {
-      return;
+      return [];
+    }
+
+    /* Check locking */
+    if ($locks = Lock::get($this->getZoneDn())) {
+      return [sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DNS zone'), $locks[0]->objectDn, $locks[0]->userDn, date('%Y-%m-%d, %H:%M:%S', $locks[0]->timestamp))];
+    } else {
+      /* Lock the current entry */
+      Lock::add($this->getZoneDn());
     }
     $zoneTabs = objects::open($this->getZoneDn(), 'dnsZone');
     $zoneTabs->getBaseObject()->attributesAccess['dnsRecords']->setValue($this->getValue());
-    $zoneTabs->save();
+    $errors = $zoneTabs->save();
+
+    Lock::deleteByObject($this->getZoneDn());
+
+    return $errors;
   }
 }
 
 class dnsHost extends simplePlugin
 {
-  var $objectclasses = ['fdDNSHost'];
-  var $displayHeader = TRUE;
+  protected $displayHeader  = TRUE;
 
   protected $zonesCache;
   protected $loaded = FALSE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('DNS'),
       'plDescription'   => _('Edit the DNS zones of a system'),
       'plIcon'          => 'geticon.php?context=applications&icon=dns&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dns&size=16',
+      'plObjectClass'   => ['fdDNSHost'],
       'plObjectType'    => ['server','workstation','terminal','printer','component','phone','mobilePhone'],
       'plPriority'      => 5,
       'plForeignKeys'  => [
@@ -150,7 +164,7 @@ class dnsHost extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'zones' => [
@@ -185,6 +199,8 @@ class dnsHost extends simplePlugin
 
   protected function reloadZoneChoices ()
   {
+    global $config;
+
     /* List DNS zones we can read */
     $this->zonesCache = objects::ls('dnsZone', NULL, NULL, '', TRUE);
     /* Check if some values are missing */
@@ -267,13 +283,13 @@ class dnsHost extends simplePlugin
         /* Fetch SOA record */
         $ldap->cat($dn);
         if ($attrs = $ldap->fetch()) {
-          list($fqdn) = explode(' ', $attrs['sOARecord'][0]);
+          list ($fqdn) = explode(' ', $attrs['sOARecord'][0]);
           $servers = dnsManagement::findServerByFQDN($fqdn, $dn);
           if (isset($servers[$this->dn])) {
             $fqdn = '<strong>'.$fqdn.'</strong>';
             if (class_available('supportDaemon')) {
               $id = 'ldap2zone_refresh_'.base64_encode($attrs['zoneName'][0]);
-              $fqdn .= ' <input type="submit" name="'.$id.'" id="'.$id.'" value="{t}Refresh zone file{/t}"/>';
+              $fqdn .= ' <input type="submit" formnovalidate="formnovalidate" name="'.$id.'" id="'.$id.'" value="'._('Refresh zone file').'"/>';
             }
           }
           $attrId = 'soaRecord'.$zoneid;
@@ -299,59 +315,78 @@ class dnsHost extends simplePlugin
     }
   }
 
-  function execute ()
+  public function update (): bool
   {
+    parent::update();
     $this->load();
-    $smarty = get_smarty();
-    $ui     = get_userinfo();
-    $acl    = $ui->get_permissions($this->acl_base, 'dnsZone/dnsZone', 'dnsRecords', $this->read_only);
-    $smarty->assign('dnsRecordsACL', $acl);
-    return parent::execute();
+    return TRUE;
   }
 
-  function save_object ()
+  public function render (): string
+  {
+    $smarty = get_smarty();
+    $ui     = get_userinfo();
+    $acl    = $ui->get_permissions($this->getAclBase(), 'dnsZone/dnsZone', 'dnsRecords', $this->read_only);
+    $smarty->assign('dnsRecordsACL', $acl);
+    return parent::render();
+  }
+
+  public function readPost ()
   {
     $this->load();
-    parent::save_object();
+    parent::readPost();
     if (isset($_POST[get_class($this).'_posted'])) {
       foreach ($_POST as $name => $value) {
         if (preg_match('/^ldap2zone_refresh_(.+)$/', $name, $m)) {
-          $zone = base64_decode($m[1]);
-          if ($this->parent->by_object['argonautClient']->is_account) {
+          try {
+            $zone = base64_decode($m[1]);
+            if (!$this->parent->by_object['argonautClient']->isActiveOrInherited()) {
+              throw new SimplePluginError($this, htmlescape(_('Argonaut client needs to be activated to use ldap2zone remotely')));
+            }
             $s_daemon = new supportDaemon();
             if ($s_daemon->is_error()) {
-              msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-              );
-            } else {
-              $target = $this->parent->getBaseObject()->macAddress;
-              if (is_array($target)) {
-                $target = $target[0];
-              }
-              $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zone]]);
-              if ($s_daemon->is_error()) {
-                msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
-              } else {
-                msg_dialog::display(_('Ldap2zone'), sprintf(_('Ldap2Zone called for zone "%s"'), $zone), INFO_DIALOG);
-              }
+              throw new SimplePluginError($this, msgPool::siError($s_daemon->get_error()));
             }
-          } else {
-            msg_dialog::display(_('Error'), _('Argonaut client needs to be activated to use ldap2zone remotely'), ERROR_DIALOG);
+            $target = $this->parent->getBaseObject()->macAddress;
+            if (is_array($target)) {
+              if (count($target) === 0) {
+                throw new SimplePluginError($this, _('Cannot use argonaut client on a system without a Mac address'));
+              }
+              $target = $target[0];
+            }
+            $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zone]]);
+            if ($s_daemon->is_error()) {
+              throw new SimplePluginError($this, msgPool::siError($s_daemon->get_error()));
+            }
+            msg_dialog::display(_('Ldap2zone'), htmlescape(sprintf(_('Ldap2Zone called for zone "%s"'), $zone)), INFO_DIALOG);
+          } catch (SimplePluginError $error) {
+            $error->display();
           }
         }
       }
     }
   }
 
-  function save ()
+  function save (): array
   {
-    global $config;
+    global $config, $ui;
+
     $errors = parent::save();
+
     foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
       if ($attr->hasChanged()) {
-        $attr->postLdapSave($config->get_ldap_link());
+        $errors = array_merge(
+          $errors,
+          $attr->postLdapSave($config->get_ldap_link())
+        );
       }
     }
     unset($attr);
+
+    if (!empty($errors)) {
+      return $errors;
+    }
+
     /* Update records if IP or CN changed */
     if ($this->initially_was_account) {
       $baseObject = $this->parent->getBaseObject();
@@ -359,23 +394,55 @@ class dnsHost extends simplePlugin
       $oldcn      = preg_replace('/\$$/', '', $baseObject->attributeInitialValue('cn'));
       $oldips     = $baseObject->attributeInitialValue('ipHostNumber');
 
-      $oldzones = $this->attributeInitialValue('fdDNSZoneDn');
-      $newzones = $this->attributeValue('fdDNSZoneDn');
-      if ($this->attributeHaveChanged('fdDNSZoneDn') && !empty($oldzones)) {
+      $oldzones     = $this->attributeInitialValue('fdDNSZoneDn');
+      $currentzones = $this->attributeValue('fdDNSZoneDn');
+      $removedzones = array_diff($oldzones, $currentzones);
+
+      $removalsNeeded = ($this->attributeHaveChanged('fdDNSZoneDn') && !empty($oldzones));
+      $cnChanged      = ($baseObject->attributeHaveChanged('cn') && !empty($oldcn));
+      $ipChanged      = $baseObject->attributeHaveChanged('ipHostNumber');
+
+      $lockedDns  = [];
+
+      /* Lock zones */
+      $zonesToLock = [];
+      if ($removalsNeeded) {
+        $zonesToLock = $removedzones;
+      }
+      if ($cnChanged || $ipChanged) {
+        $zonesToLock = array_merge($zonesToLock, $currentzones);
+      }
+      foreach ($zonesToLock as $zoneDn) {
+        /* Check locking */
+        if ($locks = Lock::get($zoneDn)) {
+          $errors[] = sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DNS zone'), $locks[0]->objectDn, $locks[0]->userDn, date('%Y-%m-%d, %H:%M:%S', $locks[0]->timestamp));
+          break;
+        } else {
+          /* Lock the current entry */
+          Lock::add($zoneDn);
+          $lockedDns[] = $zoneDn;
+        }
+      }
+
+      if (!empty($errors)) {
+        Lock::deleteByObject($lockedDns);
+        return $errors;
+      }
+
+      if ($removalsNeeded) {
         $messages = array_merge(
           $messages,
-          static::removeIpsFromZones(array_diff($oldzones, $newzones), $oldips)
+          static::removeIpsFromZones($removedzones, $oldips)
         );
         $messages = array_merge(
           $messages,
-          static::removeCnFromZones(array_diff($oldzones, $newzones), $oldcn)
+          static::removeCnFromZones($removedzones, $oldcn)
         );
       }
 
-      if ($baseObject->attributeHaveChanged('cn') && !empty($oldcn)) {
-        $newcn      = preg_replace('/\$$/', '', $baseObject->attributeValue('cn'));
-        $dnsZones   = $this->fdDNSZoneDn;
-        foreach ($dnsZones as $dn) {
+      if ($cnChanged) {
+        $newcn = preg_replace('/\$$/', '', $baseObject->attributeValue('cn'));
+        foreach ($currentzones as $dn) {
           $tabObject = objects::open($dn, 'dnsZone');
           $nbRecords = $tabObject->getBaseObject()->cnChanged($oldcn, $newcn);
           if ($nbRecords > 0) {
@@ -390,11 +457,10 @@ class dnsHost extends simplePlugin
         }
       }
 
-      if ($baseObject->attributeHaveChanged('ipHostNumber')) {
+      if ($ipChanged) {
         $newips = $baseObject->attributeValue('ipHostNumber');
         if ((count($oldips) == 1) && (count($newips) == 1)) {
-          $dnsZones   = $this->fdDNSZoneDn;
-          foreach ($dnsZones as $dn) {
+          foreach ($currentzones as $dn) {
             $tabObject = objects::open($dn, 'dnsZone');
             $nbRecords = $tabObject->getBaseObject()->ipChanged(reset($oldips), reset($newips));
             if ($nbRecords > 0) {
@@ -408,12 +474,15 @@ class dnsHost extends simplePlugin
             }
           }
         } elseif (!empty($oldips)) {
-          static::removeIpsFromZones($this->fdDNSZoneDn, array_diff($oldips, $newips));
+          static::removeIpsFromZones($currentzones, array_diff($oldips, $newips));
         }
       }
+
       if (!empty($messages)) {
-        msg_dialog::display(_('DNS update'), implode("<br/>\n", $messages)."<br/>\n", INFO_DIALOG);
+        msg_dialog::display(_('DNS update'), implode("<br/>\n", array_map('htmlescape', $messages))."<br/>\n", INFO_DIALOG);
       }
+
+      Lock::deleteByObject($lockedDns);
     }
 
     return $errors;
@@ -441,13 +510,13 @@ class dnsHost extends simplePlugin
       }
     }
     if (!empty($messages)) {
-      msg_dialog::display(_('DNS update'), implode("<br/>\n", $messages)."<br/>\n", INFO_DIALOG);
+      msg_dialog::display(_('DNS update'), implode("<br/>\n", array_map('htmlescape', $messages))."<br/>\n", INFO_DIALOG);
     }
 
     return parent::post_remove();
   }
 
-  function adapt_from_template ($attrs, $skip = [])
+  function adapt_from_template (array $attrs, array $skip = [])
   {
     parent::adapt_from_template($attrs, $skip);
     $this->reloadZoneChoices();
@@ -457,6 +526,14 @@ class dnsHost extends simplePlugin
         $attr->loadAdditionalTemplatesValues();
       }
       unset($attr);
+    }
+  }
+
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
+  {
+    parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
+    if (empty($this->fdDNSZoneDn)) {
+      $this->is_account = FALSE;
     }
   }
 
@@ -470,7 +547,7 @@ class dnsHost extends simplePlugin
       return FALSE;
     }
     $attrId = 'zoneRecords'.$zoneid;
-    $this->attributesAccess[$attrId]->addValue($record);
+    $this->attributesAccess[$attrId]->addValue('', $record);
   }
 
   static function removeIpsFromZones (array $zoneDns, array $ips)

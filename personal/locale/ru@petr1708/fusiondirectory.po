@@ -3,156 +3,170 @@
 # This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2023
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2022-07-28 17:06+0000\n"
-"PO-Revision-Date: 2016-08-29 15:16+0000\n"
-"Language-Team: Russian Petrine orthography (https://www.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"PO-Revision-Date: 2018-08-13 19:59+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
+"Language-Team: Russian Petrine orthography (https://app.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru@petr1708\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: config/personal/class_personalConfig.inc:28
+#: config/personal/class_personalConfig.inc:26
 msgid "Personal configuration"
-msgstr ""
+msgstr "Личные настройки"
 
-#: config/personal/class_personalConfig.inc:29
+#: config/personal/class_personalConfig.inc:27
 msgid "FusionDirectory personal plugin configuration"
-msgstr ""
+msgstr "Личные настройки плагинов FusionDirectory"
 
-#: config/personal/class_personalConfig.inc:42
-#: personal/personal/class_personalInfo.inc:85
+#: config/personal/class_personalConfig.inc:40
+#: personal/personal/class_personalInfo.inc:93
 msgid "Personal"
-msgstr ""
+msgstr "Контакт"
 
-#: config/personal/class_personalConfig.inc:45
+#: config/personal/class_personalConfig.inc:43
 msgid "Allow use of private email for password recovery"
 msgstr ""
+"Позволить использовать приватный адрес электронной почты для восстановления "
+"пароля"
 
-#: config/personal/class_personalConfig.inc:45
+#: config/personal/class_personalConfig.inc:43
 msgid "Allow users to use their private email address for password recovery"
 msgstr ""
+"Позволить пользователям использовать свой приватный адрес электронной почты "
+"для восстановления пароля"
 
-#: personal/personal/class_personalInfo.inc:30
+#: personal/personal/class_personalInfo.inc:31
 msgid "Site"
-msgstr ""
+msgstr "Сайт"
 
-#: personal/personal/class_personalInfo.inc:30
+#: personal/personal/class_personalInfo.inc:31
 msgid "Website the account is on"
-msgstr ""
+msgstr "Сайт на котором находится аккаунт"
 
-#: personal/personal/class_personalInfo.inc:36
+#: personal/personal/class_personalInfo.inc:37
 msgid "Id"
-msgstr ""
+msgstr "Ид"
 
-#: personal/personal/class_personalInfo.inc:36
+#: personal/personal/class_personalInfo.inc:37
 msgid "Id of this user on this website"
+msgstr "Идентификатор пользователя на этом сайте"
+
+#: personal/personal/class_personalInfo.inc:67
+#, php-format
+msgid "Social handler \"%s\" does not exists"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:86
+#: personal/personal/class_personalInfo.inc:94
 msgid "Personal information"
-msgstr ""
+msgstr "Личная информация"
 
-#: personal/personal/class_personalInfo.inc:101
+#: personal/personal/class_personalInfo.inc:111
 msgid "Personal info"
-msgstr ""
+msgstr "Личная информация"
 
-#: personal/personal/class_personalInfo.inc:104
+#: personal/personal/class_personalInfo.inc:114
 msgid "Personal title"
-msgstr ""
+msgstr "Обращение"
 
-#: personal/personal/class_personalInfo.inc:104
+#: personal/personal/class_personalInfo.inc:114
 msgid "Personal title - Examples of personal titles are \"Ms\", \"Dr\", \"Prof\" and \"Rev\""
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:109
+#: personal/personal/class_personalInfo.inc:119
 msgid "Nickname"
-msgstr ""
+msgstr "Прозвище"
 
-#: personal/personal/class_personalInfo.inc:109
+#: personal/personal/class_personalInfo.inc:119
 msgid "Nicknames for this user"
-msgstr ""
+msgstr "Прозвище этого пользователя"
 
-#: personal/personal/class_personalInfo.inc:114
+#: personal/personal/class_personalInfo.inc:124
 msgid "Badge Number"
-msgstr ""
+msgstr "Номер пропуска"
 
-#: personal/personal/class_personalInfo.inc:114
+#: personal/personal/class_personalInfo.inc:124
 msgid "Company badge number"
-msgstr ""
-
-#: personal/personal/class_personalInfo.inc:118
-msgid "Date of birth"
-msgstr ""
-
-#: personal/personal/class_personalInfo.inc:123
-msgid "Sex"
-msgstr ""
-
-#: personal/personal/class_personalInfo.inc:123
-msgid "Gender"
-msgstr ""
+msgstr "Номер пропуска в компании"
 
 #: personal/personal/class_personalInfo.inc:128
+msgid "Date of birth"
+msgstr "Дата рождения"
+
+#: personal/personal/class_personalInfo.inc:135
+msgid "Sex"
+msgstr "Пол"
+
+#: personal/personal/class_personalInfo.inc:135
+msgid "Gender"
+msgstr "Пол"
+
+#: personal/personal/class_personalInfo.inc:140
 msgid "Country"
-msgstr ""
+msgstr "Страна"
 
-#: personal/personal/class_personalInfo.inc:132
+#: personal/personal/class_personalInfo.inc:144
 msgid "Start date"
-msgstr ""
+msgstr "Дата начала"
 
-#: personal/personal/class_personalInfo.inc:132
+#: personal/personal/class_personalInfo.inc:144
 msgid "Date this user joined the company"
-msgstr ""
+msgstr "Дата, когда этот пользователь присоединился к комапании"
 
-#: personal/personal/class_personalInfo.inc:137
+#: personal/personal/class_personalInfo.inc:149
 msgid "End date"
-msgstr ""
+msgstr "Дата окончания"
 
-#: personal/personal/class_personalInfo.inc:137
+#: personal/personal/class_personalInfo.inc:149
 msgid "Date this user is supposed to leave the company"
-msgstr ""
+msgstr "Дата, когда пользователь должен покинуть комапанию"
 
-#: personal/personal/class_personalInfo.inc:142
+#: personal/personal/class_personalInfo.inc:154
 msgid "Photo Visible"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:142
+#: personal/personal/class_personalInfo.inc:154
 msgid "Should the photo of the user be visible on external tools"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:148
+#: personal/personal/class_personalInfo.inc:160
 msgid "Contact"
-msgstr ""
+msgstr "Контакт"
 
-#: personal/personal/class_personalInfo.inc:152
+#: personal/personal/class_personalInfo.inc:164
 msgid "Social account"
-msgstr ""
+msgstr "Аккаунт в социальных сетях"
 
-#: personal/personal/class_personalInfo.inc:152
+#: personal/personal/class_personalInfo.inc:164
 msgid "Social accounts of this user"
 msgstr ""
+"Под какой учетной записью пользователь зарегистрирован в социальных сетях"
 
-#: personal/personal/class_personalInfo.inc:159
+#: personal/personal/class_personalInfo.inc:171
 msgid "Private email"
-msgstr ""
+msgstr "Приватный адрес электронной почты"
 
-#: personal/personal/class_personalInfo.inc:159
+#: personal/personal/class_personalInfo.inc:171
 msgid "Private email addresses of this user"
-msgstr ""
+msgstr "Приватный адрес электронной почты этого пользователя"
 
 #: personal/personal/class_socialHandlers.inc:69
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: personal/personal/class_socialHandlers.inc:79
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: personal/personal/class_socialHandlers.inc:99
 msgid "Diaspora*"
@@ -177,4 +191,33 @@ msgstr ""
 
 #: personal/personal/class_socialHandlers.inc:148
 msgid "Incorrect ORCID value, the checksum does not match"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:171
+msgid "GitHub"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:180
+msgid ""
+"GitHub account names have at most 39 characters, contain only alphanumeric "
+"characters or hyphens, cannot have multiple consecutive hyphens, and cannot "
+"begin or end with a hyphen"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:190
+msgid "Google Scholar"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:204
+msgid ""
+"Google Scholar account IDs have exactly 12 alphanumerical characters or "
+"hyphens or underscores"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:214
+msgid "Matrix"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:230
+msgid "Matrix user IDs have the format '@username:server'"
 msgstr ""

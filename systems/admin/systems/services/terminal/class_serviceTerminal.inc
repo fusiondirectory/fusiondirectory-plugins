@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,22 +21,21 @@
 
 class serviceTerminal extends simpleService
 {
-  var $objectclasses = ['goTerminalServer'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Terminal service'),
       'plDescription' => _('Terminal service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=devices&icon=terminal&size=16',
+      'plObjectClass' => ['goTerminalServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-      return  [
+    return  [
       'section1' => [
         'name'  => _('Terminal service'),
         'attrs' => [
@@ -61,8 +60,6 @@ class serviceTerminal extends simpleService
           )
         ]
       ]
-      ];
+    ];
   }
 }
-
-?>

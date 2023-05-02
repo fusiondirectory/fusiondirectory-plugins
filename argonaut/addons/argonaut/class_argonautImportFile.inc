@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 
 class argonautImportFile extends simplePlugin
 {
+  protected $daemon_events;
   protected $csv_fields = [
     '0' => 'TIMESTAMP',
     '1' => 'MAC',
@@ -27,7 +28,7 @@ class argonautImportFile extends simplePlugin
     '3' => 'OGROUP'
   ];
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Argonaut task import'),
@@ -42,7 +43,7 @@ class argonautImportFile extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -88,14 +89,14 @@ class argonautImportFile extends simplePlugin
     $this->daemon_events  = argonautEventTypes::get_event_types();
   }
 
-  function execute ()
+  public function render (): string
   {
     $smarty = get_smarty();
     $smarty->assign('jobtypes', join(',', array_keys($this->daemon_events)));
-    return parent::execute().
+    return parent::render().
     '<p class="plugbottom">'.
     ' <input type="submit" name="start_import" value="'._('Import').'" >'.
-    ' <input type="submit" name="import_abort" value="'.msgPool::backButton().'">'.
+    ' <input type="submit" formnovalidate="formnovalidate" name="import_abort" value="'.msgPool::backButton().'">'.
     '</p>';
   }
 
@@ -104,24 +105,24 @@ class argonautImportFile extends simplePlugin
     $this->parse_csv($this->import);
   }
 
-  function save_object ()
+  public function readPost ()
   {
     /* Import started */
-    if (isset($_POST['start_import'])) {
+    if (isset($_POST['import_abort'])) {
+      $this->parent->cancelEdit();
+      return;
+    } elseif (isset($_POST['start_import'])) {
       $events = $this->events;
-      $error  = FALSE;
+      $failed = FALSE;
       foreach ($events as $event) {
         if (!empty($event['ERROR'])) {
-          $error = TRUE;
+          $failed = TRUE;
           break;
         }
       }
-      if ($error) {
-        msg_dialog::display(
-          _('Import'),
-          _('Fix the errors in your CSV file first'),
-          ERROR_DIALOG
-        );
+      if ($failed) {
+        $error = new FusionDirectoryError(htmlescape(_('Fix the errors in your CSV file first')));
+        $error->display();
       } else {
         $success  = 0;
         $fail     = 0;
@@ -135,18 +136,19 @@ class argonautImportFile extends simplePlugin
           }
           $this->parent->o_queue->append_call($event['HEADER'], [$event['MAC']], $data);
           if ($this->parent->o_queue->is_error()) {
-            msg_dialog::display(_('Infrastructure service'), msgPool::siError($this->parent->o_queue->get_error()), ERROR_DIALOG);
+            $error = new FusionDirectoryError(msgPool::siError($this->parent->o_queue->get_error()));
+            $error->display();
             $fail++;
           } else {
             unset($events[$key]);
             $success++;
           }
         }
-        msg_dialog::display(_('Import'), sprintf(_('Import complete: %s events successfully send, %s failed'), $success, $fail), INFO_DIALOG);
+        msg_dialog::display(_('Import'), htmlescape(sprintf(_('Import complete: %s events successfully send, %s failed'), $success, $fail)), INFO_DIALOG);
         $this->events = $events;
       }
     }
-    parent::save_object();
+    parent::readPost();
   }
 
   private function parse_csv ($str)
@@ -154,7 +156,8 @@ class argonautImportFile extends simplePlugin
     /* Some file checks */
     $lines = preg_split('/\n/', $str);
     if (empty($str) || !count($lines)) {
-      msg_dialog::display(_('Import'), msgPool::incorrectUpload(_('file is empty')), ERROR_DIALOG);
+      $error = new FusionDirectoryError(msgPool::incorrectUpload(_('file is empty')));
+      $error->display();
       return;
     }
 
@@ -190,4 +193,3 @@ class argonautImportFile extends simplePlugin
     $this->attributesAccess['events']->setPostValue($events);
   }
 }
-?>

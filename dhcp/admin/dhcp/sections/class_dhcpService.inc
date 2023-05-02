@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+  Copyright (C) 2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,19 +20,18 @@
 
 class dhcpService extends dhcpPlugin
 {
-  public $objectclasses = ['dhcpService'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'     => _('DHCP service'),
       'plDescription'   => _('DHCP service'),
       'plCategory'      => ['dhcpConfiguration'],
+      'plObjectClass'   => ['dhcpService'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $attributesInfo = parent::getAttributesInfo();
     $attributesInfo['main']['attrs'][2]->setDefaultValue(
@@ -43,8 +42,8 @@ class dhcpService extends dhcpPlugin
         'ddns-update-style none'
       ]
     );
-    $attributesInfo['main']['attrs'][] = new ObjectSelectAttribute(_('DHCP Primary'), _('Primary DHCP server'), 'dhcpPrimaryDN', FALSE, 'server');
-    $attributesInfo['main']['attrs'][] = new ObjectSelectAttribute(_('DHCP Secondary'), _('Secondary DHCP server'), 'dhcpSecondaryDN', FALSE, 'server');
+    $attributesInfo['main']['attrs'][] = new ObjectSelectAttribute(_('DHCP Primary'), _('Primary DHCP server'), 'dhcpPrimaryDN', FALSE, ['server']);
+    $attributesInfo['main']['attrs'][] = new ObjectSelectAttribute(_('DHCP Secondary'), _('Secondary DHCP server'), 'dhcpSecondaryDN', FALSE, ['server']);
     return $attributesInfo;
   }
 }

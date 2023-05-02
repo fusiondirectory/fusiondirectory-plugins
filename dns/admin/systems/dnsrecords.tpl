@@ -1,18 +1,18 @@
 <div id="{$sectionId}" class="plugin-section{$sectionClasses}">
   <span class="legend">
-    {$section}
+    {if !empty($sectionIcon)}<img src="{$sectionIcon|escape}" alt=""/>{/if}{$section|escape}
   </span>
   <div>
     {if is_array($attributes.dnsRecords)}
       <ul>
         {foreach from=$attributes.dnsRecords key=key item=node}
           {if isset($node.img)}
-            <li style="list-style-image:url('{$node.img}');">
+            <li style="list-style-image:url('{$node.img|escape}');">
           {else}
             <li>
           {/if}
             <a href="#" onclick="Effect.toggle('toggle_{$key}', 'blind', {literal}{ duration: 0.3 }{/literal}); return false;">
-              {$node.name}
+              {$node.name|escape}
             </a>
             <div id="toggle_{$key}" style="overflow: visible;">
               <table class="listingTable">

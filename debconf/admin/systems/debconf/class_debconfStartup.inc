@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,25 +21,25 @@
 
 class debconfStartup extends simplePlugin
 {
-  var $displayHeader = TRUE;
-
-  var $objectclasses = ['debconfStartup'];
+  protected $displayHeader  = TRUE;
 
   var $inheritance = ['gosaGroupOfNames' => 'member'];
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Debconf'),
       'plDescription'   => _('Debconf preseed startup'),
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=debconf&size=16',
       'plPriority'      => 9,
+      'plObjectClass'   => ['debconfStartup'],
       'plObjectType'    => ['workstation', 'server', 'ogroup-dynamic'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -79,4 +79,3 @@ class debconfStartup extends simplePlugin
     $this->attributesInfo['main']['attrs']['debconfProfile']->setChoices($profiles);
   }
 }
-?>

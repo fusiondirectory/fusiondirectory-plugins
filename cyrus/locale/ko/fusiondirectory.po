@@ -4,35 +4,36 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Choi Chris <chulwon.choi@gmail.com>, 2018
+# fusiondirectory <contact@fusiondirectory.org>, 2020
+# Choi Chris <chulwon.choi@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2022-07-28 17:06+0000\n"
-"PO-Revision-Date: 2016-08-29 15:07+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
-"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"PO-Revision-Date: 2018-08-13 19:51+0000\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
+"Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:30
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:31
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:27
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:28
 msgid "Cyrus (IMAP/POP3)"
 msgstr "Cyrus (IMAP/POP3)"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:31
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:28
 msgid "Services"
 msgstr "서비스"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:45
-msgid "Cyrus settings"
-msgstr "Cyrus 설정"
+msgid "Connection"
+msgstr "연결"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:48
 msgid "Connect URL for Cyrus server"
@@ -63,7 +64,7 @@ msgstr "옵션"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:61
 msgid "Options for contacting Cyrus server"
-msgstr "Cyrus 서버에 접속 옵션"
+msgstr "Cyrus 서버에 접속하기 위한 옵션"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Valide certificats"
@@ -90,8 +91,8 @@ msgid "Admin user password"
 msgstr "관리자 패스워드"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:86
-msgid "Sieve settings"
-msgstr "Sieve 설정"
+msgid "Sieve"
+msgstr "Sieve"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:89
 msgid "Sieve connect URL for Cyrus server"
@@ -109,28 +110,38 @@ msgstr "Cyrus sieve 서버에 접속하는 포트 번호"
 msgid "Options for contacting Cyrus sieve server"
 msgstr "Cyrus sieve 서버 접속 옵션"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:50
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr "정의된 IMAP 호환 메일 서버가 없습니다!"
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:113
+msgid "Settings"
+msgstr "설정"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:55
-msgid "Mail server for this account is invalid!"
-msgstr "이 계정의 메일 서버가 유효하지 않습니다!"
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:116
+msgid "Use UNIX style"
+msgstr "UNIX 스타일 사용"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
-msgid "IMAP error"
-msgstr "IMAP 오류"
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:116
+msgid "Determines if \"foo/bar\" or \"foo.bar\" should be used as namespaces in IMAP"
+msgstr "\"foo / bar\" 또는 \"foo.bar\"를 IMAP에서 네임스페이스로 사용해야 하는지 여부를 결정합니다."
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:122
+msgid "Autocreate folders"
+msgstr "폴더 자동 생성"
+
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:122
+msgid ""
+"List of personal IMAP folders that should be created along initial account "
+"creation."
+msgstr "초기 계정 생성시 생성해야하는 개인 IMAP 폴더 목록입니다."
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:233
 #, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
 msgstr "IMAP 사서함 할당량을 수정할 수 없습니다: %s"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:313
 msgid "Mail info"
 msgstr "메일 정보"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:316
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
 #, php-format
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
@@ -139,22 +150,22 @@ msgstr ""
 "LDAP 항목에서는 삭제되었으나 cyrus 편지함(%s)은 유지됩니다.\n"
 "수동으로 삭제를 바랍니다!"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:404
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:442
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:413
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:472
 msgid "The module imap_getacl is not implemented!"
-msgstr "모듈 imap_getacl이 구현되지 않았습니다!"
+msgstr "모듈 imap_getacl은 구현이 되지 않았습니다!"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:510
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:545
 #, php-format
 msgid "Cannot retrieve SIEVE script: %s"
 msgstr "SIEVE 스크립트를 검색할 수  없습니다: %s"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:578
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:613
 #, php-format
 msgid "Cannot store SIEVE script: %s"
 msgstr "SIEVE 스크립트를 저장할 수 없습니다: %s"
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:585
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:620
 #, php-format
 msgid "Cannot activate SIEVE script: %s"
 msgstr "SIEVE 스크립트를 활성화할 수 없습니다: %s"

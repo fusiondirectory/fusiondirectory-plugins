@@ -3,7 +3,7 @@
           COPYRIGHT
 
 Copyright 2007 Sergio Vaccaro <sergio@inservibile.org>
-Copyright 2012-2018 FusionDirectory
+Copyright 2012-2016 FusionDirectory
 
 This file is part of JSON-RPC PHP.
 
@@ -49,7 +49,8 @@ class jsonRPCClientBadArgsException extends jsonRPCClientException
  *
  * \author sergio <jsonrpcphp@inservibile.org>
  */
-class jsonRPCClient {
+class jsonRPCClient
+{
 
   /*!
    * \brief Debug state
@@ -177,17 +178,19 @@ class jsonRPCClient {
             'id' => $currentId
             ];
     $request = json_encode($request);
-    $this->debug && $debug .= '***** Request *****'."\n".$request."\n".'***** End Of request *****'."\n\n";
+    if ($this->debug) {
+      $debug .= '***** Request *****'."\n".$request."\n".'***** End Of request *****'."\n\n";
+    }
 
     // performs the HTTP(S) POST
     $opts = [
       'http' => array_merge(
-         [
+        [
           'method'  => 'POST',
           'header'  => 'Content-type: application/json',
           'content' => $request
-         ],
-         $this->http_options
+        ],
+        $this->http_options
       ),
       'ssl' => $this->ssl_options
     ];
@@ -199,7 +202,9 @@ class jsonRPCClient {
       while ($row = fgets($fp)) {
         $response .= trim($row)."\n";
       }
-      $this->debug && $debug .= '***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
+      if ($this->debug) {
+        $debug .= '***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
+      }
       $response = json_decode($response, TRUE);
     } else {
       if (!empty($fp)) {
@@ -245,10 +250,8 @@ class jsonRPCClient {
       }
 
       return $response['result'];
-
     } else {
       return TRUE;
     }
   }
 }
-?>

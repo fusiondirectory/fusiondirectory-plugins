@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018 FusionDirectory
+
+  Copyright (C) 2015-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,15 +19,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class dhcpConfig extends simplePlugin
+class dhcpConfig extends multiPluginSection
 {
-  var $objectclasses  = ['fdDhcpPluginConf'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('DHCP configuration'),
       'plDescription'   => _('FusionDirectory dhcp plugin configuration'),
+      'plObjectClass'   => ['fdDhcpPluginConf'],
       'plCategory'      => ['configuration'],
       'plObjectType'    => ['smallConfig'],
 
@@ -34,11 +34,11 @@ class dhcpConfig extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
-      'main' => [
-        'name'  => _('DHCP config'),
+      'dhcp' => [
+        'name'  => _('DHCP'),
         'attrs' => [
           new StringAttribute(
             _('DHCP RDN'), _('Branch in which DHCP configurations will be stored'),
@@ -50,4 +50,3 @@ class dhcpConfig extends simplePlugin
     ];
   }
 }
-?>

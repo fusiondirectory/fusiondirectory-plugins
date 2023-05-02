@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 /* Basic setup, remove eventually registered sessions */
 @require_once ("../include/php_setup.inc");
 @require_once ("functions.inc");
-@require_once("variables.inc");
+@require_once ("variables.inc");
 
 
 session_cache_limiter("private");
@@ -48,4 +48,3 @@ $res    = $o->get_entries_by_mac(explode(",", $_GET['mac']));
 foreach ($res as $entry) {
   echo $entry['MACADDRESS']."|".$entry['PROGRESS']."\n";
 }
-?>

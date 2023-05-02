@@ -28,7 +28,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @author sergio <jsonrpcphp@inservibile.org>
  */
-class jsonRPCServer {
+class jsonRPCServer
+{
   /**
    * This function handle a request binding it to a given object
    *
@@ -54,23 +55,23 @@ class jsonRPCServer {
     try {
       if (($result = @call_user_func_array([$object,$request['method']], $request['params'])) !== FALSE) {
         $response = [
-                  'id' => $request['id'],
-                  'result' => $result,
-                  'error' => NULL
-                  ];
+          'id'      => $request['id'],
+          'result'  => $result,
+          'error'   => NULL
+        ];
       } else {
         $response = [
-                  'id' => $request['id'],
-                  'result' => NULL,
-                  'error' => 'unknown method or incorrect parameters'
-                  ];
+          'id'      => $request['id'],
+          'result'  => NULL,
+          'error'   => 'unknown method or incorrect parameters'
+        ];
       }
     } catch (Exception $e) {
       $response = [
-                'id' => $request['id'],
-                'result' => NULL,
-                'error' => $e->getMessage()
-                ];
+        'id'      => $request['id'],
+        'result'  => NULL,
+        'error'   => $e->getMessage()
+      ];
     }
 
     // output the response
@@ -80,9 +81,9 @@ class jsonRPCServer {
       $res = json_encode($response);
       if ($res === FALSE) {
         $response = [
-          'id' => $request['id'],
-          'result' => NULL,
-          'error' => 'Failed to encode response: '.json_last_error_msg()
+          'id'      => $request['id'],
+          'result'  => NULL,
+          'error'   => 'Failed to encode response: '.json_last_error_msg()
         ];
         echo json_encode($response);
       } else {
@@ -94,4 +95,3 @@ class jsonRPCServer {
     return TRUE;
   }
 }
-?>

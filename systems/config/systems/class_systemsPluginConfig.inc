@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018 FusionDirectory
+  Copyright (C) 2013-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,22 +20,22 @@
 
 class systemsPluginConfig extends simplePlugin
 {
-  var $objectclasses = ['fdSystemsPluginConf'];
-
   static protected $ipClasses = [];
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Systems'),
       'plDescription'   => _('Systems plugin configuration'),
+      'plObjectClass'   => ['fdSystemsPluginConf'],
+      'plPriority'      => 20,
       'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'rdns' => [
@@ -147,4 +147,3 @@ class systemsPluginConfig extends simplePlugin
     $this->attributesAccess['fdMandatoryIpClasses']->attribute->setChoices(array_keys(static::$ipClasses), array_values(static::$ipClasses));
   }
 }
-?>

@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,13 +21,9 @@
 
 class pureftpdAccount extends simplePlugin
 {
-  /* Definitions */
-  var $displayHeader  = TRUE;
-  var $objectclasses  = ["PureFTPdUser"];
+  protected $displayHeader  = TRUE;
 
-
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Ftp'),
@@ -36,12 +32,13 @@ class pureftpdAccount extends simplePlugin
       'plSmallIcon'     => 'geticon.php?context=applications&icon=pureftpd&size=16',
       'plSelfModify'    => TRUE,
       'plPriority'      => 10,
+      'plObjectClass'   => ['PureFTPdUser'],
       'plObjectType'    => ['user'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
     // Attributes are grouped by section
@@ -127,5 +124,3 @@ class pureftpdAccount extends simplePlugin
     ];
   }
 }
-
-?>

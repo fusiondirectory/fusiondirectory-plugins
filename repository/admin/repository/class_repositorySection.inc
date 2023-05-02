@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2013-2018 FusionDirectory
+  Copyright (C) 2013-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,18 +20,14 @@
 
 class repositorySection extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['fdBuildRepositorySection'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Repository section'),
       'plDescription' => _('Repository section'),
+      'plObjectClass' => ['fdBuildRepositorySection'],
       'plObjectType'  => ['repoSection' => [
         'name'        => _('Repository section'),
-        'filter'      => 'objectClass=fdBuildRepositorySection',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'geticon.php?context=applications&icon=repository-section&size=16',
@@ -46,7 +42,7 @@ class repositorySection extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -77,11 +73,9 @@ class repositorySection extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
 
     $sections = objects::ls('repoSection', 'cn');
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($sections));
   }
 }
-
-?>

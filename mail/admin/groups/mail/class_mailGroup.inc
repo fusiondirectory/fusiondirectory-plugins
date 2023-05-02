@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2009-2010 Bas Tichelaar
-  Copyright (C) 2013-2018  FusionDirectory
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -37,23 +38,24 @@ class GroupMailsAttribute extends MailsAttribute
 
 class mailGroup extends simplePlugin
 {
-  var $displayHeader  = TRUE;
-  var $objectclasses  = ['fdGroupMail'];
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  protected $displayHeader  = TRUE;
+
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Group mail options'),
+      'plFilter'        => '(objectClass=fdGroupMail)',
       'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
       'plPriority'      => 10,
+      'plObjectClass'   => ['fdGroupMail'],
       'plObjectType'    => ['group', 'ogroup-user'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -65,8 +67,8 @@ class mailGroup extends simplePlugin
           ),
           new SelectAttribute(
             _('Server'), _('Email server'),
-            'gosaMailServer', TRUE,
-            ['']
+            'gosaMailServer', FALSE,
+            []
           ),
           new SetAttribute(
             new StringAttribute(
@@ -74,6 +76,11 @@ class mailGroup extends simplePlugin
               'gosaMailAlternateAddress'
             )
           ),
+        ]
+      ],
+      'options' => [
+        'name'  => _('Options'),
+        'attrs' => [
           new GroupMailsAttribute(
             _('Forward messages to non group members'), _('Forward messages to non group members'),
             'gosaMailForwardingAddress'
@@ -82,7 +89,38 @@ class mailGroup extends simplePlugin
             _('Only allowed to receive local mail'), _('Whether this group mail is only allowed to receive messages from local senders'),
             'fdGroupMailLocalOnly', FALSE,
             FALSE
-          )
+          ),
+          new SelectAttribute(
+            _('Default ACL'), _('ACL for people not in the group'),
+            'defaultACL', FALSE
+          ),
+          new SelectAttribute(
+            _('Members ACL'), _('ACL for members of the group'),
+            'fdGroupMailMembersAcl', FALSE
+          ),
+          new OrderedArrayAttribute(
+            new PipeSeparatedCompositeAttribute(
+              _('Special ACLs for specific members'),
+              'specialACLs',
+              [
+                new SelectAttribute(
+                  '', _('Email'),
+                  'specialACLsEmail', TRUE,
+                  []
+                ),
+                new SelectAttribute(
+                  '', _('ACL'),
+                  'specialACLsAcl', TRUE,
+                  []
+                ),
+              ],
+              '',
+              _('Special ACLs')
+            ),
+            // no order
+            FALSE,
+            []
+          ),
         ]
       ]
     ];
@@ -92,9 +130,14 @@ class mailGroup extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
+    $this->attributesAccess['defaultACL']->setInLdap(FALSE);
+    $this->attributesAccess['specialACLs']->setInLdap(FALSE);
+
     $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
     $this->mailServerChanged();
+
+    $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
   }
 
   /* We need $mailAccount->cn to return the cn for mailMethod */
@@ -118,16 +161,18 @@ class mailGroup extends simplePlugin
     }
   }
 
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
+  {
+    if ($field == 'gosaMailServer') {
+      mailMethod::resetMailServersCache();
+      $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
+    }
+    parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
+  }
+
   public function mailServerChanged ()
   {
-    /* Intialize the used mailMethod */
-    if ($this->gosaMailServer == '') {
-      $method = 'mailMethod';
-    } else {
-      $method = mailMethod::getServerMethod($this->gosaMailServer);
-    }
-    $this->mailMethod = mailMethod::getInstance($method, $this);
-    $this->mailMethod->fixAttributesOnLoad();
+    $this->mailMethod = mailMethod::getInstanceFromServer($this->gosaMailServer, $this);
 
     /* Initialize configured values */
     if (!$this->is_template && $this->is_account && $this->initially_was_account) {
@@ -154,26 +199,130 @@ class mailGroup extends simplePlugin
       $this->attributesAccess['gosaMailForwardingAddress']->setVisible(FALSE);
       $this->attributesAccess['gosaMailForwardingAddress']->setValue([]);
     }
+
+    if ($this->mailMethod->groupAclsEnabled()) {
+      $this->attributesAccess['defaultACL']->setDisabled(FALSE);
+      $this->attributesAccess['defaultACL']->setVisible(TRUE);
+      $this->attributesAccess['fdGroupMailMembersAcl']->setDisabled(FALSE);
+      $this->attributesAccess['fdGroupMailMembersAcl']->setVisible(TRUE);
+      $this->attributesAccess['specialACLs']->setDisabled(FALSE);
+      $this->attributesAccess['specialACLs']->setVisible(TRUE);
+
+      $this->attributesAccess['defaultACL']->setDefaultValue('p');
+      $this->attributesAccess['fdGroupMailMembersAcl']->setDefaultValue('lrsp');
+
+      if ($this->mailMethod->connect()) {
+        $acls = $this->mailMethod->getFolderACLs();
+      }
+      $aclTypes = $this->mailMethod->getAclTypes();
+      $this->attributesAccess['defaultACL']->setChoices(array_keys($aclTypes), array_values($aclTypes));
+      $this->attributesAccess['fdGroupMailMembersAcl']->setChoices(array_keys($aclTypes), array_values($aclTypes));
+      $this->attributesAccess['specialACLs']->attribute->attributes[1]->setChoices(array_keys($aclTypes), array_values($aclTypes));
+      if (isset($acls)) {
+        $this->attributesAccess['defaultACL']->setValue($acls['anyone']);
+        $specialACLs = [];
+        foreach ($acls as $email => $acl) {
+          if (($email != 'anyone') && ($acl != $this->fdGroupMailMembersAcl)) {
+            $specialACLs[] = $email.'|'.$acl;
+          }
+        }
+        $this->specialACLs = $specialACLs;
+      }
+    } else {
+      $this->attributesAccess['defaultACL']->setDisabled(TRUE);
+      $this->attributesAccess['defaultACL']->setVisible(FALSE);
+      $this->attributesAccess['defaultACL']->setValue('');
+      $this->attributesAccess['fdGroupMailMembersAcl']->setDisabled(TRUE);
+      $this->attributesAccess['fdGroupMailMembersAcl']->setVisible(FALSE);
+      $this->attributesAccess['fdGroupMailMembersAcl']->setValue('');
+      $this->attributesAccess['specialACLs']->setDisabled(TRUE);
+      $this->attributesAccess['specialACLs']->setVisible(FALSE);
+      $this->attributesAccess['specialACLs']->setValue([]);
+    }
   }
 
-  function check ()
+  public function check (): array
   {
-    $messages = parent::check();
-
-    if (!$this->is_template && is_object($this->mailMethod)) {
-      $messages = array_merge($messages, $this->mailMethod->check());
+    if ($this->is_account) {
+      $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
     }
 
-    return $messages;
+    $errors = parent::check();
+
+    if (!$this->is_template && is_object($this->mailMethod)) {
+      $errors = array_merge($errors, $this->mailMethod->check());
+    }
+
+    return $errors;
   }
 
-  protected function shouldSave ()
+  protected function shouldSave (): bool
   {
     /* mail method might have something to save (like password change from main tab for instance) */
     return TRUE;
   }
 
-  public function ldap_save ()
+  protected function getMemberEmailList (): array
+  {
+    global $config;
+
+    $mainTab = $this->parent->getBaseObject();
+    $newmembers = [];
+    if (isset($mainTab->member)) {
+      $ldap = $config->get_ldap_link();
+      $dns  = $mainTab->member;
+      foreach ($dns as $dn) {
+        $ldap->cat($dn);
+        $attrs = $ldap->fetch();
+        if (isset($attrs['mail'][0])) {
+          $newmembers[] = $attrs['mail'][0];
+        }
+      }
+    } elseif (isset($mainTab->memberUid)) {
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
+      $uids = $mainTab->memberUid;
+      foreach ($uids as $uid) {
+        $ldap->search('(&(objectClass=inetOrgPerson)(uid='.$uid.'))');
+        if ($ldap->count() > 1) {
+          $error = new SimplePluginError(
+            $this,
+            htmlescape(sprintf(
+              _('Several users have uid "%s". Ignoring this member.'),
+              $uid
+            ))
+          );
+          $error->display();
+        } elseif ($ldap->count() == 1) {
+          $attrs = $ldap->fetch();
+          if (isset($attrs['mail'][0])) {
+            $newmembers[] = $attrs['mail'][0];
+          }
+        }
+      }
+    }
+
+    return $newmembers;
+  }
+
+  public function update (): bool
+  {
+    parent::update();
+    if ($this->is_account) {
+      $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
+    }
+    return TRUE;
+  }
+
+  /*!
+  *  \brief Should the mail method create the mailbox? (mail server change or tab activation)
+  */
+  public function isMailboxCreation (): bool
+  {
+    return (!$this->initially_was_account || $this->attributesAccess['gosaMailServer']->hasChanged());
+  }
+
+  public function ldap_save (): array
   {
     if (!empty($this->attrs)) {
       $errors = parent::ldap_save();
@@ -188,10 +337,32 @@ class mailGroup extends simplePlugin
     if (!$this->is_template) {
       $this->mailMethod->connect();
       if (!$this->mailMethod->is_connected()) {
-        $errors[] = sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error());
+        $errors[] = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error()))
+        );
       } else {
         if (!$this->mailMethod->updateMailbox()) {
-          $errors[] = sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error());
+          $errors[] = new SimplePluginError(
+            $this,
+            htmlescape(sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error()))
+          );
+        }
+        if ($this->mailMethod->groupAclsEnabled()) {
+          $acls = [
+            'anyone' => $this->defaultACL
+          ];
+
+          foreach ($this->getMemberEmailList() as $member) {
+            $acls[$member] = $this->fdGroupMailMembersAcl;
+          }
+
+          foreach ($this->specialACLs as $specialACL) {
+            list($email, $acl) = explode('|', $specialACL, 2);
+            $acls[$email] = $acl;
+          }
+
+          $this->mailMethod->setFolderACLs($acls);
         }
       }
     }
@@ -212,12 +383,22 @@ class mailGroup extends simplePlugin
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {
       if (!$this->mailMethod->connect()) {
-        msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox, mail method cannot connect: %s'),
-              $this->mailMethod->get_error()), ERROR_DIALOG);
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot remove mailbox, mail method cannot connect: %s'),
+            $this->mailMethod->get_error()
+          ))
+        );
+        $error->display();
       } else {
         if (!$this->mailMethod->deleteMailbox()) {
-          msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox: %s'),
-                $this->mailMethod->get_error()), ERROR_DIALOG);
+          $error = new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Cannot remove mailbox: %s'),
+              $this->mailMethod->get_error()
+            ))
+          );
+          $error->display();
         }
       }
     }

@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class AvailableLogsAttribute extends Attribute
+class AvailableLogsAttribute extends \FusionDirectory\Core\SimplePlugin\Attribute
 {
   var $logs     = [];
 
@@ -44,10 +44,10 @@ class AvailableLogsAttribute extends Attribute
       $js .= 'document.mainform.'.$id.'_'.$var.'.value="'.$value.'";';
     }
     $js .= 'document.mainform.submit();';
-    return '<a href="javascript:'.htmlentities($js, ENT_COMPAT, 'UTF-8').'">'.$label."</a>";
+    return '<a href="javascript:'.htmlescape($js).'">'.htmlescape($label).'</a>';
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     $id   = $this->getHtmlId();
     $div  = new divSelectBox($id);
@@ -67,7 +67,7 @@ class AvailableLogsAttribute extends Attribute
     }
 
     /* Create list header */
-    $div->SetHeaders([
+    $div->setHeaders([
       $this->js_link(_('File')." $img1", ['sort_by' => 'file']),
       $this->js_link(_('Date')." $img2", ['sort_by' => 'time'])
     ]);
@@ -79,11 +79,11 @@ class AvailableLogsAttribute extends Attribute
       $rtime = $data['REAL_DATE'];
       foreach ($data['FILES'] as $file) {
         $highlight = '';
-        if (($file == $this->value['file']) && ($time == $this->value['time']) && ($mac == $this->plugin->mac)) {
+        if (($file == $this->value['file']) && ($time == $this->value['time'])) {
           $highlight = 'background-color:#CCCCCC';
         }
 
-        $use_link = $this->js_link('%str%', ['time' => $time, 'file' => $file, 'mac' => $mac]);
+        $use_link = $this->js_link('%str%', ['time' => $time, 'file' => $file, 'mac' => $this->plugin->mac]);
         $to_add[$$sort_by.$file.$time] = [
           ['html' => preg_replace('/%str%/', $file, $use_link),
                 'attach' => ''],
@@ -99,15 +99,15 @@ class AvailableLogsAttribute extends Attribute
       $to_add = array_reverse($to_add);
     }
 
-    $div->SetHeight(200);
+    $div->setHeight(200);
 
     /* Append entries to list */
     foreach ($to_add as $entry) {
-      $div->AddEntry($entry);
+      $div->addEntry($entry);
     }
 
     $smarty = get_smarty();
-    $smarty->assign("div_$id", $div->DrawList());
+    $smarty->assign("div_$id", $div->drawList());
     $display = '';
     foreach (['sort_by','time','file','mac'] as $var) {
       $display .= '<input type="hidden" value="" name="'.$id.'_'.$var.'" id="'.$id.'_'.$var.'"/>'."\n";
@@ -140,9 +140,19 @@ class faiLogView extends simplePlugin
   var $mac;
   var $o_queue;
 
-  var $displayHeader  = FALSE;
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'   => _('FAI Logs'),
+      'plDescription' => _('FAI Logs Viewer'),
+      'plPriority'    => 31,
+      'plObjectType'  => ['workstation', 'server', 'ogroup-dynamic'],
 
-  static function getAttributesInfo ()
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    ];
+  }
+
+  static function getAttributesInfo (): array
   {
     return [
       'available' => [
@@ -166,19 +176,6 @@ class faiLogView extends simplePlugin
     ];
   }
 
-  /* Return plugin information */
-  static function plInfo ()
-  {
-    return [
-      'plShortName'   => _('FAI Logs'),
-      'plDescription' => _('FAI Logs Viewer'),
-      'plPriority'    => 31,
-      'plObjectType'  => ['workstation', 'server', 'ogroup-dynamic'],
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    ];
-  }
-
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     /* Try to fetch logs for the given event (mac) */
@@ -198,7 +195,8 @@ class faiLogView extends simplePlugin
       /* Query for log files */
       $res = $this->o_queue->get_log_info_for_mac($this->mac);
       if ($this->o_queue->is_error()) {
-          msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+        $error = new FusionDirectoryError(msgPool::siError($this->o_queue->get_error()));
+        $error->display();
       }
 
       /* Check if there is at least one log file */
@@ -216,9 +214,9 @@ class faiLogView extends simplePlugin
     return (count($this->attributesAccess['available_logs']->logs) > 0);
   }
 
-
-  function execute ()
+  public function update (): bool
   {
+    parent::update();
     if ($this->available_logs['file'] == '') {
       $this->attributesInfo['selected']['name'] = _('Selected file');
       $this->display_log = '';
@@ -232,18 +230,17 @@ class faiLogView extends simplePlugin
       $this->display_log = $this->get_log($this->mac, $this->available_logs['time'], $this->available_logs['file']);
     }
 
-    return parent::execute();
+    return TRUE;
   }
-
 
   private function get_log ($mac, $date, $file)
   {
     $res = $this->o_queue->get_log_file($mac, $date, $file);
     if ($this->o_queue->is_error()) {
-      msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+      $error = new FusionDirectoryError(msgPool::siError($this->o_queue->get_error()));
+      $error->display();
     }
-    $res = nl2br(htmlentities($res));
+    $res = nl2br(htmlescape($res));
     return $res;
   }
 }
-?>

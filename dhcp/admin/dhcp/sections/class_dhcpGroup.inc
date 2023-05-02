@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+  Copyright (C) 2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,14 +20,13 @@
 
 class dhcpGroup extends dhcpPlugin
 {
-  public $objectclasses = ['dhcpGroup'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'     => _('DHCP group'),
       'plDescription'   => _('DHCP group'),
       'plCategory'      => ['dhcpConfiguration'],
+      'plObjectClass'   => ['dhcpGroup'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }

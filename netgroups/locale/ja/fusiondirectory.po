@@ -8,100 +8,104 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2022-07-28 17:06+0000\n"
-"PO-Revision-Date: 2016-08-29 15:15+0000\n"
-"Language-Team: Japanese (https://www.transifex.com/fusiondirectory/teams/12202/ja/)\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"PO-Revision-Date: 2018-08-13 19:58+0000\n"
+"Language-Team: Japanese (https://app.transifex.com/fusiondirectory/teams/12202/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/netgroups/class_netgroupManagement.inc:34
+#: admin/netgroups/class_netgroupManagement.inc:27
 msgid "NIS Netgroups"
 msgstr ""
 
-#: admin/netgroups/class_netgroupManagement.inc:35
-msgid "NIS Netgroup management"
+#: admin/netgroups/class_netgroupManagement.inc:28
+msgid "NIS Netgroups management"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:51
-#: config/netgroups/class_netgroupConfig.inc:42
+#: admin/netgroups/class_netgroupManagement.inc:29
+msgid "Manage NIS Netgroups"
+msgstr ""
+
+#: admin/netgroups/class_netgroup.inc:28
+#: config/netgroups/class_netgroupConfig.inc:40
 msgid "Netgroup"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:52
+#: admin/netgroups/class_netgroup.inc:29
 msgid "NIS Netgroup settings"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:55
-#: admin/systems/netgroups/class_netgroupSystem.inc:27
-#: personal/netgroups/class_netgroupMembership.inc:43
+#: admin/netgroups/class_netgroup.inc:32
+#: admin/systems/netgroups/class_netgroupSystem.inc:29
+#: personal/netgroups/class_netgroupMembership.inc:33
 msgid "NIS Netgroup"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:70
+#: admin/netgroups/class_netgroup.inc:46
 msgid "Information"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:73
+#: admin/netgroups/class_netgroup.inc:50
 msgid "Name"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:73
+#: admin/netgroups/class_netgroup.inc:50
 msgid "Name of this NIS netgroup"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:76
+#: admin/netgroups/class_netgroup.inc:53
 msgid "Description"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:76
+#: admin/netgroups/class_netgroup.inc:53
 msgid "Description of this NIS netgroup"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:82
+#: admin/netgroups/class_netgroup.inc:58
 msgid "User members"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:89 admin/netgroups/class_netgroup.inc:98
-#: admin/netgroups/class_netgroup.inc:105
+#: admin/netgroups/class_netgroup.inc:63 admin/netgroups/class_netgroup.inc:76
+#: admin/netgroups/class_netgroup.inc:84
 msgid "NIS netgroup members"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:95
+#: admin/netgroups/class_netgroup.inc:73
 msgid "System members"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:102
+#: admin/netgroups/class_netgroup.inc:80
 msgid "Netgroup members"
 msgstr ""
 
-#: admin/systems/netgroups/class_netgroupSystem.inc:28
-#: personal/netgroups/class_netgroupMembership.inc:44
+#: admin/systems/netgroups/class_netgroupSystem.inc:30
+#: personal/netgroups/class_netgroupMembership.inc:34
 msgid "NIS Netgroup member"
 msgstr ""
 
-#: config/netgroups/class_netgroupConfig.inc:28
+#: config/netgroups/class_netgroupConfig.inc:26
 msgid "Netgroup configuration"
 msgstr ""
 
-#: config/netgroups/class_netgroupConfig.inc:29
+#: config/netgroups/class_netgroupConfig.inc:27
 msgid "FusionDirectory netgroup plugin configuration"
 msgstr ""
 
-#: config/netgroups/class_netgroupConfig.inc:45
+#: config/netgroups/class_netgroupConfig.inc:43
 msgid "Netgroup RDN"
 msgstr ""
 
-#: config/netgroups/class_netgroupConfig.inc:45
+#: config/netgroups/class_netgroupConfig.inc:43
 msgid "Branch in which netgroups will be stored"
 msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:60
+#: personal/netgroups/class_netgroupMembership.inc:50
 msgid "Member of the following NIS Netgroups  "
 msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:63
+#: personal/netgroups/class_netgroupMembership.inc:54
 msgid "NIS netgroup membership"
 msgstr ""

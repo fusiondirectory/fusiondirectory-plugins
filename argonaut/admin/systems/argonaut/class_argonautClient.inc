@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -79,7 +79,7 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
     }
   }
 
-  function loadAttrValue ($attrs)
+  function loadAttrValue (array $attrs)
   {
     if (isset($attrs[$this->getLdapName()])) {
       for ($i = 0; $i < $attrs[$this->getLdapName()]['count']; $i++) {
@@ -116,17 +116,17 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
 
 class argonautClient extends simplePlugin
 {
-  var $objectclasses  = ['argonautClient'];
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
   var $inheritance = ['gosaGroupOfNames' => 'member'];
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Argonaut client'),
       'plDescription'   => _('Edit argonaut client settings'),
-      'plSelfModify'    => FALSE,
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=argonaut&size=16',
+      'plObjectClass'   => ['argonautClient'],
       'plObjectType'    => ['workstation','server','terminal','ogroup-dynamic'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
@@ -134,7 +134,7 @@ class argonautClient extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -186,7 +186,7 @@ class argonautClient extends simplePlugin
             '/etc/ssl/certs/ca.cert'
           ),
           new StringAttribute(
-            _('CN of the certificate'), _('The CN in this client certificate'),
+            _('Name for peer verification'), _('The certificate name used for peer verification'),
             'argonautClientCertCN', FALSE
           ),
         ]
@@ -214,6 +214,12 @@ class argonautClient extends simplePlugin
       ]
     );
   }
-}
 
-?>
+  /*!
+   * \brief Test whether argonaut client is active, either directly or through a group
+   */
+  public function isActiveOrInherited (): bool
+  {
+    return (parent::isActive() || $this->member_of_group);
+  }
+}

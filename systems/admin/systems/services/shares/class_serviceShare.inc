@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,20 +21,19 @@
 
 class serviceShare extends simpleService
 {
-  var $objectclasses = ['goShareServer'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Share service'),
       'plDescription' => _('Share service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=places&icon=folder-network&size=16',
+      'plObjectClass' => ['goShareServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -102,7 +101,8 @@ class serviceShare extends simpleService
 
     $configEncodings = $config->get_cfg_value('encodings', NULL);
     if ($configEncodings === NULL) {
-      msg_dialog::display(_('Error'), _('You need to configure encodings first'), ERROR_DIALOG);
+      $error = new SimplePluginError($this, htmlescape(_('You need to configure encodings first')));
+      $error->display();
     } else {
       foreach ($configEncodings as $str) {
         $arr = explode("=", $str);
@@ -116,4 +116,3 @@ class serviceShare extends simpleService
     return $charsets;
   }
 }
-?>

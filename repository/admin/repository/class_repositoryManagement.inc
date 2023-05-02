@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018 FusionDirectory
+
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,15 +19,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class repositoryManagement extends simpleManagement
+class repositoryManagement extends management
 {
-  protected $objectTypes  = ['buildRepository', 'repoDistribution', 'repoSection'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Repository management'),
-      'plDescription' => _('Repository management'),
+      'plShortName'   => _('Repositories'),
+      'plTitle'       => _('Repositories management'),
+      'plDescription' => _('Manage repositories'),
       'plIcon'        => 'geticon.php?context=applications&icon=repository&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 22,
@@ -35,9 +35,6 @@ class repositoryManagement extends simpleManagement
         'objectClass'  => ['fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection']
       ]],
       'plManages'     => ['buildRepository', 'repoDistribution', 'repoSection'],
-
-      'plProvidedAcls' => []
     ];
   }
 }
-?>

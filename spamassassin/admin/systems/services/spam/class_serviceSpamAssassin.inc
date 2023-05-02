@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,17 +20,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceSpamAssassin extends simpleService {
-
-  /* This plugin only writes its objectClass */
-  var $objectclasses = ['goSpamServer'];
-
-  static function plInfo ()
+class serviceSpamAssassin extends simpleService
+{
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Spamassassin service'),
       'plDescription' => _('Spamassassin service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=spamassassin&size=16',
+      'plObjectClass' => ['goSpamServer'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -39,7 +37,7 @@ class serviceSpamAssassin extends simpleService {
   /*!
   *  \brief The main function : information about attributes
   */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return  [
       'section1' => [
@@ -112,10 +110,10 @@ class serviceSpamAssassin extends simpleService {
             new CompositeAttribute(
               _('Edit spam rule'),
               'saRule',
-               [
+              [
                 new StringAttribute(_('Name'), '', 'ruleName'),
                 new TextAreaAttribute(_('Rule'), '', 'ruleDesc'),
-               ],
+              ],
               '/^([^:]*):(.*)$/',
               '%s:%s',
               '', _('Edit spam rule')
@@ -126,5 +124,3 @@ class serviceSpamAssassin extends simpleService {
     ];
   }
 }
-
-?>

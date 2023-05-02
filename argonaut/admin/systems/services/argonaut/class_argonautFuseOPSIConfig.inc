@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+  Copyright (C) 2012-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,26 +21,25 @@
 
 class argonautFuseOPSIConfig extends simplePlugin
 {
-  var $objectclasses  = ["argonautFuseOPSIConfig"];
-  var $showActions    = FALSE;
-  var $displayHeader     = TRUE;
+  protected static $showActions = FALSE;
+  protected $displayHeader      = TRUE;
 
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
-      "plShortName"     => _("Argonaut Fuse OPSI module settings"),
-      "plDescription"   => _("Argonaut Fuse OPSI module settings")." ("._("Services").")",
-      "plCategory"      => ["server"],
-      "plObjectType"    => ["fusemodule"],
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Argonaut Fuse OPSI module settings'),
+      'plDescription'   => _('Argonaut Fuse OPSI module settings').' ('._('Services').')',
+      'plCategory'      => ['server'],
+      'plObjectClass'   => ['argonautFuseOPSIConfig'],
+      'plObjectType'    => ['fusemodule'],
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return  [
       'opsi' => [

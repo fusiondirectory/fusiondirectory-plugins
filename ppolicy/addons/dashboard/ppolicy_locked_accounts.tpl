@@ -1,6 +1,6 @@
 <div id="{$sectionId}"  class="plugin-section fullwidth">
   <span class="legend">
-    {$section}
+    {if !empty($sectionIcon)}<img src="{$sectionIcon|escape}" alt=""/>{/if}{$section|escape}
   </span>
   <div>
     <h1>
@@ -40,13 +40,13 @@
         <tbody>
           {foreach from=$attributes.locked.accounts item=account}
             <tr>
-              <td>&nbsp;{$account.uid}</td>
-              <td>&nbsp;{$account.cn}</td>
-              <td>&nbsp;{$account.telephoneNumber}</td>
-              <td>&nbsp;{$account.pwdAccountLockedTime}</td>
-              <td>&nbsp;{$account.manager_cn}</td>
-              <td><a href="mailto:{$account.manager_mail}">{$account.manager_mail}</a></td>
-              <td>&nbsp;{$account.manager_phone}</td>
+              <td>&nbsp;{$account.uid|escape}</td>
+              <td>&nbsp;{$account.cn|escape}</td>
+              <td>&nbsp;{$account.telephoneNumber|escape}</td>
+              <td>&nbsp;{$account.pwdAccountLockedTime|escape}</td>
+              <td>&nbsp;{$account.manager_cn|escape}</td>
+              <td><a href="mailto:{$account.manager_mail|escape}">{$account.manager_mail|escape}</a></td>
+              <td>&nbsp;{$account.manager_phone|escape}</td>
             </tr>
           {/foreach}
         </tbody>

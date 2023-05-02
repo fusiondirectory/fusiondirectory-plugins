@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2013-2018 FusionDirectory
+  Copyright (C) 2013-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,18 +20,14 @@
 
 class buildRepository extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['fdBuildRepository'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Build repository'),
       'plDescription' => _('Build repository'),
+      'plObjectClass' => ['fdBuildRepository'],
       'plObjectType'  => ['buildRepository' => [
         'name'        => _('Build repository'),
-        'filter'      => 'objectClass=fdBuildRepository',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'geticon.php?context=applications&icon=repository&size=16'
@@ -50,7 +46,7 @@ class buildRepository extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
 
@@ -109,7 +105,7 @@ class buildRepository extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
 
     $distros = objects::ls('repoDistribution', ['cn' => '1', 'fdRepoSection' => '*']);
     $choices = [];
@@ -121,7 +117,7 @@ class buildRepository extends simplePlugin
     $this->attributesAccess['fdRepoDistributionSection']->attribute->setChoices(array_values($choices));
   }
 
-  function foreignKeyCheck ($field, $fieldvalue, $source)
+  function foreignKeyCheck (string $field, $fieldvalue, array $source)
   {
     if ($field == 'fdRepoDistributionSection') {
       $values = $this->fdRepoDistributionSection;
@@ -138,7 +134,7 @@ class buildRepository extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
   {
     if ($field == 'fdRepoDistributionSection') {
       $values = $this->fdRepoDistributionSection;
@@ -164,5 +160,3 @@ class buildRepository extends simplePlugin
     }
   }
 }
-
-?>

@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2013-2018  FusionDirectory
+
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,15 +19,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class netgroupSystem extends netgroupMembership {
+class netgroupSystem extends netgroupMembership
+{
   protected static $id_attr = 'cn';
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('NIS Netgroup'),
       'plDescription'   => _('NIS Netgroup member'),
-      'plSelfModify'    => FALSE,
       'plPriority'      => 3,
       'plObjectType'    => ['workstation','terminal','server','printer'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
@@ -43,4 +44,3 @@ class netgroupSystem extends netgroupMembership {
     return '('.$this->id.',,)';
   }
 }
-?>

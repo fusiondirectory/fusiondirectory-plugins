@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ class AccessRightsAttribute extends CompositeAttribute
     $this->setLinearRendering(TRUE);
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     foreach ($this->attributes as &$attribute) {
       $attribute->setDisabled($this->disabled);
@@ -90,16 +90,16 @@ class AccessRightsAttribute extends CompositeAttribute
     return $display;
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
     $tmode  = "$value ";
     $m      = [];
     foreach (['s', 'u', 'g', 'o'] as $type) {
-      $current  = substr($tmode, 0, 1);
+      $current  = (int)substr($tmode, 0, 1);
       $tmode    = preg_replace('/^./', '', $tmode);
       $nr       = 1;
       while ($nr < 5) {
-        $m[$type.$nr] = ($current & $nr ? 'TRUE' : 'FALSE');
+        $m[$type.$nr] = (($current & $nr) ? 'TRUE' : 'FALSE');
         $nr += $nr;
       }
     }
@@ -110,7 +110,7 @@ class AccessRightsAttribute extends CompositeAttribute
     return $values;
   }
 
-  function writeValues ($values)
+  function writeValues (array $values)
   {
     $tmode  = '';
     foreach (['s', 'u', 'g', 'o'] as $type) {
@@ -130,9 +130,18 @@ class AccessRightsAttribute extends CompositeAttribute
 
 class faiTemplateEntry extends simplePlugin
 {
-  var $objectclasses  = ['top', 'FAIclass', 'FAItemplateEntry'];
+  public static function plInfo (): array
+  {
+    return [
+      'plShortName'     => _('FAI Template Entry'),
+      'plDescription'   => _('FAI Template Entry'),
+      'plCategory'      => ['fai'],
+      'plObjectClass'   => ['FAIclass', 'FAItemplateEntry'],
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo()),
+    ];
+  }
 
-  static function getAttributesInfo ()
+  public static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -185,12 +194,12 @@ class faiTemplateEntry extends simplePlugin
     ];
   }
 
-  function save_object ()
+  public function readPost ()
   {
     if (isset($_FILES[$this->attributesAccess['FAItemplateFile']->getHtmlId()]['name'])) {
       $name = $_FILES[$this->attributesAccess['FAItemplateFile']->getHtmlId()]['name'];
     }
-    parent::save_object();
+    parent::readPost();
     if (preg_match('/^\/?$/', $this->cn) && isset($name)) {
       $this->cn = '/'.$name;
     }
@@ -198,4 +207,3 @@ class faiTemplateEntry extends simplePlugin
     $this->FAItemplatePath = $this->cn;
   }
 }
-?>

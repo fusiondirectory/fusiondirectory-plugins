@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2017-2018 FusionDirectory project
+  Copyright (C) 2017 FusionDirectory project
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 
 class dashboardOpsi extends simplePlugin
 {
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('OPSI'),
@@ -31,7 +31,7 @@ class dashboardOpsi extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'stats' => [
@@ -87,11 +87,13 @@ class dashboardOpsi extends simplePlugin
         $stat['nb'] = count(objects::ls($stat['type'], NULL, NULL, $stat['filter'], TRUE));
       } catch (FusionDirectoryException $e) {
         $stat['nb'] = 0;
-        msg_dialog::display(
-          _('Error'),
-          sprintf(_('Statistics for OPSI could not be computed because of the following error: %s'), $e->getMessage()),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Statistics for OPSI could not be computed because of the following error: %s'),
+            $e->getMessage()
+          ))
         );
+        $error->display();
       }
     }
     unset($stat);
@@ -106,17 +108,16 @@ class dashboardOpsi extends simplePlugin
     $id   = 'profileStats';
     $div  = new divSelectBox('rows'.$id);
     $smarty = get_smarty();
-    $div->SetHeight(90);
-    $div->SetHeaders([_('Profile'), _('Systems'), _('Groups')]);
+    $div->setHeight(90);
+    $div->setHeaders([_('Profile'), _('Systems'), _('Groups')]);
     foreach ($profiles as $dn => $profile) {
       $fields = [
         ['string' => $profile['cn']],
         ['string' => objects::count('workstation', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE)],
         ['string' => objects::count('ogroup', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE)],
       ];
-      $div->AddEntry($fields);
+      $div->addEntry($fields);
     }
-    return $div->DrawList();
+    return $div->drawList();
   }
 }
-?>

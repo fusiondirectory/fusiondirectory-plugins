@@ -1,12 +1,12 @@
 <div id="{$sectionId}" class="plugin-section">
   <span class="legend">
-    {$section}
+    {if !empty($sectionIcon)}<img src="{$sectionIcon|escape}" alt=""/>{/if}{$section|escape}
   </span>
   <div>
     {foreach from=$attributes item=infos}
     <ul>
     {foreach from=$infos item=server}
-    <li style="list-style-image:url(geticon.php?context=devices&icon=server&size=16)" id="server_{$server.name}">
+    <li style="list-style-image:url(geticon.php?context=devices&amp;icon=server&amp;size=16)" id="server_{$server.name|escape}">
       {$server.link}
       <ul>
         {foreach from=$server.zones item=zone}

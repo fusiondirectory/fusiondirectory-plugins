@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2012-2018 FusionDirectory
+  Copyright (C) 2012-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,19 +20,15 @@
 
 class simpleSecurityObject extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['organizationalRole', 'top', 'simpleSecurityObject'];
-
-  /* Return plugin information for acl handling */
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Simple security object'),
       'plDescription' => _('Simple security object'),
+      'plObjectClass' => ['organizationalRole', 'simpleSecurityObject'],
+      'plFilter'      => '(objectClass=simpleSecurityObject)',
       'plObjectType'  => ['simpleSecurityObject' => [
         'name'        => _('Simple security object'),
-        'filter'      => 'objectClass=simpleSecurityObject',
         'aclCategory' => 'dsa',
         'ou'          => get_ou('dsaRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dsa&size=16',
@@ -43,7 +39,7 @@ class simpleSecurityObject extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       // Attributes are grouped by section
@@ -73,5 +69,3 @@ class simpleSecurityObject extends simplePlugin
     ];
   }
 }
-
-?>

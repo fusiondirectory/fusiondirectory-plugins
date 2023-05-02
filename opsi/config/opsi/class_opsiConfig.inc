@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018 FusionDirectory
+  Copyright (C) 2013-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,16 +18,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class opsiConfig extends simplePlugin
+class opsiConfig extends multiPluginSection
 {
-  var $objectclasses  = ['fdOpsiPluginConf'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('OPSI configuration'),
       'plDescription' => _('FusionDirectory OPSI plugin configuration'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['fdOpsiPluginConf'],
       'plCategory'    => ['configuration'],
       'plObjectType'  => ['smallConfig'],
 
@@ -35,10 +33,10 @@ class opsiConfig extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'opsi' => [
         'name'  => _('OPSI'),
         'attrs' => [
           new StringAttribute(
@@ -51,4 +49,3 @@ class opsiConfig extends simplePlugin
     ];
   }
 }
-?>

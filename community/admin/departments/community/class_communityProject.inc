@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+  Copyright (C) 2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,21 +20,22 @@
 
 class communityProject extends communityOrganization
 {
-  var $objectclasses  = ['fdCommunityProject'];
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Community project'),
       'plDescription'   => _('Community project dates and alternate address'),
+      'plObjectClass'   => ['fdCommunityProject'],
       'plObjectType'    => ['department'],
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=community&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $infos = array_merge(
       [
@@ -58,4 +59,3 @@ class communityProject extends communityOrganization
     return $infos;
   }
 }
-?>

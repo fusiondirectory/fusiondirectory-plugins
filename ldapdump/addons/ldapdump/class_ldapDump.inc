@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018  FusionDirectory
+
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +21,7 @@
 
 class ldapDump extends simplePlugin
 {
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('LDAP'),
@@ -32,7 +33,7 @@ class ldapDump extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -53,12 +54,23 @@ class ldapDump extends simplePlugin
     $this->dump = NULL;
   }
 
-  function execute ()
+  function aclHasPermissions (): bool
+  {
+    return TRUE;
+  }
+
+  function aclGetPermissions ($attribute = '0', string $base = NULL, bool $skipWrite = FALSE): string
+  {
+    global $ui;
+    /* You need complete rights on the category to see anything in this tab */
+    return $ui->get_complete_category_acls($this->getAclBase(), $this->parent->acl_category);
+  }
+
+  public function render (): string
   {
     global $config;
     if ($this->dump === NULL) {
-      $ui = get_userinfo();
-      if (preg_match('/r/', $ui->get_complete_category_acls($this->acl_base, $this->parent->acl_category))) {
+      if (preg_match('/r/', $this->aclGetPermissions())) {
         $ldap = $config->get_ldap_link();
         $ldap->cat($this->dn, ['*','createTimestamp','modifyTimestamp']);
         if ($attrs = $ldap->fetch()) {
@@ -72,7 +84,7 @@ class ldapDump extends simplePlugin
     }
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');
-    return parent::execute();
+    return parent::render();
   }
 
   function dumpLdapNode ($attrs, $parent_dn = '')
@@ -115,19 +127,18 @@ class ldapDump extends simplePlugin
     return $node;
   }
 
-  function check ()
-  {
-  }
-
-  function save ()
+  function check (): array
   {
     return [];
   }
 
-  function remove ($fulldelete = FALSE)
+  function save (): array
+  {
+    return [];
+  }
+
+  function remove (bool $fulldelete = FALSE): array
   {
     return [];
   }
 }
-
-?>

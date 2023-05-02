@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2013-2018 FusionDirectory
+
+  Copyright (C) 2013-2020 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,20 +21,15 @@
 
 class sogoResource extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['inetOrgPerson','top','CalendarResource'];
-
-  /* Return plugin information for acl handling */
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('SOGo resource'),
       'plDescription' => _('SOGo resource'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['inetOrgPerson','CalendarResource'],
+      'plFilter'      => '(objectClass=CalendarResource)',
       'plObjectType'  => ['sogoResource' => [
         'name'        => _('SOGo resource'),
-        'filter'      => 'objectClass=CalendarResource',
         'aclCategory' => 'sogo',
         'ou'          => get_ou('sogoRDN'),
         'icon'        => 'geticon.php?context=applications&icon=sogo&size=16',
@@ -45,7 +41,7 @@ class sogoResource extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       // Attributes are grouped by section
@@ -86,18 +82,17 @@ class sogoResource extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['uid']->setUnique(TRUE);
+    $this->attributesAccess['uid']->setUnique('one');
 
     $this->attributesAccess['sn']->setValue($this->attributesAccess['uid']->getValue());
     $this->attributesAccess['cn']->setValue($this->attributesAccess['uid']->getValue());
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->attributesAccess['sn']->setValue($this->attributesAccess['uid']->getValue());
     $this->attributesAccess['cn']->setValue($this->attributesAccess['uid']->getValue());
+    return TRUE;
   }
 }
-
-?>

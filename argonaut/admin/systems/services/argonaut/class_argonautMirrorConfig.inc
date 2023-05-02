@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,20 +22,19 @@ class argonautMirrorConfig extends simpleService
 {
   protected static $showActions = FALSE;
 
-  var $objectclasses  = ['argonautMirrorConfig'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Argonaut Mirror settings'),
       'plDescription'   => _('Argonaut Mirror settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=argonaut-mirror&size=16',
+      'plObjectClass'   => ['argonautMirrorConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return  [
     'section1' => [
@@ -105,4 +104,3 @@ class argonautMirrorConfig extends simpleService
     ];
   }
 }
-?>

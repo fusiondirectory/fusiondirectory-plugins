@@ -1,0 +1,203 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2020-03-20 17:03+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: config/webauthn/class_WebauthnConfig.inc:27
+#: config/webauthn/class_WebauthnConfig.inc:44
+#: personal/webauthn/class_webauthnAccount.inc:30
+#: personal/webauthn/class_webauthnAccount.inc:50
+msgid "WebAuthn"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:28
+msgid "WebAuthn configuration"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:29
+msgid "FusionDirectory WebAuthn plugin configuration"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:48
+msgid "Formats"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:48
+msgid "List of allowed formats"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:57
+#: personal/webauthn/class_webauthnAccount.inc:54
+msgid "TOTP"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:60
+msgid "Digest"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:60
+msgid "Digest to use for TOTP tokens"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:65
+msgid "Period"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:65
+msgid "Validity period for TOTP tokens"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:70
+msgid "Digits"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:70
+msgid "Number of digits for TOTP tokens"
+msgstr ""
+
+#: include/login/class_SecondFactorRecoveryCode.inc:38
+#: include/login/class_SecondFactorWebAuthn.inc:41
+#: include/login/class_SecondFactorTotp.inc:49
+msgid "Could not fetch user"
+msgstr ""
+
+#: include/login/class_SecondFactorRecoveryCode.inc:70
+#: include/login/class_SecondFactorRecoveryCode.inc:76
+#: personal/webauthn/class_RecoveryCodesAttribute.inc:73
+msgid "Recovery code"
+msgstr ""
+
+#: include/login/class_SecondFactorRecoveryCode.inc:71
+msgid ""
+"You connected using a recovery code as second factor. This code has been "
+"deleted and will not be usable again in the future. Generate a new one if "
+"you need."
+msgstr ""
+
+#: include/login/class_SecondFactorRecoveryCode.inc:78
+#, php-format
+msgid ""
+"You connected using a recovery code as second factor, but we failed to "
+"delete it for future use: %s"
+msgstr ""
+
+#: include/login/class_SecondFactorRecoveryCode.inc:93
+msgid "Validation of recovery code failed"
+msgstr ""
+
+#: include/login/class_SecondFactorRecoveryCode.inc:105
+msgid "Or enter recovery Code here: "
+msgstr ""
+
+#: include/login/class_SecondFactorWebAuthn.inc:153
+msgid ""
+"Trying to communicate with your device. Plug it in (if you haven't already) "
+"and press the button on the device now."
+msgstr ""
+
+#: include/login/class_SecondFactorWebAuthn.inc:161
+msgid ""
+"Javascript is needed for WebAuthn second factor, please enable it for this "
+"page."
+msgstr ""
+
+#: include/login/class_SecondFactorTotp.inc:80
+msgid "Validation of TOTP code failed"
+msgstr ""
+
+#: include/login/class_SecondFactorTotp.inc:92
+msgid "Enter TOTP Code here: "
+msgstr ""
+
+#: personal/webauthn/class_RecoveryCodesAttribute.inc:74
+#, php-format
+msgid ""
+"Here is your recovery code: %s<br/><br/>Print and hide it. Do not save it on "
+"your computer. You may only use it once."
+msgstr ""
+
+#: personal/webauthn/class_WebauthnRegistrationsAttribute.inc:31
+msgid "Issuer"
+msgstr ""
+
+#: personal/webauthn/class_WebauthnRegistrationsAttribute.inc:32
+msgid "Subject"
+msgstr ""
+
+#: personal/webauthn/class_WebauthnRegistrationsAttribute.inc:33
+msgid "Signature count"
+msgstr ""
+
+#: personal/webauthn/class_WebauthnRegistrationsAttribute.inc:34
+msgid "Domain"
+msgstr ""
+
+#: personal/webauthn/class_webauthnAccount.inc:31
+msgid "Manage double factor authentication"
+msgstr ""
+
+#: personal/webauthn/class_webauthnAccount.inc:46
+msgid "Second factor"
+msgstr ""
+
+#: personal/webauthn/class_webauthnAccount.inc:50
+msgid "Registrations for this user"
+msgstr ""
+
+#: personal/webauthn/class_webauthnAccount.inc:54
+msgid "TOTP codes for this user"
+msgstr ""
+
+#: personal/webauthn/class_webauthnAccount.inc:58
+msgid "Recovery codes"
+msgstr ""
+
+#: personal/webauthn/class_webauthnAccount.inc:58
+msgid ""
+"Single use recovery codes in case you lose all your devices. Print it and "
+"store it. Do not save it on your computer."
+msgstr ""
+
+#: personal/webauthn/class_TOTPAddDialog.inc:67
+msgid "OTP code missing"
+msgstr ""
+
+#: personal/webauthn/class_TOTPAddDialog.inc:69
+msgid "Wrong OTP code"
+msgstr ""
+
+#: personal/webauthn/class_TOTPAddDialog.inc:88
+msgid "Add TOTP device"
+msgstr ""
+
+#: personal/webauthn/class_TOTPAddDialog.inc:94
+msgid "QR Code"
+msgstr ""
+
+#: personal/webauthn/class_TOTPAddDialog.inc:95
+msgid "Scan this QR code and enter an OTP code below"
+msgstr ""
+
+#: personal/webauthn/class_TOTPAddDialog.inc:104
+msgid "Code"
+msgstr ""
+
+#: personal/webauthn/class_TOTPAddDialog.inc:105
+msgid ""
+"After scanning the QR code, enter here the digits generated by you OTP "
+"device or application"
+msgstr ""

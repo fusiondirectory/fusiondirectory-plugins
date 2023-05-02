@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018  FusionDirectory
+
+  Copyright (C) 2015-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -58,7 +59,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     $this->setInLdap(FALSE);
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
   }
 
@@ -109,6 +110,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
 
   function setChoices (array $parentNodes, array $macs, array $ips)
   {
+    asort($parentNodes, SORT_NATURAL);
     $this->attribute->attributes[0]->setChoices(array_keys($parentNodes), array_values($parentNodes));
     if (is_object($this->plugin) && $this->plugin->is_template) {
       $this->attribute->attributes[1] = new StringAttribute(
@@ -156,22 +158,9 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  function postLdapSave ($ldap, $fullrewrite, $ipchanged, $oldips, $newips, $macchanged, $oldmacs, $newmacs)
+  function postLdapSave ($ldap, $fullrewrite, $ipchanged, array $oldips, array $newips, $macchanged, array $oldmacs, array $newmacs)
   {
     global $config, $ui;
-
-    if (!is_array($oldips)) {
-      $oldips = [$oldips];
-    }
-    if (!is_array($newips)) {
-      $newips = [$newips];
-    }
-    if (!is_array($oldmacs)) {
-      $oldmacs = [$oldmacs];
-    }
-    if (!is_array($newmacs)) {
-      $newmacs = [$newmacs];
-    }
 
     if ($this->plugin->is_template) {
       return;
@@ -242,17 +231,17 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
         trigger_error('Failed to parse '.$value[0].' to find DHCP configuration DN');
       }
       /* Check locking */
-      if ($locks = get_locks($configDn)) {
-        $errors[] = sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DHCP configuration'), $locks[0]['object'], $locks[0]['user'], date('%Y-%m-%d, %H:%M:%S', $locks[0]['timestamp']));
+      if ($locks = Lock::get($configDn)) {
+        $errors[] = sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DHCP configuration'), $locks[0]->objectDn, $locks[0]->userDn, date('%Y-%m-%d, %H:%M:%S', $locks[0]->timestamp));
         continue;
       } else {
         /* Lock the current entry */
-        add_lock($configDn, $ui->dn);
+        Lock::add($configDn);
       }
       $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
       $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->addHost($value[0], $cn, $value[1], $value[2]);
       $msgs = $dhcpTabs->save();
-      del_lock($configDn);
+      Lock::deleteByObject($configDn);
       msg_dialog::displayChecks($msgs);
     }
 
@@ -266,18 +255,24 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       return $error;
     } else {
       if (!is_array($this->value)) {
-        return sprintf(_('The value for multivaluated field "%s" is not an array'), $this->getLabel());
+        return new SimplePluginCheckError(
+          $this,
+          SimplePluginCheckError::invalidValue(_('Value is not an array'))
+        );
       }
       foreach ($this->value as $value) {
         $error = dhcpSystem::dhcpIsIpInSubnet($this->nodesCache[$value[0]], $value[2]);
         if ($error !== TRUE) {
-          return $error;
+          return new SimplePluginCheckError(
+            $this,
+            htmlescape($error)
+          );
         }
       }
     }
   }
 
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
     if ($this->plugin->is_template) {
       $attrs[$this->getLdapName()] = array_map(
@@ -293,12 +288,10 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
 
 class dhcpSystem extends simplePlugin
 {
-  var $objectclasses = [];
-
   protected $zonesCache;
   protected $loaded = FALSE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('DHCP'),
@@ -312,7 +305,7 @@ class dhcpSystem extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -342,16 +335,17 @@ class dhcpSystem extends simplePlugin
     return (count($this->dhcpHosts) > 0);
   }
 
-  function setTemplate ($bool)
+  function setTemplate (bool $bool)
   {
     parent::setTemplate($bool);
     $this->attributesAccess['dhcpHosts']->setParent($this);
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->is_account = $this->is_this_account($this->attrs);
+    return TRUE;
   }
 
   static function getDhcpParentNodes ()
@@ -390,13 +384,13 @@ class dhcpSystem extends simplePlugin
     return TRUE;
   }
 
-  protected function shouldSave ()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  protected function ldap_save ()
+  protected function ldap_save (): array
   {
     global $config;
 
@@ -419,7 +413,7 @@ class dhcpSystem extends simplePlugin
     );
   }
 
-  protected function ldap_remove ()
+  protected function ldap_remove (): array
   {
     if ($this->is_template) {
       return parent::ldap_remove();
@@ -427,10 +421,12 @@ class dhcpSystem extends simplePlugin
       /* Remove all records */
       $this->attributesAccess['dhcpHosts']->setValue([]);
       return $this->ldap_save();
+    } else {
+      return [];
     }
   }
 
-  function adapt_from_template ($attrs, $skip = [])
+  function adapt_from_template (array $attrs, array $skip = [])
   {
     parent::adapt_from_template($attrs, $skip);
     $this->attributesAccess['dhcpHosts']->loadChoices();

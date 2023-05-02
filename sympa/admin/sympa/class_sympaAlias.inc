@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2012-2018 FusionDirectory
+  Copyright (C) 2012-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,28 +20,25 @@
 
 class sympaAlias extends simplePlugin
 {
-  var $objectclasses = ['sympaAlias'];
-
-  /* Return plugin information for acl handling */
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Sympa list alias'),
       'plDescription' => _('Sympa list alias'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['sympaAlias'],
       'plObjectType'  => ['sympaAlias' => [
         'name'        => _('Sympa list alias'),
-        'filter'      => 'objectClass=sympaAlias',
         'icon'        => 'geticon.php?context=applications&icon=sympa&size=16',
         'ou'          => get_ou('sympaRDN'),
       ]],
+      'plSearchAttrs' => ['description'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       // Attributes are grouped by section
@@ -80,10 +77,8 @@ class sympaAlias extends simplePlugin
     $ldap->search('(objectClass=sympaServer)', ['sympaServerURL']);
     $server = [];
     while ($attrs = $ldap->fetch()) {
-        $server[] = $attrs['sympaServerURL'][0];
+      $server[] = $attrs['sympaServerURL'][0];
     }
     $this->attributesInfo['main']['attrs']['sympaServerURL']->setChoices($server);
   }
 }
-
-?>

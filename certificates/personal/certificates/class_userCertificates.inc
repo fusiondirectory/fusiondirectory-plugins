@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018  FusionDirectory
+  Copyright (C) 2015-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,15 +23,16 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
   protected function genRowIcons ($key, $value)
   {
     $id = $this->getHtmlId();
-    list($img, $nbicons) = parent::genRowIcons($key, $value);
+    list ($img, $nbicons) = parent::genRowIcons($key, $value);
     $img = $this->renderInputField(
       'image', $id.'_download_'.$key,
       [
-        'src'   => 'geticon.php?context=actions&amp;icon=document-save&amp;size=16',
+        'src'   => 'geticon.php?context=actions&icon=document-save&size=16',
         'title' => _('Download'),
         'alt'   => _('Download'),
         'class' => 'center'
-      ]
+      ],
+      FALSE
     ).$img;
     $nbicons++;
 
@@ -63,7 +64,7 @@ class CertificateFileAttribute extends FileAttribute
   static $pemEnd     = "-----END CERTIFICATE-----";
 
   /* Return the value as an array of values to be displayed in a table columns */
-  function getArrayValue ()
+  function getArrayValue (): array
   {
     $value = $this->getValue();
     if (!strpos($value, static::$pemBegin)) {
@@ -108,15 +109,16 @@ class CertificateFileAttribute extends FileAttribute
 
 class userCertificates extends simplePlugin
 {
-  var $displayHeader = TRUE;
-  var $objectclasses = ['strongAuthenticationUser'];
+  protected $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Certificates'),
       'plDescription'   => _('User certificates'),
+      'plFilter'        => '(objectClass=strongAuthenticationUser)',
       'plSelfModify'    => TRUE,
+      'plObjectClass'   => ['strongAuthenticationUser'],
       'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=types&icon=certificate&size=48',
       'plSmallIcon'     => 'geticon.php?context=types&icon=certificate&size=16',
@@ -125,7 +127,7 @@ class userCertificates extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -143,4 +145,3 @@ class userCertificates extends simplePlugin
     ];
   }
 }
-?>

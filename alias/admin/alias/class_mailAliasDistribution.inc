@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2012-2018 FusionDirectory
+  Copyright (C) 2012-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,31 +20,32 @@
 
 class mailAliasDistribution extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['top', 'mailAliasDistribution'];
-
-  /* Return plugin information for acl handling  */
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Temporary mail distribution'),
       'plDescription' => _('Temporary mail distribution'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['mailAliasDistribution'],
       'plObjectType'  => ['mailAliasDistribution' => [
         'name'        => _('Temporary mail distribution'),
-        'filter'      => 'objectClass=mailAliasDistribution',
         'aclCategory' => 'alias',
         'icon'        => 'geticon.php?context=applications&icon=alias-distribution&size=16',
         'ou'          => get_ou('aliasRDN'),
       ]],
-
+      'plForeignKeys'  => [
+        'mail' => [
+          ['mailAccount','mail', 'mail=%oldvalue%', '*']
+        ],
+        'gosaMailAlternateAddress' => [
+          ['mailAccount','gosaMailAlternateAddress']
+        ],
+      ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -83,5 +84,3 @@ class mailAliasDistribution extends simplePlugin
     ];
   }
 }
-
-?>

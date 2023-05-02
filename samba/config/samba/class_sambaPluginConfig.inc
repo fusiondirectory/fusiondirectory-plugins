@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018 FusionDirectory
+
+  Copyright (C) 2012-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,21 +21,20 @@
 
 class sambaPluginConfig extends simplePlugin
 {
-  var $objectclasses  = ['fdSambaPluginConf'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Samba'),
       'plDescription'   => _('Samba plugin configuration'),
-      'plPriority'      => 2,
+      'plPriority'      => 8,
+      'plObjectClass'   => ['fdSambaPluginConf'],
       'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'samba' => [
@@ -70,10 +70,14 @@ class sambaPluginConfig extends simplePlugin
           new BooleanAttribute(
             _('Activate primary group warning'), _('Issue a warning if POSIX primary group cannot be converted to Samba primary group when activating the Samba tab of a user'),
             'fdSambaPrimaryGroupWarning', FALSE
-          )
+          ),
+          new BooleanAttribute(
+            _('Depend upon POSIX tab'), _('Whether the Samba user tab should depend upon the POSIX tab'),
+            'fdSambaDependsOnPosix', FALSE,
+            TRUE
+          ),
         ]
       ],
     ];
   }
 }
-?>

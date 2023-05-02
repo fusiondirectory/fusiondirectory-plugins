@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2012-2018 FusionDirectory
+  Copyright (C) 2012-2020 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,19 +20,25 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class aliasManagement extends simpleManagement
+class aliasManagement extends management
 {
-  // Tab definition
-  protected $objectTypes  = ['mailAliasDistribution','mailAliasRedirection'];
+  public static $skipTemplates = FALSE;
 
-  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'aliasExpirationDate'];
+  /* Default columns */
+  public static $columns = [
+    ['ObjectTypeColumn',     []],
+    ['LinkColumn',           ['attributes' => 'nameAttr',             'label' => 'Name']],
+    ['LinkColumn',           ['attributes' => 'description',          'label' => 'Description']],
+    ['UnixTimestampColumn',  ['attributes' => 'aliasExpirationDate',  'label' => 'Expiration date']],
+    ['ActionsColumn',        ['label' => 'Actions']],
+  ];
 
-  /* Return plugin information for acl handling  */
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Aliases'),
-      'plDescription' => _('Alias management'),
+      'plTitle'       => _('Alias management'),
+      'plDescription' => _('Manage aliases'),
       'plIcon'        => 'geticon.php?context=applications&icon=alias&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 26,
@@ -42,42 +49,4 @@ class aliasManagement extends simpleManagement
       'plProvidedAcls' => []
     ];
   }
-
-  function configureHeadpage ()
-  {
-    $this->headpage->registerElementFilter('filterDate', 'aliasManagement::filterDate');
-    parent::configureHeadpage();
-  }
-
-  function parseXML ($file)
-  {
-    $data = parent::parseXML($file);
-    $data['list']['table']['layout'] = '|20px;c|||110px;c|100px;r|';
-    $data['list']['table']['column'][4] = $data['list']['table']['column'][3];
-    $data['list']['table']['column'][3] = [
-      'label'         => 'Expiration date',
-      'sortAttribute' => 'aliasExpirationDate',
-      'sortType'      => 'integer',
-      'value'         => '%{filter:filterDate(aliasExpirationDate)}',
-      'export'        => 'true',
-    ];
-    return $data;
-  }
-
-  static function filterDate ()
-  {
-    if (func_num_args() == 0) {
-      return '&nbsp;';
-    }
-    $date = func_get_arg(0);
-    if (!is_array($date)) {
-      return '&nbsp;';
-    }
-    $dateObject = DateTime::createFromFormat('U', $date[0], new DateTimeZone('UTC'));
-    if (is_object($dateObject)) {
-      return $dateObject->format('d.m.Y');
-    }
-    return '&nbsp;';
-  }
 }
-?>

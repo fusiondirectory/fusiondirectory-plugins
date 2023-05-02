@@ -1,8 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018  FusionDirectory
+
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,15 +21,15 @@
 
 class argonautFuseConfig extends simpleService
 {
-  var $objectclasses  = ['argonautFuseConfig'];
+  protected $plugin;
 
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Argonaut Fuse'),
       'plDescription'   => _('Argonaut Fuse settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=argonaut-fuse&size=16',
+      'plObjectClass'   => ['argonautFuseConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -38,7 +38,7 @@ class argonautFuseConfig extends simpleService
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return  [
       'main' => [
@@ -92,85 +92,76 @@ class argonautFuseConfig extends simpleService
       $this->plugin[$name] = new $name($dn, $parent, $parent);
 
       $this->plugin[$name]->set_acl_category($this->acl_category);
-      $this->plugin[$name]->set_acl_base($this->dn);
     }
   }
 
-
-  /*! \brief This function display the service and return the html code
-   */
-  function execute ()
+  public function readPost ()
   {
-    $str = "<div style='width:100%; text-align:right; clear:both; float:none;'>".
-           "  <input type='submit' name='SaveService' value='".msgPool::saveButton()."'>&nbsp;".
-           "  <input type='submit' name='CancelService' value='".msgPool::cancelButton()."'>".
-           "</div>";
-
-    $display = simplePlugin::execute();
-
-    foreach ($this->plugin as &$plugin) {
-      $display .= '<p class="seperator plugbottom">&nbsp;</p><div></div>';
-      $display .= $plugin->execute();
+    parent::readPost();
+    if (isset($_POST[get_class($this).'_posted'])) {
+      foreach ($this->plugin as $plugin) {
+        $plugin->readPost();
+      }
     }
-    unset($plugin);
+  }
+
+  public function update (): bool
+  {
+    parent::update();
+    foreach ($this->plugin as $plugin) {
+      $plugin->update();
+    }
+    return TRUE;
+  }
+
+  public function render (): string
+  {
+    $str = '<div style="width:100%; text-align:right; clear:both; float:none;">'.
+           '  <input type="submit" name="SaveService" value="'.msgPool::saveButton().'"/>&nbsp;'.
+           '  <input type="submit" formnovalidate="formnovalidate" name="CancelService" value="'.msgPool::cancelButton().'"/>'.
+           '</div>';
+
+    $display = simplePlugin::render();
+
+    foreach ($this->plugin as $plugin) {
+      $display .= '<p class="seperator plugbottom">&nbsp;</p><div></div>';
+      $display .= $plugin->render();
+    }
 
     return $display.$str;
   }
 
-
-  /* Save data to object */
-  function save_object ()
+  function check (): array
   {
-    parent::save_object();
-    if (isset($_POST[get_class($this)."_posted"])) {
-      foreach ($this->plugin as &$plugin) {
-        $plugin->save_object();
-      }
-      unset($plugin);
-    }
-  }
+    $errors = parent::check();
 
-  function check ()
-  {
-    $message = parent::check();
-
-    foreach ($this->plugin as &$plugin) {
+    foreach ($this->plugin as $plugin) {
       if ($plugin->is_account) {
-        $message = array_merge($message, $plugin->check());
+        $errors = array_merge($errors, $plugin->check());
       }
     }
-    unset($plugin);
 
-    return $message;
+    return $errors;
   }
 
-  function set_acl_category ($cat)
+  function set_acl_category (string $cat)
   {
     parent::set_acl_category($cat);
-    foreach ($this->plugin as &$plugin) {
+    foreach ($this->plugin as $plugin) {
       $plugin->set_acl_category($cat);
     }
-    unset($plugin);
-  }
-
-  function set_acl_base ($base)
-  {
-    parent::set_acl_base($base);
-    foreach ($this->plugin as &$plugin) {
-      $plugin->set_acl_base($base);
-    }
-    unset($plugin);
   }
 
   /* Save to LDAP */
-  function save ()
+  function save (): array
   {
     $errors = parent::save();
     if (!empty($errors)) {
       return $errors;
     }
+
     /* Save objects */
-    foreach ($this->plugin as &$plugin) {
+    foreach ($this->plugin as $plugin) {
       $plugin->dn = $this->dn;
 
       if ($plugin->is_account) {
@@ -179,24 +170,25 @@ class argonautFuseConfig extends simpleService
         $errors = $plugin->remove(FALSE);
       }
       if (!empty($errors)) {
-        msg_dialog::displayChecks($errors);
+        return $errors;
       }
     }
-    unset($plugin);
+
+    return [];
   }
 
-  function remove ($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     $errors = [];
+
     /* Remove objects */
-    foreach ($this->plugin as &$plugin) {
+    foreach ($this->plugin as $plugin) {
       $plugin->dn = $this->dn;
       $result = $plugin->remove($fulldelete);
       if (!empty($result)) {
         $errors = array_merge($errors, $result);
       }
     }
-    unset($plugin);
 
     if (!empty($errors)) {
       return $errors;
@@ -205,4 +197,3 @@ class argonautFuseConfig extends simpleService
     return parent::remove($fulldelete);
   }
 }
-?>

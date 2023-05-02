@@ -6,23 +6,20 @@
   <div id="window-container">
 
     <div id="window-div">
-
-        <div id="window-titlebar">
-          <p>
-            <img class="center" src="geticon.php?context=types&amp;icon=user&amp;size=48" alt="{t}User{/t}" title="{t}User{/t}"/>
-            {t}Expiration postpone{/t}
-          </p>
-        </div>
-        <div id="window-content">
+      <div id="window-titlebar">
+        <p>
+          <img class="center" src="geticon.php?context=types&amp;icon=user&amp;size=48" alt="{t}User{/t}" title="{t}User{/t}"/>
+          {t}Expiration postpone{/t}
+        </p>
+      </div>
+      <div id="window-content">
+        <div>
           <!-- Display error message on demand -->
-          <span class="warning"> {$message} </span>
+          <p class="warning">{$message}</p>
           {if $success}
             <div class="success">
               <img class="center" src="geticon.php?context=status&amp;icon=task-complete&amp;size=16" alt="{t}Success{/t}" title="{t}Success{/t}">&nbsp;
-              <b>{t}Your expiration has been postponed successfully.{/t}</b>
-              <br/>
-              <br/>
-              <a href="./">Return to login screen</a>
+              <b>{t}Your expiration has been postponed successfully.{/t}</b><br/>
             </div>
           {else}
             <div class="error">
@@ -30,14 +27,15 @@
               <b>{t}There was a problem{/t}</b>
             </div>
           {/if}
+            <br/><a href="./">Return to login screen</a>
         </div>
+      </div>
     </div>
   </div>
-  {include file={filePath file="copynotice.tpl"}}
+</body>
   <script type="text/javascript">
     <!-- // Error Popup
     next_msg_dialog();
     -->
   </script>
-</body>
 </html>

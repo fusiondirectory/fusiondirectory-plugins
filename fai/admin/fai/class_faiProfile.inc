@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018 FusionDirectory
+  Copyright (C) 2014-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,19 +20,16 @@
 
 class faiProfile extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses    = ['top','FAIclass','FAIprofile'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Profile'),
       'plDescription' => _('FAI profile'),
+      'plObjectClass' => ['FAIclass','FAIprofile'],
+      'plFilter'      => '(objectClass=FAIprofile)',
       'plObjectType'  => [
         'faiProfile' => [
           'name'        => _('FAI Profile'),
-          'filter'      => 'objectClass=FAIprofile',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiProfileRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-profile&size=16'
@@ -42,7 +39,7 @@ class faiProfile extends faiSimplePluginClass
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -75,7 +72,7 @@ class faiProfile extends faiSimplePluginClass
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
 
     /* Build filter */
     $types    = ['faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate'];
@@ -88,4 +85,3 @@ class faiProfile extends faiSimplePluginClass
     $this->attributesAccess['FAIclass']->attributes[0]->attribute->setChoices($choices);
   }
 }
-?>

@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+  Copyright (C) 2013-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,23 +20,24 @@
 
 class sambaGroup extends simplePlugin
 {
-  var $displayHeader  = TRUE;
-  var $objectclasses  = ["sambaGroupMapping"];
+  protected $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Samba'),
       'plDescription' => _('Samba group settings'),
+      'plFilter'      => '(objectClass=sambaGroupMapping)',
       'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=samba&size=16',
+      'plObjectClass' => ['sambaGroupMapping'],
       'plObjectType'  => ['group'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -86,25 +87,24 @@ class sambaGroup extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
-    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($config->data['SERVERS']['SAMBA']));
+    $this->attributesAccess['sambaDomainName']->setChoices(array_keys(sambaDomainManagement::getSambaDomains()));
 
     /* Get samba Domain in case of samba 3 */
-    if ($this->sambaSID != "") {
+    if ($this->sambaSID != '') {
       /* Get domain name for SID */
-      $this->sambaDomainName = "DEFAULT";
-
-      foreach ($config->data['SERVERS']['SAMBA'] as $key => $val) {
+      foreach (sambaDomainManagement::getSambaDomains() as $key => $val) {
         if ($val['SID'] == $this->getSID()) {
           $this->sambaDomainName = $key;
           break;
         }
       }
     } else {
-      if ($config->get_cfg_value("sid") != "") {
-        $this->sambaDomainName  = "DEFAULT";
-        $this->setSID($config->get_cfg_value("sid"));
+      if ($config->get_cfg_value('sambaSID') != '') {
+        $this->sambaDomainName  = 'DEFAULT';
+        $this->setSID($config->get_cfg_value('sambaSID'));
       } else {
-        msg_dialog::display(_("Configuration error"), _("Cannot find group SID in your configuration!"), ERROR_DIALOG);
+        $error = new SimplePluginError($this, htmlescape(_('Cannot find group SID in your configuration!')));
+        $error->display();
       }
     }
 
@@ -124,7 +124,7 @@ class sambaGroup extends simplePlugin
     $this->attributesAccess['sambaSID']->attributes[1]->setInitialValue($this->getGID());
   }
 
-  function prepare_save ()
+  function prepare_save (): array
   {
     global $config;
     $errors = parent::prepare_save();
@@ -133,14 +133,16 @@ class sambaGroup extends simplePlugin
     }
 
     // Generate rid / primaryGroupId
-    if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
-      msg_dialog::display(_("Warning"), _("Undefined Samba SID detected. Please fix this problem manually!"), WARNING_DIALOG);
+    $domains = sambaDomainManagement::getSambaDomains();
+    if (!isset($domains[$this->sambaDomainName]['SID'])) {
+      $error = new SimplePluginError($this, htmlescape(_('Undefined Samba SID detected. Please fix this problem manually!')));
+      $error->display();
     } else {
-      $this->setSID($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID']);
+      $this->setSID($domains[$this->sambaDomainName]['SID']);
     }
 
     if ($this->getGID() == 0) {
-      if (($this->getSID() == "") ||
+      if (($this->getSID() == '') ||
           $this->attributesAccess['sambaDomainName']->hasChanged() ||
           $this->attributesAccess['sambaSID']->attributes[1]->hasChanged()) {
         $sid                      = $this->getSambaSID();
@@ -187,8 +189,7 @@ class sambaGroup extends simplePlugin
 
   function getRidBase ()
   {
-    global $config;
-    return $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
+    return sambaDomainManagement::getSambaDomains()[$this->sambaDomainName]['RIDBASE'];
   }
 
   function getSID ()
@@ -210,6 +211,4 @@ class sambaGroup extends simplePlugin
   {
     $this->attributesAccess['sambaSID']->attributes[1]->setValue($value);
   }
-
 }
-?>

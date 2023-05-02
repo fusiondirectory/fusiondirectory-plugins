@@ -21,7 +21,7 @@
 
 class sinapsUser extends simplePlugin
 {
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Sinaps'),
@@ -37,7 +37,7 @@ class sinapsUser extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -58,7 +58,7 @@ class sinapsUser extends simplePlugin
     ];
   }
 
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
+  function __construct (string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE, array $attributesInfo = NULL)
   {
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
@@ -95,7 +95,7 @@ class sinapsUser extends simplePlugin
     throw new FusionDirectoryException($error);
   }
 
-  protected function prepare_save ()
+  protected function prepare_save (): array
   {
     global $config;
 
@@ -123,7 +123,7 @@ class sinapsUser extends simplePlugin
           $contractEnded = TRUE;
         } else {
           /* Do not sync already deleted users */
-          return;
+          return [];
         }
       }
     }
@@ -163,7 +163,7 @@ class sinapsUser extends simplePlugin
     $user   = reset($users);
 
     if (!is_array($user)) {
-      return;
+      return [];
     }
 
     try {
@@ -179,5 +179,7 @@ class sinapsUser extends simplePlugin
       }
     } catch (FusionDirectoryException $e) {
     }
+
+    return [];
   }
 }

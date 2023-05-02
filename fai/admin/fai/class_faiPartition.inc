@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     $this->updateAttributes();
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
     if (preg_match('/^([0-9]{1,})(KB|MB|GB|TB|PB|%)$/', $value, $m)) {
       // Fixed
@@ -87,6 +87,8 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
         0,'',
         0,'',
       ];
+    } else {
+      throw new SimplePluginError($this, sprintf(_('Invalid value "%s"'), $value));
     }
   }
 
@@ -132,16 +134,19 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     if ($this->attributes[0]->getValue() == 'dynamic') {
       $mp = [
         '%'  => 1,
-        'KB' => pow(1024, 0),
-        'MB' => pow(1024, 1),
-        'GB' => pow(1024, 2),
-        'TB' => pow(1024, 3),
-        'PB' => pow(1024, 4)
+        'KB' => 1024 ** 0,
+        'MB' => 1024 ** 1,
+        'GB' => 1024 ** 2,
+        'TB' => 1024 ** 3,
+        'PB' => 1024 ** 4
       ];
       $res1 = $this->attributes[1]->getValue() * $mp[$this->attributes[2]->getValue()];
       $res2 = $this->attributes[3]->getValue() * $mp[$this->attributes[4]->getValue()];
       if ($res1 > $res2) {
-        return msgPool::toobig(_('Minimum partition size'), '\''._('Maximum partition size').'\'');
+        return new SimplePluginCheckError(
+          $this,
+          msgPool::toobig(_('Minimum partition size'), '\''._('Maximum partition size').'\'')
+        );
       }
     }
   }
@@ -164,7 +169,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     $this->updateAttributes();
   }
 
-  function writeValues ($values)
+  function writeValues (array $values)
   {
     if ($values[0] == 'remaining') {
       return '0-';
@@ -211,7 +216,7 @@ class FaiRaidDevices extends OrderedArrayAttribute
 
 class faiPartition extends simplePlugin
 {
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Partition entry'),
@@ -222,7 +227,7 @@ class faiPartition extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -471,16 +476,16 @@ class faiPartition extends simplePlugin
     parent::loadAttributes();
   }
 
-  function execute ()
+  public function render (): string
   {
     $smarty = get_smarty();
     $acl    = $this->aclGetPermissions('FAIpartitions');
     $smarty->assign('FAIpartitionsACL', $acl);
-    parent::execute();
+    parent::render();
 
     $buttons = '<p class="plugbottom">
                   <input type="submit" name="PartitionSave" value="'.msgPool::saveButton().'">
-                  <input type="submit" name="PartitionCancel" value="'.msgPool::cancelButton().'" >
+                  <input type="submit" formnovalidate="formnovalidate" name="PartitionCancel" value="'.msgPool::cancelButton().'" >
                 </p>';
     if ($this->displayPlugin) {
       return $this->header.$smarty->fetch($this->templatePath).$buttons;
@@ -489,31 +494,38 @@ class faiPartition extends simplePlugin
     }
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     if ($this->FAIfsType == 'swap') {
       $this->FAImountPoint = 'swap';
     }
+    return TRUE;
   }
 
-  function check ()
+  function check (): array
   {
-    $messages = parent::check();
+    $errors = parent::check();
 
     if ($this->FAIdiskType == 'raid') {
       $raidDevices = $this->attributesAccess['raidDevices']->attributes[0]->getValue();
       if (count($raidDevices) < 2) {
-        $messages[] = _('Raid arrays must contain at least two partitions!');
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['raidDevices'],
+          htmlescape(_('Raid arrays must contain at least two partitions!'))
+        );
       } elseif (($this->FAIpartitionType == 'raid0') && (count($this->raidDevices) != 2)) {
-        $messages[] = _('Raid 0 arrays can only be realized with a combination of two partitions!');
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['raidDevices'],
+          htmlescape(_('Raid 0 arrays can only be realized with a combination of two partitions!'))
+        );
       }
     }
 
-    return $messages;
+    return $errors;
   }
 
-  function save ()
+  function save (): array
   {
     $ret = [];
     foreach ($this->attributes as $attr) {
@@ -538,7 +550,7 @@ class faiPartition extends simplePlugin
   /* Returns a list of all partitions that are useable
    *  for raid arrays.
    */
-  function getPartitionList ()
+  function getPartitionList (): array
   {
     $may = $used = [];
     foreach ($this->parent->parent->disks as $disk) {
@@ -577,4 +589,3 @@ class faiPartition extends simplePlugin
     return $ret;
   }
 }
-?>

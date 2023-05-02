@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+  Copyright (C) 2013-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,10 +20,23 @@
 
 class fiInventoryAgent extends simplePlugin
 {
-  var $objectclasses  = ['fusionInventoryAgent'];
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
-  static function getAttributesInfo ()
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'   => _('FusionInventory'),
+      'plDescription' => _('FusionInventory agent configuration'),
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=fusioninventory&size=16',
+      'plPriority'    => 90,
+      'plObjectClass' => ['fusionInventoryAgent'],
+      'plObjectType'  => ['workstation', 'server'],
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    ];
+  }
+
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -69,18 +82,4 @@ class fiInventoryAgent extends simplePlugin
       ]
     ];
   }
-
-  /* Return plugin information */
-  static function plInfo ()
-  {
-    return [
-      'plShortName'   => _('FusionInventory'),
-      'plDescription' => _('FusionInventory agent configuration'),
-      'plPriority'    => 90,
-      'plObjectType'  => ['workstation', 'server'],
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    ];
-  }
 }
-?>

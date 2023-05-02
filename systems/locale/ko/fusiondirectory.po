@@ -4,84 +4,85 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Choi Chris <chulwon.choi@gmail.com>, 2018
+# fusiondirectory <contact@fusiondirectory.org>, 2020
+# Choi Chris <chulwon.choi@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2022-07-28 17:06+0000\n"
-"PO-Revision-Date: 2016-08-29 15:23+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
-"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"PO-Revision-Date: 2018-08-13 20:05+0000\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
+"Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/systems/class_phoneGeneric.inc:32
-#: admin/systems/class_phoneGeneric.inc:36
+#: admin/systems/class_phoneGeneric.inc:28
+#: admin/systems/class_phoneGeneric.inc:34
 #: admin/systems/class_phoneGeneric.inc:66
-#: admin/systems/class_mobilePhoneGeneric.inc:70
+#: admin/systems/class_mobilePhoneGeneric.inc:69
 msgid "Phone"
 msgstr "전화번호"
 
-#: admin/systems/class_phoneGeneric.inc:33
+#: admin/systems/class_phoneGeneric.inc:29
 msgid "Phone information"
 msgstr "전화 정보"
 
-#: admin/systems/class_phoneGeneric.inc:37
+#: admin/systems/class_phoneGeneric.inc:35
 msgid "Phone hardware"
 msgstr "전화 하드웨어"
 
-#: admin/systems/class_phoneGeneric.inc:52
-#: admin/systems/class_printGeneric.inc:58
-#: admin/systems/class_workstationGeneric.inc:58
-#: admin/systems/class_componentGeneric.inc:54
-#: admin/systems/class_mobilePhoneGeneric.inc:56
+#: admin/systems/class_phoneGeneric.inc:50
+#: admin/systems/class_printGeneric.inc:57
+#: admin/systems/class_workstationGeneric.inc:56
+#: admin/systems/class_componentGeneric.inc:51
+#: admin/systems/class_mobilePhoneGeneric.inc:53
 msgid "Properties"
 msgstr "설정"
 
-#: admin/systems/class_phoneGeneric.inc:56 admin/systems/system-list.xml:31
-#: admin/systems/class_printGeneric.inc:62
-#: admin/systems/class_workstationGeneric.inc:62
-#: admin/systems/services/shares/class_serviceShare.inc:51
-#: admin/systems/class_componentGeneric.inc:57
-#: admin/systems/class_mobilePhoneGeneric.inc:60
+#: admin/systems/class_phoneGeneric.inc:54
+#: admin/systems/class_printGeneric.inc:61
+#: admin/systems/interfaces/class_networkInterface.inc:54
+#: admin/systems/class_workstationGeneric.inc:60
+#: admin/systems/services/shares/class_serviceShare.inc:50
+#: admin/systems/class_componentGeneric.inc:55
+#: admin/systems/class_mobilePhoneGeneric.inc:57
 msgid "Name"
 msgstr "명칭"
 
-#: admin/systems/class_phoneGeneric.inc:56
+#: admin/systems/class_phoneGeneric.inc:54
 msgid "The name of the phone"
 msgstr "전화의 이름"
 
-#: admin/systems/class_phoneGeneric.inc:60
-#: admin/systems/serverService-list.xml:35 admin/systems/system-list.xml:55
-#: admin/systems/class_printGeneric.inc:66
-#: admin/systems/class_workstationGeneric.inc:67
-#: admin/systems/services/shares/class_serviceShare.inc:55
-#: admin/systems/class_componentGeneric.inc:61
-#: admin/systems/class_mobilePhoneGeneric.inc:64
+#: admin/systems/class_phoneGeneric.inc:58
+#: admin/systems/class_printGeneric.inc:65
+#: admin/systems/class_workstationGeneric.inc:65
+#: admin/systems/services/shares/class_serviceShare.inc:54
+#: admin/systems/class_componentGeneric.inc:59
+#: admin/systems/class_mobilePhoneGeneric.inc:61
 msgid "Description"
 msgstr "설명"
 
-#: admin/systems/class_phoneGeneric.inc:60
+#: admin/systems/class_phoneGeneric.inc:58
 msgid "A short description of the phone"
 msgstr "전화에 대한 간단한 설명"
 
 #: admin/systems/class_phoneGeneric.inc:69
-#: admin/systems/class_mobilePhoneGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:72
 msgid "Serial Number"
-msgstr "시리얼번호"
+msgstr "일련번호"
 
 #: admin/systems/class_phoneGeneric.inc:69
 msgid "The serial number of the phone"
 msgstr "전화에 대한 일련번호"
 
 #: admin/systems/class_phoneGeneric.inc:73
-#: admin/systems/class_mobilePhoneGeneric.inc:91
+#: admin/systems/class_mobilePhoneGeneric.inc:90
 msgid "Telephone Number"
 msgstr "전화 번호"
 
@@ -89,414 +90,441 @@ msgstr "전화 번호"
 msgid "The telephone number of the phone"
 msgstr "전화에 대한 전화번호"
 
-#: admin/systems/class_phoneGeneric.inc:79
-#: admin/systems/class_printGeneric.inc:103
-#: admin/systems/class_workstationGeneric.inc:89
-#: admin/systems/class_componentGeneric.inc:68
-#: admin/systems/class_mobilePhoneGeneric.inc:102
-msgid "Network settings"
-msgstr "네트워크 설정"
-
-#: admin/systems/class_phoneGeneric.inc:84
-#: admin/systems/class_printGeneric.inc:108
-#: admin/systems/class_workstationGeneric.inc:94
-#: admin/systems/class_componentGeneric.inc:72
-#: admin/systems/class_mobilePhoneGeneric.inc:106
-msgid "IP address"
-msgstr "IP 주소"
-
-#: admin/systems/class_phoneGeneric.inc:84
-#: admin/systems/class_workstationGeneric.inc:94
-msgid "IP addresses this system uses (v4 or v6)"
-msgstr "이 시스템에서 사용하는 IP 주소 (v4 또는 v6)"
-
-#: admin/systems/class_phoneGeneric.inc:90
-#: admin/systems/class_printGeneric.inc:114
-#: admin/systems/class_workstationGeneric.inc:100
-#: admin/systems/class_componentGeneric.inc:76
-#: admin/systems/class_mobilePhoneGeneric.inc:110
-msgid "Mac address"
-msgstr "Mac 주소"
-
-#: admin/systems/class_phoneGeneric.inc:90
-#: admin/systems/class_printGeneric.inc:114
-#: admin/systems/class_workstationGeneric.inc:100
-#: admin/systems/class_componentGeneric.inc:76
-#: admin/systems/class_mobilePhoneGeneric.inc:110
-msgid "Mac address of this system"
-msgstr "이 시스템의 맥 주소"
-
-#: admin/systems/serverService-list.xml:10
-msgid "List of services"
-msgstr "서비스 목록"
-
-#: admin/systems/serverService-list.xml:14
-msgid "Service"
-msgstr "서비스"
-
-#: admin/systems/serverService-list.xml:27
-msgid "!"
-msgstr "!"
-
-#: admin/systems/serverService-list.xml:43 admin/systems/system-list.xml:79
-msgid "Actions"
-msgstr "작업"
-
-#: admin/systems/serverService-list.xml:54 admin/systems/system-list.xml:90
-msgid "Create"
-msgstr "생성"
-
-#: admin/systems/serverService-list.xml:69 admin/systems/system-list.xml:127
-msgid "Remove"
-msgstr "제거"
-
-#: admin/systems/serverService-list.xml:89
-msgid "Get status"
-msgstr "상태 가져 오기"
-
-#: admin/systems/serverService-list.xml:97
-msgid "Start"
-msgstr "시작"
-
-#: admin/systems/serverService-list.xml:105
-msgid "Stop"
-msgstr "종료"
-
-#: admin/systems/serverService-list.xml:113
-msgid "Restart"
-msgstr "재시작"
-
-#: admin/systems/serverService-list.xml:121
-msgid "Edit service"
-msgstr "서비스 편집"
-
-#: admin/systems/serverService-list.xml:129
-msgid "Remove service"
-msgstr "서비스 제거"
-
-#: admin/systems/class_terminalStartup.inc:32
+#: admin/systems/class_terminalStartup.inc:29
 msgid "Startup"
 msgstr "시작"
 
-#: admin/systems/class_terminalStartup.inc:33
+#: admin/systems/class_terminalStartup.inc:30
 msgid "Terminal startup"
 msgstr "터미널 시작"
 
-#: admin/systems/class_terminalStartup.inc:50
+#: admin/systems/class_terminalStartup.inc:47
 msgid "Startup parameters"
-msgstr "시작 파라미터"
+msgstr "시작 매개 변수"
 
-#: admin/systems/class_terminalStartup.inc:53
+#: admin/systems/class_terminalStartup.inc:50
 msgid "Root server"
 msgstr "루트 서버"
 
-#: admin/systems/class_terminalStartup.inc:53
+#: admin/systems/class_terminalStartup.inc:50
 msgid "The root server the terminal should be using"
 msgstr "터미널이 사용해야하는 루트 서버"
 
-#: admin/systems/class_terminalStartup.inc:57
+#: admin/systems/class_terminalStartup.inc:54
 msgid "Swap server"
 msgstr "스왑 서버"
 
-#: admin/systems/class_terminalStartup.inc:57
+#: admin/systems/class_terminalStartup.inc:54
 msgid "The swap server the terminal should be using"
 msgstr "터미널이 사용해야하는 스왑 서버"
 
-#: admin/systems/class_terminalStartup.inc:63
+#: admin/systems/class_terminalStartup.inc:60
 msgid "Remote desktop"
 msgstr "원격 데스크탑"
 
-#: admin/systems/class_terminalStartup.inc:67
+#: admin/systems/class_terminalStartup.inc:64
 msgid "Connect method"
 msgstr "연결 방법"
 
-#: admin/systems/class_terminalStartup.inc:71
-#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+#: admin/systems/class_terminalStartup.inc:68
+#: admin/systems/services/terminal/class_serviceTerminal.inc:58
 msgid "XDMCP"
 msgstr "XDMCP"
 
-#: admin/systems/class_terminalStartup.inc:71
-#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+#: admin/systems/class_terminalStartup.inc:68
+#: admin/systems/services/terminal/class_serviceTerminal.inc:58
 msgid "LDM"
 msgstr "LDM"
 
-#: admin/systems/class_terminalStartup.inc:71
-#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+#: admin/systems/class_terminalStartup.inc:68
+#: admin/systems/services/terminal/class_serviceTerminal.inc:58
 msgid "Shell"
 msgstr "쉘"
 
-#: admin/systems/class_terminalStartup.inc:71
-#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+#: admin/systems/class_terminalStartup.inc:68
+#: admin/systems/services/terminal/class_serviceTerminal.inc:58
 msgid "Telnet"
 msgstr "텔넷"
 
-#: admin/systems/class_terminalStartup.inc:71
-#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+#: admin/systems/class_terminalStartup.inc:68
+#: admin/systems/services/terminal/class_serviceTerminal.inc:58
 msgid "Windows RDP"
 msgstr "Windows RDP"
 
-#: admin/systems/class_terminalStartup.inc:74
+#: admin/systems/class_terminalStartup.inc:71
 msgid "Terminal server"
 msgstr "터미널 서버"
 
-#: admin/systems/class_terminalStartup.inc:109
-#: admin/systems/class_terminalStartup.inc:120
+#: admin/systems/class_terminalStartup.inc:106
+#: admin/systems/class_terminalStartup.inc:117
 msgid "inherited"
 msgstr "계승된"
 
-#: admin/systems/class_terminalStartup.inc:117
+#: admin/systems/class_terminalStartup.inc:114
 msgid "Local swap"
 msgstr "로컬 스왑"
 
-#: admin/systems/system-list.xml:10
-msgid "List of systems"
-msgstr "시스템 목록"
-
-#: admin/systems/system-list.xml:39
-msgid "IP"
-msgstr "ㅑㅖ"
-
-#: admin/systems/system-list.xml:47
-msgid "MAC"
-msgstr "MAC"
-
-#: admin/systems/system-list.xml:63
-#: admin/systems/services/shares/class_serviceShare.inc:30
-#: admin/systems/services/ldap/class_serviceLDAP.inc:97
-#: admin/systems/services/terminal/class_serviceTerminal.inc:30
-#: admin/systems/class_serverService.inc:61
-msgid "Services"
-msgstr "서비스"
-
-#: admin/systems/system-list.xml:71
-msgid "Release"
-msgstr "릴리즈"
-
-#: admin/systems/system-list.xml:100
-msgid "Trigger action"
-msgstr "트리거 동작"
-
-#: admin/systems/system-list.xml:107
-msgid "Schedule action"
-msgstr "게획된 동작"
-
-#: admin/systems/system-list.xml:115
-msgid "Ping"
-msgstr "Ping"
-
-#: admin/systems/system-list.xml:155
-msgid "New object from template"
-msgstr "템플릿의 새 개체"
-
-#: admin/systems/system-list.xml:167
-msgid "Edit system"
-msgstr "시스템 편집"
-
-#: admin/systems/system-list.xml:181
-msgid "Remove system"
-msgstr "시스템 제거"
-
-#: admin/systems/class_terminalGeneric.inc:31
-msgid "terminal"
-msgstr "터미널"
-
-#: admin/systems/class_terminalGeneric.inc:43
-#: admin/systems/class_terminalGeneric.inc:48
-#: admin/systems/class_terminalGeneric.inc:49
+#: admin/systems/class_terminalGeneric.inc:26
+#: admin/systems/class_terminalGeneric.inc:32
+#: admin/systems/class_terminalGeneric.inc:33
 msgid "Terminal"
 msgstr "터미널"
 
-#: admin/systems/class_terminalGeneric.inc:44
+#: admin/systems/class_terminalGeneric.inc:27
 msgid "Terminal information"
 msgstr "터미널 정보"
 
-#: admin/systems/class_printGeneric.inc:30
+#: admin/systems/class_terminalGeneric.inc:50
+msgid "terminal"
+msgstr "터미널"
+
+#: admin/systems/class_printGeneric.inc:27
+#: admin/systems/class_printGeneric.inc:34
 #: admin/systems/class_printGeneric.inc:35
-#: admin/systems/class_printGeneric.inc:36
 msgid "Printer"
 msgstr "프린터"
 
-#: admin/systems/class_printGeneric.inc:31
+#: admin/systems/class_printGeneric.inc:28
 msgid "Printer information"
 msgstr "프린터 정보"
 
-#: admin/systems/class_printGeneric.inc:62
+#: admin/systems/class_printGeneric.inc:61
 msgid "The name of the printer"
-msgstr "프린터 이름"
+msgstr "프린터의 이름"
 
-#: admin/systems/class_printGeneric.inc:66
+#: admin/systems/class_printGeneric.inc:65
 msgid "A short description of the printer"
-msgstr "프린터의 간단한 설명"
+msgstr "프린터에 대한 간단한 설명"
 
-#: admin/systems/class_printGeneric.inc:72
+#: admin/systems/class_printGeneric.inc:71
 msgid "Details"
 msgstr "세부정보"
 
-#: admin/systems/class_printGeneric.inc:75
+#: admin/systems/class_printGeneric.inc:74
 msgid "Printer location"
 msgstr "프린터 위치"
 
-#: admin/systems/class_printGeneric.inc:75
+#: admin/systems/class_printGeneric.inc:74
 msgid "The location of the printer"
 msgstr "프린터의 위치"
 
-#: admin/systems/class_printGeneric.inc:79
+#: admin/systems/class_printGeneric.inc:78
 msgid "Printer URL"
 msgstr "프린터 URL"
 
-#: admin/systems/class_printGeneric.inc:79
+#: admin/systems/class_printGeneric.inc:78
 msgid "The URL of the printer"
 msgstr "프린터의 URL"
 
-#: admin/systems/class_printGeneric.inc:85
-#: admin/systems/class_printGeneric.inc:88
+#: admin/systems/class_printGeneric.inc:84
+#: admin/systems/class_printGeneric.inc:87
 msgid "Users which are allowed to use this printer"
 msgstr "이 프린터를 사용할 수 있는 사용자"
 
-#: admin/systems/class_printGeneric.inc:94
-#: admin/systems/class_printGeneric.inc:97
+#: admin/systems/class_printGeneric.inc:93
+#: admin/systems/class_printGeneric.inc:96
 msgid "Users which are allowed to administrate this printer"
 msgstr "이 프린터를 관리 할 수 있는 사용자"
 
-#: admin/systems/class_printGeneric.inc:108
-#: admin/systems/class_componentGeneric.inc:72
-#: admin/systems/class_mobilePhoneGeneric.inc:106
-msgid "IP address this system uses"
-msgstr "이 시스템에서 사용하는 IP 주소"
-
-#: admin/systems/class_printGeneric.inc:121
+#: admin/systems/class_printGeneric.inc:104
 msgid "Windows paths"
 msgstr "Windows 경로"
 
-#: admin/systems/class_printGeneric.inc:125
+#: admin/systems/class_printGeneric.inc:108
 msgid "Inf file"
 msgstr "Inf 파일"
 
-#: admin/systems/class_printGeneric.inc:125
+#: admin/systems/class_printGeneric.inc:108
 msgid "Path to windows inf file for this printer"
 msgstr "이 프린터의 Windows inf 파일 경로"
 
-#: admin/systems/class_printGeneric.inc:129
+#: admin/systems/class_printGeneric.inc:112
 msgid "Driver directory"
-msgstr "드라이버 rudfh"
+msgstr "드라이버 경로"
 
-#: admin/systems/class_printGeneric.inc:129
+#: admin/systems/class_printGeneric.inc:112
 msgid "Path to directory that contains windows drivers for this printer"
 msgstr "이 프린터의 Windows 드라이버가있는 디렉토리의 경로"
 
-#: admin/systems/class_printGeneric.inc:133
+#: admin/systems/class_printGeneric.inc:116
 msgid "Driver name"
 msgstr "드라이버 이름"
 
-#: admin/systems/class_printGeneric.inc:133
+#: admin/systems/class_printGeneric.inc:116
 msgid "Windows name of the printer driver"
 msgstr "프린터 드라이버의 Windows 이름"
 
-#: admin/systems/class_workstationGeneric.inc:31
-#: admin/systems/class_workstationGeneric.inc:36
-#: admin/systems/class_workstationGeneric.inc:37
+#: admin/systems/interfaces/class_networkInterface.inc:29
+msgid "Interface"
+msgstr "인터페이스"
+
+#: admin/systems/interfaces/class_networkInterface.inc:30
+#: admin/systems/interfaces/class_networkInterface.inc:33
+msgid "Network interface"
+msgstr "네트워크 인터페이스"
+
+#: admin/systems/interfaces/class_networkInterface.inc:51
+msgid "General information"
+msgstr "일반 정보"
+
+#: admin/systems/interfaces/class_networkInterface.inc:54
+msgid "Interface name"
+msgstr "인터페이스 이름"
+
+#: admin/systems/interfaces/class_networkInterface.inc:58
+msgid "MAC address"
+msgstr "맥 주소"
+
+#: admin/systems/interfaces/class_networkInterface.inc:58
+msgid "MAC address of this system"
+msgstr "시스템의 맥 주소"
+
+#: admin/systems/interfaces/class_networkInterface.inc:63
+msgid "IP address"
+msgstr "IP 주소"
+
+#: admin/systems/interfaces/class_networkInterface.inc:63
+msgid "IP addresses this system uses (v4 or v6)"
+msgstr "이 시스템에서 사용하는 IP 주소 (v4 또는 v6)"
+
+#: admin/systems/interfaces/class_networkInterface.inc:72
+msgid "IPAM"
+msgstr "IPAM"
+
+#: admin/systems/interfaces/class_networkInterface.inc:75
+msgid "VLAN"
+msgstr "VLAN"
+
+#: admin/systems/interfaces/class_networkInterface.inc:80
+msgid "VLAN tagged"
+msgstr "태그된 VLAN"
+
+#: admin/systems/interfaces/class_networkInterface.inc:80
+msgid "Whether this interface is going to send/receive tagged frames"
+msgstr "이 인터페이스가 태그가 지정된 프레임을 전송 / 수신할지 여부"
+
+#: admin/systems/interfaces/class_networkInterface.inc:84
+msgid "Subnet"
+msgstr "서브넷"
+
+#: admin/systems/interfaces/class_networkInterface.inc:88
+msgid "Add free IP from subnet"
+msgstr "서브넷에서 사용 가능한  IP 추가"
+
+#: admin/systems/interfaces/class_networkInterface.inc:88
+msgid "Adds a new IP from selected subnet"
+msgstr "선택한 서브넷에서 새 IP를 추가"
+
+#: admin/systems/interfaces/class_networkInterface.inc:89
+msgid "Add IP"
+msgstr "IP 추가"
+
+#: admin/systems/interfaces/class_networkInterface.inc:149
+msgid "No subnet selected"
+msgstr "선택한 서브넷이 없습니다."
+
+#: admin/systems/interfaces/class_networkInterface.inc:155
+msgid "Could not find selected subnet"
+msgstr "선택한 서브넷을 찾을 수 없습니다."
+
+#: admin/systems/interfaces/class_networkInterface.inc:161
+msgid "Selected subnet has no IP"
+msgstr "선택한 서브넷에 IP가 없습니다."
+
+#: admin/systems/interfaces/class_networkInterface.inc:182
+msgid "Could not find any free IP in the selected subnet"
+msgstr "선택한 서브넷에서 사용 가능한 IP를 찾을 수 없습니다."
+
+#: admin/systems/interfaces/class_interfacesManagement.inc:68
+#: admin/systems/interfaces/class_interfacesManagement.inc:95
+msgid "Interfaces"
+msgstr "인터페이스"
+
+#: admin/systems/interfaces/class_interfacesManagement.inc:69
+msgid "Edit the network interfaces of a system"
+msgstr "시스템의 네트워크 인터페이스 편집"
+
+#: admin/systems/interfaces/class_interfacesManagement.inc:287
+#, php-format
+msgid "Interfaces \"%s\" and \"%s\" use the same MAC + VLAN combination"
+msgstr "\"%s\" 및 \"%s\" 인터페이스는 동일한 MAC + VLAN 조합을 사용합니다."
+
+#: admin/systems/interfaces/class_interfacesManagement.inc:293
+#, php-format
+msgid "Interfaces \"%s\" and \"%s\" use the same IP address \"%s\""
+msgstr "\"%s\" 및 \"%s\" 인터페이스는 동일한 IP 주소 \"%s\"를 사용합니다."
+
+#: admin/systems/interfaces/class_interfacesManagement.inc:386
+#, php-format
+msgid "The entry %s is not existing"
+msgstr "%s 항목이 없습니다."
+
+#: admin/systems/interfaces/class_interfacesManagement.inc:562
+#, php-format
+msgid "Unknown field \"%s\""
+msgstr "잘못된 필드 \"%s\""
+
+#: admin/systems/class_workstationGeneric.inc:27
+#: admin/systems/class_workstationGeneric.inc:33
+#: admin/systems/class_workstationGeneric.inc:34
 msgid "Workstation"
 msgstr "워크스테이션"
 
-#: admin/systems/class_workstationGeneric.inc:32
+#: admin/systems/class_workstationGeneric.inc:28
 msgid "Workstation information"
 msgstr "워크스테이션 정보"
 
-#: admin/systems/class_workstationGeneric.inc:51
+#: admin/systems/class_workstationGeneric.inc:49
 msgid "workstation"
 msgstr "워크스테이션"
 
-#: admin/systems/class_workstationGeneric.inc:63
+#: admin/systems/class_workstationGeneric.inc:61
 #, php-format
 msgid "The name of the %s"
 msgstr "%s의 이름"
 
-#: admin/systems/class_workstationGeneric.inc:68
+#: admin/systems/class_workstationGeneric.inc:66
 #, php-format
 msgid "A short description of the %s"
 msgstr "%s의 간단한 설명"
 
-#: admin/systems/class_workstationGeneric.inc:72
+#: admin/systems/class_workstationGeneric.inc:70
 msgid "Location"
 msgstr "위치"
 
-#: admin/systems/class_workstationGeneric.inc:73
+#: admin/systems/class_workstationGeneric.inc:71
 #, php-format
 msgid "The location of the %s"
 msgstr "%s의 위치"
 
-#: admin/systems/class_workstationGeneric.inc:77
+#: admin/systems/class_workstationGeneric.inc:75
 #, php-format
 msgid "Lock this %s"
-msgstr "%s 점굼"
+msgstr "%s 잠금"
 
-#: admin/systems/class_workstationGeneric.inc:78
+#: admin/systems/class_workstationGeneric.inc:76
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr "이렇게하면 %s이 다시 설치되지 않습니다."
 
-#: admin/systems/services/shares/class_serviceShare.inc:29
-#: admin/systems/services/shares/class_serviceShare.inc:30
+#: admin/systems/services/class_servicesManagement.inc:71
+#: admin/systems/services/shares/class_serviceShare.inc:28
+#: admin/systems/services/ldap/class_serviceLDAP.inc:29
+#: admin/systems/services/terminal/class_serviceTerminal.inc:28
+msgid "Services"
+msgstr "서비스"
+
+#: admin/systems/services/class_servicesManagement.inc:72
+msgid "Server services"
+msgstr "서버 서비스"
+
+#: admin/systems/services/class_servicesManagement.inc:128
+msgid "Edit service"
+msgstr "서비스 편집"
+
+#: admin/systems/services/class_servicesManagement.inc:137
+msgid "Remove"
+msgstr "제거"
+
+#: admin/systems/services/class_servicesManagement.inc:155
+msgid "Export list"
+msgstr "목록 내보내기"
+
+#: admin/systems/services/class_servicesManagement.inc:164
+msgid "Get status"
+msgstr "상태 가져 오기"
+
+#: admin/systems/services/class_servicesManagement.inc:173
+msgid "Start"
+msgstr "시작"
+
+#: admin/systems/services/class_servicesManagement.inc:182
+msgid "Stop"
+msgstr "종료"
+
+#: admin/systems/services/class_servicesManagement.inc:191
+msgid "Restart"
+msgstr "재시작"
+
+#: admin/systems/services/class_servicesManagement.inc:242
+msgid "Create"
+msgstr "생성"
+
+#: admin/systems/services/class_servicesManagement.inc:358
+msgid "Information"
+msgstr "정보"
+
+#: admin/systems/services/class_servicesManagement.inc:358
+msgid "Cannot update service status until it has been saved!"
+msgstr "저장 될 때까지 서비스 상태를 업데이트 할 수 없습니다!"
+
+#: admin/systems/services/class_servicesManagement.inc:366
+#, php-format
+msgid "Unknown action \"%s\""
+msgstr "알 수없는 작업 \"%s\""
+
+#: admin/systems/services/class_servicesManagement.inc:397
+#, php-format
+msgid ""
+"Could not get execute action %s on service %s: This server has no mac "
+"address."
+msgstr "%s  서비스에 대한 %s 실행 작업을 가져올 수 없습니다: 이 서버에는 MAC 주소가 없습니다."
+
+#: admin/systems/services/shares/class_serviceShare.inc:27
+#: admin/systems/services/shares/class_serviceShare.inc:28
 msgid "Share service"
 msgstr "서비스 공유"
 
-#: admin/systems/services/shares/class_serviceShare.inc:42
+#: admin/systems/services/shares/class_serviceShare.inc:41
 msgid "Shares"
 msgstr "공유"
 
-#: admin/systems/services/shares/class_serviceShare.inc:47
+#: admin/systems/services/shares/class_serviceShare.inc:46
 msgid "Shares this server hosts"
 msgstr "이 서버 호스트를 공유합니다."
 
-#: admin/systems/services/shares/class_serviceShare.inc:51
+#: admin/systems/services/shares/class_serviceShare.inc:50
 msgid "Name of this share"
 msgstr "이 공유의 이름"
 
-#: admin/systems/services/shares/class_serviceShare.inc:55
+#: admin/systems/services/shares/class_serviceShare.inc:54
 msgid "Description of this share"
 msgstr "이 공유에 대한 설명"
 
-#: admin/systems/services/shares/class_serviceShare.inc:59
-#: admin/systems/class_systemImport.inc:47
+#: admin/systems/services/shares/class_serviceShare.inc:58
+#: admin/systems/class_systemImport.inc:48
 msgid "Type"
 msgstr "타입"
 
-#: admin/systems/services/shares/class_serviceShare.inc:59
+#: admin/systems/services/shares/class_serviceShare.inc:58
 msgid "Type of share"
 msgstr "공유 유형"
 
-#: admin/systems/services/shares/class_serviceShare.inc:64
+#: admin/systems/services/shares/class_serviceShare.inc:63
 msgid "Codepage"
 msgstr "코드 페이지"
 
-#: admin/systems/services/shares/class_serviceShare.inc:64
+#: admin/systems/services/shares/class_serviceShare.inc:63
 msgid "Codepage for this share"
 msgstr "이 공유에 대한 코드 페이지"
 
-#: admin/systems/services/shares/class_serviceShare.inc:68
+#: admin/systems/services/shares/class_serviceShare.inc:67
 msgid "Path / Volume"
 msgstr "경로 / 볼륨"
 
-#: admin/systems/services/shares/class_serviceShare.inc:68
+#: admin/systems/services/shares/class_serviceShare.inc:67
 msgid "Path or volume concerned by this share"
 msgstr "이 공유와 관련된 경로 또는 볼륨"
 
-#: admin/systems/services/shares/class_serviceShare.inc:72
+#: admin/systems/services/shares/class_serviceShare.inc:71
 msgid "Option"
 msgstr "옵션"
 
-#: admin/systems/services/shares/class_serviceShare.inc:72
+#: admin/systems/services/shares/class_serviceShare.inc:71
 msgid "Special option(s) for this share"
-msgstr "이 공유에 대한 특별 옵션"
+msgstr "이 공유에 대한 특별 옵션(들)"
 
-#: admin/systems/services/shares/class_serviceShare.inc:105
-#: admin/systems/class_serverService.inc:226
-#: admin/systems/class_serverService.inc:294
-#: addons/dashboard/class_dashBoardNetwork.inc:81
-msgid "Error"
-msgstr "오류"
-
-#: admin/systems/services/shares/class_serviceShare.inc:105
+#: admin/systems/services/shares/class_serviceShare.inc:104
 msgid "You need to configure encodings first"
 msgstr "먼저 인코딩을 구성해야합니다."
 
@@ -509,193 +537,169 @@ msgstr "ㅗ"
 msgid "Invalid value in encodings : %s"
 msgstr "잘못된 인코딩 값 : %s"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:35
-#: admin/systems/services/ldap/class_serviceLDAP.inc:96
+#: admin/systems/services/ldap/class_serviceLDAP.inc:28
+#: admin/systems/services/ldap/class_serviceLDAP.inc:44
 msgid "LDAP service"
 msgstr "LDAP 서비스"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:39
+#: admin/systems/services/ldap/class_serviceLDAP.inc:29
+msgid "LDAP"
+msgstr "LDAP"
+
+#: admin/systems/services/ldap/class_serviceLDAP.inc:48
 msgid "LDAP Base"
 msgstr "LDAP 베이스"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:39
+#: admin/systems/services/ldap/class_serviceLDAP.inc:48
 msgid "The LDAP base to use for this LDAP server"
 msgstr "이 LDAP 서버에 사용할 LDAP 기반"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:44
+#: admin/systems/services/ldap/class_serviceLDAP.inc:53
 msgid "LDAP URI"
 msgstr "LDAP URI"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:44
+#: admin/systems/services/ldap/class_serviceLDAP.inc:53
 msgid "The LDAP URI to use in order to contact this LDAP server"
 msgstr "이 LDAP 서버에 접속하기 위해 사용할 LDAP URI"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:46
+#: admin/systems/services/ldap/class_serviceLDAP.inc:55
 msgid "fill-in-your-servers-dns-name"
 msgstr "서버 dns 이름을 기입하십시오"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:51
+#: admin/systems/services/ldap/class_serviceLDAP.inc:60
 msgid "Size limit"
 msgstr "크기 제한"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:51
+#: admin/systems/services/ldap/class_serviceLDAP.inc:60
 msgid "Limit the number of record returned"
 msgstr "반환되는 레코드 수 제한"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:56
+#: admin/systems/services/ldap/class_serviceLDAP.inc:65
 msgid "Time limit"
 msgstr "시간 제한"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:56
+#: admin/systems/services/ldap/class_serviceLDAP.inc:65
 msgid "Time limit for the result to be returned"
 msgstr "반환 될 결과의 시간 제한"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:61
+#: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "Deref"
 msgstr "Deref"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:61
+#: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "Specifies how alias dereferencing is done when performing a search"
 msgstr "검색을 수행 할 때 별칭 역 참조가 수행되는 방법을 지정합니다."
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:66
+#: admin/systems/services/ldap/class_serviceLDAP.inc:75
 msgid "TLS Cert"
 msgstr "TLS Cert"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:66
+#: admin/systems/services/ldap/class_serviceLDAP.inc:75
 msgid "Filepath to tls certificate"
 msgstr "tls 인증서에 대한 파일 경로"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:70
+#: admin/systems/services/ldap/class_serviceLDAP.inc:79
 msgid "TLS Key"
 msgstr "TLS "
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:70
+#: admin/systems/services/ldap/class_serviceLDAP.inc:79
 msgid "Filepath to tls key"
 msgstr "tls 키에 대한 파일 경로"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:74
+#: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid "TLS CaCert"
 msgstr "TLS CaCert"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:74
+#: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid "Filepath to tls ca certificate"
 msgstr "tls ca 인증서에 대한 파일 경로"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:78
+#: admin/systems/services/ldap/class_serviceLDAP.inc:87
 msgid "TLS ReqCert"
 msgstr "TLS ReqCert"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:78
+#: admin/systems/services/ldap/class_serviceLDAP.inc:87
 msgid ""
 "Specifies what checks to perform on server certificates in a TLS session, if"
 " any"
 msgstr "TLS 세션에서 서버 인증서에 대해 수행할 검사를 지정합니다."
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:83
+#: admin/systems/services/ldap/class_serviceLDAP.inc:92
 msgid "TLS CrlCheck"
 msgstr "TLS CrlCheck"
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:83
+#: admin/systems/services/ldap/class_serviceLDAP.inc:92
 msgid ""
 "Specifies if the Certificate Revocation List (CRL) of the CA should be used "
 "to verify if the server certificates have  not  been  revoked"
 msgstr "서버 인증서가 해지되지 않았는지 확인하기 위해 CA의 인증서 해지 목록 (CRL)을 사용해야하는지 여부를 지정합니다."
 
-#: admin/systems/services/ldap/class_serviceLDAP.inc:97
-msgid "LDAP"
-msgstr "LDAP"
-
-#: admin/systems/services/terminal/class_serviceTerminal.inc:29
-#: admin/systems/services/terminal/class_serviceTerminal.inc:30
-#: admin/systems/services/terminal/class_serviceTerminal.inc:41
+#: admin/systems/services/terminal/class_serviceTerminal.inc:27
+#: admin/systems/services/terminal/class_serviceTerminal.inc:28
+#: admin/systems/services/terminal/class_serviceTerminal.inc:40
 msgid "Terminal service"
 msgstr "터미널 서비"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:44
+#: admin/systems/services/terminal/class_serviceTerminal.inc:43
 msgid "Temporary disable login"
 msgstr "임시 로그인 사용 중지"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:45
+#: admin/systems/services/terminal/class_serviceTerminal.inc:44
 msgid "Disables the login on this terminal server"
 msgstr "이 터미널 서버에서 로그인을 비활성화합니다."
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:54
+#: admin/systems/services/terminal/class_serviceTerminal.inc:53
 msgid "Supported session types"
 msgstr "지원되는 세션 유형"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:55
+#: admin/systems/services/terminal/class_serviceTerminal.inc:54
 msgid "The session types supported by this terminal server"
 msgstr "이 터미널 서버에서 지원하는 세션 유형"
 
-#: admin/systems/class_serverService.inc:62
-msgid "Server services"
-msgstr "서버 서비스"
-
-#: admin/systems/class_serverService.inc:288
-msgid "Information"
-msgstr "정보"
-
-#: admin/systems/class_serverService.inc:288
-msgid "Cannot update service status until it has been saved!"
-msgstr "저장 될 때까지 서비스 상태를 업데이트 할 수 없습니다!"
-
-#: admin/systems/class_serverService.inc:294
+#: admin/systems/class_SystemReleaseColumn.inc:87
 #, php-format
-msgid "Unknown action \"%s\""
-msgstr "알 수없는 작업 \"%s\""
+msgid "Inherited from %s"
+msgstr "%s에서 상속되었습니다."
 
-#: admin/systems/class_serverService.inc:315
-#: admin/systems/class_serverService.inc:322
-#: admin/systems/class_serverService.inc:335
-#: admin/systems/class_serverService.inc:346
-#, php-format
-msgid "Could not get execute action %s on service %s."
-msgstr "%s 서비스에서 %s 작업을 실행할 수 없습니다."
-
-#: admin/systems/class_serverService.inc:323
-msgid "This server has no mac address."
-msgstr "이 서버에는 MAC 주소가 없습니다."
-
-#: admin/systems/class_serverGeneric.inc:28
-msgid "server"
-msgstr "서"
-
-#: admin/systems/class_serverGeneric.inc:39
-#: admin/systems/class_serverGeneric.inc:44
-#: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:43
+#: admin/systems/class_serverGeneric.inc:26
+#: admin/systems/class_serverGeneric.inc:32
+#: admin/systems/class_serverGeneric.inc:33
+#: admin/systems/class_systemImport.inc:44
 msgid "Server"
 msgstr "서버"
 
-#: admin/systems/class_serverGeneric.inc:40
+#: admin/systems/class_serverGeneric.inc:27
 msgid "Server information"
-msgstr "서버 정"
+msgstr "서버 정보"
 
-#: admin/systems/class_componentGeneric.inc:30
+#: admin/systems/class_serverGeneric.inc:47
+msgid "server"
+msgstr "서버"
+
+#: admin/systems/class_componentGeneric.inc:27
 msgid "Component"
-msgstr "컴포넌트"
+msgstr "구성 요소"
 
-#: admin/systems/class_componentGeneric.inc:31
+#: admin/systems/class_componentGeneric.inc:28
 msgid "Component information"
 msgstr "구성 요소 정보"
 
-#: admin/systems/class_componentGeneric.inc:35
-#: admin/systems/class_componentGeneric.inc:36
+#: admin/systems/class_componentGeneric.inc:32
+#: admin/systems/class_componentGeneric.inc:33
 msgid "Network device"
 msgstr "네트워크 장치"
 
-#: admin/systems/class_componentGeneric.inc:57
+#: admin/systems/class_componentGeneric.inc:55
 msgid "The name of the component"
 msgstr "구성 요소 이름"
 
-#: admin/systems/class_componentGeneric.inc:61
+#: admin/systems/class_componentGeneric.inc:59
 msgid "A short description of the component"
 msgstr "구성 요소에 대한 간단한 설명"
 
 #: admin/systems/class_systemManagement.inc:43
 #: admin/systems/class_systemManagement.inc:47
-#: config/systems/class_systemsPluginConfig.inc:30
+#: config/systems/class_systemsPluginConfig.inc:28
 #: addons/dashboard/class_dashBoardSystems.inc:30
 msgid "Systems"
 msgstr "시스템"
@@ -704,144 +708,143 @@ msgstr "시스템"
 msgid "Systems Management"
 msgstr "시스템 관리"
 
-#: admin/systems/class_systemManagement.inc:141
-#: admin/systems/class_systemManagement.inc:157
-#: admin/systems/class_systemManagement.inc:209
-msgid "Action canceled"
-msgstr "작업이 취소되었습니다."
+#: admin/systems/class_systemManagement.inc:45
+msgid "Manage servers, computers, printers, phones and other devices"
+msgstr "서버, 컴퓨터, 프린터, 전화 및 기타 장치 관리"
 
-#: admin/systems/class_systemManagement.inc:141
-#: admin/systems/class_systemManagement.inc:209
+#: admin/systems/class_systemManagement.inc:86
+msgid "Trigger action"
+msgstr "트리거 동작"
+
+#: admin/systems/class_systemManagement.inc:92
+msgid "Schedule action"
+msgstr "게획된 동작"
+
+#: admin/systems/class_systemManagement.inc:101
+msgid "Ping"
+msgstr "Ping"
+
+#: admin/systems/class_systemManagement.inc:133
+#: admin/systems/class_systemManagement.inc:213
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
 msgstr "시스템 %s에 MAC 주소가 정의되지 않아 작업을 실행할 수 없습니다."
 
-#: admin/systems/class_systemManagement.inc:157
+#: admin/systems/class_systemManagement.inc:155
 #, php-format
 msgid "System %s is currently installing"
 msgstr "시스템 %s이(가) 현재 설치 중입니다."
 
-#: admin/systems/class_systemManagement.inc:176
-#: admin/systems/class_systemManagement.inc:221
-#: admin/systems/class_systemManagement.inc:258
-msgid "Infrastructure service"
-msgstr "인프라 서비스"
-
-#: admin/systems/class_systemManagement.inc:179
-#: admin/systems/class_systemManagement.inc:184
+#: admin/systems/class_systemManagement.inc:182
+#: admin/systems/class_systemManagement.inc:187
 msgid "Action triggered"
 msgstr "실행 된 작업"
 
-#: admin/systems/class_systemManagement.inc:179
+#: admin/systems/class_systemManagement.inc:182
 #, php-format
 msgid "Action called without error (results were \"%s\")"
 msgstr "오류없이 호출된 작업 (결과는 \"%s\")"
 
-#: admin/systems/class_systemManagement.inc:184
+#: admin/systems/class_systemManagement.inc:187
 #, php-format
 msgid "Action called without error (result was \"%s\")"
 msgstr "오류없이 호출된 작업 (결과는 \"%s\")"
 
-#: admin/systems/class_systemManagement.inc:239
+#: admin/systems/class_systemManagement.inc:248
 msgid "Ping results"
 msgstr "Ping 결과"
 
-#: admin/systems/class_systemManagement.inc:325
-#, php-format
-msgid "Inherited from %s"
-msgstr "%s에서 상속되었습니다."
-
-#: admin/systems/class_systemImport.inc:39
-#: admin/systems/class_systemImport.inc:59
+#: admin/systems/class_systemImport.inc:40
+#: admin/systems/class_systemImport.inc:60
 msgid "Import"
-msgstr "임포트"
+msgstr "가져오기"
 
-#: admin/systems/class_systemImport.inc:43
+#: admin/systems/class_systemImport.inc:44
 msgid "The server you wish to import hosts from"
 msgstr "호스트를 가져올 서버"
 
-#: admin/systems/class_systemImport.inc:47
+#: admin/systems/class_systemImport.inc:48
 msgid "Type of objects you wish to import"
 msgstr "가져올 개체 유형"
 
-#: admin/systems/class_systemImport.inc:52
+#: admin/systems/class_systemImport.inc:53
 msgid "Template"
 msgstr "템플릿"
 
-#: admin/systems/class_systemImport.inc:52
+#: admin/systems/class_systemImport.inc:53
 msgid "Select a template to apply to imported entries"
 msgstr "가져온 항목에 적용할 템플릿을 선택하십시오."
 
-#: admin/systems/class_systemImport.inc:105
+#: admin/systems/class_systemImport.inc:107
 #, php-format
 msgid "Could not parse %s"
 msgstr "%s을 (를) 파싱하지 못했습니다."
 
-#: admin/systems/class_systemImport.inc:178
+#: admin/systems/class_systemImport.inc:172
 #, php-format
 msgid "No DHCP server found for IPs %s"
 msgstr "IP %s에 대해 DHCP 서버를 찾을 수 없습니다"
 
-#: admin/systems/class_systemImport.inc:197
+#: admin/systems/class_systemImport.inc:191
 #, php-format
 msgid "No DNS server found for zone %s"
-msgstr "%s 영역에 대한 DNS 서버를 찾을 수 없습니다"
+msgstr "영역 %s에 대한 DNS 서버를 찾을 수 없습니다"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:32
-#: admin/systems/class_mobilePhoneGeneric.inc:37
-#: admin/systems/class_mobilePhoneGeneric.inc:38
+#: admin/systems/class_mobilePhoneGeneric.inc:28
+#: admin/systems/class_mobilePhoneGeneric.inc:34
+#: admin/systems/class_mobilePhoneGeneric.inc:35
 msgid "Mobile phone"
 msgstr "휴대 전화"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:33
+#: admin/systems/class_mobilePhoneGeneric.inc:29
 msgid "Mobile phone information"
 msgstr "휴대 전화 정보"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:60
+#: admin/systems/class_mobilePhoneGeneric.inc:57
 msgid "The name of the mobile phone"
 msgstr "휴대 전화의 이름"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:64
+#: admin/systems/class_mobilePhoneGeneric.inc:61
 msgid "A short description of the mobile phone"
 msgstr "휴대 전화에 대한 간단한 설명"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:72
 msgid "The serial number of the mobile phone"
 msgstr "휴대 전화의 일련 번호"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:77
+#: admin/systems/class_mobilePhoneGeneric.inc:76
 msgid "IMEI Number"
-msgstr "IMEI 번"
+msgstr "IMEI 번호"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:77
+#: admin/systems/class_mobilePhoneGeneric.inc:76
 msgid "The IMEI number of the mobile phone"
 msgstr "휴대 전화의 IMEI 번호"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:82
+#: admin/systems/class_mobilePhoneGeneric.inc:81
 msgid "OS"
 msgstr "OS"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:82
+#: admin/systems/class_mobilePhoneGeneric.inc:81
 msgid "The Operating System installed on this phone"
 msgstr "이 전화기에 설치된 운영 체제"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:88
+#: admin/systems/class_mobilePhoneGeneric.inc:87
 msgid "SimCard"
 msgstr "심 카드"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:91
+#: admin/systems/class_mobilePhoneGeneric.inc:90
 msgid "The telephone number of the mobile phone"
 msgstr "휴대 전화의 전화 번호"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:95
+#: admin/systems/class_mobilePhoneGeneric.inc:94
 msgid "PUK Number"
 msgstr "PUK 번"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:95
+#: admin/systems/class_mobilePhoneGeneric.inc:94
 msgid "The PUK number of the simcard in this mobile phone"
 msgstr "이 휴대 전화의 SIM 카드의 PUK 번호"
 
-#: config/systems/class_systemsPluginConfig.inc:31
+#: config/systems/class_systemsPluginConfig.inc:29
 msgid "Systems plugin configuration"
 msgstr "시스템 플러그인 구성"
 
@@ -911,7 +914,7 @@ msgstr "휴대 전화 RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:80
 msgid "Branch in which mobile phones will be stored"
-msgstr "휴대 전화가 저장 될 브랜"
+msgstr "휴대 전화가 저장 될 브랜치"
 
 #: config/systems/class_systemsPluginConfig.inc:87
 msgid "Miscellaneous"
@@ -993,10 +996,6 @@ msgstr "구성 요소"
 msgid "Mobile phones"
 msgstr "휴대 전화"
 
-#: addons/dashboard/class_dashBoardSystems.inc:116
-msgid "LDAP error"
-msgstr "lDAP 오류"
-
 #: addons/dashboard/class_dashBoardSystems.inc:117
 #, php-format
 msgid ""
@@ -1004,31 +1003,27 @@ msgid ""
 "error: %s"
 msgstr "다음 오류로 인해 유형 \"%s\"의 통계를 계산할 수 없습니다 : %s"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:28
+#: addons/dashboard/class_dashBoardNetwork.inc:27
 msgid "Network"
 msgstr "네트워크"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:29
+#: addons/dashboard/class_dashBoardNetwork.inc:28
 msgid "Statistics and various information"
 msgstr "통계 및 각종 정보"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:41
+#: addons/dashboard/class_dashBoardNetwork.inc:40
 msgid "DHCP"
 msgstr "DHCP"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:46
+#: addons/dashboard/class_dashBoardNetwork.inc:45
 msgid "DNS"
 msgstr "DNS"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:82
+#: addons/dashboard/class_dashBoardNetwork.inc:81
 #, php-format
 msgid ""
 "Statistics for DHCP could not be computed because of the following error: %s"
 msgstr "다음 오류로 인해 DHCP 통계를 계산할 수 없습니다 : %s"
-
-#: admin/systems/serverService-list.tpl.c:2
-msgid "Base"
-msgstr "Base"
 
 #: admin/systems/server_import.tpl.c:2
 msgid ""
@@ -1050,7 +1045,7 @@ msgstr "실행중인 argonaut 서버가 있습니다. %1 (%3://%2:%4)"
 #: addons/dashboard/systems_stats.tpl.c:8
 msgid "Only one system is configured to run an argonaut client."
 msgid_plural "%1 systems are configured to run an argonaut client."
-msgstr[0] "%1 시스템은 argonaut 클라이언트를 실행하도록 구성됩니다."
+msgstr[0] "%1 시스템이 argonaut 클라이언트를 실행하도록 구성되었습니다."
 
 #: addons/dashboard/systems_stats.tpl.c:11
 msgid "But no system is configured to run an argonaut client!"
@@ -1063,4 +1058,4 @@ msgid ""
 msgid_plural ""
 "%1 systems are configured to run an argonaut client, but there is no "
 "argonaut server configured!"
-msgstr[0] "%1 시스템은 argonaut 클라이언트를 실행하도록 구성되었지만 argonaut 서버가 구성되어 있지 않습니다!"
+msgstr[0] "%1 시스템이 argonaut 클라이언트를 실행하도록 구성되었지만 argonaut 서버가 구성되지 않았습니다!"

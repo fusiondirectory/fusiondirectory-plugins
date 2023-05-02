@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+  Copyright (C) 2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,16 +20,16 @@
 
 class newsletterSubscriptions extends simplePlugin
 {
-  var $displayHeader = TRUE;
+  protected $displayHeader  = TRUE;
 
-  var $objectclasses = ['fdNewsletterAccount'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Newsletter'),
       'plDescription'   => _('Newsletter subscriptions'),
+      'plFilter'        => '(objectClass=fdNewsletterAccount)',
       'plSelfModify'    => TRUE,
+      'plObjectClass'   => ['fdNewsletterAccount'],
       'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=applications&icon=newsletter&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=newsletter&size=16',
@@ -38,7 +38,7 @@ class newsletterSubscriptions extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
     return [
@@ -57,4 +57,3 @@ class newsletterSubscriptions extends simplePlugin
     ];
   }
 }
-?>

@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2014-2015 Dhatim
-  Copyright (C) 2014-2018 FusionDirectory
+  Copyright (C) 2014-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,16 +21,12 @@
 
 class ppolicy extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['device', 'pwdPolicy', 'pwdPolicyChecker'];
-
-  /* Return plugin information for acl handling  */
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Password policy'),
       'plDescription' => _('Password policy for ppolicy overlay'),
+      'plObjectClass' => ['device', 'pwdPolicy', 'pwdPolicyChecker'],
       'plObjectType'  => ['ppolicy' => [
         'name'        => _('Password policy'),
         'filter'      => 'objectClass=pwdPolicy',
@@ -43,7 +39,7 @@ class ppolicy extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       // Attributes are grouped by section
@@ -136,6 +132,11 @@ class ppolicy extends simplePlugin
             'pwdFailureCountInterval', FALSE,
             0, FALSE
           ),
+          new IntAttribute(
+            _('Stored failures'), _('Maximum number of failed bind attempts to store in a user\'s entry. If not present, or its value is 0, then it defaults to the value of "Maximum failures". If that value is also 0, the default is 5.'),
+            'pwdMaxRecordedFailure', FALSE,
+            0, FALSE
+          ),
           new BooleanAttribute(
             _('Must change'), _('Whether the user must change their password after an account is reset by an administrator following an automatic lockout'),
             'pwdMustChange', FALSE,
@@ -152,47 +153,41 @@ class ppolicy extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['pwdMaxAge']->attributes[0]->setManagedAttributes(
-       [
+      [
         'disable' => [
           0 => [
             'pwdExpireWarning', 'pwdGraceAuthNLimit'
           ]
         ]
-       ]
+      ]
     );
     $this->attributesAccess['pwdLockout']->setManagedAttributes(
-       [
+      [
         'disable' => [
           FALSE => [
             'pwdLockoutDuration',       'pwdMaxFailure',
             'pwdFailureCountInterval',  'pwdMustChange'
           ]
         ]
-       ]
+      ]
     );
     $this->attributesAccess['pwdAllowUserChange']->setManagedAttributes(
-       [
+      [
         'disable' => [
           FALSE => [
             'pwdSafeModify',
           ]
         ]
-       ]
+      ]
     );
     $this->attributesAccess['pwdCheckQuality']->setManagedAttributes(
-       [
+      [
         'disable' => [
           0 => [
             'pwdCheckModule'
           ]
         ]
-       ]
+      ]
     );
-
-    if (objects::count('ppolicy') == 0) {
-      $this->attributesAccess['cn']->setDefaultValue($config->get_cfg_value('ppolicyDefaultCn', 'default'));
-      $this->attributesAccess['cn']->resetToDefault();
-    }
   }
 }
-?>

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,11 +22,20 @@
 
 class serviceLDAP extends simpleService
 {
-  /* This plugin only writes its objectClass */
-  var $objectclasses    = ['goLdapServer'];
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'   => _('LDAP service'),
+      'plDescription' => _('LDAP').' ('._('Services').')',
+      'plIcon'        => 'geticon.php?context=applications&icon=ldap&size=16',
+      'plObjectClass' => ['goLdapServer'],
+
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    ];
+  }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
     return [
@@ -88,17 +97,4 @@ class serviceLDAP extends simpleService
       ],
     ];
   }
-
-  /* Return plugin information for acl handling */
-  static function plInfo ()
-  {
-    return [
-      'plShortName'   => _('LDAP service'),
-      'plDescription' => _('LDAP').' ('._('Services').')',
-      'plIcon'        => 'geticon.php?context=applications&icon=ldap&size=16',
-
-      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    ];
-  }
 }
-?>

@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,19 +21,16 @@
 
 class terminalStartup extends simplePlugin
 {
-  var $objectclasses = ['fdTerminalStartup'];
-
   var $inheritance = ['gosaGroupOfNames' => 'member'];
 
-  /* Return plugin information */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Startup'),
       'plDescription'   => _('Terminal startup'),
-      'plSelfModify'    => FALSE,
+      'plSmallIcon'     => 'geticon.php?context=devices&icon=terminal&size=16',
       'plPriority'      => 2,
-      'plCategory'      => ['terminal'],
+      'plObjectClass'   => ['fdTerminalStartup'],
       'plObjectType'    => ['terminal', 'ogroup-dynamic'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
@@ -43,7 +40,7 @@ class terminalStartup extends simplePlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'startup' => [
@@ -127,9 +124,11 @@ class terminalStartup extends simplePlugin
   /*! \brief Create a list of useable servers for the currently selected protocol */
   function updateServerList ()
   {
-    $servers = objects::ls('server', NULL, NULL, '(&(objectClass=goTerminalServer)(gotoSessionType='.strtoupper($this->gotoXMethod).'))');
+    if (empty($this->gotoXMethod)) {
+      $servers = [];
+    } else {
+      $servers = objects::ls('server', NULL, NULL, '(&(objectClass=goTerminalServer)(gotoSessionType='.ldap_escape_f(strtoupper($this->gotoXMethod)).'))');
+    }
     $this->attributesAccess['gotoXdmcpServer']->setChoices($servers);
   }
 }
-
-?>

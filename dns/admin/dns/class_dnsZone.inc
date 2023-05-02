@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018  FusionDirectory
+
+  Copyright (C) 2015-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +21,7 @@
 
 class DnsRecordPlugin extends simplePlugin
 {
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     $plProvidedAcls = parent::generatePlProvidedAcls(static::getAttributesInfo());
 
@@ -38,7 +39,7 @@ class DnsRecordPlugin extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -66,7 +67,6 @@ class DnsRecordPlugin extends simplePlugin
   function __construct ($parent, $attribute, $value = NULL)
   {
     parent::__construct($parent->dn, $parent);
-    $this->set_acl_base($parent->acl_base);
 
     $this->attributesAccess['relativeSubdomainName']->setInLdap(FALSE);
     $this->attributesAccess['dnsRecord']->setInLdap(FALSE);
@@ -82,6 +82,30 @@ class DnsRecordPlugin extends simplePlugin
 
     if (!empty($value)) {
       $this->relativeSubdomainName  = array_shift($value);
+      if ($value[0] === 'tXTRecord') {
+        if (preg_match('/^v=spf1 (.*)$/', $value[1], $m)) {
+          /* Convert TXT to SPF */
+          $value = [
+            'sPFRecord',
+            $m[1],
+            $value[2],
+          ];
+        } elseif (preg_match('/^v=DKIM1;(.*)$/', $value[1], $m)) {
+          /* Convert TXT to DKIM */
+          $value = [
+            'dKIMRecord',
+            $m[1],
+            $value[2],
+          ];
+        } elseif (preg_match('/^v=DMARC1;(.*)$/', $value[1], $m)) {
+          /* Convert TXT to DMARC */
+          $value = [
+            'dMARCRecord',
+            $m[1],
+            $value[2],
+          ];
+        }
+      }
       $this->dnsRecord              = $value;
     } elseif (!($parent instanceof dnsZone)) {
       /* Read default values from system: cn and IPs */
@@ -96,18 +120,57 @@ class DnsRecordPlugin extends simplePlugin
     $this->attributesAccess['dnsRecord']->attributes[2]->setChoices($attribute->getReverseZones());
   }
 
-  function save ()
+  /*!
+   * \brief Get record value for DnsRecordsAttribute instance
+   *
+   * \return array containing:
+   * relativeSubdomainName, recordType, recordValue, reverseZone
+   */
+  public function getRecordValue (): array
   {
+    $relativeSubdomainName = $this->relativeSubdomainName;
+    if ($relativeSubdomainName == '@') {
+      $relativeSubdomainName = '';
+    }
+    $record = $this->attributesAccess['dnsRecord']->getValue();
+    if ($record[0] == 'sPFRecord') {
+      /* Convert SPF to TXT */
+      $record = [
+        'tXTRecord',
+        'v=spf1 '.$record[1],
+        $record[2],
+      ];
+    } elseif ($record[0] == 'dKIMRecord') {
+      /* Convert DKIM to TXT */
+      $record = [
+        'tXTRecord',
+        'v=DKIM1; '.$record[1],
+        $record[2],
+      ];
+    } elseif ($record[0] == 'dMARCRecord') {
+      /* Convert DMARC to TXT */
+      $record = [
+        'tXTRecord',
+        'v=DMARC1; '.$record[1],
+        $record[2],
+      ];
+    }
+    return array_merge([$relativeSubdomainName], $record);
   }
 
-  function execute ()
+  function save (): array
+  {
+    return [];
+  }
+
+  public function render (): string
   {
     $smarty = get_smarty();
     $attr   = $this->attributesAccess['dnsRecord'];
     foreach ($this->attributesAccess as $attr) {
       $smarty->assign($attr->getAcl().'ACL', $this->aclGetPermissions($attr->getAcl(), NULL, $this->acl_skip_write()));
     }
-    return parent::execute();
+    return parent::render();
   }
 }
 
@@ -119,7 +182,7 @@ class DnsRecordDialog extends GenericDialog
 
   protected $plugin;
 
-  function __construct ($simplePlugin, &$attribute, $value = [])
+  function __construct ($simplePlugin, $attribute, $value = [])
   {
     $this->attribute  = $attribute;
     $this->plugin     = $simplePlugin;
@@ -129,44 +192,38 @@ class DnsRecordDialog extends GenericDialog
     }
   }
 
-  function dialog_execute ()
+  public function render (): string
   {
-    $this->dialog->save_object();
-    return $this->dialog->execute()."\n".
+    return $this->dialog->render()."\n".
     '<p class="plugbottom">'."\n".
     '  <input type="submit" name="add_finish" value="'.msgPool::addButton().'"/>&nbsp;'."\n".
-    '  <input type="submit" name="add_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
+    '  <input type="submit" formnovalidate="formnovalidate" name="add_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
     '</p>';
   }
 
-  function handle_finish ()
+  protected function handleFinish ()
   {
-    $this->dialog->save_object();
+    $this->dialog->update();
 
     /* Check for errors */
     if (!$this->plugin->is_template) {
       $checks = $this->dialog->check();
       if (count($checks)) {
         msg_dialog::displayChecks($checks);
-        return $this->dialog_execute();
+        return;
       }
     }
-    /* add new/edited zone */
-    $relativeSubdomainName = $this->dialog->relativeSubdomainName;
-    if ($relativeSubdomainName == '@') {
-      $relativeSubdomainName = '';
-    }
-    $ret = array_merge([$relativeSubdomainName], $this->dialog->dnsRecord);
-    $this->attribute->addValue($ret);
-    return FALSE;
+    /* Add new/edited record */
+    $this->attribute->addValue('', $this->dialog->getRecordValue());
+    unset($this->dialog);
   }
 
-  function handle_cancel ()
+  protected function handleCancel ()
   {
     if ($this->initialDialogValue !== NULL) {
-      $this->attribute->addValue($this->initialDialogValue);
+      $this->attribute->addValue('', $this->initialDialogValue);
     }
-    return FALSE;
+    unset($this->dialog);
   }
 }
 
@@ -257,7 +314,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $reverseZones;
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
     global $config;
 
@@ -266,7 +323,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       'aRecord'     => [],
       'aAAARecord'  => []
     ];
-    foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+    foreach (DnsRecordAttribute::getLdapAttributesList() as $type) {
       if (isset($attrs[$type]['count'])) {
         for ($i = 0; $i < $attrs[$type]['count']; $i++) {
           $this->value[] = ['', $type, $attrs[$type][$i], ''];
@@ -284,7 +341,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     if (isset($attrs['dn'])) {
       $ldap = $config->get_ldap_link();
       $ldap->cd($attrs['dn']);
-      $ldap->search('(&(objectClass=dNSZone)(zoneName='.$attrs['zoneName'][0].'))', array_merge(['relativeDomainName'], array_keys(DnsRecordAttribute::$types)), 'one');
+      $ldap->search('(&(objectClass=dNSZone)(zoneName='.$attrs['zoneName'][0].'))', array_merge(['relativeDomainName'], DnsRecordAttribute::getLdapAttributesList()), 'one');
       while ($subattrs = $ldap->fetch()) {
         for ($i = 0; $i < $subattrs['count']; $i++) {
           $type = $subattrs[$i];
@@ -349,15 +406,15 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     sort($this->value);
   }
 
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
-    foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+    foreach (DnsRecordAttribute::getLdapAttributesList() as $type) {
       if (!isset($attrs[$type])) {
         $attrs[$type] = [];
       }
     }
     foreach ($this->value as $line) {
-      list($domain, $type, $content) = $line;
+      list ($domain, $type, $content) = $line;
       // Only save root records here
       if (empty($domain)) {
         $attrs[$type][] = $content;
@@ -374,14 +431,18 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     $ptrs       = [];
     $nsRecords  = [];
     foreach ($value as $line) {
-      list($domain, $type, $content, $reverse) = $line;
+      list ($domain, $type, $content, $reverse) = $line;
       if (!empty($reverse)) {
         if (!DnsRecordAttribute::matchReverseZone($type, $content, $reverse)) {
-          msg_dialog::display(
-            _('Error'),
-            sprintf(_('The IP %s does not match the selected reverse %s, it has been ignored'), $content, $reverse),
-            ERROR_DIALOG
+          $error = new SimplePluginError(
+            $this,
+            htmlescape(sprintf(
+              _('The IP %s does not match the selected reverse %s, it has been ignored'),
+              $content,
+              $reverse
+            ))
           );
+          $error->display();
         } else {
           if (!isset($ptrs[$reverse])) {
             $ptrs[$reverse] = [];
@@ -456,9 +517,9 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     unset($newSoa[2]);
     $soaChanged = array_differs($initialSoa, $newSoa);
     /* Compute values into $nodes and $ptrs */
-    list($nodes, $ptrs, $nsRecords) = $this->valueToNodes($this->value);
+    list ($nodes, $ptrs, $nsRecords) = $this->valueToNodes($this->value);
     /* List all old nodes */
-    list($initialNodes, $initialPtrs, ) = $this->valueToNodes($this->getInitialValue());
+    list ($initialNodes, $initialPtrs, ) = $this->valueToNodes($this->getInitialValue());
     /* Update reverse zones top nodes */
     $oldReverseZones = $this->initialReverseZones;
     foreach ($this->reverseZones as $reverseZone) {
@@ -481,7 +542,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         }
         $ldap->modify($node);
         if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $reverseDn, LDAP_MOD, get_class()), LDAP_ERROR);
+          $error = new SimplePluginLdapError($this, $reverseDn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
+          $error->display();
         }
         unset($oldReverseZones[$reverseDn]);
       } else {
@@ -490,7 +552,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         }
         $ldap->add($node);
         if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $reverseDn, LDAP_ADD, get_class()), LDAP_ERROR);
+          $error = new SimplePluginLdapError($this, $reverseDn, LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+          $error->display();
         }
       }
     }
@@ -498,7 +561,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     foreach (array_keys($oldReverseZones) as $dn) {
       $ldap->rmdir_recursive($dn);
       if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
+        $error = new SimplePluginLdapError($this, $dn, LDAP_DEL, $ldap->get_error(), $ldap->get_errno());
+        $error->display();
       }
     }
     /* Delete old records not present in new list */
@@ -506,7 +570,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       if (!isset($nodes[$dn])) {
         $ldap->rmdir_recursive($dn);
         if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
+          $error = new SimplePluginLdapError($this, $dn, LDAP_DEL, $ldap->get_error(), $ldap->get_errno());
+          $error->display();
         }
       }
     }
@@ -517,17 +582,20 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         if (!array_differs_recursive($initialNodes[$dn], $node)) {
           continue;
         }
-        foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+        foreach (DnsRecordAttribute::getLdapAttributesList() as $type) {
           if (!isset($node[$type])) {
             $node[$type] = [];
           }
         }
         $ldap->modify($node);
+        $operation = LDAP_MOD;
       } else {
         $ldap->add($node);
+        $operation = LDAP_ADD;
       }
       if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
+        $error = new SimplePluginLdapError($this, $dn, $operation, $ldap->get_error(), $ldap->get_errno());
+        $error->display();
       }
     }
 
@@ -550,7 +618,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
             'zoneName'            => $reverseZone,
             'dNSClass'            => 'IN',
             'pTRRecord'           => array_map(
-              function ($name) use ($zoneName) {
+              function ($name) use ($zoneName)
+              {
                 return (empty($name) ? '' : $name.'.').$zoneName;
               },
               $names
@@ -560,13 +629,15 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           if (isset($initialPtrs[$reverseZone][$ip])) {
             $ldap->modify($node);
             if (!$ldap->success()) {
-              msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
+              $error = new SimplePluginLdapError($this, $dn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
+              $error->display();
             }
             unset($initialPtrs[$reverseZone][$ip]);
           } else {
             $ldap->add($node);
             if (!$ldap->success()) {
-              msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+              $error = new SimplePluginLdapError($this, $dn, LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+              $error->display();
             }
           }
         }
@@ -578,7 +649,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           $dn = 'relativeDomainName='.$relativeDomainName.','.$reverseDn;
           $ldap->rmdir_recursive($dn);
           if (!$ldap->success()) {
-            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
+            $error = new SimplePluginLdapError($this, $dn, LDAP_DEL, $ldap->get_error(), $ldap->get_errno());
+            $error->display();
           }
         }
       }
@@ -644,7 +716,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
 
   protected function genRowIcons ($key, $value)
   {
-    list($img, $nbicons) = parent::genRowIcons($key, $value);
+    list ($img, $nbicons) = parent::genRowIcons($key, $value);
     if ($this->canWriteRecord($value)) {
       return [$img, $nbicons];
     } else {
@@ -686,32 +758,32 @@ class FQDNAttribute extends StringAttribute
 
 class dnsZone extends simplePlugin
 {
-  var $objectclasses = ['dNSZone'];
-
   public static function finalDot ()
   {
     global $config;
     return ($config->get_cfg_value('DNSFinalDot', 'TRUE') == 'TRUE');
   }
 
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('DNS zone'),
       'plDescription' => _('DNS zone'),
+      'plObjectClass' => ['dNSZone'],
+      'plFilter'      => '(&(objectClass=dNSZone)(relativeDomainName=@)(!(|(zoneName=*.arpa)(zoneName=*.arpa.))))',
       'plObjectType'  => ['dnsZone' => [
         'name'        => _('DNS zone'),
-        'filter'      => '(&(objectClass=dNSZone)(relativeDomainName=@)(!(|(zoneName=*.arpa)(zoneName=*.arpa.))))',
         'ou'          => get_ou('dnsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16',
         'mainAttr'    => 'zoneName'
       ]],
+      'plSearchAttrs' => ['relativeDomainName', 'sOARecord'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -759,7 +831,7 @@ class dnsZone extends simplePlugin
               new DisplayLDAPAttribute(
                 _('Serial number'), _('Version number of the original copy of the zone'),
                 'soaRecord_serial', FALSE,
-                0, FALSE, date('Ymd').'01'
+                date('Ymd').'01'
               ),
               new TimeAttribute(
                 _('Refresh'), _('Time interval before the zone should be refreshed'),
@@ -809,14 +881,14 @@ class dnsZone extends simplePlugin
   function prepareSavedAttributes ()
   {
     parent::prepareSavedAttributes();
-    foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+    foreach (DnsRecordAttribute::getLdapAttributesList() as $type) {
       if (isset($this->attrs[$type])) {
         $this->saved_attributes[$type] = $this->attrs[$type];
       }
     }
   }
 
-  function prepare_save ()
+  function prepare_save (): array
   {
     /* Update serial (Also thanks to this save is triggered if something changed - see simplePlugin::shouldSave) */
     if (
@@ -836,7 +908,7 @@ class dnsZone extends simplePlugin
     return parent::prepare_save();
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();

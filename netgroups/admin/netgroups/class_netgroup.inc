@@ -2,8 +2,8 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
 
-  Copyright (C) 2011 Alejandro Escanero Blanco
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011 Alejandro Escanero Blanco (aescanero@gmail.com)
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,40 +20,16 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class CnNetgroupsAttribute extends DialogAttribute
-{
-  protected $dialogClass = "NetgroupSelectDialog";
-
-  function addValue ($dn, $entry)
-  {
-    $value = $entry['cn'][0];
-    if (!in_array($value, $this->value)) {
-      $this->value[]    = $value;
-    }
-  }
-
-  function getFilterBlackList ()
-  {
-    $cns    = $this->getValue();
-    $cns[]  = $this->plugin->cn;
-    return ['cn' => $cns];
-  }
-}
-
 class netgroup extends simplePlugin
 {
-  var $objectclasses  = ["top", "nisNetgroup"];
-  var $mainTab        = TRUE;
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Netgroup'),
       'plDescription' => _('NIS Netgroup settings'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['nisNetgroup'],
       'plObjectType'  => ['netgroup' => [
         'name'    => _('NIS Netgroup'),
-        'filter'  => 'objectClass=nisNetgroup',
         'ou'      => get_ou('netgroupRDN'),
         'icon'    => 'geticon.php?context=applications&icon=netgroups&size=16'
       ]],
@@ -63,31 +39,33 @@ class netgroup extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
         'name'  => _('Information'),
         'attrs' => [
+          new BaseSelectorAttribute(get_ou('netgroupRDN')),
           new HostNameAttribute(
-            _('Name'), _('Name of this NIS netgroup'), 'cn'
+            _('Name'), _('Name of this NIS netgroup'), 'cn', TRUE
           ),
           new StringAttribute(
             _('Description'), _('Description of this NIS netgroup'), 'description'
           ),
-          new BaseSelectorAttribute(get_ou('netgroupRDN'))
         ]
       ],
       'users' => [
         'name'  => _('User members'),
         'icon'  => 'geticon.php?context=types&icon=user&size=16',
         'attrs' => [
-          new SetAttribute(
-            new StringAttribute('nisNetgroupTriple', '', 'nisNetgroupTriple')
-          ),
+          new HiddenArrayAttribute('nisNetgroupTriple'),
           new UsersAttribute(
             '', _('NIS netgroup members'), 'memberUsers',
-            FALSE, [], 'dn', 'uid'
+            FALSE, [], 'dn', 'uid',
+            [
+              ['TabFilterElement',    []],
+              ['FixedFilterElement',  ['(objectClass=posixAccount)']],
+            ]
           ),
         ]
       ],
@@ -102,7 +80,12 @@ class netgroup extends simplePlugin
         'name'  => _('Netgroup members'),
         'icon'  => 'geticon.php?context=applications&icon=netgroups&size=16',
         'attrs' => [
-          new CnNetgroupsAttribute('', _('NIS netgroup members'), 'memberNisNetgroup'),
+          new ObjectsAttribute(
+            '', _('NIS netgroup members'),
+            'memberNisNetgroup', FALSE,
+            ['netgroup'], [],
+            'cn', 'cn'
+          ),
         ]
       ],
     ];
@@ -113,8 +96,7 @@ class netgroup extends simplePlugin
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->attributesAccess['nisNetgroupTriple']->setVisible(FALSE);
+    $this->attributesAccess['cn']->setUnique('one');
     $this->attributesAccess['memberUsers']->setInLdap(FALSE);
     $this->attributesAccess['memberSystems']->setInLdap(FALSE);
     $triples      = $this->attributesAccess['nisNetgroupTriple']->getValue();
@@ -142,7 +124,7 @@ class netgroup extends simplePlugin
     $this->memberSystems  = $cns;
   }
 
-  function prepare_save ()
+  function prepare_save (): array
   {
     $memberUsers    = $this->attributesAccess['memberUsers']->getDisplayValues();
     $memberSystems  = $this->memberSystems;
@@ -161,4 +143,3 @@ class netgroup extends simplePlugin
     return parent::prepare_save();
   }
 }
-?>

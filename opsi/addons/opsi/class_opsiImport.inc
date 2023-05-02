@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
+
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2011-2018 FusionDirectory project
+  Copyright (C) 2011-2019 FusionDirectory project
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,13 +25,12 @@ class opsiImport extends systemImport
   protected $types = ['workstation'];
 
   /* Return plugin information for acl handling  */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('OPSI import'),
       'plDescription' => _('Import windows stations from OPSI into FD'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=48',
-      'plSelfModify'  => FALSE,
       'plObjectType'  => [
         'opsiImport' => [
           'name'      => _('OPSI import'),
@@ -45,7 +45,7 @@ class opsiImport extends systemImport
     ];
   }
 
-  static function getAttributesInfo ($filter = 'objectClass=opsiServer')
+  static function getAttributesInfo (string $filter = 'objectClass=opsiServer'): array
   {
     $attributesInfo = parent::getAttributesInfo($filter);
     /* Add our checkbox just before the import button */
@@ -54,17 +54,22 @@ class opsiImport extends systemImport
       -1,
       0,
       [
+        new StringAttribute(
+          _('Interface name'), _('How to name the network interface created on imported systems'),
+          'networkInterfaceName', TRUE,
+          'eth0'
+        ),
         new BooleanAttribute(
           _('Import localboot products'), _('Import localboot product list configured in OPSI in the FD OPSI tab'),
           'importLocalboots', FALSE,
           FALSE
-        )
+        ),
       ]
     );
     return $attributesInfo;
   }
 
-  protected function getExtraTabs ($server_dn, $host)
+  protected function getExtraTabs ($server_dn, $host): array
   {
     $extraTabs = [
       'sambaSystemTab' => [
@@ -90,37 +95,20 @@ class opsiImport extends systemImport
     global $config;
     $s_daemon = new supportDaemon();
     if (!$s_daemon->is_available()) {
-      msg_dialog::display(
-        _('Argonaut server is not available'), $s_daemon->get_error(), ERROR_DIALOG
-      );
+      $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+      $error->display();
       return FALSE;
     }
-    $ldap = $config->get_ldap_link();
-    $ldap->cat($server_dn);
-    if ($attrs = $ldap->fetch()) {
-      if (isset($attrs['macAddress'])) {
-        $macAddress = $attrs['macAddress'][0];
-      } else {
-        msg_dialog::display(
-          _('No mac address'),
-          sprintf(_('Server "%s" has no mac address configured in the LDAP'), $server_dn),
-          ERROR_DIALOG
-        );
-        return FALSE;
-      }
-    } else {
-      msg_dialog::display(
-        sprintf(_('Could not find "%s" in the LDAP'), $server_dn),
-        msgPool::ldaperror($ldap->get_error(), $server_dn), ERROR_DIALOG
-      );
+    try {
+      $macAddress = opsiProfile::getOpsiServerMac($server_dn);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
       return FALSE;
     }
     $hosts = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, ['args' => [[], ['type' => 'OpsiClient']]]);
     if ($s_daemon->is_error()) {
-      msg_dialog::display(
-        _('Could not get OPSI information'),
-        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-      );
+      $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+      $error->display();
       return FALSE;
     }
 
@@ -139,10 +127,8 @@ class opsiImport extends systemImport
           ]]
         );
         if ($s_daemon->is_error()) {
-          msg_dialog::display(
-            _('Could not get OPSI information'),
-            msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-          );
+          $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+          $error->display();
           return FALSE;
         }
         $host['localboots'] = [];
@@ -161,7 +147,28 @@ class opsiImport extends systemImport
       unset($host);
     }
 
+    foreach ($hosts as $host) {
+      if (!empty($host['hardwareAddress'])) {
+        if (empty($host['ipAddress'])) {
+          $host['ipAddress'] = [];
+        } elseif (!is_array($host['ipAddress'])) {
+          $host['ipAddress'] = [$host['ipAddress']];
+        }
+        if (!is_array($host['hardwareAddress'])) {
+          $host['hardwareAddress'] = [$host['hardwareAddress']];
+        }
+        $host['interfaces'] = [
+          [
+            'cn'            => [$this->networkInterfaceName],
+            'ipHostNumber'  => $host['ipAddress'],
+            'macAddress'    => $host['hardwareAddress'],
+          ]
+        ];
+      }
+      unset($host['ipAddress']);
+      unset($host['hardwareAddress']);
+    }
+
     return $hosts;
   }
 }
-?>

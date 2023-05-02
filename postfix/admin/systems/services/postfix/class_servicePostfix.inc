@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -48,14 +49,13 @@ class MailDomainAttribute extends StringAttribute
 
 class servicePostfix extends simpleService
 {
-  var $objectclasses = ['fdPostfixServer'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Postfix (SMTP)'),
       'plDescription' => _('Postfix (SMTP)').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=smtp&size=16',
+      'plObjectClass' => ['fdPostfixServer'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -64,7 +64,7 @@ class servicePostfix extends simpleService
   /*!
   *  \brief The main function : information about attributes
   */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return  [
       'section1' => [
@@ -189,13 +189,13 @@ class servicePostfix extends simpleService
     ];
   }
 
-  protected function shouldSave ()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -205,4 +205,3 @@ class servicePostfix extends simpleService
     return $errors;
   }
 }
-?>

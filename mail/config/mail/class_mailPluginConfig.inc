@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018 FusionDirectory
+  Copyright (C) 2012-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,21 +20,20 @@
 
 class mailPluginConfig extends simplePlugin
 {
-  var $objectclasses  = ["fdMailPluginConf"];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
-      "plShortName"     => _("Mail"),
-      "plDescription"   => _("Mail plugin configuration"),
-      "plPriority"      => 3,
-      "plObjectType"    => ["configuration"],
+      'plShortName'     => _('Mail'),
+      'plDescription'   => _('Mail plugin configuration'),
+      'plPriority'      => 6,
+      'plObjectClass'   => ['fdMailPluginConf'],
+      'plObjectType'    => ['configuration'],
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'mail' => [
@@ -57,21 +56,9 @@ class mailPluginConfig extends simplePlugin
             'fdMailFolderCreation'
           ),
           new BooleanAttribute(
-            _('Use cyrus UNIX style'),
-            _('Determines if "foo/bar" or "foo.bar" should be uses as namespaces in IMAP.'),
-            'fdCyrusUseSlashes'
-          ),
-          new BooleanAttribute(
             _('Delete mailbox on account deletion'),
             _('Determines if the mailbox should be removed from your IMAP server after the account is deleted in LDAP.'),
             'fdCyrusDeleteMailbox'
-          ),
-          new SetAttribute(
-            new StringAttribute(
-              _('Cyrus autocreate folders'),
-              _('List of personal IMAP folders that should be created along initial account creation.'),
-              'fdCyrusAutocreateFolders'
-            )
           ),
           new IntAttribute(
             _('IMAP timeout'),
@@ -89,4 +76,3 @@ class mailPluginConfig extends simplePlugin
     ];
   }
 }
-?>

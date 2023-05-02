@@ -21,20 +21,18 @@
 
 class printGeneric extends ipHostPlugin
 {
-  var $objectclasses  = ['fdPrinter', 'ieee802Device'];
-
-  /* Return plugin information */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Printer'),
       'plDescription' => _('Printer information'),
       'plPriority'    => 10,
+      'plObjectClass' => ['fdPrinter', 'ieee802Device'],
+      'plFilter'      => '(objectClass=fdPrinter)',
       'plObjectType'  => ['printer' =>
         [
           'name'        => _('Printer'),
           'description' => _('Printer'),
-          'filter'      => 'objectClass=fdPrinter',
           'icon'        => 'geticon.php?context=devices&icon=printer&size=16',
           'ou'          => get_ou('printerRDN'),
         ]
@@ -43,6 +41,7 @@ class printGeneric extends ipHostPlugin
         'fdPrinterUsers'      => 'user',
         'fdPrinterAdminUsers' => 'user',
       ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -51,7 +50,7 @@ class printGeneric extends ipHostPlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -96,26 +95,10 @@ class printGeneric extends ipHostPlugin
           new UsersAttribute(
             '', _('Users which are allowed to administrate this printer'),
             'fdPrinterAdminUsers', FALSE
-          )
+          ),
+          new HiddenArrayAttribute('ipHostNumber', TRUE),
+          new HiddenArrayAttribute('macAddress', FALSE),
         ]
-      ],
-      'network' => [
-        'name'      => _('Network settings'),
-        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => [
-          new SetAttribute(
-            new IPAttribute(
-              _('IP address'), _('IP address this system uses'),
-              'ipHostNumber', TRUE
-            )
-          ),
-          new SetAttribute(
-            new MacAddressAttribute(
-              _('Mac address'), _('Mac address of this system'),
-              'macAddress', FALSE
-            )
-          ),
-        ],
       ],
       'windows' => [
         'name'      => _('Windows paths'),
@@ -138,4 +121,3 @@ class printGeneric extends ipHostPlugin
     ];
   }
 }
-?>

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2022  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,10 +22,9 @@
 
 class posixGroup extends simplePlugin
 {
-  public $objectclasses = ['posixGroup'];
-  protected $locks      = [];
+  protected $locks = [];
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     if (class_available('mixedGroup')) {
       return [];
@@ -33,12 +32,11 @@ class posixGroup extends simplePlugin
     return [
       'plShortName'   => _('Group'),
       'plDescription' => _('POSIX group information'),
-      'plSelfModify'  => FALSE,
+      'plObjectClass' => ['posixGroup'],
       'plObjectType'  => ['group' => [
         'name'        => _('POSIX group'),
         'description' => _('POSIX user group'),
         'ou'          => get_ou('groupRDN'),
-        'filter'      => 'objectClass=posixGroup',
         'icon'        => 'geticon.php?context=types&icon=user-group&size=16',
         'mainAttr'    => 'cn',
       ]],
@@ -50,7 +48,7 @@ class posixGroup extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
 
@@ -113,7 +111,7 @@ class posixGroup extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['trustMode']->setInLdap(FALSE);
+    //This allows if trust mode is disable to remove any hosts from the list, removing from ldap as well.
     $this->attributesAccess['trustMode']->setManagedAttributes(
       [
         'multiplevalues' => ['notbyhost' => ['','fullaccess']],
@@ -122,14 +120,15 @@ class posixGroup extends simplePlugin
         ]
       ]
     );
+
+    //As trustMode is not registered in ldap, only host, this is a way to put back the option to the proper value
     if ((count($this->host) == 1) && ($this->host[0] == '*')) {
       $this->trustMode = 'fullaccess';
     } elseif (count($this->host) > 0) {
       $this->trustMode = 'byhost';
     }
 
-    $this->attributesAccess['gidNumber']->setUnique(TRUE);
-    $this->attributesAccess['force_id']->setInLdap(FALSE);
+    $this->attributesAccess['gidNumber']->setUnique('whole');
     $this->attributesAccess['force_id']->setManagedAttributes(
       [
         'disable' => [
@@ -139,15 +138,6 @@ class posixGroup extends simplePlugin
         ]
       ]
     );
-    if ($this->is_template) {
-      /* Template specific handling */
-      if (isset($this->attrs['force_id'])) {
-        $this->force_id = ($this->attrs['force_id'][0] != 'FALSE');
-      }
-      if (!$this->force_id) {
-        $this->gidNumber = '';
-      }
-    }
   }
 
   function resetCopyInfos ()
@@ -159,10 +149,10 @@ class posixGroup extends simplePlugin
     $this->gidNumber = "";
   }
 
-  function prepare_save ()
+  function prepare_save (): array
   {
     if (!$this->force_id) {
-      /* Handle gidNumber */
+      // Handle gidNumber automatic generation if required
       if ($this->is_template) {
         $this->gidNumber = '';
       } else {
@@ -184,47 +174,52 @@ class posixGroup extends simplePlugin
       $this->attrs['host'] = ['*'];
     }
 
-    /* Trust accounts */
+    //Register hosts selected within LDAP
     if (($this->trustMode != "") && !in_array('hostObject', $this->attrs['objectClass'])) {
       $this->attrs['objectClass'][] = 'hostObject';
     } elseif (($this->trustMode == "") && (($key = array_search('hostObject', $this->attrs['objectClass'])) !== FALSE)) {
       unset($this->attrs['objectClass'][$key]);
     }
 
-    if ($this->is_template) {
-      if ($this->force_id) {
-        if ($this->gidNumber == '%askme%') {
-          $this->attrs['force_id'] = '%askme%';
-        } else {
-          $this->attrs['force_id'] = 'TRUE';
-        }
-      } else {
-        $this->attrs['force_id']   = 'FALSE';
-      }
-    }
-
     return $errors;
   }
 
-  function save ()
+  function save (): array
   {
+    //Important to get attrs from ldap fdtemplate and to not register them within ldap afterwards
+    $this->attributesAccess['trustMode']->setInLdap($this->is_template);
+    $this->attributesAccess['force_id']->setInLdap($this->is_template);
+
     $errors = parent::save();
 
     foreach ($this->locks as $lock) {
-      del_lock($lock);
+      Lock::deleteByObject($lock);
     }
     $this->locks = [];
 
     return $errors;
   }
 
+  //Below function allows force_id and trustMode to be retrieved from ldap fdTemplate
+  function adapt_from_template (array $attrs, array $skip = [])
+  {
+    parent::adapt_from_template($attrs, $skip);
+
+    //Important to not register within ldap afterwards
+    $this->attributesAccess['trustMode']->setInLdap(FALSE);
+    $this->attributesAccess['force_id']->setInLdap(FALSE);
+
+    $this->fromTemplate = TRUE;
+  }
+
   function addUser ($dn, $uid)
   {
     $this->attributesAccess['memberUid']->addValue($dn,
       [
-        'dn'  => $dn,
-        'uid' => [$uid],
-        'cn'  => [$uid]
+        'dn'          => $dn,
+        'objectClass' => ['inetOrgPerson'],
+        'uid'         => [$uid],
+        'cn'          => [$uid]
       ]
     );
   }
@@ -234,5 +229,3 @@ class posixGroup extends simplePlugin
     $this->attributesAccess['memberUid']->searchAndRemove($uid);
   }
 }
-
-?>

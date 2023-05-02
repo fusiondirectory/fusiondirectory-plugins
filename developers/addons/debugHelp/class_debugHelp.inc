@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2018  FusionDirectory
+
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +21,7 @@
 
 class debugHelp extends simplePlugin
 {
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Debug help'),
@@ -37,7 +38,7 @@ class debugHelp extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'diagram' => [
@@ -81,17 +82,13 @@ class debugHelp extends simplePlugin
       }
       $node = [
         'img'       => $img,
-        'name'      => $infos['name'],
+        'name'      => $infos['name'].' ('.$type.')',
         'attrs'     => [],
         'subnodes'  => []
       ];
-      foreach (['aclCategory', 'mainAttr', 'ou', 'filter', 'tabClass', 'tabGroup', 'mainTab', 'management'] as $key) {
+      foreach (['description','aclCategory','ou','mainAttr','nameAttr','filter','filterRDN','tabClass','tabGroup','mainTab','management','templateActive','snapshotActive','archiveActive'] as $key) {
         if (isset($infos[$key])) {
-          if ($infos[$key] != '') {
-            $node['attrs'][$key] = [$infos[$key]];
-          } else {
-            $node['attrs'][$key] = '&nbsp;';
-          }
+          $node['attrs'][$key] = var_export($infos[$key], TRUE);
         }
       }
       try {
@@ -99,17 +96,18 @@ class debugHelp extends simplePlugin
       } catch (FusionDirectoryException $e) {
         $node['attrs']['count'] = $e->getMessage();
       }
-      $dump[] = $node;
+      $dump[$type] = $node;
     }
+    ksort($dump);
 
     $this->dump = $dump;
   }
 
-  function execute ()
+  public function render (): string
   {
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');
-    return parent::execute();
+    return parent::render();
   }
 
   /*!
@@ -163,7 +161,7 @@ class debugHelp extends simplePlugin
         $nodes  .= "\t".'node [shape=plaintext,label="'.$tabclass.'",color=white] '.$tabclass.";\n";
       }
       foreach ($tabs as $tab) {
-        if (!class_available($tab['CLASS']))  {
+        if (!class_available($tab['CLASS'])) {
           continue;
         }
         if ($tabclass == 'tabclass_SERVERSERVICE') {
@@ -187,6 +185,19 @@ class debugHelp extends simplePlugin
     $code .= "}\n";
     send_binary_content($code, 'fusiondirectory.gv');
   }
-}
 
-?>
+  static function mainInc ($classname = NULL, $entry_dn = NULL, $tabs = FALSE, $edit_mode = FALSE, $objectType = FALSE)
+  {
+    global $config;
+
+    if ($classname === NULL) {
+      $classname = get_called_class();
+    }
+
+    if ($entry_dn === NULL) {
+      $entry_dn = $config->current['BASE'];
+    }
+
+    parent::mainInc($classname, $entry_dn, $tabs, $edit_mode, $objectType);
+  }
+}

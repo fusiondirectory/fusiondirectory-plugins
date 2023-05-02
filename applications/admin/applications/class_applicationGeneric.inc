@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,16 +21,14 @@
 
 class application extends simplePlugin
 {
-  var $objectclasses = ['fdDesktopApplication'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Application'),
       'plDescription' => _('Application information'),
+      'plObjectClass' => ['fdDesktopApplication'],
       'plObjectType'  => ['application' => [
         'name'    => _('Application'),
-        'filter'  => 'objectClass=fdDesktopApplication',
         'ou'      => get_ou('applicationsRDN'),
         'icon'    => 'geticon.php?context=mimetypes&icon=application-x-executable&size=16',
       ]],
@@ -39,7 +37,7 @@ class application extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -115,7 +113,7 @@ class application extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
 
     $filename = './plugins/applications/images/default_icon.png';
 
@@ -129,4 +127,3 @@ class application extends simplePlugin
     }
   }
 }
-?>

@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+  Copyright (C) 2016-2017  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,9 +23,19 @@ class opsiLogView extends simplePlugin
   var $mac;
   var $o_queue;
 
-  var $displayHeader  = FALSE;
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'   => _('OPSI Logs'),
+      'plDescription' => _('OPSI Logs Viewer'),
+      'plPriority'    => 30,
+      'plObjectType'  => ['workstation'],
 
-  static function getAttributesInfo ()
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    ];
+  }
+
+  static function getAttributesInfo (): array
   {
     return [
       'logs' => [
@@ -42,19 +52,6 @@ class opsiLogView extends simplePlugin
           ),
         ]
       ]
-    ];
-  }
-
-  /* Return plugin information */
-  static function plInfo ()
-  {
-    return [
-      'plShortName'   => _('OPSI Logs'),
-      'plDescription' => _('OPSI Logs Viewer'),
-      'plPriority'    => 30,
-      'plObjectType'  => ['workstation'],
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
@@ -79,7 +76,8 @@ class opsiLogView extends simplePlugin
         /* Query for log files */
         $res = $this->o_queue->append_call('System.list_logs', $this->mac, ['args' => []]);
         if ($this->o_queue->is_error()) {
-          msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+          $error = new FusionDirectoryError(msgPool::siError($this->o_queue->get_error()));
+          $error->display();
         }
 
         /* Check if there is at least one log file */
@@ -110,22 +108,22 @@ class opsiLogView extends simplePlugin
     }
     $res = $this->o_queue->append_call('System.get_log', $this->mac, ['args' => [$this->available_logs]]);
     if ($this->o_queue->is_error()) {
-      msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+      $error = new FusionDirectoryError(msgPool::siError($this->o_queue->get_error()));
+      $error->display();
     } else {
-      $value = nl2br(htmlentities($res, ENT_COMPAT, 'UTF-8'));
+      $value = nl2br(htmlescape($res));
       $this->attributesAccess['display_log']->setPostValue($value);
       $this->attributesAccess['display_log']->setValue($value);
     }
   }
 
-  function save ()
+  function save (): array
   {
     return [];
   }
 
-  function remove ($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     return [];
   }
 }
-?>

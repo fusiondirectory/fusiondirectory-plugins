@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -36,42 +37,32 @@ class DiskEntryDialog extends GenericDialog
     }
     $this->dialog = new $this->dialogClass($simplePlugin->dn, $attribute, $disk, $diskType);
 
-    $base = $simplePlugin->dn;
-    if ($base == 'new') {
-      $base = $simplePlugin->base;
-    }
-    $this->dialog->set_acl_base($base);
+    $this->dialog->base = $simplePlugin->base;
     $this->dialog->set_acl_category('fai');
     if (!empty($disk)) {
       $this->initialDialogValue = $disk;
     }
   }
 
-  function dialog_execute ()
+  protected function handleFinish ()
   {
-    $this->dialog->save_object();
-    return $this->dialog->execute();
-  }
-
-  function handle_finish ()
-  {
-    $this->dialog->save_object();
+    $this->dialog->update();
     $msgs = $this->dialog->check();
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
-      return $this->dialog->execute();
+      return;
     }
 
     $this->attribute->diskConfigured($this->dialog->save());
-    return FALSE;
+    unset($this->dialog);
   }
 
-  function handle_cancel ()
+  protected function handleCancel ()
   {
     if ($this->initialDialogValue !== NULL) {
-      $this->attribute->addValue($this->initialDialogValue);
+      $this->attribute->addValue('', $this->initialDialogValue);
     }
-    return FALSE;
+    unset($this->dialog);
   }
 }
 
@@ -105,14 +96,20 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     $buttons = $this->renderInputField(
       'submit',
       'add'.$id.'_dialog',
-      ['value' => _('Add disk')]
+      [
+        'value'           => _('Add disk'),
+        'formnovalidate'  => 'formnovalidate'
+      ]
     );
 
     if (!isset($this->value['raid'])) {
       $buttons .= $this->renderInputField(
         'submit',
         'add'.$id.'_dialog_raid',
-        ['value' => _('Add RAID')]
+        [
+          'value'           => _('Add RAID'),
+          'formnovalidate'  => 'formnovalidate'
+        ]
       );
     }
 
@@ -120,7 +117,10 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       $buttons .= $this->renderInputField(
         'submit',
         'add'.$id.'_dialog_lvm',
-        ['value' => _('Add LVM')]
+        [
+          'value'           => _('Add LVM'),
+          'formnovalidate'  => 'formnovalidate'
+        ]
       );
     }
 
@@ -128,7 +128,10 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       $buttons .= $this->renderInputField(
         'submit',
         'add'.$id.'_dialog_cryptsetup',
-        ['value' => _('Add cryptsetup')]
+        [
+          'value'           => _('Add cryptsetup'),
+          'formnovalidate'  => 'formnovalidate'
+        ]
       );
     }
 
@@ -153,7 +156,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
     global $config;
     if (isset($attrs['dn'])) {
@@ -187,8 +190,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
         // Transform potential lvm information
         if (isset($subattrs['FAIlvmDevice'])) {
           for ($i = 0; $i < $subattrs['FAIlvmDevice']['count']; $i++) {
-            $name = $subattrs['FAIlvmDevice'][$i];
-            $diskInfos['FAIlvmDevice'][$name] = $name;
+            $diskInfos['FAIlvmDevice'][] = $subattrs['FAIlvmDevice'][$i];
           }
         }
 
@@ -219,7 +221,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Not saving anything into base node */
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
   }
 
@@ -236,7 +238,8 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     foreach ($delete as $dn) {
       $ldap->rmdir_recursive($dn);
       if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+        $error = new SimplePluginLdapError($this, $dn, LDAP_DEL, $ldap->get_error(), $ldap->get_errno());
+        $error->display();
       }
     }
     /* Then add our values */
@@ -277,7 +280,8 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     }
     $ldap->add($attrs);
     if (!$ldap->success()) {
-      msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+      $error = new SimplePluginLdapError($this, $dn, LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+      $error->display();
     }
   }
 
@@ -303,17 +307,16 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
 class faiPartitionTable extends faiSimplePluginClass
 {
-  var $objectclasses    = ['top','FAIclass','FAIpartitionTable'];
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('Partition table'),
       'plDescription' => _('FAI partition table'),
+      'plObjectClass' => ['FAIclass','FAIpartitionTable'],
+      'plFilter'      => '(objectClass=FAIpartitionTable)',
       'plObjectType'  => [
         'faiPartitionTable' => [
           'name'        => _('FAI partition table'),
-          'filter'      => 'objectClass=FAIpartitionTable',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiPartitionTableRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-partitiontable&size=16'
@@ -324,7 +327,7 @@ class faiPartitionTable extends faiSimplePluginClass
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -359,16 +362,16 @@ class faiPartitionTable extends faiSimplePluginClass
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
   }
 
-  protected function shouldSave ()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -385,4 +388,3 @@ class faiPartitionTable extends faiSimplePluginClass
     return $ret;
   }
 }
-?>

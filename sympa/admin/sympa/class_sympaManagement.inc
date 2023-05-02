@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2012-2018 FusionDirectory
+  Copyright (C) 2012-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,26 +20,18 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sympaManagement extends simpleManagement
+class sympaManagement extends management
 {
-  // Tab definition
-  protected $objectTypes  = ['sympaAlias'];
-
-  protected $autoFilterAttributes = ['dn', 'cn', 'description'];
-
-  /* Return plugin information for acl handling  */
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Sympa'),
-      'plDescription' => _('Sympa management'),
+      'plTitle'       => _('Sympa management'),
+      'plDescription' => _('Manage sympa aliases'),
       'plIcon'        => 'geticon.php?context=applications&icon=sympa&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 26,
       'plManages'     => ['sympaAlias'],
-
-      'plProvidedAcls' => []
     ];
   }
 }
-?>

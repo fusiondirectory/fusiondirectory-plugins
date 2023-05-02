@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,7 @@
 
 class simpleMailMethodService extends simpleService
 {
-
-  protected function prepare_save ()
+  protected function prepare_save (): array
   {
     if (!$this->shouldSave()) {
       // Reset mail server cache now as post_save won’t be called
@@ -47,16 +46,13 @@ class simpleMailMethodService extends simpleService
 
 class serviceIMAP extends simpleMailMethodService
 {
-  /* This plugin only writes its objectClass */
-  var $objectclasses = ['fdImapServer'];
-
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
-      'plShortName'   => _('IMAP/POP3 generic service'),
-      'plDescription' => _('IMAP/POP3').' ('._('Services').')',
+      'plShortName'   => _('IMAP generic service'),
+      'plDescription' => _('IMAP').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=imap&size=16',
+      'plObjectClass' => ['fdImapServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -65,14 +61,13 @@ class serviceIMAP extends simpleMailMethodService
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [];
   }
 
-  function execute ()
+  function render (): string
   {
-    return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
+    return '<b>This server runs an IMAP server</b>'.parent::render();
   }
 }
-?>

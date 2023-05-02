@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+
+  Copyright (C) 2013-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,8 +21,7 @@
 
 class opsiClient extends simplePlugin
 {
-  var $objectclasses  = ['opsiClient'];
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
   var $inheritance = ['gosaGroupOfNames' => 'member'];
 
@@ -30,12 +30,13 @@ class opsiClient extends simplePlugin
 
   protected $initialOpsiId = NULL;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'   => _('OPSI client'),
       'plDescription' => _('Edit OPSI client settings'),
-      'plSelfModify'  => FALSE,
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=opsi&size=16',
+      'plObjectClass' => ['opsiClient'],
       'plObjectType'  => ['workstation', 'ogroup-dynamic'],
       'plDepends'     => ['sambaSystemTab'],
       'plConflicts'   => ['debconfStartup','faiStartup'],
@@ -49,7 +50,7 @@ class opsiClient extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -132,9 +133,9 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     if ($this->member_of_group) {
       if ($this->fdOpsiLocalbootInherit) {
         $this->fdOpsiServerDn = $this->group_attrs['fdOpsiServerDn'][0];
@@ -143,9 +144,10 @@ class opsiClient extends simplePlugin
         $this->attributesAccess['fdOpsiServerDn']->setDisabled(FALSE);
       }
     }
+    return TRUE;
   }
 
-  function prepare_save ()
+  function prepare_save (): array
   {
     if ($this->member_of_group && (($this->fdOpsiProfileDn == 'inherited') || $this->fdOpsiLocalbootInherit)) {
       $this->fdOpsiServerDn = 'inherited';
@@ -153,7 +155,7 @@ class opsiClient extends simplePlugin
     return parent::prepare_save();
   }
 
-  function save ()
+  function save (): array
   {
     global $config;
     if ($this->initially_was_account && $this->editing_group() && !$this->is_template) {
@@ -168,23 +170,18 @@ class opsiClient extends simplePlugin
       }
       if (!empty($macAddresses)) {
         $ldap->cat($this->fdOpsiServerDn, ['macAddress']);
-        if ($attrs = $ldap->fetch()) {
-          $serverMac = $attrs['macAddress'][0];
-        } else {
-          msg_dialog::display(
-            _('Could not get macAddress for OPSI server!'),
-            msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
-          );
-        }
-        $s_daemon   = new supportDaemon();
-        if ($s_daemon->is_available()) {
-          $s_daemon->append_call('OPSI.delete', [$serverMac], ['args' => [$macAddresses]]);
-          if ($s_daemon->is_error()) {
-            msg_dialog::display(
-              _('Could not remove OPSI information'),
-              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-            );
+        if (($attrs = $ldap->fetch()) && isset($attrs['macAddress'][0])) {
+          $s_daemon   = new supportDaemon();
+          if ($s_daemon->is_available()) {
+            $s_daemon->append_call('OPSI.delete', [$attrs['macAddress'][0]], ['args' => [$macAddresses]]);
+            if ($s_daemon->is_error()) {
+              $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+              $error->display();
+            }
           }
+        } else {
+          $error = new FusionDirectoryError(htmlescape(_('Could not get macAddress for OPSI server!')));
+          $error->display();
         }
       }
     }
@@ -197,6 +194,8 @@ class opsiClient extends simplePlugin
     if ($this->is_account && !$this->is_template) {
       $this->update_or_insert();
     }
+
+    return $errors;
   }
 
   function getMacAddresses ()
@@ -211,14 +210,18 @@ class opsiClient extends simplePlugin
           $macAddresses[] = $attrs['macAddress'][0];
         } else {
           if ($ldap->success()) {
-            $error = _('This member was not found or has no macAddress');
+            $errorText = _('This member was not found or has no macAddress');
           } else {
-            $error = $ldap->get_error();
+            $errorText = $ldap->get_error();
           }
-          msg_dialog::display(
-            sprintf(_('Could not get macAddress for "%s"'), $member),
-            msgPool::ldaperror($error), ERROR_DIALOG
+          $error = new FusionDirectoryError(
+            nl2br(sprintf(
+              htmlescape(_("Could not get macAddress for \"%s\":\n%s")),
+              htmlescape($member),
+              htmlescape($errorText)
+            ))
           );
+          $error->display();
         }
       }
     } else {
@@ -244,15 +247,13 @@ class opsiClient extends simplePlugin
         $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, []);
       }
       if ($s_daemon->is_error()) {
-        msg_dialog::display(
-          _('Could not update OPSI information'),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
       }
     }
   }
 
-  function remove ($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     if ($this->member_of_group && !$this->is_template) {
       // If the winstation is member of an ogroup which has OPSI activated, we must update_or_insert information
@@ -263,7 +264,7 @@ class opsiClient extends simplePlugin
     return parent::remove($fulldelete);
   }
 
-  protected function ldap_remove ()
+  protected function ldap_remove (): array
   {
     global $config;
 
@@ -291,10 +292,8 @@ class opsiClient extends simplePlugin
         if ($s_daemon->is_available()) {
           $s_daemon->append_call('OPSI.delete', $macAddresses, []);
           if ($s_daemon->is_error()) {
-            msg_dialog::display(
-              _('Could not remove OPSI information'),
-              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-            );
+            $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+            $error->display();
           }
         }
       }
@@ -335,28 +334,14 @@ class opsiClient extends simplePlugin
 
     $s_daemon = new supportDaemon();
     if (!$s_daemon->is_available()) {
-      msg_dialog::display(
-        _('Could not contact argonaut server'),
-        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-      );
+      $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+      $error->display();
       return;
     }
-    $ldap->cat($fdOpsiServerDn);
-    if ($attrs = $ldap->fetch()) {
-      if (isset($attrs['macAddress'][0])) {
-        $macAddress = $attrs['macAddress'][0];
-      } else {
-        msg_dialog::display(
-          _('No mac address'),
-          sprintf(_('Server %s has no mac address configured in the LDAP'), $fdOpsiServerDn), ERROR_DIALOG
-        );
-        return FALSE;
-      }
-    } else {
-      msg_dialog::display(
-        sprintf(_('Could not find %s in the LDAP'), $fdOpsiServerDn),
-        msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
-      );
+    try {
+      $macAddress = opsiProfile::getOpsiServerMac($fdOpsiServerDn);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
       return FALSE;
     }
     $macAddresses = $this->getMacAddresses();
@@ -372,7 +357,7 @@ class opsiClient extends simplePlugin
         }
         $text = '';
         foreach ($infos as $info) {
-          $text .= htmlentities(sprintf('%s - %s', $info['id'], $info['lastSeen']), ENT_COMPAT, 'UTF-8')."<br/>\n";
+          $text .= htmlescape(sprintf('%s - %s', $info['id'], $info['lastSeen']))."<br/>\n";
         }
         $this->lastSeen = $text;
       }
@@ -381,10 +366,8 @@ class opsiClient extends simplePlugin
       $opsi_args  = ['id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion'];
       $localboots = $s_daemon->append_call('OPSI.get_localboots', $macAddress, ['args' => [$opsi_args]]);
       if ($s_daemon->is_error()) {
-        msg_dialog::display(
-          _('Failed to contact OPSI server'),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
       $this->products[$this->fdOpsiServerDn]['localboots'] = [];
@@ -393,10 +376,8 @@ class opsiClient extends simplePlugin
       }
     }
     if ($s_daemon->is_error()) {
-      msg_dialog::display(
-        _('Failed to contact OPSI server'),
-        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-      );
+      $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+      $error->display();
       return;
     }
     $choices = [];
@@ -422,5 +403,3 @@ class opsiClient extends simplePlugin
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[1]->setChoices($actions);
   }
 }
-
-?>

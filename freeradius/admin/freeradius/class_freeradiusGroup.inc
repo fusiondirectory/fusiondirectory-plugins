@@ -1,9 +1,10 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2009 GONICUS GmbH
   Copyright (C) 2012 WILLIAME Jeremy
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,61 +21,45 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class freeradiusGroup extends simplePlugin {
+class freeradiusGroup extends simplePlugin
+{
+  protected $displayHeader  = TRUE;
 
-  var $displayHeader = TRUE;
-  var $objectclasses = ['radiusprofile'];
-
-  /*!
-   * \brief Plugin information
-   */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
-      'plShortName'       => _('Freeradius'),
-      'plDescription'     => _('This Plugin is for Radius accounting based in FreeRadius'),
-      'plIcon'            => 'geticon.php?context=applications&icon=freeradius&size=48',
-      'plSmallIcon'       => 'geticon.php?context=applications&icon=freeradius&size=16',
-      'plObjectType'      => ['group'],
-      'plProvidedAcls'    => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Freeradius'),
+      'plDescription'   => _('FreeRadius information'),
+      'plIcon'          => 'geticon.php?context=applications&icon=freeradius&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=freeradius&size=16',
+      'plObjectClass'   => ['radiusprofile'],
+      'plObjectType'    => ['group'],
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
-    // Attributes are grouped by section
-    'section1' => [
+      'main' => [
         'name'  => _('Support 802.1x'),
         'attrs' => [
           new StringAttribute(
-            _('Tunnel medium type'),
-            _('Name of the tunnel medium type'),
-            'radiusTunnelMediumType',
-            TRUE,
+            _('Tunnel medium type'), _('Name of the tunnel medium type'),
+            'radiusTunnelMediumType', TRUE,
             'IEEE-802'
           ),
             new StringAttribute(
-            _('Tunnel type'),
-            _('Name of the tunnel type'),
-            'radiusTunnelType',
-            TRUE,
+            _('Tunnel type'), _('Name of the tunnel type'),
+            'radiusTunnelType', TRUE,
             'VLAN'
           ),
           new StringAttribute(
-            _('VLAN id'),
-            _('VLAN identifier'),
-            'radiusTunnelPrivateGroupId',
-            FALSE,
-            ''
-          )
+            _('VLAN id'), _('VLAN identifier'),
+            'radiusTunnelPrivateGroupId', FALSE
+          ),
         ]
       ],
     ];
   }
 }
-
-?>

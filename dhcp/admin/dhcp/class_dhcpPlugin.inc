@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2018  FusionDirectory
+
+  Copyright (C) 2016-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,7 +25,7 @@ class dhcpPlugin extends simplePlugin
 
   protected $base;
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -90,23 +91,34 @@ class dhcpPlugin extends simplePlugin
     } else {
       trigger_error('Invalid use of dhcpPlugin class');
     }
-    $this->set_acl_base($this->base);
   }
 
-  function execute ()
+  public function render (): string
   {
-    return parent::execute()."\n".
+    return parent::render()."\n".
     '<p class="plugbottom">'."\n".
     '  <input type="submit" name="dhcp_save" value="'.msgPool::addButton().'"/>&nbsp;'."\n".
-    '  <input type="submit" name="dhcp_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
+    '  <input type="submit" formnovalidate="formnovalidate" name="dhcp_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
     '</p>';
   }
 
-  function save ()
+  /*
+   * Returns an array of attributes values, with all values being arrays.
+   * */
+  function save (): array
   {
     $this->dn = $this->compute_dn();
     @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, 'save');
     $this->prepare_save();
+    foreach ($this->attrs as $key => $value) {
+      if (!is_array($value)) {
+        if ($value == '') {
+          $this->attrs[$key] = [];
+        } else {
+          $this->attrs[$key] = [$value];
+        }
+      }
+    }
     $this->attrs['cn']          = [$this->cn];
     $this->attrs['objectClass'] = $this->objectclasses;
     $this->attrs['dn']          = $this->dn;
@@ -114,7 +126,7 @@ class dhcpPlugin extends simplePlugin
     return $this->attrs;
   }
 
-  function compute_dn ()
+  function compute_dn (): string
   {
     return 'cn='.ldap_escape_dn($this->attributesAccess['cn']->computeLdapValue()).','.$this->base;
   }

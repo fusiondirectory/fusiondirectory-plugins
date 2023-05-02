@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,19 +21,14 @@
 
 class nisObject extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses  = ['nisObject'];
-
-  /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('Directory'),
       'plDescription'   => _('Directory'),
+      'plObjectClass'   => ['nisObject'],
       'plObjectType'    => ['nisObject' => [
         'name'        => _('Directory'),
-        'filter'      => 'objectClass=nisObject',
         'ou'          => get_ou('autofsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=autofs-nis-object&size=16',
         'mainAttr'    => 'cn',
@@ -42,12 +38,13 @@ class nisObject extends simplePlugin
           ['nisMap', 'nisMapName'],
         ],
       ],
+      'plSearchAttrs' => ['nisMapName', 'nisMapEntry'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -80,10 +77,11 @@ class nisObject extends simplePlugin
     $this->attributesAccess['nisMapName']->setChoices($this->getMountPoints());
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->attributesAccess['nisMapName']->setChoices($this->getMountPoints());
+    return TRUE;
   }
 
   function getMountPoints ()
@@ -100,17 +98,16 @@ class nisObject extends simplePlugin
   }
 
   /* We need to fix the base */
-  function get_allowed_bases ()
+  function get_allowed_bases (): array
   {
     $this->base = preg_replace('/^nisMapName=[^,]+,/', '', $this->base);
     return parent::get_allowed_bases();
   }
 
-  function compute_dn ()
+  function compute_dn (): string
   {
     return 'cn='.ldap_escape($this->attributesAccess['cn']->getValue(), '', LDAP_ESCAPE_DN).','.
             'nisMapName='.ldap_escape($this->nisMapName, '', LDAP_ESCAPE_DN).','.
               get_ou('autofsRDN').$this->base;
   }
 }
-?>

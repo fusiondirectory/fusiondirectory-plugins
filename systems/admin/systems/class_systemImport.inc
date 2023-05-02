@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018  FusionDirectory
+
+  Copyright (C) 2014-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,9 +21,9 @@
 
 class ImportServerAttribute extends ObjectSelectAttribute
 {
-  function __construct ($label, $description, $ldapName, $filter, $acl = "")
+  function __construct (string $label, string $description, string $ldapName, $objectFilter = '', $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, TRUE, 'server', NULL, $filter, $acl);
+    parent::__construct($label, $description, $ldapName, TRUE, ['server'], 'dn', 'nameAttr', $objectFilter, $acl);
     $this->setInLdap(FALSE);
   }
 }
@@ -31,7 +32,7 @@ class systemImport extends simplePlugin
 {
   protected $types = [];
 
-  static function getAttributesInfo ($filter = '')
+  static function getAttributesInfo (string $filter = ''): array
   {
     return [
       'import' => [
@@ -84,11 +85,12 @@ class systemImport extends simplePlugin
 
   function massImport ($hosts, $type, $template_dn, $base = NULL)
   {
-    global $config;
+    global $config, $ui;
+
     if ($base === NULL) {
       $base = $config->current['BASE'];
     }
-    session::global_set("CurrentMainBase", $base);
+    $ui->setCurrentBase($base);
 
     $messages = [];
     $dhcps    = [];
@@ -107,29 +109,20 @@ class systemImport extends simplePlugin
       }
       $cn   = $m[1];
       $zone = $m[2];
-      if (empty($host['ipAddress'])) {
-        $host['ipAddress'] = [];
-      } elseif (!is_array($host['ipAddress'])) {
-        $host['ipAddress'] = [$host['ipAddress']];
-      }
-      if (empty($host['hardwareAddress'])) {
-        $host['hardwareAddress'] = [];
-      } elseif (!is_array($host['hardwareAddress'])) {
-        $host['hardwareAddress'] = [$host['hardwareAddress']];
-      }
 
-      if (empty($template_dn)) {
+      if (!isset($template)) {
         $objectType = $type;
         if (isset($host['objectType'])) {
           $objectType = $host['objectType'];
         }
         $tabObject = objects::create($objectType);
-        $tabObject->set_acl_base($base);
         $baseObject = $tabObject->getBaseObject();
         $baseObject->cn           = $cn;
         $baseObject->description  = $host['description'];
-        $baseObject->ipHostNumber = $host['ipAddress'];
-        $baseObject->macAddress   = $host['hardwareAddress'];
+        if (isset($host['interfaces'])) {
+          $tabObject->by_object['interfacesManagement']->networkInterfaces = $host['interfaces'];
+        }
+        $tabObject->update();
       } else {
         $template->reset();
         // For now we only need to import workstations
@@ -138,9 +131,10 @@ class systemImport extends simplePlugin
             'base'          => $base,
             'cn'            => $cn,
             'description'   => $host['description'],
-            'ipHostNumber'  => $host['ipAddress'],
-            'macAddress'    => $host['hardwareAddress'],
-          ]
+          ],
+          'interfacesManagement' => [
+            'networkInterfaces' => $host['interfaces'],
+          ],
         ];
         $error = $template->deserialize($values);
         if ($error !== TRUE) {
@@ -231,15 +225,16 @@ class systemImport extends simplePlugin
     $this->attributesAccess['template_dn']->setChoices(array_keys($templates), array_values($templates));
   }
 
-  function execute ()
+  public function render (): string
   {
     $smarty = get_smarty();
     $smarty->assign('importResult', $this->messages);
-    return parent::execute();
+    return parent::render();
   }
 
-  function save ()
+  function save (): array
   {
+    return [];
   }
 
   function handle_import ()
@@ -257,9 +252,8 @@ class systemImport extends simplePlugin
     die('Not implemented');
   }
 
-  protected function getExtraTabs ($server_dn, $host)
+  protected function getExtraTabs ($server_dn, $host): array
   {
     return [];
   }
 }
-?>

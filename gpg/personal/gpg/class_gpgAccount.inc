@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+  Copyright (C) 2013-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,32 +20,15 @@
 
 class gpgAccount extends simplePlugin
 {
-  var $displayHeader = TRUE;
-  var $objectclasses = ['fdGpgAccount'];
+  protected $displayHeader  = TRUE;
 
-  // The main function : information about attributes
-  static function getAttributesInfo ()
-  {
-    return [
-      'main' => [
-        'name'  => _('GPG keys'),
-        'class' => ['fullwidth'],
-        'attrs' => [
-          new PgpKeyAttribute(
-            '', _('GPG keys of this user'),
-            'fdUserKeyDN', TRUE
-          )
-        ]
-      ]
-    ];
-  }
-
-  static function plInfo ()
+  static function plInfo (): array
   {
     return [
       'plShortName'     => _('GPG'),
       'plDescription'   => _('Edit user\'s GPG IDs'),
       'plSelfModify'    => TRUE,
+      'plObjectClass'   => ['fdGpgAccount'],
       'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=applications&icon=gpg&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=gpg&size=16',
@@ -53,5 +36,20 @@ class gpgAccount extends simplePlugin
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
+
+  static function getAttributesInfo (): array
+  {
+    return [
+      'main' => [
+        'name'  => _('GPG keys'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new PgpKeysAttribute(
+            '', _('GPG keys of this user'),
+            'fdUserKeyDN', TRUE
+          )
+        ]
+      ]
+    ];
+  }
 }
-?>

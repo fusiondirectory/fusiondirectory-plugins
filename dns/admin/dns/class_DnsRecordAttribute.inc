@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018  FusionDirectory
+  Copyright (C) 2015-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 
 class LocRecordAttribute extends CompositeAttribute
 {
-  function __construct ($description, $ldapName, $attributes, $acl = '', $label = NULL)
+  function __construct ($description, $ldapName, array $attributes, $acl = '', $label = NULL)
   {
     $readFormat = '/^(?P<lat>[[:digit:] \.]+ [NS])\s+'.
                   '(?P<long>[[:digit:] \.]+ [EW])\s+'.
@@ -29,7 +29,7 @@ class LocRecordAttribute extends CompositeAttribute
     parent::__construct($description, $ldapName, $attributes, $readFormat, FALSE, $acl, $label);
   }
 
-  function writeValues ($values)
+  function writeValues (array $values)
   {
     /* '%s %s %.2fm[ %.2fm[ %.2fm[ %.2fm]]]' */
     $str = sprintf('%s %s %.2fm', $values['lat'], $values['long'], $values['alt']);
@@ -48,7 +48,7 @@ class LocRecordAttribute extends CompositeAttribute
 
 class LocRecordLatLongAttribute extends CompositeAttribute
 {
-  function __construct ($label, $description, $ldapName, $attributes, $acl = '')
+  function __construct ($label, $description, $ldapName, array $attributes, $acl = '')
   {
     $readFormat = '/^(?P<degrees>[[:digit:]]+)'.
                   '(\s+(?P<minutes>[[:digit:]]+)(\s+(?P<seconds>[[:digit:]\.]+))?)?'.
@@ -58,8 +58,9 @@ class LocRecordLatLongAttribute extends CompositeAttribute
     $this->setLinearRendering(TRUE);
   }
 
-  function writeValues ($values)
+  function writeValues (array $values)
   {
+    /* The format for lat/long is: degrees [minutes [seconds]] {"N"|"S"|"E"|"W"} */
     $str = $values['degrees'];
     if ($values['minutes'] != '') {
       $str .= ' '.$values['minutes'];
@@ -78,13 +79,24 @@ class DnsRecordAttribute extends CompositeAttribute
   protected $parentIPs6 = [''];
   protected $parentFQDN = '';
 
+  /*
+   * Not included records:
+   * a6Record     - A6
+   * hInfoRecord  - HINFO
+   * mDRecord     - MD
+   * mInfoRecord  - MINFO
+   * nXTRecord    - NXT
+  */
   public static $types = [
     'aRecord'     => 'A',
     'aAAARecord'  => 'AAAA',
     'aFSDBRecord' => 'AFSDB',
+    'cAARecord'   => 'CAA',
     'certRecord'  => 'CERT',
     'cNAMERecord' => 'CNAME',
     'dSRecord'    => 'DS',
+    'dKIMRecord'  => 'DKIM (TXT)',
+    'dMARCRecord' => 'DMARC (TXT)',
     'KeyRecord'   => 'KEY',
     'kXRecord'    => 'KX',
     'LocRecord'   => 'LOC',
@@ -95,10 +107,20 @@ class DnsRecordAttribute extends CompositeAttribute
     'pTRRecord'   => 'PTR',
     'rRSIGRecord' => 'RRSIG',
     'SigRecord'   => 'SIG',
+    'sPFRecord'   => 'SPF (TXT)',
     'sRVRecord'   => 'SRV',
     'sSHFPRecord' => 'SSHFP',
     'tXTRecord'   => 'TXT',
   ];
+
+  public static function getLdapAttributesList (): array
+  {
+    /* DKIM and DMARC records are not in LDAP schemas, filtering them out (it’s stored in tXTRecord anyway) */
+    $types = static::$types;
+    unset($types['dKIMRecord']);
+    unset($types['dMARCRecord']);
+    return array_keys($types);
+  }
 
   /* Types which might match reverse zone records */
   public static $reverseTypes = [
@@ -292,6 +314,21 @@ class DnsRecordAttribute extends CompositeAttribute
     );
   }
 
+  private function loadSpfRecordFields (string $ldapName)
+  {
+    $this->attributes[1] = new SpfRecordAttribute($ldapName, TRUE);
+  }
+
+  private function loadDkimRecordFields (string $ldapName)
+  {
+    $this->attributes[1] = new DkimRecordAttribute(_('DKIM Record'), $ldapName);
+  }
+
+  private function loadDmarcRecordFields (string $ldapName)
+  {
+    $this->attributes[1] = new DmarcRecordAttribute(_('DMARC Record'), $ldapName);
+  }
+
   protected function updateFields ()
   {
     $type = $this->attributes[0]->getValue();
@@ -311,6 +348,37 @@ class DnsRecordAttribute extends CompositeAttribute
             $ldapName, TRUE,
             reset($this->parentIPs6)
           );
+          break;
+        case 'cAARecord':
+          $this->attributes[1] = new CompositeAttribute(
+            _('CAA Record'),
+            $ldapName,
+            [
+              new IntAttribute(
+                _('Flags'), _('Integer representing flags. As of 2021 it should be either 0 or 128 for "issuer critical" flag.'),
+                $ldapName.'_flags', TRUE,
+                0, 255,
+                0
+              ),
+              new SelectAttribute(
+                _('Tag'), _('Which kind of CAA property you want to set'),
+                $ldapName.'_tag', TRUE,
+                ['issue','issuewild','iodef','contactemail','contactphone']
+              ),
+              new StringAttribute(
+                _('Value'), _('Value for the specified tag, without quotes'),
+                $ldapName.'_value', FALSE
+              ),
+            ],
+            '/^([\d]+) ([[:alnum:]]+) "(.*)"$/',
+            '%d %s "%s"'
+          );
+          break;
+        case 'dKIMRecord':
+          $this->loadDkimRecordFields($ldapName);
+          break;
+        case 'dMARCRecord':
+          $this->loadDmarcRecordFields($ldapName);
           break;
         case 'LocRecord':
           $this->loadLocRecordFields($ldapName);
@@ -341,6 +409,9 @@ class DnsRecordAttribute extends CompositeAttribute
             _('Target'), _('Domain name which specifies a host which should be authoritative for the specified class and domain'),
             $ldapName, TRUE
           );
+          break;
+        case 'sPFRecord':
+          $this->loadSpfRecordFields($ldapName);
           break;
         case 'sRVRecord':
           $this->loadSrvRecordFields($ldapName);
@@ -409,7 +480,10 @@ class DnsRecordAttribute extends CompositeAttribute
       $reverse  = $this->attributes[2]->getValue();
 
       if (!static::matchReverseZone($type, $ip, $reverse)) {
-        return _('The entered IP does not match the selected reverse zone');
+        return new SimplePluginCheckError(
+          $this,
+          htmlescape(_('The entered IP does not match the selected reverse zone'))
+        );
       }
     }
   }
@@ -437,7 +511,7 @@ class DnsRecordAttribute extends CompositeAttribute
     return preg_match('/\.'.preg_quote($mask).'$/', $testString);
   }
 
-  function getAcl ()
+  function getAcl (): string
   {
     return $this->getHtmlId().'_'.$this->attributes[0]->getValue();
   }
@@ -447,7 +521,7 @@ class DnsRecordAttribute extends CompositeAttribute
     return FALSE;
   }
 
-  function setAttributes ($attributes)
+  function setAttributes (array $attributes)
   {
     parent::setAttributes($attributes);
     $this->attributes[0]->setAcl($this->getHtmlId());

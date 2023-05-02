@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2013-2018 FusionDirectory
+  Copyright (C) 2013-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,18 +20,14 @@
 
 class repositoryDistribution extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = ['fdBuildRepositoryDistribution'];
-
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('Repository distribution'),
       'plDescription' => _('Repository distribution'),
+      'plObjectClass' => ['fdBuildRepositoryDistribution'],
       'plObjectType'  => ['repoDistribution' => [
         'name'        => _('Repository distribution'),
-        'filter'      => 'objectClass=fdBuildRepositoryDistribution',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'geticon.php?context=applications&icon=repository-distribution&size=16'
@@ -49,7 +45,7 @@ class repositoryDistribution extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -87,7 +83,7 @@ class repositoryDistribution extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
 
     $distros = objects::ls('repoDistribution', 'cn');
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($distros));
@@ -95,5 +91,3 @@ class repositoryDistribution extends simplePlugin
     $this->attributesAccess['fdRepoSection']->attribute->setChoices(array_values($sections));
   }
 }
-
-?>
