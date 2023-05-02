@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
 "Language-Team: Dutch (https://app.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -21,6 +21,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: addons/ldapmanager/class_ldapManagerTabs.inc:28
+msgid "LDAP import/export"
+msgstr "LDAP import/export"
+
+#: addons/ldapmanager/class_ldapManagerTabs.inc:29
+msgid "Allows the import or export of the ldap tree"
+msgstr "Laat de import en export functie van de LDAP tree toe"
+
+#: addons/ldapmanager/class_ldapManagerTabs.inc:33
+msgid "Ldap manager"
+msgstr "Ldap beheerder"
 
 #: addons/ldapmanager/class_ldapExport.inc:28
 msgid "Export Manager"
@@ -239,15 +251,3 @@ msgstr ""
 #, php-format
 msgid "%d entries successfully imported"
 msgstr "%dentrées importées avec succès"
-
-#: addons/ldapmanager/class_ldapManagerTabs.inc:28
-msgid "LDAP import/export"
-msgstr "LDAP import/export"
-
-#: addons/ldapmanager/class_ldapManagerTabs.inc:29
-msgid "Allows the import or export of the ldap tree"
-msgstr "Laat de import en export functie van de LDAP tree toe"
-
-#: addons/ldapmanager/class_ldapManagerTabs.inc:33
-msgid "Ldap manager"
-msgstr "Ldap beheerder"

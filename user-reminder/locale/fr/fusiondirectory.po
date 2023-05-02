@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -21,30 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-
-#: html/class_expiredUserPostpone.inc:70
-msgid "This token is invalid"
-msgstr "Ce jeton n'est pas valide"
-
-#: html/class_expiredUserPostpone.inc:73
-msgid "Token is missing from URL"
-msgstr "Le jeton est absent de l'URL"
-
-#: html/class_expiredUserPostpone.inc:242
-msgid "Contact your administrator, there was a problem with mail server"
-msgstr ""
-"Contactez votre administrateur système, il y a eu un problème avec l'envoi "
-"du message"
-
-#: html/class_expiredUserPostpone.inc:251
-#, php-format
-msgid "Did not find an account with login \"%s\""
-msgstr "Aucun compte utilisateur trouvé avec l'identifiant \"%s\""
-
-#: html/class_expiredUserPostpone.inc:254
-#, php-format
-msgid "Found multiple accounts with login \"%s\""
-msgstr "Plusieurs comptes trouvés avec l’identifiant \"%s\""
 
 #: config/user-reminder/class_userReminderConfig.inc:27
 msgid "Reminder"
@@ -285,6 +261,30 @@ msgstr ""
 "\n"
 "votre compte %2$s a expiré.\n"
 "\n"
+
+#: html/class_expiredUserPostpone.inc:70
+msgid "This token is invalid"
+msgstr "Ce jeton n'est pas valide"
+
+#: html/class_expiredUserPostpone.inc:73
+msgid "Token is missing from URL"
+msgstr "Le jeton est absent de l'URL"
+
+#: html/class_expiredUserPostpone.inc:242
+msgid "Contact your administrator, there was a problem with mail server"
+msgstr ""
+"Contactez votre administrateur système, il y a eu un problème avec l'envoi "
+"du message"
+
+#: html/class_expiredUserPostpone.inc:251
+#, php-format
+msgid "Did not find an account with login \"%s\""
+msgstr "Aucun compte utilisateur trouvé avec l'identifiant \"%s\""
+
+#: html/class_expiredUserPostpone.inc:254
+#, php-format
+msgid "Found multiple accounts with login \"%s\""
+msgstr "Plusieurs comptes trouvés avec l’identifiant \"%s\""
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5

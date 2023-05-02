@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
 "Language-Team: Arabic (https://app.transifex.com/fusiondirectory/teams/12202/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: addons/ldapmanager/class_ldapManagerTabs.inc:28
+msgid "LDAP import/export"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapManagerTabs.inc:29
+msgid "Allows the import or export of the ldap tree"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapManagerTabs.inc:33
+msgid "Ldap manager"
+msgstr ""
 
 #: addons/ldapmanager/class_ldapExport.inc:28
 msgid "Export Manager"
@@ -224,16 +236,4 @@ msgstr ""
 #: addons/ldapmanager/class_ldifManager.inc:194
 #, php-format
 msgid "%d entries successfully imported"
-msgstr ""
-
-#: addons/ldapmanager/class_ldapManagerTabs.inc:28
-msgid "LDAP import/export"
-msgstr ""
-
-#: addons/ldapmanager/class_ldapManagerTabs.inc:29
-msgid "Allows the import or export of the ldap tree"
-msgstr ""
-
-#: addons/ldapmanager/class_ldapManagerTabs.inc:33
-msgid "Ldap manager"
 msgstr ""

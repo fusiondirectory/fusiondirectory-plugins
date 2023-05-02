@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -22,6 +22,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: addons/gpg/class_pgpServerInfo.inc:27 addons/gpg/class_pgpServerInfo.inc:28
+#: addons/gpg/class_pgpServerInfo.inc:35 addons/gpg/class_pgpServerInfo.inc:52
+msgid "GPG server info"
+msgstr "Informations du serveur GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:56
+msgid "Software"
+msgstr "Logiciel"
+
+#: addons/gpg/class_pgpServerInfo.inc:56
+msgid "Which software this GPG key server is running"
+msgstr "Quel logiciel ce serveur de clés GPG utilise"
+
+#: addons/gpg/class_pgpServerInfo.inc:61
+msgid "GPG version"
+msgstr "Version de GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:61
+msgid "Which version of GPG this key server is running"
+msgstr "Version de GPG que ce serveur de clés utilise"
+
+#: addons/gpg/class_pgpServerInfo.inc:66
+msgid "Branch in which keys are stored"
+msgstr "Branche où sont stockées les clés GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:70
+msgid "Keys RDN"
+msgstr "Branche des clés"
+
+#: addons/gpg/class_pgpServerInfo.inc:70
+msgid "Branch under base in which keys are stored"
+msgstr "Branche où sont stockées les clés GPG"
 
 #: personal/gpg/class_gpgAccount.inc:28
 msgid "GPG"
@@ -96,36 +129,3 @@ msgstr "Révoquée"
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:98
 msgid "Disabled"
 msgstr "Désactivée"
-
-#: addons/gpg/class_pgpServerInfo.inc:27 addons/gpg/class_pgpServerInfo.inc:28
-#: addons/gpg/class_pgpServerInfo.inc:35 addons/gpg/class_pgpServerInfo.inc:52
-msgid "GPG server info"
-msgstr "Informations du serveur GPG"
-
-#: addons/gpg/class_pgpServerInfo.inc:56
-msgid "Software"
-msgstr "Logiciel"
-
-#: addons/gpg/class_pgpServerInfo.inc:56
-msgid "Which software this GPG key server is running"
-msgstr "Quel logiciel ce serveur de clés GPG utilise"
-
-#: addons/gpg/class_pgpServerInfo.inc:61
-msgid "GPG version"
-msgstr "Version de GPG"
-
-#: addons/gpg/class_pgpServerInfo.inc:61
-msgid "Which version of GPG this key server is running"
-msgstr "Version de GPG que ce serveur de clés utilise"
-
-#: addons/gpg/class_pgpServerInfo.inc:66
-msgid "Branch in which keys are stored"
-msgstr "Branche où sont stockées les clés GPG"
-
-#: addons/gpg/class_pgpServerInfo.inc:70
-msgid "Keys RDN"
-msgstr "Branche des clés"
-
-#: addons/gpg/class_pgpServerInfo.inc:70
-msgid "Branch under base in which keys are stored"
-msgstr "Branche où sont stockées les clés GPG"

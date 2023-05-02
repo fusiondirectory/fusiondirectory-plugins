@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2023\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -22,117 +22,12 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:28
-#: admin/systems/class_mobilePhoneGeneric.inc:34
-#: admin/systems/class_mobilePhoneGeneric.inc:35
-msgid "Mobile phone"
-msgstr "Mobilní telefon"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:29
-msgid "Mobile phone information"
-msgstr "Údaje o mobilním telefonu"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:53
-#: admin/systems/class_phoneGeneric.inc:50
-#: admin/systems/class_componentGeneric.inc:51
-#: admin/systems/class_workstationGeneric.inc:56
-#: admin/systems/class_printGeneric.inc:57
-msgid "Properties"
-msgstr "Vlastnosti"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:57
-#: admin/systems/class_phoneGeneric.inc:54
-#: admin/systems/interfaces/class_networkInterface.inc:54
-#: admin/systems/services/shares/class_serviceShare.inc:50
-#: admin/systems/class_componentGeneric.inc:55
-#: admin/systems/class_workstationGeneric.inc:60
-#: admin/systems/class_printGeneric.inc:61
-msgid "Name"
-msgstr "Název"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:57
-msgid "The name of the mobile phone"
-msgstr "Název mobilního telefonu"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:61
-#: admin/systems/class_phoneGeneric.inc:58
-#: admin/systems/services/shares/class_serviceShare.inc:54
-#: admin/systems/class_componentGeneric.inc:59
-#: admin/systems/class_workstationGeneric.inc:65
-#: admin/systems/class_printGeneric.inc:65
-msgid "Description"
-msgstr "Popis"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:61
-msgid "A short description of the mobile phone"
-msgstr "Stručný popis mobilního telefonu"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:69
 #: admin/systems/class_phoneGeneric.inc:28
 #: admin/systems/class_phoneGeneric.inc:34
 #: admin/systems/class_phoneGeneric.inc:66
+#: admin/systems/class_mobilePhoneGeneric.inc:69
 msgid "Phone"
 msgstr "Telefon"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:72
-#: admin/systems/class_phoneGeneric.inc:69
-msgid "Serial Number"
-msgstr "Sériové číslo"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:72
-msgid "The serial number of the mobile phone"
-msgstr "Sériové číslo mobilního telefonu"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:76
-msgid "IMEI Number"
-msgstr "IMEI identifikátor"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:76
-msgid "The IMEI number of the mobile phone"
-msgstr "IMEI identifikátor mobilního telefonu"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:81
-msgid "OS"
-msgstr "Operační systém"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:81
-msgid "The Operating System installed on this phone"
-msgstr "Operační systém, nainstalovaný na tomto telefonu"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:87
-msgid "SimCard"
-msgstr "SIM karta"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:90
-#: admin/systems/class_phoneGeneric.inc:73
-msgid "Telephone Number"
-msgstr "Telefoní číslo"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:90
-msgid "The telephone number of the mobile phone"
-msgstr "Telefoní číslo mobilního telefonu"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:94
-msgid "PUK Number"
-msgstr "Kód PUK"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:94
-msgid "The PUK number of the simcard in this mobile phone"
-msgstr "Kód PUK SIM karty v tomto mobilním telefonu"
-
-#: admin/systems/class_terminalGeneric.inc:26
-#: admin/systems/class_terminalGeneric.inc:32
-#: admin/systems/class_terminalGeneric.inc:33
-msgid "Terminal"
-msgstr "Terminál"
-
-#: admin/systems/class_terminalGeneric.inc:27
-msgid "Terminal information"
-msgstr "Informace o terminálu"
-
-#: admin/systems/class_terminalGeneric.inc:50
-msgid "terminal"
-msgstr "terminál"
 
 #: admin/systems/class_phoneGeneric.inc:29
 msgid "Phone information"
@@ -142,17 +37,54 @@ msgstr "Informace o telefonu"
 msgid "Phone hardware"
 msgstr "Jaký telefonní přístroj"
 
+#: admin/systems/class_phoneGeneric.inc:50
+#: admin/systems/class_printGeneric.inc:57
+#: admin/systems/class_workstationGeneric.inc:56
+#: admin/systems/class_componentGeneric.inc:51
+#: admin/systems/class_mobilePhoneGeneric.inc:53
+msgid "Properties"
+msgstr "Vlastnosti"
+
+#: admin/systems/class_phoneGeneric.inc:54
+#: admin/systems/class_printGeneric.inc:61
+#: admin/systems/interfaces/class_networkInterface.inc:54
+#: admin/systems/class_workstationGeneric.inc:60
+#: admin/systems/services/shares/class_serviceShare.inc:50
+#: admin/systems/class_componentGeneric.inc:55
+#: admin/systems/class_mobilePhoneGeneric.inc:57
+msgid "Name"
+msgstr "Název"
+
 #: admin/systems/class_phoneGeneric.inc:54
 msgid "The name of the phone"
 msgstr "Název telefonu"
+
+#: admin/systems/class_phoneGeneric.inc:58
+#: admin/systems/class_printGeneric.inc:65
+#: admin/systems/class_workstationGeneric.inc:65
+#: admin/systems/services/shares/class_serviceShare.inc:54
+#: admin/systems/class_componentGeneric.inc:59
+#: admin/systems/class_mobilePhoneGeneric.inc:61
+msgid "Description"
+msgstr "Popis"
 
 #: admin/systems/class_phoneGeneric.inc:58
 msgid "A short description of the phone"
 msgstr "Stručný popis telefonu"
 
 #: admin/systems/class_phoneGeneric.inc:69
+#: admin/systems/class_mobilePhoneGeneric.inc:72
+msgid "Serial Number"
+msgstr "Sériové číslo"
+
+#: admin/systems/class_phoneGeneric.inc:69
 msgid "The serial number of the phone"
 msgstr "Sériové číslo telefonu"
+
+#: admin/systems/class_phoneGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:90
+msgid "Telephone Number"
+msgstr "Telefoní číslo"
 
 #: admin/systems/class_phoneGeneric.inc:73
 msgid "The telephone number of the phone"
@@ -231,6 +163,98 @@ msgstr "zděděné"
 #: admin/systems/class_terminalStartup.inc:114
 msgid "Local swap"
 msgstr "stránkovat (swap) na místní úložiště"
+
+#: admin/systems/class_terminalGeneric.inc:26
+#: admin/systems/class_terminalGeneric.inc:32
+#: admin/systems/class_terminalGeneric.inc:33
+msgid "Terminal"
+msgstr "Terminál"
+
+#: admin/systems/class_terminalGeneric.inc:27
+msgid "Terminal information"
+msgstr "Informace o terminálu"
+
+#: admin/systems/class_terminalGeneric.inc:50
+msgid "terminal"
+msgstr "terminál"
+
+#: admin/systems/class_printGeneric.inc:27
+#: admin/systems/class_printGeneric.inc:34
+#: admin/systems/class_printGeneric.inc:35
+msgid "Printer"
+msgstr "Tiskárna"
+
+#: admin/systems/class_printGeneric.inc:28
+msgid "Printer information"
+msgstr "Informace o tiskárně"
+
+#: admin/systems/class_printGeneric.inc:61
+msgid "The name of the printer"
+msgstr "Název tiskárny"
+
+#: admin/systems/class_printGeneric.inc:65
+msgid "A short description of the printer"
+msgstr "Stručný popis této tiskárny"
+
+#: admin/systems/class_printGeneric.inc:71
+msgid "Details"
+msgstr "Podrobnosti"
+
+#: admin/systems/class_printGeneric.inc:74
+msgid "Printer location"
+msgstr "kde se tiskárna nachází"
+
+#: admin/systems/class_printGeneric.inc:74
+msgid "The location of the printer"
+msgstr "Umístění tiskárny"
+
+#: admin/systems/class_printGeneric.inc:78
+msgid "Printer URL"
+msgstr "URL adresa tiskárny"
+
+#: admin/systems/class_printGeneric.inc:78
+msgid "The URL of the printer"
+msgstr "URL adresa tiskárny"
+
+#: admin/systems/class_printGeneric.inc:84
+#: admin/systems/class_printGeneric.inc:87
+msgid "Users which are allowed to use this printer"
+msgstr "Uživatelé, kteří mohou používat tuto tiskárnu"
+
+#: admin/systems/class_printGeneric.inc:93
+#: admin/systems/class_printGeneric.inc:96
+msgid "Users which are allowed to administrate this printer"
+msgstr "uživatelé, kteří smějí spravovat tuto tiskárnu"
+
+#: admin/systems/class_printGeneric.inc:104
+msgid "Windows paths"
+msgstr "Popis umístění v MS Windows"
+
+#: admin/systems/class_printGeneric.inc:108
+msgid "Inf file"
+msgstr ".inf soubor"
+
+#: admin/systems/class_printGeneric.inc:108
+msgid "Path to windows inf file for this printer"
+msgstr "Popis umístění .inf souboru pro tuto tiskárnu"
+
+#: admin/systems/class_printGeneric.inc:112
+msgid "Driver directory"
+msgstr "Složka s ovladačem"
+
+#: admin/systems/class_printGeneric.inc:112
+msgid "Path to directory that contains windows drivers for this printer"
+msgstr ""
+"Popis umístění složky, která obsahuje ovladače (pro systém Windows) pro tuto"
+" tiskárnu"
+
+#: admin/systems/class_printGeneric.inc:116
+msgid "Driver name"
+msgstr "Název ovladače"
+
+#: admin/systems/class_printGeneric.inc:116
+msgid "Windows name of the printer driver"
+msgstr "Název ovladače tiskárny v systému Windows"
 
 #: admin/systems/interfaces/class_networkInterface.inc:29
 msgid "Interface"
@@ -342,187 +366,55 @@ msgstr "Položka %s neexistuje"
 msgid "Unknown field \"%s\""
 msgstr "Neznámá kolonka „%s“"
 
-#: admin/systems/class_serverGeneric.inc:26
-#: admin/systems/class_serverGeneric.inc:32
-#: admin/systems/class_serverGeneric.inc:33
-#: admin/systems/class_systemImport.inc:44
-msgid "Server"
-msgstr "Server"
+#: admin/systems/class_workstationGeneric.inc:27
+#: admin/systems/class_workstationGeneric.inc:33
+#: admin/systems/class_workstationGeneric.inc:34
+msgid "Workstation"
+msgstr "pracovní stanice"
 
-#: admin/systems/class_serverGeneric.inc:27
-msgid "Server information"
-msgstr "Informace o serveru"
+#: admin/systems/class_workstationGeneric.inc:28
+msgid "Workstation information"
+msgstr "Informace o počítači"
 
-#: admin/systems/class_serverGeneric.inc:47
-msgid "server"
-msgstr "server"
+#: admin/systems/class_workstationGeneric.inc:49
+msgid "workstation"
+msgstr "pracovní stanice"
 
-#: admin/systems/class_systemManagement.inc:43
-#: admin/systems/class_systemManagement.inc:47
-#: config/systems/class_systemsPluginConfig.inc:28
-#: addons/dashboard/class_dashBoardSystems.inc:30
-msgid "Systems"
-msgstr "Systémy"
-
-#: admin/systems/class_systemManagement.inc:44
-msgid "Systems Management"
-msgstr "Správa systémů"
-
-#: admin/systems/class_systemManagement.inc:45
-msgid "Manage servers, computers, printers, phones and other devices"
-msgstr ""
-
-#: admin/systems/class_systemManagement.inc:86
-msgid "Trigger action"
-msgstr "Spustit akci"
-
-#: admin/systems/class_systemManagement.inc:92
-msgid "Schedule action"
-msgstr "Naplánovat akci"
-
-#: admin/systems/class_systemManagement.inc:101
-msgid "Ping"
-msgstr "Ping"
-
-#: admin/systems/class_systemManagement.inc:133
-#: admin/systems/class_systemManagement.inc:213
+#: admin/systems/class_workstationGeneric.inc:61
 #, php-format
-msgid "System %s has no mac address defined, cannot trigger action"
-msgstr "Systém %s nemá definovánu MAC adresu, akci nelze spustit"
+msgid "The name of the %s"
+msgstr "Název %s"
 
-#: admin/systems/class_systemManagement.inc:155
+#: admin/systems/class_workstationGeneric.inc:66
 #, php-format
-msgid "System %s is currently installing"
-msgstr "Systém %s je nyní instalován"
+msgid "A short description of the %s"
+msgstr "Stručný popis %s"
 
-#: admin/systems/class_systemManagement.inc:182
-#: admin/systems/class_systemManagement.inc:187
-msgid "Action triggered"
-msgstr "Spuštěná akce"
+#: admin/systems/class_workstationGeneric.inc:70
+msgid "Location"
+msgstr "Umístění"
 
-#: admin/systems/class_systemManagement.inc:182
+#: admin/systems/class_workstationGeneric.inc:71
 #, php-format
-msgid "Action called without error (results were \"%s\")"
-msgstr "Akce zavolána bez chyby (výsledky jsou „%s“)"
+msgid "The location of the %s"
+msgstr "Umístění %s"
 
-#: admin/systems/class_systemManagement.inc:187
+#: admin/systems/class_workstationGeneric.inc:75
 #, php-format
-msgid "Action called without error (result was \"%s\")"
-msgstr "Akce zavolána bez chyby (výsledek je „%s“)"
+msgid "Lock this %s"
+msgstr "Uzamknout toto %s"
 
-#: admin/systems/class_systemManagement.inc:248
-msgid "Ping results"
-msgstr "Výsledky z ping"
-
-#: admin/systems/class_systemImport.inc:40
-#: admin/systems/class_systemImport.inc:60
-msgid "Import"
-msgstr "import(ovat)"
-
-#: admin/systems/class_systemImport.inc:44
-msgid "The server you wish to import hosts from"
-msgstr "Server, ze kterého chcete importovat hostitele"
-
-#: admin/systems/class_systemImport.inc:48
-#: admin/systems/services/shares/class_serviceShare.inc:58
-msgid "Type"
-msgstr "Typ"
-
-#: admin/systems/class_systemImport.inc:48
-msgid "Type of objects you wish to import"
-msgstr "Typ objektů, které chcete importovat"
-
-#: admin/systems/class_systemImport.inc:53
-msgid "Template"
-msgstr "Šablona"
-
-#: admin/systems/class_systemImport.inc:53
-msgid "Select a template to apply to imported entries"
-msgstr "Vyberte šablonu, kterou aplikovat na importované položky"
-
-#: admin/systems/class_systemImport.inc:107
+#: admin/systems/class_workstationGeneric.inc:76
 #, php-format
-msgid "Could not parse %s"
-msgstr "Nelze parsovat %s"
+msgid "This will prevent the %s from being reinstalled"
+msgstr "Toto zabrání %s v tom, aby bylo opětovně nainstalováno"
 
-#: admin/systems/class_systemImport.inc:172
-#, php-format
-msgid "No DHCP server found for IPs %s"
-msgstr "Pro IP adresy %s nebyl nalezen žádný DHCP server"
-
-#: admin/systems/class_systemImport.inc:191
-#, php-format
-msgid "No DNS server found for zone %s"
-msgstr "Pro zónu %s nebyl nalezen žádný DNS server"
-
-#: admin/systems/services/shares/class_serviceShare.inc:27
-#: admin/systems/services/shares/class_serviceShare.inc:28
-msgid "Share service"
-msgstr "Služba sdílení"
-
-#: admin/systems/services/shares/class_serviceShare.inc:28
 #: admin/systems/services/class_servicesManagement.inc:71
-#: admin/systems/services/terminal/class_serviceTerminal.inc:28
+#: admin/systems/services/shares/class_serviceShare.inc:28
 #: admin/systems/services/ldap/class_serviceLDAP.inc:29
+#: admin/systems/services/terminal/class_serviceTerminal.inc:28
 msgid "Services"
 msgstr "Služby"
-
-#: admin/systems/services/shares/class_serviceShare.inc:41
-msgid "Shares"
-msgstr "Sdílení"
-
-#: admin/systems/services/shares/class_serviceShare.inc:46
-msgid "Shares this server hosts"
-msgstr "Sdílení, která tento server poskytuje"
-
-#: admin/systems/services/shares/class_serviceShare.inc:50
-msgid "Name of this share"
-msgstr "Název tohoto sdílení"
-
-#: admin/systems/services/shares/class_serviceShare.inc:54
-msgid "Description of this share"
-msgstr "Popis tohoto sdílení"
-
-#: admin/systems/services/shares/class_serviceShare.inc:58
-msgid "Type of share"
-msgstr "Typ sdílení"
-
-#: admin/systems/services/shares/class_serviceShare.inc:63
-msgid "Codepage"
-msgstr "znaková strana"
-
-#: admin/systems/services/shares/class_serviceShare.inc:63
-msgid "Codepage for this share"
-msgstr "Typ kódování znaků v názvech na tomto sdílení"
-
-#: admin/systems/services/shares/class_serviceShare.inc:67
-msgid "Path / Volume"
-msgstr "Cesta / Svazek"
-
-#: admin/systems/services/shares/class_serviceShare.inc:67
-msgid "Path or volume concerned by this share"
-msgstr "Umístění či svazek, související s tímto sdílením"
-
-#: admin/systems/services/shares/class_serviceShare.inc:71
-msgid "Option"
-msgstr "volba"
-
-#: admin/systems/services/shares/class_serviceShare.inc:71
-msgid "Special option(s) for this share"
-msgstr "Speciální předvolby pro toto sdílení"
-
-#: admin/systems/services/shares/class_serviceShare.inc:104
-msgid "You need to configure encodings first"
-msgstr "Nejprve je třeba nastavit kódování znaků"
-
-#: admin/systems/services/shares/class_serviceShare.inc:112
-msgid "Warning"
-msgstr "Varování"
-
-#: admin/systems/services/shares/class_serviceShare.inc:112
-#, php-format
-msgid "Invalid value in encodings : %s"
-msgstr "Neplatná hodnota v kódování znaků : %s"
 
 #: admin/systems/services/class_servicesManagement.inc:72
 msgid "Server services"
@@ -580,27 +472,72 @@ msgid ""
 "address."
 msgstr ""
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:27
-#: admin/systems/services/terminal/class_serviceTerminal.inc:28
-#: admin/systems/services/terminal/class_serviceTerminal.inc:40
-msgid "Terminal service"
-msgstr "Terminálová služba"
+#: admin/systems/services/shares/class_serviceShare.inc:27
+#: admin/systems/services/shares/class_serviceShare.inc:28
+msgid "Share service"
+msgstr "Služba sdílení"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:43
-msgid "Temporary disable login"
-msgstr "dočasně zakázat přihlašování"
+#: admin/systems/services/shares/class_serviceShare.inc:41
+msgid "Shares"
+msgstr "Sdílení"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:44
-msgid "Disables the login on this terminal server"
-msgstr "Znemožní přihlašování k tomuto terminálovému serveru"
+#: admin/systems/services/shares/class_serviceShare.inc:46
+msgid "Shares this server hosts"
+msgstr "Sdílení, která tento server poskytuje"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:53
-msgid "Supported session types"
-msgstr "podporované typy relací"
+#: admin/systems/services/shares/class_serviceShare.inc:50
+msgid "Name of this share"
+msgstr "Název tohoto sdílení"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:54
-msgid "The session types supported by this terminal server"
-msgstr "Typy sezení, podporované tímto terminálovým serverem"
+#: admin/systems/services/shares/class_serviceShare.inc:54
+msgid "Description of this share"
+msgstr "Popis tohoto sdílení"
+
+#: admin/systems/services/shares/class_serviceShare.inc:58
+#: admin/systems/class_systemImport.inc:48
+msgid "Type"
+msgstr "Typ"
+
+#: admin/systems/services/shares/class_serviceShare.inc:58
+msgid "Type of share"
+msgstr "Typ sdílení"
+
+#: admin/systems/services/shares/class_serviceShare.inc:63
+msgid "Codepage"
+msgstr "znaková strana"
+
+#: admin/systems/services/shares/class_serviceShare.inc:63
+msgid "Codepage for this share"
+msgstr "Typ kódování znaků v názvech na tomto sdílení"
+
+#: admin/systems/services/shares/class_serviceShare.inc:67
+msgid "Path / Volume"
+msgstr "Cesta / Svazek"
+
+#: admin/systems/services/shares/class_serviceShare.inc:67
+msgid "Path or volume concerned by this share"
+msgstr "Umístění či svazek, související s tímto sdílením"
+
+#: admin/systems/services/shares/class_serviceShare.inc:71
+msgid "Option"
+msgstr "volba"
+
+#: admin/systems/services/shares/class_serviceShare.inc:71
+msgid "Special option(s) for this share"
+msgstr "Speciální předvolby pro toto sdílení"
+
+#: admin/systems/services/shares/class_serviceShare.inc:104
+msgid "You need to configure encodings first"
+msgstr "Nejprve je třeba nastavit kódování znaků"
+
+#: admin/systems/services/shares/class_serviceShare.inc:112
+msgid "Warning"
+msgstr "Varování"
+
+#: admin/systems/services/shares/class_serviceShare.inc:112
+#, php-format
+msgid "Invalid value in encodings : %s"
+msgstr "Neplatná hodnota v kódování znaků : %s"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:28
 #: admin/systems/services/ldap/class_serviceLDAP.inc:44
@@ -705,10 +642,47 @@ msgstr ""
 "Konkrétně pomocí seznamu odvolaných certifikátů (CRL) dané certifikační "
 "autority"
 
+#: admin/systems/services/terminal/class_serviceTerminal.inc:27
+#: admin/systems/services/terminal/class_serviceTerminal.inc:28
+#: admin/systems/services/terminal/class_serviceTerminal.inc:40
+msgid "Terminal service"
+msgstr "Terminálová služba"
+
+#: admin/systems/services/terminal/class_serviceTerminal.inc:43
+msgid "Temporary disable login"
+msgstr "dočasně zakázat přihlašování"
+
+#: admin/systems/services/terminal/class_serviceTerminal.inc:44
+msgid "Disables the login on this terminal server"
+msgstr "Znemožní přihlašování k tomuto terminálovému serveru"
+
+#: admin/systems/services/terminal/class_serviceTerminal.inc:53
+msgid "Supported session types"
+msgstr "podporované typy relací"
+
+#: admin/systems/services/terminal/class_serviceTerminal.inc:54
+msgid "The session types supported by this terminal server"
+msgstr "Typy sezení, podporované tímto terminálovým serverem"
+
 #: admin/systems/class_SystemReleaseColumn.inc:87
 #, php-format
 msgid "Inherited from %s"
 msgstr "Převzato z %s"
+
+#: admin/systems/class_serverGeneric.inc:26
+#: admin/systems/class_serverGeneric.inc:32
+#: admin/systems/class_serverGeneric.inc:33
+#: admin/systems/class_systemImport.inc:44
+msgid "Server"
+msgstr "Server"
+
+#: admin/systems/class_serverGeneric.inc:27
+msgid "Server information"
+msgstr "Informace o serveru"
+
+#: admin/systems/class_serverGeneric.inc:47
+msgid "server"
+msgstr "server"
 
 #: admin/systems/class_componentGeneric.inc:27
 msgid "Component"
@@ -731,126 +705,152 @@ msgstr "Název součásti"
 msgid "A short description of the component"
 msgstr "Stručný popis součásti"
 
-#: admin/systems/class_workstationGeneric.inc:27
-#: admin/systems/class_workstationGeneric.inc:33
-#: admin/systems/class_workstationGeneric.inc:34
-msgid "Workstation"
-msgstr "pracovní stanice"
+#: admin/systems/class_systemManagement.inc:43
+#: admin/systems/class_systemManagement.inc:47
+#: config/systems/class_systemsPluginConfig.inc:28
+#: addons/dashboard/class_dashBoardSystems.inc:30
+msgid "Systems"
+msgstr "Systémy"
 
-#: admin/systems/class_workstationGeneric.inc:28
-msgid "Workstation information"
-msgstr "Informace o počítači"
+#: admin/systems/class_systemManagement.inc:44
+msgid "Systems Management"
+msgstr "Správa systémů"
 
-#: admin/systems/class_workstationGeneric.inc:49
-msgid "workstation"
-msgstr "pracovní stanice"
-
-#: admin/systems/class_workstationGeneric.inc:61
-#, php-format
-msgid "The name of the %s"
-msgstr "Název %s"
-
-#: admin/systems/class_workstationGeneric.inc:66
-#, php-format
-msgid "A short description of the %s"
-msgstr "Stručný popis %s"
-
-#: admin/systems/class_workstationGeneric.inc:70
-msgid "Location"
-msgstr "Umístění"
-
-#: admin/systems/class_workstationGeneric.inc:71
-#, php-format
-msgid "The location of the %s"
-msgstr "Umístění %s"
-
-#: admin/systems/class_workstationGeneric.inc:75
-#, php-format
-msgid "Lock this %s"
-msgstr "Uzamknout toto %s"
-
-#: admin/systems/class_workstationGeneric.inc:76
-#, php-format
-msgid "This will prevent the %s from being reinstalled"
-msgstr "Toto zabrání %s v tom, aby bylo opětovně nainstalováno"
-
-#: admin/systems/class_printGeneric.inc:27
-#: admin/systems/class_printGeneric.inc:34
-#: admin/systems/class_printGeneric.inc:35
-msgid "Printer"
-msgstr "Tiskárna"
-
-#: admin/systems/class_printGeneric.inc:28
-msgid "Printer information"
-msgstr "Informace o tiskárně"
-
-#: admin/systems/class_printGeneric.inc:61
-msgid "The name of the printer"
-msgstr "Název tiskárny"
-
-#: admin/systems/class_printGeneric.inc:65
-msgid "A short description of the printer"
-msgstr "Stručný popis této tiskárny"
-
-#: admin/systems/class_printGeneric.inc:71
-msgid "Details"
-msgstr "Podrobnosti"
-
-#: admin/systems/class_printGeneric.inc:74
-msgid "Printer location"
-msgstr "kde se tiskárna nachází"
-
-#: admin/systems/class_printGeneric.inc:74
-msgid "The location of the printer"
-msgstr "Umístění tiskárny"
-
-#: admin/systems/class_printGeneric.inc:78
-msgid "Printer URL"
-msgstr "URL adresa tiskárny"
-
-#: admin/systems/class_printGeneric.inc:78
-msgid "The URL of the printer"
-msgstr "URL adresa tiskárny"
-
-#: admin/systems/class_printGeneric.inc:84
-#: admin/systems/class_printGeneric.inc:87
-msgid "Users which are allowed to use this printer"
-msgstr "Uživatelé, kteří mohou používat tuto tiskárnu"
-
-#: admin/systems/class_printGeneric.inc:93
-#: admin/systems/class_printGeneric.inc:96
-msgid "Users which are allowed to administrate this printer"
-msgstr "uživatelé, kteří smějí spravovat tuto tiskárnu"
-
-#: admin/systems/class_printGeneric.inc:104
-msgid "Windows paths"
-msgstr "Popis umístění v MS Windows"
-
-#: admin/systems/class_printGeneric.inc:108
-msgid "Inf file"
-msgstr ".inf soubor"
-
-#: admin/systems/class_printGeneric.inc:108
-msgid "Path to windows inf file for this printer"
-msgstr "Popis umístění .inf souboru pro tuto tiskárnu"
-
-#: admin/systems/class_printGeneric.inc:112
-msgid "Driver directory"
-msgstr "Složka s ovladačem"
-
-#: admin/systems/class_printGeneric.inc:112
-msgid "Path to directory that contains windows drivers for this printer"
+#: admin/systems/class_systemManagement.inc:45
+msgid "Manage servers, computers, printers, phones and other devices"
 msgstr ""
-"Popis umístění složky, která obsahuje ovladače (pro systém Windows) pro tuto"
-" tiskárnu"
 
-#: admin/systems/class_printGeneric.inc:116
-msgid "Driver name"
-msgstr "Název ovladače"
+#: admin/systems/class_systemManagement.inc:86
+msgid "Trigger action"
+msgstr "Spustit akci"
 
-#: admin/systems/class_printGeneric.inc:116
-msgid "Windows name of the printer driver"
-msgstr "Název ovladače tiskárny v systému Windows"
+#: admin/systems/class_systemManagement.inc:92
+msgid "Schedule action"
+msgstr "Naplánovat akci"
+
+#: admin/systems/class_systemManagement.inc:101
+msgid "Ping"
+msgstr "Ping"
+
+#: admin/systems/class_systemManagement.inc:133
+#: admin/systems/class_systemManagement.inc:213
+#, php-format
+msgid "System %s has no mac address defined, cannot trigger action"
+msgstr "Systém %s nemá definovánu MAC adresu, akci nelze spustit"
+
+#: admin/systems/class_systemManagement.inc:155
+#, php-format
+msgid "System %s is currently installing"
+msgstr "Systém %s je nyní instalován"
+
+#: admin/systems/class_systemManagement.inc:182
+#: admin/systems/class_systemManagement.inc:187
+msgid "Action triggered"
+msgstr "Spuštěná akce"
+
+#: admin/systems/class_systemManagement.inc:182
+#, php-format
+msgid "Action called without error (results were \"%s\")"
+msgstr "Akce zavolána bez chyby (výsledky jsou „%s“)"
+
+#: admin/systems/class_systemManagement.inc:187
+#, php-format
+msgid "Action called without error (result was \"%s\")"
+msgstr "Akce zavolána bez chyby (výsledek je „%s“)"
+
+#: admin/systems/class_systemManagement.inc:248
+msgid "Ping results"
+msgstr "Výsledky z ping"
+
+#: admin/systems/class_systemImport.inc:40
+#: admin/systems/class_systemImport.inc:60
+msgid "Import"
+msgstr "import(ovat)"
+
+#: admin/systems/class_systemImport.inc:44
+msgid "The server you wish to import hosts from"
+msgstr "Server, ze kterého chcete importovat hostitele"
+
+#: admin/systems/class_systemImport.inc:48
+msgid "Type of objects you wish to import"
+msgstr "Typ objektů, které chcete importovat"
+
+#: admin/systems/class_systemImport.inc:53
+msgid "Template"
+msgstr "Šablona"
+
+#: admin/systems/class_systemImport.inc:53
+msgid "Select a template to apply to imported entries"
+msgstr "Vyberte šablonu, kterou aplikovat na importované položky"
+
+#: admin/systems/class_systemImport.inc:107
+#, php-format
+msgid "Could not parse %s"
+msgstr "Nelze parsovat %s"
+
+#: admin/systems/class_systemImport.inc:172
+#, php-format
+msgid "No DHCP server found for IPs %s"
+msgstr "Pro IP adresy %s nebyl nalezen žádný DHCP server"
+
+#: admin/systems/class_systemImport.inc:191
+#, php-format
+msgid "No DNS server found for zone %s"
+msgstr "Pro zónu %s nebyl nalezen žádný DNS server"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:28
+#: admin/systems/class_mobilePhoneGeneric.inc:34
+#: admin/systems/class_mobilePhoneGeneric.inc:35
+msgid "Mobile phone"
+msgstr "Mobilní telefon"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:29
+msgid "Mobile phone information"
+msgstr "Údaje o mobilním telefonu"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:57
+msgid "The name of the mobile phone"
+msgstr "Název mobilního telefonu"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:61
+msgid "A short description of the mobile phone"
+msgstr "Stručný popis mobilního telefonu"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:72
+msgid "The serial number of the mobile phone"
+msgstr "Sériové číslo mobilního telefonu"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:76
+msgid "IMEI Number"
+msgstr "IMEI identifikátor"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:76
+msgid "The IMEI number of the mobile phone"
+msgstr "IMEI identifikátor mobilního telefonu"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:81
+msgid "OS"
+msgstr "Operační systém"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:81
+msgid "The Operating System installed on this phone"
+msgstr "Operační systém, nainstalovaný na tomto telefonu"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:87
+msgid "SimCard"
+msgstr "SIM karta"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:90
+msgid "The telephone number of the mobile phone"
+msgstr "Telefoní číslo mobilního telefonu"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:94
+msgid "PUK Number"
+msgstr "Kód PUK"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:94
+msgid "The PUK number of the simcard in this mobile phone"
+msgstr "Kód PUK SIM karty v tomto mobilním telefonu"
 
 #: config/systems/class_systemsPluginConfig.inc:29
 msgid "Systems plugin configuration"

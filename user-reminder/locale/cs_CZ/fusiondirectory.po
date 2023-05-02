@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -21,30 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-
-#: html/class_expiredUserPostpone.inc:70
-msgid "This token is invalid"
-msgstr "tato poukázka (token) je neplatná"
-
-#: html/class_expiredUserPostpone.inc:73
-msgid "Token is missing from URL"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:242
-msgid "Contact your administrator, there was a problem with mail server"
-msgstr ""
-"Nastal problém s poštovním serverem – obraťte se prosím na svého správce "
-"systémů."
-
-#: html/class_expiredUserPostpone.inc:251
-#, php-format
-msgid "Did not find an account with login \"%s\""
-msgstr "Účet s uživatelským jménem %s nebyl nalezen"
-
-#: html/class_expiredUserPostpone.inc:254
-#, php-format
-msgid "Found multiple accounts with login \"%s\""
-msgstr "Bylo nalezeno hned několik účtů s uživatelským jménem %s"
 
 #: config/user-reminder/class_userReminderConfig.inc:27
 msgid "Reminder"
@@ -277,6 +253,30 @@ msgid ""
 "Dear %1$s,\n"
 " your account %2$s has expired.\n"
 msgstr ""
+
+#: html/class_expiredUserPostpone.inc:70
+msgid "This token is invalid"
+msgstr "tato poukázka (token) je neplatná"
+
+#: html/class_expiredUserPostpone.inc:73
+msgid "Token is missing from URL"
+msgstr ""
+
+#: html/class_expiredUserPostpone.inc:242
+msgid "Contact your administrator, there was a problem with mail server"
+msgstr ""
+"Nastal problém s poštovním serverem – obraťte se prosím na svého správce "
+"systémů."
+
+#: html/class_expiredUserPostpone.inc:251
+#, php-format
+msgid "Did not find an account with login \"%s\""
+msgstr "Účet s uživatelským jménem %s nebyl nalezen"
+
+#: html/class_expiredUserPostpone.inc:254
+#, php-format
+msgid "Found multiple accounts with login \"%s\""
+msgstr "Bylo nalezeno hned několik účtů s uživatelským jménem %s"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5

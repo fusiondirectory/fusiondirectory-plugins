@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Language-Team: Afrikaans (South Africa) (https://app.transifex.com/fusiondirectory/teams/12202/af_ZA/)\n"
 "MIME-Version: 1.0\n"
@@ -16,61 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: af_ZA\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: admin/alias/class_mailAliasRedirection.inc:26
-#: admin/alias/class_mailAliasRedirection.inc:27
-#: admin/alias/class_mailAliasRedirection.inc:30
-msgid "Temporary mail redirection"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:53
-msgid "Mail redirection"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:56
-#: admin/alias/class_mailAliasDistribution.inc:55
-msgid "Name"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:56
-msgid "Name to identify this redirection"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:58
-#: admin/alias/class_mailAliasDistribution.inc:57
-msgid "Description"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:58
-msgid "Description of this redirection"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:63
-msgid "Redirect from"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:63
-msgid "Mail address from which you want to redirect"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:69
-msgid "Redirect to"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:69
-msgid "Destination of this redirection"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:74
-#: admin/alias/class_mailAliasDistribution.inc:76
-msgid "Expiration date"
-msgstr ""
-
-#: admin/alias/class_mailAliasRedirection.inc:74
-msgid ""
-"Date after which the redirection should be deleted. Leave empty for no "
-"deletion."
-msgstr ""
 
 #: admin/alias/class_mailAliasDistribution.inc:26
 #: admin/alias/class_mailAliasDistribution.inc:27
@@ -83,7 +28,17 @@ msgid "Mail distribution"
 msgstr ""
 
 #: admin/alias/class_mailAliasDistribution.inc:55
+#: admin/alias/class_mailAliasRedirection.inc:56
+msgid "Name"
+msgstr ""
+
+#: admin/alias/class_mailAliasDistribution.inc:55
 msgid "Name to identify this alias"
+msgstr ""
+
+#: admin/alias/class_mailAliasDistribution.inc:57
+#: admin/alias/class_mailAliasRedirection.inc:58
+msgid "Description"
 msgstr ""
 
 #: admin/alias/class_mailAliasDistribution.inc:57
@@ -111,8 +66,53 @@ msgid "Mail server for this alias"
 msgstr ""
 
 #: admin/alias/class_mailAliasDistribution.inc:76
+#: admin/alias/class_mailAliasRedirection.inc:74
+msgid "Expiration date"
+msgstr ""
+
+#: admin/alias/class_mailAliasDistribution.inc:76
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
+msgstr ""
+
+#: admin/alias/class_mailAliasRedirection.inc:26
+#: admin/alias/class_mailAliasRedirection.inc:27
+#: admin/alias/class_mailAliasRedirection.inc:30
+msgid "Temporary mail redirection"
+msgstr ""
+
+#: admin/alias/class_mailAliasRedirection.inc:53
+msgid "Mail redirection"
+msgstr ""
+
+#: admin/alias/class_mailAliasRedirection.inc:56
+msgid "Name to identify this redirection"
+msgstr ""
+
+#: admin/alias/class_mailAliasRedirection.inc:58
+msgid "Description of this redirection"
+msgstr ""
+
+#: admin/alias/class_mailAliasRedirection.inc:63
+msgid "Redirect from"
+msgstr ""
+
+#: admin/alias/class_mailAliasRedirection.inc:63
+msgid "Mail address from which you want to redirect"
+msgstr ""
+
+#: admin/alias/class_mailAliasRedirection.inc:69
+msgid "Redirect to"
+msgstr ""
+
+#: admin/alias/class_mailAliasRedirection.inc:69
+msgid "Destination of this redirection"
+msgstr ""
+
+#: admin/alias/class_mailAliasRedirection.inc:74
+msgid ""
+"Date after which the redirection should be deleted. Leave empty for no "
+"deletion."
 msgstr ""
 
 #: admin/alias/class_aliasManagement.inc:39

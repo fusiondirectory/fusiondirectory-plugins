@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2023\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -21,73 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:28
-#: personal/ppolicy/class_ppolicyAccount.inc:43
-#: admin/ppolicy/class_ppolicy.inc:27 admin/ppolicy/class_ppolicy.inc:31
-msgid "Password policy"
-msgstr "Zásada hesel"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:29
-msgid "Edit user's password policy"
-msgstr "Upravit zásady hesel uživatelů"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:46
-#: admin/ppolicy/class_ppolicy.inc:47
-msgid "Policy"
-msgstr "Zásada"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:46
-msgid "Use a specific policy for this user"
-msgstr "Pro tohoto uživatele použít zvláštní zásady"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:50
-msgid "Last password change"
-msgstr "Heslo bylo naposledy změněno"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:50
-msgid "Last time the password for the entry was changed"
-msgstr "Kdy bylo heslo k této položce změněno naposledy"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:54
-msgid "Account locked time"
-msgstr "Doba, po kterou je účet uzamčen"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:54
-msgid "Time the account was locked"
-msgstr "Okamžik zamčení účtu"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:58
-msgid "Reset locking / force change"
-msgstr "Resetovat uzamykání / vynutit změnu"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:58
-msgid "Resets the lock status of this account and/or force a password change"
-msgstr "Resetuje zamčený status tohoto účtu a/nebo vynutí změnu hesla"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:61
-msgid "Force password change (resets locking)"
-msgstr "Vynutit změnu hesla (resetuje zamykání)"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:61
-msgid "Reset locking (same password)"
-msgstr "Resetovat uzamčení (stejné heslo)"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:76
-msgid "Use the default"
-msgstr "Použít výchozí"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:82
-msgid "Never"
-msgstr "Nikdy"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:89
-msgid "Unlocked"
-msgstr "Odemčeno"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:91
-msgid "Locked permanently"
-msgstr "Trvale uzamčeno"
 
 #: admin/ppolicy/class_ppolicyManagement.inc:28
 msgid "Password policies"
@@ -101,9 +34,20 @@ msgstr "Správa zásad hesel"
 msgid "Manage password policies"
 msgstr "Spravovat zásady hesel"
 
+#: admin/ppolicy/class_ppolicy.inc:27 admin/ppolicy/class_ppolicy.inc:31
+#: personal/ppolicy/class_ppolicyAccount.inc:28
+#: personal/ppolicy/class_ppolicyAccount.inc:43
+msgid "Password policy"
+msgstr "Zásada hesel"
+
 #: admin/ppolicy/class_ppolicy.inc:28
 msgid "Password policy for ppolicy overlay"
 msgstr "Pravidla pro hesla pro překrytí ppolicy"
+
+#: admin/ppolicy/class_ppolicy.inc:47
+#: personal/ppolicy/class_ppolicyAccount.inc:46
+msgid "Policy"
+msgstr "Zásada"
 
 #: admin/ppolicy/class_ppolicy.inc:52
 msgid "Policy name"
@@ -388,6 +332,62 @@ msgstr "Výchozí ppolicy %s nebyla v LDAP nalezena!"
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr "Zásada Ppolicy %s, nastavená pro uživatele %s nebyla v LDAP nalezena!"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:29
+msgid "Edit user's password policy"
+msgstr "Upravit zásady hesel uživatelů"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:46
+msgid "Use a specific policy for this user"
+msgstr "Pro tohoto uživatele použít zvláštní zásady"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:50
+msgid "Last password change"
+msgstr "Heslo bylo naposledy změněno"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:50
+msgid "Last time the password for the entry was changed"
+msgstr "Kdy bylo heslo k této položce změněno naposledy"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:54
+msgid "Account locked time"
+msgstr "Doba, po kterou je účet uzamčen"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:54
+msgid "Time the account was locked"
+msgstr "Okamžik zamčení účtu"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:58
+msgid "Reset locking / force change"
+msgstr "Resetovat uzamykání / vynutit změnu"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:58
+msgid "Resets the lock status of this account and/or force a password change"
+msgstr "Resetuje zamčený status tohoto účtu a/nebo vynutí změnu hesla"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:61
+msgid "Force password change (resets locking)"
+msgstr "Vynutit změnu hesla (resetuje zamykání)"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:61
+msgid "Reset locking (same password)"
+msgstr "Resetovat uzamčení (stejné heslo)"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:76
+msgid "Use the default"
+msgstr "Použít výchozí"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:82
+msgid "Never"
+msgstr "Nikdy"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:89
+msgid "Unlocked"
+msgstr "Odemčeno"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:91
+msgid "Locked permanently"
+msgstr "Trvale uzamčeno"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
 msgid "There is one locked account"

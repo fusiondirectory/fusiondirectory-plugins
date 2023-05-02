@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -21,6 +21,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: admin/dsa/class_dsaManagement.inc:26 admin/dsa/class_dsaManagement.inc:32
+#: config/dsa/class_dsaConfig.inc:40
+msgid "DSA"
+msgstr "DSA"
+
+#: admin/dsa/class_dsaManagement.inc:27
+msgid "DSA management"
+msgstr "Gestion DSA"
+
+#: admin/dsa/class_dsaManagement.inc:28
+msgid "Manage simple security objects"
+msgstr "Gérer des objets de sécurité simples"
 
 #: admin/dsa/class_simpleSecurityObject.inc:26
 #: admin/dsa/class_simpleSecurityObject.inc:27
@@ -52,19 +65,6 @@ msgstr "Modifier le mot de passe"
 #: admin/dsa/class_simpleSecurityObject.inc:64
 msgid "Password"
 msgstr "Mot de passe"
-
-#: admin/dsa/class_dsaManagement.inc:26 admin/dsa/class_dsaManagement.inc:32
-#: config/dsa/class_dsaConfig.inc:40
-msgid "DSA"
-msgstr "DSA"
-
-#: admin/dsa/class_dsaManagement.inc:27
-msgid "DSA management"
-msgstr "Gestion DSA"
-
-#: admin/dsa/class_dsaManagement.inc:28
-msgid "Manage simple security objects"
-msgstr "Gérer des objets de sécurité simples"
 
 #: config/dsa/class_dsaConfig.inc:26
 msgid "DSA configuration"

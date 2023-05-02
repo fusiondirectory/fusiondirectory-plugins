@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Swedish (https://app.transifex.com/fusiondirectory/teams/12202/sv/)\n"
@@ -21,11 +21,6 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: html/collect.php:75
-#, php-format
-msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr "FusionDirectory-konfiguration %s/%s är inte läsbar. Avbryter."
-
 #: admin/inventory/class_inventoryManagement.inc:39
 #: admin/inventory/class_inventoryManagement.inc:40
 msgid "Inventory objects"
@@ -33,65 +28,6 @@ msgstr ""
 
 #: admin/inventory/class_inventoryManagement.inc:41
 msgid "Browse inventory objects"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:68
-msgid "Inventory"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:69
-msgid "Inventory Viewer"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:76
-#: admin/systems/fusioninventory/class_fiInventory.inc:79
-msgid "Inventory object"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:94
-msgid "Matching system"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:97
-#: admin/systems/fusioninventory/class_fiInventory.inc:394
-msgid "System"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:97
-#: admin/systems/fusioninventory/class_fiInventory.inc:394
-msgid "System entry matching this inventory"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:104
-msgid "Hardware"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:110
-msgid "Software"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:116
-msgid "Users"
-msgstr "Användare"
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:122
-msgid "Processes"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:128
-msgid "Other"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:342
-msgid "Create a system based on this inventory"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:357
-msgid "Create"
-msgstr "Skapa"
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:362
-msgid "No matching system"
 msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:28
@@ -164,6 +100,65 @@ msgstr ""
 msgid "IPs allowed to launch inventory task through web interface"
 msgstr ""
 
+#: admin/systems/fusioninventory/class_fiInventory.inc:68
+msgid "Inventory"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:69
+msgid "Inventory Viewer"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:76
+#: admin/systems/fusioninventory/class_fiInventory.inc:79
+msgid "Inventory object"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:94
+msgid "Matching system"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:97
+#: admin/systems/fusioninventory/class_fiInventory.inc:394
+msgid "System"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:97
+#: admin/systems/fusioninventory/class_fiInventory.inc:394
+msgid "System entry matching this inventory"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:104
+msgid "Hardware"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:110
+msgid "Software"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:116
+msgid "Users"
+msgstr "Användare"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:122
+msgid "Processes"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:128
+msgid "Other"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:342
+msgid "Create a system based on this inventory"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:357
+msgid "Create"
+msgstr "Skapa"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:362
+msgid "No matching system"
+msgstr ""
+
 #: config/fusioninventory/class_fiConfig.inc:26
 msgid "FusionInventory configuration"
 msgstr ""
@@ -203,3 +198,8 @@ msgstr ""
 #: config/fusioninventory/class_fiConfig.inc:51
 msgid "IP or Mac address"
 msgstr ""
+
+#: html/collect.php:75
+#, php-format
+msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
+msgstr "FusionDirectory-konfiguration %s/%s är inte läsbar. Avbryter."

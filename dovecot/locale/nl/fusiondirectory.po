@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Dutch (https://app.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -20,13 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:185
-#, php-format
-msgid "Error while trying to contact Dovecot server through Argonaut: %s"
-msgstr ""
-"Foutmelding bij het proberen te contacteren van de Dovecot server via "
-"Argonaut: %s"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:26
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:27
@@ -118,3 +111,10 @@ msgstr "Maak de gebruiker folder aan via Argonaut"
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr ""
 "Gebruik argonaut om de gebruiker mailbox aan te maken op de dovecot server"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:185
+#, php-format
+msgid "Error while trying to contact Dovecot server through Argonaut: %s"
+msgstr ""
+"Foutmelding bij het proberen te contacteren van de Dovecot server via "
+"Argonaut: %s"

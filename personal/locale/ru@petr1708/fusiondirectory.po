@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Russian Petrine orthography (https://app.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
@@ -20,6 +20,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru@petr1708\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: config/personal/class_personalConfig.inc:26
+msgid "Personal configuration"
+msgstr "Личные настройки"
+
+#: config/personal/class_personalConfig.inc:27
+msgid "FusionDirectory personal plugin configuration"
+msgstr "Личные настройки плагинов FusionDirectory"
+
+#: config/personal/class_personalConfig.inc:40
+#: personal/personal/class_personalInfo.inc:93
+msgid "Personal"
+msgstr "Контакт"
+
+#: config/personal/class_personalConfig.inc:43
+msgid "Allow use of private email for password recovery"
+msgstr ""
+"Позволить использовать приватный адрес электронной почты для восстановления "
+"пароля"
+
+#: config/personal/class_personalConfig.inc:43
+msgid "Allow users to use their private email address for password recovery"
+msgstr ""
+"Позволить пользователям использовать свой приватный адрес электронной почты "
+"для восстановления пароля"
 
 #: personal/personal/class_personalInfo.inc:31
 msgid "Site"
@@ -41,11 +66,6 @@ msgstr "Идентификатор пользователя на этом сай
 #, php-format
 msgid "Social handler \"%s\" does not exists"
 msgstr ""
-
-#: personal/personal/class_personalInfo.inc:93
-#: config/personal/class_personalConfig.inc:40
-msgid "Personal"
-msgstr "Контакт"
 
 #: personal/personal/class_personalInfo.inc:94
 msgid "Personal information"
@@ -201,23 +221,3 @@ msgstr ""
 #: personal/personal/class_socialHandlers.inc:230
 msgid "Matrix user IDs have the format '@username:server'"
 msgstr ""
-
-#: config/personal/class_personalConfig.inc:26
-msgid "Personal configuration"
-msgstr "Личные настройки"
-
-#: config/personal/class_personalConfig.inc:27
-msgid "FusionDirectory personal plugin configuration"
-msgstr "Личные настройки плагинов FusionDirectory"
-
-#: config/personal/class_personalConfig.inc:43
-msgid "Allow use of private email for password recovery"
-msgstr ""
-"Позволить использовать приватный адрес электронной почты для восстановления "
-"пароля"
-
-#: config/personal/class_personalConfig.inc:43
-msgid "Allow users to use their private email address for password recovery"
-msgstr ""
-"Позволить пользователям использовать свой приватный адрес электронной почты "
-"для восстановления пароля"

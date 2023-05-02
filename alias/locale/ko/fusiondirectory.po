@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -21,61 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: admin/alias/class_mailAliasRedirection.inc:26
-#: admin/alias/class_mailAliasRedirection.inc:27
-#: admin/alias/class_mailAliasRedirection.inc:30
-msgid "Temporary mail redirection"
-msgstr "임시 메일 전달"
-
-#: admin/alias/class_mailAliasRedirection.inc:53
-msgid "Mail redirection"
-msgstr "메일 전달"
-
-#: admin/alias/class_mailAliasRedirection.inc:56
-#: admin/alias/class_mailAliasDistribution.inc:55
-msgid "Name"
-msgstr "명칭"
-
-#: admin/alias/class_mailAliasRedirection.inc:56
-msgid "Name to identify this redirection"
-msgstr "전달 확인"
-
-#: admin/alias/class_mailAliasRedirection.inc:58
-#: admin/alias/class_mailAliasDistribution.inc:57
-msgid "Description"
-msgstr "설명"
-
-#: admin/alias/class_mailAliasRedirection.inc:58
-msgid "Description of this redirection"
-msgstr "전달에 대한 설명"
-
-#: admin/alias/class_mailAliasRedirection.inc:63
-msgid "Redirect from"
-msgstr "로 부터 전달"
-
-#: admin/alias/class_mailAliasRedirection.inc:63
-msgid "Mail address from which you want to redirect"
-msgstr "전달하고자 하는 메일 주소"
-
-#: admin/alias/class_mailAliasRedirection.inc:69
-msgid "Redirect to"
-msgstr "로 전달"
-
-#: admin/alias/class_mailAliasRedirection.inc:69
-msgid "Destination of this redirection"
-msgstr "전달 목적지"
-
-#: admin/alias/class_mailAliasRedirection.inc:74
-#: admin/alias/class_mailAliasDistribution.inc:76
-msgid "Expiration date"
-msgstr "만료일자"
-
-#: admin/alias/class_mailAliasRedirection.inc:74
-msgid ""
-"Date after which the redirection should be deleted. Leave empty for no "
-"deletion."
-msgstr "전달된 메일은 지정된 일자 이후에는 삭제되어야 합니다.  삭제하지 않으려면 공백으로 비워두세요."
 
 #: admin/alias/class_mailAliasDistribution.inc:26
 #: admin/alias/class_mailAliasDistribution.inc:27
@@ -88,8 +33,18 @@ msgid "Mail distribution"
 msgstr "메일 배포"
 
 #: admin/alias/class_mailAliasDistribution.inc:55
+#: admin/alias/class_mailAliasRedirection.inc:56
+msgid "Name"
+msgstr "명칭"
+
+#: admin/alias/class_mailAliasDistribution.inc:55
 msgid "Name to identify this alias"
 msgstr "별칭 확인"
+
+#: admin/alias/class_mailAliasDistribution.inc:57
+#: admin/alias/class_mailAliasRedirection.inc:58
+msgid "Description"
+msgstr "설명"
 
 #: admin/alias/class_mailAliasDistribution.inc:57
 msgid "Description of this alias"
@@ -116,9 +71,54 @@ msgid "Mail server for this alias"
 msgstr "별칭에 대한 메일 서버"
 
 #: admin/alias/class_mailAliasDistribution.inc:76
+#: admin/alias/class_mailAliasRedirection.inc:74
+msgid "Expiration date"
+msgstr "만료일자"
+
+#: admin/alias/class_mailAliasDistribution.inc:76
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
 msgstr "별칭은 지정된 일자 이후에는 삭제되어야 합니다. 삭제하지 않으려면 공백으로 비워두세요."
+
+#: admin/alias/class_mailAliasRedirection.inc:26
+#: admin/alias/class_mailAliasRedirection.inc:27
+#: admin/alias/class_mailAliasRedirection.inc:30
+msgid "Temporary mail redirection"
+msgstr "임시 메일 전달"
+
+#: admin/alias/class_mailAliasRedirection.inc:53
+msgid "Mail redirection"
+msgstr "메일 전달"
+
+#: admin/alias/class_mailAliasRedirection.inc:56
+msgid "Name to identify this redirection"
+msgstr "전달 확인"
+
+#: admin/alias/class_mailAliasRedirection.inc:58
+msgid "Description of this redirection"
+msgstr "전달에 대한 설명"
+
+#: admin/alias/class_mailAliasRedirection.inc:63
+msgid "Redirect from"
+msgstr "로 부터 전달"
+
+#: admin/alias/class_mailAliasRedirection.inc:63
+msgid "Mail address from which you want to redirect"
+msgstr "전달하고자 하는 메일 주소"
+
+#: admin/alias/class_mailAliasRedirection.inc:69
+msgid "Redirect to"
+msgstr "로 전달"
+
+#: admin/alias/class_mailAliasRedirection.inc:69
+msgid "Destination of this redirection"
+msgstr "전달 목적지"
+
+#: admin/alias/class_mailAliasRedirection.inc:74
+msgid ""
+"Date after which the redirection should be deleted. Leave empty for no "
+"deletion."
+msgstr "전달된 메일은 지정된 일자 이후에는 삭제되어야 합니다.  삭제하지 않으려면 공백으로 비워두세요."
 
 #: admin/alias/class_aliasManagement.inc:39
 msgid "Aliases"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:58+0000\n"
 "Language-Team: Spanish (Venezuela) (https://app.transifex.com/fusiondirectory/teams/12202/es_VE/)\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,25 @@ msgstr ""
 "Language: es_VE\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: personal/newsletter/class_newsletterSubscriptions.inc:28
+#: config/newsletter/class_newsletterConfig.inc:26
+msgid "Newsletter configuration"
+msgstr ""
+
+#: config/newsletter/class_newsletterConfig.inc:27
+msgid "FusionDirectory newsletter plugin configuration"
+msgstr ""
+
 #: config/newsletter/class_newsletterConfig.inc:40
+#: personal/newsletter/class_newsletterSubscriptions.inc:28
 msgid "Newsletter"
+msgstr ""
+
+#: config/newsletter/class_newsletterConfig.inc:44
+msgid "Newsletter choices"
+msgstr ""
+
+#: config/newsletter/class_newsletterConfig.inc:44
+msgid "Newsletters the user can choose from"
 msgstr ""
 
 #: personal/newsletter/class_newsletterSubscriptions.inc:29
@@ -36,20 +52,4 @@ msgstr ""
 
 #: personal/newsletter/class_newsletterSubscriptions.inc:50
 msgid "Newsletter you are subscribed to"
-msgstr ""
-
-#: config/newsletter/class_newsletterConfig.inc:26
-msgid "Newsletter configuration"
-msgstr ""
-
-#: config/newsletter/class_newsletterConfig.inc:27
-msgid "FusionDirectory newsletter plugin configuration"
-msgstr ""
-
-#: config/newsletter/class_newsletterConfig.inc:44
-msgid "Newsletter choices"
-msgstr ""
-
-#: config/newsletter/class_newsletterConfig.inc:44
-msgid "Newsletters the user can choose from"
 msgstr ""

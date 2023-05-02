@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/fusiondirectory/teams/12202/zh_TW/)\n"
@@ -21,201 +21,11 @@ msgstr ""
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: personal/mail/class_mailAccount.inc:29
-msgid "MiB"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:30
-msgid "GiB"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:31
-msgid "TiB"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:45
-#, php-format
-msgid "Cannot read quota settings: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:58
-msgid "Quota usage"
-msgstr "使用 Quota"
-
-#: personal/mail/class_mailAccount.inc:59
-msgid "Part of the quota which is used"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:92
 #: admin/groups/mail/class_mailGroup.inc:46
 #: config/mail/class_mailPluginConfig.inc:26
+#: personal/mail/class_mailAccount.inc:92
 msgid "Mail"
 msgstr "邮件"
-
-#: personal/mail/class_mailAccount.inc:93
-#: config/mail/class_mailPluginConfig.inc:40
-msgid "Mail settings"
-msgstr "邮件选项"
-
-#: personal/mail/class_mailAccount.inc:117
-msgid "Mail account"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:120
-#: admin/groups/mail/class_mailGroup.inc:65
-msgid "Primary address"
-msgstr "主要地址"
-
-#: personal/mail/class_mailAccount.inc:120
-msgid "Primary mail address"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:124
-#: admin/groups/mail/class_mailGroup.inc:69
-msgid "Server"
-msgstr "服务器"
-
-#: personal/mail/class_mailAccount.inc:124
-msgid "Specify the mail server where the user will be hosted on"
-msgstr "描述该用户账号所要创建于的邮件服务器"
-
-#: personal/mail/class_mailAccount.inc:129
-msgid "Quota size"
-msgstr "Quota 大小"
-
-#: personal/mail/class_mailAccount.inc:129
-msgid "Define quota size in MiB"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:136
-msgid "Other addresses and redirections"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:140
-#: admin/groups/mail/class_mailGroup.inc:75
-msgid "Alternative addresses"
-msgstr "替代地址"
-
-#: personal/mail/class_mailAccount.inc:140
-msgid "List of alternative mail addresses"
-msgstr "替代邮件地址列表"
-
-#: personal/mail/class_mailAccount.inc:145
-msgid "Forward messages to"
-msgstr "转发邮件到"
-
-#: personal/mail/class_mailAccount.inc:145
-msgid "Addresses to which messages should be forwarded"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:151
-#: personal/mail/class_mailAccount.inc:170
-msgid "Vacation message"
-msgstr "假期信息"
-
-#: personal/mail/class_mailAccount.inc:154
-msgid "Activate vacation message"
-msgstr "启用假期信息"
-
-#: personal/mail/class_mailAccount.inc:155
-msgid ""
-"Select to automatically response with the vacation message defined below"
-msgstr "选择用下面定义的假期信息作为自动回复"
-
-#: personal/mail/class_mailAccount.inc:160
-msgid "from"
-msgstr "从"
-
-#: personal/mail/class_mailAccount.inc:165
-msgid "till"
-msgstr "至"
-
-#: personal/mail/class_mailAccount.inc:176
-msgid "Advanced mail options"
-msgstr "高级邮件选项"
-
-#: personal/mail/class_mailAccount.inc:184
-msgid "User is only allowed to send and receive local mails"
-msgstr "用户只能发送和接收本地邮件"
-
-#: personal/mail/class_mailAccount.inc:185
-msgid "Select if user can only send and receive inside his own domain"
-msgstr "选择如果用户只能发送和接收本域内邮件"
-
-#: personal/mail/class_mailAccount.inc:190
-msgid "No delivery to own mailbox"
-msgstr "不要发送到本人邮箱"
-
-#: personal/mail/class_mailAccount.inc:191
-msgid "Select if you want to forward mails without getting own copies of them"
-msgstr "如果您想转发邮件而且不想保留拷贝的话，请选择"
-
-#: personal/mail/class_mailAccount.inc:296
-#: personal/mail/class_mailAccount.inc:416
-#: admin/groups/mail/class_mailGroup.inc:342
-#, php-format
-msgid "Mail method cannot connect: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:305
-#, php-format
-msgid "Mail method error: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:437
-#: personal/mail/class_mailAccount.inc:514
-#: admin/groups/mail/class_mailGroup.inc:397
-#, php-format
-msgid "Cannot remove mailbox: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:444
-#: admin/groups/mail/class_mailGroup.inc:348
-#, php-format
-msgid "Cannot update mailbox: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:451
-#, php-format
-msgid "Cannot write quota settings: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:469
-#, php-format
-msgid "Mail error saving sieve settings: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:505
-#: admin/groups/mail/class_mailGroup.inc:388
-#, php-format
-msgid "Cannot remove mailbox, mail method cannot connect: %s"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:146
-#, php-format
-msgid "The configured mail attribute \"%s\" is unsupported!"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:156
-#, php-format
-msgid "%s (%s)"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:599
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:604
-msgid "Mail server for this account is invalid!"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:735
-msgid "Unknown"
-msgstr "未知"
-
-#: personal/mail/class_mail-methods.inc:737
-msgid "Unlimited"
-msgstr ""
 
 #: admin/groups/mail/class_mailGroup.inc:47
 msgid "Group mail options"
@@ -226,12 +36,27 @@ msgid "Information"
 msgstr "提示信息"
 
 #: admin/groups/mail/class_mailGroup.inc:65
+#: personal/mail/class_mailAccount.inc:120
+msgid "Primary address"
+msgstr "主要地址"
+
+#: admin/groups/mail/class_mailGroup.inc:65
 msgid "The primary mail address"
 msgstr ""
 
 #: admin/groups/mail/class_mailGroup.inc:69
+#: personal/mail/class_mailAccount.inc:124
+msgid "Server"
+msgstr "服务器"
+
+#: admin/groups/mail/class_mailGroup.inc:69
 msgid "Email server"
 msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:75
+#: personal/mail/class_mailAccount.inc:140
+msgid "Alternative addresses"
+msgstr "替代地址"
 
 #: admin/groups/mail/class_mailGroup.inc:75
 msgid "Alternative mail addresses for the group"
@@ -292,6 +117,32 @@ msgstr ""
 msgid "Several users have uid \"%s\". Ignoring this member."
 msgstr ""
 
+#: admin/groups/mail/class_mailGroup.inc:342
+#: personal/mail/class_mailAccount.inc:296
+#: personal/mail/class_mailAccount.inc:416
+#, php-format
+msgid "Mail method cannot connect: %s"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:348
+#: personal/mail/class_mailAccount.inc:444
+#, php-format
+msgid "Cannot update mailbox: %s"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:388
+#: personal/mail/class_mailAccount.inc:505
+#, php-format
+msgid "Cannot remove mailbox, mail method cannot connect: %s"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:397
+#: personal/mail/class_mailAccount.inc:437
+#: personal/mail/class_mailAccount.inc:514
+#, php-format
+msgid "Cannot remove mailbox: %s"
+msgstr ""
+
 #: admin/systems/services/imap/class_serviceIMAP.inc:52
 msgid "IMAP generic service"
 msgstr ""
@@ -307,6 +158,11 @@ msgstr "服务"
 #: config/mail/class_mailPluginConfig.inc:27
 msgid "Mail plugin configuration"
 msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:40
+#: personal/mail/class_mailAccount.inc:93
+msgid "Mail settings"
+msgstr "邮件选项"
 
 #: config/mail/class_mailPluginConfig.inc:43
 msgid "Account identification attribute"
@@ -358,4 +214,148 @@ msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:71
 msgid "Prefix to add for mail shared folders."
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:29
+msgid "MiB"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:30
+msgid "GiB"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:31
+msgid "TiB"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:45
+#, php-format
+msgid "Cannot read quota settings: %s"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:58
+msgid "Quota usage"
+msgstr "使用 Quota"
+
+#: personal/mail/class_mailAccount.inc:59
+msgid "Part of the quota which is used"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:117
+msgid "Mail account"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:120
+msgid "Primary mail address"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:124
+msgid "Specify the mail server where the user will be hosted on"
+msgstr "描述该用户账号所要创建于的邮件服务器"
+
+#: personal/mail/class_mailAccount.inc:129
+msgid "Quota size"
+msgstr "Quota 大小"
+
+#: personal/mail/class_mailAccount.inc:129
+msgid "Define quota size in MiB"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:136
+msgid "Other addresses and redirections"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:140
+msgid "List of alternative mail addresses"
+msgstr "替代邮件地址列表"
+
+#: personal/mail/class_mailAccount.inc:145
+msgid "Forward messages to"
+msgstr "转发邮件到"
+
+#: personal/mail/class_mailAccount.inc:145
+msgid "Addresses to which messages should be forwarded"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:151
+#: personal/mail/class_mailAccount.inc:170
+msgid "Vacation message"
+msgstr "假期信息"
+
+#: personal/mail/class_mailAccount.inc:154
+msgid "Activate vacation message"
+msgstr "启用假期信息"
+
+#: personal/mail/class_mailAccount.inc:155
+msgid ""
+"Select to automatically response with the vacation message defined below"
+msgstr "选择用下面定义的假期信息作为自动回复"
+
+#: personal/mail/class_mailAccount.inc:160
+msgid "from"
+msgstr "从"
+
+#: personal/mail/class_mailAccount.inc:165
+msgid "till"
+msgstr "至"
+
+#: personal/mail/class_mailAccount.inc:176
+msgid "Advanced mail options"
+msgstr "高级邮件选项"
+
+#: personal/mail/class_mailAccount.inc:184
+msgid "User is only allowed to send and receive local mails"
+msgstr "用户只能发送和接收本地邮件"
+
+#: personal/mail/class_mailAccount.inc:185
+msgid "Select if user can only send and receive inside his own domain"
+msgstr "选择如果用户只能发送和接收本域内邮件"
+
+#: personal/mail/class_mailAccount.inc:190
+msgid "No delivery to own mailbox"
+msgstr "不要发送到本人邮箱"
+
+#: personal/mail/class_mailAccount.inc:191
+msgid "Select if you want to forward mails without getting own copies of them"
+msgstr "如果您想转发邮件而且不想保留拷贝的话，请选择"
+
+#: personal/mail/class_mailAccount.inc:305
+#, php-format
+msgid "Mail method error: %s"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:451
+#, php-format
+msgid "Cannot write quota settings: %s"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:469
+#, php-format
+msgid "Mail error saving sieve settings: %s"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:146
+#, php-format
+msgid "The configured mail attribute \"%s\" is unsupported!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:156
+#, php-format
+msgid "%s (%s)"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:599
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:604
+msgid "Mail server for this account is invalid!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:735
+msgid "Unknown"
+msgstr "未知"
+
+#: personal/mail/class_mail-methods.inc:737
+msgid "Unlimited"
 msgstr ""

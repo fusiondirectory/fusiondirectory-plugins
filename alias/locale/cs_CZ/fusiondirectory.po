@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -21,63 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-
-#: admin/alias/class_mailAliasRedirection.inc:26
-#: admin/alias/class_mailAliasRedirection.inc:27
-#: admin/alias/class_mailAliasRedirection.inc:30
-msgid "Temporary mail redirection"
-msgstr "Dočasné přesměrování e-mailů"
-
-#: admin/alias/class_mailAliasRedirection.inc:53
-msgid "Mail redirection"
-msgstr "Přesměrování e-mailu"
-
-#: admin/alias/class_mailAliasRedirection.inc:56
-#: admin/alias/class_mailAliasDistribution.inc:55
-msgid "Name"
-msgstr "Název"
-
-#: admin/alias/class_mailAliasRedirection.inc:56
-msgid "Name to identify this redirection"
-msgstr "Název identifikující toto přesměrování"
-
-#: admin/alias/class_mailAliasRedirection.inc:58
-#: admin/alias/class_mailAliasDistribution.inc:57
-msgid "Description"
-msgstr "Popis"
-
-#: admin/alias/class_mailAliasRedirection.inc:58
-msgid "Description of this redirection"
-msgstr "Popis tohoto přesměrování"
-
-#: admin/alias/class_mailAliasRedirection.inc:63
-msgid "Redirect from"
-msgstr "Přesměrovat z"
-
-#: admin/alias/class_mailAliasRedirection.inc:63
-msgid "Mail address from which you want to redirect"
-msgstr "E-mailová adresa, ze které chcete přesměrovat"
-
-#: admin/alias/class_mailAliasRedirection.inc:69
-msgid "Redirect to"
-msgstr "Přesměrovat na"
-
-#: admin/alias/class_mailAliasRedirection.inc:69
-msgid "Destination of this redirection"
-msgstr "Cíl tohoto přesměrování"
-
-#: admin/alias/class_mailAliasRedirection.inc:74
-#: admin/alias/class_mailAliasDistribution.inc:76
-msgid "Expiration date"
-msgstr "Datum skončení platnosti"
-
-#: admin/alias/class_mailAliasRedirection.inc:74
-msgid ""
-"Date after which the redirection should be deleted. Leave empty for no "
-"deletion."
-msgstr ""
-"Datum, po kterém by mělo být toto přesměrování samočinně smazáno. Pro "
-"nemazání ponechte prázdné."
 
 #: admin/alias/class_mailAliasDistribution.inc:26
 #: admin/alias/class_mailAliasDistribution.inc:27
@@ -90,8 +33,18 @@ msgid "Mail distribution"
 msgstr "Distribuce e-mailů"
 
 #: admin/alias/class_mailAliasDistribution.inc:55
+#: admin/alias/class_mailAliasRedirection.inc:56
+msgid "Name"
+msgstr "Název"
+
+#: admin/alias/class_mailAliasDistribution.inc:55
 msgid "Name to identify this alias"
 msgstr "Název pro identifikaci tohoto alternativního názvu"
+
+#: admin/alias/class_mailAliasDistribution.inc:57
+#: admin/alias/class_mailAliasRedirection.inc:58
+msgid "Description"
+msgstr "Popis"
 
 #: admin/alias/class_mailAliasDistribution.inc:57
 msgid "Description of this alias"
@@ -118,11 +71,58 @@ msgid "Mail server for this alias"
 msgstr "Poštovní server pro tento alternativní název"
 
 #: admin/alias/class_mailAliasDistribution.inc:76
+#: admin/alias/class_mailAliasRedirection.inc:74
+msgid "Expiration date"
+msgstr "Datum skončení platnosti"
+
+#: admin/alias/class_mailAliasDistribution.inc:76
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
 msgstr ""
 "Datum po kterém by měl být alternativní název automaticky smazán. Pro "
 "nemazání ponechte nevyplněné."
+
+#: admin/alias/class_mailAliasRedirection.inc:26
+#: admin/alias/class_mailAliasRedirection.inc:27
+#: admin/alias/class_mailAliasRedirection.inc:30
+msgid "Temporary mail redirection"
+msgstr "Dočasné přesměrování e-mailů"
+
+#: admin/alias/class_mailAliasRedirection.inc:53
+msgid "Mail redirection"
+msgstr "Přesměrování e-mailu"
+
+#: admin/alias/class_mailAliasRedirection.inc:56
+msgid "Name to identify this redirection"
+msgstr "Název identifikující toto přesměrování"
+
+#: admin/alias/class_mailAliasRedirection.inc:58
+msgid "Description of this redirection"
+msgstr "Popis tohoto přesměrování"
+
+#: admin/alias/class_mailAliasRedirection.inc:63
+msgid "Redirect from"
+msgstr "Přesměrovat z"
+
+#: admin/alias/class_mailAliasRedirection.inc:63
+msgid "Mail address from which you want to redirect"
+msgstr "E-mailová adresa, ze které chcete přesměrovat"
+
+#: admin/alias/class_mailAliasRedirection.inc:69
+msgid "Redirect to"
+msgstr "Přesměrovat na"
+
+#: admin/alias/class_mailAliasRedirection.inc:69
+msgid "Destination of this redirection"
+msgstr "Cíl tohoto přesměrování"
+
+#: admin/alias/class_mailAliasRedirection.inc:74
+msgid ""
+"Date after which the redirection should be deleted. Leave empty for no "
+"deletion."
+msgstr ""
+"Datum, po kterém by mělo být toto přesměrování samočinně smazáno. Pro "
+"nemazání ponechte prázdné."
 
 #: admin/alias/class_aliasManagement.inc:39
 msgid "Aliases"
