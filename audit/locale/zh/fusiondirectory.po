@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:50+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
 "Language-Team: Chinese (https://app.transifex.com/fusiondirectory/teams/12202/zh/)\n"
@@ -20,6 +20,149 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: admin/audit/class_auditEvent.inc:29 admin/audit/class_auditEvent.inc:33
+msgid "Audit event"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:30
+msgid "An event like ldap modification which was registered by audit plugin"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:50
+#: personal/audit/class_auditSecurity.inc:59
+msgid "Event"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:54
+#: personal/audit/class_auditSecurity.inc:62
+msgid "Time"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:54
+msgid "Date and time this event happened"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:57
+#: admin/audit/class_auditManagement.inc:62
+msgid "Action"
+msgstr "行动"
+
+#: admin/audit/class_auditEvent.inc:57
+msgid "Action type"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:58
+#: personal/audit/class_auditSecurity.inc:60
+msgid "Author"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:58
+msgid "Action author"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:59
+msgid "Author IP"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:59
+msgid "Action author IP address"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:60
+msgid "Object type"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:61
+msgid "Object"
+msgstr "对象"
+
+#: admin/audit/class_auditEvent.inc:61
+msgid "Target object"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:62
+msgid "Attributes"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:62
+msgid "Target attributes"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:63
+#: personal/audit/class_auditSecurity.inc:63
+msgid "Result"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:63
+msgid "Result or error"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:41
+#: config/audit/class_auditConfig.inc:40
+msgid "Audit"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:42
+msgid "Audit events"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:43
+msgid "Browse audit events"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:54
+msgid "Date"
+msgstr "日期"
+
+#: config/audit/class_auditConfig.inc:26
+msgid "Audit configuration"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:27
+msgid "FusionDirectory audit plugin configuration"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:43
+msgid "Audit RDN"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:43
+msgid "Branch in which audit events will be stored"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:49
+msgid "Actions to audit"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:49
+msgid "Which actions should be stored in LDAP audit log"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:56
+msgid "Days to keep"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:56
+msgid "Number of days of audit to keep in the LDAP when cleaning"
+msgstr ""
+
+#: personal/audit/class_auditSecurity.inc:27
+msgid "Security"
+msgstr ""
+
+#: personal/audit/class_auditSecurity.inc:28
+#: personal/audit/class_auditSecurity.inc:42
+msgid "Security audit"
+msgstr ""
+
+#: personal/audit/class_auditSecurity.inc:46
+msgid "Important events involving your account"
+msgstr ""
+
+#: personal/audit/class_auditSecurity.inc:61
+msgid "Origin"
+msgstr ""
 
 #: personal/audit/class_AuditLogAttribute.inc:48
 msgid "Sign in"
@@ -70,147 +213,4 @@ msgstr ""
 
 #: personal/audit/class_AuditLogAttribute.inc:120
 msgid "Now"
-msgstr ""
-
-#: personal/audit/class_auditSecurity.inc:27
-msgid "Security"
-msgstr ""
-
-#: personal/audit/class_auditSecurity.inc:28
-#: personal/audit/class_auditSecurity.inc:40
-msgid "Security audit"
-msgstr ""
-
-#: personal/audit/class_auditSecurity.inc:44
-msgid "Important events involving your account"
-msgstr ""
-
-#: personal/audit/class_auditSecurity.inc:57
-#: admin/audit/class_auditEvent.inc:50
-msgid "Event"
-msgstr ""
-
-#: personal/audit/class_auditSecurity.inc:58
-#: admin/audit/class_auditEvent.inc:58
-msgid "Author"
-msgstr ""
-
-#: personal/audit/class_auditSecurity.inc:59
-msgid "Origin"
-msgstr ""
-
-#: personal/audit/class_auditSecurity.inc:60
-#: admin/audit/class_auditEvent.inc:54
-msgid "Time"
-msgstr ""
-
-#: personal/audit/class_auditSecurity.inc:61
-#: admin/audit/class_auditEvent.inc:63
-msgid "Result"
-msgstr ""
-
-#: admin/audit/class_auditManagement.inc:41
-#: config/audit/class_auditConfig.inc:40
-msgid "Audit"
-msgstr ""
-
-#: admin/audit/class_auditManagement.inc:42
-msgid "Audit events"
-msgstr ""
-
-#: admin/audit/class_auditManagement.inc:43
-msgid "Browse audit events"
-msgstr ""
-
-#: admin/audit/class_auditManagement.inc:54
-msgid "Date"
-msgstr "日期"
-
-#: admin/audit/class_auditManagement.inc:62
-#: admin/audit/class_auditEvent.inc:57
-msgid "Action"
-msgstr "行动"
-
-#: admin/audit/class_auditEvent.inc:29 admin/audit/class_auditEvent.inc:33
-msgid "Audit event"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:30
-msgid "An event like ldap modification which was registered by audit plugin"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:54
-msgid "Date and time this event happened"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:57
-msgid "Action type"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:58
-msgid "Action author"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:59
-msgid "Author IP"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:59
-msgid "Action author IP address"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:60
-msgid "Object type"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:61
-msgid "Object"
-msgstr "对象"
-
-#: admin/audit/class_auditEvent.inc:61
-msgid "Target object"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:62
-msgid "Attributes"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:62
-msgid "Target attributes"
-msgstr ""
-
-#: admin/audit/class_auditEvent.inc:63
-msgid "Result or error"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:26
-msgid "Audit configuration"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:27
-msgid "FusionDirectory audit plugin configuration"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:43
-msgid "Audit RDN"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:43
-msgid "Branch in which audit events will be stored"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:49
-msgid "Actions to audit"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:49
-msgid "Which actions should be stored in LDAP audit log"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:56
-msgid "Days to keep"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:56
-msgid "Number of days of audit to keep in the LDAP when cleaning"
 msgstr ""

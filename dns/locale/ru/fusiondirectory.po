@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Russian (https://app.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -20,401 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#: admin/dns/class_SpfRecordAttribute.inc:27
-msgid "Terms"
-msgstr ""
-
-#: admin/dns/class_SpfRecordAttribute.inc:80
-#, php-format
-msgid "\"%s\" is not a valid directive for an SPF record"
-msgstr ""
-
-#: admin/dns/class_SpfRecordAttribute.inc:88
-msgid "Directive \"all\" does not accept a value in an SPF record"
-msgstr ""
-
-#: admin/dns/class_SpfRecordAttribute.inc:99
-#, php-format
-msgid "Directive \"%s\" needs a value in an SPF record"
-msgstr ""
-
-#: admin/dns/class_SpfRecordAttribute.inc:118
-#, php-format
-msgid "\"%s\" is not a valid modifier for an SPF record"
-msgstr ""
-
-#: admin/dns/class_dnsZone.inc:28
-msgid "DNS Record domain and type"
-msgstr ""
-
-#: admin/dns/class_dnsZone.inc:31
-#, php-format
-msgid "%s record"
-msgstr ""
-
-#: admin/dns/class_dnsZone.inc:35 admin/dns/class_dnsZone.inc:36
-msgid "DNS record"
-msgstr ""
-
-#: admin/dns/class_dnsZone.inc:46 admin/dns/class_dnsZone.inc:55
-#: admin/dns/class_DnsRecordAttribute.inc:421
-msgid "Record"
-msgstr "Запись"
-
-#: admin/dns/class_dnsZone.inc:50 admin/dns/class_dnsZone.inc:243
-msgid "Subdomain"
-msgstr "Поддомен "
-
-#: admin/dns/class_dnsZone.inc:50
-msgid "Relative subdomain name"
-msgstr ""
-
-#: admin/dns/class_dnsZone.inc:55
-msgid "DNS Record"
-msgstr "DNS запись"
-
-#: admin/dns/class_dnsZone.inc:244 admin/dns/class_DnsRecordAttribute.inc:133
-msgid "Type"
-msgstr "Тип"
-
-#: admin/dns/class_dnsZone.inc:245 admin/dns/class_DnsRecordAttribute.inc:433
-msgid "Content"
-msgstr "Содержимое"
-
-#: admin/dns/class_dnsZone.inc:246
-msgid "Reverse"
-msgstr ""
-
-#: admin/dns/class_dnsZone.inc:440
-#, php-format
-msgid "The IP %s does not match the selected reverse %s, it has been ignored"
-msgstr ""
-
-#: admin/dns/class_dnsZone.inc:748
-#, php-format
-msgid ""
-"\"%s\" must contain a domain name in lowercase and end with a final "
-"dot.<br/><br/>Example: example.com."
-msgstr ""
-
-#: admin/dns/class_dnsZone.inc:751
-#, php-format
-msgid ""
-"\"%s\" must contain a domain name in lowercase.<br/><br/>Example: "
-"example.com"
-msgstr ""
-
-#: admin/dns/class_dnsZone.inc:770 admin/dns/class_dnsZone.inc:771
-#: admin/dns/class_dnsZone.inc:775
-msgid "DNS zone"
-msgstr " DNZ зона"
-
-#: admin/dns/class_dnsZone.inc:790
-msgid "Zone"
-msgstr "Зона"
-
-#: admin/dns/class_dnsZone.inc:794
-msgid "Zone name"
-msgstr "Имя зоны"
-
-#: admin/dns/class_dnsZone.inc:804
-msgid "Reverse zones"
-msgstr "Обратные зоны"
-
-#: admin/dns/class_dnsZone.inc:804
-#, php-format
-msgid ""
-"Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or "
-"x.x.ip6.arpa%1$s"
-msgstr ""
-"Обратные зоны для зоны в формате xx.xx.in-addr.arpa%1$s или x.x.ip6.arpa%1$s"
-
-#: admin/dns/class_dnsZone.inc:817
-msgid "SOA record"
-msgstr "SOA запись"
-
-#: admin/dns/class_dnsZone.inc:820
-msgid "SOA Record"
-msgstr "SOA Запись"
-
-#: admin/dns/class_dnsZone.inc:824
-msgid "Primary DNS server"
-msgstr "Первичный DNS сервер"
-
-#: admin/dns/class_dnsZone.inc:824
-msgid ""
-"Domain name of the name server that was the original or primary source of "
-"data for this zone"
-msgstr ""
-"Доменное имя сервера имен, который будет начальным или первичным источником "
-"данных для этой зоны"
-
-#: admin/dns/class_dnsZone.inc:828
-msgid "Mail address"
-msgstr "Адрес электронной почты"
-
-#: admin/dns/class_dnsZone.inc:828
-msgid ""
-"Domain name which specifies the mailbox of the person responsible for this "
-"zone"
-msgstr ""
-"Доменное имя для которой указанный почтовый ящик - человека ответственного "
-"за эту зону"
-
-#: admin/dns/class_dnsZone.inc:832
-msgid "Serial number"
-msgstr "Serial number"
-
-#: admin/dns/class_dnsZone.inc:832
-msgid "Version number of the original copy of the zone"
-msgstr "Номер версии неповторимой копии зоны"
-
-#: admin/dns/class_dnsZone.inc:837
-msgid "Refresh"
-msgstr "Refresh"
-
-#: admin/dns/class_dnsZone.inc:837
-msgid "Time interval before the zone should be refreshed"
-msgstr "Время по истечению которого зона будет обновлена"
-
-#: admin/dns/class_dnsZone.inc:842
-msgid "Retry"
-msgstr "Retry"
-
-#: admin/dns/class_dnsZone.inc:842
-msgid ""
-"Time interval that should elapse before a failed refresh should be retried"
-msgstr ""
-"Время по истечению которого можно будет повторить обновление после ошибки"
-
-#: admin/dns/class_dnsZone.inc:847
-msgid "Expire"
-msgstr "Expire"
-
-#: admin/dns/class_dnsZone.inc:847
-msgid ""
-"Time value that specifies the upper limit on the time interval that can "
-"elapse before the zone is no longer authoritative"
-msgstr ""
-"Значение верхней границе времени, по истечению которого зона больше не будет"
-" авторитативной "
-
-#: admin/dns/class_dnsZone.inc:852
-msgid "TTL"
-msgstr "TTL"
-
-#: admin/dns/class_dnsZone.inc:852
-msgid "Minimum TTL field that should be exported with any RR from this zone"
-msgstr ""
-"Минимальное значение поля TTL, которое будет экспортировано с каждой RR для "
-"этой зоны"
-
-#: admin/dns/class_dnsZone.inc:863
-msgid "Records"
-msgstr "Записи"
-
-#: admin/dns/class_dnsZone.inc:867
-msgid "The DNS records for this zone"
-msgstr "DNS записи зоны"
-
-#: admin/dns/class_dnsAcl.inc:26 admin/dns/class_dnsAcl.inc:27
-#: admin/dns/class_dnsAcl.inc:30
-msgid "DNS acl"
-msgstr ""
-
-#: admin/dns/class_dnsAcl.inc:43
-msgid "Acl"
-msgstr ""
-
-#: admin/dns/class_dnsAcl.inc:47
-msgid "ACL name"
-msgstr ""
-
-#: admin/dns/class_dnsAcl.inc:47
-msgid "Name of this acl"
-msgstr ""
-
-#: admin/dns/class_dnsAcl.inc:52
-msgid "Address match list"
-msgstr ""
-
-#: admin/dns/class_dnsAcl.inc:52
-msgid "The ip address match list for this acl"
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:127
-msgid "Hash algorithms"
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:128
-msgid ""
-"A colon-separated list of hash algorithms that might be used, defaults to "
-"allowing all algorithms."
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:132
-msgid "Key type"
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:133
-msgid "Key type of the public key, default is \"rsa\"."
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:137
-msgid "Notes"
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:138
-msgid ""
-"Notes that might be of interest to a human. No interpretation is made by any"
-" program."
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:142
-msgid "Public key"
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:143
-msgid ""
-"Public-key data encoded in base64. An empty value means that this public key"
-" has been revoked."
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:147
-msgid "Service type"
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:148
-msgid ""
-"A colon-separated list of service types to which this record applies, "
-"default is \"*\"."
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:152
-#: admin/dns/class_DnsRecordAttribute.inc:267
-#: admin/dns/class_DnsRecordAttribute.inc:358
-msgid "Flags"
-msgstr "Flags"
-
-#: admin/dns/class_DkimRecordAttribute.inc:153
-msgid ""
-"Flags, represented as a colon-separated list of names, default is no flags "
-"set."
-msgstr ""
-
-#: admin/dns/class_DkimRecordAttribute.inc:235
-msgid "The \"Public key\" field does not contain valid base64 data"
-msgstr ""
-
-#: admin/dns/class_dnsView.inc:26 admin/dns/class_dnsView.inc:27
-#: admin/dns/class_dnsView.inc:30
-msgid "DNS view"
-msgstr "DNS вид"
-
-#: admin/dns/class_dnsView.inc:43
-msgid "View"
-msgstr "Вид (View)"
-
-#: admin/dns/class_dnsView.inc:47
-msgid "View name"
-msgstr "Имя вида"
-
-#: admin/dns/class_dnsView.inc:47
-msgid "Name of this view"
-msgstr "Название для вида (view)"
-
-#: admin/dns/class_dnsView.inc:51
-msgid "Match clients ACL"
-msgstr ""
-
-#: admin/dns/class_dnsView.inc:51
-msgid ""
-"Name of the ACL to use for the source IP address of the incoming requests"
-msgstr ""
-
-#: admin/dns/class_dnsView.inc:55
-msgid "Match destinations ACL"
-msgstr ""
-
-#: admin/dns/class_dnsView.inc:55
-msgid ""
-"Name of the ACL to use for the destination IP address of the incoming "
-"requests"
-msgstr ""
-
-#: admin/dns/class_dnsView.inc:59
-msgid "Match recursive only"
-msgstr ""
-
-#: admin/dns/class_dnsView.inc:59
-msgid "Match only recursive queries in this view"
-msgstr ""
-
-#: admin/dns/class_dnsView.inc:64 admin/systems/class_dnsHost.inc:171
-msgid "DNS zones"
-msgstr "Зоны DNS"
-
-#: admin/dns/class_dnsView.inc:64
-msgid "DNS zones in this view"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:36 admin/systems/class_dnsHost.inc:152
-#: config/dns/class_dnsConfig.inc:41
-msgid "DNS"
-msgstr "DNS"
-
-#: admin/dns/class_dnsManagement.inc:37
-msgid "DNS Management"
-msgstr "Управление DNS"
-
-#: admin/dns/class_dnsManagement.inc:38
-msgid "Manage DNS zones and views"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:40
-msgid "Systems"
-msgstr "Системы"
-
-#: admin/dns/class_dnsManagement.inc:54 admin/dns/class_dnsManagement.inc:74
-msgid "Refresh Zone"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:74
-#, php-format
-msgid "Invalid target \"%s\" passed for action \"%s\""
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:82 admin/dns/class_dnsManagement.inc:89
-#, php-format
-msgid "Could not run ldap2zone: %s"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:83
-msgid "More than one server matches the SOA"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:90
-#, php-format
-msgid "Could not find the primary server \"%s\""
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:96 admin/systems/class_dnsHost.inc:344
-msgid "Argonaut client needs to be activated to use ldap2zone remotely"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:105 admin/systems/class_dnsHost.inc:353
-msgid "Cannot use argonaut client on a system without a Mac address"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:361
-msgid "Ldap2zone"
-msgstr "Ldap2zone"
-
-#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:361
-#, php-format
-msgid "Ldap2Zone called for zone \"%s\""
-msgstr ""
 
 #: admin/dns/class_DmarcRecordAttribute.inc:220
 msgid "DKIM Identifier Alignment mode"
@@ -503,6 +108,144 @@ msgstr ""
 msgid ""
 "Addresses to which message-specific failure information is to be reported"
 msgstr ""
+
+#: admin/dns/class_dnsAcl.inc:26 admin/dns/class_dnsAcl.inc:27
+#: admin/dns/class_dnsAcl.inc:30
+msgid "DNS acl"
+msgstr ""
+
+#: admin/dns/class_dnsAcl.inc:43
+msgid "Acl"
+msgstr ""
+
+#: admin/dns/class_dnsAcl.inc:47
+msgid "ACL name"
+msgstr ""
+
+#: admin/dns/class_dnsAcl.inc:47
+msgid "Name of this acl"
+msgstr ""
+
+#: admin/dns/class_dnsAcl.inc:52
+msgid "Address match list"
+msgstr ""
+
+#: admin/dns/class_dnsAcl.inc:52
+msgid "The ip address match list for this acl"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:36 admin/systems/class_dnsHost.inc:152
+#: config/dns/class_dnsConfig.inc:41
+msgid "DNS"
+msgstr "DNS"
+
+#: admin/dns/class_dnsManagement.inc:37
+msgid "DNS Management"
+msgstr "Управление DNS"
+
+#: admin/dns/class_dnsManagement.inc:38
+msgid "Manage DNS zones and views"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:40
+msgid "Systems"
+msgstr "Системы"
+
+#: admin/dns/class_dnsManagement.inc:54 admin/dns/class_dnsManagement.inc:74
+msgid "Refresh Zone"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:74
+#, php-format
+msgid "Invalid target \"%s\" passed for action \"%s\""
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:82 admin/dns/class_dnsManagement.inc:89
+#, php-format
+msgid "Could not run ldap2zone: %s"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:83
+msgid "More than one server matches the SOA"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:90
+#, php-format
+msgid "Could not find the primary server \"%s\""
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:96 admin/systems/class_dnsHost.inc:344
+msgid "Argonaut client needs to be activated to use ldap2zone remotely"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:105 admin/systems/class_dnsHost.inc:353
+msgid "Cannot use argonaut client on a system without a Mac address"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:361
+msgid "Ldap2zone"
+msgstr "Ldap2zone"
+
+#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:361
+#, php-format
+msgid "Ldap2Zone called for zone \"%s\""
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:26 admin/dns/class_dnsView.inc:27
+#: admin/dns/class_dnsView.inc:30
+msgid "DNS view"
+msgstr "DNS вид"
+
+#: admin/dns/class_dnsView.inc:43
+msgid "View"
+msgstr "Вид (View)"
+
+#: admin/dns/class_dnsView.inc:47
+msgid "View name"
+msgstr "Имя вида"
+
+#: admin/dns/class_dnsView.inc:47
+msgid "Name of this view"
+msgstr "Название для вида (view)"
+
+#: admin/dns/class_dnsView.inc:51
+msgid "Match clients ACL"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:51
+msgid ""
+"Name of the ACL to use for the source IP address of the incoming requests"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:55
+msgid "Match destinations ACL"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:55
+msgid ""
+"Name of the ACL to use for the destination IP address of the incoming "
+"requests"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:59
+msgid "Match recursive only"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:59
+msgid "Match only recursive queries in this view"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:64 admin/systems/class_dnsHost.inc:171
+msgid "DNS zones"
+msgstr "Зоны DNS"
+
+#: admin/dns/class_dnsView.inc:64
+msgid "DNS zones in this view"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:133 admin/dns/class_dnsZone.inc:244
+msgid "Type"
+msgstr "Тип"
 
 #: admin/dns/class_DnsRecordAttribute.inc:136
 msgid "Reverse zone"
@@ -610,6 +353,12 @@ msgstr ""
 "Целое число, которое задает порядок, в котором следует обрабатывать записи "
 "NAPTR с одинаковыми значениями полей \"order\". Младшие номера "
 "обрабатываются раньше старших."
+
+#: admin/dns/class_DnsRecordAttribute.inc:267
+#: admin/dns/class_DnsRecordAttribute.inc:358
+#: admin/dns/class_DkimRecordAttribute.inc:152
+msgid "Flags"
+msgstr "Flags"
 
 #: admin/dns/class_DnsRecordAttribute.inc:267
 msgid ""
@@ -772,6 +521,11 @@ msgstr ""
 "Доменное имя, которое определяет хост, который должен быть авторитативным "
 "для этого класса и домена"
 
+#: admin/dns/class_DnsRecordAttribute.inc:421 admin/dns/class_dnsZone.inc:46
+#: admin/dns/class_dnsZone.inc:55
+msgid "Record"
+msgstr "Запись"
+
 #: admin/dns/class_DnsRecordAttribute.inc:421
 msgid ""
 "SSHFP record content. Can be obtained using \"ssh-keygen -r some.host.tld\","
@@ -788,6 +542,10 @@ msgstr "Перенаправить куда"
 msgid "Domain that this subdomain is an alias of"
 msgstr ""
 
+#: admin/dns/class_DnsRecordAttribute.inc:433 admin/dns/class_dnsZone.inc:245
+msgid "Content"
+msgstr "Содержимое"
+
 #: admin/dns/class_DnsRecordAttribute.inc:433
 msgid "Content of this record"
 msgstr "Содержимое записи"
@@ -795,6 +553,248 @@ msgstr "Содержимое записи"
 #: admin/dns/class_DnsRecordAttribute.inc:485
 msgid "The entered IP does not match the selected reverse zone"
 msgstr "Введенный IP не соответствует выбранной обратной зоне"
+
+#: admin/dns/class_dnsZone.inc:28
+msgid "DNS Record domain and type"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:31
+#, php-format
+msgid "%s record"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:35 admin/dns/class_dnsZone.inc:36
+msgid "DNS record"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:50 admin/dns/class_dnsZone.inc:243
+msgid "Subdomain"
+msgstr "Поддомен "
+
+#: admin/dns/class_dnsZone.inc:50
+msgid "Relative subdomain name"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:55
+msgid "DNS Record"
+msgstr "DNS запись"
+
+#: admin/dns/class_dnsZone.inc:246
+msgid "Reverse"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:440
+#, php-format
+msgid "The IP %s does not match the selected reverse %s, it has been ignored"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:748
+#, php-format
+msgid ""
+"\"%s\" must contain a domain name in lowercase and end with a final "
+"dot.<br/><br/>Example: example.com."
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:751
+#, php-format
+msgid ""
+"\"%s\" must contain a domain name in lowercase.<br/><br/>Example: "
+"example.com"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:770 admin/dns/class_dnsZone.inc:771
+#: admin/dns/class_dnsZone.inc:775
+msgid "DNS zone"
+msgstr " DNZ зона"
+
+#: admin/dns/class_dnsZone.inc:790
+msgid "Zone"
+msgstr "Зона"
+
+#: admin/dns/class_dnsZone.inc:794
+msgid "Zone name"
+msgstr "Имя зоны"
+
+#: admin/dns/class_dnsZone.inc:804
+msgid "Reverse zones"
+msgstr "Обратные зоны"
+
+#: admin/dns/class_dnsZone.inc:804
+#, php-format
+msgid ""
+"Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or "
+"x.x.ip6.arpa%1$s"
+msgstr ""
+"Обратные зоны для зоны в формате xx.xx.in-addr.arpa%1$s или x.x.ip6.arpa%1$s"
+
+#: admin/dns/class_dnsZone.inc:817
+msgid "SOA record"
+msgstr "SOA запись"
+
+#: admin/dns/class_dnsZone.inc:820
+msgid "SOA Record"
+msgstr "SOA Запись"
+
+#: admin/dns/class_dnsZone.inc:824
+msgid "Primary DNS server"
+msgstr "Первичный DNS сервер"
+
+#: admin/dns/class_dnsZone.inc:824
+msgid ""
+"Domain name of the name server that was the original or primary source of "
+"data for this zone"
+msgstr ""
+"Доменное имя сервера имен, который будет начальным или первичным источником "
+"данных для этой зоны"
+
+#: admin/dns/class_dnsZone.inc:828
+msgid "Mail address"
+msgstr "Адрес электронной почты"
+
+#: admin/dns/class_dnsZone.inc:828
+msgid ""
+"Domain name which specifies the mailbox of the person responsible for this "
+"zone"
+msgstr ""
+"Доменное имя для которой указанный почтовый ящик - человека ответственного "
+"за эту зону"
+
+#: admin/dns/class_dnsZone.inc:832
+msgid "Serial number"
+msgstr "Serial number"
+
+#: admin/dns/class_dnsZone.inc:832
+msgid "Version number of the original copy of the zone"
+msgstr "Номер версии неповторимой копии зоны"
+
+#: admin/dns/class_dnsZone.inc:837
+msgid "Refresh"
+msgstr "Refresh"
+
+#: admin/dns/class_dnsZone.inc:837
+msgid "Time interval before the zone should be refreshed"
+msgstr "Время по истечению которого зона будет обновлена"
+
+#: admin/dns/class_dnsZone.inc:842
+msgid "Retry"
+msgstr "Retry"
+
+#: admin/dns/class_dnsZone.inc:842
+msgid ""
+"Time interval that should elapse before a failed refresh should be retried"
+msgstr ""
+"Время по истечению которого можно будет повторить обновление после ошибки"
+
+#: admin/dns/class_dnsZone.inc:847
+msgid "Expire"
+msgstr "Expire"
+
+#: admin/dns/class_dnsZone.inc:847
+msgid ""
+"Time value that specifies the upper limit on the time interval that can "
+"elapse before the zone is no longer authoritative"
+msgstr ""
+"Значение верхней границе времени, по истечению которого зона больше не будет"
+" авторитативной "
+
+#: admin/dns/class_dnsZone.inc:852
+msgid "TTL"
+msgstr "TTL"
+
+#: admin/dns/class_dnsZone.inc:852
+msgid "Minimum TTL field that should be exported with any RR from this zone"
+msgstr ""
+"Минимальное значение поля TTL, которое будет экспортировано с каждой RR для "
+"этой зоны"
+
+#: admin/dns/class_dnsZone.inc:863
+msgid "Records"
+msgstr "Записи"
+
+#: admin/dns/class_dnsZone.inc:867
+msgid "The DNS records for this zone"
+msgstr "DNS записи зоны"
+
+#: admin/dns/class_DkimRecordAttribute.inc:127
+msgid "Hash algorithms"
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:128
+msgid ""
+"A colon-separated list of hash algorithms that might be used, defaults to "
+"allowing all algorithms."
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:132
+msgid "Key type"
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:133
+msgid "Key type of the public key, default is \"rsa\"."
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:137
+msgid "Notes"
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:138
+msgid ""
+"Notes that might be of interest to a human. No interpretation is made by any"
+" program."
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:142
+msgid "Public key"
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:143
+msgid ""
+"Public-key data encoded in base64. An empty value means that this public key"
+" has been revoked."
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:147
+msgid "Service type"
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:148
+msgid ""
+"A colon-separated list of service types to which this record applies, "
+"default is \"*\"."
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:153
+msgid ""
+"Flags, represented as a colon-separated list of names, default is no flags "
+"set."
+msgstr ""
+
+#: admin/dns/class_DkimRecordAttribute.inc:235
+msgid "The \"Public key\" field does not contain valid base64 data"
+msgstr ""
+
+#: admin/dns/class_SpfRecordAttribute.inc:27
+msgid "Terms"
+msgstr ""
+
+#: admin/dns/class_SpfRecordAttribute.inc:80
+#, php-format
+msgid "\"%s\" is not a valid directive for an SPF record"
+msgstr ""
+
+#: admin/dns/class_SpfRecordAttribute.inc:88
+msgid "Directive \"all\" does not accept a value in an SPF record"
+msgstr ""
+
+#: admin/dns/class_SpfRecordAttribute.inc:99
+#, php-format
+msgid "Directive \"%s\" needs a value in an SPF record"
+msgstr ""
+
+#: admin/dns/class_SpfRecordAttribute.inc:118
+#, php-format
+msgid "\"%s\" is not a valid modifier for an SPF record"
+msgstr ""
 
 #: admin/systems/class_dnsHost.inc:127 admin/systems/class_dnsHost.inc:418
 #, php-format

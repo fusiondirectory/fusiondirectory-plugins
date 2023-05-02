@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Language-Team: Japanese (https://app.transifex.com/fusiondirectory/teams/12202/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -16,11 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:185
-#, php-format
-msgid "Error while trying to contact Dovecot server through Argonaut: %s"
-msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:26
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:27
@@ -109,4 +104,9 @@ msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:96
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:185
+#, php-format
+msgid "Error while trying to contact Dovecot server through Argonaut: %s"
 msgstr ""

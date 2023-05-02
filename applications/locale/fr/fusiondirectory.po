@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -22,33 +22,93 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
+#: admin/applications/class_applicationManagement.inc:27
 #: admin/roles/class_applicationRights.inc:28
 #: admin/roles/class_applicationRights.inc:49
-#: admin/applications/class_applicationManagement.inc:27
 #: config/applications/class_applicationsPluginConfig.inc:26
 #: config/applications/class_applicationsPluginConfig.inc:40
 msgid "Applications"
 msgstr "Applications"
 
-#: admin/roles/class_applicationRights.inc:29
-msgid "Applications allowed for this role"
-msgstr "Applications autorisées pour ce rôle"
+#: admin/applications/class_applicationManagement.inc:28
+msgid "Applications management"
+msgstr "Gestion des applications"
 
-#: admin/roles/class_applicationRights.inc:45
-msgid "Application list"
-msgstr "Liste d’applications"
+#: admin/applications/class_applicationManagement.inc:29
+msgid "Manage applications and web applications"
+msgstr "Gérer les applications et les applications Web"
 
-#: admin/roles/class_applicationRights.inc:49
-msgid "The applications users with this role are allowed to launch"
-msgstr ""
-"Les applications que les utilisateurs avec ce rôle sont autorisés à lancer"
+#: admin/applications/class_applicationManagement.inc:86
+msgid "Web applications"
+msgstr "Applications web"
 
+#: admin/applications/class_webApplication.inc:26
+#: admin/applications/class_webApplication.inc:30
+msgid "Web application"
+msgstr "Application web"
+
+#: admin/applications/class_webApplication.inc:27
+msgid "Web applicationts names, icons and links"
+msgstr "Noms, icônes et liens des applications web"
+
+#: admin/applications/class_webApplication.inc:43
 #: admin/applications/class_applicationGeneric.inc:27
 #: admin/applications/class_applicationGeneric.inc:31
 #: admin/applications/class_applicationGeneric.inc:44
-#: admin/applications/class_webApplication.inc:43
 msgid "Application"
 msgstr "Application"
+
+#: admin/applications/class_webApplication.inc:47
+msgid "Name"
+msgstr "Nom"
+
+#: admin/applications/class_webApplication.inc:47
+msgid "Name or id for application"
+msgstr "Nom ou id de l’application"
+
+#: admin/applications/class_webApplication.inc:51
+#: admin/applications/class_applicationGeneric.inc:52
+msgid "Description"
+msgstr "Description"
+
+#: admin/applications/class_webApplication.inc:51
+#: admin/applications/class_applicationGeneric.inc:52
+msgid "A short description of this application"
+msgstr "Une courte description de cette application"
+
+#: admin/applications/class_webApplication.inc:55
+msgid "URL"
+msgstr "URL"
+
+#: admin/applications/class_webApplication.inc:55
+msgid "Link to this application"
+msgstr "Lien vers l’application"
+
+#: admin/applications/class_webApplication.inc:59
+msgid "Display Name"
+msgstr "Nom à afficher"
+
+#: admin/applications/class_webApplication.inc:59
+msgid "Displayed name for links to this application"
+msgstr "Nom à afficher dans les liens vers cette application"
+
+#: admin/applications/class_webApplication.inc:65
+#: admin/applications/class_applicationGeneric.inc:66
+msgid "Icon"
+msgstr "Icône"
+
+#: admin/applications/class_webApplication.inc:68
+#: admin/applications/class_applicationGeneric.inc:69
+msgid "The icon for this application"
+msgstr "L’icône pour cette application"
+
+#: admin/applications/class_webApplication.inc:73
+msgid "Icon location"
+msgstr "Chemin de l’icône"
+
+#: admin/applications/class_webApplication.inc:73
+msgid "Usual path to this application icon"
+msgstr "Chemin usuel vers cette icône"
 
 #: admin/applications/class_applicationGeneric.inc:28
 msgid "Application information"
@@ -61,16 +121,6 @@ msgstr "Nom de l'application"
 #: admin/applications/class_applicationGeneric.inc:48
 msgid "The name of this application"
 msgstr "Le nom de cette application"
-
-#: admin/applications/class_applicationGeneric.inc:52
-#: admin/applications/class_webApplication.inc:51
-msgid "Description"
-msgstr "Description"
-
-#: admin/applications/class_applicationGeneric.inc:52
-#: admin/applications/class_webApplication.inc:51
-msgid "A short description of this application"
-msgstr "Une courte description de cette application"
 
 #: admin/applications/class_applicationGeneric.inc:56
 msgid "Execute"
@@ -87,16 +137,6 @@ msgstr "Nom à afficher"
 #: admin/applications/class_applicationGeneric.inc:60
 msgid "The displayed name for this application"
 msgstr "Le nom affiché pour cette application"
-
-#: admin/applications/class_applicationGeneric.inc:66
-#: admin/applications/class_webApplication.inc:65
-msgid "Icon"
-msgstr "Icône"
-
-#: admin/applications/class_applicationGeneric.inc:69
-#: admin/applications/class_webApplication.inc:68
-msgid "The icon for this application"
-msgstr "L’icône pour cette application"
 
 #: admin/applications/class_applicationGeneric.inc:76
 msgid "Options"
@@ -139,58 +179,18 @@ msgstr "Placer une entrée dans le menu démarrage"
 msgid "Place entry in members launch bar"
 msgstr "Placer une entrée dans la barre de lancement des membres"
 
-#: admin/applications/class_applicationManagement.inc:28
-msgid "Applications management"
-msgstr "Gestion des applications"
+#: admin/roles/class_applicationRights.inc:29
+msgid "Applications allowed for this role"
+msgstr "Applications autorisées pour ce rôle"
 
-#: admin/applications/class_applicationManagement.inc:29
-msgid "Manage applications and web applications"
-msgstr "Gérer les applications et les applications Web"
+#: admin/roles/class_applicationRights.inc:45
+msgid "Application list"
+msgstr "Liste d’applications"
 
-#: admin/applications/class_applicationManagement.inc:86
-msgid "Web applications"
-msgstr "Applications web"
-
-#: admin/applications/class_webApplication.inc:26
-#: admin/applications/class_webApplication.inc:30
-msgid "Web application"
-msgstr "Application web"
-
-#: admin/applications/class_webApplication.inc:27
-msgid "Web applicationts names, icons and links"
-msgstr "Noms, icônes et liens des applications web"
-
-#: admin/applications/class_webApplication.inc:47
-msgid "Name"
-msgstr "Nom"
-
-#: admin/applications/class_webApplication.inc:47
-msgid "Name or id for application"
-msgstr "Nom ou id de l’application"
-
-#: admin/applications/class_webApplication.inc:55
-msgid "URL"
-msgstr "URL"
-
-#: admin/applications/class_webApplication.inc:55
-msgid "Link to this application"
-msgstr "Lien vers l’application"
-
-#: admin/applications/class_webApplication.inc:59
-msgid "Display Name"
-msgstr "Nom à afficher"
-
-#: admin/applications/class_webApplication.inc:59
-msgid "Displayed name for links to this application"
-msgstr "Nom à afficher dans les liens vers cette application"
-
-#: admin/applications/class_webApplication.inc:73
-msgid "Icon location"
-msgstr "Chemin de l’icône"
-
-#: admin/applications/class_webApplication.inc:73
-msgid "Usual path to this application icon"
-msgstr "Chemin usuel vers cette icône"
+#: admin/roles/class_applicationRights.inc:49
+msgid "The applications users with this role are allowed to launch"
+msgstr ""
+"Les applications que les utilisateurs avec ce rôle sont autorisés à lancer"
 
 #: config/applications/class_applicationsPluginConfig.inc:27
 msgid "Applications plugin configuration"

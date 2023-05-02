@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:58+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -21,25 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: personal/netgroups/class_netgroupMembership.inc:33
-#: admin/netgroups/class_netgroup.inc:32
-#: admin/systems/netgroups/class_netgroupSystem.inc:29
-msgid "NIS Netgroup"
-msgstr "NIS 넷그룹"
-
-#: personal/netgroups/class_netgroupMembership.inc:34
-#: admin/systems/netgroups/class_netgroupSystem.inc:30
-msgid "NIS Netgroup member"
-msgstr "NIS Netgroup 멤버"
-
-#: personal/netgroups/class_netgroupMembership.inc:50
-msgid "Member of the following NIS Netgroups  "
-msgstr "다음의 NIS Netgroups 멤버"
-
-#: personal/netgroups/class_netgroupMembership.inc:54
-msgid "NIS netgroup membership"
-msgstr "NIS netgroup 멤버쉽"
 
 #: admin/netgroups/class_netgroupManagement.inc:27
 msgid "NIS Netgroups"
@@ -61,6 +42,12 @@ msgstr "넷그룹"
 #: admin/netgroups/class_netgroup.inc:29
 msgid "NIS Netgroup settings"
 msgstr "NIS 넷그룹 설정"
+
+#: admin/netgroups/class_netgroup.inc:32
+#: admin/systems/netgroups/class_netgroupSystem.inc:29
+#: personal/netgroups/class_netgroupMembership.inc:33
+msgid "NIS Netgroup"
+msgstr "NIS 넷그룹"
 
 #: admin/netgroups/class_netgroup.inc:46
 msgid "Information"
@@ -99,6 +86,11 @@ msgstr "시스템 멤버"
 msgid "Netgroup members"
 msgstr "Netgroup 멤버"
 
+#: admin/systems/netgroups/class_netgroupSystem.inc:30
+#: personal/netgroups/class_netgroupMembership.inc:34
+msgid "NIS Netgroup member"
+msgstr "NIS Netgroup 멤버"
+
 #: config/netgroups/class_netgroupConfig.inc:26
 msgid "Netgroup configuration"
 msgstr "Netgroup 설정"
@@ -114,3 +106,11 @@ msgstr "Netgroup RDN"
 #: config/netgroups/class_netgroupConfig.inc:43
 msgid "Branch in which netgroups will be stored"
 msgstr "넷 그룹을 저장할 브랜치"
+
+#: personal/netgroups/class_netgroupMembership.inc:50
+msgid "Member of the following NIS Netgroups  "
+msgstr "다음의 NIS Netgroups 멤버"
+
+#: personal/netgroups/class_netgroupMembership.inc:54
+msgid "NIS netgroup membership"
+msgstr "NIS netgroup 멤버쉽"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
 "Last-Translator: LOUKAS SKOUROLIAKOS, 2021\n"
 "Language-Team: Greek (Greece) (https://app.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -21,6 +21,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/personal/class_personalConfig.inc:26
+msgid "Personal configuration"
+msgstr "Προσωπικές ρυθμίσεις"
+
+#: config/personal/class_personalConfig.inc:27
+msgid "FusionDirectory personal plugin configuration"
+msgstr "Ρύθμιση προσθέτου FusionDirectory personal"
+
+#: config/personal/class_personalConfig.inc:40
+#: personal/personal/class_personalInfo.inc:93
+msgid "Personal"
+msgstr "Προσωπικό"
+
+#: config/personal/class_personalConfig.inc:43
+msgid "Allow use of private email for password recovery"
+msgstr "Να επιτρέπεται η χρήση του προσωπικού email για ανάκτηση λογαριασμού"
+
+#: config/personal/class_personalConfig.inc:43
+msgid "Allow users to use their private email address for password recovery"
+msgstr ""
+"Να επιτρέπεται στους χρήστες η χρήση του προσωπικού email για ανάκτηση "
+"λογαριασμού"
 
 #: personal/personal/class_personalInfo.inc:31
 msgid "Site"
@@ -42,11 +65,6 @@ msgstr "Η Id του χρήστη σε αυτή την ιστοσελίδα"
 #, php-format
 msgid "Social handler \"%s\" does not exists"
 msgstr ""
-
-#: personal/personal/class_personalInfo.inc:93
-#: config/personal/class_personalConfig.inc:40
-msgid "Personal"
-msgstr "Προσωπικό"
 
 #: personal/personal/class_personalInfo.inc:94
 msgid "Personal information"
@@ -201,21 +219,3 @@ msgstr ""
 #: personal/personal/class_socialHandlers.inc:230
 msgid "Matrix user IDs have the format '@username:server'"
 msgstr ""
-
-#: config/personal/class_personalConfig.inc:26
-msgid "Personal configuration"
-msgstr "Προσωπικές ρυθμίσεις"
-
-#: config/personal/class_personalConfig.inc:27
-msgid "FusionDirectory personal plugin configuration"
-msgstr "Ρύθμιση προσθέτου FusionDirectory personal"
-
-#: config/personal/class_personalConfig.inc:43
-msgid "Allow use of private email for password recovery"
-msgstr "Να επιτρέπεται η χρήση του προσωπικού email για ανάκτηση λογαριασμού"
-
-#: config/personal/class_personalConfig.inc:43
-msgid "Allow users to use their private email address for password recovery"
-msgstr ""
-"Να επιτρέπεται στους χρήστες η χρήση του προσωπικού email για ανάκτηση "
-"λογαριασμού"

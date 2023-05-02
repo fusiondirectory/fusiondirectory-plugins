@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Spanish (Colombia) (https://app.transifex.com/fusiondirectory/teams/12202/es_CO/)\n"
@@ -21,10 +21,22 @@ msgstr ""
 "Language: es_CO\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/sudo/class_sudo.inc:32 admin/sudo/class_sudoManagement.inc:28
+#: admin/sudo/class_sudoManagement.inc:28 admin/sudo/class_sudo.inc:32
 #: config/sudo/class_sudoConfig.inc:40
 msgid "Sudo"
 msgstr "Sudo"
+
+#: admin/sudo/class_sudoManagement.inc:29
+msgid "Sudo management"
+msgstr "Administración Sudo"
+
+#: admin/sudo/class_sudoManagement.inc:30
+msgid "Manage sudo roles"
+msgstr ""
+
+#: admin/sudo/class_sudoManagement.inc:44
+msgid "Default"
+msgstr "Por defecto"
 
 #: admin/sudo/class_sudo.inc:33 admin/sudo/class_sudo.inc:37
 msgid "Sudo role"
@@ -118,18 +130,6 @@ msgstr ""
 msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
-
-#: admin/sudo/class_sudoManagement.inc:29
-msgid "Sudo management"
-msgstr "Administración Sudo"
-
-#: admin/sudo/class_sudoManagement.inc:30
-msgid "Manage sudo roles"
-msgstr ""
-
-#: admin/sudo/class_sudoManagement.inc:44
-msgid "Default"
-msgstr "Por defecto"
 
 #: admin/sudo/class_sudoOption.inc:77
 msgid "Unknown option"

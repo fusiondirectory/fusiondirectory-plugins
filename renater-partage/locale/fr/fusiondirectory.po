@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 20:01+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -21,6 +21,267 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:28
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:28
+#: config/class_partageConf.inc:26
+msgid "Partage"
+msgstr "Partage"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:29
+msgid "Partage group options"
+msgstr "Options de groupe de Renater Partage"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:43
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:41
+msgid "Information"
+msgstr "Information"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:46
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:49
+msgid "Display name"
+msgstr "Nom à afficher"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:46
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:49
+msgid "Name to display for this group"
+msgstr "Nom à afficher pour ce groupe"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:50
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:53
+msgid "Hide from global catalog"
+msgstr "Masquer du catalogue global"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:50
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:53
+msgid "Whether this group should be hidden from the global catalog"
+msgstr "Est ce que ce groupe doit être caché dans le catalogue global"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:55
+msgid "Type"
+msgstr "Type"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:55
+msgid "Type of PARTAGE group"
+msgstr "Type de groupe PARTAGE"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:58
+msgid "Distribution list"
+msgstr "Liste de distribution"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:58
+msgid "Group"
+msgstr "Groupes"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:61
+msgid "Alert new members"
+msgstr "Prévenir les nouveaux membres"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:61
+msgid "Send a message to alert new members, they have joined this group"
+msgstr ""
+"Envoyer un message pour prévenir les nouveaux membres, ils ont rejoint ce "
+"groupe"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:66
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:66
+msgid "Notes"
+msgstr "Notes"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:66
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:66
+msgid "Notes about this group"
+msgstr "Notes sur ce groupe"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:26
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:27
+msgid "Renater Partage"
+msgstr "Renater Partage"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:39
+msgid "Settings"
+msgstr "Paramètres"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:43
+msgid "URI"
+msgstr "URI"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:43
+msgid "URI to contact the Renater Partage API"
+msgstr "URI pour contacter l'api Renater Partage"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:47
+msgid "User Agent"
+msgstr "Agent utilisateur"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:47
+msgid "User Agent to use to contact the Renater Partage API"
+msgstr "Agent utilisateur à utiliser pour contacter l'API Renater Partage"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:55
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:81
+msgid "Domains"
+msgstr "Domaines"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:60
+msgid "Domains handled by this Renater Partage server"
+msgstr "Domaines traités par ce serveur Renater Partage"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:64
+msgid "Domain"
+msgstr "Domaine"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:64
+msgid "Domain handled by this server"
+msgstr "Domaines traités par ce serveur"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:68
+msgid "Key"
+msgstr "Clef"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:68
+msgid "Key for this domain"
+msgstr "Clef pour ce domaine"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:72
+msgid "Classes of service"
+msgstr "Classe de services"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:72
+msgid ""
+"Possible classes of service for this domain and their ids, separated by "
+"commas. Format is cos1Name|cos1Id,cos2Name|cos2Id."
+msgstr ""
+"Classes de service possibles pour ce domaine, séparées par des virgules. Le "
+"format est cos1Name|cos1Id,cos2Name|cos2Id."
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:29
+msgid "Partage sympa options"
+msgstr "Options sympa de Renater Partage"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:44
+msgid "Server"
+msgstr "Serveur"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:44
+msgid "Email server"
+msgstr "Serveur de messagerie"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:71
+msgid "Alternative addresses"
+msgstr "Adresses alternatives"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:71
+msgid "Alternative mail addresses for the list"
+msgstr "Adresses de courriel alternatives pour la liste"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:177
+#, php-format
+msgid "Mail method cannot connect: %s"
+msgstr "Le méthode de courriel ne peut pas se connecter : %s"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:183
+#, php-format
+msgid "Cannot update mailbox: %s"
+msgstr "Impossible de mettre à jour le compte : %s"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:207
+#, php-format
+msgid "Cannot remove mailbox, mail method cannot connect: %s"
+msgstr ""
+"Impossible de supprimer le compte de messagerie, impossible de se connecter "
+"à : %s"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:216
+#, php-format
+msgid "Cannot remove mailbox: %s"
+msgstr "Impossible de supprimer le compte de messagerie : %s"
+
+#: config/class_partageConf.inc:27
+msgid "Renater-Partage configuration page"
+msgstr ""
+
+#: config/class_partageConf.inc:28
+msgid "FusionDirectory Partage plugin configuration"
+msgstr "Configuration du plugin Partage de FusionDirectory"
+
+#: config/class_partageConf.inc:40
+msgid "Partage Plugin Configuration"
+msgstr "Configuration du plugin partage"
+
+#: config/class_partageConf.inc:43
+msgid "Mailbox actions upon user mail tab removal"
+msgstr ""
+"Actions de la boîte aux lettres lors de la suppression de l'onglet de "
+"messagerie de l'utilisateur"
+
+#: config/class_partageConf.inc:43
+msgid "Option to take in case of user mail tab removal"
+msgstr ""
+"Option à prendre en cas de suppression de l'onglet de messagerie de "
+"l'utilisateur"
+
+#: config/class_partageConf.inc:46
+msgid "Delete"
+msgstr "Supprimer"
+
+#: config/class_partageConf.inc:46
+msgid "Disable"
+msgstr "Désactiver"
+
+#: config/class_partageConf.inc:49
+msgid "Trust LDAP and override Partage"
+msgstr "Trust LDAP and override Partage"
+
+#: config/class_partageConf.inc:49
+msgid "Option to override Partage with LDAP data"
+msgstr "Option pour remplacer Partage avec des données LDAP"
+
+#: config/class_partageConf.inc:53
+msgid "Re-activate mailbox upon LDAP updates"
+msgstr "Réactiver la boîte aux lettres lors des mises à jour LDAP"
+
+#: config/class_partageConf.inc:53
+msgid "Option to re-activate mailbox if updates are pushed from LDAP"
+msgstr ""
+"Option pour réactiver la boîte aux lettres si les mises à jour sont envoyées"
+" depuis LDAP"
+
+#: config/class_partageConf.inc:59
+msgid "Partage Plugin Token Configuration"
+msgstr "Configuration du token du plugin partage"
+
+#: config/class_partageConf.inc:65
+msgid "Token lifetime"
+msgstr "Durée de vie du jeton"
+
+#: config/class_partageConf.inc:65
+msgid "Defines lifetime of the access token in seconds. Max 4min59"
+msgstr "Définit la durée de vie du jeton d'accès en secondes. Maximum 4min59"
+
+#: config/class_partageConf.inc:72
+msgid "Partage Plugin Advanced Configuration"
+msgstr "Configuration avancée du plugin partage"
+
+#: config/class_partageConf.inc:75
+msgid "Port protection against parallel script execution"
+msgstr ""
+
+#: config/class_partageConf.inc:75
+msgid ""
+"Set the TCP port to be used for the protective socket against parallel "
+"script execution"
+msgstr ""
+
+#: config/class_partageConf.inc:80
+msgid "Timelapse between parallel detection (sec)"
+msgstr "Délai entre la détection parallèle (sec)"
+
+#: config/class_partageConf.inc:80
+msgid ""
+"Set the required timelapse to respect after a parallel script detection"
+msgstr ""
+"Définir le temps requis à respecter après une détection de script parallèle"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:106
 msgid "Server did not return auth token"
@@ -104,266 +365,3 @@ msgstr "Statut du compte"
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:935
 msgid "Unknown"
 msgstr "Inconnu"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:28
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:28
-#: config/class_partageConf.inc:26
-msgid "Partage"
-msgstr "Partage"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:29
-msgid "Partage group options"
-msgstr "Options de groupe de Renater Partage"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:43
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:41
-msgid "Information"
-msgstr "Information"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:46
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:49
-msgid "Display name"
-msgstr "Nom à afficher"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:46
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:49
-msgid "Name to display for this group"
-msgstr "Nom à afficher pour ce groupe"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:50
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:53
-msgid "Hide from global catalog"
-msgstr "Masquer du catalogue global"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:50
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:53
-msgid "Whether this group should be hidden from the global catalog"
-msgstr "Est ce que ce groupe doit être caché dans le catalogue global"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:55
-msgid "Type"
-msgstr "Type"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:55
-msgid "Type of PARTAGE group"
-msgstr "Type de groupe PARTAGE"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:58
-msgid "Distribution list"
-msgstr "Liste de distribution"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:58
-msgid "Group"
-msgstr "Groupes"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:61
-msgid "Alert new members"
-msgstr "Prévenir les nouveaux membres"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:61
-msgid "Send a message to alert new members, they have joined this group"
-msgstr ""
-"Envoyer un message pour prévenir les nouveaux membres, ils ont rejoint ce "
-"groupe"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:66
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:66
-msgid "Notes"
-msgstr "Notes"
-
-#: admin/groups/renater-partage/class_partageGroup.inc:66
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:66
-msgid "Notes about this group"
-msgstr "Notes sur ce groupe"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:29
-msgid "Partage sympa options"
-msgstr "Options sympa de Renater Partage"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:44
-msgid "Server"
-msgstr "Serveur"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:44
-msgid "Email server"
-msgstr "Serveur de messagerie"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:71
-msgid "Alternative addresses"
-msgstr "Adresses alternatives"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:71
-msgid "Alternative mail addresses for the list"
-msgstr "Adresses de courriel alternatives pour la liste"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:177
-#, php-format
-msgid "Mail method cannot connect: %s"
-msgstr "Le méthode de courriel ne peut pas se connecter : %s"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:183
-#, php-format
-msgid "Cannot update mailbox: %s"
-msgstr "Impossible de mettre à jour le compte : %s"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:207
-#, php-format
-msgid "Cannot remove mailbox, mail method cannot connect: %s"
-msgstr ""
-"Impossible de supprimer le compte de messagerie, impossible de se connecter "
-"à : %s"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:216
-#, php-format
-msgid "Cannot remove mailbox: %s"
-msgstr "Impossible de supprimer le compte de messagerie : %s"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:26
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:27
-msgid "Renater Partage"
-msgstr "Renater Partage"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:39
-msgid "Settings"
-msgstr "Paramètres"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:43
-msgid "URI"
-msgstr "URI"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:43
-msgid "URI to contact the Renater Partage API"
-msgstr "URI pour contacter l'api Renater Partage"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:47
-msgid "User Agent"
-msgstr "Agent utilisateur"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:47
-msgid "User Agent to use to contact the Renater Partage API"
-msgstr "Agent utilisateur à utiliser pour contacter l'API Renater Partage"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:55
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:81
-msgid "Domains"
-msgstr "Domaines"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:60
-msgid "Domains handled by this Renater Partage server"
-msgstr "Domaines traités par ce serveur Renater Partage"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:64
-msgid "Domain"
-msgstr "Domaine"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:64
-msgid "Domain handled by this server"
-msgstr "Domaines traités par ce serveur"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:68
-msgid "Key"
-msgstr "Clef"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:68
-msgid "Key for this domain"
-msgstr "Clef pour ce domaine"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:72
-msgid "Classes of service"
-msgstr "Classe de services"
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:72
-msgid ""
-"Possible classes of service for this domain and their ids, separated by "
-"commas. Format is cos1Name|cos1Id,cos2Name|cos2Id."
-msgstr ""
-"Classes de service possibles pour ce domaine, séparées par des virgules. Le "
-"format est cos1Name|cos1Id,cos2Name|cos2Id."
-
-#: config/class_partageConf.inc:27
-msgid "Partageconfiguration"
-msgstr ""
-
-#: config/class_partageConf.inc:28
-msgid "FusionDirectory Partage plugin configuration"
-msgstr "Configuration du plugin Partage de FusionDirectory"
-
-#: config/class_partageConf.inc:40
-msgid "Partage Plugin Configuration"
-msgstr "Configuration du plugin partage"
-
-#: config/class_partageConf.inc:43
-msgid "Mailbox actions upon user mail tab removal"
-msgstr ""
-"Actions de la boîte aux lettres lors de la suppression de l'onglet de "
-"messagerie de l'utilisateur"
-
-#: config/class_partageConf.inc:43
-msgid "Option to take in case of user mail tab removal"
-msgstr ""
-"Option à prendre en cas de suppression de l'onglet de messagerie de "
-"l'utilisateur"
-
-#: config/class_partageConf.inc:46
-msgid "Delete"
-msgstr "Supprimer"
-
-#: config/class_partageConf.inc:46
-msgid "Disable"
-msgstr "Désactiver"
-
-#: config/class_partageConf.inc:49
-msgid "Trust LDAP and override Partage"
-msgstr "Trust LDAP and override Partage"
-
-#: config/class_partageConf.inc:49
-msgid "Option to override Partage with LDAP data"
-msgstr "Option pour remplacer Partage avec des données LDAP"
-
-#: config/class_partageConf.inc:53
-msgid "Re-activate mailbox upon LDAP updates"
-msgstr "Réactiver la boîte aux lettres lors des mises à jour LDAP"
-
-#: config/class_partageConf.inc:53
-msgid "Option to re-activate mailbox if updates are pushed from LDAP"
-msgstr ""
-"Option pour réactiver la boîte aux lettres si les mises à jour sont envoyées"
-" depuis LDAP"
-
-#: config/class_partageConf.inc:59
-msgid "Partage Plugin Token Configuration"
-msgstr "Configuration du token du plugin partage"
-
-#: config/class_partageConf.inc:65
-msgid "Token lifetime"
-msgstr "Durée de vie du jeton"
-
-#: config/class_partageConf.inc:65
-msgid "Defines lifetime of the access token in seconds. Max 4min59"
-msgstr "Définit la durée de vie du jeton d'accès en secondes. Maximum 4min59"
-
-#: config/class_partageConf.inc:72
-msgid "Partage Plugin Advanced Configuration"
-msgstr "Configuration avancée du plugin partage"
-
-#: config/class_partageConf.inc:75
-msgid "Port protection against parallel execution"
-msgstr "Protection de port contre l'exécution en parallèle"
-
-#: config/class_partageConf.inc:75
-msgid ""
-"Set the TCP port to be used for the protective socket against parallel "
-"script"
-msgstr ""
-"Définissez le port TCP à utiliser pour le socket de protection contre le "
-"script s’exécutant en parallèle"
-
-#: config/class_partageConf.inc:80
-msgid "Timelapse between parallel detection (sec)"
-msgstr "Délai entre la détection parallèle (sec)"
-
-#: config/class_partageConf.inc:80
-msgid ""
-"Set the required timelapse to respect after a parallel script detection"
-msgstr ""
-"Définir le temps requis à respecter après une détection de script parallèle"

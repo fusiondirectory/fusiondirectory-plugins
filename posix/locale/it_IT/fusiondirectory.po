@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
 "Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2020\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -22,6 +22,227 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: admin/groups/posix/class_posixGroup.inc:33
+msgid "Group"
+msgstr "Gruppo"
+
+#: admin/groups/posix/class_posixGroup.inc:34
+msgid "POSIX group information"
+msgstr "Informazioni gruppo POSIX"
+
+#: admin/groups/posix/class_posixGroup.inc:37
+msgid "POSIX group"
+msgstr "Gruppo POSIX"
+
+#: admin/groups/posix/class_posixGroup.inc:38
+msgid "POSIX user group"
+msgstr "Gruppo utenti POSIX"
+
+#: admin/groups/posix/class_posixGroup.inc:57
+msgid "Properties"
+msgstr "Proprietà"
+
+#: admin/groups/posix/class_posixGroup.inc:61
+msgid "Name"
+msgstr "Nome"
+
+#: admin/groups/posix/class_posixGroup.inc:61
+msgid "Name of this group"
+msgstr "Nome del gruppo"
+
+#: admin/groups/posix/class_posixGroup.inc:66
+msgid "Description"
+msgstr "Descrizione"
+
+#: admin/groups/posix/class_posixGroup.inc:66
+msgid "Short description of this group"
+msgstr "Breve descrizione del gruppo"
+
+#: admin/groups/posix/class_posixGroup.inc:70
+msgid "Force GID"
+msgstr "Forza il GID"
+
+#: admin/groups/posix/class_posixGroup.inc:70
+msgid "Force GID value for this group"
+msgstr "Forzare il valore GID per questo gruppo"
+
+#: admin/groups/posix/class_posixGroup.inc:74
+msgid "GID"
+msgstr "GID"
+
+#: admin/groups/posix/class_posixGroup.inc:74
+msgid "GID value for this group"
+msgstr "Valore GID per questo gruppo"
+
+#: admin/groups/posix/class_posixGroup.inc:81
+#: admin/groups/posix/class_posixGroup.inc:84
+msgid "Group members"
+msgstr "Membri del gruppo"
+
+#: admin/groups/posix/class_posixGroup.inc:91
+#: personal/posix/class_posixAccount.inc:167
+msgid "System trust"
+msgstr "Sistema di fiducia"
+
+#: admin/groups/posix/class_posixGroup.inc:95
+#: personal/posix/class_posixAccount.inc:171
+msgid "Trust mode"
+msgstr "Modalità di fiducia"
+
+#: admin/groups/posix/class_posixGroup.inc:95
+#: personal/posix/class_posixAccount.inc:171
+msgid "Type of authorization for those hosts"
+msgstr "Tipo di autorizzazione per questi host"
+
+#: admin/groups/posix/class_posixGroup.inc:99
+#: personal/posix/class_posixAccount.inc:175
+msgid "disabled"
+msgstr "disattivato"
+
+#: admin/groups/posix/class_posixGroup.inc:99
+#: personal/posix/class_posixAccount.inc:175
+msgid "full access"
+msgstr "accesso completo"
+
+#: admin/groups/posix/class_posixGroup.inc:99
+#: personal/posix/class_posixAccount.inc:175
+msgid "allow access to these hosts"
+msgstr "autorizza l'accesso a questi host"
+
+#: admin/groups/posix/class_posixGroup.inc:102
+msgid "Only allow this group to connect to this list of hosts"
+msgstr "Consenti all'utente di connettersi solo a questo elenco di host "
+
+#: config/posix/class_posixConfig.inc:27 config/posix/class_posixConfig.inc:41
+msgid "POSIX"
+msgstr "POSIX"
+
+#: config/posix/class_posixConfig.inc:28
+msgid "POSIX configuration"
+msgstr "COnfigurazione di POSIX"
+
+#: config/posix/class_posixConfig.inc:29
+msgid "FusionDirectory POSIX plugin configuration"
+msgstr "Configurazione del plugin POSIX dui FusionDirectory"
+
+#: config/posix/class_posixConfig.inc:45
+msgid "POSIX groups RDN"
+msgstr "Gruppi POSIX RDN"
+
+#: config/posix/class_posixConfig.inc:45
+msgid "The branch where POSIX groups are stored."
+msgstr "Il ramo dove vengono memorizzati i gruppi POSIX."
+
+#: config/posix/class_posixConfig.inc:50
+msgid "Group/user min id"
+msgstr "Gruppo/utente minimo ID"
+
+#: config/posix/class_posixConfig.inc:51
+msgid ""
+"The minimum assignable user or group id to avoid security leaks with id 0 "
+"accounts."
+msgstr ""
+"Il minimo utente o grupp ID assegnabile per evitare perdite di sicurezza con"
+" iaccount ID 0."
+
+#: config/posix/class_posixConfig.inc:56
+msgid "Next id hook"
+msgstr "Id hook successivo"
+
+#: config/posix/class_posixConfig.inc:56
+msgid ""
+"A script to be called for finding the next free id number for users or "
+"groups."
+msgstr ""
+"Script da nominare per trovare il prossimo numero ID libero per gli utenti o"
+" i gruppi."
+
+#: config/posix/class_posixConfig.inc:60
+msgid "Base number for user id"
+msgstr "Numero base per questo ID utente"
+
+#: config/posix/class_posixConfig.inc:61
+msgid "Where to start looking for a new free user id."
+msgstr "Dove cominciare a cercare un nuovo id libero per un utente."
+
+#: config/posix/class_posixConfig.inc:66
+msgid "Base number for group id"
+msgstr "Numero base per questo id gruppo"
+
+#: config/posix/class_posixConfig.inc:67
+msgid "Where to start looking for a new free group id."
+msgstr "Dove cominciare a cercare un nuovo id libero per un gruppo ."
+
+#: config/posix/class_posixConfig.inc:72
+msgid "Id allocation method"
+msgstr "Metodo di assegnazione Id"
+
+#: config/posix/class_posixConfig.inc:72
+msgid "Method to allocate user/group ids"
+msgstr "Metodo per allocare utente / gruppo id"
+
+#: config/posix/class_posixConfig.inc:75
+msgid "Traditional"
+msgstr "Tradizionale"
+
+#: config/posix/class_posixConfig.inc:75
+msgid "Samba unix id pool"
+msgstr "Id del pool di Samba unix"
+
+#: config/posix/class_posixConfig.inc:78
+msgid "Pool user id min"
+msgstr "Minimo pool id dell'utente"
+
+#: config/posix/class_posixConfig.inc:78
+msgid "Minimum value for user id when using pool method"
+msgstr "Valore minimo di un id utente quando si utilizza il metodo pool"
+
+#: config/posix/class_posixConfig.inc:83
+msgid "Pool user id max"
+msgstr "Id utente pool max"
+
+#: config/posix/class_posixConfig.inc:83
+msgid "Maximum value for user id when using pool method"
+msgstr "Valore massimo di un id utente quando si utilizza il metodo pool"
+
+#: config/posix/class_posixConfig.inc:88
+msgid "Pool group id min"
+msgstr "Id utente pool min"
+
+#: config/posix/class_posixConfig.inc:88
+msgid "Minimum value for group id when using pool method"
+msgstr "Valore minimo di un id gruppo quando si utilizza il metodo pool"
+
+#: config/posix/class_posixConfig.inc:93
+msgid "Pool group id max"
+msgstr "Id gruppo pool min"
+
+#: config/posix/class_posixConfig.inc:93
+msgid "Maximum value for group id when using pool method"
+msgstr "Valore massimo di un id gruppo quando si utilizza il metodo pool"
+
+#: config/posix/class_posixConfig.inc:100
+msgid "Shells"
+msgstr "Shell"
+
+#: config/posix/class_posixConfig.inc:104
+msgid "Available shells"
+msgstr "Shell disponibili"
+
+#: config/posix/class_posixConfig.inc:104
+msgid "Available POSIX shells for FD users."
+msgstr "Shell POSIX disponibili per gli utenti FD"
+
+#: config/posix/class_posixConfig.inc:111
+msgid "Default shell"
+msgstr "Shell di default"
+
+#: config/posix/class_posixConfig.inc:111
+msgid "Shell used by default when activating Unix tab."
+msgstr ""
+"Shell utilizzato per impostazione predefinita durante l'attivazione scheda "
+"Unix."
 
 #: personal/posix/class_posixAccount.inc:45
 #: personal/posix/class_posixAccount.inc:77
@@ -174,36 +395,6 @@ msgstr ""
 "L'utente sarà avvertito questo numero di giorni prima della scadenza della "
 "sua password (lasciare vuoto per disabilitare)"
 
-#: personal/posix/class_posixAccount.inc:167
-#: admin/groups/posix/class_posixGroup.inc:91
-msgid "System trust"
-msgstr "Sistema di fiducia"
-
-#: personal/posix/class_posixAccount.inc:171
-#: admin/groups/posix/class_posixGroup.inc:95
-msgid "Trust mode"
-msgstr "Modalità di fiducia"
-
-#: personal/posix/class_posixAccount.inc:171
-#: admin/groups/posix/class_posixGroup.inc:95
-msgid "Type of authorization for those hosts"
-msgstr "Tipo di autorizzazione per questi host"
-
-#: personal/posix/class_posixAccount.inc:175
-#: admin/groups/posix/class_posixGroup.inc:99
-msgid "disabled"
-msgstr "disattivato"
-
-#: personal/posix/class_posixAccount.inc:175
-#: admin/groups/posix/class_posixGroup.inc:99
-msgid "full access"
-msgstr "accesso completo"
-
-#: personal/posix/class_posixAccount.inc:175
-#: admin/groups/posix/class_posixGroup.inc:99
-msgid "allow access to these hosts"
-msgstr "autorizza l'accesso a questi host"
-
 #: personal/posix/class_posixAccount.inc:178
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Consenti all'utente di connettersi solo a questo elenco di host"
@@ -317,194 +508,3 @@ msgstr "\"nextIdHook\" non ha restituito un risultato valido!"
 #: personal/posix/class_posixAccount.inc:1032
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr "\"NextIdHook\" non è disponibile. Utilizzo della base di default!"
-
-#: admin/groups/posix/class_posixGroup.inc:33
-msgid "Group"
-msgstr "Gruppo"
-
-#: admin/groups/posix/class_posixGroup.inc:34
-msgid "POSIX group information"
-msgstr "Informazioni gruppo POSIX"
-
-#: admin/groups/posix/class_posixGroup.inc:37
-msgid "POSIX group"
-msgstr "Gruppo POSIX"
-
-#: admin/groups/posix/class_posixGroup.inc:38
-msgid "POSIX user group"
-msgstr "Gruppo utenti POSIX"
-
-#: admin/groups/posix/class_posixGroup.inc:57
-msgid "Properties"
-msgstr "Proprietà"
-
-#: admin/groups/posix/class_posixGroup.inc:61
-msgid "Name"
-msgstr "Nome"
-
-#: admin/groups/posix/class_posixGroup.inc:61
-msgid "Name of this group"
-msgstr "Nome del gruppo"
-
-#: admin/groups/posix/class_posixGroup.inc:66
-msgid "Description"
-msgstr "Descrizione"
-
-#: admin/groups/posix/class_posixGroup.inc:66
-msgid "Short description of this group"
-msgstr "Breve descrizione del gruppo"
-
-#: admin/groups/posix/class_posixGroup.inc:70
-msgid "Force GID"
-msgstr "Forza il GID"
-
-#: admin/groups/posix/class_posixGroup.inc:70
-msgid "Force GID value for this group"
-msgstr "Forzare il valore GID per questo gruppo"
-
-#: admin/groups/posix/class_posixGroup.inc:74
-msgid "GID"
-msgstr "GID"
-
-#: admin/groups/posix/class_posixGroup.inc:74
-msgid "GID value for this group"
-msgstr "Valore GID per questo gruppo"
-
-#: admin/groups/posix/class_posixGroup.inc:81
-#: admin/groups/posix/class_posixGroup.inc:84
-msgid "Group members"
-msgstr "Membri del gruppo"
-
-#: admin/groups/posix/class_posixGroup.inc:102
-msgid "Only allow this group to connect to this list of hosts"
-msgstr "Consenti all'utente di connettersi solo a questo elenco di host "
-
-#: config/posix/class_posixConfig.inc:27 config/posix/class_posixConfig.inc:41
-msgid "POSIX"
-msgstr "POSIX"
-
-#: config/posix/class_posixConfig.inc:28
-msgid "POSIX configuration"
-msgstr "COnfigurazione di POSIX"
-
-#: config/posix/class_posixConfig.inc:29
-msgid "FusionDirectory POSIX plugin configuration"
-msgstr "Configurazione del plugin POSIX dui FusionDirectory"
-
-#: config/posix/class_posixConfig.inc:45
-msgid "POSIX groups RDN"
-msgstr "Gruppi POSIX RDN"
-
-#: config/posix/class_posixConfig.inc:45
-msgid "The branch where POSIX groups are stored."
-msgstr "Il ramo dove vengono memorizzati i gruppi POSIX."
-
-#: config/posix/class_posixConfig.inc:50
-msgid "Group/user min id"
-msgstr "Gruppo/utente minimo ID"
-
-#: config/posix/class_posixConfig.inc:51
-msgid ""
-"The minimum assignable user or group id to avoid security leaks with id 0 "
-"accounts."
-msgstr ""
-"Il minimo utente o grupp ID assegnabile per evitare perdite di sicurezza con"
-" iaccount ID 0."
-
-#: config/posix/class_posixConfig.inc:56
-msgid "Next id hook"
-msgstr "Id hook successivo"
-
-#: config/posix/class_posixConfig.inc:56
-msgid ""
-"A script to be called for finding the next free id number for users or "
-"groups."
-msgstr ""
-"Script da nominare per trovare il prossimo numero ID libero per gli utenti o"
-" i gruppi."
-
-#: config/posix/class_posixConfig.inc:60
-msgid "Base number for user id"
-msgstr "Numero base per questo ID utente"
-
-#: config/posix/class_posixConfig.inc:61
-msgid "Where to start looking for a new free user id."
-msgstr "Dove cominciare a cercare un nuovo id libero per un utente."
-
-#: config/posix/class_posixConfig.inc:66
-msgid "Base number for group id"
-msgstr "Numero base per questo id gruppo"
-
-#: config/posix/class_posixConfig.inc:67
-msgid "Where to start looking for a new free group id."
-msgstr "Dove cominciare a cercare un nuovo id libero per un gruppo ."
-
-#: config/posix/class_posixConfig.inc:72
-msgid "Id allocation method"
-msgstr "Metodo di assegnazione Id"
-
-#: config/posix/class_posixConfig.inc:72
-msgid "Method to allocate user/group ids"
-msgstr "Metodo per allocare utente / gruppo id"
-
-#: config/posix/class_posixConfig.inc:75
-msgid "Traditional"
-msgstr "Tradizionale"
-
-#: config/posix/class_posixConfig.inc:75
-msgid "Samba unix id pool"
-msgstr "Id del pool di Samba unix"
-
-#: config/posix/class_posixConfig.inc:78
-msgid "Pool user id min"
-msgstr "Minimo pool id dell'utente"
-
-#: config/posix/class_posixConfig.inc:78
-msgid "Minimum value for user id when using pool method"
-msgstr "Valore minimo di un id utente quando si utilizza il metodo pool"
-
-#: config/posix/class_posixConfig.inc:83
-msgid "Pool user id max"
-msgstr "Id utente pool max"
-
-#: config/posix/class_posixConfig.inc:83
-msgid "Maximum value for user id when using pool method"
-msgstr "Valore massimo di un id utente quando si utilizza il metodo pool"
-
-#: config/posix/class_posixConfig.inc:88
-msgid "Pool group id min"
-msgstr "Id utente pool min"
-
-#: config/posix/class_posixConfig.inc:88
-msgid "Minimum value for group id when using pool method"
-msgstr "Valore minimo di un id gruppo quando si utilizza il metodo pool"
-
-#: config/posix/class_posixConfig.inc:93
-msgid "Pool group id max"
-msgstr "Id gruppo pool min"
-
-#: config/posix/class_posixConfig.inc:93
-msgid "Maximum value for group id when using pool method"
-msgstr "Valore massimo di un id gruppo quando si utilizza il metodo pool"
-
-#: config/posix/class_posixConfig.inc:100
-msgid "Shells"
-msgstr "Shell"
-
-#: config/posix/class_posixConfig.inc:104
-msgid "Available shells"
-msgstr "Shell disponibili"
-
-#: config/posix/class_posixConfig.inc:104
-msgid "Available POSIX shells for FD users."
-msgstr "Shell POSIX disponibili per gli utenti FD"
-
-#: config/posix/class_posixConfig.inc:111
-msgid "Default shell"
-msgstr "Shell di default"
-
-#: config/posix/class_posixConfig.inc:111
-msgid "Shell used by default when activating Unix tab."
-msgstr ""
-"Shell utilizzato per impostazione predefinita durante l'attivazione scheda "
-"Unix."

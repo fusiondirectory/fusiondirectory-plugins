@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 20:03+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -20,42 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:28
-msgid "SpamAssassin"
-msgstr "SpamAssassin"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:29
-msgid "Edit user's spam rules"
-msgstr "Éditer les règles courrier indésirable"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:45
-msgid "Spam rules"
-msgstr "règles de courrier indésirable"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:52
-msgid "SpamAssassin user preferences settings"
-msgstr "Préférences utilisateur SpamAssassin "
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:56
-msgid "Directive"
-msgstr "Directive"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:56
-msgid "The name of a SpamAssassin configuration directive"
-msgstr "Le nom d'une directive de configuration SpamAssassin"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:61
-msgid "Value"
-msgstr "Valeur"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:61
-msgid "The value for the directive"
-msgstr "La valeur de la directive"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:68
-msgid "SpamAssassin user rules"
-msgstr "règles utilisateur SpamAssassin"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:28
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:29
@@ -131,3 +95,39 @@ msgstr "Nom"
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:115
 msgid "Rule"
 msgstr "Règle"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:28
+msgid "SpamAssassin"
+msgstr "SpamAssassin"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:29
+msgid "Edit user's spam rules"
+msgstr "Éditer les règles courrier indésirable"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:45
+msgid "Spam rules"
+msgstr "règles de courrier indésirable"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:52
+msgid "SpamAssassin user preferences settings"
+msgstr "Préférences utilisateur SpamAssassin "
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:56
+msgid "Directive"
+msgstr "Directive"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:56
+msgid "The name of a SpamAssassin configuration directive"
+msgstr "Le nom d'une directive de configuration SpamAssassin"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:61
+msgid "Value"
+msgstr "Valeur"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:61
+msgid "The value for the directive"
+msgstr "La valeur de la directive"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:68
+msgid "SpamAssassin user rules"
+msgstr "règles utilisateur SpamAssassin"

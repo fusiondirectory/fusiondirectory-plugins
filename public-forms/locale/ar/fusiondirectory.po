@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-27 16:02+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
 "Language-Team: Arabic (https://app.transifex.com/fusiondirectory/teams/12202/ar/)\n"
@@ -21,6 +21,135 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
+#: include/class_publicFormPage.inc:75
+msgid "Invalid link, both token and form are provided"
+msgstr ""
+
+#: include/class_publicFormPage.inc:89
+#, php-format
+msgid "Could not find any invitation matching token \"%s\""
+msgstr ""
+
+#: include/class_publicFormPage.inc:91 include/class_publicFormPage.inc:109
+#, php-format
+msgid "Found several invitations matching token \"%s\""
+msgstr ""
+
+#: include/class_publicFormPage.inc:95
+#, php-format
+msgid "The invitation matching token \"%s\" does not exist anymore"
+msgstr ""
+
+#: include/class_publicFormPage.inc:107
+#, php-format
+msgid "Could not find any invitation matching registration with token \"%s\""
+msgstr ""
+
+#: include/class_publicFormPage.inc:156
+msgid "Form name or token missing from URL"
+msgstr ""
+
+#: include/class_publicFormPage.inc:159
+#, php-format
+msgid "Form \"%s\" could not be found"
+msgstr ""
+
+#: include/class_publicFormPage.inc:161
+#, php-format
+msgid "Found several forms named \"%s\""
+msgstr ""
+
+#: include/class_publicFormPage.inc:170
+#, php-format
+msgid "Form \"%s\" is private and requires an invitation"
+msgstr ""
+
+#: include/class_publicFormPage.inc:232
+msgid "Captcha code was wrong!"
+msgstr ""
+
+#: include/class_publicFormPage.inc:240
+msgid "You need to accept the terms of service to continue!"
+msgstr ""
+
+#: include/class_publicFormPage.inc:391
+#, php-format
+msgid "Form - %s"
+msgstr ""
+
+#: include/class_publicFormPage.inc:393
+#: admin/public-forms/class_publicForm.inc:46
+msgid "Form"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:27
+#: admin/public-forms/class_publicFormAlteration.inc:42
+msgid "Altered fields"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:28
+#: admin/public-forms/class_publicFormAlteration.inc:47
+msgid "Alteration on form fields"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:51
+#: admin/public-forms/class_publicFormAlteration.inc:100
+msgid "Field"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:51
+msgid "LDAP name of a form field"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:55
+#: admin/public-forms/class_publicFormAlteration.inc:101
+msgid "Mandatory"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:55
+msgid "Should this field be mandatory"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:61
+#: admin/public-forms/class_publicFormAlteration.inc:102
+msgid "Read only"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:61
+msgid "Should this field be read only"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:67
+#: admin/public-forms/class_publicFormAlteration.inc:103
+msgid "Imported"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:67
+msgid "Should this field be imported from HTTP headers"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:73
+#: admin/public-forms/class_publicFormAlteration.inc:104
+msgid "Hidden"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:73
+msgid "Should this field be hidden away"
+msgstr ""
+
+#: admin/public-forms/class_publicFormManagement.inc:27
+#: config/public-forms/class_publicFormsConfig.inc:40
+msgid "Public forms"
+msgstr ""
+
+#: admin/public-forms/class_publicFormManagement.inc:28
+msgid "Public forms management"
+msgstr ""
+
+#: admin/public-forms/class_publicFormManagement.inc:29
+msgid "Manage public forms"
+msgstr ""
+
 #: admin/public-forms/class_publicForm.inc:27
 #: admin/public-forms/class_publicForm.inc:31
 msgid "Public form"
@@ -28,11 +157,6 @@ msgstr ""
 
 #: admin/public-forms/class_publicForm.inc:28
 msgid "Public form which creates objects inside FusionDirectory"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:46
-#: include/class_publicFormPage.inc:392
-msgid "Form"
 msgstr ""
 
 #: admin/public-forms/class_publicForm.inc:50
@@ -125,130 +249,6 @@ msgstr "رابط"
 msgid "Link to the public form as currently saved in the LDAP"
 msgstr ""
 
-#: admin/public-forms/class_publicFormManagement.inc:27
-#: config/public-forms/class_publicFormsConfig.inc:40
-msgid "Public forms"
-msgstr ""
-
-#: admin/public-forms/class_publicFormManagement.inc:28
-msgid "Public forms management"
-msgstr ""
-
-#: admin/public-forms/class_publicFormManagement.inc:29
-msgid "Manage public forms"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:27
-#: admin/public-forms/class_publicFormAlteration.inc:42
-msgid "Altered fields"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:28
-#: admin/public-forms/class_publicFormAlteration.inc:47
-msgid "Alteration on form fields"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:51
-#: admin/public-forms/class_publicFormAlteration.inc:100
-msgid "Field"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:51
-msgid "LDAP name of a form field"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:55
-#: admin/public-forms/class_publicFormAlteration.inc:101
-msgid "Mandatory"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:55
-msgid "Should this field be mandatory"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:61
-#: admin/public-forms/class_publicFormAlteration.inc:102
-msgid "Read only"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:61
-msgid "Should this field be read only"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:67
-#: admin/public-forms/class_publicFormAlteration.inc:103
-msgid "Imported"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:67
-msgid "Should this field be imported from HTTP headers"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:73
-#: admin/public-forms/class_publicFormAlteration.inc:104
-msgid "Hidden"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:73
-msgid "Should this field be hidden away"
-msgstr ""
-
-#: include/class_publicFormPage.inc:72
-msgid "Invalid link, both token and form are provided"
-msgstr ""
-
-#: include/class_publicFormPage.inc:86
-#, php-format
-msgid "Could not find any invitation matching token \"%s\""
-msgstr ""
-
-#: include/class_publicFormPage.inc:88 include/class_publicFormPage.inc:106
-#, php-format
-msgid "Found several invitations matching token \"%s\""
-msgstr ""
-
-#: include/class_publicFormPage.inc:92
-#, php-format
-msgid "The invitation matching token \"%s\" does not exist anymore"
-msgstr ""
-
-#: include/class_publicFormPage.inc:104
-#, php-format
-msgid "Could not find any invitation matching registration with token \"%s\""
-msgstr ""
-
-#: include/class_publicFormPage.inc:153
-msgid "Form name or token missing from URL"
-msgstr ""
-
-#: include/class_publicFormPage.inc:156
-#, php-format
-msgid "Form \"%s\" could not be found"
-msgstr ""
-
-#: include/class_publicFormPage.inc:158
-#, php-format
-msgid "Found several forms named \"%s\""
-msgstr ""
-
-#: include/class_publicFormPage.inc:167
-#, php-format
-msgid "Form \"%s\" is private and requires an invitation"
-msgstr ""
-
-#: include/class_publicFormPage.inc:229
-msgid "Captcha code was wrong!"
-msgstr ""
-
-#: include/class_publicFormPage.inc:237
-msgid "You need to accept the terms of service to continue!"
-msgstr ""
-
-#: include/class_publicFormPage.inc:390
-#, php-format
-msgid "Form - %s"
-msgstr ""
-
 #: config/public-forms/class_publicFormsConfig.inc:26
 msgid "Public forms configuration"
 msgstr ""
@@ -263,24 +263,6 @@ msgstr ""
 
 #: config/public-forms/class_publicFormsConfig.inc:43
 msgid "Branch in which public forms will be stored"
-msgstr ""
-
-#: config/public-forms/class_publicFormsConfig.inc:48
-msgid "Securimage path"
-msgstr ""
-
-#: config/public-forms/class_publicFormsConfig.inc:48
-msgid ""
-"If you wish to use captchas in your forms, you need to install securimage. "
-"Specify here the path to the main class."
-msgstr ""
-
-#: config/public-forms/class_publicFormsConfig.inc:52
-msgid "Securimage URI"
-msgstr ""
-
-#: config/public-forms/class_publicFormsConfig.inc:52
-msgid "The base URI at which securimage is available"
 msgstr ""
 
 #: ihtml/themes/breezy/public-form.tpl.c:2

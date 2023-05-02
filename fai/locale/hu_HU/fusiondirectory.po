@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Hungarian (Hungary) (https://app.transifex.com/fusiondirectory/teams/12202/hu_HU/)\n"
@@ -21,221 +21,84 @@ msgstr ""
 "Language: hu_HU\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/systems/class_faiStartup.inc:61 admin/fai/class_faiManagement.inc:27
-#: admin/fai/class_faiManagement.inc:34 config/fai/class_faiConfig.inc:27
-#: config/fai/class_faiConfig.inc:42
-msgid "FAI"
+#: admin/fai/class_faiVariable.inc:26
+msgid "Variable"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:62
-msgid "Full automated installation"
+#: admin/fai/class_faiVariable.inc:27 admin/fai/class_faiVariable.inc:32
+msgid "FAI variable"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:81
-msgid "FAI settings"
+#: admin/fai/class_faiVariable.inc:47 admin/fai/class_faiScript.inc:47
+#: admin/fai/class_faiProfile.inc:46 admin/fai/class_faiPackage.inc:77
+#: admin/fai/class_faiHook.inc:47 admin/fai/class_faiTemplate.inc:169
+#: admin/fai/class_faiTemplateEntry.inc:148
+#: admin/fai/class_faiPartitionTable.inc:334
+msgid "Properties"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:85
-msgid "FAI profil and release to be applied to this computer"
+#: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiScript.inc:50
+#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:80
+#: admin/fai/class_faiHook.inc:50 admin/fai/class_faiTemplate.inc:172
+#: admin/fai/class_faiPartitionTable.inc:337
+msgid "Class name"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:89
-#: admin/systems/services/repository/class_serviceRepository.inc:40
-#: admin/fai/class_faiPackage.inc:93
-msgid "Release"
+#: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiScript.inc:50
+#: admin/fai/class_faiPackage.inc:80 admin/fai/class_faiHook.inc:50
+msgid "Variables class name"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:89
-msgid "FAI debian release to be installed on this computer"
+#: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiVariable.inc:72
+#: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:251
+#: admin/fai/class_faiScript.inc:54 admin/fai/class_faiScript.inc:72
+#: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:84
+#: admin/fai/class_faiHook.inc:54 admin/fai/class_faiHook.inc:72
+#: admin/fai/class_faiTemplate.inc:176
+#: admin/fai/class_faiTemplateEntry.inc:155
+#: admin/fai/class_faiPartitionTable.inc:341
+msgid "Description"
+msgstr "Leírás"
+
+#: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiScript.inc:54
+#: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:84
+#: admin/fai/class_faiHook.inc:54 admin/fai/class_faiTemplate.inc:176
+#: admin/fai/class_faiPartitionTable.inc:341
+msgid "Short description of the class"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:93
-msgid "Profil"
+#: admin/fai/class_faiVariable.inc:60
+msgid "Variables"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:93
-msgid "FAI profil to be applied to this computer"
+#: admin/fai/class_faiVariable.inc:64 admin/fai/class_faiScript.inc:64
+#: admin/fai/class_faiHook.inc:64
+msgid "Variables in this class"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:101 admin/fai/class_faiPackage.inc:90
-msgid "Repository"
+#: admin/fai/class_faiVariable.inc:68
+#: admin/fai/class_faiSimplePluginClass.inc:52
+#: admin/fai/class_faiDiskEntry.inc:241 admin/fai/class_faiPartition.inc:245
+#: admin/fai/class_faiScript.inc:68 admin/fai/class_faiHook.inc:68
+msgid "Name"
+msgstr "Név"
+
+#: admin/fai/class_faiVariable.inc:68 admin/fai/class_faiScript.inc:68
+#: admin/fai/class_faiHook.inc:68
+msgid "The name of the variable"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:101
-msgid "FAI Debian repository to be used for installation"
+#: admin/fai/class_faiVariable.inc:72 admin/fai/class_faiScript.inc:72
+#: admin/fai/class_faiHook.inc:72
+msgid "A short description of the variable"
 msgstr ""
 
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:26
-msgid "Argonaut FAI monitor"
+#: admin/fai/class_faiVariable.inc:76
+msgid "Content"
 msgstr ""
 
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:27
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:39
-msgid "Argonaut FAI monitor settings"
-msgstr ""
-
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:42
-msgid "Port"
-msgstr ""
-
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:42
-msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
-msgstr ""
-
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:47
-msgid "Timeout"
-msgstr ""
-
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:47
-msgid "The timeout for bad clients. 0 to disable."
-msgstr ""
-
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:52
-msgid "CA certificate"
-msgstr ""
-
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:52
-msgid "Path to the CA certificate file on Argonaut FAI monitor server"
-msgstr ""
-
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:57
-msgid "Log directory"
-msgstr ""
-
-#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:57
-msgid "Directory in which argonaut-fai-monitor will store its log"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:31
-msgid "URL"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:31
-msgid "Repository url"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:35
-msgid "Parent server"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:35
-msgid "Parent repository server"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:40
-msgid "Release used on this repository"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:47
-#: admin/fai/class_faiPackage.inc:97
-msgid "Sections"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:47
-msgid "Sections available on this repository"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:52
-msgid "Mirror mode"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:52
-msgid ""
-"Is this mirror an installation repository? Is its release a custom one?"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:57
-msgid "Local mirror"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:57
-msgid "Is this mirror a local or a network mirror?"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:66
-msgid "Architectures"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:66
-msgid "Processor architectures available on this repository"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:72
-msgid "Distribution"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:72
-msgid "Which distribution is this repository for"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:77
-msgid "Path pattern"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:77
-msgid "How this repository is organized (only for RPM repositories)"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:159
-msgid "Package repository"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:160
-msgid "Package repository information"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:173
-msgid "Repositories"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:178
-msgid "Repositories this server hosts"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:57
-msgid "Sort down"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:59
-msgid "Sort up"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:71
-msgid "File"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:72
-msgid "Date"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:146
-msgid "FAI Logs"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:147
-msgid "FAI Logs Viewer"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:159
-#: admin/systems/class_faiLogView.inc:162
-msgid "Available logs"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:167
-msgid "Selected log"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:171
-msgid "Content of the selected log"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:221
-msgid "Selected file"
-msgstr ""
-
-#: admin/systems/class_faiLogView.inc:229
-#, php-format
-msgid "Selected file: %s"
+#: admin/fai/class_faiVariable.inc:76
+msgid "The content of the variable"
 msgstr ""
 
 #: admin/fai/class_faiDiskEntry.inc:98
@@ -265,25 +128,9 @@ msgstr ""
 msgid "Device"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:241 admin/fai/class_faiVariable.inc:68
-#: admin/fai/class_faiHook.inc:68 admin/fai/class_faiSimplePluginClass.inc:52
-#: admin/fai/class_faiPartition.inc:245 admin/fai/class_faiScript.inc:68
-msgid "Name"
-msgstr "Név"
-
 #: admin/fai/class_faiDiskEntry.inc:241
 msgid "Disk name"
 msgstr ""
-
-#: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiVariable.inc:54
-#: admin/fai/class_faiVariable.inc:72 admin/fai/class_faiTemplateEntry.inc:155
-#: admin/fai/class_faiHook.inc:54 admin/fai/class_faiHook.inc:72
-#: admin/fai/class_faiPartitionTable.inc:341 admin/fai/class_faiProfile.inc:53
-#: admin/fai/class_faiPartition.inc:251 admin/fai/class_faiPackage.inc:84
-#: admin/fai/class_faiTemplate.inc:176 admin/fai/class_faiScript.inc:54
-#: admin/fai/class_faiScript.inc:72
-msgid "Description"
-msgstr "Leírás"
 
 #: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:251
 msgid "Short description"
@@ -346,166 +193,9 @@ msgid ""
 "partitions"
 msgstr ""
 
-#: admin/fai/class_faiVariable.inc:26
-msgid "Variable"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:27 admin/fai/class_faiVariable.inc:32
-msgid "FAI variable"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:47 admin/fai/class_faiTemplateEntry.inc:148
-#: admin/fai/class_faiHook.inc:47 admin/fai/class_faiPartitionTable.inc:334
-#: admin/fai/class_faiProfile.inc:46 admin/fai/class_faiPackage.inc:77
-#: admin/fai/class_faiTemplate.inc:169 admin/fai/class_faiScript.inc:47
-msgid "Properties"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiHook.inc:50
-#: admin/fai/class_faiPartitionTable.inc:337 admin/fai/class_faiProfile.inc:49
-#: admin/fai/class_faiPackage.inc:80 admin/fai/class_faiTemplate.inc:172
-#: admin/fai/class_faiScript.inc:50
-msgid "Class name"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiHook.inc:50
-#: admin/fai/class_faiPackage.inc:80 admin/fai/class_faiScript.inc:50
-msgid "Variables class name"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiHook.inc:54
-#: admin/fai/class_faiPartitionTable.inc:341 admin/fai/class_faiProfile.inc:53
-#: admin/fai/class_faiPackage.inc:84 admin/fai/class_faiTemplate.inc:176
-#: admin/fai/class_faiScript.inc:54
-msgid "Short description of the class"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:60
-msgid "Variables"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:64 admin/fai/class_faiHook.inc:64
-#: admin/fai/class_faiScript.inc:64
-msgid "Variables in this class"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:68 admin/fai/class_faiHook.inc:68
-#: admin/fai/class_faiScript.inc:68
-msgid "The name of the variable"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:72 admin/fai/class_faiHook.inc:72
-#: admin/fai/class_faiScript.inc:72
-msgid "A short description of the variable"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:76
-msgid "Content"
-msgstr ""
-
-#: admin/fai/class_faiVariable.inc:76
-msgid "The content of the variable"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:136
-#: admin/fai/class_faiTemplateEntry.inc:137
-msgid "FAI Template Entry"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:151
-msgid "File path"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:151
-msgid "Complete absolute template file path and name"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:155
-msgid "Short description of the file"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:164
-msgid "Template attributes"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:168
-msgid "Template file content"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:168
-msgid "Content of the template file"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:172
-msgid "Owner and group of the file"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:175
-msgid "Owner"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:175
-msgid "File owner"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:180
-msgid "Group"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:180
-msgid "File group"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:189
-msgid "Access"
-msgstr ""
-
-#: admin/fai/class_faiTemplateEntry.inc:189
-msgid "Access rights"
-msgstr ""
-
-#: admin/fai/class_faiHook.inc:26
-msgid "Hook"
-msgstr ""
-
-#: admin/fai/class_faiHook.inc:27 admin/fai/class_faiHook.inc:32
-msgid "FAI hook"
-msgstr ""
-
-#: admin/fai/class_faiHook.inc:60
-msgid "Hooks"
-msgstr ""
-
-#: admin/fai/class_faiHook.inc:76
-msgid "Task"
-msgstr ""
-
-#: admin/fai/class_faiHook.inc:76
-msgid "Task to run"
-msgstr ""
-
-#: admin/fai/class_faiHook.inc:84 admin/fai/class_faiScript.inc:26
-#: admin/fai/class_faiScript.inc:81
-msgid "Script"
-msgstr ""
-
-#: admin/fai/class_faiHook.inc:84
-msgid "The script of this hook"
-msgstr ""
-
 #: admin/fai/packageSelect/class_packageSelectManagement.inc:31
 #: admin/fai/class_faiPackage.inc:56
 msgid "Package"
-msgstr ""
-
-#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:57
-#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:58
-#, php-format
-msgid "Custom %s"
-msgstr ""
-
-#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:64
-msgid "Customs"
 msgstr ""
 
 #: admin/fai/packageSelect/class_PackagesAttribute.inc:124
@@ -528,57 +218,14 @@ msgstr ""
 msgid "The following packages were not found on the repository : %s"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:100
-msgid "Add disk"
+#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:57
+#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:58
+#, php-format
+msgid "Custom %s"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:110
-msgid "Add RAID"
-msgstr ""
-
-#: admin/fai/class_faiPartitionTable.inc:121
-msgid "Add LVM"
-msgstr ""
-
-#: admin/fai/class_faiPartitionTable.inc:132
-msgid "Add cryptsetup"
-msgstr ""
-
-#: admin/fai/class_faiPartitionTable.inc:313
-msgid "Partition table"
-msgstr ""
-
-#: admin/fai/class_faiPartitionTable.inc:314
-#: admin/fai/class_faiPartitionTable.inc:319
-msgid "FAI partition table"
-msgstr ""
-
-#: admin/fai/class_faiPartitionTable.inc:337 admin/fai/class_faiProfile.inc:49
-msgid "Partition table class name"
-msgstr ""
-
-#: admin/fai/class_faiPartitionTable.inc:347
-msgid "Discs"
-msgstr ""
-
-#: admin/fai/class_faiProfile.inc:26
-msgid "Profile"
-msgstr ""
-
-#: admin/fai/class_faiProfile.inc:27
-msgid "FAI profile"
-msgstr ""
-
-#: admin/fai/class_faiProfile.inc:32
-msgid "FAI Profile"
-msgstr ""
-
-#: admin/fai/class_faiProfile.inc:60
-msgid "FAI classes"
-msgstr ""
-
-#: admin/fai/class_faiProfile.inc:60
-msgid "FAI classes which are part of this profile"
+#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:64
+msgid "Customs"
 msgstr ""
 
 #: admin/fai/class_faiPartition.inc:30
@@ -866,73 +513,53 @@ msgid ""
 "Raid 0 arrays can only be realized with a combination of two partitions!"
 msgstr ""
 
-#: admin/fai/class_faiManagement.inc:28
-msgid "Manage FAI software packages and deployment recipes"
+#: admin/fai/class_faiScript.inc:26 admin/fai/class_faiScript.inc:81
+#: admin/fai/class_faiHook.inc:84
+msgid "Script"
 msgstr ""
 
-#: admin/fai/class_faiManagement.inc:62
-msgid "There are no FAI branches"
+#: admin/fai/class_faiScript.inc:27 admin/fai/class_faiScript.inc:32
+msgid "FAI script"
 msgstr ""
 
-#: admin/fai/class_faiManagement.inc:65
-msgid " Please add at least one repository service to create those."
+#: admin/fai/class_faiScript.inc:60
+msgid "Scripts"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:57
-msgid "FAI Package list"
+#: admin/fai/class_faiScript.inc:76
+msgid "Priority"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:62
-msgid "FAI Package"
+#: admin/fai/class_faiScript.inc:76
+msgid "Priority of this script (smaller is done first)"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:93
-msgid "Debian release concerned"
+#: admin/fai/class_faiScript.inc:81
+msgid "The script itself"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:97
-msgid "Sections concerned"
+#: admin/fai/class_faiProfile.inc:26
+msgid "Profile"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:101
-msgid "Install method"
+#: admin/fai/class_faiProfile.inc:27
+msgid "FAI profile"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:101
-msgid "Install method to use for this package list"
+#: admin/fai/class_faiProfile.inc:32
+msgid "FAI Profile"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:112
-msgid "Packages"
+#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPartitionTable.inc:337
+msgid "Partition table class name"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:116
-msgid "Packages in this class"
+#: admin/fai/class_faiProfile.inc:60
+msgid "FAI classes"
 msgstr ""
 
-#: admin/fai/class_faiTemplate.inc:134
-#, php-format
-msgid "There are several files with the same path: %s"
-msgstr ""
-
-#: admin/fai/class_faiTemplate.inc:148
-msgid "Template"
-msgstr ""
-
-#: admin/fai/class_faiTemplate.inc:149 admin/fai/class_faiTemplate.inc:154
-msgid "FAI template"
-msgstr ""
-
-#: admin/fai/class_faiTemplate.inc:172
-msgid "Template class name"
-msgstr ""
-
-#: admin/fai/class_faiTemplate.inc:182
-msgid "Template files"
-msgstr ""
-
-#: admin/fai/class_faiTemplate.inc:186
-msgid "Template files in this class"
+#: admin/fai/class_faiProfile.inc:60
+msgid "FAI classes which are part of this profile"
 msgstr ""
 
 #: admin/fai/class_faiPackageConfiguration.inc:33
@@ -962,24 +589,399 @@ msgid ""
 "order to take effect."
 msgstr ""
 
-#: admin/fai/class_faiScript.inc:27 admin/fai/class_faiScript.inc:32
-msgid "FAI script"
+#: admin/fai/class_faiPackage.inc:57
+msgid "FAI Package list"
 msgstr ""
 
-#: admin/fai/class_faiScript.inc:60
-msgid "Scripts"
+#: admin/fai/class_faiPackage.inc:62
+msgid "FAI Package"
 msgstr ""
 
-#: admin/fai/class_faiScript.inc:76
-msgid "Priority"
+#: admin/fai/class_faiPackage.inc:90 admin/systems/class_faiStartup.inc:101
+msgid "Repository"
 msgstr ""
 
-#: admin/fai/class_faiScript.inc:76
-msgid "Priority of this script (smaller is done first)"
+#: admin/fai/class_faiPackage.inc:93 admin/systems/class_faiStartup.inc:89
+#: admin/systems/services/repository/class_serviceRepository.inc:40
+msgid "Release"
 msgstr ""
 
-#: admin/fai/class_faiScript.inc:81
-msgid "The script itself"
+#: admin/fai/class_faiPackage.inc:93
+msgid "Debian release concerned"
+msgstr ""
+
+#: admin/fai/class_faiPackage.inc:97
+#: admin/systems/services/repository/class_serviceRepository.inc:47
+msgid "Sections"
+msgstr ""
+
+#: admin/fai/class_faiPackage.inc:97
+msgid "Sections concerned"
+msgstr ""
+
+#: admin/fai/class_faiPackage.inc:101
+msgid "Install method"
+msgstr ""
+
+#: admin/fai/class_faiPackage.inc:101
+msgid "Install method to use for this package list"
+msgstr ""
+
+#: admin/fai/class_faiPackage.inc:112
+msgid "Packages"
+msgstr ""
+
+#: admin/fai/class_faiPackage.inc:116
+msgid "Packages in this class"
+msgstr ""
+
+#: admin/fai/class_faiHook.inc:26
+msgid "Hook"
+msgstr ""
+
+#: admin/fai/class_faiHook.inc:27 admin/fai/class_faiHook.inc:32
+msgid "FAI hook"
+msgstr ""
+
+#: admin/fai/class_faiHook.inc:60
+msgid "Hooks"
+msgstr ""
+
+#: admin/fai/class_faiHook.inc:76
+msgid "Task"
+msgstr ""
+
+#: admin/fai/class_faiHook.inc:76
+msgid "Task to run"
+msgstr ""
+
+#: admin/fai/class_faiHook.inc:84
+msgid "The script of this hook"
+msgstr ""
+
+#: admin/fai/class_faiTemplate.inc:134
+#, php-format
+msgid "There are several files with the same path: %s"
+msgstr ""
+
+#: admin/fai/class_faiTemplate.inc:148
+msgid "Template"
+msgstr ""
+
+#: admin/fai/class_faiTemplate.inc:149 admin/fai/class_faiTemplate.inc:154
+msgid "FAI template"
+msgstr ""
+
+#: admin/fai/class_faiTemplate.inc:172
+msgid "Template class name"
+msgstr ""
+
+#: admin/fai/class_faiTemplate.inc:182
+msgid "Template files"
+msgstr ""
+
+#: admin/fai/class_faiTemplate.inc:186
+msgid "Template files in this class"
+msgstr ""
+
+#: admin/fai/class_faiManagement.inc:27 admin/fai/class_faiManagement.inc:34
+#: admin/systems/class_faiStartup.inc:61 config/fai/class_faiConfig.inc:27
+#: config/fai/class_faiConfig.inc:42
+msgid "FAI"
+msgstr ""
+
+#: admin/fai/class_faiManagement.inc:28
+msgid "Manage FAI software packages and deployment recipes"
+msgstr ""
+
+#: admin/fai/class_faiManagement.inc:62
+msgid "There are no FAI branches"
+msgstr ""
+
+#: admin/fai/class_faiManagement.inc:65
+msgid " Please add at least one repository service to create those."
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:136
+#: admin/fai/class_faiTemplateEntry.inc:137
+msgid "FAI Template Entry"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:151
+msgid "File path"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:151
+msgid "Complete absolute template file path and name"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:155
+msgid "Short description of the file"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:164
+msgid "Template attributes"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:168
+msgid "Template file content"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:168
+msgid "Content of the template file"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:172
+msgid "Owner and group of the file"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:175
+msgid "Owner"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:175
+msgid "File owner"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:180
+msgid "Group"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:180
+msgid "File group"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:189
+msgid "Access"
+msgstr ""
+
+#: admin/fai/class_faiTemplateEntry.inc:189
+msgid "Access rights"
+msgstr ""
+
+#: admin/fai/class_faiPartitionTable.inc:100
+msgid "Add disk"
+msgstr ""
+
+#: admin/fai/class_faiPartitionTable.inc:110
+msgid "Add RAID"
+msgstr ""
+
+#: admin/fai/class_faiPartitionTable.inc:121
+msgid "Add LVM"
+msgstr ""
+
+#: admin/fai/class_faiPartitionTable.inc:132
+msgid "Add cryptsetup"
+msgstr ""
+
+#: admin/fai/class_faiPartitionTable.inc:313
+msgid "Partition table"
+msgstr ""
+
+#: admin/fai/class_faiPartitionTable.inc:314
+#: admin/fai/class_faiPartitionTable.inc:319
+msgid "FAI partition table"
+msgstr ""
+
+#: admin/fai/class_faiPartitionTable.inc:347
+msgid "Discs"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:57
+msgid "Sort down"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:59
+msgid "Sort up"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:71
+msgid "File"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:72
+msgid "Date"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:146
+msgid "FAI Logs"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:147
+msgid "FAI Logs Viewer"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:159
+#: admin/systems/class_faiLogView.inc:162
+msgid "Available logs"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:167
+msgid "Selected log"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:171
+msgid "Content of the selected log"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:221
+msgid "Selected file"
+msgstr ""
+
+#: admin/systems/class_faiLogView.inc:229
+#, php-format
+msgid "Selected file: %s"
+msgstr ""
+
+#: admin/systems/class_faiStartup.inc:62
+msgid "Full automated installation"
+msgstr ""
+
+#: admin/systems/class_faiStartup.inc:81
+msgid "FAI settings"
+msgstr ""
+
+#: admin/systems/class_faiStartup.inc:85
+msgid "FAI profil and release to be applied to this computer"
+msgstr ""
+
+#: admin/systems/class_faiStartup.inc:89
+msgid "FAI debian release to be installed on this computer"
+msgstr ""
+
+#: admin/systems/class_faiStartup.inc:93
+msgid "Profil"
+msgstr ""
+
+#: admin/systems/class_faiStartup.inc:93
+msgid "FAI profil to be applied to this computer"
+msgstr ""
+
+#: admin/systems/class_faiStartup.inc:101
+msgid "FAI Debian repository to be used for installation"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:31
+msgid "URL"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:31
+msgid "Repository url"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:35
+msgid "Parent server"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:35
+msgid "Parent repository server"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:40
+msgid "Release used on this repository"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:47
+msgid "Sections available on this repository"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:52
+msgid "Mirror mode"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:52
+msgid ""
+"Is this mirror an installation repository? Is its release a custom one?"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:57
+msgid "Local mirror"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:57
+msgid "Is this mirror a local or a network mirror?"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:66
+msgid "Architectures"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:66
+msgid "Processor architectures available on this repository"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:72
+msgid "Distribution"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:72
+msgid "Which distribution is this repository for"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:77
+msgid "Path pattern"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:77
+msgid "How this repository is organized (only for RPM repositories)"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:159
+msgid "Package repository"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:160
+msgid "Package repository information"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:173
+msgid "Repositories"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:178
+msgid "Repositories this server hosts"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:26
+msgid "Argonaut FAI monitor"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:27
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:39
+msgid "Argonaut FAI monitor settings"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:42
+msgid "Port"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:42
+msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:47
+msgid "Timeout"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:47
+msgid "The timeout for bad clients. 0 to disable."
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:52
+msgid "CA certificate"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:52
+msgid "Path to the CA certificate file on Argonaut FAI monitor server"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:57
+msgid "Log directory"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:57
+msgid "Directory in which argonaut-fai-monitor will store its log"
 msgstr ""
 
 #: config/fai/class_faiConfig.inc:28

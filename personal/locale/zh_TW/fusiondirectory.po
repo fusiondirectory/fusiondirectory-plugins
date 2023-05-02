@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2023-04-25 13:25+0000\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/fusiondirectory/teams/12202/zh_TW/)\n"
@@ -20,6 +20,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: config/personal/class_personalConfig.inc:26
+msgid "Personal configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:27
+msgid "FusionDirectory personal plugin configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:40
+#: personal/personal/class_personalInfo.inc:93
+msgid "Personal"
+msgstr "个人"
+
+#: config/personal/class_personalConfig.inc:43
+msgid "Allow use of private email for password recovery"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:43
+msgid "Allow users to use their private email address for password recovery"
+msgstr ""
 
 #: personal/personal/class_personalInfo.inc:31
 msgid "Site"
@@ -41,11 +62,6 @@ msgstr ""
 #, php-format
 msgid "Social handler \"%s\" does not exists"
 msgstr ""
-
-#: personal/personal/class_personalInfo.inc:93
-#: config/personal/class_personalConfig.inc:40
-msgid "Personal"
-msgstr "个人"
 
 #: personal/personal/class_personalInfo.inc:94
 msgid "Personal information"
@@ -199,20 +215,4 @@ msgstr ""
 
 #: personal/personal/class_socialHandlers.inc:230
 msgid "Matrix user IDs have the format '@username:server'"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:26
-msgid "Personal configuration"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:27
-msgid "FusionDirectory personal plugin configuration"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:43
-msgid "Allow use of private email for password recovery"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:43
-msgid "Allow users to use their private email address for password recovery"
 msgstr ""
