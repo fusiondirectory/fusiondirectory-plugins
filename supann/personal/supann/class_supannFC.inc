@@ -33,7 +33,7 @@ class supannFC extends simplePlugin
       'plShortName'   => _('France Connect'),
       'plDescription' => _('France Connect identity'),
       'plSelfModify'  => TRUE,
-      'plObjectClass' => ['supannFCPerson'],
+      'plObjectClass' => ['supannPerson'],
       'plObjectType'  => ['user'],
       'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=supann&size=16',
@@ -51,27 +51,27 @@ class supannFC extends simplePlugin
         'attrs' => [
           new StringAttribute(
             _('Birth name'), _('Last name from birth'),
-            'supannNomDeNaissance', TRUE
+            'supannNomDeNaissance', FALSE
           ),
           new StringAttribute(
             _('First names'), _('Space separated first names'),
-            'supannPrenomsEtatCivil', TRUE
+            'supannPrenomsEtatCivil', FALSE
           ),
           new DateAttribute(
             _('Date of birth'), _('Date of birth'),
-            'supannOIDCDateDeNaissance', TRUE,
+            'supannOIDCDateDeNaissance', FALSE,
             'Y-m-d', '',
             // min and max:
             NULL, 'now'
           ),
           new SelectAttribute(
             _('Gender'), _('Gender'),
-            'supannOIDCGenre', TRUE,
+            'supannOIDCGenre', FALSE,
             ['other', 'female', 'male'], '', [_('Other'), _('Female'), _('Male')]
           ),
           new StringAttribute(
             _('Country of birth'), _('INSEE code of country of birth'),
-            'supannCodeINSEEPaysDeNaissance', TRUE,
+            'supannCodeINSEEPaysDeNaissance', FALSE,
             '',
             '',
             '/^\d{5}$/',
@@ -93,7 +93,7 @@ class supannFC extends simplePlugin
           new SetAttribute(
             new StringAttribute(
               _('Subject'), _('Subject from OpenID Connect standard in the France Connect system'),
-              'supannFCSub', TRUE,
+              'supannFCSub', FALSE,
               '',
               '',
               '/^[[:ascii:]]{1,255}$/'
