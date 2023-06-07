@@ -115,7 +115,6 @@ class entite extends simplePlugin
 
     $this->attributesAccess['supannCodeEntiteParent']->attribute->setChoices($code_entites, $label_entites);
 
-    $this->attributesAccess['ou']->setUnique('one');
     $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
     $this->attributesAccess['supannRefId']->setUnique('whole', '(objectClass=supannEntite)');
   }
