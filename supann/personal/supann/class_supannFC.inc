@@ -51,27 +51,27 @@ class supannFC extends simplePlugin
         'attrs' => [
           new StringAttribute(
             _('Birth name'), _('Last name from birth'),
-            'fdSupannNomDeNaissance', FALSE
+            'supannNomDeNaissance', FALSE
           ),
           new StringAttribute(
             _('First names'), _('Space separated first names'),
-            'fdSupannPrenomsEtatCivil', FALSE
+            'supannPrenomsEtatCivil', FALSE
           ),
           new DateAttribute(
             _('Date of birth'), _('Date of birth'),
-            'fdSupannOIDCDateDeNaissance', FALSE,
+            'supannOIDCDateDeNaissance', FALSE,
             'Y-m-d', '',
             // min and max:
             NULL, 'now'
           ),
           new SelectAttribute(
             _('Gender'), _('Gender'),
-            'fdSupannOIDCGenre', FALSE,
+            'supannOIDCGenre', FALSE,
             ['other', 'female', 'male'], '', [_('Other'), _('Female'), _('Male')]
           ),
           new StringAttribute(
             _('Country of birth'), _('INSEE code of country of birth'),
-            'fdSupannCodeINSEEPaysDeNaissance', FALSE,
+            'supannCodeINSEEPaysDeNaissance', FALSE,
             '',
             '',
             '/^\d{5}$/',
@@ -79,7 +79,7 @@ class supannFC extends simplePlugin
           ),
           new StringAttribute(
             _('City of birth'), _('INSEE code of city of birth, if in France'),
-            'fdSupannCodeINSEEVilleDeNaissance', FALSE,
+            'supannCodeINSEEVilleDeNaissance', FALSE,
             '',
             '',
             '/^[\dAB]{5}$/',
@@ -93,7 +93,7 @@ class supannFC extends simplePlugin
           new SetAttribute(
             new StringAttribute(
               _('Subject'), _('Subject from OpenID Connect standard in the France Connect system'),
-              'fdSupannFCSub', FALSE,
+              'supannFCSub', FALSE,
               '',
               '',
               '/^[[:ascii:]]{1,255}$/'
@@ -108,6 +108,6 @@ class supannFC extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['fdSupannFCSub']->setUnique('whole');
+    $this->attributesAccess['supannFCSub']->setUnique('whole');
   }
 }
