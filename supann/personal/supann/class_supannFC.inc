@@ -33,7 +33,7 @@ class supannFC extends simplePlugin
       'plShortName'   => _('France Connect'),
       'plDescription' => _('France Connect identity'),
       'plSelfModify'  => TRUE,
-      'plObjectClass' => ['supannPerson'],
+      'plObjectClass' => ['fdFranceConnect'],
       'plObjectType'  => ['user'],
       'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=supann&size=16',
@@ -51,27 +51,27 @@ class supannFC extends simplePlugin
         'attrs' => [
           new StringAttribute(
             _('Birth name'), _('Last name from birth'),
-            'supannNomDeNaissance', FALSE
+            'fdSupannNomDeNaissance', FALSE
           ),
           new StringAttribute(
             _('First names'), _('Space separated first names'),
-            'supannPrenomsEtatCivil', FALSE
+            'fdSupannPrenomsEtatCivil', FALSE
           ),
           new DateAttribute(
             _('Date of birth'), _('Date of birth'),
-            'supannOIDCDateDeNaissance', FALSE,
+            'fdSupannOIDCDateDeNaissance', FALSE,
             'Y-m-d', '',
             // min and max:
             NULL, 'now'
           ),
           new SelectAttribute(
             _('Gender'), _('Gender'),
-            'supannOIDCGenre', FALSE,
+            'fdSupannOIDCGenre', FALSE,
             ['other', 'female', 'male'], '', [_('Other'), _('Female'), _('Male')]
           ),
           new StringAttribute(
             _('Country of birth'), _('INSEE code of country of birth'),
-            'supannCodeINSEEPaysDeNaissance', FALSE,
+            'fdSupannCodeINSEEPaysDeNaissance', FALSE,
             '',
             '',
             '/^\d{5}$/',
@@ -79,7 +79,7 @@ class supannFC extends simplePlugin
           ),
           new StringAttribute(
             _('City of birth'), _('INSEE code of city of birth, if in France'),
-            'supannCodeINSEEVilleDeNaissance', FALSE,
+            'fdSupannCodeINSEEVilleDeNaissance', FALSE,
             '',
             '',
             '/^[\dAB]{5}$/',
@@ -93,7 +93,7 @@ class supannFC extends simplePlugin
           new SetAttribute(
             new StringAttribute(
               _('Subject'), _('Subject from OpenID Connect standard in the France Connect system'),
-              'supannFCSub', FALSE,
+              'fdSupannFCSub', FALSE,
               '',
               '',
               '/^[[:ascii:]]{1,255}$/'
@@ -108,6 +108,6 @@ class supannFC extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['supannFCSub']->setUnique('whole');
+    $this->attributesAccess['fdSupannFCSub']->setUnique('whole');
   }
 }
