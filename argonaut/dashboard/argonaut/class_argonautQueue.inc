@@ -48,7 +48,7 @@ class argonautQueue extends management
       'plShortName'   => _('Deployment queue'),
       'plDescription' => _('Provide a mechanism to automatically activate systems'),
       'plIcon'        => 'geticon.php?context=applications&icon=argonaut&size=48',
-      'plSection'     => 'systems',
+      'plSection'     => 'Dashboard',
       'plPriority'    => 30,
       'plCategory'    => ['argonautQueue' => ['objectClass' => 'none', 'description' => _('Deployment queue')]],
 
