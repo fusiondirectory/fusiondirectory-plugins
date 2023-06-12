@@ -60,7 +60,7 @@ class subscriptionsConfig extends simplePlugin
                   'fdSubscriptionTypes_label', TRUE
                 ),
               ],
-';',
+              ';',
                   '',
                   _('Subscription types')
             ),
@@ -109,7 +109,7 @@ class subscriptionsConfig extends simplePlugin
                   'fdSubscriptionRpmRepositories_label', TRUE
                 ),
               ],
-';',
+              ';',
                   '',
                   _('Rpm repositories')
             ),
