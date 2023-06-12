@@ -42,7 +42,8 @@ class auditManagement extends management
       'plTitle'       => _('Audit events'),
       'plDescription' => _('Browse audit events'),
       'plIcon'        => 'geticon.php?context=applications&icon=audit&size=48',
-      'plSection' => ['reporting' => ['name' => _('Reporting'), 'priority' => 60]],
+      'plSection' => ['reporting' => ['name' => _('Reporting'), 'priority' => 40]],
+      'plPriority'    => 2,
       'plManages'     => ['auditEvent'],
     ];
   }
