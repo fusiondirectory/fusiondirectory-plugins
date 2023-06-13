@@ -40,7 +40,7 @@ class inventoryManagement extends management
       'plTitle'       => _('Inventory objects'),
       'plDescription' => _('Browse inventory objects'),
       'plIcon'        => 'geticon.php?context=applications&icon=fusioninventory&size=48',
-      'plSection'     => 'reporting',
+      'plSection' => ['reporting' => ['name' => _('Reporting'), 'priority' => 40]],
       'plPriority'    => 5,
       'plManages'     => ['inventory'],
     ];

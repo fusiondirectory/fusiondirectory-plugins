@@ -28,8 +28,8 @@ class ldapManagerTabs extends simpleTabs_noSpecial
       'plShortName'   => _('LDAP import/export'),
       'plDescription' => _('Allows the import or export of the ldap tree'),
       'plIcon'        => 'geticon.php?context=applications&icon=ldapmanager&size=48',
-      'plSection'     => 'conf',
       'plPriority'    => 10,
+      'plSection' => ['export' => ['name' => _('Export / Import'), 'priority' => 50]],
       'plCategory'    => ['ldapmanager' => ['objectClass' => 'none', 'description' => _('Ldap manager')]],
     ];
   }

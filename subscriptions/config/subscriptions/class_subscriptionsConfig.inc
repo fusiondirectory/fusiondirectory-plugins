@@ -28,7 +28,8 @@ class subscriptionsConfig extends simplePlugin
       'plDescription'   => _('FusionDirectory subscriptions plugin configuration'),
       'plObjectClass'   => ['fdSubscriptionsPluginConf'],
       'plObjectType'    => ['configuration'],
-
+      'plIcon'        => 'geticon.php?context=applications&icon=subscriptions&size=48',
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=subscriptions&size=16',
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
@@ -60,8 +61,8 @@ class subscriptionsConfig extends simplePlugin
                 ),
               ],
               ';',
-              '',
-              _('Subscription types')
+                  '',
+                  _('Subscription types')
             ),
             FALSE,
             [],
@@ -109,8 +110,8 @@ class subscriptionsConfig extends simplePlugin
                 ),
               ],
               ';',
-              '',
-              _('Rpm repositories')
+                  '',
+                  _('Rpm repositories')
             ),
             FALSE,
             [],
