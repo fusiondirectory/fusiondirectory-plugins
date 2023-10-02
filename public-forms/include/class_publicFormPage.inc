@@ -167,7 +167,7 @@ class publicFormPage extends standAlonePage
     // Verify if usage of private forms are allowed without invitation plugins
     $allowPrivateFormUsage = $config->get_cfg_value('fdPublicFormAllowPrivateFormWithoutInvitations');
 
-    if (!$allowPrivateFormUsage) {
+    if ($allowPrivateFormUsage !== 'TRUE') {
 
       if (isset($this->registration)) {
         /* We wait for form to be fetched so that form name is shown even if invitation is unusable */
