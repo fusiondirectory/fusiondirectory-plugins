@@ -70,6 +70,8 @@ class publicFormPage extends standAlonePage
 
   protected function fetchForm ()
   {
+    global $config;
+
     if (isset($_GET['token'])) {
       if (isset($_GET['form'])) {
         throw new FusionDirectoryException(_('Invalid link, both token and form are provided'));
@@ -161,14 +163,24 @@ class publicFormPage extends standAlonePage
       throw new FusionDirectoryException(sprintf(_('Found several forms named "%s"'), $formName));
     }
     $this->form = reset($forms);
-    if (isset($this->registration)) {
-      /* We wait for form to be fetched so that form name is shown even if invitation is unusable */
-      invitationPage::checkToken($this->registration);
+
+    // Verify if usage of private forms are allowed without invitation plugins
+    $allowPrivateFormUsage = $config->get_cfg_value('fdPublicFormAllowPrivateFormWithoutInvitations');
+    error_log($allowPrivateFormUsage);
+    if (!$allowPrivateFormUsage) {
+
+      if (isset($this->registration)) {
+        /* We wait for form to be fetched so that form name is shown even if invitation is unusable */
+        invitationPage::checkToken($this->registration);
+      }
+      if (!isset($this->registration) && isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
+        // Private form and no token
+        throw new FusionDirectoryException(sprintf(_('Form "%s" is private and requires an invitation'), $this->form['cn']));
+      }
     }
-    if (!isset($this->registration) && isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
-      // Private form and no token
-      throw new FusionDirectoryException(sprintf(_('Form "%s" is private and requires an invitation'), $this->form['cn']));
-    }
+
+
+
   }
 
   protected function prepareTemplateObject ()
@@ -206,11 +218,11 @@ class publicFormPage extends standAlonePage
     foreach ($this->alteredAttributes[1] as $tab => $attributes) {
       foreach ($attributes as $key => $attribute) {
         if (!isset($values[$tab][$attribute]) &&
-            (
-              (isset($this->alteredAttributes[0][$tab]) && in_array($attribute, $this->alteredAttributes[0][$tab])) ||
-              $this->template->getAttribute($tab, $attribute)->isRequired()
-            )
-          ) {
+          (
+            (isset($this->alteredAttributes[0][$tab]) && in_array($attribute, $this->alteredAttributes[0][$tab])) ||
+            $this->template->getAttribute($tab, $attribute)->isRequired()
+          )
+        ) {
           unset($this->alteredAttributes[1][$tab][$key]);
         }
       }
