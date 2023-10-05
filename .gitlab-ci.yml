@@ -44,7 +44,7 @@ create_phpstan_rapport:
     - test -d ../fusiondirectory/ && rm -Rf ../fusiondirectory/
     - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/fd.git ../fusiondirectory
     - composer global require phpstan/phpstan=0.12.94
-    - cp ../dev-tools/phpstan/fusiondirectory/1.4-dev/*.neon .
+    - cp ../dev-tools/phpstan/fusiondirectory/1.4/*.neon .
     - /root/.composer/vendor/bin/phpstan analyse -c phpstan-plugins.neon
 
 # fusiondirectory-update-locale
