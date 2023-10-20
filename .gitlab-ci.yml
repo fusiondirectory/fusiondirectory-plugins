@@ -52,7 +52,7 @@ fusiondirectory-update-locale:
   image: registry.fusiondirectory.org/fusiondirectory/fd/transifex-cli:buster
   stage: transifex
   only:
-    - /^1.*$/
+    - dev
   script:
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
     - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
@@ -63,7 +63,7 @@ update-transifex:
   image: registry.fusiondirectory.org/fusiondirectory/fd/transifex-cli:buster
   stage: transifex
   only:
-    - /^1.*$/
+    - dev
   script:
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
     - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
@@ -75,7 +75,7 @@ update-transifex:
 build-tarballs:
   stage: tarballs
   only:
-    - 1.5-dev
+    - dev
   script:
     - mkdir ../fusiondirectory-plugins-$VERSION/
     - mv ./* ../fusiondirectory-plugins-$VERSION/
@@ -103,7 +103,7 @@ build-release:
 trigger-ci-debian-buster:
   stage: trigger
   only:
-    - 1.5-dev
+    - dev
   variables:
     GROUP: "$GROUP"
     BRANCH_CORE: "$CI_COMMIT_REF_NAME"
