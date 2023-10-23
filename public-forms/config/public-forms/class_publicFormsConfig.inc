@@ -44,6 +44,10 @@ class publicFormsConfig extends multiPluginSection
             'fdPublicFormRDN', TRUE,
             'ou=forms'
           ),
+          new BooleanAttribute(
+            _('Allows private form without invitations'), _('Allows the usage of private form without invitation is plugin installed'),
+            'fdPublicFormAllowPrivateFormWithoutInvitations', TRUE, FALSE
+          ),
         ]
       ],
     ];

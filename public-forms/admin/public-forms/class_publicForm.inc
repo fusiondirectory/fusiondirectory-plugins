@@ -111,7 +111,10 @@ class publicForm extends simplePlugin
     $choices = template::getTemplatedTypes();
     $attributesInfo['main']['attrs'][4]->setChoices(array_keys($choices), array_values($choices));
 
-    if (!class_available('invitationManagement')) {
+    // Disable if invitation plugin is not installed and the allowed private form option is not ticked
+    $allowPrivateFormUsage = $config->get_cfg_value('PublicFormAllowPrivateFormWithoutInvitations');
+
+    if (!class_available('invitationManagement') && $allowPrivateFormUsage !== 'TRUE') {
       $attributesInfo['main']['attrs'][7]->setVisible(FALSE);
     }
 
