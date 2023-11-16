@@ -293,7 +293,7 @@ class publicFormPage extends standAlonePage
     }
   }
 
-  protected function getPrefilledValuesTest ($values = [])
+  protected function processPrefilledPrivateFormValues ($values = [])
   {
     if (isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
       $this->prefill = TRUE;
@@ -323,7 +323,7 @@ class publicFormPage extends standAlonePage
 
   protected function getPrefilledValues ($values = [])
   {
-    $values = $this->getPrefilledValuesTest();
+    $values = $this->processPrefilledPrivateFormValues();
     if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
       /* Fill email field with target email if empty */
       if (!isset($values['mailAccount'])) {
@@ -368,8 +368,6 @@ class publicFormPage extends standAlonePage
 
   function execute ()
   {
-    global $config;
-
     if (!$this->activated) {
       return;
     }
