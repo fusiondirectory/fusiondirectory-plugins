@@ -18,6 +18,7 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
+
 class KrbTicketFlagsAttribute extends CompositeAttribute
 {
 
@@ -47,6 +48,22 @@ class KrbTicketFlagsAttribute extends CompositeAttribute
     if ($flag>0) return $flag;
     else return "";
   }
+}
+
+// MIT kerberos requires generalizedtime having suffix zeros not beeing stripped
+// class LdapGeneralizedTime strips zeros of hour, minute, seconds
+class KrbDateAttribute extends DateAttribute
+{
+  function __construct ($label, $description, $ldapName, $required, $defaultValue = 'now', $acl = "")
+  {
+    parent::__construct($label, $description, $ldapName, $required, '', $defaultValue, $acl);
+  }
+
+  protected function dateToLdap($dateValue)
+  {
+    return $dateValue->format('YmdHis') . "Z";
+  }
+
 }
 
 class kerberosAccount extends simplePlugin
@@ -97,13 +114,13 @@ class kerberosAccount extends simplePlugin
             _('krbTicketPolicyReference'), _('FDN pointing to a Kerberos Ticket Policy object.'),
             'krbTicketPolicyReference', FALSE
           ),
-          new GeneralizedTimeDateAttribute(
+          new KrbDateAttribute(
             _('krbPrincipalExpiration'), _('The time at which the principal expires'),
-            'krbPrincipalExpiration', FALSE, '19700101000000Z'
+            'krbPrincipalExpiration', FALSE, ''
           ),
-          new GeneralizedTimeDateAttribute(
+          new KrbDateAttribute(
             _('krbPasswordExpiration'), _('The time at which the principal\'s password expires'),
-            'krbPasswordExpiration', FALSE, '19700101000000Z'
+            'krbPasswordExpiration', FALSE, ''
           ),
           new StringAttribute(
             _('krbPwdPolicyReference'), _('FDN pointing to a Kerberos Password Policy object'),
