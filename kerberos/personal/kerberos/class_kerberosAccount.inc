@@ -168,7 +168,10 @@ class kerberosAccount extends simplePlugin
               _('krbExtraData'), _('This attribute holds the application specific data.'),
               'krbExtraData', FALSE
             ),
-            FALSE
+            FALSE,
+            array( // default values: one attribute of 'last modified'
+              KrbExtraDataAttribute::packLastModification()
+            )
           ),
           new SetAttribute(
             new StringAttribute(
@@ -309,6 +312,36 @@ class kerberosAccount extends simplePlugin
     kerberosAccount::prettyPrintDateTime('krbLastAdminUnlock');
     kerberosAccount::prettyPrintDateTime('krbLastSuccessfulAuth');
     kerberosAccount::prettyPrintDateTime('krbLastFailedAuth');
+  }
+
+  function prepare_save(): array
+  {
+    // check if any krb attribute has been changed
+    $krbchanged=false;
+    foreach ($this->attributesAccess as $key => $attr) {
+        if (isset($attr)) {
+            $krbchanged = $krbchanged | $attr->hasChanged();
+        }
+    }
+
+    $errors = parent::prepare_save();
+
+    if (!empty($errors)) {
+      return $errors;
+    }
+
+
+    // update 'last modification' attribute data
+    if ($krbchanged) {
+      for ($i = 0; $i < count($this->attrs['krbExtraData']); $i++) {
+          // find krbExtraData attribute which contains 'last modification' data
+          if (KrbExtraDataAttribute::isLastModification($this->attrs['krbExtraData'][$i])) {
+            $this->attrs['krbExtraData'][$i] = KrbExtraDataAttribute::packLastModification();
+          }
+      }
+    }
+
+    return $errors;
   }
 
 }
