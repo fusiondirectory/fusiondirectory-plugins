@@ -18,6 +18,36 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
+class KrbTicketFlagsAttribute extends CompositeAttribute
+{
+
+  function __construct ($ldapName, $attributes, $acl = "")
+  {
+    parent::__construct( _('The krbTicketFlags attribute holds information about the kerberos flags for a principal'),$ldapName, $attributes, '', '', $acl);
+  }
+
+  function readValues(string $value): array
+  {
+    $values = array();
+    foreach($this->attributes as $attribute){
+        if ( ($value & $attribute->trueValue) > 0 )
+             $values[] = $attribute->trueValue;
+        else $values[] = 0;
+    }
+    return $values;
+  }
+
+  function writeValues(array $values): string
+  {
+    $flag = 0;
+    foreach ($values as $value) {
+      $flag += $value;
+    }
+
+    if ($flag>0) return $flag;
+    else return "";
+  }
+}
 
 class kerberosAccount extends simplePlugin
 {
@@ -139,20 +169,100 @@ class kerberosAccount extends simplePlugin
         ],
       ],
       'krbTicketPolicyAux' => [
-        'name'  => _('krbTicketPolicyAux'),
+        'name'  => _('Ticket Flags and Timing'),
         'attrs' => [
-          new IntAttribute(
-            _('krbTicketFlags'), _('The krbTicketFlags attribute holds information about the kerberos flags for a principal'),
-            'krbTicketFlags', FALSE,
-            FALSE, FALSE
+          new KrbTicketFlagsAttribute(
+            'krbTicketFlags',
+            array(
+                new BooleanAttribute (
+                  _('Prohibit postdated tickets'), _('Prohibit postdated tickets'),
+                  'DISALLOW_POSTDATED', FALSE, FALSE, '',
+                  0x00000001, 0
+                ),
+                new BooleanAttribute (
+                  _('Prohibit forwardable tickets'), _('Prohibit forwardable tickets'),
+                  'DISALLOW_FORWARDABLE', FALSE, FALSE, '',
+                  0x00000002, 0
+                ),
+                new BooleanAttribute (
+                  _('Disallow Ticket-Granting Service'), _('Disallow Ticket-Granting Service'),
+                  'DISALLOW_TGT_BASED', FALSE, FALSE, '',
+                  0x00000004, 0
+                ),
+                new BooleanAttribute (
+                  _('Prohibit renewable tickets'), _('Prohibit renewable tickets'),
+                  'DISALLOW_RENEWABLE', FALSE, FALSE, '',
+                  0x00000008, 0
+                ),
+                new BooleanAttribute (
+                  _('Disallow proxiable tickets'), _('Disallow proxiable tickets'),
+                  'DISALLOW_PROXIABLE', FALSE, FALSE, '',
+                  0x00000010, 0
+                ),
+                new BooleanAttribute (
+                  _('Disallow user to user authentification'), _('Disallow user to user authentification'),
+                  'DISALLOW_DUP_SKEY', FALSE, FALSE, '',
+                  0x00000020, 0
+                ),
+                new BooleanAttribute (
+                  _('Forbid ticket issuance'), _('Forbid ticket issuance'),
+                  'DISALLOW_ALL_TIX', FALSE, FALSE, '',
+                  0x00000040, 0
+                ),
+                new BooleanAttribute (
+                  _('Preauthentication required'), _('Preauthentication required'),
+                  'REQUIRES_PRE_AUTH', FALSE, FALSE, '',
+                  0x00000080, 0
+                ),
+                new BooleanAttribute (
+                  _('Hardware preauthentication'), _('Hardware preauthentication'),
+                  'REQUIRES_HW_AUTH', FALSE, FALSE, '',
+                  0x00000100, 0
+                ),
+                new BooleanAttribute (
+                  _('Force a password change'), _('Force a password change'),
+                  'REQUIRES_PWCHANGE', FALSE, FALSE, '',
+                  0x00000200, 0
+                ),
+                new BooleanAttribute (
+                  _('UNKNOWN'), _('Unknown Flag 0x00000400'),
+                  'UNKNOWN_0x00000400', FALSE, FALSE, '',
+                  0x00000400, 0
+                ),
+                new BooleanAttribute (
+                  _('UNKNOWN'), _('Unknown Flag 0x00000800'),
+                  'UNKNOWN_0x00000800', FALSE, FALSE, '',
+                  0x00000800, 0
+                ),
+                new BooleanAttribute (
+                  _('Prohibit issuance of service tickets'), _('Prohibit issuance of service tickets'),
+                  'DISALLOW_SVR', FALSE, FALSE, '',
+                  0x00001000, 0
+                ),
+                new BooleanAttribute (
+                  _('Password change service'), _('Password change service'),
+                  'PWCHANGE_SERVICE', FALSE, FALSE, '',
+                  0x00002000, 0
+                ),
+                new BooleanAttribute (
+                  _('SUPPORT_DESMD5'), _('SUPPORT_DESMD5'),
+                  'SUPPORT_DESMD5', FALSE, FALSE, '',
+                  0x00004000, 0
+                ),
+                new BooleanAttribute (
+                  _('NEW_PRINC'), _('NEW_PRINC'),
+                  'NEW_PRINC', FALSE, FALSE, '',
+                  0x00008000, 0
+                ),
+              )
           ),
           new TimeAttribute(
-            _('krbMaxTicketLife'), _('The maximum ticket lifetime for a principal in seconds'),
+            _('Maximum ticket lifetime'), _('The maximum ticket lifetime for a principal in seconds'),
             'krbMaxTicketLife', FALSE,
             FALSE, FALSE
           ),
           new TimeAttribute(
-            _('krbMaxRenewableAge'), _('Maximum renewable lifetime for a principal\'s ticket in seconds'),
+            _('Maximum renewable lifetime'), _('Maximum renewable lifetime for a principal\'s ticket in seconds'),
             'krbMaxRenewableAge', FALSE,
             FALSE, FALSE
           ),
