@@ -95,7 +95,7 @@ class kerberosAccount extends simplePlugin
           new SetAttribute(
             new StringAttribute(
               _('krbPrincipalName'), _('This is the principal name in the RFC 1964 specified format'),
-              'krbPrincipalName', FALSE
+              'krbPrincipalName', TRUE
             )
           ),
           new StringAttribute(
