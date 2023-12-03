@@ -142,10 +142,9 @@ class kerberosAccount extends simplePlugin
             _('krbLastFailedAuth'), _('The time at which the principal\'s last failed authentication happened.'),
             'krbLastFailedAuth', FALSE
           ),
-          new IntAttribute(
+          new ReadOnlyLDAPAttribute(
             _('krbLoginFailedCount'), _('This attribute stores the number of failed authentication attempts happened for the principal since the last successful authentication.'),
             'krbLoginFailedCount', FALSE,
-            FALSE, FALSE
           ),
           new NoAddOrderedArrayAttribute(
             new KrbExtraDataAttribute(
