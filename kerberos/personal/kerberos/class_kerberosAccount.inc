@@ -47,16 +47,16 @@ class kerberosAccount extends simplePlugin
         'attrs' => [
           new SetAttribute(
             new StringAttribute(
-              'krbPrincipalName', 'This is the principal name in the RFC 1964 specified format',
+              _('krbPrincipalName'), _('This is the principal name in the RFC 1964 specified format'),
               'krbPrincipalName', FALSE
             )
           ),
           new StringAttribute(
-            'krbCanonicalName', 'If there are multiple krbPrincipalName values for an entry, this is the canonical principal name in the RFC 1964 specified format.',
+            _('krbCanonicalName'), _('If there are multiple krbPrincipalName values for an entry, this is the canonical principal name in the RFC 1964 specified format.'),
             'krbCanonicalName', FALSE
           ),
           new BooleanAttribute(
-            'krbUPEnabled', 'This flag is used to find whether directory User Password has to be used as kerberos password',
+            _('krbUPEnabled'), _('This flag is used to find whether directory User Password has to be used as kerberos password'),
             'krbUPEnabled', FALSE
           ),
           new HiddenArrayAttribute(
@@ -64,75 +64,75 @@ class kerberosAccount extends simplePlugin
             // This attribute holds the principal's key (krbPrincipalKey) that is encrypted with the master key (krbMKey). The attribute is ASN.1 encoded.
           ),
           new StringAttribute(
-            'krbTicketPolicyReference', 'FDN pointing to a Kerberos Ticket Policy object.',
+            _('krbTicketPolicyReference'), _('FDN pointing to a Kerberos Ticket Policy object.'),
             'krbTicketPolicyReference', FALSE
           ),
-          new StringAttribute(
-            'krbPrincipalExpiration', 'The time at which the principal expires',
-            'krbPrincipalExpiration', FALSE
+          new GeneralizedTimeDateAttribute(
+            _('krbPrincipalExpiration'), _('The time at which the principal expires'),
+            'krbPrincipalExpiration', FALSE, '19700101000000Z'
+          ),
+          new GeneralizedTimeDateAttribute(
+            _('krbPasswordExpiration'), _('The time at which the principal\'s password expires'),
+            'krbPasswordExpiration', FALSE, '19700101000000Z'
           ),
           new StringAttribute(
-            'krbPasswordExpiration', 'The time at which the principal\'s password expires',
-            'krbPasswordExpiration', FALSE
-          ),
-          new StringAttribute(
-            'krbPwdPolicyReference', 'FDN pointing to a Kerberos Password Policy object',
+            _('krbPwdPolicyReference'), _('FDN pointing to a Kerberos Password Policy object'),
             'krbPwdPolicyReference', FALSE
           ),
           new IntAttribute(
-            'krbPrincipalType', 'This specifies the type of the principal, the types could be any of the types mentioned in section 6.2 of RFC 4120',
+            _('krbPrincipalType'), _('This specifies the type of the principal, the types could be any of the types mentioned in section 6.2 of RFC 4120'),
             'krbPrincipalType', FALSE,
             FALSE, FALSE
           ),
           new SetAttribute(
             new StringAttribute(
-              'krbPwdHistory', 'This attribute holds the principal\'s old keys (krbPwdHistory) that is encrypted with the kadmin/history key. The attribute is ASN.1 encoded.',
+              _('krbPwdHistory'), _('This attribute holds the principal\'s old keys (krbPwdHistory) that is encrypted with the kadmin/history key. The attribute is ASN.1 encoded.'),
               'krbPwdHistory', FALSE
             )
           ),
-          new StringAttribute(
-            'krbLastPwdChange', 'The time at which the principal\'s password last password change happened.',
+          new ReadOnlyLDAPAttribute(
+            _('krbLastPwdChange'), _('The time at which the principal\'s password last password change happened.'),
             'krbLastPwdChange', FALSE
           ),
-          new StringAttribute(
-            'krbLastAdminUnlock', 'The time at which the principal was last administratively unlocked.',
+          new ReadOnlyLDAPAttribute(
+            _('krbLastAdminUnlock'), _('The time at which the principal was last administratively unlocked.'),
             'krbLastAdminUnlock', FALSE
           ),
           new SetAttribute(
             new StringAttribute(
-              'krbPrincipalAliases', 'This stores the alternate principal names for the principal in the RFC 1964 specified format',
+              _('krbPrincipalAliases'), _('This stores the alternate principal names for the principal in the RFC 1964 specified format'),
               'krbPrincipalAliases', FALSE
             )
           ),
-          new StringAttribute(
-            'krbLastSuccessfulAuth', 'The time at which the principal\'s last successful authentication happened.',
+          new ReadOnlyLDAPAttribute(
+            _('krbLastSuccessfulAuth'), _('The time at which the principal\'s last successful authentication happened.'),
             'krbLastSuccessfulAuth', FALSE
           ),
-          new StringAttribute(
-            'krbLastFailedAuth', 'The time at which the principal\'s last failed authentication happened.',
+          new ReadOnlyLDAPAttribute(
+            _('krbLastFailedAuth'), _('The time at which the principal\'s last failed authentication happened.'),
             'krbLastFailedAuth', FALSE
           ),
           new IntAttribute(
-            'krbLoginFailedCount', 'This attribute stores the number of failed authentication attempts happened for the principal since the last successful authentication.',
+            _('krbLoginFailedCount'), _('This attribute stores the number of failed authentication attempts happened for the principal since the last successful authentication.'),
             'krbLoginFailedCount', FALSE,
             FALSE, FALSE
           ),
           new NoAddOrderedArrayAttribute(
             new KrbExtraDataAttribute(
-              'krbExtraData', 'This attribute holds the application specific data.',
+              _('krbExtraData'), _('This attribute holds the application specific data.'),
               'krbExtraData', FALSE
             ),
             FALSE
           ),
           new SetAttribute(
             new StringAttribute(
-              'krbAllowedToDelegateTo', 'A list of services to which a service principal can delegate.',
+              _('krbAllowedToDelegateTo'), _('A list of services to which a service principal can delegate.'),
               'krbAllowedToDelegateTo', FALSE
             )
           ),
           new SetAttribute(
             new StringAttribute(
-              'krbPrincipalAuthInd', 'A list of authentication indicator strings, one of which must be satisfied to authenticate to the principal as a service.',
+              _('krbPrincipalAuthInd'), _('A list of authentication indicator strings, one of which must be satisfied to authenticate to the principal as a service.'),
               'krbPrincipalAuthInd', FALSE
             )
           ),
@@ -142,17 +142,17 @@ class kerberosAccount extends simplePlugin
         'name'  => _('krbTicketPolicyAux'),
         'attrs' => [
           new IntAttribute(
-            'krbTicketFlags', 'The krbTicketFlags attribute holds information about the kerberos flags for a principal',
+            _('krbTicketFlags'), _('The krbTicketFlags attribute holds information about the kerberos flags for a principal'),
             'krbTicketFlags', FALSE,
             FALSE, FALSE
           ),
-          new IntAttribute(
-            'krbMaxTicketLife', 'The maximum ticket lifetime for a principal in seconds',
+          new TimeAttribute(
+            _('krbMaxTicketLife'), _('The maximum ticket lifetime for a principal in seconds'),
             'krbMaxTicketLife', FALSE,
             FALSE, FALSE
           ),
-          new IntAttribute(
-            'krbMaxRenewableAge', 'Maximum renewable lifetime for a principal\'s ticket in seconds',
+          new TimeAttribute(
+            _('krbMaxRenewableAge'), _('Maximum renewable lifetime for a principal\'s ticket in seconds'),
             'krbMaxRenewableAge', FALSE,
             FALSE, FALSE
           ),
@@ -160,4 +160,25 @@ class kerberosAccount extends simplePlugin
       ],
     ];
   }
+
+  function prettyPrintDateTime($attribute) {
+    if ( isset($this->attrs[$attribute]) && ($this->attrs[$attribute][0]!='')) {
+      $date = LdapGeneralizedTime::fromString($this->attrs[$attribute][0]);
+      $date->setTimezone(timezone::getDefaultTimeZone());
+      $this->$attribute = $date->format('Y-m-d H:i:s');
+    } else {
+      $this->$attribute = _('Never');
+    }
+  }
+
+  function __construct ($dn = NULL, $baseobject = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    parent::__construct($dn, $baseobject, $parent, $mainTab);
+
+    kerberosAccount::prettyPrintDateTime('krbLastPwdChange');
+    kerberosAccount::prettyPrintDateTime('krbLastAdminUnlock');
+    kerberosAccount::prettyPrintDateTime('krbLastSuccessfulAuth');
+    kerberosAccount::prettyPrintDateTime('krbLastFailedAuth');
+  }
+
 }
