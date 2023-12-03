@@ -184,6 +184,7 @@ class kerberosAccount extends simplePlugin
           ),
         ],
       ],
+       // flag description taken from http://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/kdc_conf.html
       'krbTicketPolicyAux' => [
         'name'  => _('Ticket Flags and Timing'),
         'attrs' => [
@@ -191,52 +192,52 @@ class kerberosAccount extends simplePlugin
             'krbTicketFlags',
             array(
                 new BooleanAttribute (
-                  _('Prohibit postdated tickets'), _('Prohibit postdated tickets'),
+                  _('Prohibit postdated tickets'), _('Prohibit the principal to obtain postdateable tickets.'),
                   'DISALLOW_POSTDATED', FALSE, FALSE, '',
                   0x00000001, 0
                 ),
                 new BooleanAttribute (
-                  _('Prohibit forwardable tickets'), _('Prohibit forwardable tickets'),
+                  _('Prohibit forwardable tickets'), _('Prohibit the principal to obtain a session key for another user, permitting user-to-user authentication for this principal.'),
                   'DISALLOW_FORWARDABLE', FALSE, FALSE, '',
                   0x00000002, 0
                 ),
                 new BooleanAttribute (
-                  _('Disallow Ticket-Granting Service'), _('Disallow Ticket-Granting Service'),
+                  _('Disallow Ticket-Granting Service'), _('Disallow a principal to obtain tickets based on a ticket-granting-ticket, rather than repeating the authentication process that was used to obtain the TGT.'),
                   'DISALLOW_TGT_BASED', FALSE, FALSE, '',
                   0x00000004, 0
                 ),
                 new BooleanAttribute (
-                  _('Prohibit renewable tickets'), _('Prohibit renewable tickets'),
+                  _('Prohibit renewable tickets'), _('Prohibit the principal to obtain renewable tickets.'),
                   'DISALLOW_RENEWABLE', FALSE, FALSE, '',
                   0x00000008, 0
                 ),
                 new BooleanAttribute (
-                  _('Disallow proxiable tickets'), _('Disallow proxiable tickets'),
+                  _('Disallow proxiable tickets'), _('Prohibit the principal to obtain proxy tickets.'),
                   'DISALLOW_PROXIABLE', FALSE, FALSE, '',
                   0x00000010, 0
                 ),
                 new BooleanAttribute (
-                  _('Disallow user to user authentification'), _('Disallow user to user authentification'),
+                  _('Disallow user to user authentification'), _('Enabling this flag disallows the principal to obtain a session key for another user, permitting user-to-user authentication for this principal.'),
                   'DISALLOW_DUP_SKEY', FALSE, FALSE, '',
                   0x00000020, 0
                 ),
                 new BooleanAttribute (
-                  _('Forbid ticket issuance'), _('Forbid ticket issuance'),
+                  _('Forbid ticket issuance'), _('Enabling this flag essentially deactivates the principal within this realm.'),
                   'DISALLOW_ALL_TIX', FALSE, FALSE, '',
                   0x00000040, 0
                 ),
                 new BooleanAttribute (
-                  _('Preauthentication required'), _('Preauthentication required'),
-                  'REQUIRES_PRE_AUTH', FALSE, FALSE, '',
+                  _('Preauthentication required'), _('If this flag is enabled on a client principal, then that principal is required to preauthenticate to the KDC before receiving any tickets. On a service principal, enabling this flag means that service tickets for this principal will only be issued to clients with a TGT that has the preauthenticated bit set.'),
+                  'REQUIRES_PRE_AUTH', FALSE, TRUE, '',
                   0x00000080, 0
                 ),
                 new BooleanAttribute (
-                  _('Hardware preauthentication'), _('Hardware preauthentication'),
+                  _('Hardware preauthentication'), _('If this flag is enabled, then the principal is required to preauthenticate using a hardware device before receiving any tickets.'),
                   'REQUIRES_HW_AUTH', FALSE, FALSE, '',
                   0x00000100, 0
                 ),
                 new BooleanAttribute (
-                  _('Force a password change'), _('Force a password change'),
+                  _('Force a password change'), _('Enabling this flag forces a password change for this principal.'),
                   'REQUIRES_PWCHANGE', FALSE, FALSE, '',
                   0x00000200, 0
                 ),
@@ -251,12 +252,12 @@ class kerberosAccount extends simplePlugin
                   0x00000800, 0
                 ),
                 new BooleanAttribute (
-                  _('Prohibit issuance of service tickets'), _('Prohibit issuance of service tickets'),
+                  _('Prohibit issuance of service tickets'), _('Prohibit the KDC to issue service tickets for this principal.'),
                   'DISALLOW_SVR', FALSE, FALSE, '',
                   0x00001000, 0
                 ),
                 new BooleanAttribute (
-                  _('Password change service'), _('Password change service'),
+                  _('Password change service'), _('If this flag is enabled, it marks this principal as a password change service. This should only be used in special cases, for example, if a user’s password has expired, then the user has to get tickets for that principal without going through the normal password authentication in order to be able to change the password.'),
                   'PWCHANGE_SERVICE', FALSE, FALSE, '',
                   0x00002000, 0
                 ),
@@ -283,6 +284,9 @@ class kerberosAccount extends simplePlugin
             FALSE, FALSE
           ),
         ],
+      ],
+      'invisible' => [
+        'class' => array('invisible'),
       ],
     ];
   }
