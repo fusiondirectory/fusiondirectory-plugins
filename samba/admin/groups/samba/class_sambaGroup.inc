@@ -20,7 +20,7 @@
 
 class sambaGroup extends simplePlugin
 {
-  protected $displayHeader  = TRUE;
+  protected $displayHeader = TRUE;
 
   static function plInfo (): array
   {
@@ -33,7 +33,7 @@ class sambaGroup extends simplePlugin
       'plObjectClass' => ['sambaGroupMapping'],
       'plObjectType'  => ['group'],
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
@@ -57,9 +57,9 @@ class sambaGroup extends simplePlugin
               new SelectAttribute(
                 _('Group type'), _('Samba group type'),
                 'GID', TRUE,
-                [0,                512,                513,                514],
+                [0, 512, 513, 514],
                 0,
-                [_("Samba group"), _("Domain admins"), _("Domain users"),  _("Domain guests")]
+                [_("Samba group"), _("Domain admins"), _("Domain users"), _("Domain guests")]
               )
             ],
             '/^([^ ]+)-([0-9]+)$/',
@@ -77,14 +77,15 @@ class sambaGroup extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
+
+    parent::__construct($dn, $object, $parent, $mainTab);
+
     // User wants me to fake the idMappings? This is useful for
     //  making winbind resolve the user names in a reasonable amount
     //  of time in combination with larger databases.
     if ($config->get_cfg_value('sambaidmapping') == 'TRUE') {
       $this->objectclasses[] = 'sambaIdmapEntry';
     }
-
-    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
     $this->attributesAccess['sambaDomainName']->setChoices(array_keys(sambaDomainManagement::getSambaDomains()));
@@ -100,7 +101,7 @@ class sambaGroup extends simplePlugin
       }
     } else {
       if ($config->get_cfg_value('sambaSID') != '') {
-        $this->sambaDomainName  = 'DEFAULT';
+        $this->sambaDomainName = 'DEFAULT';
         $this->setSID($config->get_cfg_value('sambaSID'));
       } else {
         $error = new SimplePluginError($this, htmlescape(_('Cannot find group SID in your configuration!')));
@@ -117,8 +118,8 @@ class sambaGroup extends simplePlugin
     /* Don't lose special groups! If not key'ed above, add it to the combo box */
     if (!in_array($this->getGID(), $this->attributesAccess['sambaSID']->attributes[1]->getChoices())) {
       $this->attributesAccess['sambaSID']->attributes[1]->setChoices(
-        [0,                512,                513,                514,                $this->getGID()],
-        [_("Samba group"), _("Domain admins"), _("Domain users"),  _("Domain guests"), sprintf(_("Special group (%d)"), $this->getGID())]
+        [0, 512, 513, 514, $this->getGID()],
+        [_("Samba group"), _("Domain admins"), _("Domain users"), _("Domain guests"), sprintf(_("Special group (%d)"), $this->getGID())]
       );
     }
     $this->attributesAccess['sambaSID']->attributes[1]->setInitialValue($this->getGID());
@@ -143,11 +144,11 @@ class sambaGroup extends simplePlugin
 
     if ($this->getGID() == 0) {
       if (($this->getSID() == '') ||
-          $this->attributesAccess['sambaDomainName']->hasChanged() ||
-          $this->attributesAccess['sambaSID']->attributes[1]->hasChanged()) {
-        $sid                      = $this->getSambaSID();
-        $this->attrs['sambaSID']  = $sid;
-        $this->sambaSID           = $sid;
+        $this->attributesAccess['sambaDomainName']->hasChanged() ||
+        $this->attributesAccess['sambaSID']->attributes[1]->hasChanged()) {
+        $sid                     = $this->getSambaSID();
+        $this->attrs['sambaSID'] = $sid;
+        $this->sambaSID          = $sid;
       } else {
         unset($this->attrs['sambaSID']);
       }
@@ -162,14 +163,14 @@ class sambaGroup extends simplePlugin
   function getSambaSID ()
   {
     global $config;
-    $ldap       = $config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     if (class_available('mixedGroup')) {
-      $gidNumber  = $this->parent->by_object['mixedGroup']->gidNumber;
+      $gidNumber = $this->parent->by_object['mixedGroup']->gidNumber;
     } else {
-      $gidNumber  = $this->parent->by_object['posixGroup']->gidNumber;
+      $gidNumber = $this->parent->by_object['posixGroup']->gidNumber;
     }
     do {
-      $sid = $this->getSID()."-".($gidNumber * 2 + $this->getRidBase() + 1);
+      $sid = $this->getSID() . "-" . ($gidNumber * 2 + $this->getRidBase() + 1);
       $ldap->cd($config->current['BASE']);
       $ldap->search("(sambaSID=$sid)", ["sambaSID"]);
       $gidNumber++;
