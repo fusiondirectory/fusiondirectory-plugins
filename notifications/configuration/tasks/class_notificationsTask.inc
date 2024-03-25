@@ -48,7 +48,7 @@ class tasksNotifications extends simplePlugin
           // Following attribute will contain all the DNs where a new snapshot was taken, required by orchestrator.
           new HiddenArrayAttribute('fdTasksNotificationsListOfNewSnapUsersDN', FALSE, ''),
           // Following attribute contain the list of members emails that should receive a notification.
-          new HiddenArrayAttribute('fdTasksNotificationsListOfRecipientsDN', FALSE, ''),
+          new HiddenArrayAttribute('fdTasksNotificationsListOfRecipientsMails', FALSE, ''),
           new SetAttribute(
             new SelectAttribute(
               'Attributes', _('Any changes listed to set attributes will trigger a notification'),
@@ -107,8 +107,13 @@ class tasksNotifications extends simplePlugin
   {
     // Get the members or groups selected
     $membersAndGroups = $this->attributesAccess['fdTasksNotificationsRecipientsMembers']->getValue();
-    // Call static function from tasks object in order to get a real list of members
-    $this->attributesAccess['fdTasksNotificationsListOfRecipientsDN']->setValue(array_values(tasks::extractMembersFromGroups($membersAndGroups)));
+    // Call static function from tasks object in order to get a real list of members and related emails directly.
+    $emailsList = tasksMail::getEmailsFromSelectedDN('gosaMailAccount',
+      'mail',
+      tasks::extractMembersFromGroups($membersAndGroups)
+    );
+    // Fill the attribute with emails.
+    $this->attributesAccess['fdTasksNotificationsListOfRecipientsMails']->setValue(array_values($emailsList));
   }
 
   /**

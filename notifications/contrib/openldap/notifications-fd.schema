@@ -9,7 +9,7 @@ attributetype ( 1.3.6.1.4.1.38414.90.1.1 NAME 'fdTasksNotificationsListOfNewSnap
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.2 NAME 'fdTasksNotificationsListOfRecipientsDN'
+attributetype ( 1.3.6.1.4.1.38414.90.1.2 NAME 'fdTasksNotificationsListOfRecipientsMails'
   DESC 'Fusion Directory - Following attribute contain the list of members emails that should receive a notification.'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )\
@@ -28,6 +28,6 @@ attributetype ( 1.3.6.1.4.1.38414.90.1.4 NAME 'fdTasksNotificationsAttributes'
 
 objectclass (1.3.6.1.4.1.38414.90.2.1 NAME 'fdTasksNotifications' SUP top AUXILIARY
   DESC 'FusionDirectory - Notifications plugins Object Class'
-  MUST ( fdTasksNotificationsAttributes $ fdTasksNotificationsRecipientsMembers $ fdTasksNotificationsListOfRecipientsDN)
+  MUST ( fdTasksNotificationsAttributes $ fdTasksNotificationsRecipientsMembers $ fdTasksNotificationsListOfRecipientsMails)
   MAY  (fdTasksNotificationsListOfNewSnapUsersDN ) )
 
