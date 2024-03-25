@@ -69,13 +69,35 @@ class tasksNotifications extends simplePlugin
     ];
   }
 
-  /**
-   * @throws NonExistingLdapNodeException
-   */
+
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
+    global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
+    // Set the list of available attributes to follow in the set selection
+    $this->attributesAccess['fdTasksNotificationsAttributes']->attribute->setChoices($this->getAttributesListFromConf());
+  }
+
+  /**
+   * @return array
+   * Note: This method is required because setAttribute can contain one value STRING or multiple ARRAY but,
+   * selectAttribute only accepts arrays.
+   */
+  protected function getAttributesListFromConf () : array
+  {
+    global $config;
+    $result = [];
+
+    if (!empty($config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'])){
+      if (is_string($config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'])) {
+        $result[] = $config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'];
+      } else {
+        $result = $config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'];
+      }
+    }
+
+    return $result;
   }
 
   /**
