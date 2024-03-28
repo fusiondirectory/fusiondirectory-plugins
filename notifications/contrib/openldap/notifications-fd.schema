@@ -4,7 +4,7 @@
 
 # Attributes
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.1 NAME 'fdTasksNotificationsListOfNewSnapUsersDN'
+attributetype ( 1.3.6.1.4.1.38414.90.1.1 NAME 'fdTasksNotificationsListOfNewAuditUsersDN'
   DESC 'Fusion Directory - Following attribute will contain all the DNs where a new snapshot was taken.'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
@@ -19,7 +19,12 @@ attributetype ( 1.3.6.1.4.1.38414.90.1.3 NAME 'fdTasksNotificationsRecipientsMem
     EQUALITY caseExactMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.4 NAME 'fdTasksNotificationsAttributes'
+attributetype ( 1.3.6.1.4.1.38414.90.1.4 NAME 'fdTasksNotificationsMonitoredMembers'
+    DESC 'Fusion Directory - Following attribute contain the list of members and groups to monitor.'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.5 NAME 'fdTasksNotificationsAttributes'
   DESC 'Fusion Directory - Tasks for life cycle - new sub state'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
@@ -28,6 +33,7 @@ attributetype ( 1.3.6.1.4.1.38414.90.1.4 NAME 'fdTasksNotificationsAttributes'
 
 objectclass (1.3.6.1.4.1.38414.90.2.1 NAME 'fdTasksNotifications' SUP top AUXILIARY
   DESC 'FusionDirectory - Notifications plugins Object Class'
-  MUST ( fdTasksNotificationsAttributes $ fdTasksNotificationsRecipientsMembers $ fdTasksNotificationsListOfRecipientsMails)
-  MAY  (fdTasksNotificationsListOfNewSnapUsersDN ) )
+  MUST ( fdTasksNotificationsAttributes $ fdTasksNotificationsRecipientsMembers $
+  fdTasksNotificationsListOfRecipientsMails $ fdTasksNotificationsMonitoredMembers)
+  MAY  (fdTasksNotificationsListOfNewAuditUsersDN ) )
 

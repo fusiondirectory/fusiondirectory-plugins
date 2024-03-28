@@ -46,7 +46,7 @@ class tasksNotifications extends simplePlugin
         'name'  => _('Modified attributes list to be notified'),
         'attrs' => [
           // Following attribute will contain all the DNs where a new snapshot was taken, required by orchestrator.
-          new HiddenArrayAttribute('fdTasksNotificationsListOfNewSnapUsersDN', FALSE, ''),
+          new HiddenArrayAttribute('fdTasksNotificationsListOfNewAuditUsersDN', FALSE, ''),
           // Following attribute contain the list of members emails that should receive a notification.
           new HiddenArrayAttribute('fdTasksNotificationsListOfRecipientsMails', FALSE, ''),
           new SetAttribute(
@@ -63,6 +63,10 @@ class tasksNotifications extends simplePlugin
           new UsersGroupsRolesAttribute(
             _('Recipients'), _('Users or Groups requiring to be notified.'),
             'fdTasksNotificationsRecipientsMembers', TRUE
+          ),
+          new UsersGroupsRolesAttribute(
+            _('Monitored Members'), _('Users or Groups requiring monitoring.'),
+            'fdTasksNotificationsMonitoredMembers', TRUE
           ),
         ],
       ],
@@ -84,12 +88,12 @@ class tasksNotifications extends simplePlugin
    * Note: This method is required because setAttribute can contain one value STRING or multiple ARRAY but,
    * selectAttribute only accepts arrays.
    */
-  protected function getAttributesListFromConf () : array
+  protected function getAttributesListFromConf (): array
   {
     global $config;
     $result = [];
 
-    if (!empty($config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'])){
+    if (!empty($config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'])) {
       if (is_string($config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'])) {
         $result[] = $config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'];
       } else {
@@ -103,26 +107,70 @@ class tasksNotifications extends simplePlugin
   /**
    * Retrieve all the DNs from groups or members
    */
-  public function getListOfDN (): void
+  protected function getListOfDN (): void
   {
     // Get the members or groups selected
-    $membersAndGroups = $this->attributesAccess['fdTasksNotificationsRecipientsMembers']->getValue();
+    $recipients = $this->attributesAccess['fdTasksNotificationsRecipientsMembers']->getValue();
     // Call static function from tasks object in order to get a real list of members and related emails directly.
     $emailsList = tasksMail::getEmailsFromSelectedDN('gosaMailAccount',
       'mail',
-      tasks::extractMembersFromGroups($membersAndGroups)
+      tasks::extractMembersFromGroups($recipients)
     );
     // Fill the attribute with emails.
     $this->attributesAccess['fdTasksNotificationsListOfRecipientsMails']->setValue(array_values($emailsList));
   }
 
   /**
+   * @return array
+   * Note : Return the list of users DN having had an audit listed since the last exec of this task.
+   */
+  public function auditDnSinceLastExec (array $dn): array
+  {
+    global $config;
+    $result = [];
+
+    $lastExec = $this->parent->getBaseObject()->fdTasksLastExec ?? NULL;
+    // Simply convert to unix timestamp.
+    if (!empty($lastExec)) {
+      $unixLastExec = strtotime($lastExec);
+    } else { // In case lastExec is indeed NULL, we set today time in order to avoid being notified on the pasts modifications.
+      $unixLastExec = time();
+    }
+
+    $ldap = $config->get_ldap_link();
+    // Restrict search on the OU of audit specified in backend.
+    $ldap->cd(get_ou('auditRDN') . $config->current['BASE']);
+
+    foreach ($dn as $monitoredMember) {
+      $ldap->search('(&(objectClass=fdAuditEvent)(fdAuditObject=' . $monitoredMember . '))', ['fdAuditDateTime']);
+
+      while ($attrs = $ldap->fetch()) {
+        if (!empty($attrs['fdAuditDateTime'][0])) {
+          // Extract the part before the dot to remove milliseconds
+          $auditTime = explode('.', $attrs['fdAuditDateTime'][0]);
+          // Convert to unix format
+          $unixAuditTime = strtotime($auditTime[0]);
+
+          // Verification of the lastExec time and audit time.
+          if ($unixAuditTime >= $unixLastExec) {
+            $result[] = $monitoredMember;
+          }
+        }
+      }
+    }
+
+    // Only return once the DN
+    return array_unique($result);
+  }
+
+  /**
    * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
-  public function generateSlaveTasks ()
+  public
+  function generateSlaveTasks ()
   {
-    $listOfDN = $this->attributesAccess['fdTasksLifeCycleListOfDN']->getValue();
+    $listOfDN = $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->getValue();
     // The attribute required to be search in createSlaveTasks
     $attributeType = 'fdTasksGranularDN';
 
@@ -130,7 +178,7 @@ class tasksNotifications extends simplePlugin
     $this->parent->getBaseObject()->createSlaveTasks($listOfDN, $attributeType);
   }
 
-  public function update (): bool
+  function update (): bool
   {
     parent::update();
 
@@ -144,6 +192,11 @@ class tasksNotifications extends simplePlugin
   {
     // Verify if this tasks has to be executed upon saving.
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
+
+    $monitoredMembers = $this->attributesAccess['fdTasksNotificationsMonitoredMembers']->getValue();
+    $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setValue(
+      $this->auditDnSinceLastExec(tasks::extractMembersFromGroups($monitoredMembers))
+    );
 
     if ($execTasks) {
       $this->generateSlaveTasks();
