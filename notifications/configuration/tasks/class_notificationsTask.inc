@@ -81,6 +81,9 @@ class tasksNotifications extends simplePlugin
 
     // Set the list of available attributes to follow in the set selection
     $this->attributesAccess['fdTasksNotificationsAttributes']->attribute->setChoices($this->getAttributesListFromConf());
+
+    // This avoids keeping obsolete AuditUsersDN once subtasks have been generated.
+    $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setInLdap(FALSE);
   }
 
   /**
@@ -137,29 +140,49 @@ class tasksNotifications extends simplePlugin
       $unixLastExec = time();
     }
 
+    if (empty($lastExec)) {
+      $lastExec = new DateTime();
+    } else {
+      $lastExec = gmdate("Y-m-d h:i:sa", time());
+    }
+
     $ldap = $config->get_ldap_link();
     // Restrict search on the OU of audit specified in backend.
     $ldap->cd(get_ou('auditRDN') . $config->current['BASE']);
 
     foreach ($dn as $monitoredMember) {
       $ldap->search('(&(objectClass=fdAuditEvent)(fdAuditObject=' . $monitoredMember . '))', ['fdAuditDateTime']);
+      $attrs = $ldap->fetch();
+      if (!empty($attrs['fdAuditDateTime'][0])) {
 
-      while ($attrs = $ldap->fetch()) {
-        if (!empty($attrs['fdAuditDateTime'][0])) {
-          // Extract the part before the dot to remove milliseconds
-          $auditTime = explode('.', $attrs['fdAuditDateTime'][0]);
-          // Convert to unix format
-          $unixAuditTime = strtotime($auditTime[0]);
+        // Extract the part before the dot to remove milliseconds
+        $auditTime = explode('.', $attrs['fdAuditDateTime'][0]);
+        // Convert to unix format without forgetting the Z (coming from ISO 8601 standard, Z means UTC).
+        $unixAuditTime = strtotime($auditTime[0].'Z');
 
-          // Verification of the lastExec time and audit time.
-          if ($unixAuditTime >= $unixLastExec) {
-            $result[] = $monitoredMember;
-          }
+//        $auditTime = DateTime::createFromFormat('YmdHis.u\Z', $attrs['fdAuditDateTime'][0]);
+//        $systemTimeZone = new DateTimeZone('America/New_York');
+//        $auditTime->setTimezone($systemTimeZone);
+//        $unixAuditTime = $dateTime->format('U');
+//        $unixTimestamp = $dateTime->format('U');
+
+//        echo "Time lastExec: " . $lastExec->format('Y-m-d H:i:s'). PHP_EOL;
+//        echo "Time auditTime: " . $auditTime->format('Y-m-d H:i:s') . PHP_EOL;
+        echo "Time lastExec: " . date("Y-m-d H:i:s", $unixLastExec). PHP_EOL;
+        echo "Time auditTime: " . date("Y-m-d H:i:s", $unixAuditTime). PHP_EOL;
+
+        // Verification of the lastExec time and audit time.
+//        if ($unixAuditTime >= $unixLastExec) {
+//          $result[] = $monitoredMember;
+//        }
+        if ($auditTime >= $lastExec) {
+          $result[] = $monitoredMember;
         }
       }
     }
 
     // Only return once the DN
+    print_r($result);
     return array_unique($result);
   }
 
