@@ -134,16 +134,16 @@ class tasksNotifications extends simplePlugin
 
     $lastExec = $this->parent->getBaseObject()->fdTasksLastExec ?? NULL;
     // Simply convert to unix timestamp.
-    if (!empty($lastExec)) {
-      $unixLastExec = strtotime($lastExec);
-    } else { // In case lastExec is indeed NULL, we set today time in order to avoid being notified on the pasts modifications.
-      $unixLastExec = time();
-    }
+//    if (!empty($lastExec)) {
+//      $unixLastExec = strtotime($lastExec);
+//    } else { // In case lastExec is indeed NULL, we set today time in order to avoid being notified on the pasts modifications.
+//      $unixLastExec = time();
+//    }
 
     if (empty($lastExec)) {
-      $lastExec = new DateTime();
-    } else {
-      $lastExec = gmdate("Y-m-d h:i:sa", time());
+      $unixLastExec = time();
+    } else { // Convert to unix timestamp
+      $unixLastExec = strtotime($lastExec);
     }
 
     $ldap = $config->get_ldap_link();
@@ -152,13 +152,13 @@ class tasksNotifications extends simplePlugin
 
     foreach ($dn as $monitoredMember) {
       $ldap->search('(&(objectClass=fdAuditEvent)(fdAuditObject=' . $monitoredMember . '))', ['fdAuditDateTime']);
-      $attrs = $ldap->fetch();
-      if (!empty($attrs['fdAuditDateTime'][0])) {
+      while ($attrs = $ldap->fetch()) {
+        if (!empty($attrs['fdAuditDateTime'][0])) {
 
-        // Extract the part before the dot to remove milliseconds
-        $auditTime = explode('.', $attrs['fdAuditDateTime'][0]);
-        // Convert to unix format without forgetting the Z (coming from ISO 8601 standard, Z means UTC).
-        $unixAuditTime = strtotime($auditTime[0].'Z');
+          // Extract the part before the dot to remove milliseconds
+//        $auditTime = explode('.', $attrs['fdAuditDateTime'][0]);
+          // Convert to unix format without forgetting the Z (coming from ISO 8601 standard, Z means UTC).
+//        $unixAuditTime = strtotime($auditTime[0].'Z');
 
 //        $auditTime = DateTime::createFromFormat('YmdHis.u\Z', $attrs['fdAuditDateTime'][0]);
 //        $systemTimeZone = new DateTimeZone('America/New_York');
@@ -166,18 +166,25 @@ class tasksNotifications extends simplePlugin
 //        $unixAuditTime = $dateTime->format('U');
 //        $unixTimestamp = $dateTime->format('U');
 
+
+          $date          = DateTime::createFromFormat('YmdHis.u\Z', $attrs['fdAuditDateTime'][0]);
+          $unixAuditTime = $date->getTimestamp();
+
+
 //        echo "Time lastExec: " . $lastExec->format('Y-m-d H:i:s'). PHP_EOL;
 //        echo "Time auditTime: " . $auditTime->format('Y-m-d H:i:s') . PHP_EOL;
-        echo "Time lastExec: " . date("Y-m-d H:i:s", $unixLastExec). PHP_EOL;
-        echo "Time auditTime: " . date("Y-m-d H:i:s", $unixAuditTime). PHP_EOL;
+          echo "Time lastExec: " . date("Y-m-d H:i:s", $unixLastExec) . PHP_EOL;
+          echo "Time auditTime: " . date("Y-m-d H:i:s", $unixAuditTime) . PHP_EOL;
 
-        // Verification of the lastExec time and audit time.
+          // Verification of the lastExec time and audit time.
 //        if ($unixAuditTime >= $unixLastExec) {
 //          $result[] = $monitoredMember;
 //        }
-        if ($auditTime >= $lastExec) {
-          $result[] = $monitoredMember;
+          if ($unixAuditTime >= $unixLastExec) {
+            $result[] = $monitoredMember;
+          }
         }
+
       }
     }
 
@@ -211,15 +218,22 @@ class tasksNotifications extends simplePlugin
     return TRUE;
   }
 
+ function shouldSave (): bool
+ {
+   // Set the attributes before entering within a save methodology. lastExec is already changed in main tasks if below
+   // block is set in save().
+   $monitoredMembers = $this->attributesAccess['fdTasksNotificationsMonitoredMembers']->getValue();
+   $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setValue(
+     $this->auditDnSinceLastExec(tasks::extractMembersFromGroups($monitoredMembers))
+   );
+
+   return parent::shouldSave();
+ }
+
   function save (): array
   {
     // Verify if this tasks has to be executed upon saving.
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
-
-    $monitoredMembers = $this->attributesAccess['fdTasksNotificationsMonitoredMembers']->getValue();
-    $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setValue(
-      $this->auditDnSinceLastExec(tasks::extractMembersFromGroups($monitoredMembers))
-    );
 
     if ($execTasks) {
       $this->generateSlaveTasks();
