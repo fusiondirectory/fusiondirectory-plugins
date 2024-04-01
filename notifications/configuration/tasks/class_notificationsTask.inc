@@ -46,7 +46,7 @@ class tasksNotifications extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'section1'           => [
+      'section1'                => [
         'name'  => _('Modified attributes list to be notified'),
         'attrs' => [
           // Following attribute will contain all the DNs where a new snapshot was taken, required by orchestrator.
@@ -61,7 +61,7 @@ class tasksNotifications extends simplePlugin
           ),
         ]
       ],
-      'UserGroupSelection' => [
+      'UserGroupSelection'      => [
         'name'  => _('Recipients Users and/or Groups'),
         'attrs' => [
           new UsersGroupsRolesAttribute(
@@ -71,6 +71,15 @@ class tasksNotifications extends simplePlugin
           new UsersGroupsRolesAttribute(
             _('Monitored Members'), _('Users or Groups requiring monitoring.'),
             'fdTasksNotificationsMonitoredMembers', TRUE
+          ),
+        ],
+      ],
+      'Mail Template Selection' => [
+        'name'  => _('Mail Template'),
+        'attrs' => [
+          new SelectAttribute(
+            _('Mail Template'), _('Mail Template Object Selection'),
+            'fdTasksNotificationsMailTemplate', FALSE
           ),
         ],
       ],
@@ -90,6 +99,12 @@ class tasksNotifications extends simplePlugin
 
     // This avoids keeping obsolete AuditUsersDN once subtasks have been generated.
     $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setInLdap(FALSE);
+
+    // Fill in the list of mail template available to the attribute
+    $mailTemplates = $this->getMailTemplates();
+    $this->attributesAccess['fdTasksNotificationsMailTemplate']->setChoices(
+      array_keys($mailTemplates), array_values($mailTemplates)
+    );
   }
 
   /**
@@ -111,6 +126,26 @@ class tasksNotifications extends simplePlugin
     }
 
     return $result;
+  }
+
+  /**
+   * @return array
+   * Note : Simply search for mail template and return the list.
+   */
+  protected function getMailTemplates (): array
+  {
+    global $config;
+    //Search within LDAP and retrieve all mail objects for current base.
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(objectClass=fdMailTemplate))', ['cn']);
+    $tmpSearch = [];
+    while ($attrs = $ldap->fetch()) {
+      $tmpSearch[$attrs['cn'][0]] = $attrs['cn'][0];
+    }
+    asort($tmpSearch);
+
+    return $tmpSearch;
   }
 
   /**
