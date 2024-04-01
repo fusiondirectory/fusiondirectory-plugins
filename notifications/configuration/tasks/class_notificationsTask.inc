@@ -180,7 +180,7 @@ class tasksNotifications extends simplePlugin
     $attributeType = 'fdTasksGranularDN';
 
     // Call the method from parent tasks object (first tab) to create sub-tasks.
-    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, $attributeType);
+    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, $attributeType, NULL, 'Notifications');
   }
 
   /**
