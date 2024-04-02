@@ -184,38 +184,44 @@ class tasksNotifications extends simplePlugin
     // Restrict search on the OU of audit specified in backend.
     $ldap->cd(get_ou('auditRDN') . $config->current['BASE']);
 
+    // Create a long filter to enhance ldap searching pattern
+    $ldapFilter = '';
     foreach ($dn as $monitoredMember) {
-      $ldap->search('(&(objectClass=fdAuditEvent)(fdAuditObject=' . $monitoredMember . '))', ['fdAuditDateTime']);
-      while ($attrs = $ldap->fetch()) {
-        if (!empty($attrs['fdAuditDateTime'][0])) {
+      $ldapFilter .= '(fdAuditObject=' . $monitoredMember . ')';
+    }
 
-          $date          = DateTime::createFromFormat('YmdHis.u\Z', $attrs['fdAuditDateTime'][0]);
-          $unixAuditTime = $date->getTimestamp();
+    $ldap->search('(&(objectClass=fdAuditEvent)(|' . $ldapFilter . '))', ['fdAuditDateTime', 'fdAuditObject']);
 
-          if ($unixAuditTime >= $unixLastExec) {
-            $result[] = $monitoredMember;
-          }
+    while ($attrs = $ldap->fetch()) {
+      if (!empty($attrs['fdAuditDateTime'][0])) {
+
+        // Convert generic time to DateTime object. (Already in UTC)
+        $date          = DateTime::createFromFormat('YmdHis.u\Z', $attrs['fdAuditDateTime'][0]);
+        $unixAuditTime = $date->getTimestamp(); // Change object dateTime to unix epoch.
+
+        if ($unixAuditTime >= $unixLastExec) {
+          $result[$attrs['fdAuditObject'][0]][] = $attrs['dn'];
         }
-
       }
     }
 
-    return array_unique($result);
+    return $result;
   }
 
   /**
    * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
-  public
   function generateSlaveTasks ()
   {
     $listOfDN = $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->getValue();
     // The attribute required to be search in createSlaveTasks
     $attributeType = 'fdTasksGranularDN';
+    // Store the full associative array coming from the list of new audit user DN, containing all audit DN related to that user.
+    $attrs['ref'] = $listOfDN;
 
-    // Call the method from parent tasks object (first tab) to create sub-tasks.
-    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, $attributeType, NULL, 'Notifications');
+    // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
+    $this->parent->getBaseObject()->createSlaveTasks(array_keys($listOfDN), $attributeType, $attrs, 'Notifications');
   }
 
   /**
