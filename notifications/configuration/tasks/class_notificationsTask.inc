@@ -81,6 +81,10 @@ class tasksNotifications extends simplePlugin
             _('Mail Template'), _('Mail Template Object Selection'),
             'fdTasksNotificationsMailTemplate', FALSE
           ),
+          new MailAttribute(
+            _('Sender email address'),
+            _('Email address from which mails will be sent'), 'fdTasksNotificationsEmailSender',
+            TRUE, 'to.be@chang.ed'),
         ],
       ],
     ];
