@@ -179,7 +179,7 @@ class tasksNotifications extends simplePlugin
     $result = [];
 
     if (empty($this->lastExec)) {
-      $unixLastExec = time();
+      $unixLastExec = strtotime(date("Y-m-d H:i:s"));
     } else { // Convert to unix timestamp
       $unixLastExec = strtotime($this->lastExec);
     }
@@ -199,9 +199,11 @@ class tasksNotifications extends simplePlugin
     while ($attrs = $ldap->fetch()) {
       if (!empty($attrs['fdAuditDateTime'][0])) {
 
-        // Convert generic time to DateTime object. (Already in UTC)
-        $date          = DateTime::createFromFormat('YmdHis.u\Z', $attrs['fdAuditDateTime'][0]);
-        $unixAuditTime = $date->getTimestamp(); // Change object dateTime to unix epoch.
+        // Convert generic time to DateTime object. (Generic time with Z are in UTC)
+        $date = DateTime::createFromFormat('YmdHis.u\Z', $attrs['fdAuditDateTime'][0], new DateTimeZone('UTC'));
+        // Convert to defined local timezone.
+        $date->setTimezone(timezone::getDefaultTimeZone());
+        $unixAuditTime = $date->getTimestamp(); // Change object dateTime to unix format.
 
         if ($unixAuditTime >= $unixLastExec) {
           $result[$attrs['fdAuditObject'][0]][] = $attrs['dn'];
