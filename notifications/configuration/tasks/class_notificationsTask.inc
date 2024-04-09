@@ -79,7 +79,7 @@ class tasksNotifications extends simplePlugin
         'attrs' => [
           new SelectAttribute(
             _('Mail Template'), _('Mail Template Object Selection'),
-            'fdTasksNotificationsMailTemplate', FALSE
+            'fdTasksNotificationsMailTemplate', TRUE
           ),
           new MailAttribute(
             _('Sender email address'),
