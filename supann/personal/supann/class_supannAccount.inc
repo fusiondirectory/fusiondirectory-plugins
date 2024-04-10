@@ -560,9 +560,9 @@ class supannAccount extends simplePlugin
     }
 
     $orcids = $this->eduPersonOrcid;
-    if(is_array($orcids)) {
+    if (is_array($orcids)) {
       foreach ($orcids as $orcid) {
-        if(!tests::is_orcid($orcid)) {
+        if (!tests::is_orcid($orcid)) {
           $errors[] = new SimplePluginCheckError(
             $this->attributesAccess['eduPersonOrcid'],
             htmlescape(_('The value "'.$orcid.'" is not a valid orcid id. Please remove it.'))
