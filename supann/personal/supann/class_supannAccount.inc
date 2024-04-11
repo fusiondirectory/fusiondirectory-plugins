@@ -76,6 +76,16 @@ class supannAccount extends simplePlugin
               '/^{[^}]+}.+$/'
             )
           ),
+          new SetAttribute(
+            new StringAttribute(
+              _('ORCID identifiers'), _('eduPersonOrcid - ORCID researcher identifiers belonging to the principal'),
+              'eduPersonOrcid', FALSE,
+              '', '',
+              // Validation regexp: it must be XXXX-XXXX-XXXX-XXXX when X are digits
+              '/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$/',
+              'ORCID account IDs must look like XXXX-XXXX-XXXX-XXXX where X are digits'
+            )
+          ),
         ]
       ],
       'contact' => [
@@ -547,6 +557,19 @@ class supannAccount extends simplePlugin
         $this->attributesAccess['eduPersonAffiliation'],
         htmlescape(_('"member" and "affiliate" values are incompatible for eduPersonAffiliation. Please remove one of them.'))
       );
+    }
+
+    $orcids = $this->eduPersonOrcid;
+    if (is_array($orcids)) {
+      foreach ($orcids as $orcid) {
+        // phpstan:ignore
+        if (!tests::is_orcid($orcid)) {
+          $errors[] = new SimplePluginCheckError(
+            $this->attributesAccess['eduPersonOrcid'],
+            htmlescape(_('The value "'.$orcid.'" is not a valid orcid id. Please remove it.'))
+          );
+        }
+      }
     }
 
     return $errors;

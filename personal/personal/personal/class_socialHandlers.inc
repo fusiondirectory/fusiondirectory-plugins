@@ -125,45 +125,6 @@ class socialHandler_linkedin extends socialHandler
   protected $baseurl = 'https://www.linkedin.com/in';
 }
 
-class socialHandler_orcid extends socialHandler
-{
-  static function getName ()
-  {
-    return _('ORCID');
-  }
-
-  protected $baseurl = 'https://orcid.org';
-
-  function linkify ($value)
-  {
-    return $this->link($this->baseurl.'/'.$value, $value);
-  }
-
-  function validate ($value)
-  {
-    if (!preg_match('/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$/', $value)) {
-      throw new socialHandlerInvalidValueException(_('ORCID account IDs must look like XXXX-XXXX-XXXX-XXXX where X are digits'));
-    }
-    if (static::orcidCheckSum($value) != substr($value, -1)) {
-      throw new socialHandlerInvalidValueException(_('Incorrect ORCID value, the checksum does not match'));
-    }
-    return $value;
-  }
-
-  public static function orcidCheckSum (string $orcid): string
-  {
-    /* Remove hyphens, remove last digit, convert to array */
-    $baseDigits = str_split(str_replace('-', '', substr($orcid, 0, -1)));
-    $sum = 0;
-    foreach ($baseDigits as $baseDigit) {
-      $sum = ($sum + (int)$baseDigit) * 2;
-    }
-    $remainder  = $sum % 11;
-    $result     = (12 - $remainder) % 11;
-    return (($result == 10) ? "X" : (string)$result);
-  }
-}
-
 class socialHandler_github extends socialHandler
 {
   static function getName ()
