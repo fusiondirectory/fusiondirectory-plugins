@@ -1,0 +1,51 @@
+##
+## notifications-fd.schema - Required for tasks of type notifications
+##
+
+# Attributes
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.1 NAME 'fdTasksNotificationsListOfNewAuditUsersDN'
+  DESC 'Fusion Directory - Following attribute will contain all the DNs where a new snapshot was taken.'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.2 NAME 'fdTasksNotificationsListOfRecipientsMails'
+  DESC 'Fusion Directory - Following attribute contain the list of members emails that should receive a notification.'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )\
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.3 NAME 'fdTasksNotificationsRecipientsMembers'
+    DESC 'Fusion Directory - Following attribute contain the list of members and groups DN recipients to notifications.'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.4 NAME 'fdTasksNotificationsMonitoredMembers'
+    DESC 'Fusion Directory - Following attribute contain the list of members and groups to monitor.'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.5 NAME 'fdTasksNotificationsAttributes'
+  DESC 'Fusion Directory - Tasks for life cycle - new sub state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.6 NAME 'fdTasksNotificationsMailTemplate'
+  DESC 'Fusion Directory - Tasks for mail template objects'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.7 NAME 'fdTasksNotificationsEmailSender'
+  DESC 'Fusion Directory - Emails derived from DN'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+# Object Class
+
+objectclass (1.3.6.1.4.1.38414.90.2.1 NAME 'fdTasksNotifications' SUP top AUXILIARY
+  DESC 'FusionDirectory - Notifications plugins Object Class'
+  MUST ( fdTasksNotificationsAttributes $ fdTasksNotificationsRecipientsMembers $
+  fdTasksNotificationsListOfRecipientsMails $ fdTasksNotificationsMonitoredMembers $ fdTasksNotificationsMailTemplate $
+  fdTasksNotificationsEmailSender)
+  MAY  (fdTasksNotificationsListOfNewAuditUsersDN ) )
+
