@@ -562,6 +562,7 @@ class supannAccount extends simplePlugin
     $orcids = $this->eduPersonOrcid;
     if (is_array($orcids)) {
       foreach ($orcids as $orcid) {
+        // phpstan:ignore
         if (!tests::is_orcid($orcid)) {
           $errors[] = new SimplePluginCheckError(
             $this->attributesAccess['eduPersonOrcid'],
