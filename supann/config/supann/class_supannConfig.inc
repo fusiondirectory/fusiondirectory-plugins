@@ -132,6 +132,17 @@ class supannConfig extends simplePlugin
             [],
             TRUE
           ),
+          new OrderedArrayAttribute(
+            new StringAttribute(
+              _('Values'),
+              _('Values available for supannCivilite'),
+              'fdSupannCiviliteValues',
+              TRUE,
+            ),
+            FALSE,
+            [ "M.", "Mme"],
+            TRUE,
+          ),
         ],
       ],
       'status' => [

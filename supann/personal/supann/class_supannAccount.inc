@@ -53,7 +53,7 @@ class supannAccount extends simplePlugin
           new SelectAttribute(
             _('Civilite'), _('supannCivilite - Civility for this person'),
             'supannCivilite', FALSE,
-            ['', 'M.', 'Mme', 'Mlle']
+            ['']
           ),
           new StringAttribute(
             _('Alias login'), _('supannAliasLogin - An alias for the login of this user'),
@@ -498,6 +498,20 @@ class supannAccount extends simplePlugin
       $typeLabels[] = $label;
     }
     $this->attributesAccess['supannConsentement']->attribute->attributes[1]->setChoices($types, $typeLabels);
+
+    /* supannCivilite */
+    // Get supannCivilite from configuration
+    $supannCiviliteValues = $config->get_cfg_value('SupannCiviliteValues', []);
+
+    // Add actual ldap value
+    $supannCiviliteValues[] = $this->attributesAccess['supannCivilite']->getValue();
+
+    // Set the choices for supannCivilite
+    $this->attributesAccess['supannCivilite']->setChoices(
+      array_unique(
+        $supannCiviliteValues
+      )
+    );
 
     $this->updateFieldsChoicesAndValues();
   }
