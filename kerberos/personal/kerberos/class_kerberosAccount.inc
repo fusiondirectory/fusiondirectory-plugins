@@ -24,29 +24,34 @@ class KrbTicketFlagsAttribute extends CompositeAttribute
 
   function __construct ($ldapName, $attributes, $acl = "")
   {
-    parent::__construct( _('The krbTicketFlags attribute holds information about the kerberos flags for a principal'),$ldapName, $attributes, '', '', $acl);
+    parent::__construct(_('The krbTicketFlags attribute holds information about the kerberos flags for a principal'), $ldapName, $attributes, '', '', $acl);
   }
 
-  function readValues(string $value): array
+  function readValues (string $value): array
   {
-    $values = array();
-    foreach($this->attributes as $attribute){
-      if ( ($value & $attribute->trueValue) > 0 )
+    $values = [];
+    foreach ($this->attributes as $attribute) {
+      if (($value & $attribute->trueValue) > 0) {
         $values[] = $attribute->trueValue;
-      else $values[] = 0;
+      } else {
+        $values[] = 0;
+      }
     }
     return $values;
   }
 
-  function writeValues(array $values): string
+  function writeValues (array $values)
   {
     $flag = 0;
     foreach ($values as $value) {
       $flag += $value;
     }
 
-    if ($flag>0) return $flag;
-    else return "";
+    if ($flag > 0) {
+      return $flag;
+    } else {
+      return "";
+    }
   }
 }
 
@@ -59,7 +64,7 @@ class KrbDateAttribute extends DateAttribute
     parent::__construct($label, $description, $ldapName, $required, '', $defaultValue, $acl);
   }
 
-  protected function dateToLdap($dateValue)
+  protected function dateToLdap ($dateValue)
   {
     return $dateValue->format('YmdHis') . "Z";
   }
@@ -78,18 +83,18 @@ class kerberosAccount extends simplePlugin
       'plIcon'        => 'geticon.php?context=applications&icon=kerberos&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=kerberos&size=16',
       'plSelfModify'  => FALSE,
-      'plObjectClass' => ['krbPrincipalAux','krbTicketPolicyAux'],
+      'plObjectClass' => ['krbPrincipalAux', 'krbTicketPolicyAux'],
       'plFilter'      => '(objectClass=krbPrincipalAux)',
-      'plObjectType'  => ['user', 'server','workstation','terminal','printer','component','phone','mobilePhone'],
+      'plObjectType'  => ['user', 'server', 'workstation', 'terminal', 'printer', 'component', 'phone', 'mobilePhone'],
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
   static function getAttributesInfo (): array
   {
     return [
-      'krbPrincipalAux' => [
+      'krbPrincipalAux'    => [
         'name'  => _('krbPrincipalAux'),
         'attrs' => [
           new SetAttribute(
@@ -169,9 +174,9 @@ class kerberosAccount extends simplePlugin
               'krbExtraData', FALSE
             ),
             FALSE,
-            array( // default values: one attribute of 'last modified'
+            [ // default values: one attribute of 'last modified'
               KrbExtraDataAttribute::packLastModification()
-            )
+            ]
           ),
           new SetAttribute(
             new StringAttribute(
@@ -193,88 +198,88 @@ class kerberosAccount extends simplePlugin
         'attrs' => [
           new KrbTicketFlagsAttribute(
             'krbTicketFlags',
-            array(
-              new BooleanAttribute (
+            [
+              new BooleanAttribute(
                 _('Prohibit postdated tickets'), _('Prohibit the principal to obtain postdateable tickets.'),
                 'DISALLOW_POSTDATED', FALSE, FALSE, '',
                 0x00000001, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Prohibit forwardable tickets'), _('Prohibit the principal to obtain a session key for another user, permitting user-to-user authentication for this principal.'),
                 'DISALLOW_FORWARDABLE', FALSE, FALSE, '',
                 0x00000002, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Disallow Ticket-Granting Service'), _('Disallow a principal to obtain tickets based on a ticket-granting-ticket, rather than repeating the authentication process that was used to obtain the TGT.'),
                 'DISALLOW_TGT_BASED', FALSE, FALSE, '',
                 0x00000004, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Prohibit renewable tickets'), _('Prohibit the principal to obtain renewable tickets.'),
                 'DISALLOW_RENEWABLE', FALSE, FALSE, '',
                 0x00000008, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Disallow proxiable tickets'), _('Prohibit the principal to obtain proxy tickets.'),
                 'DISALLOW_PROXIABLE', FALSE, FALSE, '',
                 0x00000010, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Disallow user to user authentification'), _('Enabling this flag disallows the principal to obtain a session key for another user, permitting user-to-user authentication for this principal.'),
                 'DISALLOW_DUP_SKEY', FALSE, FALSE, '',
                 0x00000020, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Forbid ticket issuance'), _('Enabling this flag essentially deactivates the principal within this realm.'),
                 'DISALLOW_ALL_TIX', FALSE, FALSE, '',
                 0x00000040, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Preauthentication required'), _('If this flag is enabled on a client principal, then that principal is required to preauthenticate to the KDC before receiving any tickets. On a service principal, enabling this flag means that service tickets for this principal will only be issued to clients with a TGT that has the preauthenticated bit set.'),
                 'REQUIRES_PRE_AUTH', FALSE, TRUE, '',
                 0x00000080, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Hardware preauthentication'), _('If this flag is enabled, then the principal is required to preauthenticate using a hardware device before receiving any tickets.'),
                 'REQUIRES_HW_AUTH', FALSE, FALSE, '',
                 0x00000100, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Force a password change'), _('Enabling this flag forces a password change for this principal.'),
                 'REQUIRES_PWCHANGE', FALSE, FALSE, '',
                 0x00000200, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('UNKNOWN'), _('Unknown Flag 0x00000400'),
                 'UNKNOWN_0x00000400', FALSE, FALSE, '',
                 0x00000400, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('UNKNOWN'), _('Unknown Flag 0x00000800'),
                 'UNKNOWN_0x00000800', FALSE, FALSE, '',
                 0x00000800, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Prohibit issuance of service tickets'), _('Prohibit the KDC to issue service tickets for this principal.'),
                 'DISALLOW_SVR', FALSE, FALSE, '',
                 0x00001000, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('Password change service'), _('If this flag is enabled, it marks this principal as a password change service. This should only be used in special cases, for example, if a user’s password has expired, then the user has to get tickets for that principal without going through the normal password authentication in order to be able to change the password.'),
                 'PWCHANGE_SERVICE', FALSE, FALSE, '',
                 0x00002000, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('SUPPORT_DESMD5'), _('SUPPORT_DESMD5'),
                 'SUPPORT_DESMD5', FALSE, FALSE, '',
                 0x00004000, 0
               ),
-              new BooleanAttribute (
+              new BooleanAttribute(
                 _('NEW_PRINC'), _('NEW_PRINC'),
                 'NEW_PRINC', FALSE, FALSE, '',
                 0x00008000, 0
               ),
-            )
+            ]
           ),
           new TimeAttribute(
             _('Maximum ticket lifetime'), _('The maximum ticket lifetime for a principal in seconds'),
@@ -288,14 +293,15 @@ class kerberosAccount extends simplePlugin
           ),
         ],
       ],
-      'invisible' => [
-        'class' => array('invisible'),
+      'invisible'          => [
+        'class' => ['invisible'],
       ],
     ];
   }
 
-  function prettyPrintDateTime($attribute) {
-    if ( isset($this->attrs[$attribute]) && ($this->attrs[$attribute][0]!='')) {
+  function prettyPrintDateTime ($attribute)
+  {
+    if (isset($this->attrs[$attribute]) && ($this->attrs[$attribute][0] != '')) {
       $date = LdapGeneralizedTime::fromString($this->attrs[$attribute][0]);
       $date->setTimezone(timezone::getDefaultTimeZone());
       $this->$attribute = $date->format('Y-m-d H:i:s');
@@ -314,10 +320,10 @@ class kerberosAccount extends simplePlugin
     kerberosAccount::prettyPrintDateTime('krbLastFailedAuth');
   }
 
-  function prepare_save(): array
+  function prepare_save (): array
   {
     // check if any krb attribute has been changed
-    $krbchanged=false;
+    $krbchanged = FALSE;
     foreach ($this->attributesAccess as $key => $attr) {
       if (isset($attr)) {
         $krbchanged = $krbchanged | $attr->hasChanged();

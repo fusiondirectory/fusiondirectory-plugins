@@ -22,25 +22,25 @@
 class KrbExtraDataAttribute extends \FusionDirectory\Core\SimplePlugin\Attribute
 {
 
-  static function isLastModification($value = '') : bool
+  static function isLastModification ($value = ''): bool
   {
     // return true if binary prefix of value
-    return ( substr($value, 0, 2) === hex2bin('0002') );
+    return (substr($value, 0, 2) === hex2bin('0002'));
   }
 
   /* create 'last modification' attribute data */
-  static function packLastModification(): string
+  static function packLastModification (): string
   {
-    $user ='FusionDirectoryWeb';
+    $user = 'FusionDirectoryWeb';
 
     global $ui;
     if (isset($ui)) {
       if ($ui->uid != '') {
-        $user = $ui->uid.'@FusionDirectory';
+        $user = $ui->uid . '@FusionDirectory';
       }
     }
 
-    return pack( 'nVa*', 0x0002,  time(), $user ."\0" );
+    return pack('nVa*', 0x0002, time(), $user . "\0");
   }
 
   function renderFormInput (): string
@@ -56,20 +56,20 @@ class KrbExtraDataAttribute extends \FusionDirectory\Core\SimplePlugin\Attribute
   protected function arrayValue ($value): array
   {
     $prefix = substr($value, 0, 2);
-    if ( $this->isLastModification($value) ) {
-      $tag  = _('Last modification');
+    if ($this->isLastModification($value)) {
+      $tag = _('Last modification');
       //~ - 3-6: are the unix time stamp
       //~ - 7-end: zero-terminated string with the principal of the changer
-      $data     = unpack('Vtimestamp/a*user', substr($value, 2));
-      $content  = sprintf(_('%s - by "%s"'), date('Y-m-d, H:i:s', $data['timestamp']), $data['user']);
+      $data    = unpack('Vtimestamp/a*user', substr($value, 2));
+      $content = sprintf(_('%s - by "%s"'), date('Y-m-d, H:i:s', $data['timestamp']), $data['user']);
     } elseif ($prefix === hex2bin('0008')) {
-      $data     = unpack('vversion', substr($value, 2));
-      $tag      = _('Master-key version number');
-      $content  = $data['version'];
+      $data    = unpack('vversion', substr($value, 2));
+      $tag     = _('Master-key version number');
+      $content = $data['version'];
     } else {
       /* Unknown tag, show hexadecimal data */
-      $tag      = bin2hex($prefix);
-      $content  = bin2hex(substr($value, 2));
+      $tag     = bin2hex($prefix);
+      $content = bin2hex(substr($value, 2));
     }
     return [$tag, $content];
   }
