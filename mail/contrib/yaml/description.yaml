@@ -1,24 +1,27 @@
 information:
-  name : mail
-  description : Base mail plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Base mail plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/mail/html/themes/breezy/icons/48/apps/mail.png
+  name: mail
+  origin: package
   screenshotUrl:
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/mail/contrib/screenshots/mail-template.png"
-  logoUrl : "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/mail/html/themes/breezy/icons/48/apps/mail.png"
-  tags: ["user", "group"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/mail/contrib/screenshots/mail-icon.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/mail/contrib/screenshots/mail-settings.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/mail/contrib/screenshots/mail-apply.png
+  status: Stable
+  tags:
+  - user
+  - group
+  version: '1.4'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.4
+  phpVersion: 7.3.0
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/mail/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

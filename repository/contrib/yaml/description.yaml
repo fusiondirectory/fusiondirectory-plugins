@@ -1,24 +1,22 @@
 information:
-  name : repository
-  description : Repository plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
-  screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/repository/html/themes/breezy/icons/48/apps/repository.png"
+  authors:
+  - FusionDirectory
+  description: Repository plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/repository/html/themes/breezy/icons/48/apps/repository.png
+  name: repository
+  origin: package
+  screenshotUrl: []
+  status: Stable
   tags: []
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  version: '1.4'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.4
+  phpVersion: 7.3.0
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/repository/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

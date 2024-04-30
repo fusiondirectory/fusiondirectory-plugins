@@ -1,24 +1,23 @@
 information:
-  name : webauthn
-  description : Webservice plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
-  screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/webauthn/html/themes/breezy/icons/48/apps/webauthn.png"
-  tags: ["user"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  authors:
+  - FusionDirectory
+  description: Webservice plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/webauthn/html/themes/breezy/icons/48/apps/webauthn.png
+  name: webauthn
+  origin: package
+  screenshotUrl: []
+  status: Stable
+  tags:
+  - user
+  version: '1.4'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.4
+  phpVersion: 7.3.0
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/webauthn/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

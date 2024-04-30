@@ -1,24 +1,28 @@
 information:
-  name : alias
-  description : Alias plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Alias plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/html/themes/breezy/icons/48/apps/alias.png
+  name: alias
+  origin: package
   screenshotUrl:
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/alias-list.png"
-  logoUrl : "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/html/themes/breezy/icons/48/apps/alias.png"
-  tags: ["user"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/alias-create-mail-redirection-filled.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/alias-redirection-filled.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/alias-list.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/alias-mail-redirection-end.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/alias-create-mail-distribution.png
+  status: Stable
+  tags:
+  - user
+  version: '1.4'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.4
+  phpVersion: 7.3.0
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/alias/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
