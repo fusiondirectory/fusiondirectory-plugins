@@ -1,25 +1,26 @@
 information:
-  name : developers
-  description : Provide doc and tools for FusionDirectory development
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Provide doc and tools for FusionDirectory development
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/developers/html/themes/breezy/icons/48/apps/developers.png
+  name: developers
+  origin: package
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/developers/html/themes/breezy/icons/48/apps/developers.png"
-  tags: ["user"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  documentationUrl : https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/developers/index.html
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/developers/contrib/screenshots/developers-diagrams.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/developers/contrib/screenshots/developers-object-content.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/developers/contrib/screenshots/developers-object-types-1.png
+  status: Stable
+  tags:
+  - user
+  version: '1.4'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.4
+  phpVersion: 7.3.0
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/developers/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

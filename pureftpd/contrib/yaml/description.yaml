@@ -1,25 +1,27 @@
 information:
-  name : pureftpd
-  description : Pureftpd plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Pureftpd plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/pureftpd/html/themes/breezy/icons/48/apps/pureftpd.png
+  name: pureftpd
+  origin: package
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/pureftpd/html/themes/breezy/icons/48/apps/pureftpd.png"
-  tags: ["user"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  documentationUrl : https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/pureftpd/index.html
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/pureftpd/contrib/screenshots/pureftpd-miscellaneous.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/pureftpd/contrib/screenshots/pureftpd-ratio.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/pureftpd/contrib/screenshots/pureftpd-bandwidth.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/pureftpd/contrib/screenshots/pureftpd-quota.png
+  status: Stable
+  tags:
+  - user
+  version: '1.4'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.4
+  phpVersion: 7.3.0
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/pureftpd/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

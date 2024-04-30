@@ -1,25 +1,27 @@
 information:
-  name : renater-partage
-  description : Renater partage integration plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Renater partage integration plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/renater-partage/html/themes/breezy/icons/48/apps/renater-partage.png
+  name: renater-partage
+  origin: package
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/renater-partage/html/themes/breezy/icons/48/apps/renater-partage.png"
-  tags: ["server", "group", "entite"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  documentationUrl : https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/renater-partage/index.html
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/renater-partage/contrib/screenshots/renaterpartage-settings.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/renater-partage/contrib/screenshots/renaterpartage-mail-account-settings.png
+  status: Stable
+  tags:
+  - server
+  - group
+  - entite
+  version: '1.4'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.4
+  phpVersion: 7.3.0
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/renater-partage/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

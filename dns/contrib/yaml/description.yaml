@@ -1,26 +1,54 @@
 information:
-  name : dns
-  description : Dns plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Dns plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/html/themes/breezy/icons/48/apps/dns.png
+  name: dns
+  origin: package
   screenshotUrl:
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dns-acl-create.png"
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dns-menu.png"
-  logoUrl : "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/html/themes/breezy/icons/48/apps/dns.png"
-  tags: ["server"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  documentationUrl : https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/dns/index.html
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-NS.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-SIG.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-TXT.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dns-acl.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-SRV.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-DKIM.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-CERT.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-LOC.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dns-view.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnszone-dnszone-soa.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dns-system-tab.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-A.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-KEY.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-CAA.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsmanagement.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-CNAME.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-SSHFP.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-AFSDB.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnszone-dnszone-main.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-MX.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-KX.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-PTR.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dns-zone.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-DS.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-SPF.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-NSEC.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-NAPTR.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnszone-dnszone-records.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-AAAA.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-RRSIG.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dns/contrib/screenshots/dnsrecord-DMARC.png
+  status: Stable
+  tags:
+  - server
+  version: '1.4'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.4
+  phpVersion: 7.3.0
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/dns/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

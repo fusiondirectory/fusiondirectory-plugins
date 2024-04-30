@@ -1,25 +1,22 @@
 information:
-  name : notifications
-  description : Notifications plugin for FusionDirectory
-  version : "1.5"
-  authors :
-    - "FusionDirectory"
-  status : Stable
-  screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/opsi/html/themes/breezy/icons/48/apps/notifications.png"
+  authors:
+  - FusionDirectory
+  description: Notifications plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/opsi/html/themes/breezy/icons/48/apps/notifications.png
+  name: notifications
+  origin: package
+  screenshotUrl: []
+  status: Stable
   tags: []
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  documentationUrl : https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/notification/index.html
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  version: '1.5'
 requirement:
-  fdVersion : 1.5
-  phpVersion : 7.4.0
+  fdVersion: 1.5
+  phpVersion: 7.4.0
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/notification/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

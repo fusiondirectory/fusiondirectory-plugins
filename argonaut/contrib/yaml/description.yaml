@@ -1,33 +1,34 @@
 information:
-  name : argonaut
-  description : Argonaut plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Argonaut plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/html/themes/breezy/icons/48/apps/argonaut.png
+  name: argonaut
+  origin: package
   screenshotUrl:
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/argonaut-client-filled.png"  
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/argonaut-client-ssl-filled.png"   
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/argonaut-server-ssl-filled.png"  
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/argonaut-service-dns.png"      
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/argonaut-systems-services.png"
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/argonaut-client-services-filled.png"  
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/argonaut-server-filled.png" 
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/argonaut-server-wol-filled.png"  
-    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/alias/contrib/screenshots/argonaut-systems-list-end.png"
-  logoUrl : "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/html/themes/breezy/icons/48/apps/argonaut.png"
-  tags: ["workstation", "server", "terminal"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  documentationUrl : https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/argonaut/index.html
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/contrib/screenshots/argonaut-service-dns.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/contrib/screenshots/argonaut-client-filled.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/contrib/screenshots/argonaut-server-filled.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/contrib/screenshots/argonaut-client-ssl-filled.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/contrib/screenshots/argonaut-server-wol-filled.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/contrib/screenshots/argonaut-systems-services.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/contrib/screenshots/argonaut-client-services-filled.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/contrib/screenshots/argonaut-systems-list-end.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/argonaut/contrib/screenshots/argonaut-server-ssl-filled.png
+  status: Stable
+  tags:
+  - workstation
+  - server
+  - terminal
+  version: '1.4'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.4
+  phpVersion: 7.3.0
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/argonaut/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
