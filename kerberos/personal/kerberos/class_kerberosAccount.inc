@@ -265,7 +265,7 @@ class kerberosAccount extends simplePlugin
                 0x00001000, 0
               ),
               new BooleanAttribute(
-                _('Password change service'), _('If this flag is enabled, it marks this principal as a password change service. This should only be used in special cases, for example, if a user’s password has expired, then the user has to get tickets for that principal without going through the normal password authentication in order to be able to change the password.'),
+                _('Password change service'), _('If this flag is enabled, it marks this principal as a password change service. This should only be used in special cases, for example, if a user password has expired, then the user has to get tickets for that principal without going through the normal password authentication in order to be able to change the password.'),
                 'PWCHANGE_SERVICE', FALSE, FALSE, '',
                 0x00002000, 0
               ),
