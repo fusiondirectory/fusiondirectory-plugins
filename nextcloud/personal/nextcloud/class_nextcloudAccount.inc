@@ -34,8 +34,8 @@ class nextcloudAccount extends simplePlugin
     return [
       'plShortName'     => _('NextCloud'),
       'plDescription'   => _('NextCloud settings'),
-      'plIcon'          => 'geticon.php?context=places&icon=folder&size=48',
-      'plSmallIcon'     => 'geticon.php?context=places&icon=folder&size=16',
+      'plIcon'          => 'geticon.php?context=applications&icon=nextcloud&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=nextcloud&size=16',
       'plSelfModify'    => TRUE,
       'plObjectClass'   => ['fdNextCloudAccount'],
       'plObjectType'    => ['user'],
