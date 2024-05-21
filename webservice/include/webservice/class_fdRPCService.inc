@@ -187,6 +187,7 @@ class fdRPCService
         session::global_set('config', $config);
       }
     }
+    timezone::setDefaultTimezoneFromConfig();
   }
 
   protected function checkAccess ($type, $tabs = NULL, $dn = NULL)
