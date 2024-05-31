@@ -295,6 +295,7 @@ class kerberosAccount extends simplePlugin
       ],
       'invisible'          => [
         'class' => ['invisible'],
+        'attrs' => []
       ],
     ];
   }
