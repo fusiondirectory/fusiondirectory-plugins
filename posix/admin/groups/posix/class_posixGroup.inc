@@ -181,6 +181,19 @@ class posixGroup extends simplePlugin
       unset($this->attrs['objectClass'][$key]);
     }
 
+    // Set force_id and gidNumber to %askme%
+    // if force_id == TRUE and gidNumber == '' or if force_id == TRUE and gidNumber == %askme%
+    if ($this->is_template) {
+      if ($this->force_id) {
+        if (($this->gidNumber == '') || ($this->gidNumber == '%askme%')) {
+          $this->attrs['force_id'] = '%askme%';
+          $this->attrs['gidNumber'] = '%askme%';
+        }
+      } else {
+        $this->attrs['force_id']   = 'FALSE';
+      }
+    }
+
     return $errors;
   }
 
