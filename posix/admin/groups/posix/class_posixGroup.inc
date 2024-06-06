@@ -186,7 +186,7 @@ class posixGroup extends simplePlugin
     if ($this->is_template) {
       if ($this->force_id) {
         if (($this->gidNumber == '') || ($this->gidNumber == '%askme%')) {
-          $this->attrs['force_id'] = '%askme%';
+          $this->attrs['force_id']  = '%askme%';
           $this->attrs['gidNumber'] = '%askme%';
         }
       } else {
