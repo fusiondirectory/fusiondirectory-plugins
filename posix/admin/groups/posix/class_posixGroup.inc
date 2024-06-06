@@ -40,11 +40,11 @@ class posixGroup extends simplePlugin
         'icon'        => 'geticon.php?context=types&icon=user-group&size=16',
         'mainAttr'    => 'cn',
       ]],
-      'plForeignKeys' => [
-        'memberUid' => ['user', 'uid']
+      'plForeignKeys'  => [
+        'memberUid' => ['user','uid']
       ],
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
@@ -53,7 +53,7 @@ class posixGroup extends simplePlugin
     global $config;
 
     return [
-      'main'         => [
+      'main' => [
         'name'  => _('Properties'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('groupRDN')),
@@ -77,7 +77,7 @@ class posixGroup extends simplePlugin
           )
         ]
       ],
-      'members'      => [
+      'members' => [
         'name'  => _('Group members'),
         'attrs' => [
           new UsersAttribute(
@@ -114,8 +114,8 @@ class posixGroup extends simplePlugin
     //This allows if trust mode is disable to remove any hosts from the list, removing from ldap as well.
     $this->attributesAccess['trustMode']->setManagedAttributes(
       [
-        'multiplevalues' => ['notbyhost' => ['', 'fullaccess']],
-        'erase'          => [
+        'multiplevalues' => ['notbyhost' => ['','fullaccess']],
+        'erase' => [
           'notbyhost' => ['host']
         ]
       ]
@@ -130,9 +130,14 @@ class posixGroup extends simplePlugin
 
     $this->attributesAccess['gidNumber']->setUnique('whole');
     $this->attributesAccess['force_id']->setManagedAttributes(
-      ['disable' => [FALSE => ['gidNumber',]]]
+      [
+        'disable' => [
+          FALSE => [
+            'gidNumber',
+          ]
+        ]
+      ]
     );
-
   }
 
   function resetCopyInfos ()
@@ -146,21 +151,21 @@ class posixGroup extends simplePlugin
 
   function prepare_save (): array
   {
-    $errors = parent::prepare_save();
-
-    if ($this->is_template) {
-      if ($this->force_id) {
-        if ($this->gidNumber == '%askme%') {
-          $this->attrs['force_id'] = '%askme%';
-        } else {
-          $this->attrs['force_id'] = 'TRUE';
-        }
+    if (!$this->force_id) {
+      // Handle gidNumber automatic generation if required
+      if ($this->is_template) {
+        $this->gidNumber = '';
       } else {
-        $this->attrs['force_id'] = 'FALSE';
+        if ($this->attributesAccess['gidNumber']->getInitialValue() != '') {
+          $this->gidNumber = $this->attributesAccess['gidNumber']->getInitialValue();
+        } else {
+          $this->gidNumber = posixAccount::getNextIdLock('gidNumber', $this->dn);
+          $this->locks[] = 'gidNumber';
+        }
       }
     }
 
-
+    $errors = parent::prepare_save();
     if (!empty($errors)) {
       return $errors;
     }
@@ -174,6 +179,19 @@ class posixGroup extends simplePlugin
       $this->attrs['objectClass'][] = 'hostObject';
     } elseif (($this->trustMode == "") && (($key = array_search('hostObject', $this->attrs['objectClass'])) !== FALSE)) {
       unset($this->attrs['objectClass'][$key]);
+    }
+
+    // Set force_id and gidNumber to %askme%
+    // if force_id == TRUE and gidNumber == '' or if force_id == TRUE and gidNumber == %askme%
+    if ($this->is_template) {
+      if ($this->force_id) {
+        if (($this->gidNumber == '') || ($this->gidNumber == '%askme%')) {
+          $this->attrs['force_id']  = '%askme%';
+          $this->attrs['gidNumber'] = '%askme%';
+        }
+      } else {
+        $this->attrs['force_id']   = 'FALSE';
+      }
     }
 
     return $errors;
@@ -210,12 +228,12 @@ class posixGroup extends simplePlugin
   function addUser ($dn, $uid)
   {
     $this->attributesAccess['memberUid']->addValue($dn,
-                                                   [
-                                                     'dn'          => $dn,
-                                                     'objectClass' => ['inetOrgPerson'],
-                                                     'uid'         => [$uid],
-                                                     'cn'          => [$uid]
-                                                   ]
+      [
+        'dn'          => $dn,
+        'objectClass' => ['inetOrgPerson'],
+        'uid'         => [$uid],
+        'cn'          => [$uid]
+      ]
     );
   }
 
