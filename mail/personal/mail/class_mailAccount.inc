@@ -36,15 +36,15 @@ class MailQuotaAttribute extends UnitIntAttribute
   function setMailMethod ($mailMethod)
   {
     /* Read quota */
-    $this->setValue((string) $mailMethod->getQuota($this->getValue()));
+    $this->setValue((string)$mailMethod->getQuota($this->getValue()));
     $this->quotaUsage = $mailMethod->getQuotaUsage();
     if ($mailMethod->is_error()) {
       $error = new SimplePluginError(
         $this,
         htmlescape(sprintf(
-          _('Cannot read quota settings: %s'),
-          $mailMethod->get_error()
-        ))
+                     _('Cannot read quota settings: %s'),
+                     $mailMethod->get_error()
+                   ))
       );
       $error->display();
     }
@@ -53,15 +53,15 @@ class MailQuotaAttribute extends UnitIntAttribute
   function renderAttribute (array &$attributes, bool $readOnly, bool $readable, bool $writable)
   {
     parent::renderAttribute($attributes, $readOnly, $readable, $writable);
-    $attributes[$this->getLdapName().'_usage'] = [
-      'htmlid'        => $this->getHtmlId().'_usage',
-      'label'         => '{literal}'._('Quota usage').'{/literal}',
-      'description'   => _('Part of the quota which is used'),
-      'input'         => mailMethod::quota_to_image($this->quotaUsage, $this->getValue()),
-      'subattribute'  => FALSE,
-      'required'      => FALSE,
-      'readable'      => $readable,
-      'writable'      => $writable,
+    $attributes[$this->getLdapName() . '_usage'] = [
+      'htmlid'       => $this->getHtmlId() . '_usage',
+      'label'        => '{literal}' . _('Quota usage') . '{/literal}',
+      'description'  => _('Part of the quota which is used'),
+      'input'        => mailMethod::quota_to_image($this->quotaUsage, $this->getValue()),
+      'subattribute' => FALSE,
+      'required'     => FALSE,
+      'readable'     => $readable,
+      'writable'     => $writable,
     ];
   }
 }
@@ -77,9 +77,10 @@ class MailQuotaAttribute extends UnitIntAttribute
   by the mailMethods.
 
  */
+
 class mailAccount extends simplePlugin
 {
-  protected $displayHeader  = TRUE;
+  protected $displayHeader = TRUE;
 
   private $mainSectionAttrs = [];
 
@@ -89,16 +90,16 @@ class mailAccount extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('Mail'),
-      'plDescription'   => _('Mail settings'),
-      'plFilter'        => '(mail=*)',
-      'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
-      'plSelfModify'    => TRUE,
-      'plPriority'      => 4,
-      'plObjectClass'   => ['gosaMailAccount'],
-      'plObjectType'    => ['user'],
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo()),
+      'plShortName'    => _('Mail'),
+      'plDescription'  => _('Mail settings'),
+      'plFilter'       => '(mail=*)',
+      'plIcon'         => 'geticon.php?context=applications&icon=internet-mail&size=48',
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=internet-mail&size=16',
+      'plSelfModify'   => TRUE,
+      'plPriority'     => 4,
+      'plObjectClass'  => ['gosaMailAccount'],
+      'plObjectType'   => ['user'],
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [
         'gosaMailServer' => [
           ['serverGeneric', 'cn'],
@@ -112,8 +113,8 @@ class mailAccount extends simplePlugin
   */
   static function getAttributesInfo (): array
   {
-    return  [
-      'main' => [
+    return [
+      'main'            => [
         'name'  => _('Mail account'),
         'attrs' => [
           new MailAttribute(
@@ -147,8 +148,8 @@ class mailAccount extends simplePlugin
           )
         ]
       ],
-      'options1' => [
-        'name' => _('Vacation message'),
+      'options1'        => [
+        'name'  => _('Vacation message'),
         'attrs' => [
           new BooleanAttribute(
             _('Activate vacation message'),
@@ -172,8 +173,8 @@ class mailAccount extends simplePlugin
           ),
         ]
       ],
-      'advanced' => [
-        'name' => _('Advanced mail options'),
+      'advanced'        => [
+        'name'  => _('Advanced mail options'),
         'attrs' => [
           new FlagsAttribute('gosaMailDeliveryMode', [
             'flag_ownmailbox',
@@ -212,18 +213,17 @@ class mailAccount extends simplePlugin
     $this->attributesAccess['flag_vacation']->setInLdap(FALSE);
     $this->attributesAccess['flag_localonly']->setInLdap(FALSE);
 
-    /* If mail can be used for login it must be unique */
-    if (in_array('mail', explode(',', $config->get_cfg_value('loginAttribute')))) {
-      $this->attributesAccess['mail']->setUnique('whole');
-    }
+    // Email should be unique in all LDAP, not only when used with authentication.
+    $this->attributesAccess['mail']->setUnique('whole');
+
   }
 
   /* We need $mailAccount->uid to return the uid for mailMethod */
   public function __get ($name)
   {
-    if (in_array($name, ['cn','uid']) && isset($this->parent)) {
+    if (in_array($name, ['cn', 'uid']) && isset($this->parent)) {
       return $this->parent->getBaseObject()->$name;
-    } elseif (in_array($name, ['uidNumber','gidNumber']) && isset($this->parent)) {
+    } elseif (in_array($name, ['uidNumber', 'gidNumber']) && isset($this->parent)) {
       return $this->parent->by_object['posixAccount']->$name;
     } else {
       /* Calling default behaviour */
@@ -233,9 +233,9 @@ class mailAccount extends simplePlugin
 
   public function __isset ($name)
   {
-    if (in_array($name, ['cn','uid']) && isset($this->parent)) {
+    if (in_array($name, ['cn', 'uid']) && isset($this->parent)) {
       return isset($this->parent->getBaseObject()->$name);
-    } elseif (in_array($name, ['uidNumber','gidNumber']) && isset($this->parent)) {
+    } elseif (in_array($name, ['uidNumber', 'gidNumber']) && isset($this->parent)) {
       return isset($this->parent->by_object['posixAccount']->$name);
     } else {
       /* Calling default behaviour */
@@ -293,18 +293,18 @@ class mailAccount extends simplePlugin
         $error = new SimplePluginError(
           $this,
           htmlescape(sprintf(
-            _('Mail method cannot connect: %s'),
-            $this->mailMethod->get_error()
-          ))
+                       _('Mail method cannot connect: %s'),
+                       $this->mailMethod->get_error()
+                     ))
         );
         $error->display();
       } elseif ($this->mailMethod->is_error()) {
         $error = new SimplePluginError(
           $this,
           htmlescape(sprintf(
-            _('Mail method error: %s'),
-            $this->mailMethod->get_error()
-          ))
+                       _('Mail method error: %s'),
+                       $this->mailMethod->get_error()
+                     ))
         );
         $error->display();
       }
@@ -347,7 +347,7 @@ class mailAccount extends simplePlugin
         [
           'erase' => [
             FALSE => [
-              'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
+              'gosaVacationStart', 'gosaVacationStop', 'gosaVacationMessage'
             ]
           ]
         ]
@@ -448,9 +448,9 @@ class mailAccount extends simplePlugin
           $error = new SimplePluginError(
             $this,
             htmlescape(sprintf(
-              _('Cannot write quota settings: %s'),
-              $this->mailMethod->get_error()
-            ))
+                         _('Cannot write quota settings: %s'),
+                         $this->mailMethod->get_error()
+                       ))
           );
           $error->display();
         }
@@ -460,15 +460,15 @@ class mailAccount extends simplePlugin
              doesn't seem to exist. */
           if (!$this->initially_was_account && !$this->mailMethod->account_exists()) {
             @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                'Skipping sieve settings, the account doesn’t seem to be created already.', '');
+                   'Skipping sieve settings, the account doesn’t seem to be created already.', '');
           } else {
             if (!$this->mailMethod->saveSieveSettings()) {
               $error = new SimplePluginError(
                 $this,
                 htmlescape(sprintf(
-                  _('Mail error saving sieve settings: %s'),
-                  $this->mailMethod->get_error()
-                ))
+                             _('Mail error saving sieve settings: %s'),
+                             $this->mailMethod->get_error()
+                           ))
               );
               $error->display();
             }
@@ -476,7 +476,7 @@ class mailAccount extends simplePlugin
         } else {
           if ($this->sieve_management) {
             @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                'User uses an own sieve script, skipping sieve update.', '');
+                   'User uses an own sieve script, skipping sieve update.', '');
             $this->sieve_management->save();
           }
         }
@@ -502,18 +502,18 @@ class mailAccount extends simplePlugin
         $error = new SimplePluginError(
           $this,
           htmlescape(sprintf(
-            _('Cannot remove mailbox, mail method cannot connect: %s'),
-            $this->initialMailMethod->get_error()
-          ))
+                       _('Cannot remove mailbox, mail method cannot connect: %s'),
+                       $this->initialMailMethod->get_error()
+                     ))
         );
         $error->display();
       } elseif (!$this->initialMailMethod->deleteMailbox()) {
         $error = new SimplePluginError(
           $this,
           htmlescape(sprintf(
-            _('Cannot remove mailbox: %s'),
-            $this->initialMailMethod->get_error()
-          ))
+                       _('Cannot remove mailbox: %s'),
+                       $this->initialMailMethod->get_error()
+                     ))
         );
         $error->display();
       }
