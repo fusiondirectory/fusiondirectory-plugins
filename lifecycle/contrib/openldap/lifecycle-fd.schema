@@ -1,0 +1,72 @@
+##
+## lifecyle-fd.schema - Required for tasks of type notifications
+##
+
+# Attributes
+
+##### Tasks Life Cycle Attributes #####
+
+attributetype ( 1.3.6.1.4.1.38414.91.1.1 NAME 'fdTasksLifeCycleMembers'
+  DESC 'Fusion Directory - List of members or groups in task life cycle'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.91.1.2 NAME 'fdTasksLifeCycleListOfDN'
+    DESC 'Fusion Directory - Emails derived from DN'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+## Previous / existing states ##
+
+attributetype ( 1.3.6.1.4.1.38414.91.1.3 NAME 'fdTasksLifeCyclePreResource'
+  DESC 'Fusion Directory - Tasks for life cycle - previous supann resource'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.91.1.4 NAME 'fdTasksLifeCyclePreState'
+  DESC 'Fusion Directory - Tasks for life cycle - previous supann state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.91.1.5 NAME 'fdTasksLifeCyclePreSubState'
+  DESC 'Fusion Directory - Tasks for life cycle - previous supann sub state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+## Posteriors / new desired states ##
+
+attributetype ( 1.3.6.1.4.1.38414.91.1.6 NAME 'fdTasksLifeCyclePostResource'
+  DESC 'Fusion Directory - Tasks for life cycle - new resource'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.91.1.7 NAME 'fdTasksLifeCyclePostState'
+  DESC 'Fusion Directory - Tasks for life cycle - new state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.91.1.8 NAME 'fdTasksLifeCyclePostSubState'
+  DESC 'Fusion Directory - Tasks for life cycle - new sub state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.91.1.9 NAME 'fdTasksLifeCyclePostEndDate'
+  DESC 'Fusion Directory - Tasks for life cycle - days to be added to end date'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+# Object Class
+
+objectclass (1.3.6.1.4.1.38414.91.2.1 NAME 'fdTasksLifeCycle'
+  DESC 'FusionDirectory - Tasks objects Life Cycle'
+  SUP top AUXILIARY
+  MUST ( fdTasksLifeCyclePreResource $ fdTasksLifeCyclePreState $ fdTasksLifeCyclePostResource $ fdTasksLifeCyclePostState)
+  MAY ( fdTasksLifeCyclePreSubState $ fdTasksLifeCyclePostEndDate $ fdTasksLifeCyclePostSubState $ fdTasksLifeCycleMembers
+  $ fdTasksLifeCycleListOfDN ) )
