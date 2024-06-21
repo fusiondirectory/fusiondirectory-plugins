@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-27 16:02+0000\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Norwegian Bokmål (https://app.transifex.com/fusiondirectory/teams/12202/nb/)\n"
@@ -21,63 +21,63 @@ msgstr ""
 "Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: include/class_publicFormPage.inc:75
+#: include/class_publicFormPage.inc:77
 msgid "Invalid link, both token and form are provided"
 msgstr ""
 
-#: include/class_publicFormPage.inc:89
+#: include/class_publicFormPage.inc:91
 #, php-format
 msgid "Could not find any invitation matching token \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:91 include/class_publicFormPage.inc:109
+#: include/class_publicFormPage.inc:93 include/class_publicFormPage.inc:111
 #, php-format
 msgid "Found several invitations matching token \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:95
+#: include/class_publicFormPage.inc:97
 #, php-format
 msgid "The invitation matching token \"%s\" does not exist anymore"
 msgstr ""
 
-#: include/class_publicFormPage.inc:107
+#: include/class_publicFormPage.inc:109
 #, php-format
 msgid "Could not find any invitation matching registration with token \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:156
+#: include/class_publicFormPage.inc:158
 msgid "Form name or token missing from URL"
-msgstr ""
-
-#: include/class_publicFormPage.inc:159
-#, php-format
-msgid "Form \"%s\" could not be found"
 msgstr ""
 
 #: include/class_publicFormPage.inc:161
 #, php-format
+msgid "Form \"%s\" could not be found"
+msgstr ""
+
+#: include/class_publicFormPage.inc:163
+#, php-format
 msgid "Found several forms named \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:170
+#: include/class_publicFormPage.inc:178
 #, php-format
 msgid "Form \"%s\" is private and requires an invitation"
 msgstr ""
 
-#: include/class_publicFormPage.inc:232
+#: include/class_publicFormPage.inc:246
 msgid "Captcha code was wrong!"
 msgstr ""
 
-#: include/class_publicFormPage.inc:240
+#: include/class_publicFormPage.inc:254
 msgid "You need to accept the terms of service to continue!"
 msgstr ""
 
-#: include/class_publicFormPage.inc:391
+#: include/class_publicFormPage.inc:432
 #, php-format
 msgid "Form - %s"
 msgstr ""
 
-#: include/class_publicFormPage.inc:393
+#: include/class_publicFormPage.inc:434
 #: admin/public-forms/class_publicForm.inc:46
 msgid "Form"
 msgstr ""
@@ -263,6 +263,15 @@ msgstr ""
 
 #: config/public-forms/class_publicFormsConfig.inc:43
 msgid "Branch in which public forms will be stored"
+msgstr ""
+
+#: config/public-forms/class_publicFormsConfig.inc:48
+msgid "Allows private form without invitations"
+msgstr ""
+
+#: config/public-forms/class_publicFormsConfig.inc:48
+msgid ""
+"Allows the usage of private form without invitation is plugin installed"
 msgstr ""
 
 #: ihtml/themes/breezy/public-form.tpl.c:2

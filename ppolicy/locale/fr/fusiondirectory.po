@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-20 21:40+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2020\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -278,7 +278,6 @@ msgid "FusionDirectory ppolicy plugin configuration"
 msgstr "Configuration du plugin ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:42
-#: addons/dashboard/class_dashBoardPPolicy.inc:27
 msgid "Ppolicy"
 msgstr "Ppolicy"
 
@@ -299,52 +298,6 @@ msgid "What you put as default ppolicy in the overlay config"
 msgstr ""
 "Ce que vous mettez comme politique par défaut dans la configuration de "
 "l'overlay"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:28
-msgid "Statistics about ppolicy expired users"
-msgstr "Statistiques sur les utilisateurs ppolicy expirés"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:40
-msgid "Expired accounts"
-msgstr "Comptes expirés"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:45
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
-msgid "Locked accounts"
-msgstr "Comptes verrouillés "
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:58
-msgid "Login"
-msgstr "Identifiant"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:59
-#: addons/dashboard/class_dashBoardPPolicy.inc:64
-msgid "Name"
-msgstr "Nom"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:60
-#: addons/dashboard/class_dashBoardPPolicy.inc:66
-msgid "Phone number"
-msgstr "Numéro de téléphone"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:61
-msgid "Expiration date"
-msgstr "Date d'expiration"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:65
-msgid "Email"
-msgstr "Courriel"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:87
-#, php-format
-msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
-msgstr "La ppolicy par défaut «%s» n’a pas été trouvée dans le LDAP !"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:143
-#, php-format
-msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr ""
-"La ppolicy «%s» pour l'utilisateur «%s» n’a pas été trouvée dans le LDAP !"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:29
 msgid "Edit user's password policy"
@@ -403,43 +356,3 @@ msgstr "Déverrouillé"
 #: personal/ppolicy/class_ppolicyAccount.inc:91
 msgid "Locked permanently"
 msgstr "Verrouillé de façon permanente"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
-msgid "There is one locked account"
-msgid_plural "There are %1 locked accounts"
-msgstr[0] "Il y a un compte verrouille"
-msgstr[1] "Il y a %1 comptes verrouillés"
-msgstr[2] "Il y a %1 comptes verrouillés"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
-msgid "There is no locked account"
-msgstr "Il n'y a pas de compte verrouillé"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:11
-msgid "Manager concerned"
-msgstr "Manager concerné"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:14
-msgid "uid"
-msgstr "uid"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:17
-msgid "cn"
-msgstr "cn"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:20
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:32
-msgid "telephoneNumber"
-msgstr "Numéro de téléphone"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:23
-msgid "pwdAccountLockedTime"
-msgstr "Date de verrouillage"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:26
-msgid "manager"
-msgstr "manager"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:29
-msgid "mail"
-msgstr "courriel"

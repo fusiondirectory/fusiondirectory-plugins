@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2021\n"
 "Language-Team: Dutch (https://app.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: admin/groups/mail/class_mailGroup.inc:46
 #: config/mail/class_mailPluginConfig.inc:26
-#: personal/mail/class_mailAccount.inc:92
+#: personal/mail/class_mailAccount.inc:93
 msgid "Mail"
 msgstr "E-mail"
 
@@ -37,7 +37,7 @@ msgid "Information"
 msgstr "Informatie"
 
 #: admin/groups/mail/class_mailGroup.inc:65
-#: personal/mail/class_mailAccount.inc:120
+#: personal/mail/class_mailAccount.inc:121
 msgid "Primary address"
 msgstr "Primair adres"
 
@@ -46,7 +46,7 @@ msgid "The primary mail address"
 msgstr "Het primaire e-mailadres"
 
 #: admin/groups/mail/class_mailGroup.inc:69
-#: personal/mail/class_mailAccount.inc:124
+#: personal/mail/class_mailAccount.inc:125
 msgid "Server"
 msgstr "Server"
 
@@ -55,7 +55,7 @@ msgid "Email server"
 msgstr "Emailserver"
 
 #: admin/groups/mail/class_mailGroup.inc:75
-#: personal/mail/class_mailAccount.inc:140
+#: personal/mail/class_mailAccount.inc:141
 msgid "Alternative addresses"
 msgstr "Alternatieve adressen"
 
@@ -162,7 +162,7 @@ msgid "Mail plugin configuration"
 msgstr "Mail plugin configuratie"
 
 #: config/mail/class_mailPluginConfig.inc:40
-#: personal/mail/class_mailAccount.inc:93
+#: personal/mail/class_mailAccount.inc:94
 msgid "Mail settings"
 msgstr "E-mail instellingen"
 
@@ -245,85 +245,85 @@ msgstr "Quota gebruik"
 msgid "Part of the quota which is used"
 msgstr "Gedeelte van de gebruikte quota "
 
-#: personal/mail/class_mailAccount.inc:117
+#: personal/mail/class_mailAccount.inc:118
 msgid "Mail account"
 msgstr "E-mail account"
 
-#: personal/mail/class_mailAccount.inc:120
+#: personal/mail/class_mailAccount.inc:121
 msgid "Primary mail address"
 msgstr "Primaire e-mail adres"
 
-#: personal/mail/class_mailAccount.inc:124
+#: personal/mail/class_mailAccount.inc:125
 msgid "Specify the mail server where the user will be hosted on"
 msgstr "Specificeer de mailserver waarop het account opgeslagen wordt"
 
-#: personal/mail/class_mailAccount.inc:129
+#: personal/mail/class_mailAccount.inc:130
 msgid "Quota size"
 msgstr "Quota grootte"
 
-#: personal/mail/class_mailAccount.inc:129
+#: personal/mail/class_mailAccount.inc:130
 msgid "Define quota size in MiB"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:136
+#: personal/mail/class_mailAccount.inc:137
 msgid "Other addresses and redirections"
 msgstr "andere adressen en omleidingen"
 
-#: personal/mail/class_mailAccount.inc:140
+#: personal/mail/class_mailAccount.inc:141
 msgid "List of alternative mail addresses"
 msgstr "Lijst met alternatieve E-mail adressen"
 
-#: personal/mail/class_mailAccount.inc:145
+#: personal/mail/class_mailAccount.inc:146
 msgid "Forward messages to"
 msgstr "Stuur berichten door naar"
 
-#: personal/mail/class_mailAccount.inc:145
+#: personal/mail/class_mailAccount.inc:146
 msgid "Addresses to which messages should be forwarded"
 msgstr "Adressen om boodschappen naartoe te versturen"
 
-#: personal/mail/class_mailAccount.inc:151
-#: personal/mail/class_mailAccount.inc:170
+#: personal/mail/class_mailAccount.inc:152
+#: personal/mail/class_mailAccount.inc:171
 msgid "Vacation message"
 msgstr "Afwezigheidsbericht"
 
-#: personal/mail/class_mailAccount.inc:154
+#: personal/mail/class_mailAccount.inc:155
 msgid "Activate vacation message"
 msgstr "Activeer afwezigheidsbericht"
 
-#: personal/mail/class_mailAccount.inc:155
+#: personal/mail/class_mailAccount.inc:156
 msgid ""
 "Select to automatically response with the vacation message defined below"
 msgstr ""
 "Selecteer om automatisch te reageren met het onderstaande "
 "afwezigheidsbericht"
 
-#: personal/mail/class_mailAccount.inc:160
+#: personal/mail/class_mailAccount.inc:161
 msgid "from"
 msgstr "van"
 
-#: personal/mail/class_mailAccount.inc:165
+#: personal/mail/class_mailAccount.inc:166
 msgid "till"
 msgstr "tot"
 
-#: personal/mail/class_mailAccount.inc:176
+#: personal/mail/class_mailAccount.inc:177
 msgid "Advanced mail options"
 msgstr "Geavanceerde E-mail opties"
 
-#: personal/mail/class_mailAccount.inc:184
+#: personal/mail/class_mailAccount.inc:185
 msgid "User is only allowed to send and receive local mails"
 msgstr "De gebruiker mag alleen lokale E-mails versturen en ontvangen"
 
-#: personal/mail/class_mailAccount.inc:185
+#: personal/mail/class_mailAccount.inc:186
 msgid "Select if user can only send and receive inside his own domain"
 msgstr ""
 "Selecteer om alleen binnen het eigen domein E-mail te laten ontvangen en "
 "versturen"
 
-#: personal/mail/class_mailAccount.inc:190
+#: personal/mail/class_mailAccount.inc:191
 msgid "No delivery to own mailbox"
 msgstr "Geen aflevering in eigen mailbox"
 
-#: personal/mail/class_mailAccount.inc:191
+#: personal/mail/class_mailAccount.inc:192
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr ""
 "Selecteer indien u E-mail door wil sturen zonder zelf kopieën te ontvangen"

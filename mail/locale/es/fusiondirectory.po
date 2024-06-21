@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Spanish (https://app.transifex.com/fusiondirectory/teams/12202/es/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: admin/groups/mail/class_mailGroup.inc:46
 #: config/mail/class_mailPluginConfig.inc:26
-#: personal/mail/class_mailAccount.inc:92
+#: personal/mail/class_mailAccount.inc:93
 msgid "Mail"
 msgstr "Correo Electrónico"
 
@@ -36,7 +36,7 @@ msgid "Information"
 msgstr "Información"
 
 #: admin/groups/mail/class_mailGroup.inc:65
-#: personal/mail/class_mailAccount.inc:120
+#: personal/mail/class_mailAccount.inc:121
 msgid "Primary address"
 msgstr "Cuenta Principal"
 
@@ -45,7 +45,7 @@ msgid "The primary mail address"
 msgstr ""
 
 #: admin/groups/mail/class_mailGroup.inc:69
-#: personal/mail/class_mailAccount.inc:124
+#: personal/mail/class_mailAccount.inc:125
 msgid "Server"
 msgstr "Servidor"
 
@@ -54,7 +54,7 @@ msgid "Email server"
 msgstr ""
 
 #: admin/groups/mail/class_mailGroup.inc:75
-#: personal/mail/class_mailAccount.inc:140
+#: personal/mail/class_mailAccount.inc:141
 msgid "Alternative addresses"
 msgstr "Direcciones alternativas"
 
@@ -160,7 +160,7 @@ msgid "Mail plugin configuration"
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:40
-#: personal/mail/class_mailAccount.inc:93
+#: personal/mail/class_mailAccount.inc:94
 msgid "Mail settings"
 msgstr "Parámetros de correo"
 
@@ -241,86 +241,86 @@ msgstr "Uso de Cuota"
 msgid "Part of the quota which is used"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:117
+#: personal/mail/class_mailAccount.inc:118
 msgid "Mail account"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:120
+#: personal/mail/class_mailAccount.inc:121
 msgid "Primary mail address"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:124
+#: personal/mail/class_mailAccount.inc:125
 msgid "Specify the mail server where the user will be hosted on"
 msgstr "Especificar el servidor de correo donde el usuario estará hospedado."
 
-#: personal/mail/class_mailAccount.inc:129
+#: personal/mail/class_mailAccount.inc:130
 msgid "Quota size"
 msgstr "Tamaño de la cuota"
 
-#: personal/mail/class_mailAccount.inc:129
+#: personal/mail/class_mailAccount.inc:130
 msgid "Define quota size in MiB"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:136
+#: personal/mail/class_mailAccount.inc:137
 msgid "Other addresses and redirections"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:140
+#: personal/mail/class_mailAccount.inc:141
 msgid "List of alternative mail addresses"
 msgstr "Lista de direcciones de correo alternativas."
 
-#: personal/mail/class_mailAccount.inc:145
+#: personal/mail/class_mailAccount.inc:146
 msgid "Forward messages to"
 msgstr "reenviar mensajes a"
 
-#: personal/mail/class_mailAccount.inc:145
+#: personal/mail/class_mailAccount.inc:146
 msgid "Addresses to which messages should be forwarded"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:151
-#: personal/mail/class_mailAccount.inc:170
+#: personal/mail/class_mailAccount.inc:152
+#: personal/mail/class_mailAccount.inc:171
 msgid "Vacation message"
 msgstr "Mensaje de ausencia"
 
-#: personal/mail/class_mailAccount.inc:154
+#: personal/mail/class_mailAccount.inc:155
 msgid "Activate vacation message"
 msgstr "Activar mensaje de ausencia"
 
-#: personal/mail/class_mailAccount.inc:155
+#: personal/mail/class_mailAccount.inc:156
 msgid ""
 "Select to automatically response with the vacation message defined below"
 msgstr ""
 "Seleccione para responder automáticamente con el mensaje de ausencia "
 "definido aquí"
 
-#: personal/mail/class_mailAccount.inc:160
+#: personal/mail/class_mailAccount.inc:161
 msgid "from"
 msgstr "desde"
 
-#: personal/mail/class_mailAccount.inc:165
+#: personal/mail/class_mailAccount.inc:166
 msgid "till"
 msgstr "hasta"
 
-#: personal/mail/class_mailAccount.inc:176
+#: personal/mail/class_mailAccount.inc:177
 msgid "Advanced mail options"
 msgstr "Opciones de correo avanzadas"
 
-#: personal/mail/class_mailAccount.inc:184
+#: personal/mail/class_mailAccount.inc:185
 msgid "User is only allowed to send and receive local mails"
 msgstr ""
 "El usuario solo esta permitido a enviar y recibir correo de forma local"
 
-#: personal/mail/class_mailAccount.inc:185
+#: personal/mail/class_mailAccount.inc:186
 msgid "Select if user can only send and receive inside his own domain"
 msgstr ""
 "Seleccione si el usuario solo puede enviar y recibir dentro de su propio "
 "dominio"
 
-#: personal/mail/class_mailAccount.inc:190
+#: personal/mail/class_mailAccount.inc:191
 msgid "No delivery to own mailbox"
 msgstr "No se enviara a su propia carpeta de correo"
 
-#: personal/mail/class_mailAccount.inc:191
+#: personal/mail/class_mailAccount.inc:192
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr "Seleccione si quiere reenviar correos sin quedarse copias de ellos"
 

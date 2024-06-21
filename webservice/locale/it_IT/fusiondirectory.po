@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2018-08-13 20:06+0000\n"
 "Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2021\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -43,67 +43,67 @@ msgstr "La tua password é scaduta, per favore impostarne una nuova."
 msgid "Account expired. Please contact your system administrator!"
 msgstr "Account scaduto. Si prega di contattare l'amministratore di sistema!"
 
-#: include/webservice/class_fdRPCService.inc:235
+#: include/webservice/class_fdRPCService.inc:236
 #, php-format
 msgid "Cannot get a lock on %s. It has been locked by %s."
 msgstr "Impossibile ottenere un blocco di %s. È stato bloccato da %s."
 
-#: include/webservice/class_fdRPCService.inc:407
-#: include/webservice/class_fdRPCService.inc:491
+#: include/webservice/class_fdRPCService.inc:408
+#: include/webservice/class_fdRPCService.inc:492
 msgid "Plugin"
 msgstr "Estensione"
 
-#: include/webservice/class_fdRPCService.inc:643
+#: include/webservice/class_fdRPCService.inc:644
 #, php-format
 msgid "Field \"%s\" is not multi-valuated"
 msgstr "Il campo \"%s\" non è multivalore"
 
-#: include/webservice/class_fdRPCService.inc:658
+#: include/webservice/class_fdRPCService.inc:659
 #, php-format
 msgid "Unknown field \"%s\""
 msgstr "Campo \"%s\" sconosciuto"
 
-#: include/webservice/class_fdRPCService.inc:819
+#: include/webservice/class_fdRPCService.inc:820
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 "Impossibile ottenere metodo di password per l'account\"%s\". Non è stato "
 "bloccato!"
 
-#: include/webservice/class_fdRPCService.inc:843
+#: include/webservice/class_fdRPCService.inc:844
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 "Il metodo di bloccaggio \"%s\" é fallito. L'account \"%s\" non é stato "
 "bloccato!"
 
-#: include/webservice/class_fdRPCService.inc:846
+#: include/webservice/class_fdRPCService.inc:847
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr "Account \"%s\" non trovato nella LDAP. Non é stato bloccato!"
 
-#: include/webservice/class_fdRPCService.inc:888
+#: include/webservice/class_fdRPCService.inc:889
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr "Impossibile ottenere metodo di password per l'account \"%s\". "
 
-#: include/webservice/class_fdRPCService.inc:895
+#: include/webservice/class_fdRPCService.inc:896
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr "Impossibile trovare  l'account \"%s\" nell'annuario LDAP"
 
-#: include/webservice/class_fdRPCService.inc:912
+#: include/webservice/class_fdRPCService.inc:913
 msgid "Archive action is not available: archive plugin is not installed"
 msgstr ""
 "L'azione di archiviazione non è disponibile: il plugin archivio non è "
 "installato "
 
-#: include/webservice/class_fdRPCService.inc:958
-#: include/webservice/class_fdRPCService.inc:983
+#: include/webservice/class_fdRPCService.inc:959
+#: include/webservice/class_fdRPCService.inc:984
 msgid "Password recovery is not activated"
 msgstr "Il recupero della password non è attivato"
 
-#: include/webservice/class_fdRPCService.inc:993
+#: include/webservice/class_fdRPCService.inc:994
 msgid "This token is invalid"
 msgstr "Questo token non è valido"
 

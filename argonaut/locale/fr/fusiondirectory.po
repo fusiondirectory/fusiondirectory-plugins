@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -22,6 +22,244 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:34
+#: dashboard/argonaut/class_argonautImportFile.inc:37
+msgid "Argonaut task import"
+msgstr "Import de taches Argonaut"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:35
+msgid "Imports argonaut tasks from CSV file"
+msgstr "Importer des taches Argonaut depuis un fichier CSV"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:50
+msgid "Import actions from CSV file"
+msgstr "Importer des actions depuis un fichier CSV"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:54
+msgid "Import a list of task into argonaut"
+msgstr "Importer une liste de taches dans Argonaut"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:64
+msgid "Upload"
+msgstr "Téléverser"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:68
+msgid "Import file"
+msgstr "Importer un fichier"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:73
+msgid "Imported tasks"
+msgstr "Taches importées"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:98
+#: dashboard/argonaut/class_argonautImportFile.inc:147
+#: dashboard/argonaut/class_argonautQueue.inc:88
+msgid "Import"
+msgstr "Importer"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:124
+msgid "Fix the errors in your CSV file first"
+msgstr "Corrigez les erreurs dans votre fichier CSV d’abord"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:147
+#, php-format
+msgid "Import complete: %s events successfully send, %s failed"
+msgstr ""
+"L'importation est finie : %s évènements ont été envoyés, %s ont échoués"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:159
+msgid "file is empty"
+msgstr "le fichier est vide"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:185
+#: dashboard/argonaut/import_events.tpl.c:23
+msgid "MAC"
+msgstr "MAC"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:188
+#: dashboard/argonaut/import_events.tpl.c:26
+msgid "Event"
+msgstr "Évènement"
+
+#: dashboard/argonaut/class_argonautAction.inc:65
+#: dashboard/argonaut/class_argonautAction.inc:68
+msgid "Argonaut task"
+msgstr "Tache Argonaut"
+
+#: dashboard/argonaut/class_argonautAction.inc:66
+msgid "Schedule an argonaut task"
+msgstr "Planifier une tâche Argonaut"
+
+#: dashboard/argonaut/class_argonautAction.inc:82
+#: dashboard/argonaut/class_argonautAction.inc:102
+msgid "Schedule"
+msgstr "Planning"
+
+#: dashboard/argonaut/class_argonautAction.inc:85
+msgid "Action"
+msgstr "Action"
+
+#: dashboard/argonaut/class_argonautAction.inc:85
+msgid "The action you are about to schedule"
+msgstr "L'action que vous êtes sur le point de planifier"
+
+#: dashboard/argonaut/class_argonautAction.inc:97
+msgid "Scheduled"
+msgstr "Planifie"
+
+#: dashboard/argonaut/class_argonautAction.inc:97
+msgid "Wether this job should be scheduled or ran right away"
+msgstr ""
+"Est-ce que cette tache doit être planifiée ou se répéter dans le temps"
+
+#: dashboard/argonaut/class_argonautAction.inc:106
+msgid "Periodical job"
+msgstr "Tâche périodique"
+
+#: dashboard/argonaut/class_argonautAction.inc:106
+msgid "Wether this job should repeat in time"
+msgstr "Est-ce que cette tache doit se répéter dans le temps"
+
+#: dashboard/argonaut/class_argonautAction.inc:110
+msgid "How often this task should be repeated"
+msgstr "Avec quel fréquence doit être répété cette tache"
+
+#: dashboard/argonaut/class_argonautAction.inc:121
+msgid "Minutes"
+msgstr "Minutes"
+
+#: dashboard/argonaut/class_argonautAction.inc:121
+msgid "Hours"
+msgstr "Heures"
+
+#: dashboard/argonaut/class_argonautAction.inc:121
+msgid "Days"
+msgstr "Jours"
+
+#: dashboard/argonaut/class_argonautAction.inc:121
+msgid "Weeks"
+msgstr "Semaines"
+
+#: dashboard/argonaut/class_argonautAction.inc:121
+msgid "Months"
+msgstr "Mois"
+
+#: dashboard/argonaut/class_argonautAction.inc:127
+msgid "Period"
+msgstr "Fréquence"
+
+#: dashboard/argonaut/class_argonautAction.inc:132
+msgid "Targets"
+msgstr "Cibles"
+
+#: dashboard/argonaut/class_argonautAction.inc:135
+msgid "Targets for this task"
+msgstr "Cibles pour cette tache"
+
+#: dashboard/argonaut/class_argonautAction.inc:192
+#, php-format
+msgid "Not enough permission to schedule an action for %s"
+msgstr "Autorisation insuffisante pour planifier une action pour %s"
+
+#: dashboard/argonaut/class_argonautAction.inc:216
+msgid "Could not send action to argonaut server"
+msgstr "Impossible d'envoyer une action au serveur Argonaut"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:107
+msgid "immediately"
+msgstr "immédiatement"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:116
+msgid "Waiting"
+msgstr "En attente"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:119
+msgid "Show error"
+msgstr "Afficher les erreurs"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:120
+#: dashboard/argonaut/import_events.tpl.c:32
+msgid "Error"
+msgstr "Erreur"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:123
+msgid "Processed"
+msgstr "Terminé"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:132
+msgid "in progress"
+msgstr "en cours"
+
+#: dashboard/argonaut/class_argonautQueue.inc:48
+#: dashboard/argonaut/class_argonautQueue.inc:53
+#: dashboard/argonaut/class_argonautQueue.inc:56
+msgid "Deployment queue"
+msgstr "File d'attente du déploiement"
+
+#: dashboard/argonaut/class_argonautQueue.inc:49
+msgid "Provide a mechanism to automatically activate systems"
+msgstr "Procure un mécanisme pour activer des systèmes automatiquement"
+
+#: dashboard/argonaut/class_argonautQueue.inc:96
+#: dashboard/argonaut/class_argonautQueue.inc:230
+msgid "Remove"
+msgstr "Supprimer"
+
+#: dashboard/argonaut/class_argonautQueue.inc:106
+msgid "Abort"
+msgstr "Annuler"
+
+#: dashboard/argonaut/class_argonautQueue.inc:116
+msgid "Process now"
+msgstr "Traiter maintenant"
+
+#: dashboard/argonaut/class_argonautQueue.inc:124
+msgid "Retry"
+msgstr "Réessayer"
+
+#: dashboard/argonaut/class_argonautQueue.inc:232
+#, php-format
+msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
+msgstr ""
+"Les tâches suivantes ne peuvent pas être effacées, elles doivent être "
+"annulées : %s"
+
+#: dashboard/argonaut/class_argonautQueue.inc:301
+msgid "Info"
+msgstr "Info"
+
+#: dashboard/argonaut/class_argonautQueue.inc:322
+msgid "Error detail"
+msgstr "Détail de l'erreur"
+
+#: dashboard/argonaut/class_argonautQueue.inc:354
+msgid "Cannot update queue entries."
+msgstr "Impossible de mettre à jour les entrées de la file d'attente."
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:67
+msgid "Switch off"
+msgstr "Éteindre"
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:80
+msgid "Reboot"
+msgstr "Redémarrer"
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:84
+msgid "Wake up"
+msgstr "Réveiller"
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:88
+msgid "Software update"
+msgstr "Mise à jour logicielle"
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:92
+msgid "(Re)Install"
+msgstr "(Ré)installer"
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:105
+msgid "Refresh slave files (ldap2zone)"
+msgstr "Rafraîchir les fichiers esclaves (ldap2zone)"
 
 #: include/class_supportDaemon.inc:107
 msgid "Multiple argonaut server found. Only one is supported"
@@ -642,245 +880,7 @@ msgstr "Nom des services"
 msgid "Argonaut service names"
 msgstr "Noms des services pour Argonaut"
 
-#: addons/argonaut/class_argonautImportFile.inc:34
-#: addons/argonaut/class_argonautImportFile.inc:37
-msgid "Argonaut task import"
-msgstr "Import de taches Argonaut"
-
-#: addons/argonaut/class_argonautImportFile.inc:35
-msgid "Imports argonaut tasks from CSV file"
-msgstr "Importer des taches Argonaut depuis un fichier CSV"
-
-#: addons/argonaut/class_argonautImportFile.inc:50
-msgid "Import actions from CSV file"
-msgstr "Importer des actions depuis un fichier CSV"
-
-#: addons/argonaut/class_argonautImportFile.inc:54
-msgid "Import a list of task into argonaut"
-msgstr "Importer une liste de taches dans Argonaut"
-
-#: addons/argonaut/class_argonautImportFile.inc:64
-msgid "Upload"
-msgstr "Téléverser"
-
-#: addons/argonaut/class_argonautImportFile.inc:68
-msgid "Import file"
-msgstr "Importer un fichier"
-
-#: addons/argonaut/class_argonautImportFile.inc:73
-msgid "Imported tasks"
-msgstr "Taches importées"
-
-#: addons/argonaut/class_argonautImportFile.inc:98
-#: addons/argonaut/class_argonautImportFile.inc:147
-#: addons/argonaut/class_argonautQueue.inc:88
-msgid "Import"
-msgstr "Importer"
-
-#: addons/argonaut/class_argonautImportFile.inc:124
-msgid "Fix the errors in your CSV file first"
-msgstr "Corrigez les erreurs dans votre fichier CSV d’abord"
-
-#: addons/argonaut/class_argonautImportFile.inc:147
-#, php-format
-msgid "Import complete: %s events successfully send, %s failed"
-msgstr ""
-"L'importation est finie : %s évènements ont été envoyés, %s ont échoués"
-
-#: addons/argonaut/class_argonautImportFile.inc:159
-msgid "file is empty"
-msgstr "le fichier est vide"
-
-#: addons/argonaut/class_argonautImportFile.inc:185
-#: addons/argonaut/import_events.tpl.c:23
-msgid "MAC"
-msgstr "MAC"
-
-#: addons/argonaut/class_argonautImportFile.inc:188
-#: addons/argonaut/import_events.tpl.c:26
-msgid "Event"
-msgstr "Évènement"
-
-#: addons/argonaut/class_argonautAction.inc:65
-#: addons/argonaut/class_argonautAction.inc:68
-msgid "Argonaut task"
-msgstr "Tache Argonaut"
-
-#: addons/argonaut/class_argonautAction.inc:66
-msgid "Schedule an argonaut task"
-msgstr "Planifier une tâche Argonaut"
-
-#: addons/argonaut/class_argonautAction.inc:82
-#: addons/argonaut/class_argonautAction.inc:102
-msgid "Schedule"
-msgstr "Planning"
-
-#: addons/argonaut/class_argonautAction.inc:85
-msgid "Action"
-msgstr "Action"
-
-#: addons/argonaut/class_argonautAction.inc:85
-msgid "The action you are about to schedule"
-msgstr "L'action que vous êtes sur le point de planifier"
-
-#: addons/argonaut/class_argonautAction.inc:97
-msgid "Scheduled"
-msgstr "Planifie"
-
-#: addons/argonaut/class_argonautAction.inc:97
-msgid "Wether this job should be scheduled or ran right away"
-msgstr ""
-"Est-ce que cette tache doit être planifiée ou se répéter dans le temps"
-
-#: addons/argonaut/class_argonautAction.inc:106
-msgid "Periodical job"
-msgstr "Tâche périodique"
-
-#: addons/argonaut/class_argonautAction.inc:106
-msgid "Wether this job should repeat in time"
-msgstr "Est-ce que cette tache doit se répéter dans le temps"
-
-#: addons/argonaut/class_argonautAction.inc:110
-msgid "How often this task should be repeated"
-msgstr "Avec quel fréquence doit être répété cette tache"
-
-#: addons/argonaut/class_argonautAction.inc:121
-msgid "Minutes"
-msgstr "Minutes"
-
-#: addons/argonaut/class_argonautAction.inc:121
-msgid "Hours"
-msgstr "Heures"
-
-#: addons/argonaut/class_argonautAction.inc:121
-msgid "Days"
-msgstr "Jours"
-
-#: addons/argonaut/class_argonautAction.inc:121
-msgid "Weeks"
-msgstr "Semaines"
-
-#: addons/argonaut/class_argonautAction.inc:121
-msgid "Months"
-msgstr "Mois"
-
-#: addons/argonaut/class_argonautAction.inc:127
-msgid "Period"
-msgstr "Fréquence"
-
-#: addons/argonaut/class_argonautAction.inc:132
-msgid "Targets"
-msgstr "Cibles"
-
-#: addons/argonaut/class_argonautAction.inc:135
-msgid "Targets for this task"
-msgstr "Cibles pour cette tache"
-
-#: addons/argonaut/class_argonautAction.inc:192
-#, php-format
-msgid "Not enough permission to schedule an action for %s"
-msgstr "Autorisation insuffisante pour planifier une action pour %s"
-
-#: addons/argonaut/class_argonautAction.inc:216
-msgid "Could not send action to argonaut server"
-msgstr "Impossible d'envoyer une action au serveur Argonaut"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:107
-msgid "immediately"
-msgstr "immédiatement"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:116
-msgid "Waiting"
-msgstr "En attente"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:119
-msgid "Show error"
-msgstr "Afficher les erreurs"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:120
-#: addons/argonaut/import_events.tpl.c:32
-msgid "Error"
-msgstr "Erreur"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:123
-msgid "Processed"
-msgstr "Terminé"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:132
-msgid "in progress"
-msgstr "en cours"
-
-#: addons/argonaut/class_argonautQueue.inc:48
-#: addons/argonaut/class_argonautQueue.inc:53
-#: addons/argonaut/class_argonautQueue.inc:56
-msgid "Deployment queue"
-msgstr "File d'attente du déploiement"
-
-#: addons/argonaut/class_argonautQueue.inc:49
-msgid "Provide a mechanism to automatically activate systems"
-msgstr "Procure un mécanisme pour activer des systèmes automatiquement"
-
-#: addons/argonaut/class_argonautQueue.inc:96
-#: addons/argonaut/class_argonautQueue.inc:230
-msgid "Remove"
-msgstr "Supprimer"
-
-#: addons/argonaut/class_argonautQueue.inc:106
-msgid "Abort"
-msgstr "Annuler"
-
-#: addons/argonaut/class_argonautQueue.inc:116
-msgid "Process now"
-msgstr "Traiter maintenant"
-
-#: addons/argonaut/class_argonautQueue.inc:124
-msgid "Retry"
-msgstr "Réessayer"
-
-#: addons/argonaut/class_argonautQueue.inc:232
-#, php-format
-msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
-msgstr ""
-"Les tâches suivantes ne peuvent pas être effacées, elles doivent être "
-"annulées : %s"
-
-#: addons/argonaut/class_argonautQueue.inc:301
-msgid "Info"
-msgstr "Info"
-
-#: addons/argonaut/class_argonautQueue.inc:322
-msgid "Error detail"
-msgstr "Détail de l'erreur"
-
-#: addons/argonaut/class_argonautQueue.inc:354
-msgid "Cannot update queue entries."
-msgstr "Impossible de mettre à jour les entrées de la file d'attente."
-
-#: addons/argonaut/class_argonautEventTypes.inc:67
-msgid "Switch off"
-msgstr "Éteindre"
-
-#: addons/argonaut/class_argonautEventTypes.inc:80
-msgid "Reboot"
-msgstr "Redémarrer"
-
-#: addons/argonaut/class_argonautEventTypes.inc:84
-msgid "Wake up"
-msgstr "Réveiller"
-
-#: addons/argonaut/class_argonautEventTypes.inc:88
-msgid "Software update"
-msgstr "Mise à jour logicielle"
-
-#: addons/argonaut/class_argonautEventTypes.inc:92
-msgid "(Re)Install"
-msgstr "(Ré)installer"
-
-#: addons/argonaut/class_argonautEventTypes.inc:105
-msgid "Refresh slave files (ldap2zone)"
-msgstr "Rafraîchir les fichiers esclaves (ldap2zone)"
-
-#: addons/argonaut/import_events.tpl.c:2
+#: dashboard/argonaut/import_events.tpl.c:2
 msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
@@ -889,30 +889,30 @@ msgstr ""
 "Cela doit être une liste de tâches séparées par des point-virgules dans le "
 "format suivant :"
 
-#: addons/argonaut/import_events.tpl.c:5
+#: dashboard/argonaut/import_events.tpl.c:5
 msgid "timestamp"
 msgstr "horodatage"
 
-#: addons/argonaut/import_events.tpl.c:8
+#: dashboard/argonaut/import_events.tpl.c:8
 msgid "MAC-address"
 msgstr "Adresse MAC"
 
-#: addons/argonaut/import_events.tpl.c:11
+#: dashboard/argonaut/import_events.tpl.c:11
 msgid "job type"
 msgstr "type de tâche"
 
-#: addons/argonaut/import_events.tpl.c:14
+#: dashboard/argonaut/import_events.tpl.c:14
 msgid "object group"
 msgstr "groupe d'objets"
 
-#: addons/argonaut/import_events.tpl.c:17
+#: dashboard/argonaut/import_events.tpl.c:17
 msgid "Available job types: %1"
 msgstr "Type de taches disponibles : %1"
 
-#: addons/argonaut/import_events.tpl.c:20
+#: dashboard/argonaut/import_events.tpl.c:20
 msgid "Timestamp"
 msgstr "Date"
 
-#: addons/argonaut/import_events.tpl.c:29
+#: dashboard/argonaut/import_events.tpl.c:29
 msgid "Object group"
 msgstr "Groupe d'objets"

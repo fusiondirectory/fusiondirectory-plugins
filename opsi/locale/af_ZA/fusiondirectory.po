@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2018-08-13 19:58+0000\n"
 "Language-Team: Afrikaans (South Africa) (https://app.transifex.com/fusiondirectory/teams/12202/af_ZA/)\n"
 "MIME-Version: 1.0\n"
@@ -141,7 +141,6 @@ msgstr ""
 
 #: admin/opsi/class_opsiProfileManagement.inc:37
 #: config/opsi/class_opsiConfig.inc:40
-#: addons/dashboard/class_dashBoardOpsi.inc:26
 msgid "OPSI"
 msgstr ""
 
@@ -315,73 +314,35 @@ msgstr ""
 msgid "Branch in which OPSI profiles will be stored"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardOpsi.inc:27
-msgid "Statistics and information about OPSI"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardOpsi.inc:38
-msgid "Statistics"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardOpsi.inc:43
-msgid "Profiles"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardOpsi.inc:66
-msgid "OPSI servers"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardOpsi.inc:72
-msgid "OPSI clients"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardOpsi.inc:78
-msgid "OPSI groups"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardOpsi.inc:92
-#, php-format
-msgid ""
-"Statistics for OPSI could not be computed because of the following error: %s"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardOpsi.inc:112
-msgid "Profile"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardOpsi.inc:112
-msgid "Systems"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardOpsi.inc:112
-msgid "Groups"
-msgstr ""
-
-#: addons/opsi/class_opsiImport.inc:31 addons/opsi/class_opsiImport.inc:36
+#: export/opsi/class_opsiImport.inc:31 export/opsi/class_opsiImport.inc:36
 msgid "OPSI import"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:32
+#: export/opsi/class_opsiImport.inc:32
 msgid "Import windows stations from OPSI into FD"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:58
+#: export/opsi/class_opsiImport.inc:41
+msgid "Export / Import"
+msgstr ""
+
+#: export/opsi/class_opsiImport.inc:57
 msgid "Interface name"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:58
+#: export/opsi/class_opsiImport.inc:57
 msgid "How to name the network interface created on imported systems"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:63
+#: export/opsi/class_opsiImport.inc:62
 msgid "Import localboot products"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:63
+#: export/opsi/class_opsiImport.inc:62
 msgid "Import localboot product list configured in OPSI in the FD OPSI tab"
 msgstr ""
 
-#: addons/opsi/opsiimport.tpl.c:2
+#: export/opsi/opsiimport.tpl.c:2
 msgid ""
 "Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
 " managed by it, so if you delete them or deactivate their OPSI tab, they "

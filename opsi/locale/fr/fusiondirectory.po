@@ -5,16 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-21 10:39+0000\n"
 "PO-Revision-Date: 2018-08-13 19:58+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2024\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -146,7 +146,6 @@ msgstr "Les produits localboot à mettre dans cette liste"
 
 #: admin/opsi/class_opsiProfileManagement.inc:37
 #: config/opsi/class_opsiConfig.inc:40
-#: addons/dashboard/class_dashBoardOpsi.inc:26
 msgid "OPSI"
 msgstr "OPSI"
 
@@ -324,77 +323,37 @@ msgstr "Branche OPSI"
 msgid "Branch in which OPSI profiles will be stored"
 msgstr "Branche où seront stockés les profiles OPSI"
 
-#: addons/dashboard/class_dashBoardOpsi.inc:27
-msgid "Statistics and information about OPSI"
-msgstr "Statistiques et informations sur OPSI"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:38
-msgid "Statistics"
-msgstr "Statistiques"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:43
-msgid "Profiles"
-msgstr "Profils"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:66
-msgid "OPSI servers"
-msgstr "Serveurs OPSI"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:72
-msgid "OPSI clients"
-msgstr "Clients OPSI"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:78
-msgid "OPSI groups"
-msgstr "Groupes OPSI"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:92
-#, php-format
-msgid ""
-"Statistics for OPSI could not be computed because of the following error: %s"
-msgstr ""
-"Les statistiques pour OPSI n'ont pas pu être calculées en raison de l'erreur"
-" suivante: %s"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:112
-msgid "Profile"
-msgstr "Profil"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:112
-msgid "Systems"
-msgstr "Systèmes"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:112
-msgid "Groups"
-msgstr "Groupes"
-
-#: addons/opsi/class_opsiImport.inc:31 addons/opsi/class_opsiImport.inc:36
+#: export/opsi/class_opsiImport.inc:31 export/opsi/class_opsiImport.inc:36
 msgid "OPSI import"
 msgstr "Importation OPSI"
 
-#: addons/opsi/class_opsiImport.inc:32
+#: export/opsi/class_opsiImport.inc:32
 msgid "Import windows stations from OPSI into FD"
 msgstr "Importer stations Windows de OPSI dans FD"
 
-#: addons/opsi/class_opsiImport.inc:58
+#: export/opsi/class_opsiImport.inc:41
+msgid "Export / Import"
+msgstr "Exporter / Importer"
+
+#: export/opsi/class_opsiImport.inc:57
 msgid "Interface name"
 msgstr "Nom de l'interface"
 
-#: addons/opsi/class_opsiImport.inc:58
+#: export/opsi/class_opsiImport.inc:57
 msgid "How to name the network interface created on imported systems"
 msgstr "Comment nommer l'interface réseau créée sur les systèmes importés"
 
-#: addons/opsi/class_opsiImport.inc:63
+#: export/opsi/class_opsiImport.inc:62
 msgid "Import localboot products"
 msgstr "Importer les produit localboot OPSI"
 
-#: addons/opsi/class_opsiImport.inc:63
+#: export/opsi/class_opsiImport.inc:62
 msgid "Import localboot product list configured in OPSI in the FD OPSI tab"
 msgstr ""
 "Importer la liste de produits localboot configurée dans OPSI dans l'onglet "
 "OPSI"
 
-#: addons/opsi/opsiimport.tpl.c:2
+#: export/opsi/opsiimport.tpl.c:2
 msgid ""
 "Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
 " managed by it, so if you delete them or deactivate their OPSI tab, they "
