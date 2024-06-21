@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2021-02-16 15:45+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: admin/subscriptions/class_subscriptionsManagement.inc:40
 #: config/subscriptions/class_subscriptionsConfig.inc:27
-#: config/subscriptions/class_subscriptionsConfig.inc:40
+#: config/subscriptions/class_subscriptionsConfig.inc:41
 msgid "Subscriptions"
 msgstr "Abonnements"
 
@@ -64,12 +64,12 @@ msgid "Description of this subscription"
 msgstr "Description de cet abonnement"
 
 #: admin/subscriptions/class_subscription.inc:54
-#: config/subscriptions/class_subscriptionsConfig.inc:54
+#: config/subscriptions/class_subscriptionsConfig.inc:55
 msgid "Type"
 msgstr "Type"
 
 #: admin/subscriptions/class_subscription.inc:54
-#: config/subscriptions/class_subscriptionsConfig.inc:54
+#: config/subscriptions/class_subscriptionsConfig.inc:55
 msgid "Subscription type"
 msgstr "Type d'inscription"
 
@@ -191,69 +191,69 @@ msgstr ""
 msgid "FusionDirectory subscriptions plugin configuration"
 msgstr "Configuration du plugin abonnements"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:44
+#: config/subscriptions/class_subscriptionsConfig.inc:45
 msgid "Subscription RDN"
 msgstr "Abonnement RDN"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:44
+#: config/subscriptions/class_subscriptionsConfig.inc:45
 msgid "Branch in which subscriptions will be stored"
 msgstr "Branche où seront stockés les abonnements "
 
-#: config/subscriptions/class_subscriptionsConfig.inc:50
+#: config/subscriptions/class_subscriptionsConfig.inc:51
 msgid "Subscription types and their labels"
 msgstr "Type d'abonnement et leurs étiquettes"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:58
-#: config/subscriptions/class_subscriptionsConfig.inc:84
-#: config/subscriptions/class_subscriptionsConfig.inc:107
+#: config/subscriptions/class_subscriptionsConfig.inc:59
+#: config/subscriptions/class_subscriptionsConfig.inc:85
+#: config/subscriptions/class_subscriptionsConfig.inc:108
 msgid "Label"
 msgstr "Étiquette"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:58
+#: config/subscriptions/class_subscriptionsConfig.inc:59
 msgid "Label shown for this type"
 msgstr "Étiquette affichée pour ce type"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:64
+#: config/subscriptions/class_subscriptionsConfig.inc:65
 msgid "Subscription types"
 msgstr "Type d'abonnements"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:72
-#: config/subscriptions/class_subscriptionsConfig.inc:91
+#: config/subscriptions/class_subscriptionsConfig.inc:73
+#: config/subscriptions/class_subscriptionsConfig.inc:92
 msgid "Apt repositories"
 msgstr "Dépôts Apt"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:76
-#: config/subscriptions/class_subscriptionsConfig.inc:103
+#: config/subscriptions/class_subscriptionsConfig.inc:77
+#: config/subscriptions/class_subscriptionsConfig.inc:104
 msgid "Path"
 msgstr "Chemin"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:76
-#: config/subscriptions/class_subscriptionsConfig.inc:103
+#: config/subscriptions/class_subscriptionsConfig.inc:77
+#: config/subscriptions/class_subscriptionsConfig.inc:104
 msgid "Repository path"
 msgstr "Chemin d'accès au dépôt"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:80
+#: config/subscriptions/class_subscriptionsConfig.inc:81
 msgid "Distribution"
 msgstr "Distribution"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:80
+#: config/subscriptions/class_subscriptionsConfig.inc:81
 msgid "Distribution name"
 msgstr "Nom de la distribution"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:84
-#: config/subscriptions/class_subscriptionsConfig.inc:107
+#: config/subscriptions/class_subscriptionsConfig.inc:85
+#: config/subscriptions/class_subscriptionsConfig.inc:108
 msgid "Label shown for this repository"
 msgstr "Libellé affiché pour ce dépot"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:99
-#: config/subscriptions/class_subscriptionsConfig.inc:113
+#: config/subscriptions/class_subscriptionsConfig.inc:100
+#: config/subscriptions/class_subscriptionsConfig.inc:114
 msgid "Rpm repositories"
 msgstr "Dépôts Rpm"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:120
+#: config/subscriptions/class_subscriptionsConfig.inc:121
 msgid "Repositories host"
 msgstr "Hôtes de dépôts "
 
-#: config/subscriptions/class_subscriptionsConfig.inc:120
+#: config/subscriptions/class_subscriptionsConfig.inc:121
 msgid "Host for the repositories, to use in auth.conf"
 msgstr "Hôte pour les dépôts, à utiliser dans auth.conf"

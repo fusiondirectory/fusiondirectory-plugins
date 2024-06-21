@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: LOUKAS SKOUROLIAKOS, 2021\n"
 "Language-Team: Greek (Greece) (https://app.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -21,6 +21,242 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:34
+#: dashboard/argonaut/class_argonautImportFile.inc:37
+msgid "Argonaut task import"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautImportFile.inc:35
+msgid "Imports argonaut tasks from CSV file"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautImportFile.inc:50
+msgid "Import actions from CSV file"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautImportFile.inc:54
+msgid "Import a list of task into argonaut"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautImportFile.inc:64
+msgid "Upload"
+msgstr "Αποστολή"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:68
+msgid "Import file"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautImportFile.inc:73
+msgid "Imported tasks"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautImportFile.inc:98
+#: dashboard/argonaut/class_argonautImportFile.inc:147
+#: dashboard/argonaut/class_argonautQueue.inc:88
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:124
+msgid "Fix the errors in your CSV file first"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautImportFile.inc:147
+#, php-format
+msgid "Import complete: %s events successfully send, %s failed"
+msgstr ""
+"Η εισαγωγή ολοκληρώθηκε:  %s συμβάντα στάλθηκαν με επιτυχία, %s απέτυχαν"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:159
+msgid "file is empty"
+msgstr "Το αρχείο είναι κενό"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:185
+#: dashboard/argonaut/import_events.tpl.c:23
+msgid "MAC"
+msgstr "MAC"
+
+#: dashboard/argonaut/class_argonautImportFile.inc:188
+#: dashboard/argonaut/import_events.tpl.c:26
+msgid "Event"
+msgstr "Γεγονός"
+
+#: dashboard/argonaut/class_argonautAction.inc:65
+#: dashboard/argonaut/class_argonautAction.inc:68
+msgid "Argonaut task"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautAction.inc:66
+msgid "Schedule an argonaut task"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautAction.inc:82
+#: dashboard/argonaut/class_argonautAction.inc:102
+msgid "Schedule"
+msgstr "Πρόγραμμα"
+
+#: dashboard/argonaut/class_argonautAction.inc:85
+msgid "Action"
+msgstr "Ενέργεια"
+
+#: dashboard/argonaut/class_argonautAction.inc:85
+msgid "The action you are about to schedule"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautAction.inc:97
+msgid "Scheduled"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautAction.inc:97
+msgid "Wether this job should be scheduled or ran right away"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautAction.inc:106
+msgid "Periodical job"
+msgstr "Περιοδική εργασία"
+
+#: dashboard/argonaut/class_argonautAction.inc:106
+msgid "Wether this job should repeat in time"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautAction.inc:110
+msgid "How often this task should be repeated"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautAction.inc:121
+msgid "Minutes"
+msgstr "Λεπτά"
+
+#: dashboard/argonaut/class_argonautAction.inc:121
+msgid "Hours"
+msgstr "Ώρες"
+
+#: dashboard/argonaut/class_argonautAction.inc:121
+msgid "Days"
+msgstr "Ημέρες"
+
+#: dashboard/argonaut/class_argonautAction.inc:121
+msgid "Weeks"
+msgstr "Εβδομάδες"
+
+#: dashboard/argonaut/class_argonautAction.inc:121
+msgid "Months"
+msgstr "Μήνες"
+
+#: dashboard/argonaut/class_argonautAction.inc:127
+msgid "Period"
+msgstr "Περίοδος"
+
+#: dashboard/argonaut/class_argonautAction.inc:132
+msgid "Targets"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautAction.inc:135
+msgid "Targets for this task"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautAction.inc:192
+#, php-format
+msgid "Not enough permission to schedule an action for %s"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautAction.inc:216
+msgid "Could not send action to argonaut server"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:107
+msgid "immediately"
+msgstr "αμέσως"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:116
+msgid "Waiting"
+msgstr "Αναμονή"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:119
+msgid "Show error"
+msgstr "Εμφάνιση σφάλματος"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:120
+#: dashboard/argonaut/import_events.tpl.c:32
+msgid "Error"
+msgstr "Σφάλμα"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:123
+msgid "Processed"
+msgstr "Επεξεργασμένο"
+
+#: dashboard/argonaut/class_argonautQueueColumn.inc:132
+msgid "in progress"
+msgstr "σε εξέλιξη"
+
+#: dashboard/argonaut/class_argonautQueue.inc:48
+#: dashboard/argonaut/class_argonautQueue.inc:53
+#: dashboard/argonaut/class_argonautQueue.inc:56
+msgid "Deployment queue"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautQueue.inc:49
+msgid "Provide a mechanism to automatically activate systems"
+msgstr "Παρέχει ένα μηχανισμό ώστε αυτόματα να ενεργοποιεί συστήματα "
+
+#: dashboard/argonaut/class_argonautQueue.inc:96
+#: dashboard/argonaut/class_argonautQueue.inc:230
+msgid "Remove"
+msgstr "Αφαίρεση"
+
+#: dashboard/argonaut/class_argonautQueue.inc:106
+msgid "Abort"
+msgstr "Ματαίωση"
+
+#: dashboard/argonaut/class_argonautQueue.inc:116
+msgid "Process now"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautQueue.inc:124
+msgid "Retry"
+msgstr "Προσπάθεια ξανά"
+
+#: dashboard/argonaut/class_argonautQueue.inc:232
+#, php-format
+msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
+msgstr ""
+"Οι ακόλουθες εργασίες δεν γίνεται να διαγραφούν, θα πρέπει να ματαιωθούν: %s"
+
+#: dashboard/argonaut/class_argonautQueue.inc:301
+msgid "Info"
+msgstr "Πληροφορίες"
+
+#: dashboard/argonaut/class_argonautQueue.inc:322
+msgid "Error detail"
+msgstr "Λεπτομέρεια λάθους"
+
+#: dashboard/argonaut/class_argonautQueue.inc:354
+msgid "Cannot update queue entries."
+msgstr ""
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:67
+msgid "Switch off"
+msgstr "Κλείσιμο"
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:80
+msgid "Reboot"
+msgstr "Επανεκκίνηση"
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:84
+msgid "Wake up"
+msgstr ""
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:88
+msgid "Software update"
+msgstr "Ενημέρωση λογισμικού"
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:92
+msgid "(Re)Install"
+msgstr "(Επαν)εγκατάσταση"
+
+#: dashboard/argonaut/class_argonautEventTypes.inc:105
+msgid "Refresh slave files (ldap2zone)"
+msgstr ""
 
 #: include/class_supportDaemon.inc:107
 msgid "Multiple argonaut server found. Only one is supported"
@@ -630,272 +866,36 @@ msgstr "Ονομασίες υπηρεσιών"
 msgid "Argonaut service names"
 msgstr "Ονομασίες υπηρεσιών Argonaut"
 
-#: addons/argonaut/class_argonautImportFile.inc:34
-#: addons/argonaut/class_argonautImportFile.inc:37
-msgid "Argonaut task import"
-msgstr ""
-
-#: addons/argonaut/class_argonautImportFile.inc:35
-msgid "Imports argonaut tasks from CSV file"
-msgstr ""
-
-#: addons/argonaut/class_argonautImportFile.inc:50
-msgid "Import actions from CSV file"
-msgstr ""
-
-#: addons/argonaut/class_argonautImportFile.inc:54
-msgid "Import a list of task into argonaut"
-msgstr ""
-
-#: addons/argonaut/class_argonautImportFile.inc:64
-msgid "Upload"
-msgstr "Αποστολή"
-
-#: addons/argonaut/class_argonautImportFile.inc:68
-msgid "Import file"
-msgstr ""
-
-#: addons/argonaut/class_argonautImportFile.inc:73
-msgid "Imported tasks"
-msgstr ""
-
-#: addons/argonaut/class_argonautImportFile.inc:98
-#: addons/argonaut/class_argonautImportFile.inc:147
-#: addons/argonaut/class_argonautQueue.inc:88
-msgid "Import"
-msgstr "Εισαγωγή"
-
-#: addons/argonaut/class_argonautImportFile.inc:124
-msgid "Fix the errors in your CSV file first"
-msgstr ""
-
-#: addons/argonaut/class_argonautImportFile.inc:147
-#, php-format
-msgid "Import complete: %s events successfully send, %s failed"
-msgstr ""
-"Η εισαγωγή ολοκληρώθηκε:  %s συμβάντα στάλθηκαν με επιτυχία, %s απέτυχαν"
-
-#: addons/argonaut/class_argonautImportFile.inc:159
-msgid "file is empty"
-msgstr "Το αρχείο είναι κενό"
-
-#: addons/argonaut/class_argonautImportFile.inc:185
-#: addons/argonaut/import_events.tpl.c:23
-msgid "MAC"
-msgstr "MAC"
-
-#: addons/argonaut/class_argonautImportFile.inc:188
-#: addons/argonaut/import_events.tpl.c:26
-msgid "Event"
-msgstr "Γεγονός"
-
-#: addons/argonaut/class_argonautAction.inc:65
-#: addons/argonaut/class_argonautAction.inc:68
-msgid "Argonaut task"
-msgstr ""
-
-#: addons/argonaut/class_argonautAction.inc:66
-msgid "Schedule an argonaut task"
-msgstr ""
-
-#: addons/argonaut/class_argonautAction.inc:82
-#: addons/argonaut/class_argonautAction.inc:102
-msgid "Schedule"
-msgstr "Πρόγραμμα"
-
-#: addons/argonaut/class_argonautAction.inc:85
-msgid "Action"
-msgstr "Ενέργεια"
-
-#: addons/argonaut/class_argonautAction.inc:85
-msgid "The action you are about to schedule"
-msgstr ""
-
-#: addons/argonaut/class_argonautAction.inc:97
-msgid "Scheduled"
-msgstr ""
-
-#: addons/argonaut/class_argonautAction.inc:97
-msgid "Wether this job should be scheduled or ran right away"
-msgstr ""
-
-#: addons/argonaut/class_argonautAction.inc:106
-msgid "Periodical job"
-msgstr "Περιοδική εργασία"
-
-#: addons/argonaut/class_argonautAction.inc:106
-msgid "Wether this job should repeat in time"
-msgstr ""
-
-#: addons/argonaut/class_argonautAction.inc:110
-msgid "How often this task should be repeated"
-msgstr ""
-
-#: addons/argonaut/class_argonautAction.inc:121
-msgid "Minutes"
-msgstr "Λεπτά"
-
-#: addons/argonaut/class_argonautAction.inc:121
-msgid "Hours"
-msgstr "Ώρες"
-
-#: addons/argonaut/class_argonautAction.inc:121
-msgid "Days"
-msgstr "Ημέρες"
-
-#: addons/argonaut/class_argonautAction.inc:121
-msgid "Weeks"
-msgstr "Εβδομάδες"
-
-#: addons/argonaut/class_argonautAction.inc:121
-msgid "Months"
-msgstr "Μήνες"
-
-#: addons/argonaut/class_argonautAction.inc:127
-msgid "Period"
-msgstr "Περίοδος"
-
-#: addons/argonaut/class_argonautAction.inc:132
-msgid "Targets"
-msgstr ""
-
-#: addons/argonaut/class_argonautAction.inc:135
-msgid "Targets for this task"
-msgstr ""
-
-#: addons/argonaut/class_argonautAction.inc:192
-#, php-format
-msgid "Not enough permission to schedule an action for %s"
-msgstr ""
-
-#: addons/argonaut/class_argonautAction.inc:216
-msgid "Could not send action to argonaut server"
-msgstr ""
-
-#: addons/argonaut/class_argonautQueueColumn.inc:107
-msgid "immediately"
-msgstr "αμέσως"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:116
-msgid "Waiting"
-msgstr "Αναμονή"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:119
-msgid "Show error"
-msgstr "Εμφάνιση σφάλματος"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:120
-#: addons/argonaut/import_events.tpl.c:32
-msgid "Error"
-msgstr "Σφάλμα"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:123
-msgid "Processed"
-msgstr "Επεξεργασμένο"
-
-#: addons/argonaut/class_argonautQueueColumn.inc:132
-msgid "in progress"
-msgstr "σε εξέλιξη"
-
-#: addons/argonaut/class_argonautQueue.inc:48
-#: addons/argonaut/class_argonautQueue.inc:53
-#: addons/argonaut/class_argonautQueue.inc:56
-msgid "Deployment queue"
-msgstr ""
-
-#: addons/argonaut/class_argonautQueue.inc:49
-msgid "Provide a mechanism to automatically activate systems"
-msgstr "Παρέχει ένα μηχανισμό ώστε αυτόματα να ενεργοποιεί συστήματα "
-
-#: addons/argonaut/class_argonautQueue.inc:96
-#: addons/argonaut/class_argonautQueue.inc:230
-msgid "Remove"
-msgstr "Αφαίρεση"
-
-#: addons/argonaut/class_argonautQueue.inc:106
-msgid "Abort"
-msgstr "Ματαίωση"
-
-#: addons/argonaut/class_argonautQueue.inc:116
-msgid "Process now"
-msgstr ""
-
-#: addons/argonaut/class_argonautQueue.inc:124
-msgid "Retry"
-msgstr "Προσπάθεια ξανά"
-
-#: addons/argonaut/class_argonautQueue.inc:232
-#, php-format
-msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
-msgstr ""
-"Οι ακόλουθες εργασίες δεν γίνεται να διαγραφούν, θα πρέπει να ματαιωθούν: %s"
-
-#: addons/argonaut/class_argonautQueue.inc:301
-msgid "Info"
-msgstr "Πληροφορίες"
-
-#: addons/argonaut/class_argonautQueue.inc:322
-msgid "Error detail"
-msgstr "Λεπτομέρεια λάθους"
-
-#: addons/argonaut/class_argonautQueue.inc:354
-msgid "Cannot update queue entries."
-msgstr ""
-
-#: addons/argonaut/class_argonautEventTypes.inc:67
-msgid "Switch off"
-msgstr "Κλείσιμο"
-
-#: addons/argonaut/class_argonautEventTypes.inc:80
-msgid "Reboot"
-msgstr "Επανεκκίνηση"
-
-#: addons/argonaut/class_argonautEventTypes.inc:84
-msgid "Wake up"
-msgstr ""
-
-#: addons/argonaut/class_argonautEventTypes.inc:88
-msgid "Software update"
-msgstr "Ενημέρωση λογισμικού"
-
-#: addons/argonaut/class_argonautEventTypes.inc:92
-msgid "(Re)Install"
-msgstr "(Επαν)εγκατάσταση"
-
-#: addons/argonaut/class_argonautEventTypes.inc:105
-msgid "Refresh slave files (ldap2zone)"
-msgstr ""
-
-#: addons/argonaut/import_events.tpl.c:2
+#: dashboard/argonaut/import_events.tpl.c:2
 msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
 msgstr ""
 
-#: addons/argonaut/import_events.tpl.c:5
+#: dashboard/argonaut/import_events.tpl.c:5
 msgid "timestamp"
 msgstr "χρονική ένδειξη"
 
-#: addons/argonaut/import_events.tpl.c:8
+#: dashboard/argonaut/import_events.tpl.c:8
 msgid "MAC-address"
 msgstr "Διεύθυνση MAC"
 
-#: addons/argonaut/import_events.tpl.c:11
+#: dashboard/argonaut/import_events.tpl.c:11
 msgid "job type"
 msgstr "τύπος εργασίας"
 
-#: addons/argonaut/import_events.tpl.c:14
+#: dashboard/argonaut/import_events.tpl.c:14
 msgid "object group"
 msgstr "ομάδα αντικειμένου"
 
-#: addons/argonaut/import_events.tpl.c:17
+#: dashboard/argonaut/import_events.tpl.c:17
 msgid "Available job types: %1"
 msgstr ""
 
-#: addons/argonaut/import_events.tpl.c:20
+#: dashboard/argonaut/import_events.tpl.c:20
 msgid "Timestamp"
 msgstr "Χρονική ένδειξη"
 
-#: addons/argonaut/import_events.tpl.c:29
+#: dashboard/argonaut/import_events.tpl.c:29
 msgid "Object group"
 msgstr "Ομάδα αντικειμένου"

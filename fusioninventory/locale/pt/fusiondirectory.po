@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Portuguese (https://app.transifex.com/fusiondirectory/teams/12202/pt/)\n"
@@ -21,14 +21,18 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/inventory/class_inventoryManagement.inc:39
-#: admin/inventory/class_inventoryManagement.inc:40
+#: dashboard/inventory/class_inventoryManagement.inc:39
+#: dashboard/inventory/class_inventoryManagement.inc:40
 msgid "Inventory objects"
 msgstr "Objetos de inventário"
 
-#: admin/inventory/class_inventoryManagement.inc:41
+#: dashboard/inventory/class_inventoryManagement.inc:41
 msgid "Browse inventory objects"
 msgstr "Navegar em objetos de inventário"
+
+#: dashboard/inventory/class_inventoryManagement.inc:43
+msgid "Reporting"
+msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:28
 #: config/fusioninventory/class_fiConfig.inc:40

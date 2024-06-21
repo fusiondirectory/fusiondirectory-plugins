@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2021-02-16 15:45+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: admin/subscriptions/class_subscriptionsManagement.inc:40
 #: config/subscriptions/class_subscriptionsConfig.inc:27
-#: config/subscriptions/class_subscriptionsConfig.inc:40
+#: config/subscriptions/class_subscriptionsConfig.inc:41
 msgid "Subscriptions"
 msgstr "가입"
 
@@ -63,12 +63,12 @@ msgid "Description of this subscription"
 msgstr ""
 
 #: admin/subscriptions/class_subscription.inc:54
-#: config/subscriptions/class_subscriptionsConfig.inc:54
+#: config/subscriptions/class_subscriptionsConfig.inc:55
 msgid "Type"
 msgstr "유형"
 
 #: admin/subscriptions/class_subscription.inc:54
-#: config/subscriptions/class_subscriptionsConfig.inc:54
+#: config/subscriptions/class_subscriptionsConfig.inc:55
 msgid "Subscription type"
 msgstr "가입 유형"
 
@@ -186,69 +186,69 @@ msgstr ""
 msgid "FusionDirectory subscriptions plugin configuration"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:44
+#: config/subscriptions/class_subscriptionsConfig.inc:45
 msgid "Subscription RDN"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:44
+#: config/subscriptions/class_subscriptionsConfig.inc:45
 msgid "Branch in which subscriptions will be stored"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:50
+#: config/subscriptions/class_subscriptionsConfig.inc:51
 msgid "Subscription types and their labels"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:58
-#: config/subscriptions/class_subscriptionsConfig.inc:84
-#: config/subscriptions/class_subscriptionsConfig.inc:107
+#: config/subscriptions/class_subscriptionsConfig.inc:59
+#: config/subscriptions/class_subscriptionsConfig.inc:85
+#: config/subscriptions/class_subscriptionsConfig.inc:108
 msgid "Label"
 msgstr "라"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:58
+#: config/subscriptions/class_subscriptionsConfig.inc:59
 msgid "Label shown for this type"
 msgstr "이 유형에 대해 표시된 라벨"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:64
+#: config/subscriptions/class_subscriptionsConfig.inc:65
 msgid "Subscription types"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:72
-#: config/subscriptions/class_subscriptionsConfig.inc:91
+#: config/subscriptions/class_subscriptionsConfig.inc:73
+#: config/subscriptions/class_subscriptionsConfig.inc:92
 msgid "Apt repositories"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:76
-#: config/subscriptions/class_subscriptionsConfig.inc:103
+#: config/subscriptions/class_subscriptionsConfig.inc:77
+#: config/subscriptions/class_subscriptionsConfig.inc:104
 msgid "Path"
 msgstr "경로"
 
-#: config/subscriptions/class_subscriptionsConfig.inc:76
-#: config/subscriptions/class_subscriptionsConfig.inc:103
+#: config/subscriptions/class_subscriptionsConfig.inc:77
+#: config/subscriptions/class_subscriptionsConfig.inc:104
 msgid "Repository path"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:80
+#: config/subscriptions/class_subscriptionsConfig.inc:81
 msgid "Distribution"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:80
+#: config/subscriptions/class_subscriptionsConfig.inc:81
 msgid "Distribution name"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:84
-#: config/subscriptions/class_subscriptionsConfig.inc:107
+#: config/subscriptions/class_subscriptionsConfig.inc:85
+#: config/subscriptions/class_subscriptionsConfig.inc:108
 msgid "Label shown for this repository"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:99
-#: config/subscriptions/class_subscriptionsConfig.inc:113
+#: config/subscriptions/class_subscriptionsConfig.inc:100
+#: config/subscriptions/class_subscriptionsConfig.inc:114
 msgid "Rpm repositories"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:120
+#: config/subscriptions/class_subscriptionsConfig.inc:121
 msgid "Repositories host"
 msgstr ""
 
-#: config/subscriptions/class_subscriptionsConfig.inc:120
+#: config/subscriptions/class_subscriptionsConfig.inc:121
 msgid "Host for the repositories, to use in auth.conf"
 msgstr ""

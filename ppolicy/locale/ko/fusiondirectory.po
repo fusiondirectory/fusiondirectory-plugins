@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-20 21:40+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -250,7 +250,6 @@ msgid "FusionDirectory ppolicy plugin configuration"
 msgstr "FusionDirectory ppolicy 플러그인 구성"
 
 #: config/ppolicy/class_ppolicyConfig.inc:42
-#: addons/dashboard/class_dashBoardPPolicy.inc:27
 msgid "Ppolicy"
 msgstr "Ppolicy"
 
@@ -269,51 +268,6 @@ msgstr "기본 ppolicy dn"
 #: config/ppolicy/class_ppolicyConfig.inc:50
 msgid "What you put as default ppolicy in the overlay config"
 msgstr "오버레이 설정에서 기본 정책으로 설정한 사항"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:28
-msgid "Statistics about ppolicy expired users"
-msgstr "ppolicy가 만료된 사용자에 대한 통계"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:40
-msgid "Expired accounts"
-msgstr "만료된 계정"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:45
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
-msgid "Locked accounts"
-msgstr "잠긴 계정"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:58
-msgid "Login"
-msgstr "로그인"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:59
-#: addons/dashboard/class_dashBoardPPolicy.inc:64
-msgid "Name"
-msgstr "명칭"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:60
-#: addons/dashboard/class_dashBoardPPolicy.inc:66
-msgid "Phone number"
-msgstr "전화 번호"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:61
-msgid "Expiration date"
-msgstr "만료일자"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:65
-msgid "Email"
-msgstr "이메일"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:87
-#, php-format
-msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
-msgstr "LDAP에서 기본 ppolicy \"%s\"를 찾을 수 없습니다!"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:143
-#, php-format
-msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr "LDAP에서 사용자 \"%s\"에 대한 Ppolicy \"%s\" 세트를 찾을 수 없습니다!"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:29
 msgid "Edit user's password policy"
@@ -374,41 +328,3 @@ msgstr ""
 "\n"
 " \n"
 "영구적으로 잠김"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
-msgid "There is one locked account"
-msgid_plural "There are %1 locked accounts"
-msgstr[0] "잠긴 계정이 %1 개 있습니다"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
-msgid "There is no locked account"
-msgstr "잠긴 계정이 없습니다"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:11
-msgid "Manager concerned"
-msgstr "관심있는 관리자"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:14
-msgid "uid"
-msgstr "uid"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:17
-msgid "cn"
-msgstr "cn"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:20
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:32
-msgid "telephoneNumber"
-msgstr "telephoneNumber"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:23
-msgid "pwdAccountLockedTime"
-msgstr "pwdAccountLockedTime"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:26
-msgid "manager"
-msgstr "관리자"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:29
-msgid "mail"
-msgstr "메일"

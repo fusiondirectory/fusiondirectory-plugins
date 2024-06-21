@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2019
+# fusiondirectory <contact@fusiondirectory.org>, 2018
 # Pavel Borecki <pavel.borecki@gmail.com>, 2019
 # 
 #, fuzzy
@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-13 10:00+0000\n"
 "PO-Revision-Date: 2018-08-13 19:58+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -150,7 +150,6 @@ msgstr ""
 
 #: admin/opsi/class_opsiProfileManagement.inc:37
 #: config/opsi/class_opsiConfig.inc:40
-#: addons/dashboard/class_dashBoardOpsi.inc:26
 msgid "OPSI"
 msgstr "OPSI"
 
@@ -326,74 +325,36 @@ msgstr "Relativní rozlišený název OPSI"
 msgid "Branch in which OPSI profiles will be stored"
 msgstr "Větev, ve které budou uchovávány OPSI profily"
 
-#: addons/dashboard/class_dashBoardOpsi.inc:27
-msgid "Statistics and information about OPSI"
-msgstr "Statistiky a informace o OPSI"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:38
-msgid "Statistics"
-msgstr "Statistiky"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:43
-msgid "Profiles"
-msgstr "Profily"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:66
-msgid "OPSI servers"
-msgstr "OPSI servery"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:72
-msgid "OPSI clients"
-msgstr "OPSI klienti"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:78
-msgid "OPSI groups"
-msgstr "OPSI skupiny"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:92
-#, php-format
-msgid ""
-"Statistics for OPSI could not be computed because of the following error: %s"
-msgstr "Statistiky pro OPSI nebylo možné spočítat kvůli následující chybě: %s"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:112
-msgid "Profile"
-msgstr "Profil"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:112
-msgid "Systems"
-msgstr "Systémy"
-
-#: addons/dashboard/class_dashBoardOpsi.inc:112
-msgid "Groups"
-msgstr "Skupiny"
-
-#: addons/opsi/class_opsiImport.inc:31 addons/opsi/class_opsiImport.inc:36
+#: export/opsi/class_opsiImport.inc:31 export/opsi/class_opsiImport.inc:36
 msgid "OPSI import"
 msgstr "Importovat OPSI"
 
-#: addons/opsi/class_opsiImport.inc:32
+#: export/opsi/class_opsiImport.inc:32
 msgid "Import windows stations from OPSI into FD"
 msgstr "Importovat počítače s MS Windows z OPSI do F.D."
 
-#: addons/opsi/class_opsiImport.inc:58
+#: export/opsi/class_opsiImport.inc:41
+msgid "Export / Import"
+msgstr ""
+
+#: export/opsi/class_opsiImport.inc:57
 msgid "Interface name"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:58
+#: export/opsi/class_opsiImport.inc:57
 msgid "How to name the network interface created on imported systems"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:63
+#: export/opsi/class_opsiImport.inc:62
 msgid "Import localboot products"
 msgstr "Importovat localboot produkty"
 
-#: addons/opsi/class_opsiImport.inc:63
+#: export/opsi/class_opsiImport.inc:62
 msgid "Import localboot product list configured in OPSI in the FD OPSI tab"
 msgstr ""
 "Importovat seznam localboot produktů nastavených v OPSI na kartě FD OPSI"
 
-#: addons/opsi/opsiimport.tpl.c:2
+#: export/opsi/opsiimport.tpl.c:2
 msgid ""
 "Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
 " managed by it, so if you delete them or deactivate their OPSI tab, they "

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2024-06-20 21:40+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2020\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -272,7 +272,6 @@ msgid "FusionDirectory ppolicy plugin configuration"
 msgstr "Configurazione del plugin ppolicy di FusionDirectory"
 
 #: config/ppolicy/class_ppolicyConfig.inc:42
-#: addons/dashboard/class_dashBoardPPolicy.inc:27
 msgid "Ppolicy"
 msgstr "Ppolicy"
 
@@ -293,53 +292,6 @@ msgid "What you put as default ppolicy in the overlay config"
 msgstr ""
 "Ciò che si mette come ppolicy default nella configurazione di "
 "sovrapposizione"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:28
-msgid "Statistics about ppolicy expired users"
-msgstr "Statistiche sugli utenti ppolicy scaduti"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:40
-msgid "Expired accounts"
-msgstr "Account scaduti"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:45
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
-msgid "Locked accounts"
-msgstr "Account bloccati"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:58
-msgid "Login"
-msgstr "Nome utente"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:59
-#: addons/dashboard/class_dashBoardPPolicy.inc:64
-msgid "Name"
-msgstr "Nome"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:60
-#: addons/dashboard/class_dashBoardPPolicy.inc:66
-msgid "Phone number"
-msgstr "Numero di telefono"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:61
-msgid "Expiration date"
-msgstr "Data di scadenza"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:65
-msgid "Email"
-msgstr "Indirizzo di posta elettronica"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:87
-#, php-format
-msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
-msgstr "La ppolicy \"%s\" predefinta non é stata trovata nell'annuario LDAP"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:143
-#, php-format
-msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr ""
-"La ppolicy  \"%s\" impostata per l'utente  \"%s\"  non é stata trovata "
-"nell'LDAP!"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:29
 msgid "Edit user's password policy"
@@ -398,43 +350,3 @@ msgstr "Sbloccato"
 #: personal/ppolicy/class_ppolicyAccount.inc:91
 msgid "Locked permanently"
 msgstr "Bloccato in modo permanente"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
-msgid "There is one locked account"
-msgid_plural "There are %1 locked accounts"
-msgstr[0] "C'é un account bloccato"
-msgstr[1] "Ci sono %1 accounts bloccati"
-msgstr[2] "Ci sono %1 accounts bloccati"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
-msgid "There is no locked account"
-msgstr "Non c'è nessun account bloccato"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:11
-msgid "Manager concerned"
-msgstr "Responsabile interessato"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:14
-msgid "uid"
-msgstr "uid"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:17
-msgid "cn"
-msgstr "cn"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:20
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:32
-msgid "telephoneNumber"
-msgstr "Numero di telefono"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:23
-msgid "pwdAccountLockedTime"
-msgstr "pwdAccountLockedTime"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:26
-msgid "manager"
-msgstr "Responsabile"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:29
-msgid "mail"
-msgstr "mail"
