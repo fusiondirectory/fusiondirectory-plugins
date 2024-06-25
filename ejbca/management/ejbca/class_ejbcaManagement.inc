@@ -40,7 +40,7 @@ class ejbcaManagement extends management
       'plTitle'       => _('EJBCA certificates management'),
       'plDescription' => _('Manage EJBCA certificates'),
       'plIcon'        => 'geticon.php?context=applications&icon=ejbca&size=48',
-      'plSection'     => 'accounts',
+      'plSection'     => 'Dashboard',
       'plPriority'    => 50,
       'plManages'     => ['ejbcaCertificate'],
     ];
