@@ -33,7 +33,7 @@ class dynamicGroup extends simplePlugin
         'name'        => _('Dynamic group'),
         'description' => _('Dynamic group'),
         'ou'          => get_ou('ogroupRDN'),
-        'icon'        => 'geticon.php?context=types&icon=dyngroup&size=16',
+        'icon' => 'geticon.php?context=types&icon=dyngroup&size=16',
       ]],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
