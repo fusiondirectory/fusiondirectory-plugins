@@ -28,7 +28,7 @@ class dhcpManagement extends management
       'plTitle'       => _('DHCP Management'),
       'plDescription' => _('Manage DHCP configurations'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=48',
-      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 10]],
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 3]],
       'plPriority'    => 2,
       'plManages'     => ['dhcpConfiguration'],
     ];
