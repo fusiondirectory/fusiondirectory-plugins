@@ -40,7 +40,7 @@ class archiveManagement extends management
       'plTitle'       => _('Archived objects'),
       'plDescription' => _('Browse archived objects'),
       'plIcon'        => 'geticon.php?context=mimetypes&icon=application-x-archive&size=48',
-      'plSection' => ['reporting' => ['name' => _('Reporting'), 'priority' => 40]],
+      'plSection' => ['reporting' => ['name' => _('Reporting'), 'priority' => 5]],
       'plPriority'    => 4,
       'plManages'     => ['archivedObject'],
     ];
