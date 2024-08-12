@@ -77,8 +77,8 @@ class auditTask extends simplePlugin
     // As we do not have any DN to store here, we create a tag with a timestamp.
     $attrs['ref'] = ['auditRetentionSchedule'.time()];
 
-    // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
-    $this->parent->getBaseObject()->createSlaveTasks(array_keys($listOfDN), $attributeType, $attrs, 'Notifications');
+    // Call the method from parent tasks object (first tab) to create sub-tasks.
+    $this->parent->getBaseObject()->createSlaveTasks('auditRetentionTask', $attributeType, $attrs, 'Audit');
   }
 
   /**
