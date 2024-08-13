@@ -22,9 +22,7 @@
 class auditTask extends simplePlugin
 {
   protected $displayHeader = TRUE;
-  // LastExec comes from the generic task, it must be filled before saving to get previous lastExec.
-  // Indeed, generic task is saved prior of added tasks plugins. Making lastExec with an updated value before this class
-  // being processed.
+  // To understand the last Exec mechanism, reference yourself to Notifications tasks.
   protected $lastExec = NULL;
 
   static function plInfo (): array
@@ -34,9 +32,10 @@ class auditTask extends simplePlugin
       'plDescription'  => _('Tasks Audit Object'),
       'plIcon'         => 'geticon.php?context=applications&icon=audit&size=16',
       'plPriority'     => 42,
-      'plObjectClass'  => ['fdTasksAudit'],
-      'plFilter'       => '(objectClass=fdTasksAudit)',
+      'plObjectClass'  => ['fdAuditTasks'],
+      'plFilter'       => '(objectClass=fdAuditTasks)',
       'plObjectType'   => ['tasks'],
+      // plConflicts take the name of the object class without the 'fd' in front.
       'plConflicts'    => ['tasksMail', 'tasksLifeCycle', 'tasksNotifications'],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
@@ -49,9 +48,9 @@ class auditTask extends simplePlugin
       'section1'                => [
         'name'  => _('Schedule Audit Retention'),
         'attrs' => [
-          new DateTimeAttribute(
-            _('Schedule'), '',
-            'fdTasksAuditRetention', TRUE
+          new IntAttribute(
+            _('Extra days to add'), _('Extra days to be added after today'),
+            'fdAuditTasksRetention', TRUE, '0', FALSE, '0'
           ),
         ]
       ],
@@ -74,11 +73,9 @@ class auditTask extends simplePlugin
   {
     // The attribute required to be search in createSlaveTasks
     $attributeType = 'fdTasksGranularDN';
-    // As we do not have any DN to store here, we create a tag with a timestamp.
-    $attrs['ref'] = ['auditRetentionSchedule'.time()];
 
     // Call the method from parent tasks object (first tab) to create sub-tasks.
-    $this->parent->getBaseObject()->createSlaveTasks('auditRetentionTask', $attributeType, $attrs, 'Audit');
+    $this->parent->getBaseObject()->createSlaveTasks(['auditRetentionTask'], $attributeType, NULL, 'Audit');
   }
 
   /**

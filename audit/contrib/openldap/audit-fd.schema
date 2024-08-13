@@ -68,9 +68,8 @@ attributetype ( 1.3.6.1.4.1.38414.60.1.9 NAME 'fdAuditAuthorIP'
 
 attributetype ( 1.3.6.1.4.1.38414.60.1.10 NAME 'fdAuditTasksRetention'
   DESC 'FusionDirectory - audit tasks retention'
-  EQUALITY generalizedTimeMatch
-  ORDERING generalizedTimeOrderingMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
 # Object Class
@@ -81,5 +80,6 @@ objectclass (1.3.6.1.4.1.38414.60.2.1 NAME 'fdAuditEvent'
 
 objectclass (1.3.6.1.4.1.38414.60.2.2 NAME 'fdAuditTasks'
   DESC 'FusionDirectory - audit tasks'
-  MUST ( )
-  MAY  ( fdAuditTasksRetention ) )
+  SUP top AUXILIARY
+  MUST ( fdAuditTasksRetention )
+  MAY  ())
