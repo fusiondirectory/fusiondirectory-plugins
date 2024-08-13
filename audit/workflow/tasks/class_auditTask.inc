@@ -49,7 +49,7 @@ class auditTask extends simplePlugin
         'name'  => _('Schedule Audit Retention'),
         'attrs' => [
           new IntAttribute(
-            _('Extra days to add'), _('Extra days to be added after today'),
+            _('Retaining days'), _('Numbers of days audit logs should be kept before deletion'),
             'fdAuditTasksRetention', TRUE, '0', FALSE, '0'
           ),
         ]
