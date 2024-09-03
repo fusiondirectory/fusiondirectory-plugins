@@ -100,7 +100,7 @@ build-release:
     paths:
       - ./*.tar.gz
 
-trigger-ci-debian-buster:
+trigger-ci-debian-bullseye:
   stage: trigger
   only:
     - dev
@@ -108,8 +108,6 @@ trigger-ci-debian-buster:
     GROUP: "$GROUP"
     BRANCH_CORE: "$CI_COMMIT_REF_NAME"
     BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
-    BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
   trigger:
-    project: debian/buster-fusiondirectory-dev
-    branch: "$BRANCH_BUILD_DEBIAN_BUSTER"
+    project: debian/bullseye-fusiondirectory-dev
 
