@@ -434,6 +434,7 @@ class supannAccount extends simplePlugin
       'PERSO'   => _('Personal'),
       'PARENTS' => _('Legal representative'),
       'PRO'     => _('Professional'),
+      'SECOURS' => _('Emergency'),
       'TEMP'    => _('Temporary'),
     ];
     foreach ($config->get_cfg_value('SupannMailPriveTypes', []) as $line) {
