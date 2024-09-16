@@ -61,6 +61,24 @@ class tasksNotifications extends simplePlugin
           ),
         ]
       ],
+      // Attributes are grouped by section
+      'supannSection'           => [
+        'name'  => _('Trigger notification when below Supann state is reached'),
+        'attrs' => [
+          new SelectAttribute(
+            _('Resource'), _('Supann resources'),
+            'fdTasksNotificationsResource', TRUE
+          ),
+          new SelectAttribute(
+            _('State'), _('Resource state'),
+            'fdTasksNotificationsState', TRUE
+          ),
+          new SelectAttribute(
+            _('Sub state'), _('Resource sub state'),
+            'fdTasksNotificationsSubState', FALSE
+          ),
+        ]
+      ],
       'UserGroupSelection'      => [
         'name'  => _('Recipients Users and/or Groups'),
         'attrs' => [
@@ -109,6 +127,48 @@ class tasksNotifications extends simplePlugin
     $this->attributesAccess['fdTasksNotificationsMailTemplate']->setChoices(
       array_keys($mailTemplates), array_values($mailTemplates)
     );
+
+    // Supann Status management
+    if (class_available('supannAccountStatus')) {
+      $this->setSupannStates();
+    }
+  }
+
+  /**
+   * @return void
+   * Note : Simply get the existing supann States to the notifications attributes.
+   */
+  protected function setSupannStates (): void
+  {
+    global $config;
+
+    // Define the mandatory ones and get the remaining from configuration.
+    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail')];
+
+    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
+      list($resource, $label) = explode(':', $line, 2);
+      $resources[$resource] = $label;
+    }
+
+    $this->attributesAccess['fdTasksNotificationsResource']->setChoices(array_keys($resources), array_values($resources));
+    $this->subStates = supannAccountStatus::getConfiguredSubstates(); //Keys are states and Values are subStates
+    $this->attributesAccess['fdTasksNotificationsState']->setChoices(array_keys($this->subStates));
+
+    // Allows the sub states to be listed when state is modified.
+    $this->attributesAccess['fdTasksNotificationsState']->setSubmitForm('updateFieldsChoices');
+    // This initial fill the list choices based on registered states.
+    $this->updateFieldsChoices();
+  }
+
+  /**
+   * @return void
+   * Note : Update list of subStates which depends on the state selected
+   */
+  function updateFieldsChoices ()
+  {
+    // Update the available supann states
+    $preSubStatesList = $this->subStates[$this->attributesAccess['fdTasksNotificationsState']->getValue()] ?? [];
+    $this->attributesAccess['fdTasksNotificationsSubState']->setChoices(array_keys($preSubStatesList), array_values($preSubStatesList));
   }
 
   /**
@@ -161,8 +221,8 @@ class tasksNotifications extends simplePlugin
     $recipients = $this->attributesAccess['fdTasksNotificationsRecipientsMembers']->getValue();
     // Call static function from tasks object in order to get a real list of members and related emails directly.
     $emailsList = tasksMail::getEmailsFromSelectedDN('gosaMailAccount',
-      'mail',
-      tasks::extractMembersFromGroups($recipients)
+                                                     'mail',
+                                                     tasks::extractMembersFromGroups($recipients)
     );
 
     // Fill the attribute with emails.
