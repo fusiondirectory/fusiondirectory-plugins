@@ -40,6 +40,26 @@ attributetype ( 1.3.6.1.4.1.38414.90.1.7 NAME 'fdTasksNotificationsEmailSender'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
+# Supann states attributes
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.8 NAME 'fdTasksNotificationsResource'
+  DESC 'Fusion Directory - Tasks for life cycle - new state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.9 NAME 'fdTasksNotificationsState'
+  DESC 'Fusion Directory - Tasks for life cycle - new state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.90.1.10 NAME 'fdTasksNotificationsSubState'
+  DESC 'Fusion Directory - Tasks for life cycle - new state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
 # Object Class
 
 objectclass (1.3.6.1.4.1.38414.90.2.1 NAME 'fdTasksNotifications' SUP top AUXILIARY
@@ -47,5 +67,5 @@ objectclass (1.3.6.1.4.1.38414.90.2.1 NAME 'fdTasksNotifications' SUP top AUXILI
   MUST ( fdTasksNotificationsAttributes $ fdTasksNotificationsRecipientsMembers $
   fdTasksNotificationsListOfRecipientsMails $ fdTasksNotificationsMonitoredMembers $ fdTasksNotificationsMailTemplate $
   fdTasksNotificationsEmailSender)
-  MAY  (fdTasksNotificationsListOfNewAuditUsersDN ) )
+  MAY  (fdTasksNotificationsListOfNewAuditUsersDN $ fdTasksNotificationsResource $ fdTasksNotificationsState $ fdTasksNotificationsSubState) )
 
