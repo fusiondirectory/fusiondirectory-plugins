@@ -67,15 +67,15 @@ class tasksNotifications extends simplePlugin
         'attrs' => [
           new SelectAttribute(
             _('Resource'), _('Supann resources'),
-            'fdTasksNotificationsResource', TRUE
+            'fdTasksNotificationsResource', TRUE, [], "None"
           ),
           new SelectAttribute(
             _('State'), _('Resource state'),
-            'fdTasksNotificationsState', TRUE
+            'fdTasksNotificationsState', TRUE, [], "None"
           ),
           new SelectAttribute(
             _('Sub state'), _('Resource sub state'),
-            'fdTasksNotificationsSubState', FALSE
+            'fdTasksNotificationsSubState', FALSE, [], "None"
           ),
         ]
       ],
