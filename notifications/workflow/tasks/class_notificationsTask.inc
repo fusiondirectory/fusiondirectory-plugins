@@ -56,7 +56,7 @@ class tasksNotifications extends simplePlugin
           new SetAttribute(
             new SelectAttribute(
               'Attributes', _('Any changes listed to set attributes will trigger a notification'),
-              'fdTasksNotificationsAttributes', FALSE,
+              'fdTasksNotificationsAttributes', TRUE, ['None']
             ),
           ),
         ]
