@@ -63,7 +63,7 @@ class tasksNotifications extends simplePlugin
       ],
       // Attributes are grouped by section
       'supannSection'           => [
-        'name'  => _('Trigger notification when below Supann state is reached'),
+        'name'  => _('Add notification when the following Supann state is reached (supannRessourceEtat)'),
         'attrs' => [
           new SelectAttribute(
             _('Resource'), _('Supann resources'),
