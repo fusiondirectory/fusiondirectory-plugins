@@ -52,6 +52,12 @@ class auditConfig extends multiPluginSection
             ),
             ['security','modify','create','remove']
           ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Hide value of below attributes'), _('Attributes name in ACL format, hiding the values related to set attributes'),
+              'fdAuditConfHiddenAttrValues', FALSE
+            ),
+          ),
         ]
       ],
     ];
