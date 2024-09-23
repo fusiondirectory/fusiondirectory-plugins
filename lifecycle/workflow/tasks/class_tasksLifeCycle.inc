@@ -124,7 +124,6 @@ class tasksLifeCycle extends simplePlugin
       $warning = new FusionDirectoryWarning(htmlescape(_('The plugin Supann does not seem to be installed !')));
       $warning->display();
     }
-
   }
 
   /**
