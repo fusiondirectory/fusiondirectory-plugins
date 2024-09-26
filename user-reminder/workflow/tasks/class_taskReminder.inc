@@ -91,7 +91,7 @@ class taskReminder extends simplePlugin
           ),
           new IntAttribute(
             _('Second reminder'), _('Numbers of days before reaching resource end date'),
-            'fdTasksReminderSecondCall', TRUE, '0', FALSE, '15'
+            'fdTasksReminderSecondCall', FALSE, '0', FALSE, '15'
           ),
           new BooleanAttribute(
             _('Posix'), _('Monitor posix end date'),
@@ -105,11 +105,11 @@ class taskReminder extends simplePlugin
           ),
           new SelectAttribute(
             _('Resource'), _('Supann resources'),
-            'fdTasksReminderNextResource', TRUE, [], "None"
+            'fdTasksReminderNextResource', FALSE, [], "None"
           ),
           new SelectAttribute(
             _('State'), _('Resource state'),
-            'fdTasksReminderNextState', TRUE, [], "None"
+            'fdTasksReminderNextState', FALSE, [], "None"
           ),
           new SelectAttribute(
             _('Sub state'), _('Resource sub state'),
@@ -117,7 +117,7 @@ class taskReminder extends simplePlugin
           ),
           new IntAttribute(
             _('Account added duration'), _('Numbers of days to add to the new end date of supann resource'),
-            'fdTasksReminderSupannNewEndDate', TRUE, '0', FALSE, '0'
+            'fdTasksReminderSupannNewEndDate', FALSE, '0', FALSE, '0'
           ),
         ]
       ],
@@ -164,6 +164,22 @@ class taskReminder extends simplePlugin
     if (class_available('supannAccountStatus')) {
       $this->setSupannStates();
     }
+
+    $this->attributesAccess['fdTasksReminderAccountProlongation']->setManagedAttributes(
+      [
+        'disable' => [
+          FALSE => [
+            'fdTasksReminderNextResource',
+//            'fdTasksReminderPosix',
+//            'fdTasksReminderPPolicy',
+//            'fdTasksReminderNextResource',
+//            'fdTasksReminderNextState',
+//            'fdTasksReminderNextSubState',
+//            'fdTasksReminderSupannNewEndDate'
+          ]
+        ]
+      ]
+    );
   }
 
   /**
@@ -191,7 +207,7 @@ class taskReminder extends simplePlugin
     $this->attributesAccess['fdTasksReminderState']->setChoices(array_keys($this->subStates));
     $this->attributesAccess['fdTasksReminderNextState']->setChoices(array_keys($this->subStates));
 
-    // Allows the sub states to be listed when state is modified.
+//    // Allows the sub states to be listed when state is modified.
     $this->attributesAccess['fdTasksReminderState']->setSubmitForm('updateFieldsChoices');
     $this->attributesAccess['fdTasksReminderNextState']->setSubmitForm('updateFieldsChoices');
     // This initial fill the list choices based on registered states.
