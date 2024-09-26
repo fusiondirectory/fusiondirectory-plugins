@@ -169,6 +169,7 @@ class taskReminder extends simplePlugin
       [
         'disable' => [
           FALSE => [
+            'fdTasksReminderSecondCall',
             'fdTasksReminderNextResource',
             'fdTasksReminderPosix',
             'fdTasksReminderPPolicy',
