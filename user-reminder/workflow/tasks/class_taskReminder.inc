@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class taskUserReminder extends simplePlugin
+class taskReminder extends simplePlugin
 {
   protected $displayHeader = TRUE;
   // LastExec comes from the generic task, it must be filled before saving to get previous lastExec.
@@ -30,12 +30,12 @@ class taskUserReminder extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'    => _('Tasks UserReminder'),
+      'plShortName'    => _('Tasks Reminder'),
       'plDescription'  => _('Tasks User Reminder Object'),
-      'plIcon'         => 'geticon.php?context=applications&icon=userReminder&size=16',
+      'plIcon'         => 'geticon.php?context=applications&icon=Reminder&size=16',
       'plPriority'     => 42,
-      'plObjectClass'  => ['fdTasksUserReminder'],
-      'plFilter'       => '(objectClass=fdTasksUserReminder)',
+      'plObjectClass'  => ['fdTasksReminder'],
+      'plFilter'       => '(objectClass=fdTasksReminder)',
       'plObjectType'   => ['tasks'],
       'plConflicts'    => ['tasksMail', 'tasksLifeCycle', 'tasksNotifications', 'auditTasks'],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
@@ -47,31 +47,17 @@ class taskUserReminder extends simplePlugin
   {
     return [
       'section1'                => [
-        'name'  => _('User Reminder settings'),
+        'name'  => _('User Reminder general settings'),
         'attrs' => [
           // Following attribute contain the list of members emails that should receive a notification.
-          new HiddenArrayAttribute('fdTasksUserReminderListOfRecipientsMails', FALSE, ''),
+          new HiddenArrayAttribute('fdTasksReminderListOfRecipientsMails', FALSE, ''),
           new IntAttribute(
-            _('First call'), _('Numbers of days before reaching resource end date'),
-            'fdTasksUserReminderFirstCall', TRUE, '0', FALSE, '30'
-          ),
-          new IntAttribute(
-            _('Second call'), _('Numbers of days before reaching resource end date'),
-            'fdTasksUserReminderSecondCall', TRUE, '0', FALSE, '15'
-          ),
-          new BooleanAttribute(
-            _('Posix'), _('Monitor posix end date'),
-            'fdTasksUserReminderPosix', FALSE,
-            FALSE
-          ),
-          new BooleanAttribute(
-            _('PPolicy'), _('Monitoring PPolicy end date'),
-            'fdTasksUserReminderPPolicy', FALSE,
-            FALSE
+            _('First reminder'), _('Numbers of days before reaching resource end date'),
+            'fdTasksReminderFirstCall', TRUE, '0', FALSE, '30'
           ),
           new BooleanAttribute(
             _('Manager'), _('Provide alert to the manager'),
-            'fdTasksUserReminderManager', FALSE,
+            'fdTasksReminderManager', FALSE,
             FALSE
           ),
         ]
@@ -82,32 +68,56 @@ class taskUserReminder extends simplePlugin
         'attrs' => [
           new SelectAttribute(
             _('Resource'), _('Supann resources'),
-            'fdTasksUserReminderResource', TRUE, [], "None"
+            'fdTasksReminderResource', TRUE, [], "None"
           ),
           new SelectAttribute(
             _('State'), _('Resource state'),
-            'fdTasksUserReminderState', TRUE, [], "None"
+            'fdTasksReminderState', TRUE, [], "None"
           ),
           new SelectAttribute(
             _('Sub state'), _('Resource sub state'),
-            'fdTasksUserReminderSubState', FALSE, [], "None"
+            'fdTasksReminderSubState', FALSE, [], "None"
           ),
         ]
       ],
       'section3'                => [
-        'name'  => _('New SupannRessourceEtat to be set'),
+        'name'  => _('Account prolongation'),
+        'class' => ['fullwidth', 'information'],
         'attrs' => [
+          new BooleanAttribute(
+            _('Account prolongation'), _('Activate / Deactivate account prolongation (token issue)'),
+            'fdTasksReminderAccountProlongation', FALSE,
+            FALSE
+          ),
+          new IntAttribute(
+            _('Second reminder'), _('Numbers of days before reaching resource end date'),
+            'fdTasksReminderSecondCall', TRUE, '0', FALSE, '15'
+          ),
+          new BooleanAttribute(
+            _('Posix'), _('Monitor posix end date'),
+            'fdTasksReminderPosix', FALSE,
+            FALSE
+          ),
+          new BooleanAttribute(
+            _('PPolicy'), _('Monitoring PPolicy end date'),
+            'fdTasksReminderPPolicy', FALSE,
+            FALSE
+          ),
           new SelectAttribute(
             _('Resource'), _('Supann resources'),
-            'fdTasksUserReminderNextResource', TRUE, [], "None"
+            'fdTasksReminderNextResource', TRUE, [], "None"
           ),
           new SelectAttribute(
             _('State'), _('Resource state'),
-            'fdTasksUserReminderNextState', TRUE, [], "None"
+            'fdTasksReminderNextState', TRUE, [], "None"
           ),
           new SelectAttribute(
             _('Sub state'), _('Resource sub state'),
-            'fdTasksUserReminderNextSubState', FALSE, [], "None"
+            'fdTasksReminderNextSubState', FALSE, [], "None"
+          ),
+          new IntAttribute(
+            _('Account added duration'), _('Numbers of days to add to the new end date of supann resource'),
+            'fdTasksReminderSupannNewEndDate', TRUE, '0', FALSE, '0'
           ),
         ]
       ],
@@ -116,7 +126,7 @@ class taskUserReminder extends simplePlugin
         'attrs' => [
           new UsersGroupsRolesAttribute(
             _('Recipients'), _('Users or Groups requiring to be notified.'),
-            'fdTasksUserReminderRecipientsMembers', TRUE
+            'fdTasksReminderRecipientsMembers', TRUE
           ),
         ],
       ],
@@ -125,11 +135,11 @@ class taskUserReminder extends simplePlugin
         'attrs' => [
           new SelectAttribute(
             _('Mail Template'), _('Mail Template Object Selection'),
-            'fdTasksUserReminderMailTemplate', TRUE
+            'fdTasksReminderMailTemplate', TRUE
           ),
           new MailAttribute(
             _('Sender email address'),
-            _('Email address from which mails will be sent'), 'fdTasksUserReminderEmailSender',
+            _('Email address from which mails will be sent'), 'fdTasksReminderEmailSender',
             TRUE, 'to.be@chang.ed'),
         ],
       ],
@@ -146,7 +156,7 @@ class taskUserReminder extends simplePlugin
 
     // Fill in the list of mail template available to the attribute
     $mailTemplates = $this->getMailTemplates();
-    $this->attributesAccess['fdTasksUserReminderMailTemplate']->setChoices(
+    $this->attributesAccess['fdTasksReminderMailTemplate']->setChoices(
       array_keys($mailTemplates), array_values($mailTemplates)
     );
 
@@ -158,7 +168,7 @@ class taskUserReminder extends simplePlugin
 
   /**
    * @return void
-   * Note : Simply get the existing supann States to the userReminder attributes.
+   * Note : Simply get the existing supann States to the Reminder attributes.
    */
   protected function setSupannStates (): void
   {
@@ -174,16 +184,16 @@ class taskUserReminder extends simplePlugin
     $this->subStates = supannAccountStatus::getConfiguredSubstates(); //Keys are states and Values are subStates
 
     // Set the resource
-    $this->attributesAccess['fdTasksUserReminderResource']->setChoices(array_keys($resources), array_values($resources));
-    $this->attributesAccess['fdTasksUserReminderNextResource']->setChoices(array_keys($resources), array_values($resources));
+    $this->attributesAccess['fdTasksReminderResource']->setChoices(array_keys($resources), array_values($resources));
+    $this->attributesAccess['fdTasksReminderNextResource']->setChoices(array_keys($resources), array_values($resources));
 
     // Set the state
-    $this->attributesAccess['fdTasksUserReminderState']->setChoices(array_keys($this->subStates));
-    $this->attributesAccess['fdTasksUserReminderNextState']->setChoices(array_keys($this->subStates));
+    $this->attributesAccess['fdTasksReminderState']->setChoices(array_keys($this->subStates));
+    $this->attributesAccess['fdTasksReminderNextState']->setChoices(array_keys($this->subStates));
 
     // Allows the sub states to be listed when state is modified.
-    $this->attributesAccess['fdTasksUserReminderState']->setSubmitForm('updateFieldsChoices');
-    $this->attributesAccess['fdTasksUserReminderNextState']->setSubmitForm('updateFieldsChoices');
+    $this->attributesAccess['fdTasksReminderState']->setSubmitForm('updateFieldsChoices');
+    $this->attributesAccess['fdTasksReminderNextState']->setSubmitForm('updateFieldsChoices');
     // This initial fill the list choices based on registered states.
     $this->updateFieldsChoices();
   }
@@ -195,12 +205,12 @@ class taskUserReminder extends simplePlugin
   function updateFieldsChoices ()
   {
     // Update the available supann states
-    $subStatesList = $this->subStates[$this->attributesAccess['fdTasksUserReminderState']->getValue()] ?? [];
-    $subStatesList = $this->subStates[$this->attributesAccess['fdTasksUserReminderNextState']->getValue()] ?? [];
+    $subStatesList = $this->subStates[$this->attributesAccess['fdTasksReminderState']->getValue()] ?? [];
+    $subStatesList = $this->subStates[$this->attributesAccess['fdTasksReminderNextState']->getValue()] ?? [];
 
     // Update subStates
-    $this->attributesAccess['fdTasksUserReminderSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
-    $this->attributesAccess['fdTasksUserReminderNextSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
+    $this->attributesAccess['fdTasksReminderSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
+    $this->attributesAccess['fdTasksReminderNextSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
   }
 
   /**
@@ -229,7 +239,7 @@ class taskUserReminder extends simplePlugin
   protected function getListOfDN (): void
   {
     // Get the members or groups selected
-    $recipients = $this->attributesAccess['fdTasksUserReminderRecipientsMembers']->getValue();
+    $recipients = $this->attributesAccess['fdTasksReminderRecipientsMembers']->getValue();
     // Call static function from tasks object in order to get a real list of members and related emails directly.
     $emailsList = tasksMail::getEmailsFromSelectedDN('gosaMailAccount',
                                                      'mail',
@@ -237,7 +247,7 @@ class taskUserReminder extends simplePlugin
     );
 
     // Fill the attribute with emails.
-    $this->attributesAccess['fdTasksUserReminderListOfRecipientsMails']->setValue(array_values($emailsList));
+    $this->attributesAccess['fdTasksReminderListOfRecipientsMails']->setValue(array_values($emailsList));
   }
 
 
@@ -247,14 +257,14 @@ class taskUserReminder extends simplePlugin
    */
   function generateSlaveTasks ()
   {
-    $listOfDN = $this->attributesAccess['fdTasksUserReminderListOfNewAuditUsersDN']->getValue();
+    $listOfDN = $this->attributesAccess['fdTasksReminderListOfNewAuditUsersDN']->getValue();
     // The attribute required to be search in createSlaveTasks
     $attributeType = 'fdTasksGranularDN';
     // Store the full associative array coming from the list of new audit user DN, containing all audit DN related to that user.
     $attrs['ref'] = $listOfDN;
 
     // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
-    $this->parent->getBaseObject()->createSlaveTasks(array_keys($listOfDN), $attributeType, $attrs, 'userReminder');
+    $this->parent->getBaseObject()->createSlaveTasks(array_keys($listOfDN), $attributeType, $attrs, 'Reminder');
   }
 
   /**
