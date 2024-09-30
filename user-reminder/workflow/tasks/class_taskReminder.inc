@@ -128,6 +128,10 @@ class taskReminder extends simplePlugin
             _('Recipients'), _('Users or Groups requiring to be notified.'),
             'fdTasksReminderRecipientsMembers', TRUE
           ),
+          new UsersGroupsRolesAttribute(
+            _('Monitored Members'), _('Users or Groups requiring monitoring.'),
+            'fdTasksReminderMembers', TRUE
+          ),
         ],
       ],
       'Mail Template Selection' => [
