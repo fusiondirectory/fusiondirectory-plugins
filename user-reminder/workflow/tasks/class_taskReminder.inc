@@ -46,10 +46,10 @@ class taskReminder extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'section1'                => [
+      'section1' => [
         'name'  => _('User Reminder general settings'),
         'attrs' => [
-          // Following attribute contain the list of members emails that should receive a notification.
+          // Following hidden attributes contain the list of members emails that should receive a reminder
           new HiddenArrayAttribute('fdTasksReminderListOfRecipientsMails', FALSE, ''),
           new IntAttribute(
             _('First reminder'), _('Numbers of days before reaching resource end date'),
@@ -63,7 +63,7 @@ class taskReminder extends simplePlugin
         ]
       ],
       // Attributes are grouped by section
-      'section2'                => [
+      'section2' => [
         'name'  => _('SupannRessourceEtat to be monitored '),
         'attrs' => [
           new SelectAttribute(
@@ -80,7 +80,7 @@ class taskReminder extends simplePlugin
           ),
         ]
       ],
-      'section3'                => [
+      'section3' => [
         'name'  => _('Account prolongation'),
         'class' => ['fullwidth', 'information'],
         'attrs' => [
@@ -134,7 +134,7 @@ class taskReminder extends simplePlugin
             TRUE, 'to.be@chang.ed'),
         ],
       ],
-      'section5'      => [
+      'section5' => [
         'name'  => _('Recipients Users and/or Groups'),
         'attrs' => [
           new UsersGroupsRolesAttribute(
@@ -212,7 +212,7 @@ class taskReminder extends simplePlugin
     $this->attributesAccess['fdTasksReminderState']->setChoices(array_keys($this->subStates));
     $this->attributesAccess['fdTasksReminderNextState']->setChoices(array_keys($this->subStates));
 
-//    // Allows the sub states to be listed when state is modified.
+    //    // Allows the sub states to be listed when state is modified.
     $this->attributesAccess['fdTasksReminderState']->setSubmitForm('updateFieldsChoices');
     $this->attributesAccess['fdTasksReminderNextState']->setSubmitForm('updateFieldsChoices');
     // This initial fill the list choices based on registered states.
@@ -227,11 +227,11 @@ class taskReminder extends simplePlugin
   {
     // Update the available supann states
     $subStatesList = $this->subStates[$this->attributesAccess['fdTasksReminderState']->getValue()] ?? [];
-    $subStatesList = $this->subStates[$this->attributesAccess['fdTasksReminderNextState']->getValue()] ?? [];
+    $subStatesNextList = $this->subStates[$this->attributesAccess['fdTasksReminderNextState']->getValue()] ?? [];
 
     // Update subStates
     $this->attributesAccess['fdTasksReminderSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
-    $this->attributesAccess['fdTasksReminderNextSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
+    $this->attributesAccess['fdTasksReminderNextSubState']->setChoices(array_keys($subStatesNextList), array_values($subStatesNextList));
   }
 
   /**
@@ -255,20 +255,21 @@ class taskReminder extends simplePlugin
   }
 
   /**
-   * Retrieve all the DNs from groups or members
+   * Retrieve all the DNs from groups or members, recipients and monitored members.
+   * As both require receiving a reminder.
    */
   protected function getListOfDN (): void
   {
     // Get the members or groups selected
     $recipients = $this->attributesAccess['fdTasksReminderRecipientsMembers']->getValue();
+
     // Call static function from tasks object in order to get a real list of members and related emails directly.
-    $emailsList = tasksMail::getEmailsFromSelectedDN('gosaMailAccount',
-                                                     'mail',
-                                                     tasks::extractMembersFromGroups($recipients)
-    );
+    $recipientsEmailsList = tasksMail::getEmailsFromSelectedDN('gosaMailAccount',
+                                                               'mail',
+                                                               tasks::extractMembersFromGroups($recipients));
 
     // Fill the attribute with emails.
-    $this->attributesAccess['fdTasksReminderListOfRecipientsMails']->setValue(array_values($emailsList));
+    $this->attributesAccess['fdTasksReminderListOfRecipientsMails']->setValue(array_values($recipientsEmailsList));
   }
 
 
@@ -276,16 +277,14 @@ class taskReminder extends simplePlugin
    * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
-  function generateSlaveTasks ()
+  function generateSlaveTasks ($monitoredDN)
   {
-    $listOfDN = $this->attributesAccess['fdTasksReminderListOfNewAuditUsersDN']->getValue();
     // The attribute required to be search in createSlaveTasks
     $attributeType = 'fdTasksGranularDN';
-    // Store the full associative array coming from the list of new audit user DN, containing all audit DN related to that user.
-    $attrs['ref'] = $listOfDN;
+    $attrs['ref']  = $this->dn;
 
     // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
-    $this->parent->getBaseObject()->createSlaveTasks(array_keys($listOfDN), $attributeType, $attrs, 'Reminder');
+    $this->parent->getBaseObject()->createSlaveTasks(array_keys($monitoredDN), $attributeType, $attrs, 'Reminder');
   }
 
   /**
@@ -309,8 +308,11 @@ class taskReminder extends simplePlugin
     // Verify if this tasks has to be executed upon saving.
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
 
+    // Get the DN list extracted from members and groups of users to serve the slave task.
+    $monitoredMembers = $this->attributesAccess['fdTasksReminderMembers']->getValue();
+
     if ($execTasks) {
-      $this->generateSlaveTasks();
+      $this->generateSlaveTasks(tasks::extractMembersFromGroups($monitoredMembers));
     }
 
     return parent::save();
