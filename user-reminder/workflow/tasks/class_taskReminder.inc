@@ -226,7 +226,7 @@ class taskReminder extends simplePlugin
   function updateFieldsChoices ()
   {
     // Update the available supann states
-    $subStatesList = $this->subStates[$this->attributesAccess['fdTasksReminderState']->getValue()] ?? [];
+    $subStatesList     = $this->subStates[$this->attributesAccess['fdTasksReminderState']->getValue()] ?? [];
     $subStatesNextList = $this->subStates[$this->attributesAccess['fdTasksReminderNextState']->getValue()] ?? [];
 
     // Update subStates
@@ -280,11 +280,22 @@ class taskReminder extends simplePlugin
   function generateSlaveTasks ($monitoredDN)
   {
     // The attribute required to be search in createSlaveTasks
-    $attributeType = 'fdTasksGranularDN';
-    $attrs['ref']  = $this->dn;
+    $attributeType                       = 'fdTasksGranularDN';
+    $firstCall['helper']['reminderTime'] = $this->attributesAccess['fdTasksReminderFirstCall']->getValue();
 
     // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
-    $this->parent->getBaseObject()->createSlaveTasks(array_keys($monitoredDN), $attributeType, $attrs, 'Reminder');
+    // Create the first sub task with primary call
+    $this->parent->getBaseObject()->createSlaveTasks($monitoredDN, $attributeType, $firstCall, 'Reminder');
+
+    // Create the second sub task with secondary call (if present).
+    if (!empty($this->attributesAccess['fdTasksReminderSecondCall']->getValue() &&
+      $this->attributesAccess['fdTasksReminderAccountProlongation']->getValue())) {
+
+      $secondCall['helper']['reminderTime'] = $this->attributesAccess['fdTasksReminderSecondCall']->getValue();
+      $this->parent->getBaseObject()->createSlaveTasks($monitoredDN, $attributeType, $secondCall, 'Reminder');
+    }
+
+
   }
 
   /**
