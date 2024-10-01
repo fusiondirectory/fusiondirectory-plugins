@@ -121,20 +121,7 @@ class taskReminder extends simplePlugin
           ),
         ]
       ],
-      'UserGroupSelection'      => [
-        'name'  => _('Recipients Users and/or Groups'),
-        'attrs' => [
-          new UsersGroupsRolesAttribute(
-            _('Recipients'), _('Users or Groups requiring to be notified.'),
-            'fdTasksReminderRecipientsMembers', TRUE
-          ),
-          new UsersGroupsRolesAttribute(
-            _('Monitored Members'), _('Users or Groups requiring monitoring.'),
-            'fdTasksReminderMembers', TRUE
-          ),
-        ],
-      ],
-      'Mail Template Selection' => [
+      'section4' => [
         'name'  => _('Mail Template'),
         'attrs' => [
           new SelectAttribute(
@@ -145,6 +132,19 @@ class taskReminder extends simplePlugin
             _('Sender email address'),
             _('Email address from which mails will be sent'), 'fdTasksReminderEmailSender',
             TRUE, 'to.be@chang.ed'),
+        ],
+      ],
+      'section5'      => [
+        'name'  => _('Recipients Users and/or Groups'),
+        'attrs' => [
+          new UsersGroupsRolesAttribute(
+            _('Recipients'), _('Users or Groups requiring to be notified.'),
+            'fdTasksReminderRecipientsMembers', TRUE
+          ),
+          new UsersGroupsRolesAttribute(
+            _('Monitored Members'), _('Users or Groups requiring monitoring.'),
+            'fdTasksReminderMembers', TRUE
+          ),
         ],
       ],
     ];
