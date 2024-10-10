@@ -46,7 +46,7 @@ class sinapsConfig extends simplePlugin
           new BooleanAttribute(
             _('Enable SINAPS integration'), _('Whether to enable the SINAPS integration'),
             'fdSinapsEnabled', FALSE,
-            TRUE
+            FALSE
           ),
           new BooleanAttribute(
             _('Dry run mode'), _('Do not insert data in FusionDirectory, dump it to a file'),
