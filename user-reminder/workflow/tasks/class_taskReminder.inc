@@ -138,8 +138,8 @@ class taskReminder extends simplePlugin
         'name'  => _('Recipients Users and/or Groups'),
         'attrs' => [
           new UsersGroupsRolesAttribute(
-            _('Recipients'), _('Users or Groups requiring to be notified.'),
-            'fdTasksReminderRecipientsMembers', TRUE
+            _('Forward To'), _('Users or Groups requiring to be notified.'),
+            'fdTasksReminderRecipientsMembers', FALSE
           ),
           new UsersGroupsRolesAttribute(
             _('Monitored Members'), _('Users or Groups requiring monitoring.'),
