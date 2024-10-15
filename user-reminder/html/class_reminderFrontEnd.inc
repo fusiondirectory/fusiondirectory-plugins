@@ -29,9 +29,12 @@ class reminderFrontEnd extends standAlonePage
    * @return bool
    * Note : method from extension.
    */
-  protected function readLdapConfig (string $taskDN): bool
+  protected function readLdapConfig (): bool
   {
+    $result = FALSE;
     // Set the value from the main task.
+
+    return $result;
   }
 
   function execute ()
@@ -45,7 +48,7 @@ class reminderFrontEnd extends standAlonePage
     $success        = TRUE;
     $this->message  = [];
 
-    if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_GET['token'])) {
+    if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_GET['token']) && isset($_GET['task']) && isset($_GET['uid'])) {
       // Check if the token match
       $this->uid = $_GET['uid'];
       if ($this->checkToken($_GET['token'])) {
