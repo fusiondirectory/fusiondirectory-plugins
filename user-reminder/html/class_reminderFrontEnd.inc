@@ -25,18 +25,9 @@ require_once('variables.inc');
 
 class reminderFrontEnd extends standAlonePage
 {
-  /**
-   * @var mixed
-   */
-  private $token;
-  /**
-   * @var mixed
-   */
-  private $task;
-  /**
-   * @var mixed
-   */
-  private $uid;
+  private string $token;
+  private string $task;
+  private string $uid;
 
   /**
    * @return bool
@@ -52,20 +43,13 @@ class reminderFrontEnd extends standAlonePage
     $this->sanitizeInputs();
 
     if (!empty($this->task)) {
-      $dn = 'cn=' . $this->task . ',ou=tasks' . $config->current['BASE'];
-    }
+      $dn = 'cn=' . $this->task . ',ou=tasks,' . $config->current['BASE'];
+      // Retrieve tasks information
+      $ldap->cat($dn);
+      if ($attrs = $ldap->fetch()) {
+        // Fills the required value here.
 
-
-    $ldap->cat($dn);
-    if ($attrs = $ldap->fetch()) {
-      $ldap_token = $attrs['userPassword'][0];
-      $token_date = $attrs['description'][0];
-
-      /* Return TRUE if the token match and is still valid */
-      return ($token_date + $this->alert_delay >= (time() / 86400)) &&
-        ($ldap_token == $sha_token);
-    } else {
-      return FALSE;
+      }
     }
 
     return $result;
@@ -80,24 +64,24 @@ class reminderFrontEnd extends standAlonePage
       return;
     }
 
-    if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_GET['token']) && isset($_GET['task']) && isset($_GET['uid'])) {
-      // Check if the token match
-      $this->uid = $_GET['uid'];
-      if ($this->checkToken($_GET['token'])) {
-        $this->postponeExpiration();
-      } else {
-        $this->message[] = _('This token is invalid');
-      }
+    if ($this->checkToken($_GET['token'])) {
+      $this->postponeExpiration();
     } else {
-      $this->message[] = _('Token is missing from URL');
+      $this->message[] = _('This token is invalid or missing!');
     }
 
-    /* Do we need to show error messages? */
     if (!empty($this->message)) {
       msg_dialog::displayChecks($this->message);
       $success = FALSE;
     }
 
+    // Initialize smarty and pass the status of potential error ??
+    $this->initSmarty($success);
+
+  }
+
+  private function initSmarty ($success)
+  {
     $smarty = get_smarty();
 
     $smarty->assign('PHPSESSID', session_id());
@@ -122,6 +106,11 @@ class reminderFrontEnd extends standAlonePage
     $smarty->display(get_template_path('user-reminder.tpl'));
   }
 
+  /**
+   * @param $token
+   * @return bool
+   * NOTE : To be revamp as this old logic seems a bit off to me.
+   */
   function checkToken ($token)
   {
     global $config;
@@ -144,6 +133,10 @@ class reminderFrontEnd extends standAlonePage
     }
   }
 
+  /**
+   * @return void
+   * Note : Simple deletion of token
+   */
   function deleteToken ()
   {
     global $config;
@@ -240,38 +233,6 @@ class reminderFrontEnd extends standAlonePage
         }
       }
     }
-    $this->sendConfirmationMail($cn, $email_address, $manager_mail);
-  }
-
-  function sendConfirmationMail ($cn, $email_address, $manager_mail)
-  {
-    if (empty($this->mail_body) || empty($this->mail_subject)) {
-      return;
-    }
-    $body = sprintf($this->mail_body, $cn, $this->uid);
-
-    if (!empty($manager_mail)) {
-      $email_address .= ',' . $manager_mail;
-    }
-
-    if (!mail_utf8($email_address, FALSE, $this->from_mail, $this->mail_subject, $body)) {
-      $this->message[] = _('Contact your administrator, there was a problem with mail server');
-    }
-  }
-
-  function getUserDn ()
-  {
-    $users = objects::ls('user', NULL, NULL, '(uid=' . $this->uid . ')');
-
-    if (count($users) < 1) {
-      $this->message[] = sprintf(_('Did not find an account with login "%s"'), $this->uid);
-      return;
-    } elseif (count($users) > 1) {
-      $this->message[] = sprintf(_('Found multiple accounts with login "%s"'), $this->uid);
-      return;
-    }
-
-    return key($users);
   }
 
   /**
@@ -280,7 +241,7 @@ class reminderFrontEnd extends standAlonePage
    */
   private function sanitizeInputs ()
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['token'], $_GET['task'], $_GET['uid'])) {
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['token']) && isset($_GET['task']) && isset($_GET['uid'])) {
       // Sanitize and validate input fields
       $token = filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING);
       $task  = filter_input(INPUT_GET, 'task', FILTER_SANITIZE_STRING);
