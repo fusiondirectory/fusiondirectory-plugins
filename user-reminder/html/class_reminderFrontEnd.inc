@@ -26,27 +26,59 @@ require_once('variables.inc');
 class reminderFrontEnd extends standAlonePage
 {
   /**
+   * @var mixed
+   */
+  private $token;
+  /**
+   * @var mixed
+   */
+  private $task;
+  /**
+   * @var mixed
+   */
+  private $uid;
+
+  /**
    * @return bool
    * Note : method from extension.
+   * It will help to get the information from the main task.
    */
   protected function readLdapConfig (): bool
   {
+    global $config;
     $result = FALSE;
-    // Set the value from the main task.
+
+    $ldap = $config->get_ldap_link();
+    $this->sanitizeInputs();
+
+    if (!empty($this->task)) {
+      $dn = 'cn=' . $this->task . ',ou=tasks' . $config->current['BASE'];
+    }
+
+
+    $ldap->cat($dn);
+    if ($attrs = $ldap->fetch()) {
+      $ldap_token = $attrs['userPassword'][0];
+      $token_date = $attrs['description'][0];
+
+      /* Return TRUE if the token match and is still valid */
+      return ($token_date + $this->alert_delay >= (time() / 86400)) &&
+        ($ldap_token == $sha_token);
+    } else {
+      return FALSE;
+    }
 
     return $result;
   }
 
   function execute ()
   {
-    global $error_collector, $error_collector_mailto;
+    global $error_collector;
 
+    // This is a protection in case the reading of ldap failed (from readLdapConfig). (Previous logic from userReminder).
     if (!$this->activated) {
       return;
     }
-
-    $success        = TRUE;
-    $this->message  = [];
 
     if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_GET['token']) && isset($_GET['task']) && isset($_GET['uid'])) {
       // Check if the token match
@@ -71,37 +103,34 @@ class reminderFrontEnd extends standAlonePage
     $smarty->assign('PHPSESSID', session_id());
     if (session::is_set('errors')) {
       $smarty->assign('errors', session::get('errors'));
-    }
-    if ($error_collector != '') {
-      $smarty->assign('php_errors', preg_replace('/%BUGBODY%/', $error_collector_mailto, $error_collector).'</div>');
     } else {
       $smarty->assign('php_errors', '');
     }
 
-    $smarty->assign('msg_dialogs',  msg_dialog::get_dialogs());
+    $smarty->assign('msg_dialogs', msg_dialog::get_dialogs());
     $smarty->assign('usePrototype', 'FALSE');
-    $smarty->append('js_files',     'include/pwdStrength.js');
-    $smarty->append('css_files',    get_template_path('login.css'));
+    $smarty->append('js_files', 'include/pwdStrength.js');
+    $smarty->append('css_files', get_template_path('login.css'));
     $lang = session::global_get('lang');
     $smarty->assign('lang', preg_replace('/_.*$/', '', $lang));
     $smarty->assign('rtl', Language::isRTL($lang));
     $smarty->display(get_template_path('headers.tpl'));
 
-    $smarty->assign('version',        FD_VERSION);
-    $smarty->assign('success',        $success);
-    $smarty->assign('activated',      $this->activated);
+    $smarty->assign('version', FD_VERSION);
+    $smarty->assign('success', $success);
+    $smarty->assign('activated', $this->activated);
     $smarty->display(get_template_path('user-reminder.tpl'));
   }
 
   function checkToken ($token)
   {
     global $config;
-    $sha_token = '{SHA}'.base64_encode(hash('sha256', 'expired'.$token, TRUE));
+    $sha_token = '{SHA}' . base64_encode(hash('sha256', 'expired' . $token, TRUE));
 
     /* Retrieve hash from the ldap */
     $ldap = $config->get_ldap_link();
 
-    $dn   = 'ou='.$this->uid.','.get_ou('reminderTokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE'];
+    $dn = 'ou=' . $this->uid . ',' . get_ou('reminderTokenRDN') . get_ou('fusiondirectoryRDN') . $config->current['BASE'];
     $ldap->cat($dn);
     if ($attrs = $ldap->fetch()) {
       $ldap_token = $attrs['userPassword'][0];
@@ -121,7 +150,7 @@ class reminderFrontEnd extends standAlonePage
 
     $ldap = $config->get_ldap_link();
 
-    $dn   = 'ou='.$this->uid.','.get_ou('reminderTokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE'];
+    $dn = 'ou=' . $this->uid . ',' . get_ou('reminderTokenRDN') . get_ou('fusiondirectoryRDN') . $config->current['BASE'];
     $ldap->rmdir($dn);
     if (!$ldap->success()) {
       $this->message[] = $ldap->get_error();
@@ -142,7 +171,7 @@ class reminderFrontEnd extends standAlonePage
       ($userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getValue() != '')
     ) {
       $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
-      $date->add(new DateInterval('P'.$this->postpone_days.'D'));
+      $date->add(new DateInterval('P' . $this->postpone_days . 'D'));
       $userTabs->by_object['posixAccount']->shadowExpire = $date;
     }
     if (
@@ -155,12 +184,12 @@ class reminderFrontEnd extends standAlonePage
         if (($label == 'COMPTE') && ($state == 'A') && ($end != '')) {
           /* Postpone enddate */
           $date = new DateTime($end);
-          $date->add(new DateInterval('P'.$this->postpone_days.'D'));
+          $date->add(new DateInterval('P' . $this->postpone_days . 'D'));
           if ($substate != 'SupannSursis') {
             /* Set start date to current date if substate changed */
             $start = date('Ymd');
           }
-          $supannRessourceEtatDateValues[] = '{COMPTE}A:SupannSursis:'.$start.':'.$date->format('Ymd');
+          $supannRessourceEtatDateValues[] = '{COMPTE}A:SupannSursis:' . $start . ':' . $date->format('Ymd');
         } else {
           $supannRessourceEtatDateValues[] = $line;
         }
@@ -174,17 +203,17 @@ class reminderFrontEnd extends standAlonePage
     }
     $this->deleteToken();
 
-    $cn             = $userTabs->getBaseObject()->cn;
-    $manager_dn     = $userTabs->getBaseObject()->manager;
-    $email_address  = '';
+    $cn            = $userTabs->getBaseObject()->cn;
+    $manager_dn    = $userTabs->getBaseObject()->manager;
+    $email_address = '';
     if (isset($userTabs->by_object['mailAccount'])) {
-      $email_address  = $userTabs->by_object['mailAccount']->mail;
+      $email_address = $userTabs->by_object['mailAccount']->mail;
     } elseif ($this->use_alternate && isset($userTabs->by_object['mailAccount']) && !empty($userTabs->by_object['mailAccount']->gosaMailAlternateAddress)) {
-      $email_address  = reset($userTabs->by_object['mailAccount']->gosaMailAlternateAddress);
+      $email_address = reset($userTabs->by_object['mailAccount']->gosaMailAlternateAddress);
     } elseif (isset($userTabs->by_object['supannAccount']) && !empty($userTabs->by_object['supannAccount']->supannAutreMail)) {
-      $email_address  = reset($userTabs->by_object['supannAccount']->supannAutreMail);
+      $email_address = reset($userTabs->by_object['supannAccount']->supannAutreMail);
     } elseif (isset($userTabs->by_object['personalInfo']) && !empty($userTabs->by_object['personalInfo']->fdPrivateMail)) {
-      $email_address  = $userTabs->by_object['personalInfo']->fdPrivateMail;
+      $email_address = $userTabs->by_object['personalInfo']->fdPrivateMail;
     }
 
     $manager_mail = '';
@@ -222,7 +251,7 @@ class reminderFrontEnd extends standAlonePage
     $body = sprintf($this->mail_body, $cn, $this->uid);
 
     if (!empty($manager_mail)) {
-      $email_address .= ','.$manager_mail;
+      $email_address .= ',' . $manager_mail;
     }
 
     if (!mail_utf8($email_address, FALSE, $this->from_mail, $this->mail_subject, $body)) {
@@ -232,7 +261,7 @@ class reminderFrontEnd extends standAlonePage
 
   function getUserDn ()
   {
-    $users = objects::ls('user', NULL, NULL, '(uid='.$this->uid.')');
+    $users = objects::ls('user', NULL, NULL, '(uid=' . $this->uid . ')');
 
     if (count($users) < 1) {
       $this->message[] = sprintf(_('Did not find an account with login "%s"'), $this->uid);
@@ -243,5 +272,35 @@ class reminderFrontEnd extends standAlonePage
     }
 
     return key($users);
+  }
+
+  /**
+   * @return void
+   * Note : Simply set global variables after sanitization.
+   */
+  private function sanitizeInputs ()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['token'], $_GET['task'], $_GET['uid'])) {
+      // Sanitize and validate input fields
+      $token = filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING);
+      $task  = filter_input(INPUT_GET, 'task', FILTER_SANITIZE_STRING);
+      $uid   = filter_input(INPUT_GET, 'uid', FILTER_SANITIZE_STRING);
+
+      // Function to validate if inputs are strictly alphanumeric
+      function is_alphanumeric ($value)
+      {
+        return preg_match('/^[a-zA-Z0-9]+$/', $value);
+      }
+
+      // Validate 'token'
+      if (!is_alphanumeric($token) && !is_alphanumeric($task) && !is_alphanumeric($uid)) {
+        die("Invalid values within passed arguments...");
+      }
+
+      // Assign the sanitized values
+      $this->token = $token;
+      $this->task  = $task;
+      $this->uid   = $uid;
+    }
   }
 }
