@@ -26,7 +26,7 @@ require_once('variables.inc');
 class reminderFrontEnd extends standAlonePage
 {
   private string $token;
-  private string $task;
+  private array $task;
   private string $uid;
 
   /**
@@ -42,14 +42,20 @@ class reminderFrontEnd extends standAlonePage
     $ldap = $config->get_ldap_link();
     $this->sanitizeInputs();
 
-    if (!empty($this->task)) {
-      $dn = 'cn=' . $this->task . ',ou=tasks,' . $config->current['BASE'];
+    if (!empty($this->task['name'])) {
+      $dn = 'cn=' . $this->task['name'] . ',ou=tasks,' . $config->current['BASE'];
       // Retrieve tasks information
       $ldap->cat($dn);
       if ($attrs = $ldap->fetch()) {
         // Fills the required value here.
-
+        $this->task['posix'] = $attrs['fdTasksReminderPosix'][0]; // bool as string
+        $this->task['ppolicy'] = $attrs['fdTasksReminderPPolicy'][0]; // bool as string
+        $this->task['resource'] = $attrs['fdTasksReminderNextResource'][0]; //string
+        $this->task['days'] = $attrs['fdTasksReminderSupannNewEndDate'][0]; // int
+        $this->task['state'] = $attrs['fdTasksReminderNextState'][0]; // string
+        $this->task['subState'] = $attrs['fdTasksReminderNextSubState'][0]; // string
       }
+      $result = TRUE;
     }
 
     return $result;
@@ -103,7 +109,7 @@ class reminderFrontEnd extends standAlonePage
     $smarty->assign('version', FD_VERSION);
     $smarty->assign('success', $success);
     $smarty->assign('activated', $this->activated);
-    $smarty->display(get_template_path('user-reminder.tpl'));
+    $smarty->display(get_template_path('taskReminder.tpl'));
   }
 
   /**
@@ -254,13 +260,14 @@ class reminderFrontEnd extends standAlonePage
       }
 
       // Validate 'token'
-      if (!is_alphanumeric($token) && !is_alphanumeric($task) && !is_alphanumeric($uid)) {
+      if (!is_alphanumeric($token) && !is_alphanumeric($task['name']) && !is_alphanumeric($uid)) {
         die("Invalid values within passed arguments...");
       }
 
       // Assign the sanitized values
       $this->token = $token;
-      $this->task  = $task;
+      // Simply set the $task representing the name of main task to an array (Simplify further process down the line).
+      $this->task['name']  = $task;
       $this->uid   = $uid;
     }
   }
