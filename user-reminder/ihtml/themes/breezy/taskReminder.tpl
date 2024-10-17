@@ -24,7 +24,7 @@
                 {else}
                     <div class="error">
                         <img class="center" src="geticon.php?context=status&amp;icon=task-failure&amp;size=16" alt="{t}Error{/t}" title="{t}Error{/t}">&nbsp;
-                        <b>{t}There was a problem{/t}</b>
+                        <b>{t}An unexpected error occurred{/t}</b>
                     </div>
                 {/if}
                 <br/><a href="./">Return to login screen</a>

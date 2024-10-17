@@ -33,6 +33,7 @@ class reminderFrontEnd extends standAlonePage
    * @return bool
    * Note : method from extension.
    * It will help to get the information from the main task.
+   * It is also run before class execute.
    */
   protected function readLdapConfig (): bool
   {
@@ -54,12 +55,20 @@ class reminderFrontEnd extends standAlonePage
         $this->task['days'] = $attrs['fdTasksReminderSupannNewEndDate'][0]; // int
         $this->task['state'] = $attrs['fdTasksReminderNextState'][0]; // string
         $this->task['subState'] = $attrs['fdTasksReminderNextSubState'][0]; // string
+
+        $result = TRUE;
       }
-      $result = TRUE;
     }
 
     return $result;
   }
+
+  // attributesName to be taken
+  /* - EPPN eduPersonPrincipalName
+  /  - UID
+  /  - mail
+  /  - alias supannAliasLogin
+  */
 
   function execute ()
   {
@@ -70,7 +79,8 @@ class reminderFrontEnd extends standAlonePage
       return;
     }
 
-    if ($this->checkToken($_GET['token'])) {
+    // token is set during sanitization
+    if ($this->checkToken($this->token)) {
       $this->postponeExpiration();
     } else {
       $this->message[] = _('This token is invalid or missing!');
