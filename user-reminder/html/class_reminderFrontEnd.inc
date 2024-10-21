@@ -64,15 +64,6 @@ class reminderFrontEnd extends standAlonePage
   }
 
 
-  /*
-   * ### token objectclass ###
-
-objectclass ( 1.3.6.1.4.1.38414.62.2.10 NAME 'fdTokenEntry' SUP top STRUCTURAL
-  DESC 'FusionDirectory - Class for token storage'
-  MUST ( fdUserDn $fdTokenType $fdToken $ fdTokenTimestamp ))
-   */
-
-
   // attributesName to be taken
   /* - EPPN eduPersonPrincipalName
   /  - UID
