@@ -72,7 +72,12 @@ class reminderFrontEnd extends standAlonePage
     // Verify if uid is set (thanks to post) and verify token validity.
     if (!empty($this->uid)) {
       // verification of token
-      echo "login retrieved";
+      if ($this->checkToken($this->token)) {
+        $this->message[] = "Token is valid and not expired.";
+      } else {
+        $this->message[] = "Token is not valid or expired.";
+      }
+
     }
 
     if (!empty($this->message)) {
@@ -117,132 +122,48 @@ class reminderFrontEnd extends standAlonePage
    * @return bool
    * NOTE : To be revamp as this old logic seems a bit off to me.
    */
-  function checkToken ($token)
+  private function checkToken ($token): bool
   {
     global $config;
+    $result = FALSE;
 
     /* Retrieve hash from the ldap */
     $ldap = $config->get_ldap_link();
 
-    $dn = 'ou=' . $this->uid . ',ou=tokens' . $config->current['BASE'];
+    $dn = 'cn=' . $this->uid . ',ou=tokens,' . $config->current['BASE'];
     $ldap->cat($dn);
+
     if ($attrs = $ldap->fetch()) {
-      $ldapToken      = $attrs['tokens'][0];
-      $tokenTimestamp = $attrs['timestamp'][0];
-      $tokenDate      = $attrs['type'][0];
+      $ldapToken = $attrs['fdToken'][0];
+      $tokenDate = $attrs['fdTokenTimestamp'][0];
+      $tokenType = $attrs['fdTokenType'][0];
 
       // Check timestamp in UTC format
-      if ($ldapToken == $token) {
+      if ($ldapToken === $token && $tokenType === 'reminder') {
         if (time() < $tokenDate) {
-          return TRUE;
+          $result = TRUE;
         }
-      } else {
-        return FALSE;
       }
     }
-
-    /**
-     * @return void
-     * Note : Simple deletion of token
-     */
-    function deleteToken ()
-    {
-      global $config;
-
-      $ldap = $config->get_ldap_link();
-
-      $dn = 'ou=' . $this->uid . ',ou=tokens' . $config->current['BASE'];
-      $ldap->rmdir($dn);
-      if (!$ldap->success()) {
-        $this->message[] = $ldap->get_error();
-      }
-    }
+    return $result;
   }
 
-  //    function postponeExpiration ()
-  //    {
-  //      global $config;
-  //      $dn = $this->getUserDn();
-  //      if (empty($dn)) {
-  //        return;
-  //      }
-  //      $userTabs = objects::open($dn, 'user');
-  //      if (
-  //        isset($userTabs->by_object['posixAccount']) &&
-  //        $userTabs->by_object['posixAccount']->is_account &&
-  //        ($userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getValue() != '')
-  //      ) {
-  //        $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
-  //        $date->add(new DateInterval('P' . $this->postpone_days . 'D'));
-  //        $userTabs->by_object['posixAccount']->shadowExpire = $date;
-  //      }
-  //      if (
-  //        isset($userTabs->by_object['supannAccountStatus']) &&
-  //        $userTabs->by_object['supannAccountStatus']->is_account
-  //      ) {
-  //        $supannRessourceEtatDateValues = [];
-  //        foreach ($userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate as $line) {
-  //          list ($label, $state, $substate, $start, $end) = $userTabs->by_object['supannAccountStatus']->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
-  //          if (($label == 'COMPTE') && ($state == 'A') && ($end != '')) {
-  //            /* Postpone enddate */
-  //            $date = new DateTime($end);
-  //            $date->add(new DateInterval('P' . $this->postpone_days . 'D'));
-  //            if ($substate != 'SupannSursis') {
-  //              /* Set start date to current date if substate changed */
-  //              $start = date('Ymd');
-  //            }
-  //            $supannRessourceEtatDateValues[] = '{COMPTE}A:SupannSursis:' . $start . ':' . $date->format('Ymd');
-  //          } else {
-  //            $supannRessourceEtatDateValues[] = $line;
-  //          }
-  //        }
-  //        $userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate = $supannRessourceEtatDateValues;
-  //      }
-  //      $error = $userTabs->save();
-  //      if (!empty($error)) {
-  //        $this->message = $error;
-  //        return;
-  //      }
-  //      $this->deleteToken();
-  //
-  //      $cn            = $userTabs->getBaseObject()->cn;
-  //      $manager_dn    = $userTabs->getBaseObject()->manager;
-  //      $email_address = '';
-  //      if (isset($userTabs->by_object['mailAccount'])) {
-  //        $email_address = $userTabs->by_object['mailAccount']->mail;
-  //      } elseif ($this->use_alternate && isset($userTabs->by_object['mailAccount']) && !empty($userTabs->by_object['mailAccount']->gosaMailAlternateAddress)) {
-  //        $email_address = reset($userTabs->by_object['mailAccount']->gosaMailAlternateAddress);
-  //      } elseif (isset($userTabs->by_object['supannAccount']) && !empty($userTabs->by_object['supannAccount']->supannAutreMail)) {
-  //        $email_address = reset($userTabs->by_object['supannAccount']->supannAutreMail);
-  //      } elseif (isset($userTabs->by_object['personalInfo']) && !empty($userTabs->by_object['personalInfo']->fdPrivateMail)) {
-  //        $email_address = $userTabs->by_object['personalInfo']->fdPrivateMail;
-  //      }
-  //
-  //      $manager_mail = '';
-  //      if ($this->forward_postpone) {
-  //        $ldap = $config->get_ldap_link();
-  //        if (empty($manager_dn)) {
-  //          $ldap->cat($userTabs->getBaseObject()->base, ['manager']);
-  //          if (($attrs = $ldap->fetch()) && isset($attrs['manager'][0])) {
-  //            $manager_dn = $attrs['manager'][0];
-  //          }
-  //        }
-  //        if (!empty($manager_dn)) {
-  //          $ldap->cat($manager_dn, ['cn', 'mail', 'gosaMailAlternateAddress', 'supannAutreMail', 'fdPrivateMail']);
-  //          if ($attrs = $ldap->fetch()) {
-  //            if (!empty($attrs['mail'][0])) {
-  //              $manager_mail = $attrs['mail'][0];
-  //            } elseif ($this->use_alternate && !empty($attrs['gosaMailAlternateAddress'][0])) {
-  //              $manager_mail = $attrs['gosaMailAlternateAddress'][0];
-  //            } elseif (!empty($attrs['supannAutreMail'][0])) {
-  //              $manager_mail = $attrs['supannAutreMail'][0];
-  //            } elseif (!empty($attrs['fdPrivateMail'][0])) {
-  //              $manager_mail = $attrs['fdPrivateMail'][0];
-  //            }
-  //          }
-  //        }
-  //      }
-  //    }
+  /**
+   * @return void
+   * Note : Simple deletion of token
+   */
+  function deleteToken ()
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+
+    $dn = 'ou=' . $this->uid . ',ou=tokens' . $config->current['BASE'];
+    $ldap->rmdir($dn);
+    if (!$ldap->success()) {
+      $this->message[] = $ldap->get_error();
+    }
+  }
 
   /**
    * @return void
@@ -292,8 +213,8 @@ class reminderFrontEnd extends standAlonePage
         die("Invalid values within passed arguments...");
       }
 
-      $this->uid          = $uid;
-      $result = TRUE;
+      $this->uid = $uid;
+      $result    = TRUE;
     }
 
     return $result;
@@ -302,7 +223,7 @@ class reminderFrontEnd extends standAlonePage
   /**
    * @return void
    */
-  private function getTaskInfo () : bool
+  private function getTaskInfo (): bool
   {
     global $config;
     $ldap = $config->get_ldap_link();
