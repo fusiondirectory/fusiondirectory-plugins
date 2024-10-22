@@ -19,6 +19,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+/**
+ *
+ */
+
 require_once('../include/php_setup.inc');
 require_once('functions.inc');
 require_once('variables.inc');
@@ -33,36 +37,14 @@ class reminderFrontEnd extends standAlonePage
    * @return bool
    * Note : method from extension.
    * It will help to get the information from the main task.
-   * It is also run before class execute.
+   * It is also run before class execute during first arrival on the page. IF the a post is issued, it will directly go to
+   * execute.
    */
   protected function readLdapConfig (): bool
   {
-    global $config;
     $result = FALSE;
 
-    echo "coucou";
-
-    $ldap = $config->get_ldap_link();
-    $this->sanitizeInputs();
-
-    if (!empty($this->task['name'])) {
-      $dn = 'cn=' . $this->task['name'] . ',ou=tasks,' . $config->current['BASE'];
-      // Retrieve tasks information
-      $ldap->cat($dn);
-      if ($attrs = $ldap->fetch()) {
-        // Fills the required value here.
-        $this->task['posix']    = $attrs['fdTasksReminderPosix'][0]; // bool as string
-        $this->task['ppolicy']  = $attrs['fdTasksReminderPPolicy'][0]; // bool as string
-        $this->task['resource'] = $attrs['fdTasksReminderNextResource'][0]; //string
-        $this->task['days']     = $attrs['fdTasksReminderSupannNewEndDate'][0]; // int
-        $this->task['state']    = $attrs['fdTasksReminderNextState'][0]; // string
-        $this->task['subState'] = $attrs['fdTasksReminderNextSubState'][0]; // string
-
-        $result = TRUE;
-      }
-    }
-
-    return $result;
+    return $this->sanitizeInputs();
   }
 
 
@@ -77,16 +59,20 @@ class reminderFrontEnd extends standAlonePage
   {
     global $error_collector;
 
+    if (!empty($_POST)) {
+      $this->sanitizeInputs();
+      $this->getTaskInfo();
+    }
+
     // This is a protection in case the reading of ldap failed (from readLdapConfig). (Previous logic from userReminder).
     if (!$this->activated) {
       return;
     }
 
-    // token is set during sanitization
+    // Verify if uid is set (thanks to post) and verify token validity.
     if (!empty($this->uid)) {
-      $success = TRUE;
-    } else {
-      $this->message[] = _('This token is invalid or missing!');
+      // verification of token
+      echo "login retrieved";
     }
 
     if (!empty($this->message)) {
@@ -120,7 +106,6 @@ class reminderFrontEnd extends standAlonePage
     $smarty->display(get_template_path('headers.tpl'));
 
     $smarty->assign('version', FD_VERSION);
-    $smarty->assign('success', $success);
     $smarty->assign('activated', $this->activated);
     $smarty->assign('taskName', $this->task['name']);
     $smarty->assign('token', $this->token);
@@ -172,119 +157,176 @@ class reminderFrontEnd extends standAlonePage
         $this->message[] = $ldap->get_error();
       }
     }
-
-    function postponeExpiration ()
-    {
-      global $config;
-      $dn = $this->getUserDn();
-      if (empty($dn)) {
-        return;
-      }
-      $userTabs = objects::open($dn, 'user');
-      if (
-        isset($userTabs->by_object['posixAccount']) &&
-        $userTabs->by_object['posixAccount']->is_account &&
-        ($userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getValue() != '')
-      ) {
-        $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
-        $date->add(new DateInterval('P' . $this->postpone_days . 'D'));
-        $userTabs->by_object['posixAccount']->shadowExpire = $date;
-      }
-      if (
-        isset($userTabs->by_object['supannAccountStatus']) &&
-        $userTabs->by_object['supannAccountStatus']->is_account
-      ) {
-        $supannRessourceEtatDateValues = [];
-        foreach ($userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate as $line) {
-          list ($label, $state, $substate, $start, $end) = $userTabs->by_object['supannAccountStatus']->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
-          if (($label == 'COMPTE') && ($state == 'A') && ($end != '')) {
-            /* Postpone enddate */
-            $date = new DateTime($end);
-            $date->add(new DateInterval('P' . $this->postpone_days . 'D'));
-            if ($substate != 'SupannSursis') {
-              /* Set start date to current date if substate changed */
-              $start = date('Ymd');
-            }
-            $supannRessourceEtatDateValues[] = '{COMPTE}A:SupannSursis:' . $start . ':' . $date->format('Ymd');
-          } else {
-            $supannRessourceEtatDateValues[] = $line;
-          }
-        }
-        $userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate = $supannRessourceEtatDateValues;
-      }
-      $error = $userTabs->save();
-      if (!empty($error)) {
-        $this->message = $error;
-        return;
-      }
-      $this->deleteToken();
-
-      $cn            = $userTabs->getBaseObject()->cn;
-      $manager_dn    = $userTabs->getBaseObject()->manager;
-      $email_address = '';
-      if (isset($userTabs->by_object['mailAccount'])) {
-        $email_address = $userTabs->by_object['mailAccount']->mail;
-      } elseif ($this->use_alternate && isset($userTabs->by_object['mailAccount']) && !empty($userTabs->by_object['mailAccount']->gosaMailAlternateAddress)) {
-        $email_address = reset($userTabs->by_object['mailAccount']->gosaMailAlternateAddress);
-      } elseif (isset($userTabs->by_object['supannAccount']) && !empty($userTabs->by_object['supannAccount']->supannAutreMail)) {
-        $email_address = reset($userTabs->by_object['supannAccount']->supannAutreMail);
-      } elseif (isset($userTabs->by_object['personalInfo']) && !empty($userTabs->by_object['personalInfo']->fdPrivateMail)) {
-        $email_address = $userTabs->by_object['personalInfo']->fdPrivateMail;
-      }
-
-      $manager_mail = '';
-      if ($this->forward_postpone) {
-        $ldap = $config->get_ldap_link();
-        if (empty($manager_dn)) {
-          $ldap->cat($userTabs->getBaseObject()->base, ['manager']);
-          if (($attrs = $ldap->fetch()) && isset($attrs['manager'][0])) {
-            $manager_dn = $attrs['manager'][0];
-          }
-        }
-        if (!empty($manager_dn)) {
-          $ldap->cat($manager_dn, ['cn', 'mail', 'gosaMailAlternateAddress', 'supannAutreMail', 'fdPrivateMail']);
-          if ($attrs = $ldap->fetch()) {
-            if (!empty($attrs['mail'][0])) {
-              $manager_mail = $attrs['mail'][0];
-            } elseif ($this->use_alternate && !empty($attrs['gosaMailAlternateAddress'][0])) {
-              $manager_mail = $attrs['gosaMailAlternateAddress'][0];
-            } elseif (!empty($attrs['supannAutreMail'][0])) {
-              $manager_mail = $attrs['supannAutreMail'][0];
-            } elseif (!empty($attrs['fdPrivateMail'][0])) {
-              $manager_mail = $attrs['fdPrivateMail'][0];
-            }
-          }
-        }
-      }
-    }
-
-    /**
-     * @return void
-     * Note : Simply set global variables after sanitization.
-     */
-    private
-    function sanitizeInputs ()
-    {
-      if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['token']) && isset($_GET['task'])) {
-        // Sanitize and validate input fields
-        $token = filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING);
-        $task  = filter_input(INPUT_GET, 'task', FILTER_SANITIZE_STRING);
-
-        // Function to validate if inputs are strictly alphanumeric
-        function is_alphanumeric ($value)
-        {
-          return preg_match('/^[a-zA-Z0-9]+$/', $value);
-        }
-
-        // Validate 'token'
-        if (!is_alphanumeric($token) && !is_alphanumeric($task['name'])) {
-          die("Invalid values within passed arguments...");
-        }
-
-        // Assign the sanitized values
-        $this->token = $token;
-        // Simply set the $task representing the name of main task to an array (Simplify further process down the line).
-        $this->task['name'] = $task;
-      }
-    }
   }
+
+  //    function postponeExpiration ()
+  //    {
+  //      global $config;
+  //      $dn = $this->getUserDn();
+  //      if (empty($dn)) {
+  //        return;
+  //      }
+  //      $userTabs = objects::open($dn, 'user');
+  //      if (
+  //        isset($userTabs->by_object['posixAccount']) &&
+  //        $userTabs->by_object['posixAccount']->is_account &&
+  //        ($userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getValue() != '')
+  //      ) {
+  //        $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
+  //        $date->add(new DateInterval('P' . $this->postpone_days . 'D'));
+  //        $userTabs->by_object['posixAccount']->shadowExpire = $date;
+  //      }
+  //      if (
+  //        isset($userTabs->by_object['supannAccountStatus']) &&
+  //        $userTabs->by_object['supannAccountStatus']->is_account
+  //      ) {
+  //        $supannRessourceEtatDateValues = [];
+  //        foreach ($userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate as $line) {
+  //          list ($label, $state, $substate, $start, $end) = $userTabs->by_object['supannAccountStatus']->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
+  //          if (($label == 'COMPTE') && ($state == 'A') && ($end != '')) {
+  //            /* Postpone enddate */
+  //            $date = new DateTime($end);
+  //            $date->add(new DateInterval('P' . $this->postpone_days . 'D'));
+  //            if ($substate != 'SupannSursis') {
+  //              /* Set start date to current date if substate changed */
+  //              $start = date('Ymd');
+  //            }
+  //            $supannRessourceEtatDateValues[] = '{COMPTE}A:SupannSursis:' . $start . ':' . $date->format('Ymd');
+  //          } else {
+  //            $supannRessourceEtatDateValues[] = $line;
+  //          }
+  //        }
+  //        $userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate = $supannRessourceEtatDateValues;
+  //      }
+  //      $error = $userTabs->save();
+  //      if (!empty($error)) {
+  //        $this->message = $error;
+  //        return;
+  //      }
+  //      $this->deleteToken();
+  //
+  //      $cn            = $userTabs->getBaseObject()->cn;
+  //      $manager_dn    = $userTabs->getBaseObject()->manager;
+  //      $email_address = '';
+  //      if (isset($userTabs->by_object['mailAccount'])) {
+  //        $email_address = $userTabs->by_object['mailAccount']->mail;
+  //      } elseif ($this->use_alternate && isset($userTabs->by_object['mailAccount']) && !empty($userTabs->by_object['mailAccount']->gosaMailAlternateAddress)) {
+  //        $email_address = reset($userTabs->by_object['mailAccount']->gosaMailAlternateAddress);
+  //      } elseif (isset($userTabs->by_object['supannAccount']) && !empty($userTabs->by_object['supannAccount']->supannAutreMail)) {
+  //        $email_address = reset($userTabs->by_object['supannAccount']->supannAutreMail);
+  //      } elseif (isset($userTabs->by_object['personalInfo']) && !empty($userTabs->by_object['personalInfo']->fdPrivateMail)) {
+  //        $email_address = $userTabs->by_object['personalInfo']->fdPrivateMail;
+  //      }
+  //
+  //      $manager_mail = '';
+  //      if ($this->forward_postpone) {
+  //        $ldap = $config->get_ldap_link();
+  //        if (empty($manager_dn)) {
+  //          $ldap->cat($userTabs->getBaseObject()->base, ['manager']);
+  //          if (($attrs = $ldap->fetch()) && isset($attrs['manager'][0])) {
+  //            $manager_dn = $attrs['manager'][0];
+  //          }
+  //        }
+  //        if (!empty($manager_dn)) {
+  //          $ldap->cat($manager_dn, ['cn', 'mail', 'gosaMailAlternateAddress', 'supannAutreMail', 'fdPrivateMail']);
+  //          if ($attrs = $ldap->fetch()) {
+  //            if (!empty($attrs['mail'][0])) {
+  //              $manager_mail = $attrs['mail'][0];
+  //            } elseif ($this->use_alternate && !empty($attrs['gosaMailAlternateAddress'][0])) {
+  //              $manager_mail = $attrs['gosaMailAlternateAddress'][0];
+  //            } elseif (!empty($attrs['supannAutreMail'][0])) {
+  //              $manager_mail = $attrs['supannAutreMail'][0];
+  //            } elseif (!empty($attrs['fdPrivateMail'][0])) {
+  //              $manager_mail = $attrs['fdPrivateMail'][0];
+  //            }
+  //          }
+  //        }
+  //      }
+  //    }
+
+  /**
+   * @return void
+   * Note : Simply set global variables after sanitization.
+   */
+  private function sanitizeInputs (): bool
+  {
+    $result = FALSE;
+
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['token']) && isset($_GET['task'])) {
+      // Sanitize and validate input fields
+      $token = filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING);
+      $task  = filter_input(INPUT_GET, 'task', FILTER_SANITIZE_STRING);
+
+      // Function to validate if inputs are strictly alphanumeric
+      function is_alphanumeric ($value)
+      {
+        return preg_match('/^[a-zA-Z0-9]+$/', $value);
+      }
+
+      // Validate 'token'
+      if (!is_alphanumeric($token) || !is_alphanumeric($task)) {
+        die("Invalid values within passed arguments...");
+      }
+
+      // Assign the sanitized values
+      $this->token = $token;
+      // Simply set the $task representing the name of main task to an array (Simplify further process down the line).
+      $this->task['name'] = $task;
+
+      $result = TRUE;
+    }
+
+    // Case of the post submission
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+      //
+      $uid = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
+
+      // Function to validate if inputs are strictly alphanumeric
+      function is_alphanumeric ($value)
+      {
+        return preg_match('/^[a-zA-Z0-9]+$/', $value);
+      }
+
+      // Validate 'token'
+      if (!is_alphanumeric($uid)) {
+        die("Invalid values within passed arguments...");
+      }
+
+      $this->uid          = $uid;
+      $result = TRUE;
+    }
+
+    return $result;
+  }
+
+  /**
+   * @return void
+   */
+  private function getTaskInfo () : bool
+  {
+    global $config;
+    $ldap = $config->get_ldap_link();
+
+    $result = FALSE;
+
+    if (!empty($this->task['name'])) {
+      $dn = 'cn=' . $this->task['name'] . ',ou=tasks,' . $config->current['BASE'];
+      // Retrieve tasks information
+      $ldap->cat($dn);
+      if ($attrs = $ldap->fetch()) {
+        // Fills the required value here.
+        $this->task['posix']    = $attrs['fdTasksReminderPosix'][0]; // bool as string
+        $this->task['ppolicy']  = $attrs['fdTasksReminderPPolicy'][0]; // bool as string
+        $this->task['resource'] = $attrs['fdTasksReminderNextResource'][0]; //string
+        $this->task['days']     = $attrs['fdTasksReminderSupannNewEndDate'][0]; // int
+        $this->task['state']    = $attrs['fdTasksReminderNextState'][0]; // string
+        $this->task['subState'] = $attrs['fdTasksReminderNextSubState'][0]; // string
+
+        $result = TRUE;
+      }
+    }
+    return $result;
+  }
+}
+
+

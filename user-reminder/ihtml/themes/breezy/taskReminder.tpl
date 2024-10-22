@@ -1,13 +1,15 @@
-<body>
+<body onLoad="javascript:$$('div.debug_div').each(function (a) { a.hide(); });">
 
 {$php_errors}
 {$msg_dialogs}
 
+<html lang="EN">
 <div id="window-container">
 
     <div id="window-div">
         <!-- Simplified form that submits taskName, token, and user ID -->
         <form action='accountProlongation.php' method='post' name='mainform'>
+            <input type="hidden" name="CSRFtoken" value="{$CSRFtoken}"/>
             <div id="window-titlebar">
                 <p>
                     <img class="center" src="geticon.php?context=types&amp;icon=user&amp;size=48" alt="{t}User{/t}" title="{t}User{/t}"/>
@@ -55,3 +57,9 @@
     </div>
 </div>
 </body>
+<script type="text/javascript">
+    <!-- // Error Popup
+    next_msg_dialog();
+    -->
+</script>
+</html>
