@@ -58,6 +58,8 @@ class reminderFrontEnd extends standAlonePage
   function execute ()
   {
     global $error_collector;
+    $success = FALSE;
+    $error =  FALSE;
 
     if (!empty($_POST)) {
       $this->sanitizeInputs();
@@ -72,25 +74,31 @@ class reminderFrontEnd extends standAlonePage
     // Verify if uid is set (thanks to post) and verify token validity.
     if (!empty($this->uid)) {
       // verification of token
-      if ($this->checkToken($this->token)) {
-        $this->message[] = "Token is valid and not expired.";
+      if (!$this->checkToken($this->token)) {
+        $this->message[] = "Error, data received are incorrect!";
       } else {
-        $this->message[] = "Token is not valid or expired.";
+        $success = TRUE;
       }
 
     }
 
     if (!empty($this->message)) {
       msg_dialog::displayChecks($this->message);
-      $success = FALSE;
+      $error = TRUE;
     }
 
     // Initialize smarty and pass the status of potential error ??
-    $this->initSmarty($success);
+    $this->initSmarty($success, $error);
 
   }
 
-  private function initSmarty ($success)
+  /**
+   * @param bool $success
+   * @param bool $error
+   * @return void
+   * Note : success allows to display certain part of the tpl '<div>' element.
+   */
+  private function initSmarty (bool $success, bool $error)
   {
     $smarty = get_smarty();
 
@@ -112,6 +120,8 @@ class reminderFrontEnd extends standAlonePage
 
     $smarty->assign('version', FD_VERSION);
     $smarty->assign('activated', $this->activated);
+    $smarty->assign('success', $success);
+    $smarty->assign('error', $error);
     $smarty->assign('taskName', $this->task['name']);
     $smarty->assign('token', $this->token);
     $smarty->display(get_template_path('taskReminder.tpl'));

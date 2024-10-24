@@ -16,24 +16,25 @@
                     {t}Reminder - Account prolongation{/t}
                 </p>
             </div>
+           {if !$success && !$error}
+               <div style="text-align: center;">
+                   <label for="login">
+                       <img class="center" src="geticon.php?context=types&amp;icon=user&amp;size=48" alt="{t}Username{/t}" title="{t}Username{/t}"/>&nbsp;
+                   </label>
+                   <input type="text" name="login" placeholder="{t}Enter your ID{/t}" required />
+                   <br />
 
-            <div style="text-align: center;">
-                <label for="login">
-                    <img class="center" src="geticon.php?context=types&amp;icon=user&amp;size=48" alt="{t}Username{/t}" title="{t}Username{/t}"/>&nbsp;
-                </label>
-                <input type="text" name="login" placeholder="{t}Enter your ID{/t}" required />
-                <br />
+                   <!-- Hidden fields for taskName and token from $_GET -->
+                   <input type="hidden" name="taskName" value="{$taskName}" />
+                   <input type="hidden" name="token" value="{$token}" />
+               </div>
 
-                <!-- Hidden fields for taskName and token from $_GET -->
-                <input type="hidden" name="taskName" value="{$taskName}" />
-                <input type="hidden" name="token" value="{$token}" />
-            </div>
-
-            <div id="window-footer" class="plugbottom">
-                <div>
-                    <input type="submit" name="apply" value="{t}Submit{/t}" title="{t}Click here to prolonged your account.{/t}"/>
-                </div>
-            </div>
+               <div id="window-footer" class="plugbottom">
+                   <div>
+                       <input type="submit" name="apply" value="{t}Submit{/t}" title="{t}Click here to prolonged your account.{/t}"/>
+                   </div>
+               </div>
+           {/if}
         </form>
 
         <div id="window-content">
@@ -47,7 +48,7 @@
                 {else if $error}
                     <div class="error">
                         <img class="center" src="geticon.php?context=status&amp;icon=task-failure&amp;size=16" alt="{t}Error{/t}" title="{t}Error{/t}">&nbsp;
-                        <b>{t}An unexpected error occurred{/t}</b>
+                        <b>{t}Error, data received are invalid!{/t}</b>
                     </div>
                 {/if}
                 <br/>
