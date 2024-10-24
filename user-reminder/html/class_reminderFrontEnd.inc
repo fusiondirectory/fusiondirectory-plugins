@@ -103,9 +103,17 @@ class reminderFrontEnd extends standAlonePage
   {
     $result = FALSE;
 
-    // Case of supann prolongation
-    $supann = $this->createSupannString();
-    echo $supann;
+    // Generate the supann string from main task.
+    $newIncompleteSupann = $this->createSupannString();
+    // retrieve all supann resource for specific user
+    $userSupann = $this->retrieveUserSupann();
+    // Find a match between task supann string and user supann strings
+    $userSupannRessourceEtat = $this->returnMatchingSupannResource($newIncompleteSupann, $userSupann);
+    // retrieve the end date for user resource matching the task supann, the new incompleteSupann.
+    $userSupannEndDate = $this->returnSupannEndDate($userSupannRessourceEtat);
+    // Create the final supann resource state with a new start and new end date.
+    $newSupannRessourceEtatDate = $this->finalSupannGeneration($newIncompleteSupann, $userSupannEndDate);
+    echo $newSupannRessourceEtatDate;
     exit;
 
     return $result;
@@ -128,20 +136,18 @@ class reminderFrontEnd extends standAlonePage
       }
     }
 
-    return $this->retrieveEndDateSupannState($supann);
+    return $supann;
   }
 
   /**
-   * @param string $supannStringFromTask
-   * @return string
    * Note : receive the supannRessourceEtat as string to compare, return the final supannRessourceEtatDate as well as the
    * previous stat requiring deletion.
    * We delete the old record and set the new one.
    */
-  private function retrieveEndDateSupannState (string $supannStringFromTask): string
+  private function retrieveUserSupann (): array
   {
     global $config;
-    $finalSupann = '';
+    $allSupannState = [];
 
     /* Retrieve hash from the ldap */
     $ldap = $config->get_ldap_link();
@@ -150,32 +156,53 @@ class reminderFrontEnd extends standAlonePage
     if ($attrs = $ldap->fetch()) {
       // Get the allSupannState from LDAP attributes
       $allSupannState = $attrs['supannRessourceEtatDate'];
-      // Remove the key [count]
-      unset($attrs['count']);
     }
+    // Remove the key [count]
+    unset($allSupannState['count']);
 
-    // Extracts "COMPTE" or whatever is inside {}
+    // It is possible that only one supann resource is available. To be coherent we will always return an array.
+    if (is_array($allSupannState)) {
+      return $allSupannState;
+    } else {
+      return [$allSupannState];
+    }
+  }
+
+  /**
+   * @param string $supannStringFromTask
+   * @param array $userSupann
+   * @return mixed|null
+   * Note : Create a potential match between the task supann criteria and the user supann
+   */
+  private function returnMatchingSupannResource (string $supannStringFromTask, array $userSupann)
+  {
+    $previousResource = NULL;
+
+    // Extracts the resource or whatever is inside {}
     if (preg_match('/\{([^\}]+)\}/', $supannStringFromTask, $match)) {
       $bracketContent = $match[1];
 
-      foreach ($allSupannState as $resource) {
+      foreach ($userSupann as $resource) {
         // Check if the resource matches the extracted content
         if (preg_match('/\{' . preg_quote($bracketContent, '/') . '\}/', $resource)) {
-          // Extract the end date (last date after the last :)
-          $parts    = explode(':', $resource);
-          $lastDate = end($parts); // Get the last element in the array which represent en date
-
-          break; // Exit the loop once a match is found, only one resource can be set.
+          $previousResource = $resource; // To be deleted in ldap. (New resource will take its place).
+          break; // Exit the loop once a match is found, only one resource can be set in FusionDirectory, allowing the break;
         }
       }
     }
+    return $previousResource;
+  }
 
+
+  private function finalSupannGeneration ($supannStringFromTask, $endDate)
+  {
+    $finalSupann = '';
     // Case when last date has been recuperated.
-    if (!empty($lastDate)) {
+    if (!empty($endDate)) {
       try {
-        $newEndDate  = $this->addDaysToDateString($lastDate, $this->task['days']);
+        $newEndDate = $this->addDaysToDateString($endDate, $this->task['days']);
         // Simply set the last date as beginning date and real last date as the number of day to add.
-        $finalSupann = $supannStringFromTask . ':' . $lastDate . ':' . $newEndDate;
+        $finalSupann = $supannStringFromTask . ':' . $endDate . ':' . $newEndDate;
       } catch (Exception $e) {
         echo $e->getMessage(); // Handle any exceptions that occur
       }
@@ -184,6 +211,26 @@ class reminderFrontEnd extends standAlonePage
 
     return $finalSupann; // Return the found end date or null if no match
   }
+
+  /**
+   * @param $resource
+   * @return string
+   * Note : Simply return the end date of a supann resource.
+   */
+  private function returnSupannEndDate ($resource): string
+  {
+    // Check if resource is empty
+    if (empty($resource)) {
+      return ''; // or handle it as appropriate
+    }
+
+    // Split the string into parts
+    $parts = explode(':', $resource);
+
+    // Get the last element and return it.
+    return end($parts);
+  }
+
 
   /**
    * @param string $dateString
