@@ -294,8 +294,6 @@ class taskReminder extends simplePlugin
       $secondCall['helper']['reminderTime'] = $this->attributesAccess['fdTasksReminderSecondCall']->getValue();
       $this->parent->getBaseObject()->createSlaveTasks($monitoredDN, $attributeType, $secondCall, 'Reminder');
     }
-
-
   }
 
   /**

@@ -20,7 +20,12 @@
 */
 
 /**
- *
+ * In order to understand the logic of standAlone class.
+ * - It will first check the init method which triggers the readInLdap.
+ * - Once this is done, even a post torwards the same page only goes to execute.
+ * - The flow is therefore :
+ * 1. Arrival on run then init, readLdapConfig, then execute, smarty init.
+ * 2. Upon refresh or post , it goes to execute then smarty init.
  */
 
 require_once('../include/php_setup.inc');
@@ -32,6 +37,7 @@ class reminderFrontEnd extends standAlonePage
   private string $token;
   private array  $task;
   private string $uid;
+  private string $userDN;
 
   /**
    * @return bool
@@ -47,7 +53,6 @@ class reminderFrontEnd extends standAlonePage
     return $this->sanitizeInputs();
   }
 
-
   // attributesName to be taken
   /* - EPPN eduPersonPrincipalName
   /  - UID
@@ -57,9 +62,8 @@ class reminderFrontEnd extends standAlonePage
 
   function execute ()
   {
-    global $error_collector;
     $success = FALSE;
-    $error =  FALSE;
+    $error   = FALSE;
 
     if (!empty($_POST)) {
       $this->sanitizeInputs();
@@ -77,9 +81,8 @@ class reminderFrontEnd extends standAlonePage
       if (!$this->checkToken($this->token)) {
         $this->message[] = "Error, data received are incorrect!";
       } else {
-        $success = TRUE;
+        $success = $this->prolongedAccount();
       }
-
     }
 
     if (!empty($this->message)) {
@@ -91,6 +94,121 @@ class reminderFrontEnd extends standAlonePage
     $this->initSmarty($success, $error);
 
   }
+
+  /**
+   * @return bool
+   * Note, prolongation of the account based on main tasks criteria.
+   */
+  private function prolongedAccount (): bool
+  {
+    $result = FALSE;
+
+    // Case of supann prolongation
+    $supann = $this->createSupannString();
+    echo $supann;
+    exit;
+
+    return $result;
+  }
+
+  /**
+   * @return string
+   * Note : Simply create a string recognized by the ldap attribute supannRessourceEtat
+   */
+  private function createSupannString (): string
+  {
+    $supann = NULL;
+
+    if (!empty($this->task['resource'])) {
+      // case of subState present
+      if (!empty($this->task['subState'])) {
+        $supann = '{' . $this->task['resource'] . '}' . $this->task['state'] . ':' . $this->task['subState'];
+      } else {
+        $supann = '{' . $this->task['resource'] . '}' . $this->task['state'];
+      }
+    }
+
+    return $this->retrieveEndDateSupannState($supann);
+  }
+
+  /**
+   * @param string $supannStringFromTask
+   * @return string
+   * Note : receive the supannRessourceEtat as string to compare, return the final supannRessourceEtatDate as well as the
+   * previous stat requiring deletion.
+   * We delete the old record and set the new one.
+   */
+  private function retrieveEndDateSupannState (string $supannStringFromTask): string
+  {
+    global $config;
+    $finalSupann = '';
+
+    /* Retrieve hash from the ldap */
+    $ldap = $config->get_ldap_link();
+    $ldap->cat($this->userDN);
+
+    if ($attrs = $ldap->fetch()) {
+      // Get the allSupannState from LDAP attributes
+      $allSupannState = $attrs['supannRessourceEtatDate'];
+      // Remove the key [count]
+      unset($attrs['count']);
+    }
+
+    // Extracts "COMPTE" or whatever is inside {}
+    if (preg_match('/\{([^\}]+)\}/', $supannStringFromTask, $match)) {
+      $bracketContent = $match[1];
+
+      foreach ($allSupannState as $resource) {
+        // Check if the resource matches the extracted content
+        if (preg_match('/\{' . preg_quote($bracketContent, '/') . '\}/', $resource)) {
+          // Extract the end date (last date after the last :)
+          $parts    = explode(':', $resource);
+          $lastDate = end($parts); // Get the last element in the array which represent en date
+
+          break; // Exit the loop once a match is found, only one resource can be set.
+        }
+      }
+    }
+
+    // Case when last date has been recuperated.
+    if (!empty($lastDate)) {
+      try {
+        $newEndDate  = $this->addDaysToDateString($lastDate, $this->task['days']);
+        // Simply set the last date as beginning date and real last date as the number of day to add.
+        $finalSupann = $supannStringFromTask . ':' . $lastDate . ':' . $newEndDate;
+      } catch (Exception $e) {
+        echo $e->getMessage(); // Handle any exceptions that occur
+      }
+
+    }
+
+    return $finalSupann; // Return the found end date or null if no match
+  }
+
+  /**
+   * @param string $dateString
+   * @param int $daysToAdd
+   * @return string
+   * @throws Exception
+   * Simply add the added numbers of days to the end supann resource state.
+   */
+  private function addDaysToDateString (string $dateString, int $daysToAdd): string
+  {
+    // Convert the string to a DateTime object
+    $date = DateTime::createFromFormat('Ymd', $dateString);
+
+    if ($date === FALSE) {
+      // Handle the case where the date string is invalid
+      throw new Exception("Invalid date string format.");
+    }
+
+    // Add the number of days
+    $date->modify("+{$daysToAdd} days");
+
+    // Return the new date as a string in the format YYYYMMDD
+    return $date->format('Ymd');
+  }
+
 
   /**
    * @param bool $success
@@ -147,6 +265,9 @@ class reminderFrontEnd extends standAlonePage
       $ldapToken = $attrs['fdToken'][0];
       $tokenDate = $attrs['fdTokenTimestamp'][0];
       $tokenType = $attrs['fdTokenType'][0];
+
+      // This will serve to update supann Status
+      $this->userDN = $attrs['fdTokenUserDN'][0];
 
       // Check timestamp in UTC format
       if ($ldapToken === $token && $tokenType === 'reminder') {
