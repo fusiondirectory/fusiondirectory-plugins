@@ -101,8 +101,6 @@ class reminderFrontEnd extends standAlonePage
    */
   private function prolongedAccount (): bool
   {
-    $result = FALSE;
-
     // Generate the supann string from main task.
     $newIncompleteSupann = $this->createSupannString();
     // retrieve all supann resource for specific user
@@ -113,8 +111,35 @@ class reminderFrontEnd extends standAlonePage
     $userSupannEndDate = $this->returnSupannEndDate($userSupannRessourceEtat);
     // Create the final supann resource state with a new start and new end date.
     $newSupannRessourceEtatDate = $this->finalSupannGeneration($newIncompleteSupann, $userSupannEndDate);
-    echo $newSupannRessourceEtatDate;
-    exit;
+
+    // Time for the update of the user resource
+    return $this->updateUserSupannResource($userSupannRessourceEtat, $newSupannRessourceEtatDate);
+  }
+
+  /**
+   * @param $userSupannRessourceEtat
+   * @param $newSupannRessourceEtatDate
+   * @return bool
+   */
+  private function updateUserSupannResource($userSupannRessourceEtat, $newSupannRessourceEtatDate) : bool
+  {
+    global $config;
+    $result = FALSE;
+
+    $ldap = $config->get_ldap_link();
+
+    // We first have to delete the previous supannRessourceEtatDate
+    try{
+
+    } catch (Exception $e) {
+
+    }
+
+    // We add the new supannRessourceEtatDate
+    try {
+    } catch (Exception $e) {
+
+    }
 
     return $result;
   }
