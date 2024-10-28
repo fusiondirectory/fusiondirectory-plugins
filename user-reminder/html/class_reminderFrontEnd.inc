@@ -38,6 +38,7 @@ class reminderFrontEnd extends standAlonePage
   private array  $task;
   private string $uid;
   private string $userDN;
+  private string $message;
 
   /**
    * @return bool
@@ -79,7 +80,7 @@ class reminderFrontEnd extends standAlonePage
     if (!empty($this->uid)) {
       // verification of token
       if (!$this->checkToken($this->token)) {
-        $this->message[] = "Error, data received are incorrect!";
+        $this->message = "Error, data received are incorrect!";
       } else {
         $success = $this->prolongedAccount();
       }
@@ -102,7 +103,7 @@ class reminderFrontEnd extends standAlonePage
   private function prolongedAccount (): bool
   {
     // Generate the supann string from main task.
-    $newIncompleteSupann = $this->createSupannString();
+    $newIncompleteSupann = $this->createSupannString(TRUE);
     // retrieve all supann resource for specific user
     $userSupann = $this->retrieveUserSupann();
     // Find a match between task supann string and user supann strings
@@ -121,24 +122,38 @@ class reminderFrontEnd extends standAlonePage
    * @param $newSupannRessourceEtatDate
    * @return bool
    */
-  private function updateUserSupannResource($userSupannRessourceEtat, $newSupannRessourceEtatDate) : bool
+  private function updateUserSupannResource ($userSupannRessourceEtat, $newSupannRessourceEtatDate): bool
   {
-    global $config;
     $result = FALSE;
 
-    $ldap = $config->get_ldap_link();
+    // Open the user tabs
+    $userTabs = objects::open($this->userDN, 'user');
+    // Verify if supann Account Status tab is available
+    if (isset($userTabs->by_object['supannAccountStatus'])) {
+      $supannRessourceEtatDateValues = [];
+      // Iteration on all potential supann values existing for that user dn.
+      foreach ($userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate as $line) {
+        list ($resource, $state, $subState, $start, $end) = $userTabs->by_object['supannAccountStatus']->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
 
-    // We first have to delete the previous supannRessourceEtatDate
-    try{
+        // Simply create a string of the supann array received. Helping for the verification below.
+        $supannString = $this->createSupannString(FALSE, $resource, $state, $subState, $start, $end);
 
-    } catch (Exception $e) {
-
+        // If there is a match with the user supann retrieve and previous methods, we change that value to the new one.
+        if ($supannString === $userSupannRessourceEtat) {
+          $supannRessourceEtatDateValues[] = $newSupannRessourceEtatDate;
+        } else {
+          // If not we have to keep previous supann value intact. (Mail or other resources, we mostly use account).
+          $supannRessourceEtatDateValues[] = $line;
+        }
+      }
+      $userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate = $supannRessourceEtatDateValues;
     }
+    $error = $userTabs->save();
 
-    // We add the new supannRessourceEtatDate
-    try {
-    } catch (Exception $e) {
-
+    if (!empty($error)) {
+      $this->message = to_string($error);
+    } else {
+      $result = TRUE;
     }
 
     return $result;
@@ -148,17 +163,21 @@ class reminderFrontEnd extends standAlonePage
    * @return string
    * Note : Simply create a string recognized by the ldap attribute supannRessourceEtat
    */
-  private function createSupannString (): string
+  private function createSupannString (bool $task, ?string $resource = '', ?string $state = '', ?string $subState = '',
+  ?string $start = '', ?string $end = ''): string
   {
     $supann = NULL;
 
-    if (!empty($this->task['resource'])) {
+    if ($task &&!empty($this->task['resource'])) {
       // case of subState present
       if (!empty($this->task['subState'])) {
         $supann = '{' . $this->task['resource'] . '}' . $this->task['state'] . ':' . $this->task['subState'];
       } else {
         $supann = '{' . $this->task['resource'] . '}' . $this->task['state'];
       }
+      // This is going to be used for in the last supann verification when users tabs are open before updating states.
+    } elseif (!empty($resource)) {
+      $supann = '{' . $resource . '}' . $state . ':' . $subState .':'. $start . ':' .$end ;
     }
 
     return $supann;
@@ -364,7 +383,7 @@ class reminderFrontEnd extends standAlonePage
     $dn = 'ou=' . $this->uid . ',ou=tokens' . $config->current['BASE'];
     $ldap->rmdir($dn);
     if (!$ldap->success()) {
-      $this->message[] = $ldap->get_error();
+      $this->message = $ldap->get_error();
     }
   }
 
