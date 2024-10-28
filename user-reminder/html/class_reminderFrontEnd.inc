@@ -38,19 +38,17 @@ class reminderFrontEnd extends standAlonePage
   private array  $task;
   private string $uid;
   private string $userDN;
-  private string $message;
+  private array  $message;
 
   /**
    * @return bool
    * Note : method from extension.
    * It will help to get the information from the main task.
-   * It is also run before class execute during first arrival on the page. IF the a post is issued, it will directly go to
+   * It is also run before class execute during first arrival on the page. IF a post is issued, it will directly go to
    * execute.
    */
   protected function readLdapConfig (): bool
   {
-    $result = FALSE;
-
     return $this->sanitizeInputs();
   }
 
@@ -63,8 +61,8 @@ class reminderFrontEnd extends standAlonePage
 
   function execute ()
   {
-    $success = FALSE;
-    $error   = FALSE;
+    // Simply store all the boolean returned by below prolongation methods, initialized to FALSE.
+    $results = [FALSE];
 
     if (!empty($_POST)) {
       $this->sanitizeInputs();
@@ -80,27 +78,55 @@ class reminderFrontEnd extends standAlonePage
     if (!empty($this->uid)) {
       // verification of token
       if (!$this->checkToken($this->token)) {
-        $this->message = "Error, data received are incorrect!";
+        $this->message[] = "Error, data received are incorrect!";
+        // Go ahead with account prolongation as token is valid and uid passed successfully. (UID or other identifiers).
       } else {
-        $success = $this->prolongedAccount();
+        // Reset the results variables array to be empty, only allowing sub methods to set boolean values within.
+        $results = [];
+        if (!empty($this->task['resource'])) {
+          // Store the boolean result for later processing during init smarty.
+          $results[] = $this->prolongedSupannAccount();
+        }
+        if (!empty($this->task['posix'])) {
+          $results[] = $this->prolongedPosixAccount();
+        }
+        if (!empty($this->task['ppolicy'])) {
+          $results[] = $this->prolongedPPolicyAccount();
+        }
+        // Delete the token from LDAP
+        $this->deleteToken();
       }
     }
 
+    // Output error message before any smarty initialization, in order to pass proper variables to it.
+    $error = $this->checkErrorMessages();
+    // Make sure that success is either true or false
+    $success = !in_array(FALSE, $results, TRUE);
+
+    // Initialize smarty and pass success and error variables.
+    $this->initSmarty($success, $error);
+  }
+
+  /**
+   * @return bool
+   * Note : Simply return TRUE if errors and display error messages. Messages can be an array of error messages.
+   */
+  private function checkErrorMessages (): bool
+  {
+    $errors = FALSE;
     if (!empty($this->message)) {
       msg_dialog::displayChecks($this->message);
-      $error = TRUE;
+      $errors = TRUE;
     }
 
-    // Initialize smarty and pass the status of potential error ??
-    $this->initSmarty($success, $error);
-
+    return $errors;
   }
 
   /**
    * @return bool
    * Note, prolongation of the account based on main tasks criteria.
    */
-  private function prolongedAccount (): bool
+  private function prolongedSupannAccount (): bool
   {
     // Generate the supann string from main task.
     $newIncompleteSupann = $this->createSupannString(TRUE);
@@ -115,6 +141,24 @@ class reminderFrontEnd extends standAlonePage
 
     // Time for the update of the user resource
     return $this->updateUserSupannResource($userSupannRessourceEtat, $newSupannRessourceEtatDate);
+  }
+
+  /**
+   * @return bool
+   * Note, prolongation of the account posix attributes based on main tasks criteria.
+   */
+  private function prolongedPosixAccount (): bool
+  {
+    return TRUE;
+  }
+
+  /**
+   * @return bool
+   * Note, prolongation of the account password policy based on main tasks criteria.
+   */
+  private function prolongedPPolicyAccount (): bool
+  {
+    return TRUE;
   }
 
   /**
@@ -151,7 +195,7 @@ class reminderFrontEnd extends standAlonePage
     $error = $userTabs->save();
 
     if (!empty($error)) {
-      $this->message = to_string($error);
+      $this->message[] = to_string($error);
     } else {
       $result = TRUE;
     }
@@ -164,11 +208,11 @@ class reminderFrontEnd extends standAlonePage
    * Note : Simply create a string recognized by the ldap attribute supannRessourceEtat
    */
   private function createSupannString (bool $task, ?string $resource = '', ?string $state = '', ?string $subState = '',
-  ?string $start = '', ?string $end = ''): string
+    ?string $start = '', ?string $end = ''): string
   {
     $supann = NULL;
 
-    if ($task &&!empty($this->task['resource'])) {
+    if ($task && !empty($this->task['resource'])) {
       // case of subState present
       if (!empty($this->task['subState'])) {
         $supann = '{' . $this->task['resource'] . '}' . $this->task['state'] . ':' . $this->task['subState'];
@@ -177,7 +221,7 @@ class reminderFrontEnd extends standAlonePage
       }
       // This is going to be used for in the last supann verification when users tabs are open before updating states.
     } elseif (!empty($resource)) {
-      $supann = '{' . $resource . '}' . $state . ':' . $subState .':'. $start . ':' .$end ;
+      $supann = '{' . $resource . '}' . $state . ':' . $subState . ':' . $start . ':' . $end;
     }
 
     return $supann;
@@ -238,7 +282,12 @@ class reminderFrontEnd extends standAlonePage
   }
 
 
-  private function finalSupannGeneration ($supannStringFromTask, $endDate)
+  /**
+   * @param $supannStringFromTask
+   * @param $endDate
+   * @return string
+   */
+  private function finalSupannGeneration ($supannStringFromTask, $endDate): string
   {
     $finalSupann = '';
     // Case when last date has been recuperated.
@@ -248,7 +297,7 @@ class reminderFrontEnd extends standAlonePage
         // Simply set the last date as beginning date and real last date as the number of day to add.
         $finalSupann = $supannStringFromTask . ':' . $endDate . ':' . $newEndDate;
       } catch (Exception $e) {
-        echo $e->getMessage(); // Handle any exceptions that occur
+        $this->message[] = $e->getMessage(); // Handle any exceptions that occur
       }
 
     }
@@ -294,7 +343,7 @@ class reminderFrontEnd extends standAlonePage
     }
 
     // Add the number of days
-    $date->modify("+{$daysToAdd} days");
+    $date->modify("+$daysToAdd days");
 
     // Return the new date as a string in the format YYYYMMDD
     return $date->format('Ymd');
@@ -380,10 +429,10 @@ class reminderFrontEnd extends standAlonePage
 
     $ldap = $config->get_ldap_link();
 
-    $dn = 'ou=' . $this->uid . ',ou=tokens' . $config->current['BASE'];
+    $dn = 'cn=' . $this->uid . ',ou=tokens,' . $config->current['BASE'];
     $ldap->rmdir($dn);
     if (!$ldap->success()) {
-      $this->message = $ldap->get_error();
+      $this->message[] = $ldap->get_error();
     }
   }
 
