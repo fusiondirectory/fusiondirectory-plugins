@@ -59,6 +59,12 @@ class reminderFrontEnd extends standAlonePage
   /  - alias supannAliasLogin
   */
 
+
+  /**
+   * @return void
+   * @throws Exception
+   * Note : Base function ran after init (on first arrival it goes by readLapConfig), on a POST refresh, it goes here directly.
+   */
   function execute ()
   {
     // Simply store all the boolean returned by below prolongation methods, initialized to FALSE.
@@ -83,16 +89,25 @@ class reminderFrontEnd extends standAlonePage
       } else {
         // Reset the results variables array to be empty, only allowing sub methods to set boolean values within.
         $results = [];
+
         if (!empty($this->task['resource'])) {
           // Store the boolean result for later processing during init smarty.
           $results[] = $this->prolongedSupannAccount();
         }
-        if (!empty($this->task['posix'])) {
+
+        if (!empty($this->task['posix']) && $this->task['posix'] === "TRUE") {
           $results[] = $this->prolongedPosixAccount();
         }
-        if (!empty($this->task['ppolicy'])) {
+
+        if (!empty($this->task['ppolicy']) && $this->task['ppolicy'] === "TRUE") {
           $results[] = $this->prolongedPPolicyAccount();
         }
+
+        // If at this stage $result is empty, we set it to false. Meaning no supann, posix, nor ppolicy could be changed
+        if (empty($results)) {
+          $results = ['false'];
+        }
+
         // Delete the token from LDAP
         $this->deleteToken();
       }
@@ -146,10 +161,35 @@ class reminderFrontEnd extends standAlonePage
   /**
    * @return bool
    * Note, prolongation of the account posix attributes based on main tasks criteria.
+   * @throws Exception
    */
   private function prolongedPosixAccount (): bool
   {
-    return TRUE;
+    $result = FALSE;
+    // Open user tabs
+    $userTabs = objects::open($this->userDN, 'user');
+    // Fetch posix information about shadow expire
+    if (isset($userTabs->by_object['posixAccount']) && ($userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getValue() != '')) {
+      // Retrieve the date format of shadow expire
+      $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
+
+      // Set the new extension for shadow expire based on the tasks extensions days configured
+      $date->add(new DateInterval('P' . $this->task['days'] . 'D'));
+      // Save the information within the attribute
+      $userTabs->by_object['posixAccount']->shadowExpire = $date;
+    }
+
+    // Save the user
+    $error = $userTabs->save();
+
+    // Verification of errors.
+    if (!empty($error)) {
+      $this->message[] = to_string($error);
+    } else {
+      $result = TRUE;
+    }
+
+    return $result;
   }
 
   /**
