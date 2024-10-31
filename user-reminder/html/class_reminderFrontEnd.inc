@@ -34,11 +34,11 @@ require_once('variables.inc');
 
 class reminderFrontEnd extends standAlonePage
 {
-  private string $token;
-  private array  $task;
-  private string $uid;
-  private string $userDN;
-  private array  $message;
+  private $token; //string
+  private $task; //array
+  private $uid; //string
+  private $userDN; //string
+  private $message; //array
 
   /**
    * @return bool
