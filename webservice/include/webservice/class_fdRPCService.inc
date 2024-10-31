@@ -1018,12 +1018,12 @@ class fdRPCService
   }
 
   /**
-   * @param $values
+   * @param array $values
    * @return array
    * NOTE : A simple iteration of the posix array received to re-order force_ids as primary key.
    * This is to fix an issue with LSC not able to force IDS to true as other attributes can be processed first.
    */
-  private function posixArrayReordering ($values) : array
+  private function posixArrayReordering (array $values) : array
   {
     $result = $values;
 
@@ -1037,7 +1037,7 @@ class fdRPCService
 
         // Update $values['posixAccount'] with reordered array
         $values['posixAccount'] = $array;
-        $result = $values;
+        $result                 = $values;
       }
     }
 
