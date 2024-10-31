@@ -346,11 +346,11 @@ class reminderFrontEnd extends standAlonePage
   }
 
   /**
-   * @param $resource
+   * @param string $resource
    * @return string
    * Note : Simply return the end date of a supann resource.
    */
-  private function returnSupannEndDate ($resource): string
+  private function returnSupannEndDate (string $resource): string
   {
     // Check if resource is empty
     if (empty($resource)) {
@@ -487,7 +487,7 @@ class reminderFrontEnd extends standAlonePage
   }
 
   /**
-   * @return void
+   * @return bool
    * Note : Simply set global variables after sanitization.
    */
   private function sanitizeInputs (): bool
@@ -517,14 +517,8 @@ class reminderFrontEnd extends standAlonePage
       //
       $uid = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
 
-      // Function to validate if inputs are strictly alphanumeric
-      function is_alphanumeric ($value)
-      {
-        return preg_match('/^[a-zA-Z0-9]+$/', $value);
-      }
-
       // Validate 'token'
-      if (!is_alphanumeric($uid)) {
+      if (!$this->isAlphanumeric($uid)) {
         die("Invalid values within passed arguments...");
       }
 
