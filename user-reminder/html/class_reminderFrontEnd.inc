@@ -202,11 +202,11 @@ class reminderFrontEnd extends standAlonePage
   }
 
   /**
-   * @param $userSupannRessourceEtat
-   * @param $newSupannRessourceEtatDate
+   * @param string $userSupannRessourceEtat
+   * @param string $newSupannRessourceEtatDate
    * @return bool
    */
-  private function updateUserSupannResource ($userSupannRessourceEtat, $newSupannRessourceEtatDate): bool
+  private function updateUserSupannResource (string $userSupannRessourceEtat, string $newSupannRessourceEtatDate): bool
   {
     $result = FALSE;
 
@@ -323,11 +323,11 @@ class reminderFrontEnd extends standAlonePage
 
 
   /**
-   * @param $supannStringFromTask
-   * @param $endDate
+   * @param string $supannStringFromTask
+   * @param string $endDate
    * @return string
    */
-  private function finalSupannGeneration ($supannStringFromTask, $endDate): string
+  private function finalSupannGeneration (string $supannStringFromTask, string $endDate): string
   {
     $finalSupann = '';
     // Case when last date has been recuperated.
@@ -426,11 +426,11 @@ class reminderFrontEnd extends standAlonePage
   }
 
   /**
-   * @param $token
+   * @param string $token
    * @return bool
    * NOTE : To be revamp as this old logic seems a bit off to me.
    */
-  private function checkToken ($token): bool
+  private function checkToken (string $token): bool
   {
     global $config;
     $result = FALSE;
@@ -477,6 +477,16 @@ class reminderFrontEnd extends standAlonePage
   }
 
   /**
+   * @param string $value
+   * @return false|int
+   * Note : Simple method that verify if only char and num are present.
+   */
+  private function isAlphanumeric (string $value)
+  {
+    return preg_match('/^[a-zA-Z0-9]+$/', $value);
+  }
+
+  /**
    * @return void
    * Note : Simply set global variables after sanitization.
    */
@@ -489,14 +499,8 @@ class reminderFrontEnd extends standAlonePage
       $token = filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING);
       $task  = filter_input(INPUT_GET, 'task', FILTER_SANITIZE_STRING);
 
-      // Function to validate if inputs are strictly alphanumeric
-      function is_alphanumeric ($value)
-      {
-        return preg_match('/^[a-zA-Z0-9]+$/', $value);
-      }
-
       // Validate 'token'
-      if (!is_alphanumeric($token) || !is_alphanumeric($task)) {
+      if (!$this->isAlphanumeric($token) || !$this->isAlphanumeric($task)) {
         die("Invalid values within passed arguments...");
       }
 
@@ -532,7 +536,8 @@ class reminderFrontEnd extends standAlonePage
   }
 
   /**
-   * @return void
+   * @return bool
+   * Note : Simply return the attributes set within the main task reminder.
    */
   private function getTaskInfo (): bool
   {
