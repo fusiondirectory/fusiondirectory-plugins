@@ -99,11 +99,7 @@ class reminderFrontEnd extends standAlonePage
           $results[] = $this->prolongedPosixAccount();
         }
 
-        if (!empty($this->task['ppolicy']) && $this->task['ppolicy'] === "TRUE") {
-          $results[] = $this->prolongedPPolicyAccount();
-        }
-
-        // If at this stage $result is empty, we set it to false. Meaning no supann, posix, nor ppolicy could be changed
+        // If at this stage $result is empty, we set it to false. Meaning no supann, nor posix could be changed
         if (empty($results)) {
           $results = ['false'];
         }
@@ -190,15 +186,6 @@ class reminderFrontEnd extends standAlonePage
     }
 
     return $result;
-  }
-
-  /**
-   * @return bool
-   * Note, prolongation of the account password policy based on main tasks criteria.
-   */
-  private function prolongedPPolicyAccount (): bool
-  {
-    return TRUE;
   }
 
   /**
@@ -547,7 +534,6 @@ class reminderFrontEnd extends standAlonePage
       if ($attrs = $ldap->fetch()) {
         // Fills the required value here.
         $this->task['posix']    = $attrs['fdTasksReminderPosix'][0]; // bool as string
-        $this->task['ppolicy']  = $attrs['fdTasksReminderPPolicy'][0]; // bool as string
         $this->task['resource'] = $attrs['fdTasksReminderNextResource'][0]; //string
         $this->task['days']     = $attrs['fdTasksReminderSupannNewEndDate'][0]; // int
         $this->task['state']    = $attrs['fdTasksReminderNextState'][0]; // string

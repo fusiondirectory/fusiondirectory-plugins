@@ -98,11 +98,6 @@ class taskReminder extends simplePlugin
             'fdTasksReminderPosix', FALSE,
             FALSE
           ),
-          new BooleanAttribute(
-            _('PPolicy'), _('Monitoring PPolicy end date'),
-            'fdTasksReminderPPolicy', FALSE,
-            FALSE
-          ),
           new SelectAttribute(
             _('Resource'), _('Supann resources'),
             'fdTasksReminderNextResource', FALSE, [], "None"
@@ -176,7 +171,6 @@ class taskReminder extends simplePlugin
             'fdTasksReminderSecondCall',
             'fdTasksReminderNextResource',
             'fdTasksReminderPosix',
-            'fdTasksReminderPPolicy',
             'fdTasksReminderNextResource',
             'fdTasksReminderNextState',
             'fdTasksReminderNextSubState',
