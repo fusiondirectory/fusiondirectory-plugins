@@ -37,8 +37,10 @@ class reminderFrontEnd extends standAlonePage
   private $token; //string
   private $task; //array
   private $uid; //string
+  private $login; //string representing the login used such as EPPN, MAIL, UID, supannAlias
   private $userDN; //string
   private $message; //array
+  private $authMethod; //The dropdown menu item selection.
 
   /**
    * @return bool
@@ -52,14 +54,6 @@ class reminderFrontEnd extends standAlonePage
     return $this->sanitizeInputs();
   }
 
-  // attributesName to be taken
-  /* - EPPN eduPersonPrincipalName
-  /  - UID
-  /  - mail
-  /  - alias supannAliasLogin
-  */
-
-
   /**
    * @return void
    * @throws Exception
@@ -70,6 +64,7 @@ class reminderFrontEnd extends standAlonePage
     // Simply store all the boolean returned by below prolongation methods, initialized to FALSE.
     $results = [FALSE];
 
+    // We perform a re-sanitization as when POST is trigger, the readInLdap method is not triggered.
     if (!empty($_POST)) {
       $this->sanitizeInputs();
       $this->getTaskInfo();
@@ -81,9 +76,13 @@ class reminderFrontEnd extends standAlonePage
     }
 
     // Verify if uid is set (thanks to post) and verify token validity.
-    if (!empty($this->uid)) {
+    if (!empty($this->login)) {
+      // Verify if the login exists
+      if (!$this->verifyLogin()) {
+        $this->message[] = "Error, data received are incorrect!";
+      }
       // verification of token
-      if (!$this->checkToken($this->token)) {
+      elseif (!$this->checkToken($this->token)) {
         $this->message[] = "Error, data received are incorrect!";
         // Go ahead with account prolongation as token is valid and uid passed successfully. (UID or other identifiers).
       } else {
@@ -116,6 +115,124 @@ class reminderFrontEnd extends standAlonePage
 
     // Initialize smarty and pass success and error variables.
     $this->initSmarty($success, $error);
+  }
+
+  /**
+   * @return bool
+   * Note : This method allows to set the global uid variable and verifying if user exists at the same time.
+   */
+  private function verifyLogin() : bool
+  {
+    $result = FALSE;
+
+    if (!empty($this->authMethod)) {
+      switch ($this->authMethod) {
+        case 'EPPN':
+              if ($this->uidFromEPPN()) {
+                $result = TRUE;
+              }
+          break;
+        case 'supannAlias':
+          if ($this->uidFromSupannAlias()) {
+            $result = TRUE;
+          }
+          break;
+        case 'uid':
+          // Simply set the UID as login, verification if login is correct will anyway be performed later on.
+          $this->uid = $this->login;
+          break;
+        case 'mail':
+          if ($this->uidFromMail()) {
+            $result = TRUE;
+          }
+          break;
+      }
+    }
+
+    return $result;
+  }
+
+  /**
+   * @return bool
+   * NOTE : Simply get the UID from EPPN
+   */
+  private function uidFromEPPN() : bool
+  {
+    global $config;
+    $result = FALSE;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(objectClass=eduPerson)', ['eduPersonPrincipalName', 'dn']);
+
+    while ($attrs = $ldap->fetch()) {
+      if ($this->login === $attrs['eduPersonPrincipalName'][0]) {
+        // Simply get the uid format of the DN as pure string
+        $this->uid = $this->getUIDasString($attrs['dn']);
+        $result = TRUE;
+      }
+    }
+
+    return $result;
+  }
+
+  /**
+   * @return bool
+   * NOTE : Simply get the UID from mail
+   */
+  private function uidFromMail() : bool
+  {
+    global $config;
+    $result = FALSE;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(objectClass=gosaMailAccount)', ['mail', 'dn']);
+
+    while ($attrs = $ldap->fetch()) {
+      if ($this->login === $attrs['mail'][0]) {
+        // Simply get the uid format of the DN as pure string
+        $this->uid = $this->getUIDasString($attrs['dn']);
+        $result = TRUE;
+      }
+    }
+
+    return $result;
+  }
+
+  /**
+   * @return bool
+   * NOTE : Simply get the UID from supann Alias
+   */
+  private function uidFromSupannAlias() : bool
+  {
+    global $config;
+    $result = FALSE;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(objectClass=supannPerson)', ['dn', 'supannAliasLogin']);
+
+    while ($attrs = $ldap->fetch()) {
+      if ($this->login === $attrs['supannAliasLogin'][0]) {
+        // Simply get the uid format of the DN as pure string
+        $this->uid = $this->getUIDasString($attrs['dn']);
+        $result = TRUE;
+      }
+    }
+
+    return $result;
+  }
+
+  /**
+   * @param string $dn
+   * @return string
+   * Note : A simple method to extract the UID as pure string from the DN.
+   */
+  private function getUIDasString(string $dn) : string
+  {
+    preg_match('/uid=([^,]+)/', $dn, $matches);
+    return $matches[1];
   }
 
   /**
@@ -470,7 +587,7 @@ class reminderFrontEnd extends standAlonePage
    */
   private function isAlphanumeric (string $value)
   {
-    return preg_match('/^[a-zA-Z0-9]+$/', $value);
+    return preg_match('/^[a-zA-Z0-9._%+-@]+$/', $value);
   }
 
   /**
@@ -502,14 +619,16 @@ class reminderFrontEnd extends standAlonePage
     // Case of the post submission
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
       //
-      $uid = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
+      $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_EMAIL);
+      $authMethod = filter_input(INPUT_POST, 'auth', FILTER_SANITIZE_STRING);
 
       // Validate 'token'
-      if (!$this->isAlphanumeric($uid)) {
+      if (!$this->isAlphanumeric($login)) {
         die("Invalid values within passed arguments...");
       }
 
-      $this->uid = $uid;
+      $this->login = $login;
+      $this->authMethod = $authMethod;
       $result    = TRUE;
     }
 

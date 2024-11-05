@@ -24,15 +24,22 @@
                    <input type="text" name="login" placeholder="{t}Enter your ID{/t}" required />
                    <br />
 
+                   <!-- Dropdown for selecting the type of ID -->
+                   <label for="auth">{t}Select ID Type{/t}:</label>
+                   <select name="auth" id="auth" required>
+                       <option value="mail">{t}Mail{/t}</option>
+                       <option value="uid">{t}UID{/t}</option>
+                       <option value="supannAlias">{t}Supann Alias{/t}</option>
+                       <option value="EPPN">{t}EPPN{/t}</option>
+                   </select>
+                   <input type="submit" name="apply" value="{t}Submit{/t}" title="{t}Click here to prolonged your account.{/t}"/>
+
                    <!-- Hidden fields for taskName and token from $_GET -->
                    <input type="hidden" name="taskName" value="{$taskName}" />
                    <input type="hidden" name="token" value="{$token}" />
                </div>
 
                <div id="window-footer" class="plugbottom">
-                   <div>
-                       <input type="submit" name="apply" value="{t}Submit{/t}" title="{t}Click here to prolonged your account.{/t}"/>
-                   </div>
                </div>
            {/if}
         </form>
