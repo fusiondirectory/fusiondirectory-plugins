@@ -80,10 +80,11 @@ class reminderFrontEnd extends standAlonePage
       // Verify if the login exists
       if (!$this->verifyLogin()) {
         $this->message[] = "Error, data received are incorrect!";
-      }
-      // verification of token
-      elseif (!$this->checkToken($this->token)) {
+
+        // verification of token
+      } elseif (!$this->checkToken($this->token)) {
         $this->message[] = "Error, data received are incorrect!";
+
         // Go ahead with account prolongation as token is valid and uid passed successfully. (UID or other identifiers).
       } else {
         // Reset the results variables array to be empty, only allowing sub methods to set boolean values within.
@@ -121,16 +122,16 @@ class reminderFrontEnd extends standAlonePage
    * @return bool
    * Note : This method allows to set the global uid variable and verifying if user exists at the same time.
    */
-  private function verifyLogin() : bool
+  private function verifyLogin (): bool
   {
     $result = FALSE;
 
     if (!empty($this->authMethod)) {
       switch ($this->authMethod) {
         case 'EPPN':
-              if ($this->uidFromEPPN()) {
-                $result = TRUE;
-              }
+          if ($this->uidFromEPPN()) {
+            $result = TRUE;
+          }
           break;
         case 'supannAlias':
           if ($this->uidFromSupannAlias()) {
@@ -140,7 +141,7 @@ class reminderFrontEnd extends standAlonePage
         case 'uid':
           // Simply set the UID as login, verification if login is correct will anyway be performed later on.
           $this->uid = $this->login;
-          $result = TRUE;
+          $result    = TRUE;
           break;
         case 'mail':
           if ($this->uidFromMail()) {
@@ -157,7 +158,7 @@ class reminderFrontEnd extends standAlonePage
    * @return bool
    * NOTE : Simply get the UID from EPPN
    */
-  private function uidFromEPPN() : bool
+  private function uidFromEPPN (): bool
   {
     global $config;
     $result = FALSE;
@@ -170,7 +171,7 @@ class reminderFrontEnd extends standAlonePage
       if ($this->login === $attrs['eduPersonPrincipalName'][0]) {
         // Simply get the uid format of the DN as pure string
         $this->uid = $this->getUIDasString($attrs['dn']);
-        $result = TRUE;
+        $result    = TRUE;
       }
     }
 
@@ -181,7 +182,7 @@ class reminderFrontEnd extends standAlonePage
    * @return bool
    * NOTE : Simply get the UID from mail
    */
-  private function uidFromMail() : bool
+  private function uidFromMail (): bool
   {
     global $config;
     $result = FALSE;
@@ -194,7 +195,7 @@ class reminderFrontEnd extends standAlonePage
       if ($this->login === $attrs['mail'][0]) {
         // Simply get the uid format of the DN as pure string
         $this->uid = $this->getUIDasString($attrs['dn']);
-        $result = TRUE;
+        $result    = TRUE;
       }
     }
 
@@ -205,7 +206,7 @@ class reminderFrontEnd extends standAlonePage
    * @return bool
    * NOTE : Simply get the UID from supann Alias
    */
-  private function uidFromSupannAlias() : bool
+  private function uidFromSupannAlias (): bool
   {
     global $config;
     $result = FALSE;
@@ -218,7 +219,7 @@ class reminderFrontEnd extends standAlonePage
       if ($this->login === $attrs['supannAliasLogin'][0]) {
         // Simply get the uid format of the DN as pure string
         $this->uid = $this->getUIDasString($attrs['dn']);
-        $result = TRUE;
+        $result    = TRUE;
       }
     }
 
@@ -230,7 +231,7 @@ class reminderFrontEnd extends standAlonePage
    * @return string
    * Note : A simple method to extract the UID as pure string from the DN.
    */
-  private function getUIDasString(string $dn) : string
+  private function getUIDasString (string $dn): string
   {
     preg_match('/uid=([^,]+)/', $dn, $matches);
     return $matches[1];
@@ -620,7 +621,7 @@ class reminderFrontEnd extends standAlonePage
     // Case of the post submission
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
       //
-      $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_EMAIL);
+      $login      = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_EMAIL);
       $authMethod = filter_input(INPUT_POST, 'auth', FILTER_SANITIZE_STRING);
 
       // Validate 'token'
@@ -628,9 +629,9 @@ class reminderFrontEnd extends standAlonePage
         die("Invalid values within passed arguments...");
       }
 
-      $this->login = $login;
+      $this->login      = $login;
       $this->authMethod = $authMethod;
-      $result    = TRUE;
+      $result           = TRUE;
     }
 
     return $result;
