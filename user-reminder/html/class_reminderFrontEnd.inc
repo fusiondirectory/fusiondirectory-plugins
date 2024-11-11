@@ -140,6 +140,7 @@ class reminderFrontEnd extends standAlonePage
         case 'uid':
           // Simply set the UID as login, verification if login is correct will anyway be performed later on.
           $this->uid = $this->login;
+          $result = TRUE;
           break;
         case 'mail':
           if ($this->uidFromMail()) {
