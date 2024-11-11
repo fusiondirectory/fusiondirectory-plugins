@@ -36,7 +36,7 @@ class expiredUserPostpone extends standAlonePage
   protected $message;
   protected $uid;
 
-  protected function readLdapConfig (): bool
+  protected function readLdapConfig () : bool
   {
     global $config;
     $this->forward_postpone = ($config->get_cfg_value('userReminderForwardConfirmation', 'TRUE') == 'TRUE');
