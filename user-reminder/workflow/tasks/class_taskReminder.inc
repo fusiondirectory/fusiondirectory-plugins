@@ -55,11 +55,6 @@ class taskReminder extends simplePlugin
             _('First reminder'), _('Numbers of days before reaching resource end date'),
             'fdTasksReminderFirstCall', TRUE, '0', FALSE, '30'
           ),
-          new BooleanAttribute(
-            _('Manager'), _('Provide alert to the manager'),
-            'fdTasksReminderManager', FALSE,
-            FALSE
-          ),
         ]
       ],
       // Attributes are grouped by section
