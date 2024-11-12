@@ -196,12 +196,6 @@ attributetype ( 1.3.6.1.4.1.38414.59.1.32 NAME 'fdTasksReminderSupannNewEndDate'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.59.1.33 NAME 'fdTasksReminderManager'
-		DESC 'Allow a given task to be repeatable'
-		EQUALITY booleanMatch
-		SUBSTR caseIgnoreSubstringsMatch
-		SYNTAX '1.3.6.1.4.1.1466.115.121.1.7')
-
 attributetype ( 1.3.6.1.4.1.38414.59.1.34 NAME 'fdTasksReminderAccountProlongation'
 		DESC 'Allow a given task to be repeatable'
 		EQUALITY booleanMatch
@@ -214,7 +208,7 @@ attributetype ( 1.3.6.1.4.1.38414.59.1.35 NAME 'fdTasksReminderPosix'
 		SUBSTR caseIgnoreSubstringsMatch
 		SYNTAX '1.3.6.1.4.1.1466.115.121.1.7')
 
-attributetype ( 1.3.6.1.4.1.38414.59.1.36 NAME 'fdTasksReminderMembers'
+attributetype ( 1.3.6.1.4.1.38414.59.1.35 NAME 'fdTasksReminderMembers'
     DESC 'Fusion Directory - Following attribute contain the list of members and groups to monitor.'
     EQUALITY caseExactMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
@@ -239,6 +233,6 @@ objectclass ( 1.3.6.1.4.1.38414.59.2.2 NAME 'fdTasksReminder'
   SUP top AUXILIARY
   MUST ( fdTasksReminderFirstCall $ fdTasksReminderMailTemplate $ fdTasksReminderEmailSender $
   fdTasksReminderResource $ fdTasksReminderListOfRecipientsMails $ fdTasksReminderMembers)
-  MAY (fdTasksReminderPosix $ fdTasksReminderAccountProlongation $ fdTasksReminderManager $
-  fdTasksReminderSupannNewEndDate $ fdTasksReminderSecondCall $ fdTasksReminderNextSubState $ fdTasksReminderNextState $
+  MAY (fdTasksReminderPosix $ fdTasksReminderAccountProlongation $ fdTasksReminderSupannNewEndDate $
+  fdTasksReminderSecondCall $ fdTasksReminderNextSubState $ fdTasksReminderNextState $
   fdTasksReminderNextResource $ fdTasksReminderSubState $ fdTasksReminderState $ fdTasksReminderRecipientsMembers ) )
