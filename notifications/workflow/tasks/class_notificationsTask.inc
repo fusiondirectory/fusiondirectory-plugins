@@ -56,7 +56,7 @@ class tasksNotifications extends simplePlugin
           new SetAttribute(
             new SelectAttribute(
               'Attributes', _('Any changes listed to set attributes will trigger a notification'),
-              'fdTasksNotificationsAttributes', TRUE, ['None']
+              'fdTasksNotificationsAttributes', TRUE
             ),
           ),
         ]
@@ -187,6 +187,11 @@ class tasksNotifications extends simplePlugin
       } else {
         $result = $config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'];
       }
+    }
+
+    // Ensure 'None' is in the array
+    if (!in_array('None', $result, true)) {
+      array_unshift($result, 'None'); // Add 'None' at the beginning
     }
 
     return $result;
