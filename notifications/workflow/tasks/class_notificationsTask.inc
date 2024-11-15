@@ -190,7 +190,7 @@ class tasksNotifications extends simplePlugin
     }
 
     // Ensure 'None' is in the array
-    if (!in_array('None', $result, true)) {
+    if (!in_array('None', $result, TRUE)) {
       array_unshift($result, 'None'); // Add 'None' at the beginning
     }
 
