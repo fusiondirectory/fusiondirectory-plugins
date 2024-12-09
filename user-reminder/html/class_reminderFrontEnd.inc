@@ -264,6 +264,7 @@ class reminderFrontEnd extends standAlonePage
     $userSupann = $this->retrieveUserSupann();
     // Find a match between task supann string and user supann strings
     $userSupannRessourceEtat = $this->returnMatchingSupannResource($newIncompleteSupann, $userSupann);
+
     // retrieve the end date for user resource matching the task supann, the new incompleteSupann.
     $userSupannEndDate = $this->returnSupannEndDate($userSupannRessourceEtat);
     // Create the final supann resource state with a new start and new end date.
@@ -327,7 +328,6 @@ class reminderFrontEnd extends standAlonePage
 
         // Simply create a string of the supann array received. Helping for the verification below.
         $supannString = $this->createSupannString(FALSE, $resource, $state, $subState, $start, $end);
-
         // If there is a match with the user supann retrieve and previous methods, we change that value to the new one.
         if ($supannString === $userSupannRessourceEtat) {
           $supannRessourceEtatDateValues[] = $newSupannRessourceEtatDate;
@@ -358,7 +358,7 @@ class reminderFrontEnd extends standAlonePage
   {
     $supann = NULL;
 
-    if ($task && !empty($this->task['resource'])) {
+    if ($task === TRUE && !empty($this->task['resource'])) {
       // case of subState present
       if (!empty($this->task['subState'])) {
         $supann = '{' . $this->task['resource'] . '}' . $this->task['state'] . ':' . $this->task['subState'];
@@ -441,7 +441,14 @@ class reminderFrontEnd extends standAlonePage
       try {
         $newEndDate = $this->addDaysToDateString($endDate, $this->task['days']);
         // Simply set the last date as beginning date and real last date as the number of day to add.
-        $finalSupann = $supannStringFromTask . ':' . $endDate . ':' . $newEndDate;
+        // We must verify if only the resource is set or if the state is also present. (If not we miss a ':' in the string)
+        if (preg_match("/:/", $supannStringFromTask)) {
+          $finalSupann = $supannStringFromTask . ':' . $endDate . ':' . $newEndDate;
+        } else {
+          // We must add an empty subState if not set in the reminder task.
+          $finalSupann = $supannStringFromTask . '::' . $endDate . ':' . $newEndDate;
+        }
+
       } catch (Exception $e) {
         $this->message[] = $e->getMessage(); // Handle any exceptions that occur
       }
