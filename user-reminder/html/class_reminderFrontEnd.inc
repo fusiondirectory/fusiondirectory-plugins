@@ -665,7 +665,7 @@ class reminderFrontEnd extends standAlonePage
         $this->task['resource'] = $attrs['fdTasksReminderNextResource'][0]; //string
         $this->task['days']     = $attrs['fdTasksReminderSupannNewEndDate'][0]; // int
         $this->task['state']    = $attrs['fdTasksReminderNextState'][0]; // string
-        $this->task['subState'] = $attrs['fdTasksReminderNextSubState'][0]; // string
+        $this->task['subState'] = $attrs['fdTasksReminderNextSubState'][0] ?? NULL; // string
 
         $result = TRUE;
       }
