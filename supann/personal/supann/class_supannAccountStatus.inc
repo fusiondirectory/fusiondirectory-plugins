@@ -227,11 +227,11 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     $modify['supannRessourceEtat']      = [];
     foreach ($this->supannRessourceEtatDate as $line) {
       list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
-      if (($label == 'COMPTE') && ($state == 'A') && ($mode == 'LOCK')) {
-        /* Lock account */
+      if (($state == 'A') && ($mode == 'LOCK')) {
+        /* Lock all resources */
         $modify['supannRessourceEtatDate'][]  = '{'.$label.'}S:SupannVerrouille:'.date('Ymd').':';
         $modify['supannRessourceEtat'][]      = '{'.$label.'}S:SupannVerrouille';
-      } elseif (($label == 'COMPTE') && (($state == 'S') || ($state == 'I')) && ($mode == 'UNLOCK')) {
+      } elseif ((($state == 'S') || ($state == 'I')) && ($mode == 'UNLOCK')) {
         /* Unlock account */
         $modify['supannRessourceEtatDate'][]  = '{'.$label.'}A:SupannActif:'.date('Ymd').':';
         $modify['supannRessourceEtat'][]      = '{'.$label.'}A:SupannActif';
