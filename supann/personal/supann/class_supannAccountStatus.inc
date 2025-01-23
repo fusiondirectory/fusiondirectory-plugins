@@ -200,22 +200,57 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     return $errors;
   }
 
-  protected function post_save ()
+  /**
+   * @return void
+   * The concept is to allow the trigger of password locking when {account} is set to lock or unlock.
+   * The same mechanism is present for mail allowing to lock the mail account within mail tab for linked web service.
+   */
+  protected function post_save()
   {
     foreach ($this->supannRessourceEtatDate as $line) {
-      list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
-      if ($label == 'COMPTE') {
-        if ($state == 'A') {
-          /* Unlock account */
-          userManagement::lockUser('unlock', $this->parent->getBaseObject()->userPassword, $this->dn);
-        } elseif (($state == 'S') || ($state == 'I')) {
-          /* Lock account */
-          userManagement::lockUser('lock', $this->parent->getBaseObject()->userPassword, $this->dn);
-        }
-        break;
+      list($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
+
+      switch ($label) {
+        case 'COMPTE':
+          $this->processAccountState($state);
+          break;
+
+        case 'MAIL':
+          $this->processMailState();
+          break;
       }
     }
+
     parent::post_save();
+  }
+
+  /**
+   * @param string $state
+   * @return void
+   * Note : The concept of locking account is based on the modification of password hash.
+   * The passwordMethod class will trigger fillLockingLDAPAttrs methods of each plugins to lock what needs to be locked.
+   */
+  protected function processAccountState(string $state): void
+  {
+    if ($state === 'A') {
+      // Unlock account
+      userManagement::lockUser('unlock', $this->parent->getBaseObject()->userPassword, $this->dn);
+    } elseif (in_array($state, ['S', 'I'], true)) {
+      // Lock account
+      userManagement::lockUser('lock', $this->parent->getBaseObject()->userPassword, $this->dn);
+    }
+  }
+
+  /**
+   * @return void
+   * Part of the locking mechanism, this is for mail, the logic is within its plugin. At time of processing, the mail
+   * tab is not aware of supann change. Only upon user refresh will it notices and act upon it. Potentially locking its
+   * own resources or web services attached. (The change of attribute for another tab before save is tricky (v1.5).
+   */
+  protected function processMailState(): void
+  {
+    // Refresh user info regardless of state
+    userManagement::refreshUserInfo($this->dn);
   }
 
   public function fillLockingLDAPAttrs (string $mode, array &$modify)
