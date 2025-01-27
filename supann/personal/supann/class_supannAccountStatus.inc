@@ -227,7 +227,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     if ($state === 'A') {
       // Unlock account
       userManagement::lockUser('unlock', $this->parent->getBaseObject()->userPassword, $this->dn);
-    } elseif (in_array($state, ['S', 'I'], true)) {
+    } elseif (in_array($state, ['S', 'I'], TRUE)) {
       // Lock account
       userManagement::lockUser('lock', $this->parent->getBaseObject()->userPassword, $this->dn, FALSE);
     }

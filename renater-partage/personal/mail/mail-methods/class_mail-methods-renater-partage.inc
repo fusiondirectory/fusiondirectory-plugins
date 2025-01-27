@@ -380,7 +380,7 @@ class mailMethodRenaterPartage extends mailMethod
           if ($label === 'MAIL') {
             if ($state !== 'A') {
               $account['zimbraAccountStatus'] = 'locked';
-            } else{
+            } else {
               $account['zimbraAccountStatus'] = 'active';
             }
             break;
