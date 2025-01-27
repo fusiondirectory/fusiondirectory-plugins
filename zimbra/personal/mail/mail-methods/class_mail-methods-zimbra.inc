@@ -349,7 +349,10 @@ class mailMethodZimbra extends mailMethod
           $account[$partageField] = $mainTab->$fdField;
         }
       }
-      $account['zimbraAccountStatus'] = ($mainTab->attributesAccess['userPassword']->isLocked() ? 'locked' : 'active');
+      if (!class_available('supannAccount')) {
+        $account['zimbraAccountStatus'] = ($mainTab->attributesAccess['userPassword']->isLocked() ? 'locked' : 'active');
+      }
+
       $account['initials'] = mb_strtoupper(mb_substr($mainTab->givenName, 0, 1).mb_substr($mainTab->sn, 0, 1));
 
       /* Sync fields from SUPANN if tab is active */
@@ -368,6 +371,8 @@ class mailMethodZimbra extends mailMethod
           if ($label === 'MAIL') {
             if ($state !== 'A') {
               $account['zimbraAccountStatus'] = 'locked';
+            } else {
+              $account['zimbraAccountStatus'] = 'active';
             }
             break;
           }

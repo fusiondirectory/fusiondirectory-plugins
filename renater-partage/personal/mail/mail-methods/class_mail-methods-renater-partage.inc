@@ -358,7 +358,9 @@ class mailMethodRenaterPartage extends mailMethod
           $account[$partageField] = $mainTab->$fdField;
         }
       }
-      $account['zimbraAccountStatus'] = ($mainTab->attributesAccess['userPassword']->isLocked() ? 'locked' : 'active');
+      if (!class_available('supannAccount')) {
+        $account['zimbraAccountStatus'] = ($mainTab->attributesAccess['userPassword']->isLocked() ? 'locked' : 'active');
+      }
       $account['initials'] = mb_strtoupper(mb_substr($mainTab->givenName, 0, 1).mb_substr($mainTab->sn, 0, 1));
 
       /* Sync fields from SUPANN if tab is active */
@@ -367,6 +369,23 @@ class mailMethodRenaterPartage extends mailMethod
 
         $account['carLicense']      = $supannTab->eduPersonPrincipalName;
         $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
+      }
+
+      /* Lock zimbra account if MAIL is inactive or suspended in supannRessourceEtatDate */
+      if (isset($this->parent->parent->by_object['supannAccountStatus']) && $this->parent->parent->by_object['supannAccountStatus']->is_account) {
+        $supannStatusTab = $this->parent->parent->by_object['supannAccountStatus'];
+
+        foreach ($supannStatusTab->supannRessourceEtatDate as $line) {
+          list ($label, $state, $substate, $start, $end) = $supannStatusTab->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
+          if ($label === 'MAIL') {
+            if ($state !== 'A') {
+              $account['zimbraAccountStatus'] = 'locked';
+            } else{
+              $account['zimbraAccountStatus'] = 'active';
+            }
+            break;
+          }
+        }
       }
 
       /* Sync fields from personal if tab is active */
