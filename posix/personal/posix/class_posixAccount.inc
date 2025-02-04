@@ -620,6 +620,7 @@ class posixAccount extends simplePlugin
       return $errors;
     }
 
+    // This allows to add new groups asignment on top of existing one !
     if (!$this->is_template && !class_available('mixedGroup')) {
       /* Take care about groupMembership values: add to groups */
       $groupMembership = $this->attributesAccess['groupMembership']->getValue();
@@ -715,7 +716,6 @@ class posixAccount extends simplePlugin
     $this->attributesAccess['mustchangepassword']->setInLdap(FALSE);
     $this->attributesAccess['groupMembership']->setInLdap(FALSE);
 
-    $this->savedGroupMembership = $this->groupMembership;
     if (isset($this->attrs['posixGroups'])) {
       unset($this->attrs['posixGroups']['count']);
       $this->groupMembership = $this->attrs['posixGroups'];
