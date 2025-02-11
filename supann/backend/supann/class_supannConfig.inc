@@ -134,7 +134,7 @@ class supannConfig extends simplePlugin
           ),
           new OrderedArrayAttribute(
             new StringAttribute(
-              _('Values'),
+              _('Supann Civilite'),
               _('Values available for supannCivilite'),
               'fdSupannCiviliteValues',
               TRUE,
