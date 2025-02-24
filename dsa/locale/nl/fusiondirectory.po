@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Dutch (https://app.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -21,62 +21,63 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/dsa/class_dsaManagement.inc:26 admin/dsa/class_dsaManagement.inc:32
-#: config/dsa/class_dsaConfig.inc:40
-msgid "DSA"
-msgstr "DSA"
-
-#: admin/dsa/class_dsaManagement.inc:27
-msgid "DSA management"
-msgstr "DSA beheer"
-
-#: admin/dsa/class_dsaManagement.inc:28
-msgid "Manage simple security objects"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:26
-#: admin/dsa/class_simpleSecurityObject.inc:27
-#: admin/dsa/class_simpleSecurityObject.inc:31
-#: admin/dsa/class_simpleSecurityObject.inc:47
-msgid "Simple security object"
-msgstr "Eenvoudig veiligheidsobject"
-
-#: admin/dsa/class_simpleSecurityObject.inc:51
-msgid "Entry name"
-msgstr "Naam ingave"
-
-#: admin/dsa/class_simpleSecurityObject.inc:51
-msgid "Account name"
-msgstr "Account naam"
-
-#: admin/dsa/class_simpleSecurityObject.inc:55
-msgid "Description"
-msgstr "Omschrijving"
-
-#: admin/dsa/class_simpleSecurityObject.inc:55
-msgid "Description of this simple security object"
-msgstr "Omschrijving van dit eenvoudig veiligheidsobject"
-
-#: admin/dsa/class_simpleSecurityObject.inc:61
-msgid "Change password"
-msgstr "Verander paswoord"
-
-#: admin/dsa/class_simpleSecurityObject.inc:64
-msgid "Password"
-msgstr "Paswoord"
-
-#: config/dsa/class_dsaConfig.inc:26
+#: backend/dsa/class_dsaConfig.inc:26
 msgid "DSA configuration"
 msgstr "DSA configuratie"
 
-#: config/dsa/class_dsaConfig.inc:27
+#: backend/dsa/class_dsaConfig.inc:27
 msgid "FusionDirectory dsa plugin configuration"
 msgstr "FusionDirectory dsa plugin configuratie"
 
-#: config/dsa/class_dsaConfig.inc:43
+#: backend/dsa/class_dsaConfig.inc:40
+#: management/dsa/class_dsaManagement.inc:26
+#: management/dsa/class_dsaManagement.inc:32
+msgid "DSA"
+msgstr "DSA"
+
+#: backend/dsa/class_dsaConfig.inc:43
 msgid "DSA RDN"
 msgstr "DSA RDN"
 
-#: config/dsa/class_dsaConfig.inc:43
+#: backend/dsa/class_dsaConfig.inc:43
 msgid "Branch in which Directory Service Account (dsa) will be stored"
 msgstr "Tak waarin Directory Service Account (dsa) zal opgeslagen worden"
+
+#: management/dsa/class_dsaManagement.inc:27
+msgid "DSA management"
+msgstr "DSA beheer"
+
+#: management/dsa/class_dsaManagement.inc:28
+msgid "Manage simple security objects"
+msgstr ""
+
+#: management/dsa/class_simpleSecurityObject.inc:26
+#: management/dsa/class_simpleSecurityObject.inc:27
+#: management/dsa/class_simpleSecurityObject.inc:31
+#: management/dsa/class_simpleSecurityObject.inc:47
+msgid "Simple security object"
+msgstr "Eenvoudig veiligheidsobject"
+
+#: management/dsa/class_simpleSecurityObject.inc:51
+msgid "Entry name"
+msgstr "Naam ingave"
+
+#: management/dsa/class_simpleSecurityObject.inc:51
+msgid "Account name"
+msgstr "Account naam"
+
+#: management/dsa/class_simpleSecurityObject.inc:55
+msgid "Description"
+msgstr "Omschrijving"
+
+#: management/dsa/class_simpleSecurityObject.inc:55
+msgid "Description of this simple security object"
+msgstr "Omschrijving van dit eenvoudig veiligheidsobject"
+
+#: management/dsa/class_simpleSecurityObject.inc:61
+msgid "Change password"
+msgstr "Verander paswoord"
+
+#: management/dsa/class_simpleSecurityObject.inc:64
+msgid "Password"
+msgstr "Paswoord"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -22,155 +22,173 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/sudo/class_sudoManagement.inc:28 admin/sudo/class_sudo.inc:32
-#: config/sudo/class_sudoConfig.inc:40
+#: backend/sudo/class_sudoConfig.inc:26
+msgid "Sudo configuration"
+msgstr "Sudo 설정"
+
+#: backend/sudo/class_sudoConfig.inc:27
+msgid "FusionDirectory sudo plugin configuration"
+msgstr "FusionDirectory sudo 플러그인 설정"
+
+#: backend/sudo/class_sudoConfig.inc:40
+#: management/sudo/class_sudoManagement.inc:28
+#: management/sudo/class_sudo.inc:32
 msgid "Sudo"
 msgstr "Sudo"
 
-#: admin/sudo/class_sudoManagement.inc:29
+#: backend/sudo/class_sudoConfig.inc:43
+msgid "Sudo RDN"
+msgstr "Sudo RDN"
+
+#: backend/sudo/class_sudoConfig.inc:43
+msgid "Branch in which sudoers will be stored"
+msgstr "sudoers가 저장될 브랜치"
+
+#: management/sudo/class_sudoManagement.inc:29
 msgid "Sudo management"
 msgstr "Sudo  관리"
 
-#: admin/sudo/class_sudoManagement.inc:30
+#: management/sudo/class_sudoManagement.inc:30
 msgid "Manage sudo roles"
 msgstr "sudo 역할 관리"
 
-#: admin/sudo/class_sudoManagement.inc:44
+#: management/sudo/class_sudoManagement.inc:44
 msgid "Default"
 msgstr "기본값"
 
-#: admin/sudo/class_sudo.inc:33 admin/sudo/class_sudo.inc:37
+#: management/sudo/class_sudo.inc:33 management/sudo/class_sudo.inc:37
 msgid "Sudo role"
 msgstr "Sudo 역할"
 
-#: admin/sudo/class_sudo.inc:63
+#: management/sudo/class_sudo.inc:63
 msgid "Role settings"
 msgstr "Role 설정"
 
-#: admin/sudo/class_sudo.inc:69
+#: management/sudo/class_sudo.inc:69
 msgid "Name"
 msgstr "명칭"
 
-#: admin/sudo/class_sudo.inc:69
+#: management/sudo/class_sudo.inc:69
 msgid "Name of the role"
 msgstr "역할의 이름"
 
-#: admin/sudo/class_sudo.inc:74
+#: management/sudo/class_sudo.inc:74
 msgid "Description"
 msgstr "설명"
 
-#: admin/sudo/class_sudo.inc:74
+#: management/sudo/class_sudo.inc:74
 msgid "Description for the new sudo role"
 msgstr "새로운 sudo 역할에 대한 설명"
 
-#: admin/sudo/class_sudo.inc:79
+#: management/sudo/class_sudo.inc:79
 msgid "Commands"
 msgstr "명령"
 
-#: admin/sudo/class_sudo.inc:80
+#: management/sudo/class_sudo.inc:80
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
 msgstr "잠재적으로 globbing 문자 (일명 와일드 카드)를 포함하는 선택적 명령줄 인수가 있는 Unix 명령"
 
-#: admin/sudo/class_sudo.inc:86
+#: management/sudo/class_sudo.inc:86
 msgid "Run as (user)"
 msgstr "(사용자)로 실행"
 
-#: admin/sudo/class_sudo.inc:87
+#: management/sudo/class_sudo.inc:87
 msgid "User(s) impersonated by sudo"
 msgstr "sudo로 가장 한 사용자(들)"
 
-#: admin/sudo/class_sudo.inc:94
+#: management/sudo/class_sudo.inc:94
 msgid "Run as (group)"
 msgstr "(그룹)으로 실행"
 
-#: admin/sudo/class_sudo.inc:95
+#: management/sudo/class_sudo.inc:95
 msgid "Group(s) impersonated by sudo"
 msgstr "sudo로 가장 한 그룹(들)"
 
-#: admin/sudo/class_sudo.inc:101
+#: management/sudo/class_sudo.inc:101
 msgid "Systems"
 msgstr "시스템"
 
-#: admin/sudo/class_sudo.inc:101
+#: management/sudo/class_sudo.inc:101
 msgid "A host name, IP address or IP network"
 msgstr "호스트명, 아이피 주소 또는 아이피 네트워크"
 
-#: admin/sudo/class_sudo.inc:107
+#: management/sudo/class_sudo.inc:107
 msgid "Users and groups"
 msgstr "사용자와 그룹"
 
-#: admin/sudo/class_sudo.inc:108
+#: management/sudo/class_sudo.inc:108
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr "사용자 이름, 사용자 ID(접두사 '#'), 유닉스 그룹(접두사 '%')"
 
-#: admin/sudo/class_sudo.inc:112
+#: management/sudo/class_sudo.inc:112
 msgid "Priority"
 msgstr "우선 순위"
 
-#: admin/sudo/class_sudo.inc:112
+#: management/sudo/class_sudo.inc:112
 msgid "This rule priority compared to others"
 msgstr "이 규칙 우선 순위는 다른 규칙과 비교됩니다."
 
-#: admin/sudo/class_sudo.inc:117
+#: management/sudo/class_sudo.inc:117
 msgid "Valid starting from"
 msgstr "~부터 유효하다"
 
-#: admin/sudo/class_sudo.inc:117
+#: management/sudo/class_sudo.inc:117
 msgid ""
 "Start of time interval for which the entry is valid (leave empty to disable)"
 msgstr "항목이 유효한 시간 간격의 시작 (사용하지 않으려면 비워 두십시오)"
 
-#: admin/sudo/class_sudo.inc:122
+#: management/sudo/class_sudo.inc:122
 msgid "Valid until"
 msgstr "까지 유효하다"
 
-#: admin/sudo/class_sudo.inc:122
+#: management/sudo/class_sudo.inc:122
 msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr "항목이 유효한 시간 간격의 끝 (사용하지 않으려면 비워 두십시오)"
 
-#: admin/sudo/class_sudoOption.inc:77
+#: management/sudo/class_sudoOption.inc:77
 msgid "Unknown option"
 msgstr "알수 없는 옵션"
 
-#: admin/sudo/class_sudoOption.inc:78
+#: management/sudo/class_sudoOption.inc:78
 #, php-format
 msgid "The sudo option '%s' is invalid!"
 msgstr "sudo 옵션 '%s'은 유효하지 않습니다!"
 
-#: admin/sudo/class_sudoOption.inc:138
+#: management/sudo/class_sudoOption.inc:138
 #, php-format
 msgid "%s (%s)"
 msgstr "%s(%s)"
 
-#: admin/sudo/class_sudoOption.inc:338
+#: management/sudo/class_sudoOption.inc:338
 msgid "Options"
 msgstr "옵션"
 
-#: admin/sudo/class_sudoOption.inc:339
+#: management/sudo/class_sudoOption.inc:339
 msgid "Sudo options"
 msgstr "Sudo 옵션"
 
-#: admin/sudo/class_sudoOption.inc:351
+#: management/sudo/class_sudoOption.inc:351
 msgid "Available options"
 msgstr "가능한 옵션"
 
-#: admin/sudo/class_sudoOption.inc:354
+#: management/sudo/class_sudoOption.inc:354
 msgid "Option"
 msgstr "옵션"
 
-#: admin/sudo/class_sudoOption.inc:354
+#: management/sudo/class_sudoOption.inc:354
 msgid "Add a new sudo option"
 msgstr "새로운 sudo 옵션 추가"
 
-#: admin/sudo/class_sudoOption.inc:359 admin/sudo/class_sudoOption.inc:361
+#: management/sudo/class_sudoOption.inc:359
+#: management/sudo/class_sudoOption.inc:361
 msgid "Used sudo role options"
 msgstr "사용된 sudo 역할 옵션"
 
-#: admin/sudo/class_sudoOptions.inc:53
+#: management/sudo/class_sudoOptions.inc:53
 msgid ""
 "When validating with a One Time Password (OTP) scheme such as S/Key or OPIE,"
 " a two-line prompt is used to make it easier to cut and paste the challenge "
@@ -179,29 +197,29 @@ msgstr ""
 "S / Key 또는 OPIE와 같은 OTP (One Time Password) 체계를 사용하여 유효성을 검사 할 때 로컬 창에  "
 "challenge를 쉽게 잘라내어 붙여 넣을 수 있도록 두 줄 프롬프트가 사용됩니다"
 
-#: admin/sudo/class_sudoOptions.inc:58
+#: management/sudo/class_sudoOptions.inc:58
 msgid ""
 "If set, sudo will ignore '.' or '' (current dir) in the PATH environment "
 "variable"
 msgstr "설정이 되면, sudo는 PATH 환경변수의 '.' 또는 '' (현재 디렉토리)를 무시합니다."
 
-#: admin/sudo/class_sudoOptions.inc:63
+#: management/sudo/class_sudoOptions.inc:63
 msgid "Send mail to the mailto user every time a users runs sudo"
 msgstr "사용자가 sudo를 실행할 때마다 mailto 사용자에게 메일 보내기"
 
-#: admin/sudo/class_sudoOptions.inc:68
+#: management/sudo/class_sudoOptions.inc:68
 msgid ""
 "Send mail to the mailto user if the user running sudo does not enter the "
 "correct password"
 msgstr "sudo를 실행하는 사용자가 올바른 암호를 입력하지 않으면 mailto 사용자에게 메일 보내기"
 
-#: admin/sudo/class_sudoOptions.inc:73
+#: management/sudo/class_sudoOptions.inc:73
 msgid ""
 "If set, mail will be sent to the mailto user if the invoking user is not in "
 "the sudoers file"
 msgstr "설정되면, 호출하는 사용자가 sudoers 파일에 없으면 메일이 mailto 사용자에게 전송됩니다."
 
-#: admin/sudo/class_sudoOptions.inc:78
+#: management/sudo/class_sudoOptions.inc:78
 msgid ""
 "If set, mail will be sent to the mailto user if the invoking user exists in "
 "the sudoers file, but is not allowed to run commands on the current host"
@@ -209,43 +227,43 @@ msgstr ""
 "설정되면, 호출하는 사용자가 sudoers 파일에 있지만 현재 호스트에서 명령을 실행할 수 없으면 mailto 사용자에게 메일이 "
 "전송됩니다"
 
-#: admin/sudo/class_sudoOptions.inc:83
+#: management/sudo/class_sudoOptions.inc:83
 msgid ""
 "If set, mail will be sent to the mailto user if the invoking user is allowed"
 " to use sudo but not for this command"
 msgstr ""
 "설정되면, 호출하는 사용자가 sudo를 사용할 수 있지만 이 명령어를 사용할 수 없으면 mailto 사용자에게 메일이 전송됩니다."
 
-#: admin/sudo/class_sudoOptions.inc:88
+#: management/sudo/class_sudoOptions.inc:88
 msgid "If set, users must authenticate on a per-tty basis"
 msgstr "설정된 경우 사용자는 tty 단위로 인증해야합니다."
 
-#: admin/sudo/class_sudoOptions.inc:93
+#: management/sudo/class_sudoOptions.inc:93
 msgid ""
 "If set, users must authenticate themselves via a password (or other means of"
 " authentication)"
 msgstr "설정된 경우 사용자는 비밀번호 (또는 다른 인증 수단)를 통해 자신을 인증해야합니다."
 
-#: admin/sudo/class_sudoOptions.inc:98
+#: management/sudo/class_sudoOptions.inc:98
 msgid "If set, root is allowed to run sudo too"
 msgstr "설정된 경우, root는 sudo도 실행할 수 있습니다."
 
-#: admin/sudo/class_sudoOptions.inc:103
+#: management/sudo/class_sudoOptions.inc:103
 msgid "If set, the host name will be logged in the (non-syslog) sudo log file"
 msgstr "설정하면 호스트 이름은 (non-syslog) sudo 로그 파일에 기록됩니다"
 
-#: admin/sudo/class_sudoOptions.inc:108
+#: management/sudo/class_sudoOptions.inc:108
 msgid ""
 "If set, the four-digit year will be logged in the (non-syslog) sudo log file"
 msgstr "설정하면 네자리 년도가 (non-syslog) sudo 로그 파일에 기록됩니다"
 
-#: admin/sudo/class_sudoOptions.inc:113
+#: management/sudo/class_sudoOptions.inc:113
 msgid ""
 "If set and sudo is invoked with no arguments it acts as if the -s option had"
 " been given"
 msgstr "설정되고 sudo가 인수없이 호출되면 -s 옵션이 주어진 것처럼 작동합니다"
 
-#: admin/sudo/class_sudoOptions.inc:118
+#: management/sudo/class_sudoOptions.inc:118
 msgid ""
 "If enabled and sudo is invoked with the -s option the HOME environment "
 "variable will be set to the home directory of the target user (usually root)"
@@ -253,49 +271,49 @@ msgstr ""
 "옵션을 사용하고 -s 옵션을 사용하여 sudo를 호출하면 HOME 환경 변수가 대상 사용자의 홈 디렉토리 (일반적으로 root)로 "
 "설정됩니다."
 
-#: admin/sudo/class_sudoOptions.inc:123
+#: management/sudo/class_sudoOptions.inc:123
 msgid ""
 "If enabled, sudo will set the HOME environment variable to the home "
 "directory of the target user (usually root)"
 msgstr "이 옵션을 사용하면 sudo는 HOME 환경 변수를 대상 사용자의 홈 디렉토리 (보통 root)로 설정합니다."
 
-#: admin/sudo/class_sudoOptions.inc:128
+#: management/sudo/class_sudoOptions.inc:128
 msgid ""
 "If the executable is simply not in the user's PATH, sudo will tell the user "
 "that they are not allowed to run it"
 msgstr "실행 파일이 단순히 사용자의 PATH에 없으면 sudo는 사용자에게 실행을 허용하지 않는다고 알려줍니다"
 
-#: admin/sudo/class_sudoOptions.inc:133
+#: management/sudo/class_sudoOptions.inc:133
 msgid "If set, the user's existing group vector is left unaltered"
 msgstr "설정된 경우 사용자의 기존 그룹 벡터가 변경되지 않은 상태로 유지됩니다."
 
-#: admin/sudo/class_sudoOptions.inc:138
+#: management/sudo/class_sudoOptions.inc:138
 msgid ""
 "Set this flag if you want to put fully qualified host names in the sudoers "
 "file"
 msgstr "sudoers 파일에 완전한 호스트 이름을 넣으려면 이 플래그를 설정하십시오."
 
-#: admin/sudo/class_sudoOptions.inc:143
+#: management/sudo/class_sudoOptions.inc:143
 msgid "If set, sudo will insult users when they enter an incorrect password"
 msgstr "설정된 경우 sudo는 사용자가 잘못된 암호를 입력했을 때 사용자를 insult 합니다."
 
-#: admin/sudo/class_sudoOptions.inc:148
+#: management/sudo/class_sudoOptions.inc:148
 msgid "If set, sudo will only run when the user is logged in to a real tty"
 msgstr "설정되면 sudo는 사용자가 실제 tty에 로그인 할 때만 실행됩니다"
 
-#: admin/sudo/class_sudoOptions.inc:153
+#: management/sudo/class_sudoOptions.inc:153
 msgid ""
 "If set, visudo will use the value of the EDITOR or VISUAL environment "
 "variables before falling back on the default editor list"
 msgstr "설정하면 visudo는 기본 편집기 목록으로 되돌아가기 전에 EDITOR 또는 VISUAL 환경 변수의 값을 사용합니다."
 
-#: admin/sudo/class_sudoOptions.inc:158
+#: management/sudo/class_sudoOptions.inc:158
 msgid ""
 "If set, sudo will prompt for the root password instead of the password of "
 "the invoking user"
 msgstr "설정된 경우, sudo는 호출하는 사용자의 암호 대신 루트 암호를 요구합니다"
 
-#: admin/sudo/class_sudoOptions.inc:163
+#: management/sudo/class_sudoOptions.inc:163
 msgid ""
 "If set, sudo will prompt for the password of the user defined by the "
 "runas_default option (defaults to root) instead of the password of the "
@@ -304,19 +322,19 @@ msgstr ""
 "이 옵션을 설정하면 sudo는 호출하는 사용자의 암호 대신 runas_default 옵션 (기본값은 root)에 의해 정의 된 사용자의 "
 "암호를 묻습니다"
 
-#: admin/sudo/class_sudoOptions.inc:168
+#: management/sudo/class_sudoOptions.inc:168
 msgid ""
 "If set, sudo will prompt for the password of the user specified by the -u "
 "option (defaults to root) instead of the password of the invoking user"
 msgstr "설정되면, sudo는 호출하는 사용자의 암호 대신 -u 옵션 (기본값은 root)에 의해 지정된 사용자의 암호를 요구합니다"
 
-#: admin/sudo/class_sudoOptions.inc:173
+#: management/sudo/class_sudoOptions.inc:173
 msgid ""
 "If set, sudo will set the LOGNAME environment variables to the name of the "
 "target user"
 msgstr "설정되면, sudo는 LOGNAME 환경 변수를 대상 사용자의 이름으로 설정합니다"
 
-#: admin/sudo/class_sudoOptions.inc:183
+#: management/sudo/class_sudoOptions.inc:183
 msgid ""
 "If set, sudo will run the command in a minimal environment containing the "
 "TERM, PATH, HOME, MAIL, SHELL, LOGNAME, USER, USERNAME and SUDO_ variables"
@@ -324,93 +342,93 @@ msgstr ""
 "이 옵션을 설정하면 sudo는 TERM, PATH, HOME, MAIL, SHELL, LOGNAME, USER, USERNAME 및 "
 "SUDO_ 변수를 포함하는 최소 환경에서 명령을 실행합니다"
 
-#: admin/sudo/class_sudoOptions.inc:188
+#: management/sudo/class_sudoOptions.inc:188
 msgid ""
 "If set, sudo will apply the defaults specified for the target user's login "
 "class if one exists"
 msgstr "설정된 경우 sudo는 대상 사용자의 로그인 클래스에 대해 지정된 기본값을 적용합니다"
 
-#: admin/sudo/class_sudoOptions.inc:193
+#: management/sudo/class_sudoOptions.inc:193
 msgid ""
 "If set, all commands run via sudo will behave as if the NOEXEC tag has been "
 "set, unless overridden by a EXEC tag"
 msgstr ""
 "설정되면, sudo를 통해 실행되는 모든 명령은 EXEC 태그에 의해 무시되지 않는 한 NOEXEC 태그가 설정된 것처럼 작동합니다"
 
-#: admin/sudo/class_sudoOptions.inc:198
+#: management/sudo/class_sudoOptions.inc:198
 msgid "If set, parsing of /etc/sudoers file will be skipped."
 msgstr "설정된 경우 / etc / sudoers 파일의 구문 분석을 건너 뜁니다."
 
-#: admin/sudo/class_sudoOptions.inc:203
+#: management/sudo/class_sudoOptions.inc:203
 msgid ""
 "The number of tries a user gets to enter his/her password before sudo logs "
 "the failure and exits"
 msgstr "sudo가 실패를 기록하고 종료하기 전에 사용자가 암호를 입력하려고 시도하는 횟수"
 
-#: admin/sudo/class_sudoOptions.inc:208
+#: management/sudo/class_sudoOptions.inc:208
 msgid "Number of characters per line for the file log"
 msgstr "파일 로그의 행당 문자 수"
 
-#: admin/sudo/class_sudoOptions.inc:213
+#: management/sudo/class_sudoOptions.inc:213
 msgid ""
 "Number of minutes that can elapse before sudo will ask for a passwd again"
 msgstr "sudo가 passwd를 다시 요청하기 전에 경과 할 수 있는 시간-분"
 
-#: admin/sudo/class_sudoOptions.inc:218
+#: management/sudo/class_sudoOptions.inc:218
 msgid ""
 "Number of minutes before the sudo password prompt times out, or 0 for no "
 "timeout"
 msgstr "sudo 암호 프롬프트가 시간-분 초과되기 전의 시간 또는 시간 초과가없는 경우 0"
 
-#: admin/sudo/class_sudoOptions.inc:223
+#: management/sudo/class_sudoOptions.inc:223
 msgid ""
 "Umask to use when running the command. Set to FALSE to preserve the user's "
 "umask"
 msgstr "명령을 실행할 때 사용할 umask. 사용자의 umask를 보존하려면 FALSE로 설정하십시오."
 
-#: admin/sudo/class_sudoOptions.inc:228
+#: management/sudo/class_sudoOptions.inc:228
 msgid ""
 "Subject of the mail sent to the mailto user. The escape %h will expand to "
 "the host name of the machine"
 msgstr "mailto 사용자에게 전송된 메일의 제목. %h 이스케이프가 시스템의 호스트 이름으로 확장됩니다"
 
-#: admin/sudo/class_sudoOptions.inc:233
+#: management/sudo/class_sudoOptions.inc:233
 msgid "Message that is displayed if a user enters an incorrect password"
 msgstr "사용자가 잘못된 암호를 입력하면 표시되는 메시지"
 
-#: admin/sudo/class_sudoOptions.inc:238
+#: management/sudo/class_sudoOptions.inc:238
 msgid "The directory in which sudo stores its timestamp files"
 msgstr "sudo가 타임스탬프 파일을 저장하는 디렉토리"
 
-#: admin/sudo/class_sudoOptions.inc:243
+#: management/sudo/class_sudoOptions.inc:243
 msgid "The owner of the timestamp directory and the timestamps stored therein"
 msgstr "타임스탬프 디렉토리의 소유자 및 타임 스탬프 디렉토리에 저장된 타임스탬프"
 
-#: admin/sudo/class_sudoOptions.inc:248
+#: management/sudo/class_sudoOptions.inc:248
 msgid ""
 "The default prompt to use when asking for a password; can be overridden via "
 "the -p option or the SUDO_PROMPT environment variable"
 msgstr "암호를 묻는 데 사용할 기본 프롬프트: -p 옵션 또는 SUDO_PROMPT 환경 변수를 통해 무시 될 수 있습니다."
 
-#: admin/sudo/class_sudoOptions.inc:253
+#: management/sudo/class_sudoOptions.inc:253
 msgid ""
 "The default user to run commands as if the -u option is not specified on the"
 " command line"
 msgstr "명령 줄에서 -u 옵션을 지정하지 않은 것처럼 명령을 실행하는 기본 사용자"
 
-#: admin/sudo/class_sudoOptions.inc:258
+#: management/sudo/class_sudoOptions.inc:258
 msgid "Syslog priority to use when user authenticates successfully"
 msgstr "사용자가 성공적으로 인증 할 때 사용할 Syslog 우선 순위"
 
-#: admin/sudo/class_sudoOptions.inc:263
+#: management/sudo/class_sudoOptions.inc:263
 msgid "Syslog priority to use when user authenticates unsuccessfully"
 msgstr "사용자 인증에 실패 할 때 사용할 Syslog 우선 순위"
 
-#: admin/sudo/class_sudoOptions.inc:268
+#: management/sudo/class_sudoOptions.inc:268
 msgid "A colon separated list of editors allowed to be used with visudo"
 msgstr "콜론으로 구분 된 편집자 목록은 visudo와 함께 사용할 수 있습니다."
 
-#: admin/sudo/class_sudoOptions.inc:278
+#: management/sudo/class_sudoOptions.inc:278
 msgid ""
 "Path used for every command run from sudo. If you don't trust the people "
 "running sudo to have a sane PATH environment variable you may want to use "
@@ -419,88 +437,75 @@ msgstr ""
 "sudo에서 실행되는 모든 명령에 사용되는 경로. sudo를 실행하는 사람들이 정상적인 PATH 환경 변수를 사용하는 것을 신뢰하지 "
 "않는다면 이것을 사용하는 것이 좋습니다."
 
-#: admin/sudo/class_sudoOptions.inc:283
+#: management/sudo/class_sudoOptions.inc:283
 msgid ""
 "This option controls when a short lecture will be printed along with the "
 "password prompt"
 msgstr "이 옵션은 짧은 lecture가 암호 프롬프트와 함께 인쇄될 시기를 제어합니다."
 
-#: admin/sudo/class_sudoOptions.inc:288
+#: management/sudo/class_sudoOptions.inc:288
 msgid ""
 "Path to a file containing an alternate sudo lecture that will be used in "
 "place of the standard lecture"
 msgstr "표준 lecture 대신 사용되는 대체 sudo lecture를 포함하는 파일의 경로"
 
-#: admin/sudo/class_sudoOptions.inc:293
+#: management/sudo/class_sudoOptions.inc:293
 msgid "Path to the sudo log file (not the syslog log file)"
 msgstr "sudo 로그 파일의 경로 (syslog 로그 파일 아님)"
 
-#: admin/sudo/class_sudoOptions.inc:298
+#: management/sudo/class_sudoOptions.inc:298
 msgid "Syslog facility if syslog is being used for logging"
 msgstr "syslog가 로깅에 사용되는 경우 Syslog 기능"
 
-#: admin/sudo/class_sudoOptions.inc:303
+#: management/sudo/class_sudoOptions.inc:303
 msgid "Path to mail program used to send warning mail"
 msgstr "경고 메일을 보내는 데 사용되는 메일 프로그램 경로"
 
-#: admin/sudo/class_sudoOptions.inc:308
+#: management/sudo/class_sudoOptions.inc:308
 msgid "Flags to use when invoking mailer"
 msgstr "메일러를 호출 할 때 사용할 플래그"
 
-#: admin/sudo/class_sudoOptions.inc:313
+#: management/sudo/class_sudoOptions.inc:313
 msgid "Address to send warning and error mail to"
 msgstr "경고 및 오류 메일을 보낼 주소"
 
-#: admin/sudo/class_sudoOptions.inc:318
+#: management/sudo/class_sudoOptions.inc:318
 msgid "Users in this group are exempt from password and PATH requirements"
 msgstr "이 그룹의 사용자는 암호 및 PATH 요구 사항에서 제외됩니다."
 
-#: admin/sudo/class_sudoOptions.inc:323
+#: management/sudo/class_sudoOptions.inc:323
 msgid ""
 "This option controls when a password will be required when a user runs sudo "
 "with the -v option"
 msgstr "이 옵션은 사용자가 -v 옵션을 사용하여 sudo를 실행할 때 암호가 필요한 시기를 제어합니다."
 
-#: admin/sudo/class_sudoOptions.inc:328
+#: management/sudo/class_sudoOptions.inc:328
 msgid ""
 "This option controls when a password will be required when a user runs sudo "
 "with the -l option"
 msgstr "이 옵션은 사용자가 -l 옵션을 사용하여 sudo를 실행할 때 암호가 필요한 시기를 제어합니다."
 
-#: admin/sudo/class_sudoOptions.inc:333 admin/sudo/class_sudoOptions.inc:348
-#: admin/sudo/class_sudoOptions.inc:363
+#: management/sudo/class_sudoOptions.inc:333
+#: management/sudo/class_sudoOptions.inc:348
+#: management/sudo/class_sudoOptions.inc:363
 #, php-format
 msgid ""
 "Environment variables to be removed from the user's environment if the "
 "variable's value contains % or / characters"
 msgstr "변수의 값에 % 또는 / 문자가 포함되어 있으면 사용자 환경에서 제거할 환경 변수"
 
-#: admin/sudo/class_sudoOptions.inc:338 admin/sudo/class_sudoOptions.inc:353
-#: admin/sudo/class_sudoOptions.inc:368
+#: management/sudo/class_sudoOptions.inc:338
+#: management/sudo/class_sudoOptions.inc:353
+#: management/sudo/class_sudoOptions.inc:368
 msgid ""
 "Environment variables to be removed from the user's environment when the "
 "env_reset option is not in effect"
 msgstr "env_reset 옵션이 유효하지 않은 경우 사용자 환경에서 제거할 환경 변수"
 
-#: admin/sudo/class_sudoOptions.inc:343 admin/sudo/class_sudoOptions.inc:358
-#: admin/sudo/class_sudoOptions.inc:373
+#: management/sudo/class_sudoOptions.inc:343
+#: management/sudo/class_sudoOptions.inc:358
+#: management/sudo/class_sudoOptions.inc:373
 msgid ""
 "Environment variables to be preserved in the user's environment when the "
 "env_reset option is in effect"
 msgstr "env_reset 옵션이 유효한 경우 사용자 환경에 보존될 환경 변수"
-
-#: config/sudo/class_sudoConfig.inc:26
-msgid "Sudo configuration"
-msgstr "Sudo 설정"
-
-#: config/sudo/class_sudoConfig.inc:27
-msgid "FusionDirectory sudo plugin configuration"
-msgstr "FusionDirectory sudo 플러그인 설정"
-
-#: config/sudo/class_sudoConfig.inc:43
-msgid "Sudo RDN"
-msgstr "Sudo RDN"
-
-#: config/sudo/class_sudoConfig.inc:43
-msgid "Branch in which sudoers will be stored"
-msgstr "sudoers가 저장될 브랜치"

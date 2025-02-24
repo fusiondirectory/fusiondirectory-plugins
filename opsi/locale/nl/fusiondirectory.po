@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:58+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2021\n"
 "Language-Team: Dutch (https://app.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -24,241 +24,260 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/opsi/class_opsiSoftwareList.inc:30
+#: backend/opsi/class_opsiConfig.inc:26
+msgid "OPSI configuration"
+msgstr "OPSI configuratie"
+
+#: backend/opsi/class_opsiConfig.inc:27
+msgid "FusionDirectory OPSI plugin configuration"
+msgstr "FusionDirectory OPSI plugin configuratie"
+
+#: backend/opsi/class_opsiConfig.inc:40
+#: management/opsi/class_opsiProfileManagement.inc:37
+msgid "OPSI"
+msgstr "OPSI"
+
+#: backend/opsi/class_opsiConfig.inc:43
+msgid "OPSI RDN"
+msgstr "OPSI RDN"
+
+#: backend/opsi/class_opsiConfig.inc:43
+msgid "Branch in which OPSI profiles will be stored"
+msgstr "Sectie waarin OPSI profielen zullen opgeslagen worden"
+
+#: management/opsi/class_opsiSoftwareList.inc:30
 msgid "OPSI list"
 msgstr "OPSI lijst"
 
-#: admin/opsi/class_opsiSoftwareList.inc:31
-#: admin/opsi/class_opsiSoftwareList.inc:35
+#: management/opsi/class_opsiSoftwareList.inc:31
+#: management/opsi/class_opsiSoftwareList.inc:35
 msgid "OPSI software list"
 msgstr "OPSI software lijst"
 
-#: admin/opsi/class_opsiSoftwareList.inc:51
-#: admin/opsi/class_opsiOnDemandList.inc:48
+#: management/opsi/class_opsiSoftwareList.inc:51
+#: management/opsi/class_opsiOnDemandList.inc:48
 msgid "Infos"
 msgstr "Informatie"
 
-#: admin/opsi/class_opsiSoftwareList.inc:55
-#: admin/opsi/class_opsiProfile.inc:91
-#: admin/opsi/class_opsiOnDemandList.inc:51
+#: management/opsi/class_opsiSoftwareList.inc:55
+#: management/opsi/class_opsiProfile.inc:91
+#: management/opsi/class_opsiOnDemandList.inc:51
 msgid "OPSI server"
 msgstr "OPSI server"
 
-#: admin/opsi/class_opsiSoftwareList.inc:55
-#: admin/opsi/class_opsiProfile.inc:91
-#: admin/opsi/class_opsiOnDemandList.inc:51
+#: management/opsi/class_opsiSoftwareList.inc:55
+#: management/opsi/class_opsiProfile.inc:91
+#: management/opsi/class_opsiOnDemandList.inc:51
 msgid "OPSI server to use for deployment"
 msgstr "OPSI server te gebruiken voor deployment"
 
-#: admin/opsi/class_opsiSoftwareList.inc:59
-#: admin/opsi/class_opsiProfile.inc:87 admin/opsi/class_opsiProfile.inc:95
-#: admin/opsi/class_opsiOnDemandList.inc:55
-#: admin/opsi/class_opsiProductProperties.inc:112
+#: management/opsi/class_opsiSoftwareList.inc:59
+#: management/opsi/class_opsiProfile.inc:87
+#: management/opsi/class_opsiProfile.inc:95
+#: management/opsi/class_opsiOnDemandList.inc:55
+#: management/opsi/class_opsiProductProperties.inc:112
 msgid "Name"
 msgstr "Naam"
 
-#: admin/opsi/class_opsiSoftwareList.inc:59
-#: admin/opsi/class_opsiProfile.inc:95
-#: admin/opsi/class_opsiOnDemandList.inc:55
+#: management/opsi/class_opsiSoftwareList.inc:59
+#: management/opsi/class_opsiProfile.inc:95
+#: management/opsi/class_opsiOnDemandList.inc:55
 msgid "Name of this OPSI profile"
 msgstr "Naam van dit OPSI profiel"
 
-#: admin/opsi/class_opsiSoftwareList.inc:65
-#: admin/opsi/class_opsiOnDemandList.inc:65
-#: admin/systems/opsi/class_opsiClient.inc:70
+#: management/opsi/class_opsiSoftwareList.inc:65
+#: management/opsi/class_opsiOnDemandList.inc:65
+#: management/systems/opsi/class_opsiClient.inc:70
 msgid "Softwares"
 msgstr "Softwares"
 
-#: admin/opsi/class_opsiSoftwareList.inc:69
+#: management/opsi/class_opsiSoftwareList.inc:69
 msgid "The localboot products to install with this list"
 msgstr "De localboot producten te installeren met deze lijst"
 
-#: admin/opsi/class_opsiSoftwareList.inc:82
-#: admin/opsi/class_opsiOnDemandList.inc:69
-#: admin/systems/opsi/class_opsiClient.inc:87
+#: management/opsi/class_opsiSoftwareList.inc:82
+#: management/opsi/class_opsiOnDemandList.inc:69
+#: management/systems/opsi/class_opsiClient.inc:87
 msgid "Localboot products"
 msgstr "Localboot producten"
 
-#: admin/opsi/class_opsiSoftwareList.inc:133
-#: admin/systems/opsi/class_opsiClient.inc:385
+#: management/opsi/class_opsiSoftwareList.inc:133
+#: management/systems/opsi/class_opsiClient.inc:385
 #, php-format
 msgid "%s (%s-%s)"
 msgstr "%s (%s-%s)"
 
-#: admin/opsi/class_opsiProfile.inc:65 admin/opsi/class_opsiProfile.inc:66
-#: admin/opsi/class_opsiProfile.inc:70
+#: management/opsi/class_opsiProfile.inc:65
+#: management/opsi/class_opsiProfile.inc:66
+#: management/opsi/class_opsiProfile.inc:70
 msgid "OPSI profile"
 msgstr "OPSI profiel"
 
-#: admin/opsi/class_opsiProfile.inc:101
+#: management/opsi/class_opsiProfile.inc:101
 msgid "Entries"
 msgstr "Ingaves"
 
-#: admin/opsi/class_opsiProfile.inc:104
+#: management/opsi/class_opsiProfile.inc:104
 msgid "Netboot product"
 msgstr "Netboot Product"
 
-#: admin/opsi/class_opsiProfile.inc:104
+#: management/opsi/class_opsiProfile.inc:104
 msgid "The netboot product to use for this profile"
 msgstr "Het te gebruiken netboot product voor dit profiel"
 
-#: admin/opsi/class_opsiProfile.inc:109
+#: management/opsi/class_opsiProfile.inc:109
 msgid "Software lists"
 msgstr "Software lijsten"
 
-#: admin/opsi/class_opsiProfile.inc:109
+#: management/opsi/class_opsiProfile.inc:109
 msgid "Software lists that will be installed with this profile"
 msgstr "Software lijsten die zullen geïnstalleerd worden met dit profiel"
 
-#: admin/opsi/class_opsiProfile.inc:142 admin/opsi/class_opsiProfile.inc:173
+#: management/opsi/class_opsiProfile.inc:142
+#: management/opsi/class_opsiProfile.inc:173
 #, php-format
 msgid "Could not find %s in the LDAP"
 msgstr "Kan %s niet vinden in de LDAP"
 
-#: admin/opsi/class_opsiProfile.inc:165
+#: management/opsi/class_opsiProfile.inc:165
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
 msgstr "Server %s heeft geen mac adres geconfigureerd in de LDAP"
 
-#: admin/opsi/class_opsiProfile.inc:217
+#: management/opsi/class_opsiProfile.inc:217
 #, php-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: admin/opsi/class_opsiOnDemandList.inc:27
-#: admin/opsi/class_opsiOnDemandList.inc:32
+#: management/opsi/class_opsiOnDemandList.inc:27
+#: management/opsi/class_opsiOnDemandList.inc:32
 msgid "OPSI ondemand list"
 msgstr "OPSI on-demand lijst"
 
-#: admin/opsi/class_opsiOnDemandList.inc:28
+#: management/opsi/class_opsiOnDemandList.inc:28
 msgid "OPSI on demand software list"
 msgstr "OPSI on-demand software lijst"
 
-#: admin/opsi/class_opsiOnDemandList.inc:59
+#: management/opsi/class_opsiOnDemandList.inc:59
 msgid "Show details"
 msgstr "Toon details"
 
-#: admin/opsi/class_opsiOnDemandList.inc:59
+#: management/opsi/class_opsiOnDemandList.inc:59
 msgid "Show further information to the user"
 msgstr "Toon meer informatie aan de gebruiker"
 
-#: admin/opsi/class_opsiOnDemandList.inc:69
+#: management/opsi/class_opsiOnDemandList.inc:69
 msgid "The localboot products to put in this list"
 msgstr "De localboot producten om in deze lijst te zetten"
 
-#: admin/opsi/class_opsiProfileManagement.inc:37
-#: config/opsi/class_opsiConfig.inc:40
-msgid "OPSI"
-msgstr "OPSI"
-
-#: admin/opsi/class_opsiProfileManagement.inc:38
+#: management/opsi/class_opsiProfileManagement.inc:38
 msgid "OPSI profile management"
 msgstr "OPSI profiel beheer"
 
-#: admin/opsi/class_opsiProductProperties.inc:98
-#: admin/opsi/class_opsiProductProperties.inc:99
+#: management/opsi/class_opsiProductProperties.inc:98
+#: management/opsi/class_opsiProductProperties.inc:99
 msgid "Product properties"
 msgstr "Product eigenschappen"
 
-#: admin/opsi/class_opsiProductProperties.inc:117
+#: management/opsi/class_opsiProductProperties.inc:117
 msgid "Properties of the products of this profile"
 msgstr "Eigenschappen van de producten van dit profiel"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:26
-#: admin/systems/services/opsi/class_serviceOPSI.inc:27
+#: management/systems/services/opsi/class_serviceOPSI.inc:26
+#: management/systems/services/opsi/class_serviceOPSI.inc:27
 msgid "OPSI service"
 msgstr "OPSI service"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:27
+#: management/systems/services/opsi/class_serviceOPSI.inc:27
 msgid "Services"
 msgstr "Services"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:39
+#: management/systems/services/opsi/class_serviceOPSI.inc:39
 msgid "OPSI Server information"
 msgstr "OPSI Server informatie"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:42
+#: management/systems/services/opsi/class_serviceOPSI.inc:42
 msgid "Server URI"
 msgstr "Server URI"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:42
+#: management/systems/services/opsi/class_serviceOPSI.inc:42
 msgid "The URI to use for connection"
 msgstr "De te gebruiken URI voor verbinding"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:46
+#: management/systems/services/opsi/class_serviceOPSI.inc:46
 msgid "User"
 msgstr "Gebruiker"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:46
+#: management/systems/services/opsi/class_serviceOPSI.inc:46
 msgid "The user to use for connection"
 msgstr "De gebruiker voor deze verbinding"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:50
+#: management/systems/services/opsi/class_serviceOPSI.inc:50
 msgid "Password"
 msgstr "Paswoord"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:50
+#: management/systems/services/opsi/class_serviceOPSI.inc:50
 msgid "The password to use for connection"
 msgstr "Het paswoord om te gebruiken voor verbinding"
 
-#: admin/systems/opsi/class_opsiLogView.inc:29
+#: management/systems/opsi/class_opsiLogView.inc:29
 msgid "OPSI Logs"
 msgstr "OPSI logs"
 
-#: admin/systems/opsi/class_opsiLogView.inc:30
+#: management/systems/opsi/class_opsiLogView.inc:30
 msgid "OPSI Logs Viewer"
 msgstr "OPSI logs Viewer"
 
-#: admin/systems/opsi/class_opsiLogView.inc:42
-#: admin/systems/opsi/class_opsiLogView.inc:46
+#: management/systems/opsi/class_opsiLogView.inc:42
+#: management/systems/opsi/class_opsiLogView.inc:46
 msgid "Available logs"
 msgstr "Beschikbare logs"
 
-#: admin/systems/opsi/class_opsiLogView.inc:46
+#: management/systems/opsi/class_opsiLogView.inc:46
 msgid "Available log files"
 msgstr "Beschikbare log bestanden"
 
-#: admin/systems/opsi/class_opsiLogView.inc:50
+#: management/systems/opsi/class_opsiLogView.inc:50
 msgid "Content of the selected log"
 msgstr "Inhoud van de geselecteerde log"
 
-#: admin/systems/opsi/class_opsiClient.inc:36
+#: management/systems/opsi/class_opsiClient.inc:36
 msgid "OPSI client"
 msgstr "OPSI cliënt"
 
-#: admin/systems/opsi/class_opsiClient.inc:37
+#: management/systems/opsi/class_opsiClient.inc:37
 msgid "Edit OPSI client settings"
 msgstr "Pas de OPSI cliënt configuratie aan"
 
-#: admin/systems/opsi/class_opsiClient.inc:57
+#: management/systems/opsi/class_opsiClient.inc:57
 msgid "OPSI Client"
 msgstr "OPSI cliënt"
 
-#: admin/systems/opsi/class_opsiClient.inc:60
+#: management/systems/opsi/class_opsiClient.inc:60
 msgid "OPSI Server"
 msgstr "OPSI server"
 
-#: admin/systems/opsi/class_opsiClient.inc:60
+#: management/systems/opsi/class_opsiClient.inc:60
 msgid "The OPSI Server this client is connected to"
 msgstr "De OPSI Server waarmee deze cliënt is verbonden"
 
-#: admin/systems/opsi/class_opsiClient.inc:64
+#: management/systems/opsi/class_opsiClient.inc:64
 msgid "OPSI Profile"
 msgstr "OPSI profiel"
 
-#: admin/systems/opsi/class_opsiClient.inc:64
+#: management/systems/opsi/class_opsiClient.inc:64
 msgid "The OPSI Profile to apply to this client"
 msgstr "Het toe te passen OPSI profiel voor deze client"
 
-#: admin/systems/opsi/class_opsiClient.inc:74
+#: management/systems/opsi/class_opsiClient.inc:74
 msgid "The localboot products to setup on this host"
 msgstr "het op te zetten localboot product op deze host"
 
-#: admin/systems/opsi/class_opsiClient.inc:94
+#: management/systems/opsi/class_opsiClient.inc:94
 msgid "Inherit group localboots"
 msgstr "Hériter des localboots de groupe"
 
-#: admin/systems/opsi/class_opsiClient.inc:94
+#: management/systems/opsi/class_opsiClient.inc:94
 msgid ""
 "If this is checked localboot configured in the group OPSI tab will be "
 "installed along with the localboots configured here"
@@ -266,27 +285,27 @@ msgstr ""
 "Si cette option est cochée, les localboot configuré dans l'onglet OPSI du "
 "groupe seront installé avec les localboots configurés ici"
 
-#: admin/systems/opsi/class_opsiClient.inc:100
+#: management/systems/opsi/class_opsiClient.inc:100
 msgid "Information"
 msgstr "Informatie"
 
-#: admin/systems/opsi/class_opsiClient.inc:103
+#: management/systems/opsi/class_opsiClient.inc:103
 msgid "Last seen"
 msgstr "Laatst gezien"
 
-#: admin/systems/opsi/class_opsiClient.inc:103
+#: management/systems/opsi/class_opsiClient.inc:103
 msgid "Last time this OPSI client was seen by the OPSI server"
 msgstr "De laatste keer dat dat de OPSI client gezien is door de OPSI server"
 
-#: admin/systems/opsi/class_opsiClient.inc:183
+#: management/systems/opsi/class_opsiClient.inc:183
 msgid "Could not get macAddress for OPSI server!"
 msgstr "Geen MAC adres beschikbaar voor de OPSI server!"
 
-#: admin/systems/opsi/class_opsiClient.inc:213
+#: management/systems/opsi/class_opsiClient.inc:213
 msgid "This member was not found or has no macAddress"
 msgstr "Dit lid is niet gevonden of heeft geen MAC adres"
 
-#: admin/systems/opsi/class_opsiClient.inc:219
+#: management/systems/opsi/class_opsiClient.inc:219
 #, php-format
 msgid ""
 "Could not get macAddress for \"%s\":\n"
@@ -295,35 +314,19 @@ msgstr ""
 "Kon geen MAC-adres ophalen voor \"%s\"\n"
 "%s"
 
-#: admin/systems/opsi/class_opsiClient.inc:324
+#: management/systems/opsi/class_opsiClient.inc:324
 #, php-format
 msgid "Inherited (%s)"
 msgstr "Hérité (%s)"
 
-#: admin/systems/opsi/class_opsiClient.inc:351
+#: management/systems/opsi/class_opsiClient.inc:351
 #, php-format
 msgid "Failed to contact OPSI server: %s"
 msgstr "De OPSI server contacteren is mislukt: %s"
 
-#: admin/systems/opsi/class_opsiClient.inc:353
+#: management/systems/opsi/class_opsiClient.inc:353
 msgid "Never"
 msgstr "Nooit"
-
-#: config/opsi/class_opsiConfig.inc:26
-msgid "OPSI configuration"
-msgstr "OPSI configuratie"
-
-#: config/opsi/class_opsiConfig.inc:27
-msgid "FusionDirectory OPSI plugin configuration"
-msgstr "FusionDirectory OPSI plugin configuratie"
-
-#: config/opsi/class_opsiConfig.inc:43
-msgid "OPSI RDN"
-msgstr "OPSI RDN"
-
-#: config/opsi/class_opsiConfig.inc:43
-msgid "Branch in which OPSI profiles will be stored"
-msgstr "Sectie waarin OPSI profielen zullen opgeslagen worden"
 
 #: export/opsi/class_opsiImport.inc:31 export/opsi/class_opsiImport.inc:36
 msgid "OPSI import"

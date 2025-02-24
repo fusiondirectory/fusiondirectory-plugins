@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -21,6 +21,203 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: backend/public-forms/class_publicFormsConfig.inc:26
+msgid "Public forms configuration"
+msgstr "공개 양식 구성"
+
+#: backend/public-forms/class_publicFormsConfig.inc:27
+msgid "FusionDirectory public forms plugin configuration"
+msgstr "FusionDirectory 공용 양식 플러그인 구성"
+
+#: backend/public-forms/class_publicFormsConfig.inc:40
+#: management/public-forms/class_publicFormManagement.inc:27
+msgid "Public forms"
+msgstr "공개 양식"
+
+#: backend/public-forms/class_publicFormsConfig.inc:43
+msgid "Public forms RDN"
+msgstr "공개 양식 RDN"
+
+#: backend/public-forms/class_publicFormsConfig.inc:43
+msgid "Branch in which public forms will be stored"
+msgstr "공개 양식이 저장 될 브랜치"
+
+#: backend/public-forms/class_publicFormsConfig.inc:48
+msgid "Allows private form without invitations"
+msgstr ""
+
+#: backend/public-forms/class_publicFormsConfig.inc:48
+msgid ""
+"Allows the usage of private form without invitation is plugin installed"
+msgstr ""
+
+#: management/public-forms/class_publicFormAlteration.inc:27
+#: management/public-forms/class_publicFormAlteration.inc:42
+msgid "Altered fields"
+msgstr "변경된 필드"
+
+#: management/public-forms/class_publicFormAlteration.inc:28
+#: management/public-forms/class_publicFormAlteration.inc:47
+msgid "Alteration on form fields"
+msgstr "양식 필드 변경"
+
+#: management/public-forms/class_publicFormAlteration.inc:51
+#: management/public-forms/class_publicFormAlteration.inc:100
+msgid "Field"
+msgstr "필드"
+
+#: management/public-forms/class_publicFormAlteration.inc:51
+msgid "LDAP name of a form field"
+msgstr "양식 필드의 LDAP 이름"
+
+#: management/public-forms/class_publicFormAlteration.inc:55
+#: management/public-forms/class_publicFormAlteration.inc:101
+msgid "Mandatory"
+msgstr "필수"
+
+#: management/public-forms/class_publicFormAlteration.inc:55
+msgid "Should this field be mandatory"
+msgstr "이 필드는 필수입니다."
+
+#: management/public-forms/class_publicFormAlteration.inc:61
+#: management/public-forms/class_publicFormAlteration.inc:102
+msgid "Read only"
+msgstr "읽기 전용"
+
+#: management/public-forms/class_publicFormAlteration.inc:61
+msgid "Should this field be read only"
+msgstr "이 필드는 읽기 전용이어야 합니다."
+
+#: management/public-forms/class_publicFormAlteration.inc:67
+#: management/public-forms/class_publicFormAlteration.inc:103
+msgid "Imported"
+msgstr "가져오기"
+
+#: management/public-forms/class_publicFormAlteration.inc:67
+msgid "Should this field be imported from HTTP headers"
+msgstr "이 필드는 HTTP 헤더에서 가져와야 합니다."
+
+#: management/public-forms/class_publicFormAlteration.inc:73
+#: management/public-forms/class_publicFormAlteration.inc:104
+msgid "Hidden"
+msgstr "숨김"
+
+#: management/public-forms/class_publicFormAlteration.inc:73
+msgid "Should this field be hidden away"
+msgstr "이 필드는 숨김처리 되어야 합니다."
+
+#: management/public-forms/class_publicFormManagement.inc:28
+msgid "Public forms management"
+msgstr "공용 양식 관리"
+
+#: management/public-forms/class_publicFormManagement.inc:29
+msgid "Manage public forms"
+msgstr "공용 양식 관리"
+
+#: management/public-forms/class_publicForm.inc:27
+#: management/public-forms/class_publicForm.inc:31
+msgid "Public form"
+msgstr "공용 양식"
+
+#: management/public-forms/class_publicForm.inc:28
+msgid "Public form which creates objects inside FusionDirectory"
+msgstr "FusionDirectory 내부에 개체를 생성하는 공용 양식"
+
+#: management/public-forms/class_publicForm.inc:46
+#: include/class_publicFormPage.inc:434
+msgid "Form"
+msgstr "양식"
+
+#: management/public-forms/class_publicForm.inc:50
+msgid "Name"
+msgstr "명칭"
+
+#: management/public-forms/class_publicForm.inc:50
+msgid "Name used to identify this form"
+msgstr "이 양식을 식별하는 데 사용되는 이름"
+
+#: management/public-forms/class_publicForm.inc:54
+msgid "Title"
+msgstr "제목"
+
+#: management/public-forms/class_publicForm.inc:54
+msgid "Title of this form"
+msgstr "이 양식의 제목"
+
+#: management/public-forms/class_publicForm.inc:58
+msgid "Text"
+msgstr "텍스트"
+
+#: management/public-forms/class_publicForm.inc:58
+msgid "Text of the public form, shown before the form"
+msgstr "양식 앞에 표시된 공개 양식의 텍스트"
+
+#: management/public-forms/class_publicForm.inc:62
+msgid "Object type"
+msgstr "오브젝트 타입"
+
+#: management/public-forms/class_publicForm.inc:62
+msgid "Type of objects you wish to create from this form"
+msgstr "이 양식에서 만들려는 개체 유형"
+
+#: management/public-forms/class_publicForm.inc:67
+msgid "Template"
+msgstr "템플릿"
+
+#: management/public-forms/class_publicForm.inc:67
+msgid "Object template used by this form"
+msgstr "이 양식에서 사용하는 개체 템플릿"
+
+#: management/public-forms/class_publicForm.inc:72
+msgid "Confirmation text"
+msgstr "확인 텍스트"
+
+#: management/public-forms/class_publicForm.inc:72
+msgid "Text shown once the object is created"
+msgstr "개체가 생성되면 표시되는 텍스트"
+
+#: management/public-forms/class_publicForm.inc:77
+msgid "Private"
+msgstr "프라이"
+
+#: management/public-forms/class_publicForm.inc:77
+msgid "Restrict this form to invitations"
+msgstr "이 양식을 초대장으로 제한"
+
+#: management/public-forms/class_publicForm.inc:82
+msgid "Creation base"
+msgstr "생성 기반"
+
+#: management/public-forms/class_publicForm.inc:82
+msgid "Base in which objects will get created"
+msgstr "개체가 생성되는 기반"
+
+#: management/public-forms/class_publicForm.inc:87
+msgid "TOS URL"
+msgstr "서비스 약관 URL"
+
+#: management/public-forms/class_publicForm.inc:87
+msgid ""
+"Terms of service URL. If filled, this adds a mandatory checkbox to agree to "
+"the terms at this URL."
+msgstr "서비스 약관 URL. 채워지면 이 URL의 약관에 동의하는 필수 확인란이 추가됩니다."
+
+#: management/public-forms/class_publicForm.inc:91
+msgid "Captcha"
+msgstr "캡차"
+
+#: management/public-forms/class_publicForm.inc:91
+msgid "Add a captcha to the form"
+msgstr "양식에 캡차 추가"
+
+#: management/public-forms/class_publicForm.inc:96
+msgid "Link"
+msgstr "링크"
+
+#: management/public-forms/class_publicForm.inc:96
+msgid "Link to the public form as currently saved in the LDAP"
+msgstr "현재 LDAP에 저장된 공개 양식에 연결"
 
 #: include/class_publicFormPage.inc:77
 msgid "Invalid link, both token and form are provided"
@@ -77,203 +274,6 @@ msgstr "계속하려면 서비스 약관에 동의해야합니다!"
 #, php-format
 msgid "Form - %s"
 msgstr "양식 - %s"
-
-#: include/class_publicFormPage.inc:434
-#: admin/public-forms/class_publicForm.inc:46
-msgid "Form"
-msgstr "양식"
-
-#: admin/public-forms/class_publicFormAlteration.inc:27
-#: admin/public-forms/class_publicFormAlteration.inc:42
-msgid "Altered fields"
-msgstr "변경된 필드"
-
-#: admin/public-forms/class_publicFormAlteration.inc:28
-#: admin/public-forms/class_publicFormAlteration.inc:47
-msgid "Alteration on form fields"
-msgstr "양식 필드 변경"
-
-#: admin/public-forms/class_publicFormAlteration.inc:51
-#: admin/public-forms/class_publicFormAlteration.inc:100
-msgid "Field"
-msgstr "필드"
-
-#: admin/public-forms/class_publicFormAlteration.inc:51
-msgid "LDAP name of a form field"
-msgstr "양식 필드의 LDAP 이름"
-
-#: admin/public-forms/class_publicFormAlteration.inc:55
-#: admin/public-forms/class_publicFormAlteration.inc:101
-msgid "Mandatory"
-msgstr "필수"
-
-#: admin/public-forms/class_publicFormAlteration.inc:55
-msgid "Should this field be mandatory"
-msgstr "이 필드는 필수입니다."
-
-#: admin/public-forms/class_publicFormAlteration.inc:61
-#: admin/public-forms/class_publicFormAlteration.inc:102
-msgid "Read only"
-msgstr "읽기 전용"
-
-#: admin/public-forms/class_publicFormAlteration.inc:61
-msgid "Should this field be read only"
-msgstr "이 필드는 읽기 전용이어야 합니다."
-
-#: admin/public-forms/class_publicFormAlteration.inc:67
-#: admin/public-forms/class_publicFormAlteration.inc:103
-msgid "Imported"
-msgstr "가져오기"
-
-#: admin/public-forms/class_publicFormAlteration.inc:67
-msgid "Should this field be imported from HTTP headers"
-msgstr "이 필드는 HTTP 헤더에서 가져와야 합니다."
-
-#: admin/public-forms/class_publicFormAlteration.inc:73
-#: admin/public-forms/class_publicFormAlteration.inc:104
-msgid "Hidden"
-msgstr "숨김"
-
-#: admin/public-forms/class_publicFormAlteration.inc:73
-msgid "Should this field be hidden away"
-msgstr "이 필드는 숨김처리 되어야 합니다."
-
-#: admin/public-forms/class_publicFormManagement.inc:27
-#: config/public-forms/class_publicFormsConfig.inc:40
-msgid "Public forms"
-msgstr "공개 양식"
-
-#: admin/public-forms/class_publicFormManagement.inc:28
-msgid "Public forms management"
-msgstr "공용 양식 관리"
-
-#: admin/public-forms/class_publicFormManagement.inc:29
-msgid "Manage public forms"
-msgstr "공용 양식 관리"
-
-#: admin/public-forms/class_publicForm.inc:27
-#: admin/public-forms/class_publicForm.inc:31
-msgid "Public form"
-msgstr "공용 양식"
-
-#: admin/public-forms/class_publicForm.inc:28
-msgid "Public form which creates objects inside FusionDirectory"
-msgstr "FusionDirectory 내부에 개체를 생성하는 공용 양식"
-
-#: admin/public-forms/class_publicForm.inc:50
-msgid "Name"
-msgstr "명칭"
-
-#: admin/public-forms/class_publicForm.inc:50
-msgid "Name used to identify this form"
-msgstr "이 양식을 식별하는 데 사용되는 이름"
-
-#: admin/public-forms/class_publicForm.inc:54
-msgid "Title"
-msgstr "제목"
-
-#: admin/public-forms/class_publicForm.inc:54
-msgid "Title of this form"
-msgstr "이 양식의 제목"
-
-#: admin/public-forms/class_publicForm.inc:58
-msgid "Text"
-msgstr "텍스트"
-
-#: admin/public-forms/class_publicForm.inc:58
-msgid "Text of the public form, shown before the form"
-msgstr "양식 앞에 표시된 공개 양식의 텍스트"
-
-#: admin/public-forms/class_publicForm.inc:62
-msgid "Object type"
-msgstr "오브젝트 타입"
-
-#: admin/public-forms/class_publicForm.inc:62
-msgid "Type of objects you wish to create from this form"
-msgstr "이 양식에서 만들려는 개체 유형"
-
-#: admin/public-forms/class_publicForm.inc:67
-msgid "Template"
-msgstr "템플릿"
-
-#: admin/public-forms/class_publicForm.inc:67
-msgid "Object template used by this form"
-msgstr "이 양식에서 사용하는 개체 템플릿"
-
-#: admin/public-forms/class_publicForm.inc:72
-msgid "Confirmation text"
-msgstr "확인 텍스트"
-
-#: admin/public-forms/class_publicForm.inc:72
-msgid "Text shown once the object is created"
-msgstr "개체가 생성되면 표시되는 텍스트"
-
-#: admin/public-forms/class_publicForm.inc:77
-msgid "Private"
-msgstr "프라이"
-
-#: admin/public-forms/class_publicForm.inc:77
-msgid "Restrict this form to invitations"
-msgstr "이 양식을 초대장으로 제한"
-
-#: admin/public-forms/class_publicForm.inc:82
-msgid "Creation base"
-msgstr "생성 기반"
-
-#: admin/public-forms/class_publicForm.inc:82
-msgid "Base in which objects will get created"
-msgstr "개체가 생성되는 기반"
-
-#: admin/public-forms/class_publicForm.inc:87
-msgid "TOS URL"
-msgstr "서비스 약관 URL"
-
-#: admin/public-forms/class_publicForm.inc:87
-msgid ""
-"Terms of service URL. If filled, this adds a mandatory checkbox to agree to "
-"the terms at this URL."
-msgstr "서비스 약관 URL. 채워지면 이 URL의 약관에 동의하는 필수 확인란이 추가됩니다."
-
-#: admin/public-forms/class_publicForm.inc:91
-msgid "Captcha"
-msgstr "캡차"
-
-#: admin/public-forms/class_publicForm.inc:91
-msgid "Add a captcha to the form"
-msgstr "양식에 캡차 추가"
-
-#: admin/public-forms/class_publicForm.inc:96
-msgid "Link"
-msgstr "링크"
-
-#: admin/public-forms/class_publicForm.inc:96
-msgid "Link to the public form as currently saved in the LDAP"
-msgstr "현재 LDAP에 저장된 공개 양식에 연결"
-
-#: config/public-forms/class_publicFormsConfig.inc:26
-msgid "Public forms configuration"
-msgstr "공개 양식 구성"
-
-#: config/public-forms/class_publicFormsConfig.inc:27
-msgid "FusionDirectory public forms plugin configuration"
-msgstr "FusionDirectory 공용 양식 플러그인 구성"
-
-#: config/public-forms/class_publicFormsConfig.inc:43
-msgid "Public forms RDN"
-msgstr "공개 양식 RDN"
-
-#: config/public-forms/class_publicFormsConfig.inc:43
-msgid "Branch in which public forms will be stored"
-msgstr "공개 양식이 저장 될 브랜치"
-
-#: config/public-forms/class_publicFormsConfig.inc:48
-msgid "Allows private form without invitations"
-msgstr ""
-
-#: config/public-forms/class_publicFormsConfig.inc:48
-msgid ""
-"Allows the usage of private form without invitation is plugin installed"
-msgstr ""
 
 #: ihtml/themes/breezy/public-form.tpl.c:2
 msgid "I agree to the <a target=\"_blank\" href=\"%1\">terms of service</a>"

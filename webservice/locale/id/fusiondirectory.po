@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:06+0000\n"
 "Language-Team: Indonesian (https://app.transifex.com/fusiondirectory/teams/12202/id/)\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: backend/webservice/class_webserviceConfig.inc:26
+msgid "Webservice configuration"
+msgstr ""
+
+#: backend/webservice/class_webserviceConfig.inc:27
+msgid "FusionDirectory webservice plugin configuration"
+msgstr ""
+
+#: backend/webservice/class_webserviceConfig.inc:40
+msgid "Webservice"
+msgstr ""
+
+#: backend/webservice/class_webserviceConfig.inc:43
+msgid "Force SSL"
+msgstr ""
+
+#: backend/webservice/class_webserviceConfig.inc:43
+msgid "Allow only HTTPS JSON-RPC requests"
+msgstr ""
 
 #: include/webservice/class_fdRPCService.inc:119
 #, php-format
@@ -55,60 +75,40 @@ msgstr ""
 msgid "Unknown field \"%s\""
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:820
+#: include/webservice/class_fdRPCService.inc:824
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:844
+#: include/webservice/class_fdRPCService.inc:848
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:847
+#: include/webservice/class_fdRPCService.inc:851
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:889
+#: include/webservice/class_fdRPCService.inc:893
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:896
+#: include/webservice/class_fdRPCService.inc:900
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:913
+#: include/webservice/class_fdRPCService.inc:917
 msgid "Archive action is not available: archive plugin is not installed"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:959
-#: include/webservice/class_fdRPCService.inc:984
+#: include/webservice/class_fdRPCService.inc:963
+#: include/webservice/class_fdRPCService.inc:988
 msgid "Password recovery is not activated"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:994
+#: include/webservice/class_fdRPCService.inc:998
 msgid "This token is invalid"
-msgstr ""
-
-#: config/class_webserviceConfig.inc:26
-msgid "Webservice configuration"
-msgstr ""
-
-#: config/class_webserviceConfig.inc:27
-msgid "FusionDirectory webservice plugin configuration"
-msgstr ""
-
-#: config/class_webserviceConfig.inc:40
-msgid "Webservice"
-msgstr ""
-
-#: config/class_webserviceConfig.inc:43
-msgid "Force SSL"
-msgstr ""
-
-#: config/class_webserviceConfig.inc:43
-msgid "Allow only HTTPS JSON-RPC requests"
 msgstr ""

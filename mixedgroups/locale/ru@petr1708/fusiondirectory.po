@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Russian Petrine orthography (https://app.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
@@ -21,59 +21,59 @@ msgstr ""
 "Language: ru@petr1708\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:29
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:29
 msgid "Posix group"
 msgstr "Posix группа"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:30
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:30
 msgid "Posix group settings"
 msgstr "Настройки Posix группы"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:43
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:43
 msgid "Properties"
 msgstr "Свойства"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:46
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:46
 msgid "Force GID"
 msgstr "Указать GID вручную"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:46
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:46
 msgid "Force GID value for this group"
 msgstr "Указать значение GID для группы"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:50
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:122
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:50
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:122
 msgid "GID"
 msgstr "GID"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:50
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:50
 msgid "GID value for this group"
 msgstr "GID значение для этой группы"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:61
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:61
 msgid "System trust"
 msgstr "Системные доверия"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:65
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:65
 msgid "Trust mode"
 msgstr "Режим доверия"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:65
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:65
 msgid "Type of authorization for those hosts"
 msgstr "Тип авторизации для этих хостов"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:69
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:69
 msgid "disabled"
 msgstr "отключен"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:69
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:69
 msgid "full access"
 msgstr "полный доступ"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:69
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:69
 msgid "allow access to these hosts"
 msgstr "разрешить доступ только на эти хосты"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:72
+#: management/ogroups/mixedgroups/class_mixedGroup.inc:72
 msgid "Only allow this group to connect to this list of hosts"
 msgstr "Позволить подключаться этой группе только к хостам из списка"

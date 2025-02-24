@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -21,98 +21,100 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/systems/services/sympa/class_serviceSympa.inc:27
-#: admin/systems/services/sympa/class_serviceSympa.inc:28
-msgid "Sympa Server"
-msgstr "Sympa Server"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:28
-msgid "Services"
-msgstr "Služby"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:43
-#: admin/sympa/class_sympaAlias.inc:61
-msgid "Sympa server"
-msgstr "Sympa server"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:46
-msgid "URL"
-msgstr "URL adresa"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:46
-msgid "URL to access the sympa server"
-msgstr "URL adresa pro přístup k sympa serveru"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:50
-msgid "User"
-msgstr "Uživatel"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:50
-msgid "User to access sympa server SOAP API."
-msgstr "Uživatelský účet, kterým přistupovat k SOAP API rozhraní na serveru."
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:54
-msgid "Password"
-msgstr "Heslo"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:54
-msgid "Password to access sympa server SOAP API."
-msgstr "Heslo pro přístup k SOAP API na sympa serveru."
-
-#: admin/sympa/class_sympaManagement.inc:28
-#: config/sympa/class_sympaConfig.inc:40
-msgid "Sympa"
-msgstr "Sympa"
-
-#: admin/sympa/class_sympaManagement.inc:29
-msgid "Sympa management"
-msgstr "Správa Sympa"
-
-#: admin/sympa/class_sympaManagement.inc:30
-msgid "Manage sympa aliases"
-msgstr ""
-
-#: admin/sympa/class_sympaAlias.inc:26 admin/sympa/class_sympaAlias.inc:27
-#: admin/sympa/class_sympaAlias.inc:30 admin/sympa/class_sympaAlias.inc:46
-msgid "Sympa list alias"
-msgstr "Alternativní název Sympa seznamu"
-
-#: admin/sympa/class_sympaAlias.inc:49
-msgid "Name"
-msgstr "Název"
-
-#: admin/sympa/class_sympaAlias.inc:49
-msgid "Name to identify this alias"
-msgstr "Název pro identifikaci tohoto alternativního názvu"
-
-#: admin/sympa/class_sympaAlias.inc:51
-msgid "Description"
-msgstr "Popis"
-
-#: admin/sympa/class_sympaAlias.inc:51
-msgid "Description of this alias"
-msgstr "Popis tohoto alternativního názvu"
-
-#: admin/sympa/class_sympaAlias.inc:56
-msgid "Email address"
-msgstr "E-mailová adresa"
-
-#: admin/sympa/class_sympaAlias.inc:61
-msgid "Sympa server for this alias"
-msgstr "Sympa server pro tento alternativní název"
-
-#: config/sympa/class_sympaConfig.inc:26
+#: backend/sympa/class_sympaConfig.inc:26
 msgid "Sympa configuration"
 msgstr "Nastavení Sympa"
 
-#: config/sympa/class_sympaConfig.inc:27
+#: backend/sympa/class_sympaConfig.inc:27
 msgid "FusionDirectory sympa plugin configuration"
 msgstr "Nastavení zásuvného modulu sympa pro FusionDirectory"
 
-#: config/sympa/class_sympaConfig.inc:43
+#: backend/sympa/class_sympaConfig.inc:40
+#: management/sympa/class_sympaManagement.inc:28
+msgid "Sympa"
+msgstr "Sympa"
+
+#: backend/sympa/class_sympaConfig.inc:43
 msgid "Sympa RDN"
 msgstr "Relativní rozlišený název Sympa"
 
-#: config/sympa/class_sympaConfig.inc:43
+#: backend/sympa/class_sympaConfig.inc:43
 msgid "Branch in which Sympa objects will be stored"
 msgstr "Větev ve které budou uloženy Sympa objekty"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:27
+#: management/systems/services/sympa/class_serviceSympa.inc:28
+msgid "Sympa Server"
+msgstr "Sympa Server"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:28
+msgid "Services"
+msgstr "Služby"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:43
+#: management/sympa/class_sympaAlias.inc:61
+msgid "Sympa server"
+msgstr "Sympa server"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:46
+msgid "URL"
+msgstr "URL adresa"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:46
+msgid "URL to access the sympa server"
+msgstr "URL adresa pro přístup k sympa serveru"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:50
+msgid "User"
+msgstr "Uživatel"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:50
+msgid "User to access sympa server SOAP API."
+msgstr "Uživatelský účet, kterým přistupovat k SOAP API rozhraní na serveru."
+
+#: management/systems/services/sympa/class_serviceSympa.inc:54
+msgid "Password"
+msgstr "Heslo"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:54
+msgid "Password to access sympa server SOAP API."
+msgstr "Heslo pro přístup k SOAP API na sympa serveru."
+
+#: management/sympa/class_sympaManagement.inc:29
+msgid "Sympa management"
+msgstr "Správa Sympa"
+
+#: management/sympa/class_sympaManagement.inc:30
+msgid "Manage sympa aliases"
+msgstr ""
+
+#: management/sympa/class_sympaAlias.inc:26
+#: management/sympa/class_sympaAlias.inc:27
+#: management/sympa/class_sympaAlias.inc:30
+#: management/sympa/class_sympaAlias.inc:46
+msgid "Sympa list alias"
+msgstr "Alternativní název Sympa seznamu"
+
+#: management/sympa/class_sympaAlias.inc:49
+msgid "Name"
+msgstr "Název"
+
+#: management/sympa/class_sympaAlias.inc:49
+msgid "Name to identify this alias"
+msgstr "Název pro identifikaci tohoto alternativního názvu"
+
+#: management/sympa/class_sympaAlias.inc:51
+msgid "Description"
+msgstr "Popis"
+
+#: management/sympa/class_sympaAlias.inc:51
+msgid "Description of this alias"
+msgstr "Popis tohoto alternativního názvu"
+
+#: management/sympa/class_sympaAlias.inc:56
+msgid "Email address"
+msgstr "E-mailová adresa"
+
+#: management/sympa/class_sympaAlias.inc:61
+msgid "Sympa server for this alias"
+msgstr "Sympa server pro tento alternativní název"

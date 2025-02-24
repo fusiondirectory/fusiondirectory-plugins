@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:51+0000\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -22,148 +22,148 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/departments/community/class_communityOrganization.inc:28
-msgid "Community organization"
-msgstr "Organizzazione della comunità"
-
-#: admin/departments/community/class_communityOrganization.inc:29
-msgid "Community organization dates and alternate address"
-msgstr "Date dell'organizzazione della comunità e indirizzo alternativo"
-
-#: admin/departments/community/class_communityOrganization.inc:43
-msgid "Membership"
-msgstr "Abbonamento"
-
-#: admin/departments/community/class_communityOrganization.inc:46
-msgid "Membership type"
-msgstr "Tipologia di abbonamento"
-
-#: admin/departments/community/class_communityOrganization.inc:46
-msgid "Membership type of this organization"
-msgstr "Tipologia di abbonamento di questa organizzazione"
-
-#: admin/departments/community/class_communityOrganization.inc:51
-msgid "Agreement signed"
-msgstr "Accordo firmato"
-
-#: admin/departments/community/class_communityOrganization.inc:51
-msgid "Did this member returned the agreement signed"
-msgstr "Questo membro ha restituito l'accordo firmato"
-
-#: admin/departments/community/class_communityOrganization.inc:55
-msgid "Active"
-msgstr "Attivo"
-
-#: admin/departments/community/class_communityOrganization.inc:55
-msgid "Is the membership of this organization active"
-msgstr "L'appartenenza a questa organizzazione é attiva?"
-
-#: admin/departments/community/class_communityOrganization.inc:59
-msgid "Hidden"
-msgstr "Nascosto"
-
-#: admin/departments/community/class_communityOrganization.inc:59
-msgid "Should this membership be hidden from listings"
-msgstr "Deve questo abbonamento essere nascosto dalle liste"
-
-#: admin/departments/community/class_communityOrganization.inc:65
-msgid "Dates"
-msgstr "Date"
-
-#: admin/departments/community/class_communityOrganization.inc:68
-msgid "Start date"
-msgstr "Data d'inizio"
-
-#: admin/departments/community/class_communityOrganization.inc:68
-msgid "Date of the beginning"
-msgstr "Data d'inizio"
-
-#: admin/departments/community/class_communityOrganization.inc:72
-msgid "End date"
-msgstr "Data di fine"
-
-#: admin/departments/community/class_communityOrganization.inc:72
-msgid "Date of the end"
-msgstr "Data di fine"
-
-#: admin/departments/community/class_communityOrganization.inc:79
-msgid "Contact"
-msgstr "Contatto"
-
-#: admin/departments/community/class_communityOrganization.inc:82
-msgid "First name"
-msgstr "Nome"
-
-#: admin/departments/community/class_communityOrganization.inc:86
-msgid "Last name"
-msgstr "Cognome"
-
-#: admin/departments/community/class_communityOrganization.inc:90
-msgid "Address"
-msgstr "Indirizzo"
-
-#: admin/departments/community/class_communityOrganization.inc:90
-msgid "A postal address"
-msgstr "Un indirizzo postale"
-
-#: admin/departments/community/class_communityOrganization.inc:94
-msgid "City"
-msgstr "Città"
-
-#: admin/departments/community/class_communityOrganization.inc:98
-msgid "State"
-msgstr "Regione"
-
-#: admin/departments/community/class_communityOrganization.inc:102
-msgid "Country"
-msgstr "Stato"
-
-#: admin/departments/community/class_communityProject.inc:28
-msgid "Community project"
-msgstr "Progetto comunitario"
-
-#: admin/departments/community/class_communityProject.inc:29
-msgid "Community project dates and alternate address"
-msgstr "Date del progetto comunitario e indirizzo alternativo"
-
-#: admin/departments/community/class_communityProject.inc:43
-msgid "Project"
-msgstr "Progetto"
-
-#: admin/departments/community/class_communityProject.inc:46
-msgid "Project full name"
-msgstr "Nome completo del progetto"
-
-#: admin/departments/community/class_communityProject.inc:46
-msgid "Full name of this project"
-msgstr "Nome completo di questo progetto"
-
-#: admin/departments/community/class_communityProject.inc:50
-msgid "Project key"
-msgstr "Chiave di progetto"
-
-#: admin/departments/community/class_communityProject.inc:50
-msgid "ID used for this project in other softwares or databases"
-msgstr "ID utilizzato per questo progetto in altri software o database"
-
-#: config/community/class_communityConfig.inc:26
+#: backend/community/class_communityConfig.inc:26
 msgid "Community configuration"
 msgstr "Configurazione community"
 
-#: config/community/class_communityConfig.inc:27
+#: backend/community/class_communityConfig.inc:27
 msgid "FusionDirectory community plugin configuration"
 msgstr "Configurazione del plugin community di FusionDirectory"
 
-#: config/community/class_communityConfig.inc:40
+#: backend/community/class_communityConfig.inc:40
 msgid "Community"
 msgstr "Comunità"
 
-#: config/community/class_communityConfig.inc:44
+#: backend/community/class_communityConfig.inc:44
 msgid "Membership type choices"
 msgstr "Scelte tipo di abbonamento"
 
-#: config/community/class_communityConfig.inc:44
+#: backend/community/class_communityConfig.inc:44
 msgid "Community membership types available in the user community tab"
 msgstr ""
 "Tipi di abbonamento community disponibili nella tabella community "
 "dell'utente"
+
+#: management/departments/community/class_communityOrganization.inc:28
+msgid "Community organization"
+msgstr "Organizzazione della comunità"
+
+#: management/departments/community/class_communityOrganization.inc:29
+msgid "Community organization dates and alternate address"
+msgstr "Date dell'organizzazione della comunità e indirizzo alternativo"
+
+#: management/departments/community/class_communityOrganization.inc:43
+msgid "Membership"
+msgstr "Abbonamento"
+
+#: management/departments/community/class_communityOrganization.inc:46
+msgid "Membership type"
+msgstr "Tipologia di abbonamento"
+
+#: management/departments/community/class_communityOrganization.inc:46
+msgid "Membership type of this organization"
+msgstr "Tipologia di abbonamento di questa organizzazione"
+
+#: management/departments/community/class_communityOrganization.inc:51
+msgid "Agreement signed"
+msgstr "Accordo firmato"
+
+#: management/departments/community/class_communityOrganization.inc:51
+msgid "Did this member returned the agreement signed"
+msgstr "Questo membro ha restituito l'accordo firmato"
+
+#: management/departments/community/class_communityOrganization.inc:55
+msgid "Active"
+msgstr "Attivo"
+
+#: management/departments/community/class_communityOrganization.inc:55
+msgid "Is the membership of this organization active"
+msgstr "L'appartenenza a questa organizzazione é attiva?"
+
+#: management/departments/community/class_communityOrganization.inc:59
+msgid "Hidden"
+msgstr "Nascosto"
+
+#: management/departments/community/class_communityOrganization.inc:59
+msgid "Should this membership be hidden from listings"
+msgstr "Deve questo abbonamento essere nascosto dalle liste"
+
+#: management/departments/community/class_communityOrganization.inc:65
+msgid "Dates"
+msgstr "Date"
+
+#: management/departments/community/class_communityOrganization.inc:68
+msgid "Start date"
+msgstr "Data d'inizio"
+
+#: management/departments/community/class_communityOrganization.inc:68
+msgid "Date of the beginning"
+msgstr "Data d'inizio"
+
+#: management/departments/community/class_communityOrganization.inc:72
+msgid "End date"
+msgstr "Data di fine"
+
+#: management/departments/community/class_communityOrganization.inc:72
+msgid "Date of the end"
+msgstr "Data di fine"
+
+#: management/departments/community/class_communityOrganization.inc:79
+msgid "Contact"
+msgstr "Contatto"
+
+#: management/departments/community/class_communityOrganization.inc:82
+msgid "First name"
+msgstr "Nome"
+
+#: management/departments/community/class_communityOrganization.inc:86
+msgid "Last name"
+msgstr "Cognome"
+
+#: management/departments/community/class_communityOrganization.inc:90
+msgid "Address"
+msgstr "Indirizzo"
+
+#: management/departments/community/class_communityOrganization.inc:90
+msgid "A postal address"
+msgstr "Un indirizzo postale"
+
+#: management/departments/community/class_communityOrganization.inc:94
+msgid "City"
+msgstr "Città"
+
+#: management/departments/community/class_communityOrganization.inc:98
+msgid "State"
+msgstr "Regione"
+
+#: management/departments/community/class_communityOrganization.inc:102
+msgid "Country"
+msgstr "Stato"
+
+#: management/departments/community/class_communityProject.inc:28
+msgid "Community project"
+msgstr "Progetto comunitario"
+
+#: management/departments/community/class_communityProject.inc:29
+msgid "Community project dates and alternate address"
+msgstr "Date del progetto comunitario e indirizzo alternativo"
+
+#: management/departments/community/class_communityProject.inc:43
+msgid "Project"
+msgstr "Progetto"
+
+#: management/departments/community/class_communityProject.inc:46
+msgid "Project full name"
+msgstr "Nome completo del progetto"
+
+#: management/departments/community/class_communityProject.inc:46
+msgid "Full name of this project"
+msgstr "Nome completo di questo progetto"
+
+#: management/departments/community/class_communityProject.inc:50
+msgid "Project key"
+msgstr "Chiave di progetto"
+
+#: management/departments/community/class_communityProject.inc:50
+msgid "ID used for this project in other softwares or databases"
+msgstr "ID utilizzato per questo progetto in altri software o database"

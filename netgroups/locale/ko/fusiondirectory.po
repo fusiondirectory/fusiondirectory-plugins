@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:58+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -22,90 +22,91 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/netgroups/class_netgroupManagement.inc:27
-msgid "NIS Netgroups"
-msgstr "NIS 넷그룹"
+#: backend/netgroups/class_netgroupConfig.inc:26
+msgid "Netgroup configuration"
+msgstr "Netgroup 설정"
 
-#: admin/netgroups/class_netgroupManagement.inc:28
-msgid "NIS Netgroups management"
-msgstr "NIS 넷그룹 관리"
+#: backend/netgroups/class_netgroupConfig.inc:27
+msgid "FusionDirectory netgroup plugin configuration"
+msgstr "FusionDirectory netgroup 플러그인 설정"
 
-#: admin/netgroups/class_netgroupManagement.inc:29
-msgid "Manage NIS Netgroups"
-msgstr "NIS 넷그룹 관리"
-
-#: admin/netgroups/class_netgroup.inc:28
-#: config/netgroups/class_netgroupConfig.inc:40
+#: backend/netgroups/class_netgroupConfig.inc:40
+#: management/netgroups/class_netgroup.inc:28
 msgid "Netgroup"
 msgstr "넷그룹"
 
-#: admin/netgroups/class_netgroup.inc:29
+#: backend/netgroups/class_netgroupConfig.inc:43
+msgid "Netgroup RDN"
+msgstr "Netgroup RDN"
+
+#: backend/netgroups/class_netgroupConfig.inc:43
+msgid "Branch in which netgroups will be stored"
+msgstr "넷 그룹을 저장할 브랜치"
+
+#: management/netgroups/class_netgroupManagement.inc:27
+msgid "NIS Netgroups"
+msgstr "NIS 넷그룹"
+
+#: management/netgroups/class_netgroupManagement.inc:28
+msgid "NIS Netgroups management"
+msgstr "NIS 넷그룹 관리"
+
+#: management/netgroups/class_netgroupManagement.inc:29
+msgid "Manage NIS Netgroups"
+msgstr "NIS 넷그룹 관리"
+
+#: management/netgroups/class_netgroup.inc:29
 msgid "NIS Netgroup settings"
 msgstr "NIS 넷그룹 설정"
 
-#: admin/netgroups/class_netgroup.inc:32
-#: admin/systems/netgroups/class_netgroupSystem.inc:29
+#: management/netgroups/class_netgroup.inc:32
+#: management/systems/netgroups/class_netgroupSystem.inc:29
 #: personal/netgroups/class_netgroupMembership.inc:33
 msgid "NIS Netgroup"
 msgstr "NIS 넷그룹"
 
-#: admin/netgroups/class_netgroup.inc:46
+#: management/netgroups/class_netgroup.inc:46
 msgid "Information"
 msgstr "정보"
 
-#: admin/netgroups/class_netgroup.inc:50
+#: management/netgroups/class_netgroup.inc:50
 msgid "Name"
 msgstr "명칭"
 
-#: admin/netgroups/class_netgroup.inc:50
+#: management/netgroups/class_netgroup.inc:50
 msgid "Name of this NIS netgroup"
 msgstr "NIS netgroup의 이름"
 
-#: admin/netgroups/class_netgroup.inc:53
+#: management/netgroups/class_netgroup.inc:53
 msgid "Description"
 msgstr "설명"
 
-#: admin/netgroups/class_netgroup.inc:53
+#: management/netgroups/class_netgroup.inc:53
 msgid "Description of this NIS netgroup"
 msgstr "NIS netgroup에 대한 설명"
 
-#: admin/netgroups/class_netgroup.inc:58
+#: management/netgroups/class_netgroup.inc:58
 msgid "User members"
 msgstr "사용자 멤버"
 
-#: admin/netgroups/class_netgroup.inc:63 admin/netgroups/class_netgroup.inc:76
-#: admin/netgroups/class_netgroup.inc:84
+#: management/netgroups/class_netgroup.inc:63
+#: management/netgroups/class_netgroup.inc:76
+#: management/netgroups/class_netgroup.inc:84
 msgid "NIS netgroup members"
 msgstr "NIS netgroup 멤버"
 
-#: admin/netgroups/class_netgroup.inc:73
+#: management/netgroups/class_netgroup.inc:73
 msgid "System members"
 msgstr "시스템 멤버"
 
-#: admin/netgroups/class_netgroup.inc:80
+#: management/netgroups/class_netgroup.inc:80
 msgid "Netgroup members"
 msgstr "Netgroup 멤버"
 
-#: admin/systems/netgroups/class_netgroupSystem.inc:30
+#: management/systems/netgroups/class_netgroupSystem.inc:30
 #: personal/netgroups/class_netgroupMembership.inc:34
 msgid "NIS Netgroup member"
 msgstr "NIS Netgroup 멤버"
-
-#: config/netgroups/class_netgroupConfig.inc:26
-msgid "Netgroup configuration"
-msgstr "Netgroup 설정"
-
-#: config/netgroups/class_netgroupConfig.inc:27
-msgid "FusionDirectory netgroup plugin configuration"
-msgstr "FusionDirectory netgroup 플러그인 설정"
-
-#: config/netgroups/class_netgroupConfig.inc:43
-msgid "Netgroup RDN"
-msgstr "Netgroup RDN"
-
-#: config/netgroups/class_netgroupConfig.inc:43
-msgid "Branch in which netgroups will be stored"
-msgstr "넷 그룹을 저장할 브랜치"
 
 #: personal/netgroups/class_netgroupMembership.inc:50
 msgid "Member of the following NIS Netgroups  "

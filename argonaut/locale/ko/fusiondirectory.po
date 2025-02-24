@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -256,6 +256,579 @@ msgstr "(재)설치"
 msgid "Refresh slave files (ldap2zone)"
 msgstr "슬레이브 파일 새로고침(ldap2zone)"
 
+#: management/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:35
+#: management/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:70
+msgid "zone"
+msgstr "영역"
+
+#: management/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:35
+#: management/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:70
+msgid "DNS zone this server should be declared as slave of"
+msgstr "이 서버의 DNS 영역은 다음 중 슬레이브로 선언되어야합니다."
+
+#: management/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:39
+msgid "master"
+msgstr "마스터"
+
+#: management/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:39
+msgid "Master IP(s) for this zone"
+msgstr "이 영역의 마스터 IP(s)"
+
+#: management/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:43
+msgid "reverses"
+msgstr "역방향"
+
+#: management/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:43
+msgid "This server should be slave of reverses zones as well"
+msgstr "이 서버는 역방향 영역의 슬레이브가 되어야 합니다"
+
+#: management/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:30
+#: management/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:31
+msgid "Argonaut Fuse OPSI module settings"
+msgstr "Argonaut FPS OPSI 모듈 설정"
+
+#: management/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:31
+#: management/systems/services/argonaut/class_argonautServer.inc:32
+#: management/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:30
+msgid "Services"
+msgstr "서비스"
+
+#: management/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:46
+msgid "OPSI"
+msgstr "OPSI"
+
+#: management/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:49
+msgid "Opsi admin"
+msgstr "Opsi 관리자"
+
+#: management/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:54
+msgid "Opsi password"
+msgstr "Opsi 패스워드"
+
+#: management/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:59
+msgid "Opsi server"
+msgstr "Opsi 서버"
+
+#: management/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:64
+msgid "Opsi lang"
+msgstr "Opsi 언어"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:29
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:30
+msgid "Argonaut Fuse FAI module settings"
+msgstr "Argonaut Fuse FAI 모듈 설정"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:42
+msgid "FAI"
+msgstr "FAI"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:45
+msgid "FAI version"
+msgstr "FAI 버전"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:45
+msgid "Version of FAI installed on the server"
+msgstr "서버에 설치된 FAI 버전"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
+msgid "FAI flags"
+msgstr "FAI 플래그"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
+msgid "Flags to pass to FAI"
+msgstr "FAI로 전달된 플래그"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:55
+msgid "NFS root"
+msgstr "NFS root"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:60
+msgid "FAI 4 command line"
+msgstr "FAI 커맨드 라인"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:60
+msgid ""
+"Command line for FAI 4 - should be \"ip=dhcp root=/dev/nfs boot=live "
+"union=aufs\""
+msgstr "FAI 4를 위한 커맨드 라인 - \"ip=dhcp root=/dev/nfs boot=live union=aufs\""
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
+msgid "FAI 5 command line"
+msgstr "FAI 5 커맨드 라인"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
+msgid "Command line for FAI 5 - should be \"ip=dhcp rootovl\""
+msgstr "FAI 5를 위한 커맨드 라인 - \"ip=dhcp rootovl\" 필수"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:70
+msgid "Multiple distro mode"
+msgstr "다중 distro 모드"
+
+#: management/systems/services/argonaut/class_argonautFuseFAIConfig.inc:70
+msgid ""
+"This enables a mode for multiple distributions usage which adds the release "
+"as a suffix to kernel, initrd and nfsroot in the PXE file"
+msgstr "PXE 파일에서 커널, initrd 및 nfsroot에 접미사로 릴리스를 추가하는 다중 배포 사용 모드를 활성화합니다."
+
+#: management/systems/services/argonaut/class_argonautServer.inc:31
+#: management/systems/services/argonaut/class_argonautServer.inc:32
+#: management/systems/services/argonaut/class_argonautServer.inc:47
+msgid "Argonaut server"
+msgstr "Argonaut 서버"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:50
+msgid "Delete finished tasks"
+msgstr "완료된 작업 삭제"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:51
+msgid ""
+"Wether or not argonaut server should delete successfully finished tasks"
+msgstr "Argonaut 서버가 성공적으로 완료된 작업을 삭제해야할지 여부"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:56
+msgid "Get packages information"
+msgstr "패키지 정보 가져오기"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:57
+msgid ""
+"Wether or not argonaut server should get packages information from "
+"repositories at start and then once a day. Needed for FAI package list "
+"creation."
+msgstr ""
+"Argonaut 서버는 패키지 정보를 시작시 저장소에서 가져온 다음 하루에 한 번 가져와야할지 여부. FAI 패키지 목록 생성에 "
+"필요합니다."
+
+#: management/systems/services/argonaut/class_argonautServer.inc:62
+#: management/systems/argonaut/class_argonautClient.inc:149
+msgid "Protocol"
+msgstr "프로토콜"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:62
+#: management/systems/argonaut/class_argonautClient.inc:149
+msgid "Protocol to use for argonaut"
+msgstr "Argonaut에 사용할 프로토콜"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:67
+msgid "Port"
+msgstr "포트"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:68
+msgid "Port on which the argonaut server will be listening"
+msgstr "Argonaut 서버가 수신 대기할 포트"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:73
+msgid "Timeout"
+msgstr "타임아웃"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:74
+msgid ""
+"Time in seconds before to consider an argonaut client or server as down"
+msgstr "Argonaut 클라이언트 또는 서버를 다운 된 것으로 간주하기 전의 초 단위 시간"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:80
+#: management/systems/services/argonaut/class_argonautFuseConfig.inc:55
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:71
+#: management/systems/argonaut/class_argonautClient.inc:164
+msgid "Log directory"
+msgstr "로그 디렉토리"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:81
+msgid "Directory in which argonaut will store its log"
+msgstr "Argonaut가 로그를 저장할 디렉토리"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:88
+msgid "Wake on lan"
+msgstr "Wake on lan"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:91
+msgid "Interface"
+msgstr "인터페이스"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:92
+msgid "Interface to use for sending WakeOnLan requests"
+msgstr "WakeOnLan 요청 전송에 사용할 인터페이스"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:97
+msgid "IP tool"
+msgstr "IP 도구"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:97
+msgid "IP tool to use"
+msgstr "사용할 IP 도구"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:104
+#: management/systems/argonaut/class_argonautClient.inc:171
+msgid "SSL paths"
+msgstr "SSL 경로"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:107
+#: management/systems/argonaut/class_argonautClient.inc:174
+msgid "Key"
+msgstr "키"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:107
+msgid "Path to the private key file on Argonaut server"
+msgstr "Argonaut 서버의 개인 키 파일 경로"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:112
+#: management/systems/argonaut/class_argonautClient.inc:179
+msgid "Certificate"
+msgstr "인증서"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:112
+msgid "Path to the certificate file on Argonaut server"
+msgstr "Argonaut 서버의 인증서 파일 경로"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:117
+#: management/systems/argonaut/class_argonautClient.inc:184
+msgid "CA certificate"
+msgstr "CA 인증서"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:117
+msgid "Path to the CA certificate file on Argonaut server"
+msgstr "Argonaut 서버의 CA 인증서 파일 경로"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:122
+msgid "CN of the certificate"
+msgstr "인증서의 CN"
+
+#: management/systems/services/argonaut/class_argonautServer.inc:122
+msgid "The CN in the server certificate"
+msgstr "서버 인증서의 CN"
+
+#: management/systems/services/argonaut/class_argonautFuseConfig.inc:29
+msgid "Argonaut Fuse"
+msgstr "Argonaut Fuse"
+
+#: management/systems/services/argonaut/class_argonautFuseConfig.inc:30
+msgid "Argonaut Fuse settings"
+msgstr "Argonaut Fuse 설정"
+
+#: management/systems/services/argonaut/class_argonautFuseConfig.inc:45
+msgid "Basic settings"
+msgstr "기본 설정"
+
+#: management/systems/services/argonaut/class_argonautFuseConfig.inc:48
+msgid "Default mode"
+msgstr "기본 모드"
+
+#: management/systems/services/argonaut/class_argonautFuseConfig.inc:56
+msgid "Directory in which argonaut-fuse will store its log"
+msgstr "argonaut-fuse가 로그를 저장할 디렉토리"
+
+#: management/systems/services/argonaut/class_argonautFuseConfig.inc:64
+msgid "TFTP"
+msgstr "TFTP"
+
+#: management/systems/services/argonaut/class_argonautFuseConfig.inc:67
+msgid "Pxelinux cfg path"
+msgstr "Pxelinux cfg 경로"
+
+#: management/systems/services/argonaut/class_argonautFuseConfig.inc:68
+msgid "Path where argonaut-fuse should store pxelinux.cfg"
+msgstr "argonaut-fuse가 pxelinux.cfg를 저장해야하는 경로"
+
+#: management/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:31
+#: management/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
+msgid "Argonaut Fuse LTSP module settings"
+msgstr "Argonaut Fuse LTSP 모듈 설정"
+
+#: management/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:47
+msgid "LTSP"
+msgstr "LTSP"
+
+#: management/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:50
+msgid "LTSP server"
+msgstr "LTSP 서버"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:28
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:29
+msgid "Argonaut Mirror settings"
+msgstr "Argonaut 미러 설정"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:41
+msgid "Argonaut mirror settings"
+msgstr "Argonaut 미러 설정"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:44
+msgid "Local Debian mirror directory"
+msgstr "로컬 데비안 미러 디렉토리"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:52
+msgid "Argonaut Debconf Crawler configuration"
+msgstr "Argonaut Debconf 크롤러 구성"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:55
+msgid "Local packages folder"
+msgstr "로컬 패키지 폴더"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:56
+msgid "Folder in which the crawler will store packages during analysis"
+msgstr "분석 도중 크롤러가 패키지를 저장할 폴더"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:63
+msgid "Argonaut Repository configuration"
+msgstr "Argonaut 저장소 구성"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:66
+msgid "Proxy"
+msgstr "프록시"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:67
+msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
+msgstr "http 및 hftp 메소드에 사용할 http 프록시(예 : Squid)를 지정합니다."
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:71
+msgid "Directory in which logs should be stored"
+msgstr "로그가 저장될 디렉토리"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:76
+msgid "Ignore errors"
+msgstr "오류 무시"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:77
+msgid ""
+"Causes debmirror to ignore missing or broken deb and source files but still "
+"be pedantic about checking meta files"
+msgstr "debmirror가 누락되거나 손상된 deb 및 소스 파일을 무시하게 하지만 메타 파일을 검사하는 것은 당연합니다."
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:82
+msgid "Source"
+msgstr "소스"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:82
+msgid "Include source in the mirror"
+msgstr "미러에 소스 포함"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:87
+msgid "GPG Check"
+msgstr "GPG 확인"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:87
+msgid "Fail if the Release.gpg file is missing"
+msgstr "Release.gpg 파일이 없으면 실패"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:92
+msgid "Contents"
+msgstr "내용"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:93
+msgid ""
+"Additionally download Contents.<arch>.gz files (Note that these files can be"
+" relatively big and can change frequently)"
+msgstr "추가적으로 Contents.<arch>.gz 파일을 다운로드하십시오 (이 파일은 상대적으로 크고 자주 변경 될 수 있습니다)"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:98
+msgid "Verbose"
+msgstr "상세"
+
+#: management/systems/services/argonaut/class_argonautMirrorConfig.inc:98
+msgid "Wether to activate verbose mode"
+msgstr "상세 모드를 활성화할지 여부"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:29
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:30
+msgid "Argonaut DNS settings"
+msgstr "Argonaut DNS 설정"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:49
+msgid "Ldap2zone global settings"
+msgstr "Ldap2zone 전역 설정"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:52
+msgid "Bind directory"
+msgstr "디렉토리 바인딩"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:52
+msgid "The directory in which conf file must be created"
+msgstr "conf 파일을 생성해야하는 디렉토리"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:57
+msgid "Bind cache directory"
+msgstr "캐시 디렉토리 바인딩"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:57
+msgid "The directory in which zone files must be created"
+msgstr "zone 파일을 생성해야하는 디렉토리"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:62
+msgid "TTL"
+msgstr "TTL"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:63
+msgid "Time to live"
+msgstr "Time to live"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:71
+msgid "rndc path"
+msgstr "rndc 경로"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:72
+msgid "path to rndc binary"
+msgstr "rndc 바이너리 경로"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:78
+msgid "Search base"
+msgstr "검색 기준"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:78
+msgid ""
+"LDAP base in which ldap2zone should search. Only usefull if you got several "
+"nodes for the same zone."
+msgstr "ldap2zone이 검색해야하는 LDAP 기본. 같은 존에 대해 여러 개의 노드가있는 경우에만 유용합니다."
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:84
+msgid "Ldap2zone master settings"
+msgstr "Ldap2zone 마스터 설정"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:87
+msgid "Ignore reverse zone"
+msgstr "역방향 영역 무시"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:87
+msgid "Do not write reverse zone"
+msgstr "역방향 영역 쓰지 않기"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:91
+msgid "Notify"
+msgstr "알림"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:96
+msgid "Allow update"
+msgstr "업데이트 허용"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:96
+msgid "Allow update (semicolon separated and ended)"
+msgstr "업데이트 허용 (세미콜론 분리 및 종료)"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:100
+msgid "Allow transfer"
+msgstr "전송 허용"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:100
+msgid "Allow transfer (semicolon separated and ended)"
+msgstr "전송 허용 (세미콜론 분리 및 종료)"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:104
+msgid "Check names"
+msgstr "이름 확인"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:104
+msgid ""
+"Cause any host name for the zone to be checked for compliance with RFC 952 "
+"and RFC 1123 and take the defined action"
+msgstr "영역의 모든 호스트 이름이 RFC 952 및 RFC 1123을 준수하는지 확인하고 정의 된 작업을 수행합니다"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:111
+msgid "Ldap2zone slave settings"
+msgstr "Ldap2zone 슬레이브 설정"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:115
+msgid "DNS slaves"
+msgstr "DNS 슬레이브"
+
+#: management/systems/services/argonaut/class_argonautDNSConfig.inc:115
+msgid "Manage DNS Slaves"
+msgstr "DNS 슬레이브 관리"
+
+#: management/systems/argonaut/class_deploymentTimeframe.inc:30
+msgid "Deployment time frame"
+msgstr "배포 시간 프레임"
+
+#: management/systems/argonaut/class_deploymentTimeframe.inc:31
+msgid "Edit deployment time frame"
+msgstr "배포 시간 프레임 편집"
+
+#: management/systems/argonaut/class_deploymentTimeframe.inc:45
+#: management/systems/argonaut/class_deploymentTimeframe.inc:63
+msgid "Time frames"
+msgstr "시간 프레임"
+
+#: management/systems/argonaut/class_deploymentTimeframe.inc:49
+msgid "Time frames in which deployment is authorized"
+msgstr "배포가 승인된 시간 프레임"
+
+#: management/systems/argonaut/class_deploymentTimeframe.inc:53
+msgid "Opening time for this frame as HH:MM"
+msgstr "이 프레임의 시작시간 HH : MM"
+
+#: management/systems/argonaut/class_deploymentTimeframe.inc:57
+msgid "->"
+msgstr "->"
+
+#: management/systems/argonaut/class_deploymentTimeframe.inc:57
+msgid "Closing time for this frame as HH:MM"
+msgstr "이 프레임의 종료시간 HH : MM"
+
+#: management/systems/argonaut/class_argonautClient.inc:126
+msgid "Argonaut client"
+msgstr "Argonaut 클라이언트"
+
+#: management/systems/argonaut/class_argonautClient.inc:127
+msgid "Edit argonaut client settings"
+msgstr "Argonaut 클라이언트 설정 편집"
+
+#: management/systems/argonaut/class_argonautClient.inc:141
+msgid "Argonaut client settings"
+msgstr "Argonaut 클라이언트 설정"
+
+#: management/systems/argonaut/class_argonautClient.inc:144
+msgid "Client port"
+msgstr "클라이언트 포트"
+
+#: management/systems/argonaut/class_argonautClient.inc:144
+msgid "Port used by argonaut client for JSON-RPC"
+msgstr "JSON-RPC 용 argonaut 클라이언트가 사용하는 포트"
+
+#: management/systems/argonaut/class_argonautClient.inc:154
+msgid "WakeOnLan interface"
+msgstr "WakeOnLan 인터페이스"
+
+#: management/systems/argonaut/class_argonautClient.inc:154
+msgid "Interface used by argonaut for WakeOnLan"
+msgstr "WakeOnLan을 위해 argonaut에서 사용되는 인터페이스"
+
+#: management/systems/argonaut/class_argonautClient.inc:159
+msgid "TaskId file"
+msgstr "TaskId 파"
+
+#: management/systems/argonaut/class_argonautClient.inc:159
+msgid "File which argonaut will use to store its task id when booting"
+msgstr "argonaut가 부팅 할 때 작업 ID를 저장하는 데 사용할 파일"
+
+#: management/systems/argonaut/class_argonautClient.inc:164
+msgid "Directory in which argonaut client should write its logs"
+msgstr "argonaut 클라이언트가 로그를 작성해야하는 디렉토리"
+
+#: management/systems/argonaut/class_argonautClient.inc:174
+msgid "Path to the private key file on Argonaut client"
+msgstr "Argonaut 클라이언트의 개인 키 파일 경로"
+
+#: management/systems/argonaut/class_argonautClient.inc:179
+msgid "Path to the certificate file on Argonaut client"
+msgstr "Argonaut 클라이언트의 인증서 파일 경로"
+
+#: management/systems/argonaut/class_argonautClient.inc:184
+msgid "Path to the CA certificate file on Argonaut client"
+msgstr "Argonaut 클라이언트의 CA 인증서 파일 경로"
+
+#: management/systems/argonaut/class_argonautClient.inc:189
+msgid "Name for peer verification"
+msgstr ""
+
+#: management/systems/argonaut/class_argonautClient.inc:189
+msgid "The certificate name used for peer verification"
+msgstr ""
+
+#: management/systems/argonaut/class_argonautClient.inc:195
+msgid "Service names"
+msgstr "서비스 이름"
+
+#: management/systems/argonaut/class_argonautClient.inc:197
+msgid "Argonaut service names"
+msgstr "Argonaut 서비스 이름"
+
 #: include/class_supportDaemon.inc:107
 msgid "Multiple argonaut server found. Only one is supported"
 msgstr "여러 개의 argonaut 서버가 발견되었습니다. 하나만 지원됩니다."
@@ -273,579 +846,6 @@ msgstr "\"%s\"을 읽을 수 없습니다!"
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "\"%s\"는 파일이 아닙니다!"
-
-#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:35
-#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:70
-msgid "zone"
-msgstr "영역"
-
-#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:35
-#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:70
-msgid "DNS zone this server should be declared as slave of"
-msgstr "이 서버의 DNS 영역은 다음 중 슬레이브로 선언되어야합니다."
-
-#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:39
-msgid "master"
-msgstr "마스터"
-
-#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:39
-msgid "Master IP(s) for this zone"
-msgstr "이 영역의 마스터 IP(s)"
-
-#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:43
-msgid "reverses"
-msgstr "역방향"
-
-#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:43
-msgid "This server should be slave of reverses zones as well"
-msgstr "이 서버는 역방향 영역의 슬레이브가 되어야 합니다"
-
-#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:30
-#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:31
-msgid "Argonaut Fuse OPSI module settings"
-msgstr "Argonaut FPS OPSI 모듈 설정"
-
-#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:31
-#: admin/systems/services/argonaut/class_argonautServer.inc:32
-#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:30
-msgid "Services"
-msgstr "서비스"
-
-#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:46
-msgid "OPSI"
-msgstr "OPSI"
-
-#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:49
-msgid "Opsi admin"
-msgstr "Opsi 관리자"
-
-#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:54
-msgid "Opsi password"
-msgstr "Opsi 패스워드"
-
-#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:59
-msgid "Opsi server"
-msgstr "Opsi 서버"
-
-#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:64
-msgid "Opsi lang"
-msgstr "Opsi 언어"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:29
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:30
-msgid "Argonaut Fuse FAI module settings"
-msgstr "Argonaut Fuse FAI 모듈 설정"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:42
-msgid "FAI"
-msgstr "FAI"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:45
-msgid "FAI version"
-msgstr "FAI 버전"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:45
-msgid "Version of FAI installed on the server"
-msgstr "서버에 설치된 FAI 버전"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
-msgid "FAI flags"
-msgstr "FAI 플래그"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
-msgid "Flags to pass to FAI"
-msgstr "FAI로 전달된 플래그"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:55
-msgid "NFS root"
-msgstr "NFS root"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:60
-msgid "FAI 4 command line"
-msgstr "FAI 커맨드 라인"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:60
-msgid ""
-"Command line for FAI 4 - should be \"ip=dhcp root=/dev/nfs boot=live "
-"union=aufs\""
-msgstr "FAI 4를 위한 커맨드 라인 - \"ip=dhcp root=/dev/nfs boot=live union=aufs\""
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
-msgid "FAI 5 command line"
-msgstr "FAI 5 커맨드 라인"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
-msgid "Command line for FAI 5 - should be \"ip=dhcp rootovl\""
-msgstr "FAI 5를 위한 커맨드 라인 - \"ip=dhcp rootovl\" 필수"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:70
-msgid "Multiple distro mode"
-msgstr "다중 distro 모드"
-
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:70
-msgid ""
-"This enables a mode for multiple distributions usage which adds the release "
-"as a suffix to kernel, initrd and nfsroot in the PXE file"
-msgstr "PXE 파일에서 커널, initrd 및 nfsroot에 접미사로 릴리스를 추가하는 다중 배포 사용 모드를 활성화합니다."
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:31
-#: admin/systems/services/argonaut/class_argonautServer.inc:32
-#: admin/systems/services/argonaut/class_argonautServer.inc:47
-msgid "Argonaut server"
-msgstr "Argonaut 서버"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:50
-msgid "Delete finished tasks"
-msgstr "완료된 작업 삭제"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:51
-msgid ""
-"Wether or not argonaut server should delete successfully finished tasks"
-msgstr "Argonaut 서버가 성공적으로 완료된 작업을 삭제해야할지 여부"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:56
-msgid "Get packages information"
-msgstr "패키지 정보 가져오기"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:57
-msgid ""
-"Wether or not argonaut server should get packages information from "
-"repositories at start and then once a day. Needed for FAI package list "
-"creation."
-msgstr ""
-"Argonaut 서버는 패키지 정보를 시작시 저장소에서 가져온 다음 하루에 한 번 가져와야할지 여부. FAI 패키지 목록 생성에 "
-"필요합니다."
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:62
-#: admin/systems/argonaut/class_argonautClient.inc:149
-msgid "Protocol"
-msgstr "프로토콜"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:62
-#: admin/systems/argonaut/class_argonautClient.inc:149
-msgid "Protocol to use for argonaut"
-msgstr "Argonaut에 사용할 프로토콜"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:67
-msgid "Port"
-msgstr "포트"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:68
-msgid "Port on which the argonaut server will be listening"
-msgstr "Argonaut 서버가 수신 대기할 포트"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:73
-msgid "Timeout"
-msgstr "타임아웃"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:74
-msgid ""
-"Time in seconds before to consider an argonaut client or server as down"
-msgstr "Argonaut 클라이언트 또는 서버를 다운 된 것으로 간주하기 전의 초 단위 시간"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:80
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
-#: admin/systems/argonaut/class_argonautClient.inc:164
-msgid "Log directory"
-msgstr "로그 디렉토리"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:81
-msgid "Directory in which argonaut will store its log"
-msgstr "Argonaut가 로그를 저장할 디렉토리"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:88
-msgid "Wake on lan"
-msgstr "Wake on lan"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:91
-msgid "Interface"
-msgstr "인터페이스"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:92
-msgid "Interface to use for sending WakeOnLan requests"
-msgstr "WakeOnLan 요청 전송에 사용할 인터페이스"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:97
-msgid "IP tool"
-msgstr "IP 도구"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:97
-msgid "IP tool to use"
-msgstr "사용할 IP 도구"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:104
-#: admin/systems/argonaut/class_argonautClient.inc:171
-msgid "SSL paths"
-msgstr "SSL 경로"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:107
-#: admin/systems/argonaut/class_argonautClient.inc:174
-msgid "Key"
-msgstr "키"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:107
-msgid "Path to the private key file on Argonaut server"
-msgstr "Argonaut 서버의 개인 키 파일 경로"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:112
-#: admin/systems/argonaut/class_argonautClient.inc:179
-msgid "Certificate"
-msgstr "인증서"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:112
-msgid "Path to the certificate file on Argonaut server"
-msgstr "Argonaut 서버의 인증서 파일 경로"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:117
-#: admin/systems/argonaut/class_argonautClient.inc:184
-msgid "CA certificate"
-msgstr "CA 인증서"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:117
-msgid "Path to the CA certificate file on Argonaut server"
-msgstr "Argonaut 서버의 CA 인증서 파일 경로"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:122
-msgid "CN of the certificate"
-msgstr "인증서의 CN"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:122
-msgid "The CN in the server certificate"
-msgstr "서버 인증서의 CN"
-
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:29
-msgid "Argonaut Fuse"
-msgstr "Argonaut Fuse"
-
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:30
-msgid "Argonaut Fuse settings"
-msgstr "Argonaut Fuse 설정"
-
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:45
-msgid "Basic settings"
-msgstr "기본 설정"
-
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:48
-msgid "Default mode"
-msgstr "기본 모드"
-
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
-msgid "Directory in which argonaut-fuse will store its log"
-msgstr "argonaut-fuse가 로그를 저장할 디렉토리"
-
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:64
-msgid "TFTP"
-msgstr "TFTP"
-
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:67
-msgid "Pxelinux cfg path"
-msgstr "Pxelinux cfg 경로"
-
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:68
-msgid "Path where argonaut-fuse should store pxelinux.cfg"
-msgstr "argonaut-fuse가 pxelinux.cfg를 저장해야하는 경로"
-
-#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:31
-#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
-msgid "Argonaut Fuse LTSP module settings"
-msgstr "Argonaut Fuse LTSP 모듈 설정"
-
-#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:47
-msgid "LTSP"
-msgstr "LTSP"
-
-#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:50
-msgid "LTSP server"
-msgstr "LTSP 서버"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:28
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:29
-msgid "Argonaut Mirror settings"
-msgstr "Argonaut 미러 설정"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:41
-msgid "Argonaut mirror settings"
-msgstr "Argonaut 미러 설정"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:44
-msgid "Local Debian mirror directory"
-msgstr "로컬 데비안 미러 디렉토리"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:52
-msgid "Argonaut Debconf Crawler configuration"
-msgstr "Argonaut Debconf 크롤러 구성"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:55
-msgid "Local packages folder"
-msgstr "로컬 패키지 폴더"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:56
-msgid "Folder in which the crawler will store packages during analysis"
-msgstr "분석 도중 크롤러가 패키지를 저장할 폴더"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:63
-msgid "Argonaut Repository configuration"
-msgstr "Argonaut 저장소 구성"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:66
-msgid "Proxy"
-msgstr "프록시"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
-msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
-msgstr "http 및 hftp 메소드에 사용할 http 프록시(예 : Squid)를 지정합니다."
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
-msgid "Directory in which logs should be stored"
-msgstr "로그가 저장될 디렉토리"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:76
-msgid "Ignore errors"
-msgstr "오류 무시"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:77
-msgid ""
-"Causes debmirror to ignore missing or broken deb and source files but still "
-"be pedantic about checking meta files"
-msgstr "debmirror가 누락되거나 손상된 deb 및 소스 파일을 무시하게 하지만 메타 파일을 검사하는 것은 당연합니다."
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
-msgid "Source"
-msgstr "소스"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
-msgid "Include source in the mirror"
-msgstr "미러에 소스 포함"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
-msgid "GPG Check"
-msgstr "GPG 확인"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
-msgid "Fail if the Release.gpg file is missing"
-msgstr "Release.gpg 파일이 없으면 실패"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:92
-msgid "Contents"
-msgstr "내용"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:93
-msgid ""
-"Additionally download Contents.<arch>.gz files (Note that these files can be"
-" relatively big and can change frequently)"
-msgstr "추가적으로 Contents.<arch>.gz 파일을 다운로드하십시오 (이 파일은 상대적으로 크고 자주 변경 될 수 있습니다)"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
-msgid "Verbose"
-msgstr "상세"
-
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
-msgid "Wether to activate verbose mode"
-msgstr "상세 모드를 활성화할지 여부"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:29
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:30
-msgid "Argonaut DNS settings"
-msgstr "Argonaut DNS 설정"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
-msgid "Ldap2zone global settings"
-msgstr "Ldap2zone 전역 설정"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:52
-msgid "Bind directory"
-msgstr "디렉토리 바인딩"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:52
-msgid "The directory in which conf file must be created"
-msgstr "conf 파일을 생성해야하는 디렉토리"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
-msgid "Bind cache directory"
-msgstr "캐시 디렉토리 바인딩"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
-msgid "The directory in which zone files must be created"
-msgstr "zone 파일을 생성해야하는 디렉토리"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:62
-msgid "TTL"
-msgstr "TTL"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:63
-msgid "Time to live"
-msgstr "Time to live"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:71
-msgid "rndc path"
-msgstr "rndc 경로"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:72
-msgid "path to rndc binary"
-msgstr "rndc 바이너리 경로"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:78
-msgid "Search base"
-msgstr "검색 기준"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:78
-msgid ""
-"LDAP base in which ldap2zone should search. Only usefull if you got several "
-"nodes for the same zone."
-msgstr "ldap2zone이 검색해야하는 LDAP 기본. 같은 존에 대해 여러 개의 노드가있는 경우에만 유용합니다."
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:84
-msgid "Ldap2zone master settings"
-msgstr "Ldap2zone 마스터 설정"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:87
-msgid "Ignore reverse zone"
-msgstr "역방향 영역 무시"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:87
-msgid "Do not write reverse zone"
-msgstr "역방향 영역 쓰지 않기"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:91
-msgid "Notify"
-msgstr "알림"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
-msgid "Allow update"
-msgstr "업데이트 허용"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
-msgid "Allow update (semicolon separated and ended)"
-msgstr "업데이트 허용 (세미콜론 분리 및 종료)"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
-msgid "Allow transfer"
-msgstr "전송 허용"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
-msgid "Allow transfer (semicolon separated and ended)"
-msgstr "전송 허용 (세미콜론 분리 및 종료)"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:104
-msgid "Check names"
-msgstr "이름 확인"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:104
-msgid ""
-"Cause any host name for the zone to be checked for compliance with RFC 952 "
-"and RFC 1123 and take the defined action"
-msgstr "영역의 모든 호스트 이름이 RFC 952 및 RFC 1123을 준수하는지 확인하고 정의 된 작업을 수행합니다"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:111
-msgid "Ldap2zone slave settings"
-msgstr "Ldap2zone 슬레이브 설정"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:115
-msgid "DNS slaves"
-msgstr "DNS 슬레이브"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:115
-msgid "Manage DNS Slaves"
-msgstr "DNS 슬레이브 관리"
-
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:30
-msgid "Deployment time frame"
-msgstr "배포 시간 프레임"
-
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:31
-msgid "Edit deployment time frame"
-msgstr "배포 시간 프레임 편집"
-
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:45
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:63
-msgid "Time frames"
-msgstr "시간 프레임"
-
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:49
-msgid "Time frames in which deployment is authorized"
-msgstr "배포가 승인된 시간 프레임"
-
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:53
-msgid "Opening time for this frame as HH:MM"
-msgstr "이 프레임의 시작시간 HH : MM"
-
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:57
-msgid "->"
-msgstr "->"
-
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:57
-msgid "Closing time for this frame as HH:MM"
-msgstr "이 프레임의 종료시간 HH : MM"
-
-#: admin/systems/argonaut/class_argonautClient.inc:126
-msgid "Argonaut client"
-msgstr "Argonaut 클라이언트"
-
-#: admin/systems/argonaut/class_argonautClient.inc:127
-msgid "Edit argonaut client settings"
-msgstr "Argonaut 클라이언트 설정 편집"
-
-#: admin/systems/argonaut/class_argonautClient.inc:141
-msgid "Argonaut client settings"
-msgstr "Argonaut 클라이언트 설정"
-
-#: admin/systems/argonaut/class_argonautClient.inc:144
-msgid "Client port"
-msgstr "클라이언트 포트"
-
-#: admin/systems/argonaut/class_argonautClient.inc:144
-msgid "Port used by argonaut client for JSON-RPC"
-msgstr "JSON-RPC 용 argonaut 클라이언트가 사용하는 포트"
-
-#: admin/systems/argonaut/class_argonautClient.inc:154
-msgid "WakeOnLan interface"
-msgstr "WakeOnLan 인터페이스"
-
-#: admin/systems/argonaut/class_argonautClient.inc:154
-msgid "Interface used by argonaut for WakeOnLan"
-msgstr "WakeOnLan을 위해 argonaut에서 사용되는 인터페이스"
-
-#: admin/systems/argonaut/class_argonautClient.inc:159
-msgid "TaskId file"
-msgstr "TaskId 파"
-
-#: admin/systems/argonaut/class_argonautClient.inc:159
-msgid "File which argonaut will use to store its task id when booting"
-msgstr "argonaut가 부팅 할 때 작업 ID를 저장하는 데 사용할 파일"
-
-#: admin/systems/argonaut/class_argonautClient.inc:164
-msgid "Directory in which argonaut client should write its logs"
-msgstr "argonaut 클라이언트가 로그를 작성해야하는 디렉토리"
-
-#: admin/systems/argonaut/class_argonautClient.inc:174
-msgid "Path to the private key file on Argonaut client"
-msgstr "Argonaut 클라이언트의 개인 키 파일 경로"
-
-#: admin/systems/argonaut/class_argonautClient.inc:179
-msgid "Path to the certificate file on Argonaut client"
-msgstr "Argonaut 클라이언트의 인증서 파일 경로"
-
-#: admin/systems/argonaut/class_argonautClient.inc:184
-msgid "Path to the CA certificate file on Argonaut client"
-msgstr "Argonaut 클라이언트의 CA 인증서 파일 경로"
-
-#: admin/systems/argonaut/class_argonautClient.inc:189
-msgid "Name for peer verification"
-msgstr ""
-
-#: admin/systems/argonaut/class_argonautClient.inc:189
-msgid "The certificate name used for peer verification"
-msgstr ""
-
-#: admin/systems/argonaut/class_argonautClient.inc:195
-msgid "Service names"
-msgstr "서비스 이름"
-
-#: admin/systems/argonaut/class_argonautClient.inc:197
-msgid "Argonaut service names"
-msgstr "Argonaut 서비스 이름"
 
 #: dashboard/argonaut/import_events.tpl.c:2
 msgid ""
