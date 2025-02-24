@@ -1,24 +1,26 @@
 information:
-  name : autofs5
-  description : Autofs plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Autofs plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/autofs5/html/themes/breezy/icons/48/apps/autofs.png
+  name: autofs5
+  origin: package
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/autofs5/html/themes/breezy/icons/48/apps/autofs5.png"
-  tags: ["plugin", "autofs5"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/autofs5/contrib/screenshots/autofs-create-mount-point.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/autofs5/contrib/screenshots/autofs-create-mount-point-2.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/autofs5/contrib/screenshots/autofs-created.png
+  status: Stable
+  tags:
+  - server
+  version: '1.5'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.5
+  phpVersion: 7.4
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/autofs5/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

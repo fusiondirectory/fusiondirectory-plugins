@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2018
+# fusiondirectory <contact@fusiondirectory.org>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2024\n"
 "Language-Team: Russian (https://app.transifex.com/fusiondirectory/teams/12202/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,107 +21,109 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: config/user-reminder/class_userReminderConfig.inc:27
+#: backend/user-reminder/class_userReminderConfig.inc:27
 msgid "Reminder"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:28
+#: backend/user-reminder/class_userReminderConfig.inc:28
 msgid "User reminder"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:29
+#: backend/user-reminder/class_userReminderConfig.inc:29
 msgid "Configuration for the reminder of accounts expiration"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:42
+#: backend/user-reminder/class_userReminderConfig.inc:42
 msgid "User reminder settings"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:45
+#: backend/user-reminder/class_userReminderConfig.inc:45
 msgid "Delay before expiration"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:45
+#: backend/user-reminder/class_userReminderConfig.inc:45
 msgid "Days before expiration to send the first mail"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:50
+#: backend/user-reminder/class_userReminderConfig.inc:50
 msgid "Delay before sending again"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:50
+#: backend/user-reminder/class_userReminderConfig.inc:50
 msgid "Days before sending a second mail (0 to disable)"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:55
+#: backend/user-reminder/class_userReminderConfig.inc:55
 msgid "Extension of the validity"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:55
+#: backend/user-reminder/class_userReminderConfig.inc:55
 msgid "Extension of the duration of the account in days"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:60
+#: backend/user-reminder/class_userReminderConfig.inc:60
+#: workflow/tasks/class_taskReminder.inc:122
 msgid "Sender email address"
 msgstr "Адрес электронной почты отправителя"
 
-#: config/user-reminder/class_userReminderConfig.inc:60
+#: backend/user-reminder/class_userReminderConfig.inc:60
+#: workflow/tasks/class_taskReminder.inc:123
 msgid "Email address from which mails will be sent"
 msgstr "Адрес электронной почты с которого будут отправляться письма"
 
-#: config/user-reminder/class_userReminderConfig.inc:65
+#: backend/user-reminder/class_userReminderConfig.inc:65
 msgid "Allow use of alternate addresses"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:65
+#: backend/user-reminder/class_userReminderConfig.inc:65
 msgid ""
 "Whether the field gosaMailAlternateAddress should be used as well to send "
 "reminders"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:72
+#: backend/user-reminder/class_userReminderConfig.inc:72
 msgid "Ppolicy email settings"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:75
-#: config/user-reminder/class_userReminderConfig.inc:101
+#: backend/user-reminder/class_userReminderConfig.inc:75
+#: backend/user-reminder/class_userReminderConfig.inc:101
 msgid "Forward alerts to the manager"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:75
+#: backend/user-reminder/class_userReminderConfig.inc:75
 msgid "Forward ppolicy alerts to the manager"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:80
-#: config/user-reminder/class_userReminderConfig.inc:106
-#: config/user-reminder/class_userReminderConfig.inc:132
-#: config/user-reminder/class_userReminderConfig.inc:163
+#: backend/user-reminder/class_userReminderConfig.inc:80
+#: backend/user-reminder/class_userReminderConfig.inc:106
+#: backend/user-reminder/class_userReminderConfig.inc:132
+#: backend/user-reminder/class_userReminderConfig.inc:163
 msgid "Subject"
 msgstr "Тема"
 
-#: config/user-reminder/class_userReminderConfig.inc:80
+#: backend/user-reminder/class_userReminderConfig.inc:80
 msgid "Subject of the ppolicy alert email"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:82
+#: backend/user-reminder/class_userReminderConfig.inc:82
 msgid "[FusionDirectory] Your password is about to expire"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:85
-#: config/user-reminder/class_userReminderConfig.inc:137
-#: config/user-reminder/class_userReminderConfig.inc:168
+#: backend/user-reminder/class_userReminderConfig.inc:85
+#: backend/user-reminder/class_userReminderConfig.inc:137
+#: backend/user-reminder/class_userReminderConfig.inc:168
 #, php-format
 msgid "Body (%s are cn and login)"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:86
+#: backend/user-reminder/class_userReminderConfig.inc:86
 #, php-format
 msgid ""
 "Body of the ppolicy alert email, sent when the user password is about to "
 "expire. Use %s for the cn and uid."
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:88
+#: backend/user-reminder/class_userReminderConfig.inc:88
 #, php-format
 msgid ""
 "Dear %1$s,\n"
@@ -129,31 +131,31 @@ msgid ""
 "https://"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:98
+#: backend/user-reminder/class_userReminderConfig.inc:98
 msgid "Alert email settings"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:106
+#: backend/user-reminder/class_userReminderConfig.inc:106
 msgid "Subject of the alert email"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:108
+#: backend/user-reminder/class_userReminderConfig.inc:108
 msgid "[FusionDirectory] Your account is about to expire"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:111
+#: backend/user-reminder/class_userReminderConfig.inc:111
 #, php-format
 msgid "Body (%s are cn, login, and link token)"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:112
+#: backend/user-reminder/class_userReminderConfig.inc:112
 #, php-format
 msgid ""
 "Body of the alert email, sent when the user is about to expire. Use %s for "
 "the cn, uid and token."
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:114
+#: backend/user-reminder/class_userReminderConfig.inc:114
 #, php-format
 msgid ""
 "Dear %1$s,\n"
@@ -161,80 +163,206 @@ msgid ""
 "https://"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:124
+#: backend/user-reminder/class_userReminderConfig.inc:124
 msgid "Confirmation email settings"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:127
+#: backend/user-reminder/class_userReminderConfig.inc:127
 msgid "Forward confirmation to the manager"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:127
+#: backend/user-reminder/class_userReminderConfig.inc:127
 msgid "Forward account extension confirmation to the manager"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:132
+#: backend/user-reminder/class_userReminderConfig.inc:132
 msgid "Subject of the confirmation email"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:134
+#: backend/user-reminder/class_userReminderConfig.inc:134
 msgid "[FusionDirectory] Your account expiration has been postponed"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:138
+#: backend/user-reminder/class_userReminderConfig.inc:138
 #, php-format
 msgid ""
 "Body of the confirmation email, sent when the user has postponed expiration."
 " Use %s for the cn and uid."
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:140
+#: backend/user-reminder/class_userReminderConfig.inc:140
 #, php-format
 msgid ""
 "Dear %1$s,\n"
 " your account %2$s expiration has been successfully postponed.\n"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:150
+#: backend/user-reminder/class_userReminderConfig.inc:150
 msgid "Expiration email settings"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:153
+#: backend/user-reminder/class_userReminderConfig.inc:153
 msgid "Send an email"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:153
+#: backend/user-reminder/class_userReminderConfig.inc:153
 msgid "Whether to send an email after expiration to inform the user"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:158
+#: backend/user-reminder/class_userReminderConfig.inc:158
 msgid "Forward to the manager"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:158
+#: backend/user-reminder/class_userReminderConfig.inc:158
 msgid "Forward account expiration to the manager"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:163
+#: backend/user-reminder/class_userReminderConfig.inc:163
 msgid "Subject of the expiration email"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:165
+#: backend/user-reminder/class_userReminderConfig.inc:165
 msgid "[FusionDirectory] Your account has expired"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:169
+#: backend/user-reminder/class_userReminderConfig.inc:169
 #, php-format
 msgid ""
 "Body of the expiration email, sent when the user has expired. Use %s for the"
 " cn and uid."
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:171
+#: backend/user-reminder/class_userReminderConfig.inc:171
 #, php-format
 msgid ""
 "Dear %1$s,\n"
 " your account %2$s has expired.\n"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:33
+msgid "Tasks Reminder"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:34
+msgid "Tasks User Reminder Object"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:50
+msgid "User Reminder general settings"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:55
+msgid "First reminder"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:55
+#: workflow/tasks/class_taskReminder.inc:88
+msgid "Numbers of days before reaching resource end date"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:62
+msgid "SupannRessourceEtat to be monitored "
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:65
+#: workflow/tasks/class_taskReminder.inc:97
+msgid "Resource"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:65
+#: workflow/tasks/class_taskReminder.inc:97
+msgid "Supann resources"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:69
+#: workflow/tasks/class_taskReminder.inc:101
+msgid "State"
+msgstr "Адм. единица"
+
+#: workflow/tasks/class_taskReminder.inc:69
+#: workflow/tasks/class_taskReminder.inc:101
+msgid "Resource state"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:73
+#: workflow/tasks/class_taskReminder.inc:105
+msgid "Sub state"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:73
+#: workflow/tasks/class_taskReminder.inc:105
+msgid "Resource sub state"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:79
+#: workflow/tasks/class_taskReminder.inc:83
+msgid "Account prolongation"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:83
+msgid "Activate / Deactivate account prolongation (token issue)"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:88
+msgid "Second reminder"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:92
+msgid "Posix"
+msgstr "Posix"
+
+#: workflow/tasks/class_taskReminder.inc:92
+msgid "Monitor posix end date"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:109
+msgid "Account added duration"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:109
+msgid "Numbers of days to add to the new end date of supann resource"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:115
+#: workflow/tasks/class_taskReminder.inc:118
+msgid "Mail Template"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:118
+msgid "Mail Template Object Selection"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:128
+msgid "Recipients Users and/or Groups"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:131
+msgid "Forward To"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:131
+msgid "Users or Groups requiring to be notified."
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:135
+msgid "Monitored Members"
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:135
+msgid "Users or Groups requiring monitoring."
+msgstr ""
+
+#: workflow/tasks/class_taskReminder.inc:188
+msgid "Account"
+msgstr "Учетная запись"
+
+#: workflow/tasks/class_taskReminder.inc:188
+#: ihtml/themes/breezy/taskReminder.tpl.c:23
+msgid "Mail"
+msgstr "Почта"
+
+#: workflow/tasks/class_taskReminder.inc:188
+msgid "None"
 msgstr ""
 
 #: html/class_expiredUserPostpone.inc:70
@@ -261,28 +389,79 @@ msgstr "Не найден аккаунт с логином \"%s\""
 msgid "Found multiple accounts with login \"%s\""
 msgstr "Найдено множество учетных записей с логином \"%s\""
 
+#: ihtml/themes/breezy/taskReminder.tpl.c:2
+#: ihtml/themes/breezy/taskReminder.tpl.c:5
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5
 msgid "User"
 msgstr "Пользователь"
 
-#: ihtml/themes/breezy/user-reminder.tpl.c:8
-msgid "Expiration postpone"
+#: ihtml/themes/breezy/taskReminder.tpl.c:8
+msgid "Reminder - Account prolongation"
 msgstr ""
 
+#: ihtml/themes/breezy/taskReminder.tpl.c:11
+#: ihtml/themes/breezy/taskReminder.tpl.c:14
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:17
+msgid "Enter your ID"
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:20
+msgid "Select ID Type"
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:26
+msgid "UID"
+msgstr "UID"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:29
+msgid "Supann Alias"
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:32
+msgid "EPPN"
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:35
+msgid "Submit"
+msgstr "Отправить"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:38
+msgid "Click here to prolonged your account."
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:41
+#: ihtml/themes/breezy/taskReminder.tpl.c:44
 #: ihtml/themes/breezy/user-reminder.tpl.c:11
 #: ihtml/themes/breezy/user-reminder.tpl.c:14
 msgid "Success"
 msgstr "Успешно"
 
-#: ihtml/themes/breezy/user-reminder.tpl.c:17
-msgid "Your expiration has been postponed successfully."
+#: ihtml/themes/breezy/taskReminder.tpl.c:47
+msgid "Your account has been prolonged successfully."
 msgstr ""
 
+#: ihtml/themes/breezy/taskReminder.tpl.c:50
+#: ihtml/themes/breezy/taskReminder.tpl.c:53
 #: ihtml/themes/breezy/user-reminder.tpl.c:20
 #: ihtml/themes/breezy/user-reminder.tpl.c:23
 msgid "Error"
 msgstr "Ошибка"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:56
+msgid "Error, data received are invalid!"
+msgstr ""
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:8
+msgid "Expiration postpone"
+msgstr ""
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:17
+msgid "Your expiration has been postponed successfully."
+msgstr ""
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:26
 msgid "There was a problem"

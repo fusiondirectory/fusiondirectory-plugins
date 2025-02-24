@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -22,98 +22,100 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/systems/services/sympa/class_serviceSympa.inc:27
-#: admin/systems/services/sympa/class_serviceSympa.inc:28
-msgid "Sympa Server"
-msgstr "Serveur Sympa"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:28
-msgid "Services"
-msgstr "Service"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:43
-#: admin/sympa/class_sympaAlias.inc:61
-msgid "Sympa server"
-msgstr "Serveur sympa"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:46
-msgid "URL"
-msgstr "URL"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:46
-msgid "URL to access the sympa server"
-msgstr "URL d'accès au serveur sympa"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:50
-msgid "User"
-msgstr "Utilisateur"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:50
-msgid "User to access sympa server SOAP API."
-msgstr "Utilisateur pour accéder a l'interface SOAP"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:54
-msgid "Password"
-msgstr "Mot de passe"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:54
-msgid "Password to access sympa server SOAP API."
-msgstr "Mot de passe pour accéder à l'interface SOAP"
-
-#: admin/sympa/class_sympaManagement.inc:28
-#: config/sympa/class_sympaConfig.inc:40
-msgid "Sympa"
-msgstr "Sympa"
-
-#: admin/sympa/class_sympaManagement.inc:29
-msgid "Sympa management"
-msgstr "Gestion de Sympa"
-
-#: admin/sympa/class_sympaManagement.inc:30
-msgid "Manage sympa aliases"
-msgstr "Gérer les alias sympa"
-
-#: admin/sympa/class_sympaAlias.inc:26 admin/sympa/class_sympaAlias.inc:27
-#: admin/sympa/class_sympaAlias.inc:30 admin/sympa/class_sympaAlias.inc:46
-msgid "Sympa list alias"
-msgstr "Liste des alias de listes sympa"
-
-#: admin/sympa/class_sympaAlias.inc:49
-msgid "Name"
-msgstr "Nom"
-
-#: admin/sympa/class_sympaAlias.inc:49
-msgid "Name to identify this alias"
-msgstr "Nom de l'alias"
-
-#: admin/sympa/class_sympaAlias.inc:51
-msgid "Description"
-msgstr "Description"
-
-#: admin/sympa/class_sympaAlias.inc:51
-msgid "Description of this alias"
-msgstr "Description de l'alias"
-
-#: admin/sympa/class_sympaAlias.inc:56
-msgid "Email address"
-msgstr "Adresse de messagerie"
-
-#: admin/sympa/class_sympaAlias.inc:61
-msgid "Sympa server for this alias"
-msgstr "Serveur Sympa pour cet alias"
-
-#: config/sympa/class_sympaConfig.inc:26
+#: backend/sympa/class_sympaConfig.inc:26
 msgid "Sympa configuration"
 msgstr "Configuration de Sympa"
 
-#: config/sympa/class_sympaConfig.inc:27
+#: backend/sympa/class_sympaConfig.inc:27
 msgid "FusionDirectory sympa plugin configuration"
 msgstr "Configuration du plugin Sympa"
 
-#: config/sympa/class_sympaConfig.inc:43
+#: backend/sympa/class_sympaConfig.inc:40
+#: management/sympa/class_sympaManagement.inc:28
+msgid "Sympa"
+msgstr "Sympa"
+
+#: backend/sympa/class_sympaConfig.inc:43
 msgid "Sympa RDN"
 msgstr "Sympa RDN"
 
-#: config/sympa/class_sympaConfig.inc:43
+#: backend/sympa/class_sympaConfig.inc:43
 msgid "Branch in which Sympa objects will be stored"
 msgstr "Branche où seront stockés les objets Sympa"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:27
+#: management/systems/services/sympa/class_serviceSympa.inc:28
+msgid "Sympa Server"
+msgstr "Serveur Sympa"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:28
+msgid "Services"
+msgstr "Service"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:43
+#: management/sympa/class_sympaAlias.inc:61
+msgid "Sympa server"
+msgstr "Serveur sympa"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:46
+msgid "URL"
+msgstr "URL"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:46
+msgid "URL to access the sympa server"
+msgstr "URL d'accès au serveur sympa"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:50
+msgid "User"
+msgstr "Utilisateur"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:50
+msgid "User to access sympa server SOAP API."
+msgstr "Utilisateur pour accéder a l'interface SOAP"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:54
+msgid "Password"
+msgstr "Mot de passe"
+
+#: management/systems/services/sympa/class_serviceSympa.inc:54
+msgid "Password to access sympa server SOAP API."
+msgstr "Mot de passe pour accéder à l'interface SOAP"
+
+#: management/sympa/class_sympaManagement.inc:29
+msgid "Sympa management"
+msgstr "Gestion de Sympa"
+
+#: management/sympa/class_sympaManagement.inc:30
+msgid "Manage sympa aliases"
+msgstr "Gérer les alias sympa"
+
+#: management/sympa/class_sympaAlias.inc:26
+#: management/sympa/class_sympaAlias.inc:27
+#: management/sympa/class_sympaAlias.inc:30
+#: management/sympa/class_sympaAlias.inc:46
+msgid "Sympa list alias"
+msgstr "Liste des alias de listes sympa"
+
+#: management/sympa/class_sympaAlias.inc:49
+msgid "Name"
+msgstr "Nom"
+
+#: management/sympa/class_sympaAlias.inc:49
+msgid "Name to identify this alias"
+msgstr "Nom de l'alias"
+
+#: management/sympa/class_sympaAlias.inc:51
+msgid "Description"
+msgstr "Description"
+
+#: management/sympa/class_sympaAlias.inc:51
+msgid "Description of this alias"
+msgstr "Description de l'alias"
+
+#: management/sympa/class_sympaAlias.inc:56
+msgid "Email address"
+msgstr "Adresse de messagerie"
+
+#: management/sympa/class_sympaAlias.inc:61
+msgid "Sympa server for this alias"
+msgstr "Serveur Sympa pour cet alias"

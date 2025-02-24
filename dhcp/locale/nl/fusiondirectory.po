@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
 "Language-Team: Dutch (https://app.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -22,203 +22,217 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/dhcp/class_dhcpPlugin.inc:32 admin/dhcp/class_dhcpManagement.inc:27
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:38
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:38
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:38
-#: admin/systems/class_dhcpSystem.inc:297 config/dhcp/class_dhcpConfig.inc:41
-msgid "DHCP"
-msgstr "DHCP"
-
-#: admin/dhcp/class_dhcpPlugin.inc:35
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:41
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:41
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:41
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:263
-msgid "Name"
-msgstr "Naam"
-
-#: admin/dhcp/class_dhcpPlugin.inc:35
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:41
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:41
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:41
-msgid "Name of this DHCP configuration"
-msgstr "Naam van deze DHCP configuratie"
-
-#: admin/dhcp/class_dhcpPlugin.inc:40
-msgid "Options"
-msgstr "Opties"
-
-#: admin/dhcp/class_dhcpPlugin.inc:40
-msgid "The DHCP options"
-msgstr "De DHCP opties"
-
-#: admin/dhcp/class_dhcpPlugin.inc:48
-msgid "Statements"
-msgstr "Statements"
-
-#: admin/dhcp/class_dhcpPlugin.inc:48
-msgid "The DHCP statements"
-msgstr "De DHCP statements"
-
-#: admin/dhcp/class_dhcpPlugin.inc:54
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:54
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:92
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:53
-msgid "Comments"
-msgstr "Opmerkingen"
-
-#: admin/dhcp/class_dhcpPlugin.inc:54
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:54
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:92
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:53
-msgid "Comments about this DHCP object"
-msgstr "Commentaren over dit DHCP object"
-
-#: admin/dhcp/class_dhcpManagement.inc:28
-msgid "DHCP Management"
-msgstr "DHCP beheer"
-
-#: admin/dhcp/class_dhcpManagement.inc:29
-msgid "Manage DHCP configurations"
-msgstr ""
-
-#: admin/dhcp/class_dhcpManagement.inc:31
-msgid "Systems"
-msgstr "Systemen"
-
-#: admin/dhcp/class_dhcpSectionCreationDialog.inc:55
-msgid "Section"
-msgstr "Sectie"
-
-#: admin/dhcp/class_dhcpSectionCreationDialog.inc:55
-msgid "Choose section type to create"
-msgstr "Selecteer het aan te maken sectie type"
-
-#: admin/dhcp/class_dhcpSectionCreationDialog.inc:100
-msgid "Create new DHCP section"
-msgstr "Nieuwe DHCP sectie aanmaken"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:51
-#: admin/dhcp/class_dhcpConfiguration.inc:52
-#: admin/dhcp/class_dhcpConfiguration.inc:55
-#: config/dhcp/class_dhcpConfig.inc:27
+#: backend/dhcp/class_dhcpConfig.inc:27
+#: management/dhcp/class_dhcpConfiguration.inc:51
+#: management/dhcp/class_dhcpConfiguration.inc:52
+#: management/dhcp/class_dhcpConfiguration.inc:55
 msgid "DHCP configuration"
 msgstr "DHCP-configuratie"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:74
+#: backend/dhcp/class_dhcpConfig.inc:28
+msgid "FusionDirectory dhcp plugin configuration"
+msgstr "FusionDirectory dhcp-plugin configuratie"
+
+#: backend/dhcp/class_dhcpConfig.inc:41
+#: management/dhcp/class_dhcpPlugin.inc:32
+#: management/dhcp/class_dhcpManagement.inc:27
+#: management/dhcp/sections/class_dhcpTSigKey.inc:38
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:38
+#: management/dhcp/sections/class_dhcpDnsZone.inc:38
+#: management/systems/class_dhcpSystem.inc:297
+msgid "DHCP"
+msgstr "DHCP"
+
+#: backend/dhcp/class_dhcpConfig.inc:44
+msgid "DHCP RDN"
+msgstr "DHCP-RDN"
+
+#: backend/dhcp/class_dhcpConfig.inc:44
+msgid "Branch in which DHCP configurations will be stored"
+msgstr "Sectie in dewelke DHCP configuraties zullen worden opgeslagen"
+
+#: management/dhcp/class_dhcpPlugin.inc:35
+#: management/dhcp/sections/class_dhcpTSigKey.inc:41
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:41
+#: management/dhcp/sections/class_dhcpDnsZone.inc:41
+#: management/dhcp/class_DhcpSectionsAttribute.inc:263
+msgid "Name"
+msgstr "Naam"
+
+#: management/dhcp/class_dhcpPlugin.inc:35
+#: management/dhcp/sections/class_dhcpTSigKey.inc:41
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:41
+#: management/dhcp/sections/class_dhcpDnsZone.inc:41
+msgid "Name of this DHCP configuration"
+msgstr "Naam van deze DHCP configuratie"
+
+#: management/dhcp/class_dhcpPlugin.inc:40
+msgid "Options"
+msgstr "Opties"
+
+#: management/dhcp/class_dhcpPlugin.inc:40
+msgid "The DHCP options"
+msgstr "De DHCP opties"
+
+#: management/dhcp/class_dhcpPlugin.inc:48
+msgid "Statements"
+msgstr "Statements"
+
+#: management/dhcp/class_dhcpPlugin.inc:48
+msgid "The DHCP statements"
+msgstr "De DHCP statements"
+
+#: management/dhcp/class_dhcpPlugin.inc:54
+#: management/dhcp/sections/class_dhcpTSigKey.inc:54
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:92
+#: management/dhcp/sections/class_dhcpDnsZone.inc:53
+msgid "Comments"
+msgstr "Opmerkingen"
+
+#: management/dhcp/class_dhcpPlugin.inc:54
+#: management/dhcp/sections/class_dhcpTSigKey.inc:54
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:92
+#: management/dhcp/sections/class_dhcpDnsZone.inc:53
+msgid "Comments about this DHCP object"
+msgstr "Commentaren over dit DHCP object"
+
+#: management/dhcp/class_dhcpManagement.inc:28
+msgid "DHCP Management"
+msgstr "DHCP beheer"
+
+#: management/dhcp/class_dhcpManagement.inc:29
+msgid "Manage DHCP configurations"
+msgstr ""
+
+#: management/dhcp/class_dhcpManagement.inc:31
+msgid "Systems"
+msgstr "Systemen"
+
+#: management/dhcp/class_dhcpSectionCreationDialog.inc:55
+msgid "Section"
+msgstr "Sectie"
+
+#: management/dhcp/class_dhcpSectionCreationDialog.inc:55
+msgid "Choose section type to create"
+msgstr "Selecteer het aan te maken sectie type"
+
+#: management/dhcp/class_dhcpSectionCreationDialog.inc:100
+msgid "Create new DHCP section"
+msgstr "Nieuwe DHCP sectie aanmaken"
+
+#: management/dhcp/class_dhcpConfiguration.inc:74
 msgid "DHCP Objects"
 msgstr "DHCP objecten"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:80
+#: management/dhcp/class_dhcpConfiguration.inc:80
 msgid "The DHCP sections handled by this server"
 msgstr "De DHCP secties die behandeld worden door deze server"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:91
+#: management/dhcp/class_dhcpConfiguration.inc:91
 msgid "Logging"
 msgstr "Loggen"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:92
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:385
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:425
+#: management/dhcp/class_dhcpConfiguration.inc:92
+#: management/dhcp/class_DhcpSectionsAttribute.inc:385
+#: management/dhcp/class_DhcpSectionsAttribute.inc:425
 msgid "Global options"
 msgstr "Globale opties"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:93
+#: management/dhcp/class_dhcpConfiguration.inc:93
 msgid "Class"
 msgstr "Klasse"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:94
+#: management/dhcp/class_dhcpConfiguration.inc:94
 msgid "Subclass"
 msgstr "Subklasse"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:95
-#: admin/dhcp/sections/class_dhcpHost.inc:40
+#: management/dhcp/class_dhcpConfiguration.inc:95
+#: management/dhcp/sections/class_dhcpHost.inc:40
 msgid "Host"
 msgstr "Host"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:96
+#: management/dhcp/class_dhcpConfiguration.inc:96
 msgid "Group"
 msgstr "Groep"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:97
-#: admin/dhcp/sections/class_dhcpPool.inc:38
+#: management/dhcp/class_dhcpConfiguration.inc:97
+#: management/dhcp/sections/class_dhcpPool.inc:38
 msgid "Pool"
 msgstr "Pool"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:98
-#: admin/dhcp/sections/class_dhcpSubnet.inc:38
+#: management/dhcp/class_dhcpConfiguration.inc:98
+#: management/dhcp/sections/class_dhcpSubnet.inc:38
 msgid "Subnet"
 msgstr "Subnet"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:99
+#: management/dhcp/class_dhcpConfiguration.inc:99
 msgid "Failover peer"
 msgstr "Failover peer"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:100
+#: management/dhcp/class_dhcpConfiguration.inc:100
 msgid "Shared network"
 msgstr "Gedeeld netwerk"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:101
+#: management/dhcp/class_dhcpConfiguration.inc:101
 msgid "DNS update key"
 msgstr "DNS update sleutel"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:102
+#: management/dhcp/class_dhcpConfiguration.inc:102
 msgid "DNS update zones"
 msgstr "DNS update zones"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:28
-#: admin/dhcp/sections/class_dhcpHost.inc:29
+#: management/dhcp/sections/class_dhcpHost.inc:28
+#: management/dhcp/sections/class_dhcpHost.inc:29
 msgid "DHCP host"
 msgstr "DHCP host"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:43
-#: admin/dhcp/sections/class_dhcpHost.inc:52
+#: management/dhcp/sections/class_dhcpHost.inc:43
+#: management/dhcp/sections/class_dhcpHost.inc:52
 msgid "The client hardware address"
 msgstr "Het client hardware adres"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:46
+#: management/dhcp/sections/class_dhcpHost.inc:46
 msgid "The hardware address type"
 msgstr "Het client hardware type"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:49
+#: management/dhcp/sections/class_dhcpHost.inc:49
 msgid "Ethernet"
 msgstr "Ethernet"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:49
+#: management/dhcp/sections/class_dhcpHost.inc:49
 msgid "FDDI"
 msgstr "FDDI"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:49
+#: management/dhcp/sections/class_dhcpHost.inc:49
 msgid "Token Ring"
 msgstr "Token ring"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:59
+#: management/dhcp/sections/class_dhcpHost.inc:59
 msgid "Hardware address"
 msgstr "Hardware adres"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:92
+#: management/dhcp/sections/class_dhcpHost.inc:92
 #, php-format
 msgid "\"%s\" is not a valid IP address."
 msgstr "\"%s\" is geen geldig IP adres."
 
-#: admin/dhcp/sections/class_dhcpSharedNetwork.inc:26
-#: admin/dhcp/sections/class_dhcpSharedNetwork.inc:27
+#: management/dhcp/sections/class_dhcpSharedNetwork.inc:26
+#: management/dhcp/sections/class_dhcpSharedNetwork.inc:27
 msgid "DHCP shared network"
 msgstr "DHCP gedeeld netwerk"
 
-#: admin/dhcp/sections/class_dhcpPool.inc:26
-#: admin/dhcp/sections/class_dhcpPool.inc:27
+#: management/dhcp/sections/class_dhcpPool.inc:26
+#: management/dhcp/sections/class_dhcpPool.inc:27
 msgid "DHCP pool"
 msgstr "DHCP pool"
 
-#: admin/dhcp/sections/class_dhcpPool.inc:42
-#: admin/dhcp/sections/class_dhcpSubnet.inc:47
+#: management/dhcp/sections/class_dhcpPool.inc:42
+#: management/dhcp/sections/class_dhcpSubnet.inc:47
 msgid "Range"
 msgstr "Reeks"
 
-#: admin/dhcp/sections/class_dhcpPool.inc:42
-#: admin/dhcp/sections/class_dhcpSubnet.inc:47
+#: management/dhcp/sections/class_dhcpPool.inc:42
+#: management/dhcp/sections/class_dhcpSubnet.inc:47
 msgid ""
 "The starting & ending IP Addresses in the range (inclusive), separated by a "
 "space; if the range only contains one address, then just the address can be "
@@ -228,11 +242,11 @@ msgstr ""
 "spatie; als het bereik alleen 1 adres bevat, dan kan enkel het adres bepaald"
 " worden. Elk bereik is gedefinieerd als een afzonderlijke waarde."
 
-#: admin/dhcp/sections/class_dhcpPool.inc:50
+#: management/dhcp/sections/class_dhcpPool.inc:50
 msgid "Permit list"
 msgstr "Toegangslijst"
 
-#: admin/dhcp/sections/class_dhcpPool.inc:50
+#: management/dhcp/sections/class_dhcpPool.inc:50
 msgid ""
 "This attribute contains the permit lists associated with a pool. Each permit"
 " list is defined as a separate value."
@@ -240,75 +254,75 @@ msgstr ""
 "Dit attribuut bevat de toegangslijst verbonden met een pool. Elke "
 "toestemming is gedefinieerd als een aparte waarde."
 
-#: admin/dhcp/sections/class_dhcpGroup.inc:26
-#: admin/dhcp/sections/class_dhcpGroup.inc:27
+#: management/dhcp/sections/class_dhcpGroup.inc:26
+#: management/dhcp/sections/class_dhcpGroup.inc:27
 msgid "DHCP group"
 msgstr "DHCP groep"
 
-#: admin/dhcp/sections/class_dhcpClass.inc:26
-#: admin/dhcp/sections/class_dhcpClass.inc:27
+#: management/dhcp/sections/class_dhcpClass.inc:26
+#: management/dhcp/sections/class_dhcpClass.inc:27
 msgid "DHCP class"
 msgstr "DHCP klasse"
 
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:26
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:27
+#: management/dhcp/sections/class_dhcpTSigKey.inc:26
+#: management/dhcp/sections/class_dhcpTSigKey.inc:27
 msgid "DHCP DNS update key"
 msgstr "DHCP DNS bijwerken sleutel"
 
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:45
+#: management/dhcp/sections/class_dhcpTSigKey.inc:45
 msgid "Algorithm"
 msgstr "Algoritme"
 
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:45
+#: management/dhcp/sections/class_dhcpTSigKey.inc:45
 msgid "Algorithm to generate TSIG Key"
 msgstr "Algoritme om TSIG sleutel aan te maken"
 
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:50
+#: management/dhcp/sections/class_dhcpTSigKey.inc:50
 msgid "Secret"
 msgstr "Geheim"
 
-#: admin/dhcp/sections/class_dhcpTSigKey.inc:50
+#: management/dhcp/sections/class_dhcpTSigKey.inc:50
 msgid "Secret to generate TSIG Key"
 msgstr "Geheim om TSIG Key aan te maken"
 
-#: admin/dhcp/sections/class_dhcpService.inc:26
-#: admin/dhcp/sections/class_dhcpService.inc:27
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:26
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:27
+#: management/dhcp/sections/class_dhcpService.inc:26
+#: management/dhcp/sections/class_dhcpService.inc:27
+#: management/systems/services/dhcp/class_serviceDHCP.inc:26
+#: management/systems/services/dhcp/class_serviceDHCP.inc:27
 msgid "DHCP service"
 msgstr "DHCP service"
 
-#: admin/dhcp/sections/class_dhcpService.inc:45
+#: management/dhcp/sections/class_dhcpService.inc:45
 msgid "DHCP Primary"
 msgstr "DHCP Primair"
 
-#: admin/dhcp/sections/class_dhcpService.inc:45
+#: management/dhcp/sections/class_dhcpService.inc:45
 msgid "Primary DHCP server"
 msgstr "Primaire DHCP server"
 
-#: admin/dhcp/sections/class_dhcpService.inc:46
+#: management/dhcp/sections/class_dhcpService.inc:46
 msgid "DHCP Secondary"
 msgstr "Secundaire DHCP"
 
-#: admin/dhcp/sections/class_dhcpService.inc:46
+#: management/dhcp/sections/class_dhcpService.inc:46
 msgid "Secondary DHCP server"
 msgstr "Secundaire DHCP server"
 
-#: admin/dhcp/sections/class_dhcpSubClass.inc:26
-#: admin/dhcp/sections/class_dhcpSubClass.inc:27
+#: management/dhcp/sections/class_dhcpSubClass.inc:26
+#: management/dhcp/sections/class_dhcpSubClass.inc:27
 msgid "DHCP subclass"
 msgstr "DHCP subclass"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:26
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:27
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:26
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:27
 msgid "DHCP failover peer"
 msgstr "DHCP failover peer"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:45
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:45
 msgid "Primary server"
 msgstr "Primaire server"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:45
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:45
 msgid ""
 "IP address or DNS name of the server playing primary role in DHC Load "
 "Balancing and Fail over"
@@ -316,11 +330,11 @@ msgstr ""
 "IP adres of DNS naam van de server met primaire rol in DHC Load Balancing en"
 " Failover"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:49
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:49
 msgid "Primary port"
 msgstr "Primaire poort"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:49
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:49
 msgid ""
 "Port on which primary server listens for connections from its fail over peer"
 " (secondary server)"
@@ -328,11 +342,11 @@ msgstr ""
 "Poort op dewelke primaire servers luisteren naar verbindingen met de "
 "failover peer (secundaire server)"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:54
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:54
 msgid "Secondary server"
 msgstr "Secundaire server"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:54
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:54
 msgid ""
 "IP address or DNS name of the server playing secondary role in DHC Load "
 "Balancing and Fail over"
@@ -340,11 +354,11 @@ msgstr ""
 "IP adres of DNS naam van de server met secundaire rol in DHC Load Balancing "
 "en Failover"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:58
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:58
 msgid "Secondary port"
 msgstr "Secundaire poort"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:58
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:58
 msgid ""
 "Port on which secondary server listens for connections from its fail over "
 "peer (primary server)"
@@ -352,11 +366,11 @@ msgstr ""
 "Poort op dewelke de secundaire server luistert naar connectie van de "
 "failover peer (primaire server)"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:63
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:63
 msgid "Response delay"
 msgstr "Antwoord uitstel"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:63
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:63
 msgid ""
 "Maximum response time in seconds, before Server assumes that connection to "
 "fail over peer has failed"
@@ -364,11 +378,11 @@ msgstr ""
 "Maximum antwoordtijd in seconden, voordat de server aanneemt dat de "
 "verbinding naar de failover peer niet gelukt is"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:68
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:68
 msgid "Unacked updates"
 msgstr "Untracked updates"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:68
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:68
 msgid ""
 "Number of BNDUPD messages that server can send before it receives BNDACK "
 "from its fail over peer"
@@ -376,11 +390,11 @@ msgstr ""
 "Aantal BNDUPD boodschappen die de server kan zenden voor het BNDACK ontvangt"
 " van zijn failover peer"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:73
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:73
 msgid "Maximum Client Lead Time"
 msgstr "Maximum Client doorlooptijd"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:73
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:73
 msgid ""
 "Maximum Client Lead Time configuration in seconds, as defined in DHCP "
 "Failover Protocol [FAILOVR]"
@@ -388,19 +402,19 @@ msgstr ""
 "Maximum Client doorlooptijd configuratie in seconden, zoals bepaald in DHCP "
 "Failover protocol [FAILOVR]"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:78
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:78
 msgid "Split"
 msgstr "Split"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:78
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:78
 msgid "Split between the primary and secondary servers for fail over purpose"
 msgstr "Split tussen primaire en secondaire servers voor failover doeleind"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:83
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:83
 msgid "HashBucketAssignment"
 msgstr "HashBucketAssignment"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:83
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:83
 msgid ""
 "HashBucketAssignment bit map for the DHCP Server, as defined in DHC Load "
 "Balancing Algorithm [RFC 3074]"
@@ -408,24 +422,24 @@ msgstr ""
 "HashBucketAssignment bit map voor de DHCP Server, zoals gedefinieerd in DHC "
 "Load Balancing Algoritme [RFC 3074]"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:87
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:87
 msgid "Load balance time"
 msgstr "Load balance tijd"
 
-#: admin/dhcp/sections/class_dhcpFailOverPeer.inc:87
+#: management/dhcp/sections/class_dhcpFailOverPeer.inc:87
 msgid "Cutoff time in seconds, after which load balance is disabled"
 msgstr "Cuttoff tijd in seconden, na dewelke load balancing wordt afgezet"
 
-#: admin/dhcp/sections/class_dhcpSubnet.inc:26
-#: admin/dhcp/sections/class_dhcpSubnet.inc:27
+#: management/dhcp/sections/class_dhcpSubnet.inc:26
+#: management/dhcp/sections/class_dhcpSubnet.inc:27
 msgid "DHCP subnet"
 msgstr "DHCP subnet"
 
-#: admin/dhcp/sections/class_dhcpSubnet.inc:41
+#: management/dhcp/sections/class_dhcpSubnet.inc:41
 msgid "Mask length"
 msgstr "Masker lengte"
 
-#: admin/dhcp/sections/class_dhcpSubnet.inc:41
+#: management/dhcp/sections/class_dhcpSubnet.inc:41
 msgid ""
 "The subnet mask length for the subnet. The mask can be easily computed from "
 "this length."
@@ -433,71 +447,71 @@ msgstr ""
 "De subnet masker lengte voor het subnet. Het subnet mask kan gemakkelijk "
 "bepaald worden vanaf deze lengte."
 
-#: admin/dhcp/sections/class_dhcpSubnet.inc:56
+#: management/dhcp/sections/class_dhcpSubnet.inc:56
 msgid "Network address"
 msgstr "Netwerkadres"
 
-#: admin/dhcp/sections/class_dhcpSubnet.inc:56
+#: management/dhcp/sections/class_dhcpSubnet.inc:56
 msgid "Network address of this subnet"
 msgstr "Netwerkadres van dit subnet"
 
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:26
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:27
+#: management/dhcp/sections/class_dhcpDnsZone.inc:26
+#: management/dhcp/sections/class_dhcpDnsZone.inc:27
 msgid "DHCP DNS update zone"
 msgstr "DHCP DNS update zone"
 
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:45
+#: management/dhcp/sections/class_dhcpDnsZone.inc:45
 msgid "DNS Zone Server"
 msgstr "DNS Zone Server"
 
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:45
+#: management/dhcp/sections/class_dhcpDnsZone.inc:45
 msgid "Master server of the DNS Zone"
 msgstr "Master server van de DNS zone"
 
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:49
+#: management/dhcp/sections/class_dhcpDnsZone.inc:49
 msgid "Tsig key"
 msgstr "Tsig sleutel"
 
-#: admin/dhcp/sections/class_dhcpDnsZone.inc:49
+#: management/dhcp/sections/class_dhcpDnsZone.inc:49
 msgid "The TSig key DN"
 msgstr "de TSig sleutel DN"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:33
+#: management/dhcp/class_DhcpSectionsAttribute.inc:33
 msgid "Object"
 msgstr "Object"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:34
-#: admin/systems/class_dhcpSystem.inc:57
+#: management/dhcp/class_DhcpSectionsAttribute.inc:34
+#: management/systems/class_dhcpSystem.inc:57
 msgid "IP"
 msgstr "IP"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:35
-#: admin/systems/class_dhcpSystem.inc:56
+#: management/dhcp/class_DhcpSectionsAttribute.inc:35
+#: management/systems/class_dhcpSystem.inc:56
 msgid "Mac"
 msgstr "MAC"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:47
+#: management/dhcp/class_DhcpSectionsAttribute.inc:47
 msgid "Expand DHCP subnet"
 msgstr "Vergroot DHCP subnet"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:48
+#: management/dhcp/class_DhcpSectionsAttribute.inc:48
 msgid "Expand"
 msgstr "Uitbreiden"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:58
+#: management/dhcp/class_DhcpSectionsAttribute.inc:58
 msgid "Fold DHCP subnet"
 msgstr "Verklein DHCP-subnet"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:59
+#: management/dhcp/class_DhcpSectionsAttribute.inc:59
 msgid "Fold"
 msgstr "Verklein"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:125
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:126
+#: management/dhcp/class_DhcpSectionsAttribute.inc:125
+#: management/dhcp/class_DhcpSectionsAttribute.inc:126
 msgid "Insert new DHCP section"
 msgstr "Voeg nieuwe DHCP sectie toe"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:440
+#: management/dhcp/class_DhcpSectionsAttribute.inc:440
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
@@ -505,38 +519,38 @@ msgstr ""
 "De ingestelde DHCP-configuratie is onbekend. Neem contact op met uw "
 "systeembeheerder."
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:42
+#: management/systems/services/dhcp/class_serviceDHCP.inc:42
 msgid "DHCP configurations"
 msgstr "DHCP configuraties"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:47
+#: management/systems/services/dhcp/class_serviceDHCP.inc:47
 msgid ""
 "The DN of dhcpService object(s) which contain the configuration information"
 msgstr ""
 "De DN van dhcpService object(en)  die de configuratie informatie bevatten"
 
-#: admin/systems/class_dhcpSystem.inc:33
+#: management/systems/class_dhcpSystem.inc:33
 msgid ""
 "The DHCP configuration or subsection in which this host should be added"
 msgstr ""
 "De DHCP configuratie of subsectie bij dewelke deze host toegevoegd moet "
 "worden"
 
-#: admin/systems/class_dhcpSystem.inc:37
-#: admin/systems/class_dhcpSystem.inc:117
+#: management/systems/class_dhcpSystem.inc:37
+#: management/systems/class_dhcpSystem.inc:117
 msgid "The Mac address to use in the DHCP host record"
 msgstr "Het te gebruiken MAC adres in de DHCP host record"
 
-#: admin/systems/class_dhcpSystem.inc:41
-#: admin/systems/class_dhcpSystem.inc:122
+#: management/systems/class_dhcpSystem.inc:41
+#: management/systems/class_dhcpSystem.inc:122
 msgid "The IP address to use in the DHCP host record"
 msgstr "Het IP adres te gebruiken in de DHCP host record"
 
-#: admin/systems/class_dhcpSystem.inc:55
+#: management/systems/class_dhcpSystem.inc:55
 msgid "Parent"
 msgstr "Ouder"
 
-#: admin/systems/class_dhcpSystem.inc:235
+#: management/systems/class_dhcpSystem.inc:235
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
@@ -545,35 +559,23 @@ msgstr ""
 "\"%s\" is locked (door \"%s\" since %s), kan veranderingen niet opslagen aan"
 " deze DHCP configuratie"
 
-#: admin/systems/class_dhcpSystem.inc:260
+#: management/systems/class_dhcpSystem.inc:260
 msgid "Value is not an array"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:298
+#: management/systems/class_dhcpSystem.inc:298
 msgid "Edit the DHCP zones of a system"
 msgstr "Editeer de DHCP-ranges van een systeem"
 
-#: admin/systems/class_dhcpSystem.inc:312
+#: management/systems/class_dhcpSystem.inc:312
 msgid "DHCP zones"
 msgstr "DHCP zone"
 
-#: admin/systems/class_dhcpSystem.inc:316
+#: management/systems/class_dhcpSystem.inc:316
 msgid "DHCP hosts declared for this system"
 msgstr "Gedeclareerde DHCP hosts "
 
-#: admin/systems/class_dhcpSystem.inc:381
+#: management/systems/class_dhcpSystem.inc:381
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
 msgstr "Het ip %s is niet aanwezig in het network %s/%d"
-
-#: config/dhcp/class_dhcpConfig.inc:28
-msgid "FusionDirectory dhcp plugin configuration"
-msgstr "FusionDirectory dhcp-plugin configuratie"
-
-#: config/dhcp/class_dhcpConfig.inc:44
-msgid "DHCP RDN"
-msgstr "DHCP-RDN"
-
-#: config/dhcp/class_dhcpConfig.inc:44
-msgid "Branch in which DHCP configurations will be stored"
-msgstr "Sectie in dewelke DHCP configuraties zullen worden opgeslagen"

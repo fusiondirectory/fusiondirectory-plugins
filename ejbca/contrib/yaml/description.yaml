@@ -1,24 +1,25 @@
 information:
-  name : ejbca
-  description : Ejbca plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Ejbca plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ejbca/html/themes/breezy/icons/48/apps/ejbca.png
+  name: ejbca
+  origin: package
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/ejbca/html/themes/breezy/icons/48/apps/ejbca.png"
-  tags: ["plugin", "ejbca"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ejbca/contrib/screenshots/ejbca-part.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ejbca/contrib/screenshots/ejbca-create-server.png
+  status: Stable
+  tags:
+  - user
+  version: '1.5'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.5
+  phpVersion: 7.4
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/ejbca/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

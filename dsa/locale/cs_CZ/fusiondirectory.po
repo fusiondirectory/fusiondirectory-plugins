@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -21,62 +21,63 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/dsa/class_dsaManagement.inc:26 admin/dsa/class_dsaManagement.inc:32
-#: config/dsa/class_dsaConfig.inc:40
-msgid "DSA"
-msgstr "DSA"
-
-#: admin/dsa/class_dsaManagement.inc:27
-msgid "DSA management"
-msgstr "Správa DSA"
-
-#: admin/dsa/class_dsaManagement.inc:28
-msgid "Manage simple security objects"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:26
-#: admin/dsa/class_simpleSecurityObject.inc:27
-#: admin/dsa/class_simpleSecurityObject.inc:31
-#: admin/dsa/class_simpleSecurityObject.inc:47
-msgid "Simple security object"
-msgstr "Jednoduchý objekt zabezpečení"
-
-#: admin/dsa/class_simpleSecurityObject.inc:51
-msgid "Entry name"
-msgstr "Název položky"
-
-#: admin/dsa/class_simpleSecurityObject.inc:51
-msgid "Account name"
-msgstr "Název účtu"
-
-#: admin/dsa/class_simpleSecurityObject.inc:55
-msgid "Description"
-msgstr "Popis"
-
-#: admin/dsa/class_simpleSecurityObject.inc:55
-msgid "Description of this simple security object"
-msgstr "Popis tohoto objektu jednoduchého zabezpečení"
-
-#: admin/dsa/class_simpleSecurityObject.inc:61
-msgid "Change password"
-msgstr "Změnit heslo"
-
-#: admin/dsa/class_simpleSecurityObject.inc:64
-msgid "Password"
-msgstr "Heslo"
-
-#: config/dsa/class_dsaConfig.inc:26
+#: backend/dsa/class_dsaConfig.inc:26
 msgid "DSA configuration"
 msgstr "Nastavení DSA"
 
-#: config/dsa/class_dsaConfig.inc:27
+#: backend/dsa/class_dsaConfig.inc:27
 msgid "FusionDirectory dsa plugin configuration"
 msgstr "Nastavení zásuvného modulu dsa pro FusionDirectory"
 
-#: config/dsa/class_dsaConfig.inc:43
+#: backend/dsa/class_dsaConfig.inc:40
+#: management/dsa/class_dsaManagement.inc:26
+#: management/dsa/class_dsaManagement.inc:32
+msgid "DSA"
+msgstr "DSA"
+
+#: backend/dsa/class_dsaConfig.inc:43
 msgid "DSA RDN"
 msgstr "Relativní rozlišený název DSA"
 
-#: config/dsa/class_dsaConfig.inc:43
+#: backend/dsa/class_dsaConfig.inc:43
 msgid "Branch in which Directory Service Account (dsa) will be stored"
 msgstr "Větev, ve které bude uložen servisní účet adresáře (dsa)"
+
+#: management/dsa/class_dsaManagement.inc:27
+msgid "DSA management"
+msgstr "Správa DSA"
+
+#: management/dsa/class_dsaManagement.inc:28
+msgid "Manage simple security objects"
+msgstr ""
+
+#: management/dsa/class_simpleSecurityObject.inc:26
+#: management/dsa/class_simpleSecurityObject.inc:27
+#: management/dsa/class_simpleSecurityObject.inc:31
+#: management/dsa/class_simpleSecurityObject.inc:47
+msgid "Simple security object"
+msgstr "Jednoduchý objekt zabezpečení"
+
+#: management/dsa/class_simpleSecurityObject.inc:51
+msgid "Entry name"
+msgstr "Název položky"
+
+#: management/dsa/class_simpleSecurityObject.inc:51
+msgid "Account name"
+msgstr "Název účtu"
+
+#: management/dsa/class_simpleSecurityObject.inc:55
+msgid "Description"
+msgstr "Popis"
+
+#: management/dsa/class_simpleSecurityObject.inc:55
+msgid "Description of this simple security object"
+msgstr "Popis tohoto objektu jednoduchého zabezpečení"
+
+#: management/dsa/class_simpleSecurityObject.inc:61
+msgid "Change password"
+msgstr "Změnit heslo"
+
+#: management/dsa/class_simpleSecurityObject.inc:64
+msgid "Password"
+msgstr "Heslo"

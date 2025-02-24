@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -22,211 +22,211 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/applications/class_applicationManagement.inc:27
-#: admin/roles/class_applicationRights.inc:28
-#: admin/roles/class_applicationRights.inc:49
-#: config/applications/class_applicationsPluginConfig.inc:26
-#: config/applications/class_applicationsPluginConfig.inc:40
+#: backend/applications/class_applicationsPluginConfig.inc:26
+#: backend/applications/class_applicationsPluginConfig.inc:40
+#: management/applications/class_applicationManagement.inc:27
+#: management/roles/class_applicationRights.inc:28
+#: management/roles/class_applicationRights.inc:49
 msgid "Applications"
 msgstr "어플리케이션"
 
-#: admin/applications/class_applicationManagement.inc:28
-msgid "Applications management"
-msgstr "어플리케이션 관리"
-
-#: admin/applications/class_applicationManagement.inc:29
-msgid "Manage applications and web applications"
-msgstr "어플리케이션 및 웹 어플리케이션 관리"
-
-#: admin/applications/class_applicationManagement.inc:86
-msgid "Web applications"
-msgstr "웹 어플리케이션"
-
-#: admin/applications/class_webApplication.inc:26
-#: admin/applications/class_webApplication.inc:30
-msgid "Web application"
-msgstr "웹 어플리케이션"
-
-#: admin/applications/class_webApplication.inc:27
-msgid "Web applicationts names, icons and links"
-msgstr "웹 어플리케이션 이름, 아이콘, 링크"
-
-#: admin/applications/class_webApplication.inc:43
-#: admin/applications/class_applicationGeneric.inc:27
-#: admin/applications/class_applicationGeneric.inc:31
-#: admin/applications/class_applicationGeneric.inc:44
-msgid "Application"
-msgstr "어플리케이션"
-
-#: admin/applications/class_webApplication.inc:47
-msgid "Name"
-msgstr "명칭"
-
-#: admin/applications/class_webApplication.inc:47
-msgid "Name or id for application"
-msgstr "어플리케이션 이름 또는 아이디"
-
-#: admin/applications/class_webApplication.inc:51
-#: admin/applications/class_applicationGeneric.inc:52
-msgid "Description"
-msgstr "설명"
-
-#: admin/applications/class_webApplication.inc:51
-#: admin/applications/class_applicationGeneric.inc:52
-msgid "A short description of this application"
-msgstr "어플리케이션 설명"
-
-#: admin/applications/class_webApplication.inc:55
-msgid "URL"
-msgstr "URL"
-
-#: admin/applications/class_webApplication.inc:55
-msgid "Link to this application"
-msgstr "어플리케이션 링크"
-
-#: admin/applications/class_webApplication.inc:59
-msgid "Display Name"
-msgstr "표시 이름"
-
-#: admin/applications/class_webApplication.inc:59
-msgid "Displayed name for links to this application"
-msgstr "어플리케이션 링크 표시 이름"
-
-#: admin/applications/class_webApplication.inc:65
-#: admin/applications/class_applicationGeneric.inc:66
-msgid "Icon"
-msgstr "아이콘"
-
-#: admin/applications/class_webApplication.inc:68
-#: admin/applications/class_applicationGeneric.inc:69
-msgid "The icon for this application"
-msgstr "어플리케이션 아이콘"
-
-#: admin/applications/class_webApplication.inc:73
-msgid "Icon location"
-msgstr "아이콘 위치"
-
-#: admin/applications/class_webApplication.inc:73
-msgid "Usual path to this application icon"
-msgstr "어플리케이션 아이콘 경로"
-
-#: admin/applications/class_applicationGeneric.inc:28
-msgid "Application information"
-msgstr "어플리케이션 정보"
-
-#: admin/applications/class_applicationGeneric.inc:48
-msgid "Application name"
-msgstr "어플리케이션 이름"
-
-#: admin/applications/class_applicationGeneric.inc:48
-msgid "The name of this application"
-msgstr "어플리케이션 이름"
-
-#: admin/applications/class_applicationGeneric.inc:56
-msgid "Execute"
-msgstr "실행"
-
-#: admin/applications/class_applicationGeneric.inc:56
-msgid "The application to be executed"
-msgstr "어플리케이션이 실행됩니다."
-
-#: admin/applications/class_applicationGeneric.inc:60
-msgid "Display name"
-msgstr "표시 이름"
-
-#: admin/applications/class_applicationGeneric.inc:60
-msgid "The displayed name for this application"
-msgstr "어플리케이션 표시 이름"
-
-#: admin/applications/class_applicationGeneric.inc:76
-msgid "Options"
-msgstr "옵션"
-
-#: admin/applications/class_applicationGeneric.inc:79
-msgid "Only executable for member"
-msgstr "멤버만 실행"
-
-#: admin/applications/class_applicationGeneric.inc:79
-msgid "Only executable by the memebers of the group"
-msgstr "그룹에 속한 멤버만 실행"
-
-#: admin/applications/class_applicationGeneric.inc:84
-msgid "Replace user configuration on startup"
-msgstr "시작시 사용자 설정으로 대체"
-
-#: admin/applications/class_applicationGeneric.inc:84
-msgid "Replace the user configuration on startup"
-msgstr "시작 시 사용자 설정으로 대체"
-
-#: admin/applications/class_applicationGeneric.inc:89
-msgid "Place icon on members desktop"
-msgstr "멤버의 데스크탑에 아이콘 표시"
-
-#: admin/applications/class_applicationGeneric.inc:89
-msgid "Put an icon on the user desktop"
-msgstr "사용자 데스크탑에 아이콘 추가"
-
-#: admin/applications/class_applicationGeneric.inc:94
-msgid "Place entry in members startmenu"
-msgstr "멤버의 시작 메뉴에 항목 표시"
-
-#: admin/applications/class_applicationGeneric.inc:94
-#: admin/applications/class_applicationGeneric.inc:99
-msgid "Put an entry in the startup menu"
-msgstr "시작 메뉴에 항목 추가"
-
-#: admin/applications/class_applicationGeneric.inc:99
-msgid "Place entry in members launch bar"
-msgstr "멤버 런치바에  항목 표시"
-
-#: admin/roles/class_applicationRights.inc:29
-msgid "Applications allowed for this role"
-msgstr "역할에 어플리케이션 허용"
-
-#: admin/roles/class_applicationRights.inc:45
-msgid "Application list"
-msgstr "어플리케이션 목록"
-
-#: admin/roles/class_applicationRights.inc:49
-msgid "The applications users with this role are allowed to launch"
-msgstr "이 역할을 가진 어플리케이션 사용자는 실행이 허용됨."
-
-#: config/applications/class_applicationsPluginConfig.inc:27
+#: backend/applications/class_applicationsPluginConfig.inc:27
 msgid "Applications plugin configuration"
 msgstr "어플리케이션 플러그인 설정"
 
-#: config/applications/class_applicationsPluginConfig.inc:43
+#: backend/applications/class_applicationsPluginConfig.inc:43
 msgid "Application RDN"
 msgstr "어플리케이션 RDN"
 
-#: config/applications/class_applicationsPluginConfig.inc:43
+#: backend/applications/class_applicationsPluginConfig.inc:43
 msgid "Branch in which applications will be stored"
 msgstr "어플리케이션이 저장될 브랜치"
 
-#: config/applications/class_applicationsPluginConfig.inc:48
+#: backend/applications/class_applicationsPluginConfig.inc:48
 msgid "Web applications RDN"
 msgstr "웹 어플리케이션 RDN"
 
-#: config/applications/class_applicationsPluginConfig.inc:48
+#: backend/applications/class_applicationsPluginConfig.inc:48
 msgid "Branch in which web applications will be stored"
 msgstr "웹 어플리케이션이 저장될 브랜치"
 
-#: config/applications/class_applicationsPluginConfig.inc:53
+#: backend/applications/class_applicationsPluginConfig.inc:53
 msgid "Show web applications in menu"
 msgstr "메뉴에 웹 어플리케이션 표시"
 
-#: config/applications/class_applicationsPluginConfig.inc:53
+#: backend/applications/class_applicationsPluginConfig.inc:53
 msgid "Whether to show web applications in FD main menu"
 msgstr "DF 메인 메뉴에 웹 어플리케이션 표시 여부"
 
-#: config/applications/class_applicationsPluginConfig.inc:56
+#: backend/applications/class_applicationsPluginConfig.inc:56
 msgid "None"
 msgstr "없음"
 
-#: config/applications/class_applicationsPluginConfig.inc:56
+#: backend/applications/class_applicationsPluginConfig.inc:56
 msgid "Only allowed"
 msgstr "허용됨"
 
-#: config/applications/class_applicationsPluginConfig.inc:56
+#: backend/applications/class_applicationsPluginConfig.inc:56
 msgid "All"
 msgstr "모두"
+
+#: management/applications/class_applicationManagement.inc:28
+msgid "Applications management"
+msgstr "어플리케이션 관리"
+
+#: management/applications/class_applicationManagement.inc:29
+msgid "Manage applications and web applications"
+msgstr "어플리케이션 및 웹 어플리케이션 관리"
+
+#: management/applications/class_applicationManagement.inc:86
+msgid "Web applications"
+msgstr "웹 어플리케이션"
+
+#: management/applications/class_webApplication.inc:26
+#: management/applications/class_webApplication.inc:30
+msgid "Web application"
+msgstr "웹 어플리케이션"
+
+#: management/applications/class_webApplication.inc:27
+msgid "Web applicationts names, icons and links"
+msgstr "웹 어플리케이션 이름, 아이콘, 링크"
+
+#: management/applications/class_webApplication.inc:43
+#: management/applications/class_applicationGeneric.inc:27
+#: management/applications/class_applicationGeneric.inc:31
+#: management/applications/class_applicationGeneric.inc:44
+msgid "Application"
+msgstr "어플리케이션"
+
+#: management/applications/class_webApplication.inc:47
+msgid "Name"
+msgstr "명칭"
+
+#: management/applications/class_webApplication.inc:47
+msgid "Name or id for application"
+msgstr "어플리케이션 이름 또는 아이디"
+
+#: management/applications/class_webApplication.inc:51
+#: management/applications/class_applicationGeneric.inc:52
+msgid "Description"
+msgstr "설명"
+
+#: management/applications/class_webApplication.inc:51
+#: management/applications/class_applicationGeneric.inc:52
+msgid "A short description of this application"
+msgstr "어플리케이션 설명"
+
+#: management/applications/class_webApplication.inc:55
+msgid "URL"
+msgstr "URL"
+
+#: management/applications/class_webApplication.inc:55
+msgid "Link to this application"
+msgstr "어플리케이션 링크"
+
+#: management/applications/class_webApplication.inc:59
+msgid "Display Name"
+msgstr "표시 이름"
+
+#: management/applications/class_webApplication.inc:59
+msgid "Displayed name for links to this application"
+msgstr "어플리케이션 링크 표시 이름"
+
+#: management/applications/class_webApplication.inc:65
+#: management/applications/class_applicationGeneric.inc:66
+msgid "Icon"
+msgstr "아이콘"
+
+#: management/applications/class_webApplication.inc:68
+#: management/applications/class_applicationGeneric.inc:69
+msgid "The icon for this application"
+msgstr "어플리케이션 아이콘"
+
+#: management/applications/class_webApplication.inc:73
+msgid "Icon location"
+msgstr "아이콘 위치"
+
+#: management/applications/class_webApplication.inc:73
+msgid "Usual path to this application icon"
+msgstr "어플리케이션 아이콘 경로"
+
+#: management/applications/class_applicationGeneric.inc:28
+msgid "Application information"
+msgstr "어플리케이션 정보"
+
+#: management/applications/class_applicationGeneric.inc:48
+msgid "Application name"
+msgstr "어플리케이션 이름"
+
+#: management/applications/class_applicationGeneric.inc:48
+msgid "The name of this application"
+msgstr "어플리케이션 이름"
+
+#: management/applications/class_applicationGeneric.inc:56
+msgid "Execute"
+msgstr "실행"
+
+#: management/applications/class_applicationGeneric.inc:56
+msgid "The application to be executed"
+msgstr "어플리케이션이 실행됩니다."
+
+#: management/applications/class_applicationGeneric.inc:60
+msgid "Display name"
+msgstr "표시 이름"
+
+#: management/applications/class_applicationGeneric.inc:60
+msgid "The displayed name for this application"
+msgstr "어플리케이션 표시 이름"
+
+#: management/applications/class_applicationGeneric.inc:76
+msgid "Options"
+msgstr "옵션"
+
+#: management/applications/class_applicationGeneric.inc:79
+msgid "Only executable for member"
+msgstr "멤버만 실행"
+
+#: management/applications/class_applicationGeneric.inc:79
+msgid "Only executable by the memebers of the group"
+msgstr "그룹에 속한 멤버만 실행"
+
+#: management/applications/class_applicationGeneric.inc:84
+msgid "Replace user configuration on startup"
+msgstr "시작시 사용자 설정으로 대체"
+
+#: management/applications/class_applicationGeneric.inc:84
+msgid "Replace the user configuration on startup"
+msgstr "시작 시 사용자 설정으로 대체"
+
+#: management/applications/class_applicationGeneric.inc:89
+msgid "Place icon on members desktop"
+msgstr "멤버의 데스크탑에 아이콘 표시"
+
+#: management/applications/class_applicationGeneric.inc:89
+msgid "Put an icon on the user desktop"
+msgstr "사용자 데스크탑에 아이콘 추가"
+
+#: management/applications/class_applicationGeneric.inc:94
+msgid "Place entry in members startmenu"
+msgstr "멤버의 시작 메뉴에 항목 표시"
+
+#: management/applications/class_applicationGeneric.inc:94
+#: management/applications/class_applicationGeneric.inc:99
+msgid "Put an entry in the startup menu"
+msgstr "시작 메뉴에 항목 추가"
+
+#: management/applications/class_applicationGeneric.inc:99
+msgid "Place entry in members launch bar"
+msgstr "멤버 런치바에  항목 표시"
+
+#: management/roles/class_applicationRights.inc:29
+msgid "Applications allowed for this role"
+msgstr "역할에 어플리케이션 허용"
+
+#: management/roles/class_applicationRights.inc:45
+msgid "Application list"
+msgstr "어플리케이션 목록"
+
+#: management/roles/class_applicationRights.inc:49
+msgid "The applications users with this role are allowed to launch"
+msgstr "이 역할을 가진 어플리케이션 사용자는 실행이 허용됨."

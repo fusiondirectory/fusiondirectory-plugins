@@ -187,6 +187,7 @@ class fdRPCService
         session::global_set('config', $config);
       }
     }
+    timezone::setDefaultTimezoneFromConfig();
   }
 
   protected function checkAccess ($type, $tabs = NULL, $dn = NULL)
@@ -690,6 +691,10 @@ class fdRPCService
     $this->checkAccess($type, NULL, $dn);
 
     $template = new template($type, $dn);
+
+    // We have to re-order posix classes'attributes to take into consideration force_ids correctly.
+    $values = $this->posixArrayReordering($values);
+
     $error    = $template->deserialize($values);
     if ($error !== TRUE) {
       throw new WebServiceError($error);
@@ -1011,4 +1016,32 @@ class fdRPCService
     global $config;
     return $config->current['BASE'];
   }
+
+  /**
+   * @param array $values
+   * @return array
+   * NOTE : A simple iteration of the posix array received to re-order force_ids as primary key.
+   * This is to fix an issue with LSC not able to force IDS to true as other attributes can be processed first.
+   */
+  private function posixArrayReordering (array $values) : array
+  {
+    $result = $values;
+
+    if (!empty($values['posixAccount'])) {
+      if (!empty($values['posixAccount']['force_ids'])) {
+        // Reorder array with 'force_ids' as the first key
+        $array = array_merge(
+          ['force_ids' => $values['posixAccount']['force_ids']],
+          $values['posixAccount']
+        );
+
+        // Update $values['posixAccount'] with reordered array
+        $values['posixAccount'] = $array;
+        $result                 = $values;
+      }
+    }
+
+    return $result;
+  }
+
 }

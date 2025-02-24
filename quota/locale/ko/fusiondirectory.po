@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:01+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -22,8 +22,8 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:27
-#: admin/systems/services/quota/class_serviceQuota.inc:28
+#: management/systems/services/quota/class_serviceQuota.inc:27
+#: management/systems/services/quota/class_serviceQuota.inc:28
 msgid "Quota service"
 msgstr ""
 " \n"
@@ -31,149 +31,149 @@ msgstr ""
 " \n"
 "할당량 서비스"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:28
+#: management/systems/services/quota/class_serviceQuota.inc:28
 msgid "Services"
 msgstr "서비스"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:41
+#: management/systems/services/quota/class_serviceQuota.inc:41
 msgid "Shares"
 msgstr "공유"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:45
+#: management/systems/services/quota/class_serviceQuota.inc:45
 msgid "Quotas for the shares this server hosts"
 msgstr "이 서버 호스트의 공유 할당량"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:49
+#: management/systems/services/quota/class_serviceQuota.inc:49
 #: personal/quota/class_quotaAccount.inc:129
 msgid "Device"
 msgstr "디바이스"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:49
+#: management/systems/services/quota/class_serviceQuota.inc:49
 msgid "Device concerned by this quota"
 msgstr "이 할당량에 관련된 장치"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:53
+#: management/systems/services/quota/class_serviceQuota.inc:53
 msgid "Quota block size"
 msgstr "할당량 블록 크기"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:53
+#: management/systems/services/quota/class_serviceQuota.inc:53
 msgid "Quota block size on this share (usually 1024)"
 msgstr "이 공유의 할당량 블록 크기 (일반적으로 1024)"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:62
+#: management/systems/services/quota/class_serviceQuota.inc:62
 msgid "Comment"
 msgstr "주석"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:62
+#: management/systems/services/quota/class_serviceQuota.inc:62
 msgid "Short comment about this quota"
 msgstr "이 할당량에 대한 간단한 의견"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:77
+#: management/systems/services/quota/class_serviceQuota.inc:77
 msgid "Quota warning message"
 msgstr "할당량 경고 메시지"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:80
+#: management/systems/services/quota/class_serviceQuota.inc:80
 msgid "Charset"
 msgstr "문자셋"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:80
+#: management/systems/services/quota/class_serviceQuota.inc:80
 msgid "Charset use for the message"
 msgstr "메시지의 문자셋 사용"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:84
+#: management/systems/services/quota/class_serviceQuota.inc:84
 msgid "Mail command"
 msgstr "메일 명령"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:84
+#: management/systems/services/quota/class_serviceQuota.inc:84
 msgid "Command allowing the server to send mails"
 msgstr "서버가 메일을 보내도록 허용하는 명령"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: management/systems/services/quota/class_serviceQuota.inc:88
 msgid "Support contact"
 msgstr "지원 연락처"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: management/systems/services/quota/class_serviceQuota.inc:88
 msgid "Email address to contact the administrator"
 msgstr "관리자에게 연락할 이메일 주소"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: management/systems/services/quota/class_serviceQuota.inc:92
 msgid "From"
 msgstr "From"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: management/systems/services/quota/class_serviceQuota.inc:92
 msgid "Email from which the email is sent"
 msgstr "이메일이 발송된 메일주소"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: management/systems/services/quota/class_serviceQuota.inc:96
 msgid "CC"
 msgstr "참조"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: management/systems/services/quota/class_serviceQuota.inc:96
 msgid "Send a copy of this email to"
 msgstr "이 이메일의 사본을 발송"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: management/systems/services/quota/class_serviceQuota.inc:100
 msgid "Subject"
 msgstr "제목"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: management/systems/services/quota/class_serviceQuota.inc:100
 msgid "Subject of the sent warning email"
 msgstr "전송된 경고 이메일의 제목"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: management/systems/services/quota/class_serviceQuota.inc:104
 msgid "Content"
 msgstr "본문"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: management/systems/services/quota/class_serviceQuota.inc:104
 msgid "Content of the sent email"
 msgstr "전송된 이메일 내용"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:108
+#: management/systems/services/quota/class_serviceQuota.inc:108
 msgid "Signature"
 msgstr "서명"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:108
+#: management/systems/services/quota/class_serviceQuota.inc:108
 msgid "Signature to put at the end of the mail"
 msgstr "메일의 끝에 넣을 서명"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:114
+#: management/systems/services/quota/class_serviceQuota.inc:114
 msgid "LDAP message support"
 msgstr "LDAP 메시지 지원"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:117
+#: management/systems/services/quota/class_serviceQuota.inc:117
 msgid "LDAP server"
 msgstr "LDAP  서버"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:117
+#: management/systems/services/quota/class_serviceQuota.inc:117
 msgid "The LDAP server to bind to"
 msgstr "바인딩 할 LDAP 서버"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:121
+#: management/systems/services/quota/class_serviceQuota.inc:121
 msgid "Bind user dn"
 msgstr "사용자 DN 바인딩"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:121
+#: management/systems/services/quota/class_serviceQuota.inc:121
 msgid "The user dn to use for bind"
 msgstr "바인드에 사용할 suer dn"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:125
+#: management/systems/services/quota/class_serviceQuota.inc:125
 msgid "Bind user password"
 msgstr "사용자 비밀번호 바인딩"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:125
+#: management/systems/services/quota/class_serviceQuota.inc:125
 msgid "The password of the user used for bind"
 msgstr "바인드에 사용된 사용자의 비밀번호"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:158
+#: management/systems/services/quota/class_serviceQuota.inc:158
 msgid "Warning"
 msgstr "ㅗ"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:158
+#: management/systems/services/quota/class_serviceQuota.inc:158
 #, php-format
 msgid "Invalid value in encodings : %s"
 msgstr "잘못된 인코딩 값 : %s"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:174
+#: management/systems/services/quota/class_serviceQuota.inc:174
 #, php-format
 msgid "(%s by %s)"
 msgstr "(%s 중 %s)"

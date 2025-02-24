@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2020\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -23,50 +23,81 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/ppolicy/class_ppolicyManagement.inc:28
+#: backend/ppolicy/class_ppolicyConfig.inc:28
+msgid "Ppolicy plugin configuration"
+msgstr "Configurazione del plugin Ppolicy"
+
+#: backend/ppolicy/class_ppolicyConfig.inc:29
+msgid "FusionDirectory ppolicy plugin configuration"
+msgstr "Configurazione del plugin ppolicy di FusionDirectory"
+
+#: backend/ppolicy/class_ppolicyConfig.inc:42
+msgid "Ppolicy"
+msgstr "Ppolicy"
+
+#: backend/ppolicy/class_ppolicyConfig.inc:45
+msgid "Ppolicy RDN"
+msgstr "Ppolicy RDN"
+
+#: backend/ppolicy/class_ppolicyConfig.inc:45
+msgid "Branch in which ppolicies will be stored"
+msgstr "Ramo nel quale verranno immagazinate ppolicies"
+
+#: backend/ppolicy/class_ppolicyConfig.inc:50
+msgid "Default ppolicy dn"
+msgstr "DN ppolicy predefinito"
+
+#: backend/ppolicy/class_ppolicyConfig.inc:50
+msgid "What you put as default ppolicy in the overlay config"
+msgstr ""
+"Ciò che si mette come ppolicy default nella configurazione di "
+"sovrapposizione"
+
+#: management/ppolicy/class_ppolicyManagement.inc:28
 msgid "Password policies"
 msgstr "Regole per la password"
 
-#: admin/ppolicy/class_ppolicyManagement.inc:29
+#: management/ppolicy/class_ppolicyManagement.inc:29
 msgid "Password policies management"
 msgstr "Gestione delle regole per la password"
 
-#: admin/ppolicy/class_ppolicyManagement.inc:30
+#: management/ppolicy/class_ppolicyManagement.inc:30
 msgid "Manage password policies"
 msgstr "Gestire le politiche delle password"
 
-#: admin/ppolicy/class_ppolicy.inc:27 admin/ppolicy/class_ppolicy.inc:31
+#: management/ppolicy/class_ppolicy.inc:27
+#: management/ppolicy/class_ppolicy.inc:31
 #: personal/ppolicy/class_ppolicyAccount.inc:28
 #: personal/ppolicy/class_ppolicyAccount.inc:43
 msgid "Password policy"
 msgstr "Regola per la password"
 
-#: admin/ppolicy/class_ppolicy.inc:28
+#: management/ppolicy/class_ppolicy.inc:28
 msgid "Password policy for ppolicy overlay"
 msgstr "Regole per la password"
 
-#: admin/ppolicy/class_ppolicy.inc:47
+#: management/ppolicy/class_ppolicy.inc:47
 #: personal/ppolicy/class_ppolicyAccount.inc:46
 msgid "Policy"
 msgstr "Regola"
 
-#: admin/ppolicy/class_ppolicy.inc:52
+#: management/ppolicy/class_ppolicy.inc:52
 msgid "Policy name"
 msgstr "Nome della regola"
 
-#: admin/ppolicy/class_ppolicy.inc:56
+#: management/ppolicy/class_ppolicy.inc:56
 msgid "Description"
 msgstr "Descrizione"
 
-#: admin/ppolicy/class_ppolicy.inc:56
+#: management/ppolicy/class_ppolicy.inc:56
 msgid "A short description of this policy"
 msgstr "Una breve descrizione di questa policy"
 
-#: admin/ppolicy/class_ppolicy.inc:60
+#: management/ppolicy/class_ppolicy.inc:60
 msgid "Minimum length"
 msgstr "Lunghezza minima"
 
-#: admin/ppolicy/class_ppolicy.inc:60
+#: management/ppolicy/class_ppolicy.inc:60
 msgid ""
 "Minimum length of the user supplied password - passwords shorter than this "
 "value will be rejected"
@@ -74,30 +105,30 @@ msgstr ""
 "Lunghezza minima della password utente - le password più brevi di questo "
 "valore verranno respinte"
 
-#: admin/ppolicy/class_ppolicy.inc:65
+#: management/ppolicy/class_ppolicy.inc:65
 msgid "Passwords in history"
 msgstr "Cronologia delle password"
 
-#: admin/ppolicy/class_ppolicy.inc:65
+#: management/ppolicy/class_ppolicy.inc:65
 msgid ""
 "Number of passwords that are maintained in a list of previously used "
 "passwords"
 msgstr ""
 "Numero di password mantenute in una lista di password usate precedentemente"
 
-#: admin/ppolicy/class_ppolicy.inc:70
+#: management/ppolicy/class_ppolicy.inc:70
 msgid "Minimum password age"
 msgstr "Durata di vita minima della password"
 
-#: admin/ppolicy/class_ppolicy.inc:70
+#: management/ppolicy/class_ppolicy.inc:70
 msgid "Minimum time between password changes"
 msgstr "Durata di vita minima della password"
 
-#: admin/ppolicy/class_ppolicy.inc:75
+#: management/ppolicy/class_ppolicy.inc:75
 msgid "Maximum password age"
 msgstr "Durata di vita massima della password"
 
-#: admin/ppolicy/class_ppolicy.inc:75
+#: management/ppolicy/class_ppolicy.inc:75
 msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
@@ -107,11 +138,11 @@ msgstr ""
 "essere più utilizzabile e le eventuali operazioni di associazione tentate "
 "con la password scaduta "
 
-#: admin/ppolicy/class_ppolicy.inc:80
+#: management/ppolicy/class_ppolicy.inc:80
 msgid "Expiry warning delay"
 msgstr "Avviso di scadenza"
 
-#: admin/ppolicy/class_ppolicy.inc:80
+#: management/ppolicy/class_ppolicy.inc:80
 msgid ""
 "Defines the start time - in seconds - prior to the password expiry that "
 "password expiry warning messages are returned in bind responses. 0 to "
@@ -121,11 +152,11 @@ msgstr ""
 "password che i messaggi di avviso di scadenza della password vengono "
 "restituiti in risposta bind . 0 per disabilitare"
 
-#: admin/ppolicy/class_ppolicy.inc:85
+#: management/ppolicy/class_ppolicy.inc:85
 msgid "Grace period"
 msgstr "Periodo di grazia"
 
-#: admin/ppolicy/class_ppolicy.inc:85
+#: management/ppolicy/class_ppolicy.inc:85
 msgid ""
 "Number of times a user is allowed to successfully bind using an expired "
 "password"
@@ -133,19 +164,19 @@ msgstr ""
 "Numero di volte che un utente può associare con successo utilizzando una "
 "password scaduta"
 
-#: admin/ppolicy/class_ppolicy.inc:90
+#: management/ppolicy/class_ppolicy.inc:90
 msgid "Allow user change"
 msgstr "Permesso di cambiare utente"
 
-#: admin/ppolicy/class_ppolicy.inc:90
+#: management/ppolicy/class_ppolicy.inc:90
 msgid "Whether users are allowed to change their own passwords"
 msgstr "Sia che gli utenti siano autorizzati a modificare le proprie password"
 
-#: admin/ppolicy/class_ppolicy.inc:95
+#: management/ppolicy/class_ppolicy.inc:95
 msgid "Safe modify"
 msgstr "Modify sicuro"
 
-#: admin/ppolicy/class_ppolicy.inc:95
+#: management/ppolicy/class_ppolicy.inc:95
 msgid ""
 "Whether a user must send the current password during a password modification"
 " operation"
@@ -153,31 +184,31 @@ msgstr ""
 "Se un utente deve inviare la password attuale durante l'operazione di "
 "modifica della password"
 
-#: admin/ppolicy/class_ppolicy.inc:100
+#: management/ppolicy/class_ppolicy.inc:100
 msgid "Check quality"
 msgstr "Vérification la qualita'"
 
-#: admin/ppolicy/class_ppolicy.inc:100
+#: management/ppolicy/class_ppolicy.inc:100
 msgid "Decides what to do if the function in \"Check module\" is not available"
 msgstr "Decide cosa fare se la funzione \"Controlla modulo\" non è disponibile"
 
-#: admin/ppolicy/class_ppolicy.inc:103
+#: management/ppolicy/class_ppolicy.inc:103
 msgid "Disabled"
 msgstr "Disabilitato"
 
-#: admin/ppolicy/class_ppolicy.inc:103
+#: management/ppolicy/class_ppolicy.inc:103
 msgid "Ignore errors"
 msgstr "Ignorare gli errori"
 
-#: admin/ppolicy/class_ppolicy.inc:103
+#: management/ppolicy/class_ppolicy.inc:103
 msgid "Reject on errors"
 msgstr "Rifiuta in caso di errori"
 
-#: admin/ppolicy/class_ppolicy.inc:106
+#: management/ppolicy/class_ppolicy.inc:106
 msgid "Check module"
 msgstr "Verifica modulo "
 
-#: admin/ppolicy/class_ppolicy.inc:106
+#: management/ppolicy/class_ppolicy.inc:106
 msgid ""
 "Name of a user supplied password quality check module that will be called to"
 " perform password quality checks and is only relevant if pwdCheckQuality is "
@@ -187,15 +218,15 @@ msgstr ""
 "chiamato a svolgere controlli di qualità delle password ed è rilevante solo "
 "se pwdCheckQuality è 1 o 2"
 
-#: admin/ppolicy/class_ppolicy.inc:112
+#: management/ppolicy/class_ppolicy.inc:112
 msgid "Lock out"
 msgstr "Bloccato"
 
-#: admin/ppolicy/class_ppolicy.inc:116
+#: management/ppolicy/class_ppolicy.inc:116
 msgid "Activate lock out"
 msgstr "Attiva blocco"
 
-#: admin/ppolicy/class_ppolicy.inc:116
+#: management/ppolicy/class_ppolicy.inc:116
 msgid ""
 "Whether to lock an account that had more consecutive failed bind attempts "
 "with invalid passwords than is defined by \"Maximum failures\""
@@ -203,11 +234,11 @@ msgstr ""
 "Sia per bloccare un account che aveva più tentativi consecutivi falliti di "
 "bind con password non valide che è definito da \"fallimenti massimi\""
 
-#: admin/ppolicy/class_ppolicy.inc:121
+#: management/ppolicy/class_ppolicy.inc:121
 msgid "Lock out duration"
 msgstr "Durata del blocco"
 
-#: admin/ppolicy/class_ppolicy.inc:121
+#: management/ppolicy/class_ppolicy.inc:121
 msgid ""
 "Time the account remains locked after an automatic lock out (0 means for "
 "ever)"
@@ -215,21 +246,21 @@ msgstr ""
 "Tempo in cui l'account rimane bloccato dopo un blocco automatico (0 "
 "significa per sempre)"
 
-#: admin/ppolicy/class_ppolicy.inc:126
+#: management/ppolicy/class_ppolicy.inc:126
 msgid "Maximum failures"
 msgstr "Fallimenti massimi"
 
-#: admin/ppolicy/class_ppolicy.inc:126
+#: management/ppolicy/class_ppolicy.inc:126
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
 msgstr ""
 "Numero di password sbagliate consecutivamente prima del blocco automatico"
 
-#: admin/ppolicy/class_ppolicy.inc:131
+#: management/ppolicy/class_ppolicy.inc:131
 msgid "Failure count interval"
 msgstr "Intervallo di conteggio fallito"
 
-#: admin/ppolicy/class_ppolicy.inc:131
+#: management/ppolicy/class_ppolicy.inc:131
 msgid ""
 "Time after which the count of consecutive password failures is reset even if"
 " no successful authentication has occurred"
@@ -237,11 +268,11 @@ msgstr ""
 "Tempo dopo il quale il numero di fallimenti di password consecutive viene "
 "azzerato anche se non ha subito alcuna autenticazione"
 
-#: admin/ppolicy/class_ppolicy.inc:136
+#: management/ppolicy/class_ppolicy.inc:136
 msgid "Stored failures"
 msgstr "Guasti memorizzati"
 
-#: admin/ppolicy/class_ppolicy.inc:136
+#: management/ppolicy/class_ppolicy.inc:136
 msgid ""
 "Maximum number of failed bind attempts to store in a user's entry. If not "
 "present, or its value is 0, then it defaults to the value of \"Maximum "
@@ -251,95 +282,17 @@ msgstr ""
 "di un utente. Se non presente, o il suo valore è 0, il valore predefinito è "
 "\"Errori massimi\". Se anche quel valore è 0, il valore predefinito è 5."
 
-#: admin/ppolicy/class_ppolicy.inc:141
+#: management/ppolicy/class_ppolicy.inc:141
 msgid "Must change"
 msgstr "Permesso di cambiare"
 
-#: admin/ppolicy/class_ppolicy.inc:141
+#: management/ppolicy/class_ppolicy.inc:141
 msgid ""
 "Whether the user must change their password after an account is reset by an "
 "administrator following an automatic lockout"
 msgstr ""
 "L'utente deve cambiare la propria password dopo il reset dell'account da "
 "parte di un amministratore in seguito ad un blocco automatico"
-
-#: config/ppolicy/class_ppolicyConfig.inc:28
-msgid "Ppolicy plugin configuration"
-msgstr "Configurazione del plugin Ppolicy"
-
-#: config/ppolicy/class_ppolicyConfig.inc:29
-msgid "FusionDirectory ppolicy plugin configuration"
-msgstr "Configurazione del plugin ppolicy di FusionDirectory"
-
-#: config/ppolicy/class_ppolicyConfig.inc:42
-#: addons/dashboard/class_dashBoardPPolicy.inc:27
-msgid "Ppolicy"
-msgstr "Ppolicy"
-
-#: config/ppolicy/class_ppolicyConfig.inc:45
-msgid "Ppolicy RDN"
-msgstr "Ppolicy RDN"
-
-#: config/ppolicy/class_ppolicyConfig.inc:45
-msgid "Branch in which ppolicies will be stored"
-msgstr "Ramo nel quale verranno immagazinate ppolicies"
-
-#: config/ppolicy/class_ppolicyConfig.inc:50
-msgid "Default ppolicy dn"
-msgstr "DN ppolicy predefinito"
-
-#: config/ppolicy/class_ppolicyConfig.inc:50
-msgid "What you put as default ppolicy in the overlay config"
-msgstr ""
-"Ciò che si mette come ppolicy default nella configurazione di "
-"sovrapposizione"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:28
-msgid "Statistics about ppolicy expired users"
-msgstr "Statistiche sugli utenti ppolicy scaduti"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:40
-msgid "Expired accounts"
-msgstr "Account scaduti"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:45
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
-msgid "Locked accounts"
-msgstr "Account bloccati"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:58
-msgid "Login"
-msgstr "Nome utente"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:59
-#: addons/dashboard/class_dashBoardPPolicy.inc:64
-msgid "Name"
-msgstr "Nome"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:60
-#: addons/dashboard/class_dashBoardPPolicy.inc:66
-msgid "Phone number"
-msgstr "Numero di telefono"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:61
-msgid "Expiration date"
-msgstr "Data di scadenza"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:65
-msgid "Email"
-msgstr "Indirizzo di posta elettronica"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:87
-#, php-format
-msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
-msgstr "La ppolicy \"%s\" predefinta non é stata trovata nell'annuario LDAP"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:143
-#, php-format
-msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr ""
-"La ppolicy  \"%s\" impostata per l'utente  \"%s\"  non é stata trovata "
-"nell'LDAP!"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:29
 msgid "Edit user's password policy"
@@ -398,43 +351,3 @@ msgstr "Sbloccato"
 #: personal/ppolicy/class_ppolicyAccount.inc:91
 msgid "Locked permanently"
 msgstr "Bloccato in modo permanente"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
-msgid "There is one locked account"
-msgid_plural "There are %1 locked accounts"
-msgstr[0] "C'é un account bloccato"
-msgstr[1] "Ci sono %1 accounts bloccati"
-msgstr[2] "Ci sono %1 accounts bloccati"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
-msgid "There is no locked account"
-msgstr "Non c'è nessun account bloccato"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:11
-msgid "Manager concerned"
-msgstr "Responsabile interessato"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:14
-msgid "uid"
-msgstr "uid"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:17
-msgid "cn"
-msgstr "cn"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:20
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:32
-msgid "telephoneNumber"
-msgstr "Numero di telefono"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:23
-msgid "pwdAccountLockedTime"
-msgstr "pwdAccountLockedTime"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:26
-msgid "manager"
-msgstr "Responsabile"
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:29
-msgid "mail"
-msgstr "mail"

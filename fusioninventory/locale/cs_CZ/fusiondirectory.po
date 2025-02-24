@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2018
 # Pavel Borecki <pavel.borecki@gmail.com>, 2019
+# fusiondirectory <contact@fusiondirectory.org>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,185 +22,189 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/inventory/class_inventoryManagement.inc:39
-#: admin/inventory/class_inventoryManagement.inc:40
+#: dashboard/inventory/class_inventoryManagement.inc:39
+#: dashboard/inventory/class_inventoryManagement.inc:40
 msgid "Inventory objects"
 msgstr "Objekty inventáře"
 
-#: admin/inventory/class_inventoryManagement.inc:41
+#: dashboard/inventory/class_inventoryManagement.inc:41
 msgid "Browse inventory objects"
 msgstr "Procházet objekty inventáře"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:28
-#: config/fusioninventory/class_fiConfig.inc:40
+#: dashboard/inventory/class_inventoryManagement.inc:43
+msgid "Reporting"
+msgstr "Hlášení"
+
+#: backend/fusioninventory/class_fiConfig.inc:26
+msgid "FusionInventory configuration"
+msgstr "Nastavení FusionInventory"
+
+#: backend/fusioninventory/class_fiConfig.inc:27
+msgid "FusionDirectory FusionInventory plugin configuration"
+msgstr "Nastavení zásuvného modulu FusionInventory pro FusionDirectory"
+
+#: backend/fusioninventory/class_fiConfig.inc:40
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:28
 msgid "FusionInventory"
 msgstr "FusionInventory"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:29
+#: backend/fusioninventory/class_fiConfig.inc:43
+msgid "Inventory RDN"
+msgstr "Relativní rozlišený název inventáře"
+
+#: backend/fusioninventory/class_fiConfig.inc:43
+msgid "Branch in which inventory objects will be stored"
+msgstr "Větev, ve které budou ukládány objekty inventáře"
+
+#: backend/fusioninventory/class_fiConfig.inc:48
+msgid "Inventory matching"
+msgstr "Párování inventáře"
+
+#: backend/fusioninventory/class_fiConfig.inc:48
+msgid "Criteria to link an inventory result to a system"
+msgstr "Hlediska pro přiřazení výsledku inventury k systému"
+
+#: backend/fusioninventory/class_fiConfig.inc:51
+msgid "Mac address"
+msgstr "MAC adresa"
+
+#: backend/fusioninventory/class_fiConfig.inc:51
+msgid "IP address"
+msgstr "IP adresa"
+
+#: backend/fusioninventory/class_fiConfig.inc:51
+msgid "Both"
+msgstr "Obojí"
+
+#: backend/fusioninventory/class_fiConfig.inc:51
+msgid "IP or Mac address"
+msgstr "IP či MAC adresa"
+
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:29
 msgid "FusionInventory agent configuration"
 msgstr "Nastavení agenta FusionInventory"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:43
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:43
 msgid "Configuration"
 msgstr "Nastavení"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:46
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:46
 msgid "Server"
 msgstr "Server"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:46
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:46
 msgid "Server which FI will send inventory infos"
 msgstr "Server, který F.I. bude posílat údaje o inventáři "
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:50
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:50
 msgid "Delay time"
 msgstr "Délka prodlevy"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:50
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:50
 msgid "Maximum initial delay before first target, in seconds"
 msgstr "Nejvyšší umožněná počáteční prodleva před prvním cílem, v sekundách"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:55
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:55
 msgid "Wait"
 msgstr "Čekat"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:55
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:73
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:55
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:73
 msgid "Maximum delay between each targets, in seconds"
 msgstr "Nejvyšší umožněná prodleva mezi oběma cíli, v sekundách"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:62
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:62
 msgid "Web Interface"
 msgstr "Webové rozhraní"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Disable web interface"
 msgstr "Vypnout webové rozhraní"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Do not use web interface"
 msgstr "Nepoužívat webové rozhraní"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:69
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:69
 msgid "IP"
 msgstr "IP adresa"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:69
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:69
 msgid "Network interface to listen to"
 msgstr "Síťové rozhraní, na kterém očekávat spojení"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:73
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:73
 msgid "Port"
 msgstr "Port"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "Trust"
 msgstr "Důvěra"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "IPs allowed to launch inventory task through web interface"
 msgstr ""
 "IP adresy počítačů, ze kterých je možné spouštět úkony inventarizace z "
 "webového rozhraní"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:68
+#: management/systems/fusioninventory/class_fiInventory.inc:68
 msgid "Inventory"
 msgstr "Inventář"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:69
+#: management/systems/fusioninventory/class_fiInventory.inc:69
 msgid "Inventory Viewer"
 msgstr "Prohlížeč inventáře"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:76
-#: admin/systems/fusioninventory/class_fiInventory.inc:79
+#: management/systems/fusioninventory/class_fiInventory.inc:76
+#: management/systems/fusioninventory/class_fiInventory.inc:79
 msgid "Inventory object"
 msgstr "Objekt inventáře"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:94
+#: management/systems/fusioninventory/class_fiInventory.inc:94
 msgid "Matching system"
 msgstr "Odpovídající systémy"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:97
-#: admin/systems/fusioninventory/class_fiInventory.inc:394
+#: management/systems/fusioninventory/class_fiInventory.inc:97
+#: management/systems/fusioninventory/class_fiInventory.inc:394
 msgid "System"
 msgstr "Systém"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:97
-#: admin/systems/fusioninventory/class_fiInventory.inc:394
+#: management/systems/fusioninventory/class_fiInventory.inc:97
+#: management/systems/fusioninventory/class_fiInventory.inc:394
 msgid "System entry matching this inventory"
 msgstr "Systémová položka odpovídající tomuto inventáři"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:104
+#: management/systems/fusioninventory/class_fiInventory.inc:104
 msgid "Hardware"
 msgstr "Hardware"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:110
+#: management/systems/fusioninventory/class_fiInventory.inc:110
 msgid "Software"
 msgstr "Software"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:116
+#: management/systems/fusioninventory/class_fiInventory.inc:116
 msgid "Users"
 msgstr "Uživatelé"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:122
+#: management/systems/fusioninventory/class_fiInventory.inc:122
 msgid "Processes"
 msgstr "Procesy"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:128
+#: management/systems/fusioninventory/class_fiInventory.inc:128
 msgid "Other"
 msgstr "Ostatní"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:342
+#: management/systems/fusioninventory/class_fiInventory.inc:342
 msgid "Create a system based on this inventory"
 msgstr "Vytvořit systém na základě tohoto inventáře"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:357
+#: management/systems/fusioninventory/class_fiInventory.inc:357
 msgid "Create"
 msgstr "Vytvořit"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:362
+#: management/systems/fusioninventory/class_fiInventory.inc:362
 msgid "No matching system"
 msgstr "Žádný odpovídající systém"
-
-#: config/fusioninventory/class_fiConfig.inc:26
-msgid "FusionInventory configuration"
-msgstr "Nastavení FusionInventory"
-
-#: config/fusioninventory/class_fiConfig.inc:27
-msgid "FusionDirectory FusionInventory plugin configuration"
-msgstr "Nastavení zásuvného modulu FusionInventory pro FusionDirectory"
-
-#: config/fusioninventory/class_fiConfig.inc:43
-msgid "Inventory RDN"
-msgstr "Relativní rozlišený název inventáře"
-
-#: config/fusioninventory/class_fiConfig.inc:43
-msgid "Branch in which inventory objects will be stored"
-msgstr "Větev, ve které budou ukládány objekty inventáře"
-
-#: config/fusioninventory/class_fiConfig.inc:48
-msgid "Inventory matching"
-msgstr "Párování inventáře"
-
-#: config/fusioninventory/class_fiConfig.inc:48
-msgid "Criteria to link an inventory result to a system"
-msgstr "Hlediska pro přiřazení výsledku inventury k systému"
-
-#: config/fusioninventory/class_fiConfig.inc:51
-msgid "Mac address"
-msgstr "MAC adresa"
-
-#: config/fusioninventory/class_fiConfig.inc:51
-msgid "IP address"
-msgstr "IP adresa"
-
-#: config/fusioninventory/class_fiConfig.inc:51
-msgid "Both"
-msgstr "Obojí"
-
-#: config/fusioninventory/class_fiConfig.inc:51
-msgid "IP or Mac address"
-msgstr "IP či MAC adresa"
 
 #: html/collect.php:75
 #, php-format

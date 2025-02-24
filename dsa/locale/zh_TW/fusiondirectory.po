@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/fusiondirectory/teams/12202/zh_TW/)\n"
@@ -21,62 +21,63 @@ msgstr ""
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/dsa/class_dsaManagement.inc:26 admin/dsa/class_dsaManagement.inc:32
-#: config/dsa/class_dsaConfig.inc:40
-msgid "DSA"
-msgstr ""
-
-#: admin/dsa/class_dsaManagement.inc:27
-msgid "DSA management"
-msgstr ""
-
-#: admin/dsa/class_dsaManagement.inc:28
-msgid "Manage simple security objects"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:26
-#: admin/dsa/class_simpleSecurityObject.inc:27
-#: admin/dsa/class_simpleSecurityObject.inc:31
-#: admin/dsa/class_simpleSecurityObject.inc:47
-msgid "Simple security object"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:51
-msgid "Entry name"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:51
-msgid "Account name"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:55
-msgid "Description"
-msgstr "描述"
-
-#: admin/dsa/class_simpleSecurityObject.inc:55
-msgid "Description of this simple security object"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:61
-msgid "Change password"
-msgstr "修改口令"
-
-#: admin/dsa/class_simpleSecurityObject.inc:64
-msgid "Password"
-msgstr "口令"
-
-#: config/dsa/class_dsaConfig.inc:26
+#: backend/dsa/class_dsaConfig.inc:26
 msgid "DSA configuration"
 msgstr ""
 
-#: config/dsa/class_dsaConfig.inc:27
+#: backend/dsa/class_dsaConfig.inc:27
 msgid "FusionDirectory dsa plugin configuration"
 msgstr ""
 
-#: config/dsa/class_dsaConfig.inc:43
+#: backend/dsa/class_dsaConfig.inc:40
+#: management/dsa/class_dsaManagement.inc:26
+#: management/dsa/class_dsaManagement.inc:32
+msgid "DSA"
+msgstr ""
+
+#: backend/dsa/class_dsaConfig.inc:43
 msgid "DSA RDN"
 msgstr ""
 
-#: config/dsa/class_dsaConfig.inc:43
+#: backend/dsa/class_dsaConfig.inc:43
 msgid "Branch in which Directory Service Account (dsa) will be stored"
 msgstr ""
+
+#: management/dsa/class_dsaManagement.inc:27
+msgid "DSA management"
+msgstr ""
+
+#: management/dsa/class_dsaManagement.inc:28
+msgid "Manage simple security objects"
+msgstr ""
+
+#: management/dsa/class_simpleSecurityObject.inc:26
+#: management/dsa/class_simpleSecurityObject.inc:27
+#: management/dsa/class_simpleSecurityObject.inc:31
+#: management/dsa/class_simpleSecurityObject.inc:47
+msgid "Simple security object"
+msgstr ""
+
+#: management/dsa/class_simpleSecurityObject.inc:51
+msgid "Entry name"
+msgstr ""
+
+#: management/dsa/class_simpleSecurityObject.inc:51
+msgid "Account name"
+msgstr ""
+
+#: management/dsa/class_simpleSecurityObject.inc:55
+msgid "Description"
+msgstr "描述"
+
+#: management/dsa/class_simpleSecurityObject.inc:55
+msgid "Description of this simple security object"
+msgstr ""
+
+#: management/dsa/class_simpleSecurityObject.inc:61
+msgid "Change password"
+msgstr "修改口令"
+
+#: management/dsa/class_simpleSecurityObject.inc:64
+msgid "Password"
+msgstr "口令"

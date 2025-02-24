@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Greek (Greece) (https://app.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -21,71 +21,71 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/ejbca/class_ejbcaManagement.inc:39
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:28
-#: config/ejbca/class_ejbcaConfig.inc:41
-msgid "EJBCA"
-msgstr "EJBCA"
-
-#: admin/ejbca/class_ejbcaManagement.inc:40
-msgid "EJBCA certificates management"
-msgstr "Διαχείριση πιστοποιητικών EJBCA"
-
-#: admin/ejbca/class_ejbcaManagement.inc:41
-msgid "Manage EJBCA certificates"
-msgstr ""
-
-#: admin/ejbca/class_ejbcaManagement.inc:63
-msgid "Download"
-msgstr "Λήψη"
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
-msgid "Assign EJBCA certificates to a user"
-msgstr "Ανάθεση πιστοποιητικών EJBCA  σε ένα χρήστη"
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:49
-msgid "EJBCA certs"
-msgstr "Πιστοποιητικά EJBCA "
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:53
-msgid "Certificates associated to this object"
-msgstr "Πιστοποιητικά που σχετίζονται με αυτό το αντικείμενο"
-
-#: admin/ejbca/class_ejbcaCertificate.inc:27
-#: admin/ejbca/class_ejbcaCertificate.inc:28
-#: admin/ejbca/class_ejbcaCertificate.inc:30
-msgid "EJBCA certificate"
-msgstr "Πιστοποιητικό EJBCA"
-
-#: admin/ejbca/class_ejbcaCertificate.inc:44
-#: admin/ejbca/class_ejbcaCertificate.inc:52
-msgid "Certificate"
-msgstr "Πιστοποιητικό"
-
-#: admin/ejbca/class_ejbcaCertificate.inc:48
-msgid "Name"
-msgstr "Όνομα"
-
-#: admin/ejbca/class_ejbcaCertificate.inc:48
-msgid "Common name"
-msgstr "Κοινό όνομα"
-
-#: admin/ejbca/class_ejbcaCertificate.inc:52
-msgid "Certificate content"
-msgstr "Περιεχόμενο πιστοποιητικού"
-
-#: config/ejbca/class_ejbcaConfig.inc:27
+#: backend/ejbca/class_ejbcaConfig.inc:27
 msgid "EJBCA plugin configuration"
 msgstr "Ρύθμιση προσθέτου EJBCA "
 
-#: config/ejbca/class_ejbcaConfig.inc:28
+#: backend/ejbca/class_ejbcaConfig.inc:28
 msgid "FusionDirectory ejbca plugin configuration"
 msgstr "Ρύθμιση προσθέτου ejbca FusionDirectory "
 
-#: config/ejbca/class_ejbcaConfig.inc:44
+#: backend/ejbca/class_ejbcaConfig.inc:41
+#: management/ejbca/class_ejbcaManagement.inc:39
+#: management/ejbca/certificates/class_ejbcaCertificates.inc:28
+msgid "EJBCA"
+msgstr "EJBCA"
+
+#: backend/ejbca/class_ejbcaConfig.inc:44
 msgid "EJBCA RDN"
 msgstr "EJBCA RDN"
 
-#: config/ejbca/class_ejbcaConfig.inc:44
+#: backend/ejbca/class_ejbcaConfig.inc:44
 msgid "Branch in which ejbca certificates are stored"
 msgstr "Κλάδος όπου τα πιστοποιητικά ejbca αποθηκεύονται"
+
+#: management/ejbca/class_ejbcaManagement.inc:40
+msgid "EJBCA certificates management"
+msgstr "Διαχείριση πιστοποιητικών EJBCA"
+
+#: management/ejbca/class_ejbcaManagement.inc:41
+msgid "Manage EJBCA certificates"
+msgstr ""
+
+#: management/ejbca/class_ejbcaManagement.inc:63
+msgid "Download"
+msgstr "Λήψη"
+
+#: management/ejbca/certificates/class_ejbcaCertificates.inc:29
+msgid "Assign EJBCA certificates to a user"
+msgstr "Ανάθεση πιστοποιητικών EJBCA  σε ένα χρήστη"
+
+#: management/ejbca/certificates/class_ejbcaCertificates.inc:49
+msgid "EJBCA certs"
+msgstr "Πιστοποιητικά EJBCA "
+
+#: management/ejbca/certificates/class_ejbcaCertificates.inc:53
+msgid "Certificates associated to this object"
+msgstr "Πιστοποιητικά που σχετίζονται με αυτό το αντικείμενο"
+
+#: management/ejbca/class_ejbcaCertificate.inc:27
+#: management/ejbca/class_ejbcaCertificate.inc:28
+#: management/ejbca/class_ejbcaCertificate.inc:30
+msgid "EJBCA certificate"
+msgstr "Πιστοποιητικό EJBCA"
+
+#: management/ejbca/class_ejbcaCertificate.inc:44
+#: management/ejbca/class_ejbcaCertificate.inc:52
+msgid "Certificate"
+msgstr "Πιστοποιητικό"
+
+#: management/ejbca/class_ejbcaCertificate.inc:48
+msgid "Name"
+msgstr "Όνομα"
+
+#: management/ejbca/class_ejbcaCertificate.inc:48
+msgid "Common name"
+msgstr "Κοινό όνομα"
+
+#: management/ejbca/class_ejbcaCertificate.inc:52
+msgid "Certificate content"
+msgstr "Περιεχόμενο πιστοποιητικού"

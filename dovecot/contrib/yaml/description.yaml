@@ -1,24 +1,26 @@
 information:
-  name : dovecot
-  description : Dovecot plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Dovecot plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dovecot/html/themes/breezy/icons/48/apps/dovecot.png
+  name: dovecot
+  origin: package
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/dovecot/html/themes/breezy/icons/48/apps/dovecot.png"
-  tags: ["plugin", "dovecot"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dovecot/contrib/screenshots/dovecot-fields.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dovecot/contrib/screenshots/dovecot-add-service.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/dovecot/contrib/screenshots/dovecot-master-credentials.png
+  status: Stable
+  tags:
+  - server
+  version: '1.5'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.5
+  phpVersion: 7.4
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/dovecot/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

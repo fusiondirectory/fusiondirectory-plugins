@@ -70,6 +70,8 @@ class publicFormPage extends standAlonePage
 
   protected function fetchForm ()
   {
+    global $config;
+
     if (isset($_GET['token'])) {
       if (isset($_GET['form'])) {
         throw new FusionDirectoryException(_('Invalid link, both token and form are provided'));
@@ -77,13 +79,13 @@ class publicFormPage extends standAlonePage
       $registrations = objects::ls(
         'registration',
         [
-          'dn'                          => 'raw',
-          'fdRegistrationEmailAddress'  => 1,
-          'fdRegistrationInvitationDN'  => 1,
-          'fdRegistrationState'         => 1,
+          'dn'                         => 'raw',
+          'fdRegistrationEmailAddress' => 1,
+          'fdRegistrationInvitationDN' => 1,
+          'fdRegistrationState'        => 1,
         ],
         NULL,
-        '(fdRegistrationToken='.ldap_escape_f($_GET['token']).')'
+        '(fdRegistrationToken=' . ldap_escape_f($_GET['token']) . ')'
       );
       if (count($registrations) <= 0) {
         throw new FusionDirectoryException(sprintf(_('Could not find any invitation matching token "%s"'), $_GET['token']));
@@ -97,8 +99,8 @@ class publicFormPage extends standAlonePage
       $invitations = objects::ls(
         'invitation',
         [
-          'dn'                  => 'raw',
-          'fdInvitationFormDN'  => 1
+          'dn'                 => 'raw',
+          'fdInvitationFormDN' => 1
         ],
         $this->registration['fdRegistrationInvitationDN'],
         '', FALSE, 'base'
@@ -149,7 +151,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormAlteredAttributes' => '*',
         ],
         NULL,
-        '(cn='.ldap_escape_f($_GET['form']).')'
+        '(cn=' . ldap_escape_f($_GET['form']) . ')'
       );
       $formName = $_GET['form'];
     } else {
@@ -161,28 +163,40 @@ class publicFormPage extends standAlonePage
       throw new FusionDirectoryException(sprintf(_('Found several forms named "%s"'), $formName));
     }
     $this->form = reset($forms);
-    if (isset($this->registration)) {
-      /* We wait for form to be fetched so that form name is shown even if invitation is unusable */
-      invitationPage::checkToken($this->registration);
+
+    // Verify if usage of private forms are allowed without invitation plugins
+    $allowPrivateFormUsage = $config->get_cfg_value('PublicFormAllowPrivateFormWithoutInvitations');
+
+    if ($allowPrivateFormUsage !== 'TRUE') {
+
+      if (isset($this->registration)) {
+        /* We wait for form to be fetched so that form name is shown even if invitation is unusable */
+        invitationPage::checkToken($this->registration);
+      }
+      if (!isset($this->registration) && isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
+        // Private form and no token
+        throw new FusionDirectoryException(sprintf(_('Form "%s" is private and requires an invitation'), $this->form['cn']));
+      }
     }
-    if (!isset($this->registration) && isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
-      // Private form and no token
-      throw new FusionDirectoryException(sprintf(_('Form "%s" is private and requires an invitation'), $this->form['cn']));
-    }
+
+
   }
 
   protected function prepareTemplateObject ()
   {
     $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
 
-    $this->alteredAttributes            = [[],[],[]];
-    $this->providedAttributes           = [];
+    $this->alteredAttributes = [[], [], []];
+    $this->providedAttributes = [];
     $this->providedMultiValueAttributes = [];
     foreach ($this->form['fdPublicFormAlteredAttributes'] as $alteredAttribute) {
       list($attribute, $mandatory, $readonly, $imported, $hidden) = explode('|', $alteredAttribute, 5);
       $tab = $this->template->getAttributeTab($attribute);
       if ($mandatory) {
         $this->alteredAttributes[0][$tab][] = $attribute;
+      }
+      if (isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
+        $this->prefill = TRUE;
       }
       if ($this->prefill) {
         if ($readonly) {
@@ -206,11 +220,11 @@ class publicFormPage extends standAlonePage
     foreach ($this->alteredAttributes[1] as $tab => $attributes) {
       foreach ($attributes as $key => $attribute) {
         if (!isset($values[$tab][$attribute]) &&
-            (
-              (isset($this->alteredAttributes[0][$tab]) && in_array($attribute, $this->alteredAttributes[0][$tab])) ||
-              $this->template->getAttribute($tab, $attribute)->isRequired()
-            )
-          ) {
+          (
+            (isset($this->alteredAttributes[0][$tab]) && in_array($attribute, $this->alteredAttributes[0][$tab])) ||
+            $this->template->getAttribute($tab, $attribute)->isRequired()
+          )
+        ) {
           unset($this->alteredAttributes[1][$tab][$key]);
         }
       }
@@ -244,27 +258,27 @@ class publicFormPage extends standAlonePage
     // Save values for later
     $values = $this->template->getValues();
     // Apply the template
-    $userTabObject  = $this->template->apply();
+    $userTabObject = $this->template->apply();
     /* Fill base depending on publicForm creation base and invitation base */
     $base = $this->form['fdPublicFormCreationBase'];
     if (isset($this->invitation)) {
-      $invitationBase = preg_replace('/,?'.preg_quote($config->current['BASE'], '/').'$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
+      $invitationBase = preg_replace('/,?' . preg_quote($config->current['BASE'], '/') . '$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
       if (!empty($invitationBase)) {
-        $base = $invitationBase.','.$base;
+        $base = $invitationBase . ',' . $base;
       }
     }
     $userTabObject->getBaseObject()->base = $base;
     // Try to save the object
-    $errors         = $userTabObject->save();
+    $errors = $userTabObject->save();
     if (empty($errors)) {
       $this->done = TRUE;
       if (isset($this->registration)) {
-        $tabObject  = objects::open($this->registration['dn'], 'registration');
+        $tabObject = objects::open($this->registration['dn'], 'registration');
         $baseObject = $tabObject->getBaseObject();
 
-        $baseObject->fdRegistrationUserDN     = $userTabObject->dn;
-        $baseObject->fdRegistrationState      = 'filled';
-        $baseObject->fdRegistrationLastChange = date('c').'|'.$ui->dn;
+        $baseObject->fdRegistrationUserDN = $userTabObject->dn;
+        $baseObject->fdRegistrationState  = 'filled';
+        $baseObject->fdRegistrationLastChange = date('c') . '|' . $ui->dn;
 
         $messages = $tabObject->save();
         msg_dialog::displayChecks($messages);
@@ -279,8 +293,37 @@ class publicFormPage extends standAlonePage
     }
   }
 
+  protected function processPrefilledPrivateFormValues ($values = [])
+  {
+    if (isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
+      $this->prefill = TRUE;
+    }
+    if ($this->prefill) {
+      /* Fill fields from HTTP headers */
+      foreach ($this->providedAttributes as list($class, $attr)) {
+        if (isset($_SERVER['HTTP_AUTH_' . strtoupper($attr)])) {
+          if (!isset($values[$class])) {
+            $values[$class] = [];
+          }
+          if (in_array($attr, $this->providedMultiValueAttributes)) {
+            if (empty($_SERVER['HTTP_AUTH_' . strtoupper($attr)])) {
+              /* Avoid having an array with an empty string inside */
+              $values[$class][$attr] = [];
+            } else {
+              $values[$class][$attr] = explode('; ', $_SERVER['HTTP_AUTH_' . strtoupper($attr)]);
+            }
+          } else {
+            $values[$class][$attr] = $_SERVER['HTTP_AUTH_' . strtoupper($attr)];
+          }
+        }
+      }
+    }
+    return $values;
+  }
+
   protected function getPrefilledValues ($values = [])
   {
+    $values = $this->processPrefilledPrivateFormValues();
     if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
       /* Fill email field with target email if empty */
       if (!isset($values['mailAccount'])) {
@@ -308,7 +351,7 @@ class publicFormPage extends standAlonePage
       try {
         $this->fetchForm();
       } catch (FusionDirectoryException $e) {
-        $this->done         = TRUE;
+        $this->done = TRUE;
         $this->errorMessage = $e->getMessage();
         return;
       }
@@ -325,8 +368,6 @@ class publicFormPage extends standAlonePage
 
   function execute ()
   {
-    global $config;
-
     if (!$this->activated) {
       return;
     }
@@ -381,20 +422,20 @@ class publicFormPage extends standAlonePage
       }
     }
 
-    $smarty->assign('done',         $this->done);
+    $smarty->assign('done', $this->done);
     $smarty->assign('errorMessage', $this->errorMessage);
 
     $smarty->assign('form', $this->form);
 
-    $smarty->append('css_files',    get_template_path('login.css'));
+    $smarty->append('css_files', get_template_path('login.css'));
     if (isset($this->form['fdPublicFormTitle'])) {
-      $smarty->assign('title',      sprintf(_('Form - %s'), $this->form['fdPublicFormTitle']));
+      $smarty->assign('title', sprintf(_('Form - %s'), $this->form['fdPublicFormTitle']));
     } else {
-      $smarty->assign('title',      _('Form'));
+      $smarty->assign('title', _('Form'));
     }
     $smarty->display(get_template_path('headers.tpl'));
 
-    $smarty->assign('activated',      $this->activated);
+    $smarty->assign('activated', $this->activated);
     $smarty->display(get_template_path('public-form.tpl'));
   }
 }

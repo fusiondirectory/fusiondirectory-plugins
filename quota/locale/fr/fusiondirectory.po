@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:01+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -21,154 +21,154 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:27
-#: admin/systems/services/quota/class_serviceQuota.inc:28
+#: management/systems/services/quota/class_serviceQuota.inc:27
+#: management/systems/services/quota/class_serviceQuota.inc:28
 msgid "Quota service"
 msgstr "Service Quota"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:28
+#: management/systems/services/quota/class_serviceQuota.inc:28
 msgid "Services"
 msgstr "Service"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:41
+#: management/systems/services/quota/class_serviceQuota.inc:41
 msgid "Shares"
 msgstr "Partages"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:45
+#: management/systems/services/quota/class_serviceQuota.inc:45
 msgid "Quotas for the shares this server hosts"
 msgstr "Quota pour les partages fournis par ce serveur"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:49
+#: management/systems/services/quota/class_serviceQuota.inc:49
 #: personal/quota/class_quotaAccount.inc:129
 msgid "Device"
 msgstr "Périphérique"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:49
+#: management/systems/services/quota/class_serviceQuota.inc:49
 msgid "Device concerned by this quota"
 msgstr "Périphérique concerné par ce quota"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:53
+#: management/systems/services/quota/class_serviceQuota.inc:53
 msgid "Quota block size"
 msgstr "Taille des blocs pour le quota"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:53
+#: management/systems/services/quota/class_serviceQuota.inc:53
 msgid "Quota block size on this share (usually 1024)"
 msgstr "Taille des blocs pour le quota sur ce partage (normalement 1024)"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:62
+#: management/systems/services/quota/class_serviceQuota.inc:62
 msgid "Comment"
 msgstr "Commentaire"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:62
+#: management/systems/services/quota/class_serviceQuota.inc:62
 msgid "Short comment about this quota"
 msgstr "Court commentaire sur ce quota"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:77
+#: management/systems/services/quota/class_serviceQuota.inc:77
 msgid "Quota warning message"
 msgstr "Message d'avertissement du quota"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:80
+#: management/systems/services/quota/class_serviceQuota.inc:80
 msgid "Charset"
 msgstr "Jeu de caractères"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:80
+#: management/systems/services/quota/class_serviceQuota.inc:80
 msgid "Charset use for the message"
 msgstr "Encodage utilisé pour le message"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:84
+#: management/systems/services/quota/class_serviceQuota.inc:84
 msgid "Mail command"
 msgstr "Commande de courriel"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:84
+#: management/systems/services/quota/class_serviceQuota.inc:84
 msgid "Command allowing the server to send mails"
 msgstr "Commande permettant au serveur d'envoyer des courriels"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: management/systems/services/quota/class_serviceQuota.inc:88
 msgid "Support contact"
 msgstr "Contact du support"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: management/systems/services/quota/class_serviceQuota.inc:88
 msgid "Email address to contact the administrator"
 msgstr "Adresse de courriel pour contacter l'administrateur"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: management/systems/services/quota/class_serviceQuota.inc:92
 msgid "From"
 msgstr "Depuis"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: management/systems/services/quota/class_serviceQuota.inc:92
 msgid "Email from which the email is sent"
 msgstr "Adresse depuis laquelle les courriels seront envoyés"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: management/systems/services/quota/class_serviceQuota.inc:96
 msgid "CC"
 msgstr "CC"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: management/systems/services/quota/class_serviceQuota.inc:96
 msgid "Send a copy of this email to"
 msgstr "Envoyer une copie à "
 
-#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: management/systems/services/quota/class_serviceQuota.inc:100
 msgid "Subject"
 msgstr "Sujet"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: management/systems/services/quota/class_serviceQuota.inc:100
 msgid "Subject of the sent warning email"
 msgstr "Sujet du courriel d'alerte envoyé"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: management/systems/services/quota/class_serviceQuota.inc:104
 msgid "Content"
 msgstr "Contenu"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: management/systems/services/quota/class_serviceQuota.inc:104
 msgid "Content of the sent email"
 msgstr "Contenu du courriel envoyé"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:108
+#: management/systems/services/quota/class_serviceQuota.inc:108
 msgid "Signature"
 msgstr "Signature"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:108
+#: management/systems/services/quota/class_serviceQuota.inc:108
 msgid "Signature to put at the end of the mail"
 msgstr "Signature à mettre à la fin du courriel"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:114
+#: management/systems/services/quota/class_serviceQuota.inc:114
 msgid "LDAP message support"
 msgstr "Support des messages LDAP"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:117
+#: management/systems/services/quota/class_serviceQuota.inc:117
 msgid "LDAP server"
 msgstr "Serveur LDAP"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:117
+#: management/systems/services/quota/class_serviceQuota.inc:117
 msgid "The LDAP server to bind to"
 msgstr "Serveur LDAP sur lequel se connecter"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:121
+#: management/systems/services/quota/class_serviceQuota.inc:121
 msgid "Bind user dn"
 msgstr "DN de connexion"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:121
+#: management/systems/services/quota/class_serviceQuota.inc:121
 msgid "The user dn to use for bind"
 msgstr "DN du compte à utiliser pour la connexion"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:125
+#: management/systems/services/quota/class_serviceQuota.inc:125
 msgid "Bind user password"
 msgstr "Mot de passe de connexion"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:125
+#: management/systems/services/quota/class_serviceQuota.inc:125
 msgid "The password of the user used for bind"
 msgstr "Mot de passe à utiliser pour la connexion"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:158
+#: management/systems/services/quota/class_serviceQuota.inc:158
 msgid "Warning"
 msgstr "Avertissement"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:158
+#: management/systems/services/quota/class_serviceQuota.inc:158
 #, php-format
 msgid "Invalid value in encodings : %s"
 msgstr "Valeur d'encodage invalide : %s"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:174
+#: management/systems/services/quota/class_serviceQuota.inc:174
 #, php-format
 msgid "(%s by %s)"
 msgstr "(%s par %s)"

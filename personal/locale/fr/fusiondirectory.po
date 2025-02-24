@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -23,24 +23,24 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: config/personal/class_personalConfig.inc:26
+#: backend/personal/class_personalConfig.inc:26
 msgid "Personal configuration"
 msgstr "Configuration du plugin personal"
 
-#: config/personal/class_personalConfig.inc:27
+#: backend/personal/class_personalConfig.inc:27
 msgid "FusionDirectory personal plugin configuration"
 msgstr "Configuration du plugin personal"
 
-#: config/personal/class_personalConfig.inc:40
+#: backend/personal/class_personalConfig.inc:40
 #: personal/personal/class_personalInfo.inc:93
 msgid "Personal"
 msgstr "Personnel"
 
-#: config/personal/class_personalConfig.inc:43
+#: backend/personal/class_personalConfig.inc:43
 msgid "Allow use of private email for password recovery"
 msgstr "Autoriser le courriel privé pour la récupération de mot de passe"
 
-#: config/personal/class_personalConfig.inc:43
+#: backend/personal/class_personalConfig.inc:43
 msgid "Allow users to use their private email address for password recovery"
 msgstr ""
 "Autoriser les utilisateurs à utiliser leur adresse de courriel privée pour "
@@ -184,25 +184,10 @@ msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: personal/personal/class_socialHandlers.inc:132
-msgid "ORCID"
-msgstr "ORCID"
-
-#: personal/personal/class_socialHandlers.inc:145
-msgid ""
-"ORCID account IDs must look like XXXX-XXXX-XXXX-XXXX where X are digits"
-msgstr ""
-"Les identifiants de compte ORCID doivent ressembler à XXXX-XXXX-XXXX-XXXX où"
-" X sont des chiffres"
-
-#: personal/personal/class_socialHandlers.inc:148
-msgid "Incorrect ORCID value, the checksum does not match"
-msgstr "Valeur ORCID incorrecte, la somme de contrôle ne correspond pas"
-
-#: personal/personal/class_socialHandlers.inc:171
 msgid "GitHub"
 msgstr "GitHub"
 
-#: personal/personal/class_socialHandlers.inc:180
+#: personal/personal/class_socialHandlers.inc:141
 msgid ""
 "GitHub account names have at most 39 characters, contain only alphanumeric "
 "characters or hyphens, cannot have multiple consecutive hyphens, and cannot "
@@ -213,11 +198,11 @@ msgstr ""
 "avoir plusieurs traits d'union consécutifs et ne peuvent pas commencer ou se"
 " terminer par un trait d'union"
 
-#: personal/personal/class_socialHandlers.inc:190
+#: personal/personal/class_socialHandlers.inc:151
 msgid "Google Scholar"
 msgstr "Google Scholar"
 
-#: personal/personal/class_socialHandlers.inc:204
+#: personal/personal/class_socialHandlers.inc:165
 msgid ""
 "Google Scholar account IDs have exactly 12 alphanumerical characters or "
 "hyphens or underscores"
@@ -225,10 +210,10 @@ msgstr ""
 "Les identifiants de compte Google Scholar comportent exactement 12 "
 "caractères alphanumériques, traits d'union ou traits de soulignement"
 
-#: personal/personal/class_socialHandlers.inc:214
+#: personal/personal/class_socialHandlers.inc:175
 msgid "Matrix"
 msgstr "Matrix"
 
-#: personal/personal/class_socialHandlers.inc:230
+#: personal/personal/class_socialHandlers.inc:191
 msgid "Matrix user IDs have the format '@username:server'"
 msgstr "Les ID utilisateur de la matrice ont le format «@username: server»"

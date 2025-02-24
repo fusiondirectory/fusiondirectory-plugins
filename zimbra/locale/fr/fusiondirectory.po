@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2021-01-27 11:00+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -22,37 +22,37 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:26
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:27
+#: management/systems/services/zimbra/class_serviceZimbra.inc:26
+#: management/systems/services/zimbra/class_serviceZimbra.inc:27
 msgid "Zimbra"
 msgstr "Zimbra"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:39
+#: management/systems/services/zimbra/class_serviceZimbra.inc:39
 msgid "Settings"
 msgstr "Paramètres"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:43
+#: management/systems/services/zimbra/class_serviceZimbra.inc:43
 msgid "URI"
 msgstr "URI"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:43
+#: management/systems/services/zimbra/class_serviceZimbra.inc:43
 msgid "URI of the Zimbra server soap service, with port, usually 7071"
 msgstr ""
 "URI du service soap du serveur Zimbra, avec le port, généralement 7071"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:47
+#: management/systems/services/zimbra/class_serviceZimbra.inc:47
 msgid "User Agent"
 msgstr "Agent utilisateur"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:47
+#: management/systems/services/zimbra/class_serviceZimbra.inc:47
 msgid "User Agent to use to contact the Zimbra API"
 msgstr "Agent utilisateur à utiliser pour contacter l'API Zimbra"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:52
+#: management/systems/services/zimbra/class_serviceZimbra.inc:52
 msgid "Mailbox deletion"
 msgstr "Suppression de boîte aux lettres"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:52
+#: management/systems/services/zimbra/class_serviceZimbra.inc:52
 msgid ""
 "What to do with the Zimbra account when mail tab is deactivated or user is "
 "deleted"
@@ -60,88 +60,88 @@ msgstr ""
 "Que faire avec le compte Zimbra lorsque l'onglet Courrier est désactivé ou "
 "l'utilisateur est supprimé"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:55
+#: management/systems/services/zimbra/class_serviceZimbra.inc:55
 msgid "Delete"
 msgstr "Supprimer"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:55
+#: management/systems/services/zimbra/class_serviceZimbra.inc:55
 msgid "Disable"
 msgstr "Désactiver"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:58
+#: management/systems/services/zimbra/class_serviceZimbra.inc:58
 msgid "Mailbox creation"
 msgstr "Création de boîte aux lettres"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:58
+#: management/systems/services/zimbra/class_serviceZimbra.inc:58
 msgid ""
 "What to do when the Zimbra account already exists when mail tab is activated"
 msgstr ""
 "Que faire lorsque le compte Zimbra existe déjà lorsque l'onglet mail est "
 "activé"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:61
+#: management/systems/services/zimbra/class_serviceZimbra.inc:61
 msgid "Error"
 msgstr "Erreur"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:61
+#: management/systems/services/zimbra/class_serviceZimbra.inc:61
 msgid "Associate"
 msgstr "Associer"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:64
+#: management/systems/services/zimbra/class_serviceZimbra.inc:64
 msgid "Password synchronization"
 msgstr "Synchronisation des mots de passe"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:64
+#: management/systems/services/zimbra/class_serviceZimbra.inc:64
 msgid "Should the password be synchronized to the Zimbra instance"
 msgstr ""
 "est ce que le mot de passe doit être synchronisé avec l'instance Zimbra"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:69
+#: management/systems/services/zimbra/class_serviceZimbra.inc:69
 msgid "Id attribute"
 msgstr "Attribut d'identifiant"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:69
+#: management/systems/services/zimbra/class_serviceZimbra.inc:69
 msgid "Attribute to use for account id."
 msgstr "Attribut à utiliser pour l'identifiant du compte."
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:74
+#: management/systems/services/zimbra/class_serviceZimbra.inc:74
 msgid "Login"
 msgstr "Identifiant"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:74
+#: management/systems/services/zimbra/class_serviceZimbra.inc:74
 msgid "Login to use to contact the Zimbra API"
 msgstr "Login à utiliser pour contacter l'API Zimbra"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:78
+#: management/systems/services/zimbra/class_serviceZimbra.inc:78
 msgid "Password"
 msgstr "Mot de passe"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:78
+#: management/systems/services/zimbra/class_serviceZimbra.inc:78
 msgid "Password to use to contact the Zimbra API"
 msgstr "Mot de passe à utiliser pour contacter l'API Zimbra"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:85
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:107
+#: management/systems/services/zimbra/class_serviceZimbra.inc:85
+#: management/systems/services/zimbra/class_serviceZimbra.inc:107
 msgid "Domains"
 msgstr "Domaines"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:90
+#: management/systems/services/zimbra/class_serviceZimbra.inc:90
 msgid "Domains handled by this Zimbra server"
 msgstr "Domaines traités par ce serveur Zimbra"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:94
+#: management/systems/services/zimbra/class_serviceZimbra.inc:94
 msgid "Domain"
 msgstr "Domaine"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:94
+#: management/systems/services/zimbra/class_serviceZimbra.inc:94
 msgid "Domain handled by this server"
 msgstr "Domaines traités par ce serveur"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:98
+#: management/systems/services/zimbra/class_serviceZimbra.inc:98
 msgid "Classes of service"
 msgstr "Classe de services"
 
-#: admin/systems/services/zimbra/class_serviceZimbra.inc:98
+#: management/systems/services/zimbra/class_serviceZimbra.inc:98
 msgid ""
 "Possible classes of service for this domain and their ids, separated by "
 "commas. Format is cos1Name|cos1Id,cos2Name|cos2Id."
@@ -160,8 +160,8 @@ msgstr ""
 
 #: personal/mail/mail-methods/class_mail-methods-zimbra.inc:168
 #: personal/mail/mail-methods/class_mail-methods-zimbra.inc:181
-#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:616
-#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:637
+#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:621
+#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:642
 #, php-format
 msgid ""
 "An account with the same email address \"%s\" already exists in the email "
@@ -184,37 +184,37 @@ msgstr ""
 "Plusieurs adresses ont été fournies dans gosaMailForwardingAddress, mais une"
 " seule est prise en charge par PARTAGE. %s sera envoyé à Zimbra"
 
-#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:566
+#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:571
 #, php-format
 msgid "Several users have uid \"%s\". Ignoring this member."
 msgstr "Plusieurs utilisateurs ont l'uid \"%s\". j'ignore ce membre."
 
-#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:622
+#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:627
 msgid "Associating account"
 msgstr "Compte associé"
 
-#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:625
+#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:630
 #, php-format
 msgid "Account \"%s\" already existing on Zimbra server, associating it"
 msgstr "Compte \"%s\" déjà existant sur le serveur Zimbra, je l'associe"
 
-#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:712
+#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:717
 #, php-format
 msgid "Invalid deletion mode: \"%s\""
 msgstr "Mode de suppression non valide : \"%s\""
 
-#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:762
+#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:767
 msgid "Never"
 msgstr "Jamais"
 
-#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:769
+#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:774
 msgid "Last login"
 msgstr "Dernière connexion"
 
-#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:770
+#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:775
 msgid "Account status"
 msgstr "Statut du compte"
 
-#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:770
+#: personal/mail/mail-methods/class_mail-methods-zimbra.inc:775
 msgid "Unknown"
 msgstr "Inconnu"

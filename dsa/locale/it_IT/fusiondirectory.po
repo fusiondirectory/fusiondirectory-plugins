@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2019\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -22,62 +22,63 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/dsa/class_dsaManagement.inc:26 admin/dsa/class_dsaManagement.inc:32
-#: config/dsa/class_dsaConfig.inc:40
-msgid "DSA"
-msgstr "DSA"
-
-#: admin/dsa/class_dsaManagement.inc:27
-msgid "DSA management"
-msgstr "Gestione DSA"
-
-#: admin/dsa/class_dsaManagement.inc:28
-msgid "Manage simple security objects"
-msgstr "Gestire oggetti di sicurezza semplici"
-
-#: admin/dsa/class_simpleSecurityObject.inc:26
-#: admin/dsa/class_simpleSecurityObject.inc:27
-#: admin/dsa/class_simpleSecurityObject.inc:31
-#: admin/dsa/class_simpleSecurityObject.inc:47
-msgid "Simple security object"
-msgstr "Ogetti Simple security"
-
-#: admin/dsa/class_simpleSecurityObject.inc:51
-msgid "Entry name"
-msgstr "nome della voce"
-
-#: admin/dsa/class_simpleSecurityObject.inc:51
-msgid "Account name"
-msgstr "Nome dell'account"
-
-#: admin/dsa/class_simpleSecurityObject.inc:55
-msgid "Description"
-msgstr "Descrizione"
-
-#: admin/dsa/class_simpleSecurityObject.inc:55
-msgid "Description of this simple security object"
-msgstr "Descrizione di questo semplice oggetto di sicurezza"
-
-#: admin/dsa/class_simpleSecurityObject.inc:61
-msgid "Change password"
-msgstr "Cambia la password"
-
-#: admin/dsa/class_simpleSecurityObject.inc:64
-msgid "Password"
-msgstr "Password"
-
-#: config/dsa/class_dsaConfig.inc:26
+#: backend/dsa/class_dsaConfig.inc:26
 msgid "DSA configuration"
 msgstr "Configurazione DSA"
 
-#: config/dsa/class_dsaConfig.inc:27
+#: backend/dsa/class_dsaConfig.inc:27
 msgid "FusionDirectory dsa plugin configuration"
 msgstr "Configurazione del plugin DSA di FusionDirectory"
 
-#: config/dsa/class_dsaConfig.inc:43
+#: backend/dsa/class_dsaConfig.inc:40
+#: management/dsa/class_dsaManagement.inc:26
+#: management/dsa/class_dsaManagement.inc:32
+msgid "DSA"
+msgstr "DSA"
+
+#: backend/dsa/class_dsaConfig.inc:43
 msgid "DSA RDN"
 msgstr "RDN DSA"
 
-#: config/dsa/class_dsaConfig.inc:43
+#: backend/dsa/class_dsaConfig.inc:43
 msgid "Branch in which Directory Service Account (dsa) will be stored"
 msgstr "Ramo nel quale il Directory Service Account (dsa) sarà immagazzinato"
+
+#: management/dsa/class_dsaManagement.inc:27
+msgid "DSA management"
+msgstr "Gestione DSA"
+
+#: management/dsa/class_dsaManagement.inc:28
+msgid "Manage simple security objects"
+msgstr "Gestire oggetti di sicurezza semplici"
+
+#: management/dsa/class_simpleSecurityObject.inc:26
+#: management/dsa/class_simpleSecurityObject.inc:27
+#: management/dsa/class_simpleSecurityObject.inc:31
+#: management/dsa/class_simpleSecurityObject.inc:47
+msgid "Simple security object"
+msgstr "Ogetti Simple security"
+
+#: management/dsa/class_simpleSecurityObject.inc:51
+msgid "Entry name"
+msgstr "nome della voce"
+
+#: management/dsa/class_simpleSecurityObject.inc:51
+msgid "Account name"
+msgstr "Nome dell'account"
+
+#: management/dsa/class_simpleSecurityObject.inc:55
+msgid "Description"
+msgstr "Descrizione"
+
+#: management/dsa/class_simpleSecurityObject.inc:55
+msgid "Description of this simple security object"
+msgstr "Descrizione di questo semplice oggetto di sicurezza"
+
+#: management/dsa/class_simpleSecurityObject.inc:61
+msgid "Change password"
+msgstr "Cambia la password"
+
+#: management/dsa/class_simpleSecurityObject.inc:64
+msgid "Password"
+msgstr "Password"

@@ -1,24 +1,26 @@
 information:
-  name : ppolicy
-  description : Ppolicy overlay module plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Ppolicy overlay module plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ppolicy/html/themes/breezy/icons/48/apps/ppolicy.png
+  name: ppolicy
+  origin: package
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/ppolicy/html/themes/breezy/icons/48/apps/ppolicy.png"
-  tags: ["plugin", "ppolicy"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ppolicy/contrib/screenshots/ppolicy-list.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ppolicy/contrib/screenshots/ppolicy-create.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ppolicy/contrib/screenshots/ppolicy-user-assign.png
+  status: Stable
+  tags:
+  - user
+  version: '1.5'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.5
+  phpVersion: 7.4
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/ppolicy/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

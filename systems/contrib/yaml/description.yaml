@@ -1,24 +1,33 @@
 information:
-  name : systems
-  description : Systems plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Systems plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/systems/html/themes/breezy/icons/48/devices/computer.png
+  name: systems
+  origin: package
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/systems/html/themes/breezy/icons/48/apps/systems.png"
-  tags: ["plugin", "systems", "infra", "deploy"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/systems/contrib/screenshots/systems-interfaces-configuration-page.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/systems/contrib/screenshots/systems-main-page.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/systems/contrib/screenshots/systems-configuration-page.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/systems/contrib/screenshots/systems-server-configuration-page.png
+  status: Stable
+  tags:
+  - workstation
+  - server
+  - terminal
+  - printer
+  - component
+  - phone
+  - mobilePhone
+  version: '1.5'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.5
+  phpVersion: 7.4
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/systems/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

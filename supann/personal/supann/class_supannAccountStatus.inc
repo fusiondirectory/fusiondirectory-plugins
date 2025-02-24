@@ -32,18 +32,18 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
       return [];
     }
     return [
-      'plShortName'   => _('SupAnn status'),
+      'plShortName' => _('SupAnn status'),
       'plDescription' => _('SupAnn status management'),
-      'plFilter'      => '(supannRessourceEtatDate=*)',
-      'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
-      'plSmallIcon'   => 'geticon.php?context=applications&icon=supann-status&size=16',
-      'plSelfModify'  => TRUE,
-      'plPriority'    => 15,
+      'plFilter' => '(supannRessourceEtatDate=*)',
+      'plIcon' => 'geticon.php?context=applications&icon=supann&size=48',
+      'plSmallIcon' => 'geticon.php?context=applications&icon=supann-status&size=16',
+      'plSelfModify' => TRUE,
+      'plPriority' => 15,
       'plObjectClass' => [],
-      'plObjectType'  => ['user'],
-      'plDepends'     => ['supannAccount'],
+      'plObjectType' => ['user'],
+      'plDepends' => ['supannAccount'],
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
@@ -52,7 +52,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   {
     return [
       'status' => [
-        'name'  => _('Status'),
+        'name' => _('Status'),
         'class' => ['fullwidth'],
         'attrs' => [
           new OrderedArrayAttribute(
@@ -63,13 +63,13 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
                 new SelectAttribute(
                   _('Resource'), _('Which resource this state concerns'),
                   'supannRessourceEtatDate_label', TRUE,
-                  ['COMPTE','MAIL'], '',
+                  ['COMPTE', 'MAIL'], '',
                   [_('Account'), _('Mail')]
                 ),
                 new SelectAttribute(
                   _('Status'), _('Active status'),
                   'supannRessourceEtatDate_status', TRUE,
-                  ['A','I','S'], 'A',
+                  ['A', 'I', 'S'], 'A',
                   [_('Active'), _('Inactive'), _('Suspended')]
                 ),
                 new SelectAttribute(
@@ -113,9 +113,9 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
 
     $this->substatus = static::getConfiguredSubstates();
 
-    $resources = ['COMPTE' => _('Account'),'MAIL' => _('Mail')];
+    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail')];
     foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource,$label) = explode(':', $line, 2);
+      list($resource, $label) = explode(':', $line, 2);
       $resources[$resource] = $label;
     }
     $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[0]->setChoices(
@@ -139,12 +139,11 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     /* Import from supannRessourceEtat if needed */
     if (!empty($this->supannRessourceEtat) && empty($this->supannRessourceEtatDate)) {
       $this->supannRessourceEtatDate = array_map(
-        function ($supannRessourceEtat)
-        {
+        function ($supannRessourceEtat) {
           if (strpos($supannRessourceEtat, ':') === FALSE) {
-            return $supannRessourceEtat.':::';
+            return $supannRessourceEtat . ':::';
           } else {
-            return $supannRessourceEtat.'::';
+            return $supannRessourceEtat . '::';
           }
         },
         $this->supannRessourceEtat
@@ -166,13 +165,12 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   {
     /* Copy active states over to supannRessourceEtat */
     $this->supannRessourceEtat = array_map(
-      function ($supannRessourceEtatDate)
-      {
-        list($labelstate,$substate) = explode(':', $supannRessourceEtatDate);
+      function ($supannRessourceEtatDate) {
+        list($labelstate, $substate) = explode(':', $supannRessourceEtatDate);
         if (empty($substate)) {
           return $labelstate;
         } else {
-          return $labelstate.':'.$substate;
+          return $labelstate . ':' . $substate;
         }
       },
       $this->supannRessourceEtatDate
@@ -186,7 +184,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
 
     $resources = [];
     foreach ($this->supannRessourceEtatDate as $line) {
-      $resource = preg_replace('/^\{([^}]+)\}.*$/', '\1',  $line);
+      $resource = preg_replace('/^\{([^}]+)\}.*$/', '\1', $line);
       if (in_array($resource, $resources)) {
         $errors[] = new SimplePluginCheckError(
           $this->attributesAccess['supannRessourceEtatDate'],
@@ -200,22 +198,42 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     return $errors;
   }
 
+  /**
+   * @return void
+   * The concept is to allow the trigger of password locking when {account} is set to lock or unlock.
+   * The same mechanism is present for mail allowing to lock the mail account within mail tab for linked web service.
+   */
   protected function post_save ()
   {
     foreach ($this->supannRessourceEtatDate as $line) {
-      list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
-      if ($label == 'COMPTE') {
-        if ($state == 'A') {
-          /* Unlock account */
-          userManagement::lockUser('unlock', $this->parent->getBaseObject()->userPassword, $this->dn);
-        } elseif (($state == 'S') || ($state == 'I')) {
-          /* Lock account */
-          userManagement::lockUser('lock', $this->parent->getBaseObject()->userPassword, $this->dn);
-        }
-        break;
+      list($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
+      if ($label === 'COMPTE') {
+        $this->processAccountState($state);
       }
     }
+
     parent::post_save();
+  }
+
+  /**
+   * @param string $state
+   * @return void
+   * Note : The concept of locking account is based on the modification of password hash.
+   * The passwordMethod class will not trigger fillLockingLDAPAttrs methods of each plugin to lock everything.
+   * It only locked the account access by password modification - fillLockingLDAPAttrs is only available via general lock.
+   */
+  protected function processAccountState (string $state): void
+  {
+    // This should only be verified under non templating logic
+    if (!$this->is_template) {
+      if ($state === 'A') {
+        // Unlock account
+        userManagement::lockUser('unlock', $this->parent->getBaseObject()->userPassword, $this->dn);
+      } elseif (in_array($state, ['S', 'I'], TRUE)) {
+        // Lock account
+        userManagement::lockUser('lock', $this->parent->getBaseObject()->userPassword, $this->dn, FALSE);
+      }
+    }
   }
 
   public function fillLockingLDAPAttrs (string $mode, array &$modify)
@@ -223,22 +241,22 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     if (empty($this->supannRessourceEtatDate)) {
       return;
     }
-    $modify['supannRessourceEtatDate']  = [];
-    $modify['supannRessourceEtat']      = [];
+    $modify['supannRessourceEtatDate'] = [];
+    $modify['supannRessourceEtat']     = [];
     foreach ($this->supannRessourceEtatDate as $line) {
       list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
-      if (($label == 'COMPTE') && ($state == 'A') && ($mode == 'LOCK')) {
-        /* Lock account */
-        $modify['supannRessourceEtatDate'][]  = '{'.$label.'}S:SupannVerrouille:'.date('Ymd').':';
-        $modify['supannRessourceEtat'][]      = '{'.$label.'}S:SupannVerrouille';
-      } elseif (($label == 'COMPTE') && (($state == 'S') || ($state == 'I')) && ($mode == 'UNLOCK')) {
+      if (($state == 'A') && ($mode == 'LOCK')) {
+        /* Lock all resources */
+        $modify['supannRessourceEtatDate'][] = '{' . $label . '}S:SupannVerrouille:' . date('Ymd') . ':';
+        $modify['supannRessourceEtat'][]     = '{' . $label . '}S:SupannVerrouille';
+      } elseif ((($state == 'S') || ($state == 'I')) && ($mode == 'UNLOCK')) {
         /* Unlock account */
-        $modify['supannRessourceEtatDate'][]  = '{'.$label.'}A:SupannActif:'.date('Ymd').':';
-        $modify['supannRessourceEtat'][]      = '{'.$label.'}A:SupannActif';
+        $modify['supannRessourceEtatDate'][] = '{' . $label . '}A:SupannActif:' . date('Ymd') . ':';
+        $modify['supannRessourceEtat'][]     = '{' . $label . '}A:SupannActif';
       } else {
         /* Do not touch other fields */
-        $modify['supannRessourceEtatDate'][]  = $line;
-        $modify['supannRessourceEtat'][]      = '{'.$label.'}'.$state.(empty($substate) ? '' : ':'.$substate);
+        $modify['supannRessourceEtatDate'][] = $line;
+        $modify['supannRessourceEtat'][]     = '{' . $label . '}' . $state . (empty($substate) ? '' : ':' . $substate);
       }
     }
   }
@@ -247,22 +265,22 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   {
     return [
       'A' => [
-        'SupannAnticipe'  => _('Anticipated'),
-        'SupannActif'     => _('Active'),
-        'SupannSursis'    => _('Extension'),
+        'SupannAnticipe' => _('Anticipated'),
+        'SupannActif' => _('Active'),
+        'SupannSursis' => _('Extension'),
       ],
       'I' => [
-        'SupannPrecree'       => _('Pre-created'),
-        'SupannCree'          => _('Created'),
-        'SupannExpire'        => _('Expired'),
-        'SupannInactif'       => _('Inactive'),
-        'SupannSupprDonnees'  => _('Data deletion'),
-        'SupannSupprCompte'   => _('Account deletion'),
+        'SupannPrecree' => _('Pre-created'),
+        'SupannCree' => _('Created'),
+        'SupannExpire' => _('Expired'),
+        'SupannInactif' => _('Inactive'),
+        'SupannSupprDonnees' => _('Data deletion'),
+        'SupannSupprCompte' => _('Account deletion'),
       ],
       'S' => [
-        'SupannVerrouille'          => _('Locked'),
+        'SupannVerrouille' => _('Locked'),
         'SupannVerrouAdministratif' => _('Administrative lock'),
-        'SupannVerrouTechnique'     => _('Technical lock'),
+        'SupannVerrouTechnique' => _('Technical lock'),
       ],
     ];
   }
@@ -282,12 +300,12 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     $labels = [];
 
     foreach ($config->get_cfg_value('SupannRessourceSubStatesLabels', []) as $line) {
-      list($substate,$label) = explode(':', $line, 2);
+      list($substate, $label) = explode(':', $line, 2);
       $labels[$substate] = $label;
     }
 
     foreach ($config->get_cfg_value('SupannRessourceSubStates', []) as $line) {
-      list(,$state,$substate) = explode(':', $line, 3);
+      list(, $state, $substate) = explode(':', $line, 3);
       if (isset($officialSubstates[$state][$substate])) {
         $substates[$state][$substate] = $officialSubstates[$state][$substate];
       } elseif (isset($labels[$substate])) {

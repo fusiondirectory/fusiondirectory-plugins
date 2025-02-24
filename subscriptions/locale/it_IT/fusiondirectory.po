@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2021-02-16 15:45+0000\n"
 "Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2021\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -22,152 +22,223 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/subscriptions/class_subscriptionsManagement.inc:40
-#: config/subscriptions/class_subscriptionsConfig.inc:27
-#: config/subscriptions/class_subscriptionsConfig.inc:40
+#: backend/subscriptions/class_subscriptionsConfig.inc:27
+#: backend/subscriptions/class_subscriptionsConfig.inc:41
+#: management/subscriptions/class_subscriptionsManagement.inc:40
 msgid "Subscriptions"
 msgstr "Abbonamenti"
 
-#: admin/subscriptions/class_subscriptionsManagement.inc:41
-msgid "Subscription management"
-msgstr "Gestione abbonamento"
+#: backend/subscriptions/class_subscriptionsConfig.inc:28
+msgid "FusionDirectory subscriptions plugin configuration"
+msgstr "Configurazione del plugin per gli abbonamenti a FusionDirectory "
 
-#: admin/subscriptions/class_subscriptionsManagement.inc:42
-msgid "Manage subscriptions"
-msgstr "Gestisci gli abbonamenti"
+#: backend/subscriptions/class_subscriptionsConfig.inc:45
+msgid "Subscription RDN"
+msgstr "Abbonamento RDN"
 
-#: admin/subscriptions/class_subscription.inc:27
-#: admin/subscriptions/class_subscription.inc:28
-#: admin/subscriptions/class_subscription.inc:31
-msgid "Subscription"
-msgstr "Abbonamento"
+#: backend/subscriptions/class_subscriptionsConfig.inc:45
+msgid "Branch in which subscriptions will be stored"
+msgstr "Ramo in cui verranno archiviati gli abbonamenti "
 
-#: admin/subscriptions/class_subscription.inc:45
-msgid "Information"
-msgstr "Informazione"
+#: backend/subscriptions/class_subscriptionsConfig.inc:51
+msgid "Subscription types and their labels"
+msgstr "Tipi di abbonamento e relative etichette "
 
-#: admin/subscriptions/class_subscription.inc:48
-msgid "Name"
-msgstr "Nome"
-
-#: admin/subscriptions/class_subscription.inc:48
-msgid "Name to identify this subscription"
-msgstr "Nome per identificare questo abbonamento"
-
-#: admin/subscriptions/class_subscription.inc:50
-msgid "Description"
-msgstr "Descrizione"
-
-#: admin/subscriptions/class_subscription.inc:50
-msgid "Description of this subscription"
-msgstr "Descrizione di questo abbonamento "
-
-#: admin/subscriptions/class_subscription.inc:54
-#: config/subscriptions/class_subscriptionsConfig.inc:54
+#: backend/subscriptions/class_subscriptionsConfig.inc:55
+#: management/subscriptions/class_subscription.inc:54
 msgid "Type"
 msgstr "Tipo"
 
-#: admin/subscriptions/class_subscription.inc:54
-#: config/subscriptions/class_subscriptionsConfig.inc:54
+#: backend/subscriptions/class_subscriptionsConfig.inc:55
+#: management/subscriptions/class_subscription.inc:54
 msgid "Subscription type"
 msgstr "Tipo di sottoscrizione"
 
-#: admin/subscriptions/class_subscription.inc:58
+#: backend/subscriptions/class_subscriptionsConfig.inc:59
+#: backend/subscriptions/class_subscriptionsConfig.inc:85
+#: backend/subscriptions/class_subscriptionsConfig.inc:108
+msgid "Label"
+msgstr "Etichetta"
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:59
+msgid "Label shown for this type"
+msgstr "Etichetta mostrata per questo tipo"
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:65
+msgid "Subscription types"
+msgstr "Tipi di abbonamento "
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:73
+#: backend/subscriptions/class_subscriptionsConfig.inc:92
+msgid "Apt repositories"
+msgstr "Repository Apt"
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:77
+#: backend/subscriptions/class_subscriptionsConfig.inc:104
+msgid "Path"
+msgstr "Path"
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:77
+#: backend/subscriptions/class_subscriptionsConfig.inc:104
+msgid "Repository path"
+msgstr "Percorso del repository "
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:81
+msgid "Distribution"
+msgstr "Distribuzione"
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:81
+msgid "Distribution name"
+msgstr "Nome distribuzione"
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:85
+#: backend/subscriptions/class_subscriptionsConfig.inc:108
+msgid "Label shown for this repository"
+msgstr "Etichetta mostrata per questo repository "
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:100
+#: backend/subscriptions/class_subscriptionsConfig.inc:114
+msgid "Rpm repositories"
+msgstr "Repository Rpm"
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:121
+msgid "Repositories host"
+msgstr "Host di repository"
+
+#: backend/subscriptions/class_subscriptionsConfig.inc:121
+msgid "Host for the repositories, to use in auth.conf"
+msgstr "Host per i repository, da utilizzare in auth.conf "
+
+#: management/subscriptions/class_subscriptionsManagement.inc:41
+msgid "Subscription management"
+msgstr "Gestione abbonamento"
+
+#: management/subscriptions/class_subscriptionsManagement.inc:42
+msgid "Manage subscriptions"
+msgstr "Gestisci gli abbonamenti"
+
+#: management/subscriptions/class_subscription.inc:27
+#: management/subscriptions/class_subscription.inc:28
+#: management/subscriptions/class_subscription.inc:31
+msgid "Subscription"
+msgstr "Abbonamento"
+
+#: management/subscriptions/class_subscription.inc:45
+msgid "Information"
+msgstr "Informazione"
+
+#: management/subscriptions/class_subscription.inc:48
+msgid "Name"
+msgstr "Nome"
+
+#: management/subscriptions/class_subscription.inc:48
+msgid "Name to identify this subscription"
+msgstr "Nome per identificare questo abbonamento"
+
+#: management/subscriptions/class_subscription.inc:50
+msgid "Description"
+msgstr "Descrizione"
+
+#: management/subscriptions/class_subscription.inc:50
+msgid "Description of this subscription"
+msgstr "Descrizione di questo abbonamento "
+
+#: management/subscriptions/class_subscription.inc:58
 msgid "Contract"
 msgstr "Contratto"
 
-#: admin/subscriptions/class_subscription.inc:58
+#: management/subscriptions/class_subscription.inc:58
 msgid "Contract identifier from Dolibarr"
 msgstr "Identificatore del contratto da Dolibarr"
 
-#: admin/subscriptions/class_subscription.inc:64
-#: admin/subscriptions/class_subscription.inc:67
+#: management/subscriptions/class_subscription.inc:64
+#: management/subscriptions/class_subscription.inc:67
 msgid "Login"
 msgstr "Nome utente"
 
-#: admin/subscriptions/class_subscription.inc:67
+#: management/subscriptions/class_subscription.inc:67
 msgid "Login for this subscription"
 msgstr "Login per questo abbonamento"
 
-#: admin/subscriptions/class_subscription.inc:71
+#: management/subscriptions/class_subscription.inc:71
 msgid "Password"
 msgstr "Password"
 
-#: admin/subscriptions/class_subscription.inc:77
+#: management/subscriptions/class_subscription.inc:77
 msgid "Status"
 msgstr "Stato"
 
-#: admin/subscriptions/class_subscription.inc:80
+#: management/subscriptions/class_subscription.inc:80
 msgid "Active"
 msgstr "Attivo"
 
-#: admin/subscriptions/class_subscription.inc:80
+#: management/subscriptions/class_subscription.inc:80
 msgid "Whether this subscription is active"
 msgstr "Se questo abbonamento è attivo"
 
-#: admin/subscriptions/class_subscription.inc:84
+#: management/subscriptions/class_subscription.inc:84
 msgid "Start date"
 msgstr "Data d'inizio"
 
-#: admin/subscriptions/class_subscription.inc:84
+#: management/subscriptions/class_subscription.inc:84
 msgid "Start date of this subscription"
 msgstr "Data di inizio di questo abbonamento"
 
-#: admin/subscriptions/class_subscription.inc:88
+#: management/subscriptions/class_subscription.inc:88
 msgid "End date"
 msgstr "Data di fine"
 
-#: admin/subscriptions/class_subscription.inc:88
+#: management/subscriptions/class_subscription.inc:88
 msgid "End date of this subscription"
 msgstr "Data di fine di questo abbonamento "
 
-#: admin/subscriptions/class_subscription.inc:94
+#: management/subscriptions/class_subscription.inc:94
 msgid "Repositories"
 msgstr "Repository"
 
-#: admin/subscriptions/class_subscription.inc:97
+#: management/subscriptions/class_subscription.inc:97
 msgid "Apt repository"
 msgstr "Archivio Apt "
 
-#: admin/subscriptions/class_subscription.inc:101
+#: management/subscriptions/class_subscription.inc:101
 msgid "RPM distribution"
 msgstr "Distribuzione RPM"
 
-#: admin/subscriptions/class_subscription.inc:107
+#: management/subscriptions/class_subscription.inc:107
 msgid "Export"
 msgstr "Esporta"
 
-#: admin/subscriptions/class_subscription.inc:110
+#: management/subscriptions/class_subscription.inc:110
 msgid "Subscription file"
 msgstr "File abbonamento"
 
-#: admin/subscriptions/class_subscription.inc:110
+#: management/subscriptions/class_subscription.inc:110
 msgid "Generate the subscription file to send to the client"
 msgstr "Genera il file di abbonamento da inviare al client"
 
-#: admin/subscriptions/class_subscription.inc:111
-#: admin/subscriptions/class_subscription.inc:115
-#: admin/subscriptions/class_subscription.inc:119
-#: admin/subscriptions/class_subscription.inc:123
+#: management/subscriptions/class_subscription.inc:111
+#: management/subscriptions/class_subscription.inc:115
+#: management/subscriptions/class_subscription.inc:119
+#: management/subscriptions/class_subscription.inc:123
 msgid "Generate"
 msgstr "Creare"
 
-#: admin/subscriptions/class_subscription.inc:114
+#: management/subscriptions/class_subscription.inc:114
 msgid "APT auth.conf"
 msgstr "APT auth.conf"
 
-#: admin/subscriptions/class_subscription.inc:114
+#: management/subscriptions/class_subscription.inc:114
 msgid ""
 "Generate the auth.conf file to send to the client if he uses Debian or a "
 "derivate"
 msgstr ""
 "Genera il file auth.conf da inviare al client se usa Debian o un derivato "
 
-#: admin/subscriptions/class_subscription.inc:118
+#: management/subscriptions/class_subscription.inc:118
 msgid "APT"
 msgstr "APT"
 
-#: admin/subscriptions/class_subscription.inc:118
+#: management/subscriptions/class_subscription.inc:118
 msgid ""
 "Generate the fusiondirectory-subscription.list file to send to the client if"
 " he uses an Apt based distribution"
@@ -175,85 +246,14 @@ msgstr ""
 "Genera il file fusiondirectory-subscription.list da inviare al cliente se "
 "utilizza una distribuzione basata su Apt "
 
-#: admin/subscriptions/class_subscription.inc:122
+#: management/subscriptions/class_subscription.inc:122
 msgid "RPM"
 msgstr "RPM"
 
-#: admin/subscriptions/class_subscription.inc:122
+#: management/subscriptions/class_subscription.inc:122
 msgid ""
 "Generate the fusiondirectory-subscription.repo file to send to the client if"
 " he uses an RPM based distribution"
 msgstr ""
 "Genera il file fusiondirectory-subscription.repo da inviare al client se "
 "utilizza una distribuzione basata su RPM "
-
-#: config/subscriptions/class_subscriptionsConfig.inc:28
-msgid "FusionDirectory subscriptions plugin configuration"
-msgstr "Configurazione del plugin per gli abbonamenti a FusionDirectory "
-
-#: config/subscriptions/class_subscriptionsConfig.inc:44
-msgid "Subscription RDN"
-msgstr "Abbonamento RDN"
-
-#: config/subscriptions/class_subscriptionsConfig.inc:44
-msgid "Branch in which subscriptions will be stored"
-msgstr "Ramo in cui verranno archiviati gli abbonamenti "
-
-#: config/subscriptions/class_subscriptionsConfig.inc:50
-msgid "Subscription types and their labels"
-msgstr "Tipi di abbonamento e relative etichette "
-
-#: config/subscriptions/class_subscriptionsConfig.inc:58
-#: config/subscriptions/class_subscriptionsConfig.inc:84
-#: config/subscriptions/class_subscriptionsConfig.inc:107
-msgid "Label"
-msgstr "Etichetta"
-
-#: config/subscriptions/class_subscriptionsConfig.inc:58
-msgid "Label shown for this type"
-msgstr "Etichetta mostrata per questo tipo"
-
-#: config/subscriptions/class_subscriptionsConfig.inc:64
-msgid "Subscription types"
-msgstr "Tipi di abbonamento "
-
-#: config/subscriptions/class_subscriptionsConfig.inc:72
-#: config/subscriptions/class_subscriptionsConfig.inc:91
-msgid "Apt repositories"
-msgstr "Repository Apt"
-
-#: config/subscriptions/class_subscriptionsConfig.inc:76
-#: config/subscriptions/class_subscriptionsConfig.inc:103
-msgid "Path"
-msgstr "Path"
-
-#: config/subscriptions/class_subscriptionsConfig.inc:76
-#: config/subscriptions/class_subscriptionsConfig.inc:103
-msgid "Repository path"
-msgstr "Percorso del repository "
-
-#: config/subscriptions/class_subscriptionsConfig.inc:80
-msgid "Distribution"
-msgstr "Distribuzione"
-
-#: config/subscriptions/class_subscriptionsConfig.inc:80
-msgid "Distribution name"
-msgstr "Nome distribuzione"
-
-#: config/subscriptions/class_subscriptionsConfig.inc:84
-#: config/subscriptions/class_subscriptionsConfig.inc:107
-msgid "Label shown for this repository"
-msgstr "Etichetta mostrata per questo repository "
-
-#: config/subscriptions/class_subscriptionsConfig.inc:99
-#: config/subscriptions/class_subscriptionsConfig.inc:113
-msgid "Rpm repositories"
-msgstr "Repository Rpm"
-
-#: config/subscriptions/class_subscriptionsConfig.inc:120
-msgid "Repositories host"
-msgstr "Host di repository"
-
-#: config/subscriptions/class_subscriptionsConfig.inc:120
-msgid "Host for the repositories, to use in auth.conf"
-msgstr "Host per i repository, da utilizzare in auth.conf "

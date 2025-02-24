@@ -199,6 +199,7 @@ class posixAccount extends simplePlugin
         ]
       ]
     );
+
     if ((count($this->host) == 1) && ($this->host[0] == '*')) {
       $this->trustMode = 'fullaccess';
     } elseif (count($this->host) > 0) {
@@ -401,6 +402,13 @@ class posixAccount extends simplePlugin
   protected function prepare_save (): array
   {
     global $config;
+
+    // Remove the '*' entry from the host array if multiple elements exist
+    if (in_array('*', $this->host) && count($this->host) > 1) {
+      $this->host = array_filter($this->host, function($item) {
+        return $item !== '*';
+      });
+    }
 
     /* Fill gecos */
     if (isset($this->parent) && $this->parent !== NULL) {
@@ -612,6 +620,7 @@ class posixAccount extends simplePlugin
       return $errors;
     }
 
+    // This allows to add new groups asignment on top of existing one !
     if (!$this->is_template && !class_available('mixedGroup')) {
       /* Take care about groupMembership values: add to groups */
       $groupMembership = $this->attributesAccess['groupMembership']->getValue();
@@ -707,7 +716,6 @@ class posixAccount extends simplePlugin
     $this->attributesAccess['mustchangepassword']->setInLdap(FALSE);
     $this->attributesAccess['groupMembership']->setInLdap(FALSE);
 
-    $this->savedGroupMembership = $this->groupMembership;
     if (isset($this->attrs['posixGroups'])) {
       unset($this->attrs['posixGroups']['count']);
       $this->groupMembership = $this->attrs['posixGroups'];

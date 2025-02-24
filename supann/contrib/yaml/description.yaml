@@ -1,24 +1,62 @@
 information:
-  name : supann
-  description : Supann plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Supann plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/html/themes/breezy/icons/48/apps/supann.png
+  name: supann
+  origin: package
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/supann/html/themes/breezy/icons/48/apps/supann.png"
-  tags: ["plugin", "supann", "ESR"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-ok-button.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/user-status.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-example-user-supann-status.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-personal-profile.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-add-supann-settings.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-student-profile.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-ok-button.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-supann-status-settings.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-assignement.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/entity.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-tab.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-add-supann-settings.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-contact-settings_2.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/user3.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/group-supanngroup-main.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-affiliation-settings.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-multiservice-card-tab.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-multiservice-card-cards-settings.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-actions-create-user.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-add-supann-status-settings.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/user1.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-identity.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/establishement.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-roles.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/user2.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-supann-information.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-configuration-menu_2.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-supann-structures-icon-main.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-multiservice-card-settings_2.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-multiservice-card-settings_1.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-contact-settings_1.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-student-registrations.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-multiservice-card-applications-settings.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-user-users-icon-main.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/supann/contrib/screenshots/supann-franceconnect.png
+  status: Stable
+  tags:
+  - user
+  - group
+  - role
+  - entite
+  - etablissement
+  version: '1.5'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.5
+  phpVersion: 7.4
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/supann/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

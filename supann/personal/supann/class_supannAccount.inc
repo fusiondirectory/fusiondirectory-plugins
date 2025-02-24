@@ -53,7 +53,7 @@ class supannAccount extends simplePlugin
           new SelectAttribute(
             _('Civilite'), _('supannCivilite - Civility for this person'),
             'supannCivilite', FALSE,
-            ['', 'M.', 'Mme', 'Mlle']
+            ['']
           ),
           new StringAttribute(
             _('Alias login'), _('supannAliasLogin - An alias for the login of this user'),
@@ -74,6 +74,16 @@ class supannAccount extends simplePlugin
               '', '',
                // Validation regexp: it must have a prefix
               '/^{[^}]+}.+$/'
+            )
+          ),
+          new SetAttribute(
+            new StringAttribute(
+              _('ORCID identifiers'), _('eduPersonOrcid - ORCID researcher identifiers belonging to the principal'),
+              'eduPersonOrcid', FALSE,
+              '', '',
+              // Validation regexp: it must be XXXX-XXXX-XXXX-XXXX when X are digits
+              '/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$/',
+              'ORCID account IDs must look like XXXX-XXXX-XXXX-XXXX where X are digits'
             )
           ),
         ]
@@ -424,6 +434,7 @@ class supannAccount extends simplePlugin
       'PERSO'   => _('Personal'),
       'PARENTS' => _('Legal representative'),
       'PRO'     => _('Professional'),
+      'SECOURS' => _('Emergency'),
       'TEMP'    => _('Temporary'),
     ];
     foreach ($config->get_cfg_value('SupannMailPriveTypes', []) as $line) {
@@ -489,6 +500,20 @@ class supannAccount extends simplePlugin
     }
     $this->attributesAccess['supannConsentement']->attribute->attributes[1]->setChoices($types, $typeLabels);
 
+    /* supannCivilite */
+    // Get supannCivilite from configuration
+    $supannCiviliteValues = $config->get_cfg_value('SupannCiviliteValues', []);
+
+    // Add actual ldap value
+    $supannCiviliteValues[] = $this->attributesAccess['supannCivilite']->getValue();
+
+    // Set the choices for supannCivilite
+    $this->attributesAccess['supannCivilite']->setChoices(
+      array_unique(
+        $supannCiviliteValues
+      )
+    );
+
     $this->updateFieldsChoicesAndValues();
   }
 
@@ -547,6 +572,19 @@ class supannAccount extends simplePlugin
         $this->attributesAccess['eduPersonAffiliation'],
         htmlescape(_('"member" and "affiliate" values are incompatible for eduPersonAffiliation. Please remove one of them.'))
       );
+    }
+
+    $orcids = $this->eduPersonOrcid;
+    if (is_array($orcids)) {
+      foreach ($orcids as $orcid) {
+        // phpstan:ignore
+        if (!tests::is_orcid($orcid)) {
+          $errors[] = new SimplePluginCheckError(
+            $this->attributesAccess['eduPersonOrcid'],
+            htmlescape(_('The value "'.$orcid.'" is not a valid orcid id. Please remove it.'))
+          );
+        }
+      }
     }
 
     return $errors;

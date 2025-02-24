@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2018
+# fusiondirectory <contact@fusiondirectory.org>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Greek (Greece) (https://app.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,185 +21,189 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/inventory/class_inventoryManagement.inc:39
-#: admin/inventory/class_inventoryManagement.inc:40
+#: dashboard/inventory/class_inventoryManagement.inc:39
+#: dashboard/inventory/class_inventoryManagement.inc:40
 msgid "Inventory objects"
 msgstr "Αντικείμενα απογραφής"
 
-#: admin/inventory/class_inventoryManagement.inc:41
+#: dashboard/inventory/class_inventoryManagement.inc:41
 msgid "Browse inventory objects"
 msgstr "Περιήγηση αντικειμένων απογραφής"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:28
-#: config/fusioninventory/class_fiConfig.inc:40
+#: dashboard/inventory/class_inventoryManagement.inc:43
+msgid "Reporting"
+msgstr "Αναφορά"
+
+#: backend/fusioninventory/class_fiConfig.inc:26
+msgid "FusionInventory configuration"
+msgstr "Ρύθμιση FusionInventory"
+
+#: backend/fusioninventory/class_fiConfig.inc:27
+msgid "FusionDirectory FusionInventory plugin configuration"
+msgstr "Ρύθμιση προσθέτου FusionDirectory FusionInventory"
+
+#: backend/fusioninventory/class_fiConfig.inc:40
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:28
 msgid "FusionInventory"
 msgstr "FusionInventory"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:29
+#: backend/fusioninventory/class_fiConfig.inc:43
+msgid "Inventory RDN"
+msgstr "Απογραφή RDN"
+
+#: backend/fusioninventory/class_fiConfig.inc:43
+msgid "Branch in which inventory objects will be stored"
+msgstr "Κλάδος στον οποίο θα αποθηκεύονται τα αντικείμενα της απογραφής"
+
+#: backend/fusioninventory/class_fiConfig.inc:48
+msgid "Inventory matching"
+msgstr "Ταίριασμα απογραφής"
+
+#: backend/fusioninventory/class_fiConfig.inc:48
+msgid "Criteria to link an inventory result to a system"
+msgstr "Κριτήρια σύνδεσης ενός αποτελέσματος απογραφής με το σύστημα"
+
+#: backend/fusioninventory/class_fiConfig.inc:51
+msgid "Mac address"
+msgstr "Διεύθυνση Mac "
+
+#: backend/fusioninventory/class_fiConfig.inc:51
+msgid "IP address"
+msgstr "Διεύθυνση IP"
+
+#: backend/fusioninventory/class_fiConfig.inc:51
+msgid "Both"
+msgstr "Και τα δύο"
+
+#: backend/fusioninventory/class_fiConfig.inc:51
+msgid "IP or Mac address"
+msgstr "Διεύθυνση IP ή Mac address"
+
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:29
 msgid "FusionInventory agent configuration"
 msgstr "Ρύθμιση FusionInventory agent"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:43
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:43
 msgid "Configuration"
 msgstr "Διαμόρφωση"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:46
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:46
 msgid "Server"
 msgstr "Εξυπηρετητής"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:46
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:46
 msgid "Server which FI will send inventory infos"
 msgstr "Ο διακομιστής στον οποίο θα στέλνει το FI πληροφορίες απογραφής"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:50
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:50
 msgid "Delay time"
 msgstr "Χρονοκαθυστέρηση"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:50
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:50
 msgid "Maximum initial delay before first target, in seconds"
 msgstr "Μέγιστη αρχική καθυστέρηση πριν το πρώτο στόχο, σε δευτερόλεπτα"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:55
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:55
 msgid "Wait"
 msgstr "Αναμονή"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:55
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:73
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:55
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:73
 msgid "Maximum delay between each targets, in seconds"
 msgstr "Μέγιστη χρονοκαθυστέρηση μεταξύ στόχων, σε δευτερόλεπτα."
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:62
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:62
 msgid "Web Interface"
 msgstr "Web Interface"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Disable web interface"
 msgstr "Απενεργοποίηση web interface"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Do not use web interface"
 msgstr "Να μην χρησιμοποιηθεί web interface"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:69
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:69
 msgid "IP"
 msgstr "IP"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:69
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:69
 msgid "Network interface to listen to"
 msgstr "Παρακολουθούμενη διεπαφή δικτύου"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:73
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:73
 msgid "Port"
 msgstr "Θύρα"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "Trust"
 msgstr "Εμπιστοσύνη"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
+#: management/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "IPs allowed to launch inventory task through web interface"
 msgstr ""
 "Οι επιτρεπόμενες IPs που μπορούν να εκκινήσουν εργασία απογραφής μέσω web "
 "interface"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:68
+#: management/systems/fusioninventory/class_fiInventory.inc:68
 msgid "Inventory"
 msgstr "Απογραφή"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:69
+#: management/systems/fusioninventory/class_fiInventory.inc:69
 msgid "Inventory Viewer"
 msgstr "Προβολή απογραφής"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:76
-#: admin/systems/fusioninventory/class_fiInventory.inc:79
+#: management/systems/fusioninventory/class_fiInventory.inc:76
+#: management/systems/fusioninventory/class_fiInventory.inc:79
 msgid "Inventory object"
 msgstr "Αντικείμενο απογραφής"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:94
+#: management/systems/fusioninventory/class_fiInventory.inc:94
 msgid "Matching system"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:97
-#: admin/systems/fusioninventory/class_fiInventory.inc:394
+#: management/systems/fusioninventory/class_fiInventory.inc:97
+#: management/systems/fusioninventory/class_fiInventory.inc:394
 msgid "System"
 msgstr "Σύστημα"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:97
-#: admin/systems/fusioninventory/class_fiInventory.inc:394
+#: management/systems/fusioninventory/class_fiInventory.inc:97
+#: management/systems/fusioninventory/class_fiInventory.inc:394
 msgid "System entry matching this inventory"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:104
+#: management/systems/fusioninventory/class_fiInventory.inc:104
 msgid "Hardware"
 msgstr "Υλικό"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:110
+#: management/systems/fusioninventory/class_fiInventory.inc:110
 msgid "Software"
 msgstr "Λογισμικό."
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:116
+#: management/systems/fusioninventory/class_fiInventory.inc:116
 msgid "Users"
 msgstr "Χρήστες"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:122
+#: management/systems/fusioninventory/class_fiInventory.inc:122
 msgid "Processes"
 msgstr "Διεργασίες"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:128
+#: management/systems/fusioninventory/class_fiInventory.inc:128
 msgid "Other"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:342
+#: management/systems/fusioninventory/class_fiInventory.inc:342
 msgid "Create a system based on this inventory"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:357
+#: management/systems/fusioninventory/class_fiInventory.inc:357
 msgid "Create"
 msgstr "Δημιουργία"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:362
+#: management/systems/fusioninventory/class_fiInventory.inc:362
 msgid "No matching system"
 msgstr ""
-
-#: config/fusioninventory/class_fiConfig.inc:26
-msgid "FusionInventory configuration"
-msgstr "Ρύθμιση FusionInventory"
-
-#: config/fusioninventory/class_fiConfig.inc:27
-msgid "FusionDirectory FusionInventory plugin configuration"
-msgstr "Ρύθμιση προσθέτου FusionDirectory FusionInventory"
-
-#: config/fusioninventory/class_fiConfig.inc:43
-msgid "Inventory RDN"
-msgstr "Απογραφή RDN"
-
-#: config/fusioninventory/class_fiConfig.inc:43
-msgid "Branch in which inventory objects will be stored"
-msgstr "Κλάδος στον οποίο θα αποθηκεύονται τα αντικείμενα της απογραφής"
-
-#: config/fusioninventory/class_fiConfig.inc:48
-msgid "Inventory matching"
-msgstr "Ταίριασμα απογραφής"
-
-#: config/fusioninventory/class_fiConfig.inc:48
-msgid "Criteria to link an inventory result to a system"
-msgstr "Κριτήρια σύνδεσης ενός αποτελέσματος απογραφής με το σύστημα"
-
-#: config/fusioninventory/class_fiConfig.inc:51
-msgid "Mac address"
-msgstr "Διεύθυνση Mac "
-
-#: config/fusioninventory/class_fiConfig.inc:51
-msgid "IP address"
-msgstr "Διεύθυνση IP"
-
-#: config/fusioninventory/class_fiConfig.inc:51
-msgid "Both"
-msgstr "Και τα δύο"
-
-#: config/fusioninventory/class_fiConfig.inc:51
-msgid "IP or Mac address"
-msgstr "Διεύθυνση IP ή Mac address"
 
 #: html/collect.php:75
 #, php-format

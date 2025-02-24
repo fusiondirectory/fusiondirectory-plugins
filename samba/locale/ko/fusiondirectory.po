@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:02+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2021\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -22,275 +22,38 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: include/class_smbHash.inc:385
-msgid ""
-"Your PHP install does not have the mhash() nor the hash function. Cannot do "
-"MD4 hashes."
-msgstr "PHP 설치에는 mhash () 또는 해시 함수가 없습니다. MD4 해시를 수행 할 수 없습니다."
-
-#: admin/samba/class_sambaDomainManagement.inc:37
-msgid "Samba domains"
-msgstr "삼바 도메인"
-
-#: admin/samba/class_sambaDomainManagement.inc:38
-msgid "Samba domain management"
-msgstr "삼바 도메인 관리"
-
-#: admin/samba/class_sambaDomainManagement.inc:39
-msgid "Manage Samba domains"
-msgstr "Samba 도메인 관리"
-
-#: admin/samba/class_sambaDomain.inc:26 admin/samba/class_sambaDomain.inc:27
-#: admin/samba/class_sambaDomain.inc:31
-msgid "Samba Domain"
-msgstr "삼바 도메인"
-
-#: admin/samba/class_sambaDomain.inc:32
-msgid "Samba domain settings"
-msgstr "삼바 도메인 설"
-
-#: admin/samba/class_sambaDomain.inc:48
-#: admin/systems/samba/class_sambaSystemTab.inc:44
-msgid "Properties"
-msgstr "설정"
-
-#: admin/samba/class_sambaDomain.inc:51
-msgid "Domain name"
-msgstr "도메인 이름"
-
-#: admin/samba/class_sambaDomain.inc:51
-msgid "Name of this domain"
-msgstr "이 도메인의 이름"
-
-#: admin/samba/class_sambaDomain.inc:55
-msgid "SID"
-msgstr "SID"
-
-#: admin/samba/class_sambaDomain.inc:55
-msgid "SID of this domain"
-msgstr "이 도메인의 SID"
-
-#: admin/samba/class_sambaDomain.inc:59
-msgid "Rid base"
-msgstr "RID 베이스"
-
-#: admin/samba/class_sambaDomain.inc:59
-msgid "Algorithmic rid base"
-msgstr "알고리즘 RID 베이스"
-
-#: admin/samba/class_sambaDomain.inc:63
-msgid "Minimum password age"
-msgstr "최소 암호 사용 기간"
-
-#: admin/samba/class_sambaDomain.inc:64
-msgid ""
-"Minimum password age, in seconds (default: 0 => allow immediate password "
-"change)"
-msgstr "최소 암호 사용 기간 (초) (기본값 : 0 => 즉시 암호 변경 허용)"
-
-#: admin/samba/class_sambaDomain.inc:69
-msgid "Maximum password age"
-msgstr "최대 암호 사용 기간"
-
-#: admin/samba/class_sambaDomain.inc:70
-msgid ""
-"Maximum password age, in seconds (default: -1 => never expire passwords)"
-msgstr "최대 비밀번호 사용 기간 (초) (기본값 : -1 => 비밀번호가 만료되지 않음)"
-
-#: admin/samba/class_sambaDomain.inc:75
-msgid "Next RID"
-msgstr "다음 RID"
-
-#: admin/samba/class_sambaDomain.inc:76
-msgid "Next NT rid to give out for anything"
-msgstr "다음 번 NT rid가 제공하는 것"
-
-#: admin/samba/class_sambaDomain.inc:80
-msgid "Next group RID"
-msgstr "다음 그룹 RID"
-
-#: admin/samba/class_sambaDomain.inc:81
-msgid "Next NT rid to give out for groups"
-msgstr "그룹에게 줄 다음 NT RID"
-
-#: admin/samba/class_sambaDomain.inc:85
-msgid "Next user RID"
-msgstr "다음 사용자 RID"
-
-#: admin/samba/class_sambaDomain.inc:86
-msgid "Next NT rid to give our for users"
-msgstr "사용자에게 제공 할 다음 NT RID"
-
-#: admin/samba/class_sambaDomain.inc:90
-msgid "Minimum password length"
-msgstr "최소 비밀번호 길이"
-
-#: admin/samba/class_sambaDomain.inc:91
-msgid "Minimal password length (default: 5)"
-msgstr "최소 비밀번호 길이 (기본값 : 5)"
-
-#: admin/samba/class_sambaDomain.inc:95
-msgid "Password history length"
-msgstr "비밀번호 히스토리 개수"
-
-#: admin/samba/class_sambaDomain.inc:96
-msgid "Length of Password History Entries (default: 0 => off)"
-msgstr "비밀번호 히스토리 항목 개수 (기본값 : 0 => 꺼짐)"
-
-#: admin/samba/class_sambaDomain.inc:100
-msgid "Logon to change password"
-msgstr "비밀번호 변경을 위해 로그온"
-
-#: admin/samba/class_sambaDomain.inc:101
-msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
-msgstr "사용자가 비밀번호 변경을 위해 로그온하도록 강제 실행 (기본값 : 0 => 꺼짐, 2 => 켜짐)"
-
-#: admin/samba/class_sambaDomain.inc:105
-msgid "Lockout duration"
-msgstr "잠금 기간"
-
-#: admin/samba/class_sambaDomain.inc:106
-msgid "Lockout duration in minutes (default: 30, -1 => forever)"
-msgstr "잠금 시간, 분 (기본값 : 30, -1 => 영원히)"
-
-#: admin/samba/class_sambaDomain.inc:110
-msgid "Lockout observation window"
-msgstr "잠금 감시 창"
-
-#: admin/samba/class_sambaDomain.inc:111
-msgid "Reset time after lockout in minutes (default: 30)"
-msgstr "잠금 후 시간 재설정, 분 (기본값 : 30)"
-
-#: admin/samba/class_sambaDomain.inc:115
-msgid "Lockout threshold"
-msgstr "잠금 임계 값"
-
-#: admin/samba/class_sambaDomain.inc:116
-msgid "Lockout users after bad logon attempts (default: 0 => off)"
-msgstr "잘못된 로그온 시도 후 사용자 잠금 (기본값 : 0 => 꺼짐)"
-
-#: admin/samba/class_sambaDomain.inc:120
-msgid "Force logoff"
-msgstr "강제 로그오프"
-
-#: admin/samba/class_sambaDomain.inc:121
-msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
-msgstr "로그온 시간 이외의 사용자 연결 끊기 (기본값 : -1 => 꺼짐, 0 => 켜짐)"
-
-#: admin/samba/class_sambaDomain.inc:125
-msgid "Refuse machine password change"
-msgstr "컴퓨터 비밀번호 변경 거부"
-
-#: admin/samba/class_sambaDomain.inc:126
-msgid "Allow Machine Password changes (default: 0 => off)"
-msgstr "컴퓨터 암호 변경 허용 (기본값 : 0 => 꺼짐)"
-
-#: admin/groups/samba/class_sambaGroup.inc:28
-#: admin/systems/samba/class_sambaSystemTab.inc:29
-#: config/samba/class_sambaPluginConfig.inc:27
+#: backend/samba/class_sambaPluginConfig.inc:27
+#: management/groups/samba/class_sambaGroup.inc:28
+#: management/systems/samba/class_sambaSystemTab.inc:29
 #: personal/samba/class_sambaAccount.inc:155
 msgid "Samba"
 msgstr "삼바"
 
-#: admin/groups/samba/class_sambaGroup.inc:29
-msgid "Samba group settings"
-msgstr "삼바 그룹 설정"
-
-#: admin/groups/samba/class_sambaGroup.inc:44
-#: admin/groups/samba/class_sambaGroup.inc:47
-#: admin/systems/samba/class_sambaSystemTab.inc:53
-#: personal/samba/class_sambaAccount.inc:198
-msgid "Domain"
-msgstr "도메"
-
-#: admin/groups/samba/class_sambaGroup.inc:47
-msgid "Samba domain"
-msgstr "삼바 도메인"
-
-#: admin/groups/samba/class_sambaGroup.inc:51
-msgid "Samba information"
-msgstr "삼바 정보"
-
-#: admin/groups/samba/class_sambaGroup.inc:58
-msgid "Group type"
-msgstr "그룹 유형"
-
-#: admin/groups/samba/class_sambaGroup.inc:58
-msgid "Samba group type"
-msgstr "삼바 그룹 유형"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:121
-msgid "Samba group"
-msgstr "삼바 그룹"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:121
-msgid "Domain admins"
-msgstr "도메인 관리자"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:121
-msgid "Domain users"
-msgstr "도메인 사용자"
-
-#: admin/groups/samba/class_sambaGroup.inc:62
-#: admin/groups/samba/class_sambaGroup.inc:121
-msgid "Domain guests"
-msgstr "도메인 게스트"
-
-#: admin/groups/samba/class_sambaGroup.inc:106
-msgid "Cannot find group SID in your configuration!"
-msgstr "구성에서 그룹 SID를 찾을 수 없습니다!"
-
-#: admin/groups/samba/class_sambaGroup.inc:121
-#, php-format
-msgid "Special group (%d)"
-msgstr "특수 그룹 (%d)"
-
-#: admin/groups/samba/class_sambaGroup.inc:138
-#: personal/samba/class_sambaAccount.inc:510
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr "정의되지 않은 Samba SID가 감지되었습니다. 이 문제를 수동으로 수정하십시오!"
-
-#: admin/systems/samba/class_argonautEventSambaShares.inc:27
-msgid "Update Samba Shares"
-msgstr "삼바 공유 업데이트"
-
-#: admin/systems/samba/class_sambaSystemTab.inc:30
-msgid "Windows workstation information"
-msgstr "Windows 워크스테이션 정보"
-
-#: admin/systems/samba/class_sambaSystemTab.inc:53
-#: personal/samba/class_sambaAccount.inc:198
-msgid "Samba domain name"
-msgstr "삼바 도메인 이름"
-
-#: config/samba/class_sambaPluginConfig.inc:28
+#: backend/samba/class_sambaPluginConfig.inc:28
 msgid "Samba plugin configuration"
 msgstr "삼바 플러그인 구성"
 
-#: config/samba/class_sambaPluginConfig.inc:41
+#: backend/samba/class_sambaPluginConfig.inc:41
 #: personal/samba/class_sambaAccount.inc:156
 msgid "Samba settings"
 msgstr "삼바 설정"
 
-#: config/samba/class_sambaPluginConfig.inc:44
+#: backend/samba/class_sambaPluginConfig.inc:44
 msgid "Samba ID mapping"
 msgstr "삼바 ID 매핑"
 
-#: config/samba/class_sambaPluginConfig.inc:45
+#: backend/samba/class_sambaPluginConfig.inc:45
 msgid ""
 "Maintain sambaIdmapEntry objects. Depending on your setup this can "
 "drastically improve the windows login performance."
 msgstr ""
 "sambaIdmapEntry 오브젝트를 유지보수 하십시오. 설정에 따라 Windows 로그인 성능을 크게 향상시킬 수 있습니다."
 
-#: config/samba/class_sambaPluginConfig.inc:49
+#: backend/samba/class_sambaPluginConfig.inc:49
 msgid "Samba SID"
 msgstr "삼바 SID"
 
-#: config/samba/class_sambaPluginConfig.inc:50
+#: backend/samba/class_sambaPluginConfig.inc:50
 msgid ""
 "A samba SID if not available inside of the LDAP though samba schema. You can"
 " retrieve the current sid by net getlocalsid."
@@ -298,50 +61,288 @@ msgstr ""
 "Samba 스키마를 통해 LDAP 내부에서 사용할 수없는 경우 Samba SID net getlocalsid로 현재 sid를 검색 할 수"
 " 있습니다."
 
-#: config/samba/class_sambaPluginConfig.inc:55
+#: backend/samba/class_sambaPluginConfig.inc:55
 msgid "Samba rid base"
 msgstr "삼바 RID 베이스"
 
-#: config/samba/class_sambaPluginConfig.inc:56
+#: backend/samba/class_sambaPluginConfig.inc:56
 msgid ""
 "The base id to add to ordinary sid calculations - if not available inside of"
 " the LDAP though samba schema."
 msgstr "samba 스키마를 통해 LDAP 내부에서 사용할 수 없는 경우 일반 sid 계산에 추가 할 기본 ID입니다."
 
-#: config/samba/class_sambaPluginConfig.inc:61
+#: backend/samba/class_sambaPluginConfig.inc:61
 msgid "Expiration date synchronisaton"
 msgstr "만료 날짜 동기화"
 
-#: config/samba/class_sambaPluginConfig.inc:61
+#: backend/samba/class_sambaPluginConfig.inc:61
 msgid "Synchronisaton the expiration date with the POSIX one?"
 msgstr "만료 날짜를 POSIX 날짜와 동기화 하시겠습니까?"
 
-#: config/samba/class_sambaPluginConfig.inc:67
+#: backend/samba/class_sambaPluginConfig.inc:67
 msgid "Generate sambaLMPassword"
 msgstr "sambaLMPassword 생성"
 
-#: config/samba/class_sambaPluginConfig.inc:67
+#: backend/samba/class_sambaPluginConfig.inc:67
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
 msgstr "Windows <= 98 또는 Samba <3.2 를 준수해야 합니다."
 
-#: config/samba/class_sambaPluginConfig.inc:71
+#: backend/samba/class_sambaPluginConfig.inc:71
 msgid "Activate primary group warning"
 msgstr "기본 그룹 경고 활성화"
 
-#: config/samba/class_sambaPluginConfig.inc:71
+#: backend/samba/class_sambaPluginConfig.inc:71
 msgid ""
 "Issue a warning if POSIX primary group cannot be converted to Samba primary "
 "group when activating the Samba tab of a user"
 msgstr ""
 "사용자의 Samba 탭을 활성화 할 때 POSIX 기본 그룹을 Samba 기본 그룹으로 변환 할 수 없는 경우 경고를 발생하십시오."
 
-#: config/samba/class_sambaPluginConfig.inc:75
+#: backend/samba/class_sambaPluginConfig.inc:75
 msgid "Depend upon POSIX tab"
 msgstr "POSIX 탭에 따라"
 
-#: config/samba/class_sambaPluginConfig.inc:75
+#: backend/samba/class_sambaPluginConfig.inc:75
 msgid "Whether the Samba user tab should depend upon the POSIX tab"
 msgstr "Samba 사용자 탭이 POSIX 탭에 종속되어야하는지 여부"
+
+#: management/samba/class_sambaDomainManagement.inc:37
+msgid "Samba domains"
+msgstr "삼바 도메인"
+
+#: management/samba/class_sambaDomainManagement.inc:38
+msgid "Samba domain management"
+msgstr "삼바 도메인 관리"
+
+#: management/samba/class_sambaDomainManagement.inc:39
+msgid "Manage Samba domains"
+msgstr "Samba 도메인 관리"
+
+#: management/samba/class_sambaDomain.inc:26
+#: management/samba/class_sambaDomain.inc:27
+#: management/samba/class_sambaDomain.inc:31
+msgid "Samba Domain"
+msgstr "삼바 도메인"
+
+#: management/samba/class_sambaDomain.inc:32
+msgid "Samba domain settings"
+msgstr "삼바 도메인 설"
+
+#: management/samba/class_sambaDomain.inc:48
+#: management/systems/samba/class_sambaSystemTab.inc:44
+msgid "Properties"
+msgstr "설정"
+
+#: management/samba/class_sambaDomain.inc:51
+msgid "Domain name"
+msgstr "도메인 이름"
+
+#: management/samba/class_sambaDomain.inc:51
+msgid "Name of this domain"
+msgstr "이 도메인의 이름"
+
+#: management/samba/class_sambaDomain.inc:55
+msgid "SID"
+msgstr "SID"
+
+#: management/samba/class_sambaDomain.inc:55
+msgid "SID of this domain"
+msgstr "이 도메인의 SID"
+
+#: management/samba/class_sambaDomain.inc:59
+msgid "Rid base"
+msgstr "RID 베이스"
+
+#: management/samba/class_sambaDomain.inc:59
+msgid "Algorithmic rid base"
+msgstr "알고리즘 RID 베이스"
+
+#: management/samba/class_sambaDomain.inc:63
+msgid "Minimum password age"
+msgstr "최소 암호 사용 기간"
+
+#: management/samba/class_sambaDomain.inc:64
+msgid ""
+"Minimum password age, in seconds (default: 0 => allow immediate password "
+"change)"
+msgstr "최소 암호 사용 기간 (초) (기본값 : 0 => 즉시 암호 변경 허용)"
+
+#: management/samba/class_sambaDomain.inc:69
+msgid "Maximum password age"
+msgstr "최대 암호 사용 기간"
+
+#: management/samba/class_sambaDomain.inc:70
+msgid ""
+"Maximum password age, in seconds (default: -1 => never expire passwords)"
+msgstr "최대 비밀번호 사용 기간 (초) (기본값 : -1 => 비밀번호가 만료되지 않음)"
+
+#: management/samba/class_sambaDomain.inc:75
+msgid "Next RID"
+msgstr "다음 RID"
+
+#: management/samba/class_sambaDomain.inc:76
+msgid "Next NT rid to give out for anything"
+msgstr "다음 번 NT rid가 제공하는 것"
+
+#: management/samba/class_sambaDomain.inc:80
+msgid "Next group RID"
+msgstr "다음 그룹 RID"
+
+#: management/samba/class_sambaDomain.inc:81
+msgid "Next NT rid to give out for groups"
+msgstr "그룹에게 줄 다음 NT RID"
+
+#: management/samba/class_sambaDomain.inc:85
+msgid "Next user RID"
+msgstr "다음 사용자 RID"
+
+#: management/samba/class_sambaDomain.inc:86
+msgid "Next NT rid to give our for users"
+msgstr "사용자에게 제공 할 다음 NT RID"
+
+#: management/samba/class_sambaDomain.inc:90
+msgid "Minimum password length"
+msgstr "최소 비밀번호 길이"
+
+#: management/samba/class_sambaDomain.inc:91
+msgid "Minimal password length (default: 5)"
+msgstr "최소 비밀번호 길이 (기본값 : 5)"
+
+#: management/samba/class_sambaDomain.inc:95
+msgid "Password history length"
+msgstr "비밀번호 히스토리 개수"
+
+#: management/samba/class_sambaDomain.inc:96
+msgid "Length of Password History Entries (default: 0 => off)"
+msgstr "비밀번호 히스토리 항목 개수 (기본값 : 0 => 꺼짐)"
+
+#: management/samba/class_sambaDomain.inc:100
+msgid "Logon to change password"
+msgstr "비밀번호 변경을 위해 로그온"
+
+#: management/samba/class_sambaDomain.inc:101
+msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
+msgstr "사용자가 비밀번호 변경을 위해 로그온하도록 강제 실행 (기본값 : 0 => 꺼짐, 2 => 켜짐)"
+
+#: management/samba/class_sambaDomain.inc:105
+msgid "Lockout duration"
+msgstr "잠금 기간"
+
+#: management/samba/class_sambaDomain.inc:106
+msgid "Lockout duration in minutes (default: 30, -1 => forever)"
+msgstr "잠금 시간, 분 (기본값 : 30, -1 => 영원히)"
+
+#: management/samba/class_sambaDomain.inc:110
+msgid "Lockout observation window"
+msgstr "잠금 감시 창"
+
+#: management/samba/class_sambaDomain.inc:111
+msgid "Reset time after lockout in minutes (default: 30)"
+msgstr "잠금 후 시간 재설정, 분 (기본값 : 30)"
+
+#: management/samba/class_sambaDomain.inc:115
+msgid "Lockout threshold"
+msgstr "잠금 임계 값"
+
+#: management/samba/class_sambaDomain.inc:116
+msgid "Lockout users after bad logon attempts (default: 0 => off)"
+msgstr "잘못된 로그온 시도 후 사용자 잠금 (기본값 : 0 => 꺼짐)"
+
+#: management/samba/class_sambaDomain.inc:120
+msgid "Force logoff"
+msgstr "강제 로그오프"
+
+#: management/samba/class_sambaDomain.inc:121
+msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
+msgstr "로그온 시간 이외의 사용자 연결 끊기 (기본값 : -1 => 꺼짐, 0 => 켜짐)"
+
+#: management/samba/class_sambaDomain.inc:125
+msgid "Refuse machine password change"
+msgstr "컴퓨터 비밀번호 변경 거부"
+
+#: management/samba/class_sambaDomain.inc:126
+msgid "Allow Machine Password changes (default: 0 => off)"
+msgstr "컴퓨터 암호 변경 허용 (기본값 : 0 => 꺼짐)"
+
+#: management/groups/samba/class_sambaGroup.inc:29
+msgid "Samba group settings"
+msgstr "삼바 그룹 설정"
+
+#: management/groups/samba/class_sambaGroup.inc:44
+#: management/groups/samba/class_sambaGroup.inc:47
+#: management/systems/samba/class_sambaSystemTab.inc:53
+#: personal/samba/class_sambaAccount.inc:198
+msgid "Domain"
+msgstr "도메"
+
+#: management/groups/samba/class_sambaGroup.inc:47
+msgid "Samba domain"
+msgstr "삼바 도메인"
+
+#: management/groups/samba/class_sambaGroup.inc:51
+msgid "Samba information"
+msgstr "삼바 정보"
+
+#: management/groups/samba/class_sambaGroup.inc:58
+msgid "Group type"
+msgstr "그룹 유형"
+
+#: management/groups/samba/class_sambaGroup.inc:58
+msgid "Samba group type"
+msgstr "삼바 그룹 유형"
+
+#: management/groups/samba/class_sambaGroup.inc:62
+#: management/groups/samba/class_sambaGroup.inc:122
+msgid "Samba group"
+msgstr "삼바 그룹"
+
+#: management/groups/samba/class_sambaGroup.inc:62
+#: management/groups/samba/class_sambaGroup.inc:122
+msgid "Domain admins"
+msgstr "도메인 관리자"
+
+#: management/groups/samba/class_sambaGroup.inc:62
+#: management/groups/samba/class_sambaGroup.inc:122
+msgid "Domain users"
+msgstr "도메인 사용자"
+
+#: management/groups/samba/class_sambaGroup.inc:62
+#: management/groups/samba/class_sambaGroup.inc:122
+msgid "Domain guests"
+msgstr "도메인 게스트"
+
+#: management/groups/samba/class_sambaGroup.inc:107
+msgid "Cannot find group SID in your configuration!"
+msgstr "구성에서 그룹 SID를 찾을 수 없습니다!"
+
+#: management/groups/samba/class_sambaGroup.inc:122
+#, php-format
+msgid "Special group (%d)"
+msgstr "특수 그룹 (%d)"
+
+#: management/groups/samba/class_sambaGroup.inc:139
+#: personal/samba/class_sambaAccount.inc:510
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr "정의되지 않은 Samba SID가 감지되었습니다. 이 문제를 수동으로 수정하십시오!"
+
+#: management/systems/samba/class_argonautEventSambaShares.inc:27
+msgid "Update Samba Shares"
+msgstr "삼바 공유 업데이트"
+
+#: management/systems/samba/class_sambaSystemTab.inc:30
+msgid "Windows workstation information"
+msgstr "Windows 워크스테이션 정보"
+
+#: management/systems/samba/class_sambaSystemTab.inc:53
+#: personal/samba/class_sambaAccount.inc:198
+msgid "Samba domain name"
+msgstr "삼바 도메인 이름"
+
+#: include/class_smbHash.inc:385
+msgid ""
+"Your PHP install does not have the mhash() nor the hash function. Cannot do "
+"MD4 hashes."
+msgstr "PHP 설치에는 mhash () 또는 해시 함수가 없습니다. MD4 해시를 수행 할 수 없습니다."
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"

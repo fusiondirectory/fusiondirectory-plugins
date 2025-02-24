@@ -6,16 +6,16 @@
 # Translators:
 # MCMic, 2018
 # fusiondirectory <contact@fusiondirectory.org>, 2019
-# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2020
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-27 16:02+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2020\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2024\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,215 +23,184 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: include/class_publicFormPage.inc:75
-msgid "Invalid link, both token and form are provided"
-msgstr "Lien invalide, le jeton et le formulaire ont tous deux été fournis"
+#: backend/public-forms/class_publicFormsConfig.inc:26
+msgid "Public forms configuration"
+msgstr "Configuration des formulaires publics"
 
-#: include/class_publicFormPage.inc:89
-#, php-format
-msgid "Could not find any invitation matching token \"%s\""
-msgstr "Impossible de trouver une invitation correspondant au jeton \"%s\""
+#: backend/public-forms/class_publicFormsConfig.inc:27
+msgid "FusionDirectory public forms plugin configuration"
+msgstr "Configuration du plugin de formulaires publics"
 
-#: include/class_publicFormPage.inc:91 include/class_publicFormPage.inc:109
-#, php-format
-msgid "Found several invitations matching token \"%s\""
-msgstr "Plusieurs invitations correspondant au jeton \"%s\" ont été trouvées"
-
-#: include/class_publicFormPage.inc:95
-#, php-format
-msgid "The invitation matching token \"%s\" does not exist anymore"
-msgstr "L’invitation correspondant au jeton \"%s\" n’existe plus"
-
-#: include/class_publicFormPage.inc:107
-#, php-format
-msgid "Could not find any invitation matching registration with token \"%s\""
-msgstr ""
-"Impossible de trouver une invitation correspondant à l’inscription avec le "
-"jeton \"%s\""
-
-#: include/class_publicFormPage.inc:156
-msgid "Form name or token missing from URL"
-msgstr "Nom de formulaire ou jeton manquant dans l'URL"
-
-#: include/class_publicFormPage.inc:159
-#, php-format
-msgid "Form \"%s\" could not be found"
-msgstr "Le formulaire \"%s\" n'a pas pu être trouvé"
-
-#: include/class_publicFormPage.inc:161
-#, php-format
-msgid "Found several forms named \"%s\""
-msgstr "Plusieurs formulaires nommés \"%s\" ont été trouvés"
-
-#: include/class_publicFormPage.inc:170
-#, php-format
-msgid "Form \"%s\" is private and requires an invitation"
-msgstr "Le formulaire \"%s\" est privé et nécessite une invitation"
-
-#: include/class_publicFormPage.inc:232
-msgid "Captcha code was wrong!"
-msgstr "Le code Captcha était faux !"
-
-#: include/class_publicFormPage.inc:240
-msgid "You need to accept the terms of service to continue!"
-msgstr "Vous devez accepter les conditions d'utilisation pour continuer !"
-
-#: include/class_publicFormPage.inc:391
-#, php-format
-msgid "Form - %s"
-msgstr "Formulaire - %s"
-
-#: include/class_publicFormPage.inc:393
-#: admin/public-forms/class_publicForm.inc:46
-msgid "Form"
-msgstr "Formulaire"
-
-#: admin/public-forms/class_publicFormAlteration.inc:27
-#: admin/public-forms/class_publicFormAlteration.inc:42
-msgid "Altered fields"
-msgstr "Champs modifiés"
-
-#: admin/public-forms/class_publicFormAlteration.inc:28
-#: admin/public-forms/class_publicFormAlteration.inc:47
-msgid "Alteration on form fields"
-msgstr "Modification sur les champs de formulaire"
-
-#: admin/public-forms/class_publicFormAlteration.inc:51
-#: admin/public-forms/class_publicFormAlteration.inc:100
-msgid "Field"
-msgstr "Champ"
-
-#: admin/public-forms/class_publicFormAlteration.inc:51
-msgid "LDAP name of a form field"
-msgstr "Nom LDAP d'un champ de formulaire"
-
-#: admin/public-forms/class_publicFormAlteration.inc:55
-#: admin/public-forms/class_publicFormAlteration.inc:101
-msgid "Mandatory"
-msgstr "Obligatoire"
-
-#: admin/public-forms/class_publicFormAlteration.inc:55
-msgid "Should this field be mandatory"
-msgstr "Est-ce que ce champ doit être obligatoire"
-
-#: admin/public-forms/class_publicFormAlteration.inc:61
-#: admin/public-forms/class_publicFormAlteration.inc:102
-msgid "Read only"
-msgstr "Lecture seule"
-
-#: admin/public-forms/class_publicFormAlteration.inc:61
-msgid "Should this field be read only"
-msgstr "Est-ce que ce champ doit être en lecture seule"
-
-#: admin/public-forms/class_publicFormAlteration.inc:67
-#: admin/public-forms/class_publicFormAlteration.inc:103
-msgid "Imported"
-msgstr "Importé"
-
-#: admin/public-forms/class_publicFormAlteration.inc:67
-msgid "Should this field be imported from HTTP headers"
-msgstr "Est-ce que champ doit être importé depuis les entêtes HTTP ?"
-
-#: admin/public-forms/class_publicFormAlteration.inc:73
-#: admin/public-forms/class_publicFormAlteration.inc:104
-msgid "Hidden"
-msgstr "Caché"
-
-#: admin/public-forms/class_publicFormAlteration.inc:73
-msgid "Should this field be hidden away"
-msgstr "Est-ce que ce champ doit être caché"
-
-#: admin/public-forms/class_publicFormManagement.inc:27
-#: config/public-forms/class_publicFormsConfig.inc:40
+#: backend/public-forms/class_publicFormsConfig.inc:40
+#: management/public-forms/class_publicFormManagement.inc:27
 msgid "Public forms"
 msgstr "Formulaires publics"
 
-#: admin/public-forms/class_publicFormManagement.inc:28
+#: backend/public-forms/class_publicFormsConfig.inc:43
+msgid "Public forms RDN"
+msgstr "Branche des formulaires"
+
+#: backend/public-forms/class_publicFormsConfig.inc:43
+msgid "Branch in which public forms will be stored"
+msgstr "Branche dans laquelle les formulaires publics seront stockés"
+
+#: backend/public-forms/class_publicFormsConfig.inc:48
+msgid "Allows private form without invitations"
+msgstr "Permet un formulaire privé sans invitations"
+
+#: backend/public-forms/class_publicFormsConfig.inc:48
+msgid ""
+"Allows the usage of private form without invitation is plugin installed"
+msgstr ""
+"Permet l'utilisation d'un formulaire privé sans invitation si le plugin est "
+"installé"
+
+#: management/public-forms/class_publicFormAlteration.inc:27
+#: management/public-forms/class_publicFormAlteration.inc:42
+msgid "Altered fields"
+msgstr "Champs modifiés"
+
+#: management/public-forms/class_publicFormAlteration.inc:28
+#: management/public-forms/class_publicFormAlteration.inc:47
+msgid "Alteration on form fields"
+msgstr "Modification sur les champs de formulaire"
+
+#: management/public-forms/class_publicFormAlteration.inc:51
+#: management/public-forms/class_publicFormAlteration.inc:100
+msgid "Field"
+msgstr "Champ"
+
+#: management/public-forms/class_publicFormAlteration.inc:51
+msgid "LDAP name of a form field"
+msgstr "Nom LDAP d'un champ de formulaire"
+
+#: management/public-forms/class_publicFormAlteration.inc:55
+#: management/public-forms/class_publicFormAlteration.inc:101
+msgid "Mandatory"
+msgstr "Obligatoire"
+
+#: management/public-forms/class_publicFormAlteration.inc:55
+msgid "Should this field be mandatory"
+msgstr "Est-ce que ce champ doit être obligatoire"
+
+#: management/public-forms/class_publicFormAlteration.inc:61
+#: management/public-forms/class_publicFormAlteration.inc:102
+msgid "Read only"
+msgstr "Lecture seule"
+
+#: management/public-forms/class_publicFormAlteration.inc:61
+msgid "Should this field be read only"
+msgstr "Est-ce que ce champ doit être en lecture seule"
+
+#: management/public-forms/class_publicFormAlteration.inc:67
+#: management/public-forms/class_publicFormAlteration.inc:103
+msgid "Imported"
+msgstr "Importé"
+
+#: management/public-forms/class_publicFormAlteration.inc:67
+msgid "Should this field be imported from HTTP headers"
+msgstr "Est-ce que champ doit être importé depuis les entêtes HTTP ?"
+
+#: management/public-forms/class_publicFormAlteration.inc:73
+#: management/public-forms/class_publicFormAlteration.inc:104
+msgid "Hidden"
+msgstr "Caché"
+
+#: management/public-forms/class_publicFormAlteration.inc:73
+msgid "Should this field be hidden away"
+msgstr "Est-ce que ce champ doit être caché"
+
+#: management/public-forms/class_publicFormManagement.inc:28
 msgid "Public forms management"
 msgstr "Gestion des formulaires publics"
 
-#: admin/public-forms/class_publicFormManagement.inc:29
+#: management/public-forms/class_publicFormManagement.inc:29
 msgid "Manage public forms"
 msgstr "Gérer les formulaires publics"
 
-#: admin/public-forms/class_publicForm.inc:27
-#: admin/public-forms/class_publicForm.inc:31
+#: management/public-forms/class_publicForm.inc:27
+#: management/public-forms/class_publicForm.inc:31
 msgid "Public form"
 msgstr "Formulaire public"
 
-#: admin/public-forms/class_publicForm.inc:28
+#: management/public-forms/class_publicForm.inc:28
 msgid "Public form which creates objects inside FusionDirectory"
 msgstr "Formulaire public qui créer des objets dans FusionDirectory"
 
-#: admin/public-forms/class_publicForm.inc:50
+#: management/public-forms/class_publicForm.inc:46
+#: include/class_publicFormPage.inc:434
+msgid "Form"
+msgstr "Formulaire"
+
+#: management/public-forms/class_publicForm.inc:50
 msgid "Name"
 msgstr "Nom"
 
-#: admin/public-forms/class_publicForm.inc:50
+#: management/public-forms/class_publicForm.inc:50
 msgid "Name used to identify this form"
 msgstr "Nom utilisé pour identifier ce formulaire"
 
-#: admin/public-forms/class_publicForm.inc:54
+#: management/public-forms/class_publicForm.inc:54
 msgid "Title"
 msgstr "Titre"
 
-#: admin/public-forms/class_publicForm.inc:54
+#: management/public-forms/class_publicForm.inc:54
 msgid "Title of this form"
 msgstr "Titre de ce formulaire"
 
-#: admin/public-forms/class_publicForm.inc:58
+#: management/public-forms/class_publicForm.inc:58
 msgid "Text"
 msgstr "Texte"
 
-#: admin/public-forms/class_publicForm.inc:58
+#: management/public-forms/class_publicForm.inc:58
 msgid "Text of the public form, shown before the form"
 msgstr "Texte du formulaire public, affiché avant le formulaire"
 
-#: admin/public-forms/class_publicForm.inc:62
+#: management/public-forms/class_publicForm.inc:62
 msgid "Object type"
 msgstr "Type d'objet"
 
-#: admin/public-forms/class_publicForm.inc:62
+#: management/public-forms/class_publicForm.inc:62
 msgid "Type of objects you wish to create from this form"
 msgstr "Type d'objets que vous souhaitez créer à partir de ce formulaire"
 
-#: admin/public-forms/class_publicForm.inc:67
+#: management/public-forms/class_publicForm.inc:67
 msgid "Template"
 msgstr "Modèle"
 
-#: admin/public-forms/class_publicForm.inc:67
+#: management/public-forms/class_publicForm.inc:67
 msgid "Object template used by this form"
 msgstr "Modèle d'objet utilisé par ce formulaire"
 
-#: admin/public-forms/class_publicForm.inc:72
+#: management/public-forms/class_publicForm.inc:72
 msgid "Confirmation text"
 msgstr "Texte de confirmation"
 
-#: admin/public-forms/class_publicForm.inc:72
+#: management/public-forms/class_publicForm.inc:72
 msgid "Text shown once the object is created"
 msgstr "Texte affiché une fois l'objet créé"
 
-#: admin/public-forms/class_publicForm.inc:77
+#: management/public-forms/class_publicForm.inc:77
 msgid "Private"
 msgstr "Privé"
 
-#: admin/public-forms/class_publicForm.inc:77
+#: management/public-forms/class_publicForm.inc:77
 msgid "Restrict this form to invitations"
 msgstr "Limiter ce formulaire aux invitations"
 
-#: admin/public-forms/class_publicForm.inc:82
+#: management/public-forms/class_publicForm.inc:82
 msgid "Creation base"
 msgstr "Base de création"
 
-#: admin/public-forms/class_publicForm.inc:82
+#: management/public-forms/class_publicForm.inc:82
 msgid "Base in which objects will get created"
 msgstr "Base où seront créés les objets"
 
-#: admin/public-forms/class_publicForm.inc:87
+#: management/public-forms/class_publicForm.inc:87
 msgid "TOS URL"
 msgstr "URL des CGU"
 
-#: admin/public-forms/class_publicForm.inc:87
+#: management/public-forms/class_publicForm.inc:87
 msgid ""
 "Terms of service URL. If filled, this adds a mandatory checkbox to agree to "
 "the terms at this URL."
@@ -239,39 +208,81 @@ msgstr ""
 "URL des conditions générales d’utilisation. Si rempli, cela ajoute une case "
 "à cocher obligatoire pour accepter les conditions présentées par cette URL."
 
-#: admin/public-forms/class_publicForm.inc:91
+#: management/public-forms/class_publicForm.inc:91
 msgid "Captcha"
 msgstr "Captcha"
 
-#: admin/public-forms/class_publicForm.inc:91
+#: management/public-forms/class_publicForm.inc:91
 msgid "Add a captcha to the form"
 msgstr "Ajouter un captcha au formulaire"
 
-#: admin/public-forms/class_publicForm.inc:96
+#: management/public-forms/class_publicForm.inc:96
 msgid "Link"
 msgstr "Lien"
 
-#: admin/public-forms/class_publicForm.inc:96
+#: management/public-forms/class_publicForm.inc:96
 msgid "Link to the public form as currently saved in the LDAP"
 msgstr ""
 "Lien vers le formulaire public tel qu'il est actuellement enregistré dans le"
 " LDAP"
 
-#: config/public-forms/class_publicFormsConfig.inc:26
-msgid "Public forms configuration"
-msgstr "Configuration des formulaires publics"
+#: include/class_publicFormPage.inc:77
+msgid "Invalid link, both token and form are provided"
+msgstr "Lien invalide, le jeton et le formulaire ont tous deux été fournis"
 
-#: config/public-forms/class_publicFormsConfig.inc:27
-msgid "FusionDirectory public forms plugin configuration"
-msgstr "Configuration du plugin de formulaires publics"
+#: include/class_publicFormPage.inc:91
+#, php-format
+msgid "Could not find any invitation matching token \"%s\""
+msgstr "Impossible de trouver une invitation correspondant au jeton \"%s\""
 
-#: config/public-forms/class_publicFormsConfig.inc:43
-msgid "Public forms RDN"
-msgstr "Branche des formulaires"
+#: include/class_publicFormPage.inc:93 include/class_publicFormPage.inc:111
+#, php-format
+msgid "Found several invitations matching token \"%s\""
+msgstr "Plusieurs invitations correspondant au jeton \"%s\" ont été trouvées"
 
-#: config/public-forms/class_publicFormsConfig.inc:43
-msgid "Branch in which public forms will be stored"
-msgstr "Branche dans laquelle les formulaires publics seront stockés"
+#: include/class_publicFormPage.inc:97
+#, php-format
+msgid "The invitation matching token \"%s\" does not exist anymore"
+msgstr "L’invitation correspondant au jeton \"%s\" n’existe plus"
+
+#: include/class_publicFormPage.inc:109
+#, php-format
+msgid "Could not find any invitation matching registration with token \"%s\""
+msgstr ""
+"Impossible de trouver une invitation correspondant à l’inscription avec le "
+"jeton \"%s\""
+
+#: include/class_publicFormPage.inc:158
+msgid "Form name or token missing from URL"
+msgstr "Nom de formulaire ou jeton manquant dans l'URL"
+
+#: include/class_publicFormPage.inc:161
+#, php-format
+msgid "Form \"%s\" could not be found"
+msgstr "Le formulaire \"%s\" n'a pas pu être trouvé"
+
+#: include/class_publicFormPage.inc:163
+#, php-format
+msgid "Found several forms named \"%s\""
+msgstr "Plusieurs formulaires nommés \"%s\" ont été trouvés"
+
+#: include/class_publicFormPage.inc:178
+#, php-format
+msgid "Form \"%s\" is private and requires an invitation"
+msgstr "Le formulaire \"%s\" est privé et nécessite une invitation"
+
+#: include/class_publicFormPage.inc:246
+msgid "Captcha code was wrong!"
+msgstr "Le code Captcha était faux !"
+
+#: include/class_publicFormPage.inc:254
+msgid "You need to accept the terms of service to continue!"
+msgstr "Vous devez accepter les conditions d'utilisation pour continuer !"
+
+#: include/class_publicFormPage.inc:432
+#, php-format
+msgid "Form - %s"
+msgstr "Formulaire - %s"
 
 #: ihtml/themes/breezy/public-form.tpl.c:2
 msgid "I agree to the <a target=\"_blank\" href=\"%1\">terms of service</a>"

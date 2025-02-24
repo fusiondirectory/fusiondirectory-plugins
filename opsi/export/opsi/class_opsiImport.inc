@@ -38,7 +38,7 @@ class opsiImport extends systemImport
           'mainAttr'  => FALSE,
         ]
       ],
-      'plSection' => ['export' => ['name' => _('Export / Import'), 'priority' => 50]],
+      'plSection' => ['export' => ['name' => _('Export / Import'), 'priority' => 6]],
       'plPriority'    => 15,
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];

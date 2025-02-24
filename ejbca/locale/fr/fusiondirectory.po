@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -22,71 +22,71 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/ejbca/class_ejbcaManagement.inc:39
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:28
-#: config/ejbca/class_ejbcaConfig.inc:41
-msgid "EJBCA"
-msgstr "EJBCA"
-
-#: admin/ejbca/class_ejbcaManagement.inc:40
-msgid "EJBCA certificates management"
-msgstr "Gestion des certificats EJBCA"
-
-#: admin/ejbca/class_ejbcaManagement.inc:41
-msgid "Manage EJBCA certificates"
-msgstr "Gérer les certificats EJBCA"
-
-#: admin/ejbca/class_ejbcaManagement.inc:63
-msgid "Download"
-msgstr "Téléchargement"
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
-msgid "Assign EJBCA certificates to a user"
-msgstr "Assigner un certificat EJBCA à un utilisateur"
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:49
-msgid "EJBCA certs"
-msgstr "Certificats EJBCA"
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:53
-msgid "Certificates associated to this object"
-msgstr "Certificats associés a cet objet"
-
-#: admin/ejbca/class_ejbcaCertificate.inc:27
-#: admin/ejbca/class_ejbcaCertificate.inc:28
-#: admin/ejbca/class_ejbcaCertificate.inc:30
-msgid "EJBCA certificate"
-msgstr "Certificat EJBCA"
-
-#: admin/ejbca/class_ejbcaCertificate.inc:44
-#: admin/ejbca/class_ejbcaCertificate.inc:52
-msgid "Certificate"
-msgstr "Certificat"
-
-#: admin/ejbca/class_ejbcaCertificate.inc:48
-msgid "Name"
-msgstr "Nom"
-
-#: admin/ejbca/class_ejbcaCertificate.inc:48
-msgid "Common name"
-msgstr "Nom commun"
-
-#: admin/ejbca/class_ejbcaCertificate.inc:52
-msgid "Certificate content"
-msgstr "Contenu du certificat"
-
-#: config/ejbca/class_ejbcaConfig.inc:27
+#: backend/ejbca/class_ejbcaConfig.inc:27
 msgid "EJBCA plugin configuration"
 msgstr "Configuration EJBCA"
 
-#: config/ejbca/class_ejbcaConfig.inc:28
+#: backend/ejbca/class_ejbcaConfig.inc:28
 msgid "FusionDirectory ejbca plugin configuration"
 msgstr "Configuration du plugin ejbca"
 
-#: config/ejbca/class_ejbcaConfig.inc:44
+#: backend/ejbca/class_ejbcaConfig.inc:41
+#: management/ejbca/class_ejbcaManagement.inc:39
+#: management/ejbca/certificates/class_ejbcaCertificates.inc:28
+msgid "EJBCA"
+msgstr "EJBCA"
+
+#: backend/ejbca/class_ejbcaConfig.inc:44
 msgid "EJBCA RDN"
 msgstr "Branche EJBCA"
 
-#: config/ejbca/class_ejbcaConfig.inc:44
+#: backend/ejbca/class_ejbcaConfig.inc:44
 msgid "Branch in which ejbca certificates are stored"
 msgstr "Branche dans laquelle sont stockés les certificats EJBCA"
+
+#: management/ejbca/class_ejbcaManagement.inc:40
+msgid "EJBCA certificates management"
+msgstr "Gestion des certificats EJBCA"
+
+#: management/ejbca/class_ejbcaManagement.inc:41
+msgid "Manage EJBCA certificates"
+msgstr "Gérer les certificats EJBCA"
+
+#: management/ejbca/class_ejbcaManagement.inc:63
+msgid "Download"
+msgstr "Téléchargement"
+
+#: management/ejbca/certificates/class_ejbcaCertificates.inc:29
+msgid "Assign EJBCA certificates to a user"
+msgstr "Assigner un certificat EJBCA à un utilisateur"
+
+#: management/ejbca/certificates/class_ejbcaCertificates.inc:49
+msgid "EJBCA certs"
+msgstr "Certificats EJBCA"
+
+#: management/ejbca/certificates/class_ejbcaCertificates.inc:53
+msgid "Certificates associated to this object"
+msgstr "Certificats associés a cet objet"
+
+#: management/ejbca/class_ejbcaCertificate.inc:27
+#: management/ejbca/class_ejbcaCertificate.inc:28
+#: management/ejbca/class_ejbcaCertificate.inc:30
+msgid "EJBCA certificate"
+msgstr "Certificat EJBCA"
+
+#: management/ejbca/class_ejbcaCertificate.inc:44
+#: management/ejbca/class_ejbcaCertificate.inc:52
+msgid "Certificate"
+msgstr "Certificat"
+
+#: management/ejbca/class_ejbcaCertificate.inc:48
+msgid "Name"
+msgstr "Nom"
+
+#: management/ejbca/class_ejbcaCertificate.inc:48
+msgid "Common name"
+msgstr "Nom commun"
+
+#: management/ejbca/class_ejbcaCertificate.inc:52
+msgid "Certificate content"
+msgstr "Contenu du certificat"

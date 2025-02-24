@@ -1,24 +1,29 @@
 information:
-  name : ldapmanager
-  description : Ldapmanager plugin for FusionDirectory
-  version : "1.4"
-  authors :
-    - "FusionDirectory"
-  status : Stable
+  authors:
+  - FusionDirectory
+  description: Ldapmanager plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ldapmanager/html/themes/breezy/icons/48/apps/ldapmanager.png
+  name: ldapmanager
+  origin: package
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/ldapmanager/html/themes/breezy/icons/48/apps/ldapmanager.png"
-  tags: ["plugin", "ldapmanager", "infra", "deploy"]
-  license: "GPLv2"
-  origin: "package"
-
-support:
-  provider: fusiondirectory
-  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
-  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
-  schemaUrl: "https://schemas.fusiondirectory.org/"
-  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
-
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ldapmanager/contrib/screenshots/ldapmanager-csv-import.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ldapmanager/contrib/screenshots/ldapmanager-import-ldif.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ldapmanager/contrib/screenshots/user-selected-left-panel.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ldapmanager/contrib/screenshots/ldapmanager-export-ldif.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ldapmanager/contrib/screenshots/ldapmanager-export-tabs.png
+  - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/ldapmanager/contrib/screenshots/ldapmanager-posix-group-test.png
+  status: Stable
+  tags:
+  - export
+  version: '1.5'
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion: 1.5
+  phpVersion: 7.4
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/ldapmanager/index.html
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

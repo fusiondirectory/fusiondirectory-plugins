@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:50+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -22,36 +22,59 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/autofs/class_autofsManagement.inc:36
+#: backend/autofs/class_autofsConfig.inc:26
+msgid "Autofs configuration"
+msgstr "Autofs  설정"
+
+#: backend/autofs/class_autofsConfig.inc:27
+msgid "FusionDirectory autofs plugin configuration"
+msgstr "FuctionDirectory autofs 플러그인 설정"
+
+#: backend/autofs/class_autofsConfig.inc:40
+msgid "AutoFS"
+msgstr "AutoFS"
+
+#: backend/autofs/class_autofsConfig.inc:43
+msgid "AutoFS RDN"
+msgstr "AutoFS RDN"
+
+#: backend/autofs/class_autofsConfig.inc:43
+msgid "Branch in which automount info will be stored"
+msgstr "자동마운트 정보가 저장될 브랜치"
+
+#: management/autofs/class_autofsManagement.inc:36
 msgid "Auto fs"
 msgstr "Auto fs"
 
-#: admin/autofs/class_autofsManagement.inc:37
+#: management/autofs/class_autofsManagement.inc:37
 msgid "Auto fs management"
 msgstr "Auto fs 관리"
 
-#: admin/autofs/class_autofsManagement.inc:38
+#: management/autofs/class_autofsManagement.inc:38
 msgid "Manage auto fs mount points and directories"
 msgstr "Auto fs 마운트 지점 및 디렉토리 관리"
 
-#: admin/autofs/class_nisObject.inc:27 admin/autofs/class_nisObject.inc:28
-#: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:51
+#: management/autofs/class_nisObject.inc:27
+#: management/autofs/class_nisObject.inc:28
+#: management/autofs/class_nisObject.inc:31
+#: management/autofs/class_nisObject.inc:51
 msgid "Directory"
 msgstr "디렉토리"
 
-#: admin/autofs/class_nisObject.inc:55 admin/autofs/class_nisMap.inc:50
+#: management/autofs/class_nisObject.inc:55
+#: management/autofs/class_nisMap.inc:50
 msgid "Name"
 msgstr "이름"
 
-#: admin/autofs/class_nisObject.inc:55
+#: management/autofs/class_nisObject.inc:55
 msgid "Name of this directory"
 msgstr "디렉토리 이름"
 
-#: admin/autofs/class_nisObject.inc:61
+#: management/autofs/class_nisObject.inc:61
 msgid "Automount entry"
 msgstr "자동마운트 항목"
 
-#: admin/autofs/class_nisObject.inc:61
+#: management/autofs/class_nisObject.inc:61
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
@@ -59,39 +82,20 @@ msgstr ""
 "자동마운트 데몬을 위한 디렉토리 항목. 가령 'auto.u' 또는 '-fstype=nfs "
 "domaine.tld:/mount/directory'"
 
-#: admin/autofs/class_nisObject.inc:65 admin/autofs/class_nisMap.inc:27
-#: admin/autofs/class_nisMap.inc:31 admin/autofs/class_nisMap.inc:46
+#: management/autofs/class_nisObject.inc:65
+#: management/autofs/class_nisMap.inc:27 management/autofs/class_nisMap.inc:31
+#: management/autofs/class_nisMap.inc:46
 msgid "Mount point"
 msgstr "마운트 포인트"
 
-#: admin/autofs/class_nisObject.inc:65
+#: management/autofs/class_nisObject.inc:65
 msgid "The mount point this directory will be placed in"
 msgstr "마운트 포인트 디렉토리"
 
-#: admin/autofs/class_nisMap.inc:28
+#: management/autofs/class_nisMap.inc:28
 msgid "Autofs mount point"
 msgstr "자동마운트 포인트"
 
-#: admin/autofs/class_nisMap.inc:50
+#: management/autofs/class_nisMap.inc:50
 msgid "Name of the mount point"
 msgstr "마운트 포인트명"
-
-#: config/autofs/class_autofsConfig.inc:26
-msgid "Autofs configuration"
-msgstr "Autofs  설정"
-
-#: config/autofs/class_autofsConfig.inc:27
-msgid "FusionDirectory autofs plugin configuration"
-msgstr "FuctionDirectory autofs 플러그인 설정"
-
-#: config/autofs/class_autofsConfig.inc:40
-msgid "AutoFS"
-msgstr "AutoFS"
-
-#: config/autofs/class_autofsConfig.inc:43
-msgid "AutoFS RDN"
-msgstr "AutoFS RDN"
-
-#: config/autofs/class_autofsConfig.inc:43
-msgid "Branch in which automount info will be stored"
-msgstr "자동마운트 정보가 저장될 브랜치"

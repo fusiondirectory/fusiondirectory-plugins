@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:31+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Russian Petrine orthography (https://app.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
@@ -21,211 +21,211 @@ msgstr ""
 "Language: ru@petr1708\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: admin/applications/class_applicationManagement.inc:27
-#: admin/roles/class_applicationRights.inc:28
-#: admin/roles/class_applicationRights.inc:49
-#: config/applications/class_applicationsPluginConfig.inc:26
-#: config/applications/class_applicationsPluginConfig.inc:40
+#: backend/applications/class_applicationsPluginConfig.inc:26
+#: backend/applications/class_applicationsPluginConfig.inc:40
+#: management/applications/class_applicationManagement.inc:27
+#: management/roles/class_applicationRights.inc:28
+#: management/roles/class_applicationRights.inc:49
 msgid "Applications"
 msgstr "Приложения"
 
-#: admin/applications/class_applicationManagement.inc:28
-msgid "Applications management"
-msgstr ""
-
-#: admin/applications/class_applicationManagement.inc:29
-msgid "Manage applications and web applications"
-msgstr ""
-
-#: admin/applications/class_applicationManagement.inc:86
-msgid "Web applications"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:26
-#: admin/applications/class_webApplication.inc:30
-msgid "Web application"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:27
-msgid "Web applicationts names, icons and links"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:43
-#: admin/applications/class_applicationGeneric.inc:27
-#: admin/applications/class_applicationGeneric.inc:31
-#: admin/applications/class_applicationGeneric.inc:44
-msgid "Application"
-msgstr "Приложение"
-
-#: admin/applications/class_webApplication.inc:47
-msgid "Name"
-msgstr "Фамилия"
-
-#: admin/applications/class_webApplication.inc:47
-msgid "Name or id for application"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:51
-#: admin/applications/class_applicationGeneric.inc:52
-msgid "Description"
-msgstr "Описание"
-
-#: admin/applications/class_webApplication.inc:51
-#: admin/applications/class_applicationGeneric.inc:52
-msgid "A short description of this application"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:55
-msgid "URL"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:55
-msgid "Link to this application"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:59
-msgid "Display Name"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:59
-msgid "Displayed name for links to this application"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:65
-#: admin/applications/class_applicationGeneric.inc:66
-msgid "Icon"
-msgstr "Пиктограмма"
-
-#: admin/applications/class_webApplication.inc:68
-#: admin/applications/class_applicationGeneric.inc:69
-msgid "The icon for this application"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:73
-msgid "Icon location"
-msgstr ""
-
-#: admin/applications/class_webApplication.inc:73
-msgid "Usual path to this application icon"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:28
-msgid "Application information"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:48
-msgid "Application name"
-msgstr "Приложение"
-
-#: admin/applications/class_applicationGeneric.inc:48
-msgid "The name of this application"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:56
-msgid "Execute"
-msgstr "Выполнить"
-
-#: admin/applications/class_applicationGeneric.inc:56
-msgid "The application to be executed"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:60
-msgid "Display name"
-msgstr "Отображаемое имя"
-
-#: admin/applications/class_applicationGeneric.inc:60
-msgid "The displayed name for this application"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:76
-msgid "Options"
-msgstr "Параметры"
-
-#: admin/applications/class_applicationGeneric.inc:79
-msgid "Only executable for member"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:79
-msgid "Only executable by the memebers of the group"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:84
-msgid "Replace user configuration on startup"
-msgstr "Заменять настройки пользователя при запуске"
-
-#: admin/applications/class_applicationGeneric.inc:84
-msgid "Replace the user configuration on startup"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:89
-msgid "Place icon on members desktop"
-msgstr "Помещать пиктограмму на рабочие столы членов группы"
-
-#: admin/applications/class_applicationGeneric.inc:89
-msgid "Put an icon on the user desktop"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:94
-msgid "Place entry in members startmenu"
-msgstr "Помещать членам группы соответствующий элемент в меню запуска"
-
-#: admin/applications/class_applicationGeneric.inc:94
-#: admin/applications/class_applicationGeneric.inc:99
-msgid "Put an entry in the startup menu"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:99
-msgid "Place entry in members launch bar"
-msgstr ""
-
-#: admin/roles/class_applicationRights.inc:29
-msgid "Applications allowed for this role"
-msgstr ""
-
-#: admin/roles/class_applicationRights.inc:45
-msgid "Application list"
-msgstr ""
-
-#: admin/roles/class_applicationRights.inc:49
-msgid "The applications users with this role are allowed to launch"
-msgstr ""
-
-#: config/applications/class_applicationsPluginConfig.inc:27
+#: backend/applications/class_applicationsPluginConfig.inc:27
 msgid "Applications plugin configuration"
 msgstr ""
 
-#: config/applications/class_applicationsPluginConfig.inc:43
+#: backend/applications/class_applicationsPluginConfig.inc:43
 msgid "Application RDN"
 msgstr ""
 
-#: config/applications/class_applicationsPluginConfig.inc:43
+#: backend/applications/class_applicationsPluginConfig.inc:43
 msgid "Branch in which applications will be stored"
 msgstr ""
 
-#: config/applications/class_applicationsPluginConfig.inc:48
+#: backend/applications/class_applicationsPluginConfig.inc:48
 msgid "Web applications RDN"
 msgstr ""
 
-#: config/applications/class_applicationsPluginConfig.inc:48
+#: backend/applications/class_applicationsPluginConfig.inc:48
 msgid "Branch in which web applications will be stored"
 msgstr ""
 
-#: config/applications/class_applicationsPluginConfig.inc:53
+#: backend/applications/class_applicationsPluginConfig.inc:53
 msgid "Show web applications in menu"
 msgstr ""
 
-#: config/applications/class_applicationsPluginConfig.inc:53
+#: backend/applications/class_applicationsPluginConfig.inc:53
 msgid "Whether to show web applications in FD main menu"
 msgstr ""
 
-#: config/applications/class_applicationsPluginConfig.inc:56
+#: backend/applications/class_applicationsPluginConfig.inc:56
 msgid "None"
 msgstr ""
 
-#: config/applications/class_applicationsPluginConfig.inc:56
+#: backend/applications/class_applicationsPluginConfig.inc:56
 msgid "Only allowed"
 msgstr ""
 
-#: config/applications/class_applicationsPluginConfig.inc:56
+#: backend/applications/class_applicationsPluginConfig.inc:56
 msgid "All"
 msgstr "Все"
+
+#: management/applications/class_applicationManagement.inc:28
+msgid "Applications management"
+msgstr ""
+
+#: management/applications/class_applicationManagement.inc:29
+msgid "Manage applications and web applications"
+msgstr ""
+
+#: management/applications/class_applicationManagement.inc:86
+msgid "Web applications"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:26
+#: management/applications/class_webApplication.inc:30
+msgid "Web application"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:27
+msgid "Web applicationts names, icons and links"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:43
+#: management/applications/class_applicationGeneric.inc:27
+#: management/applications/class_applicationGeneric.inc:31
+#: management/applications/class_applicationGeneric.inc:44
+msgid "Application"
+msgstr "Приложение"
+
+#: management/applications/class_webApplication.inc:47
+msgid "Name"
+msgstr "Фамилия"
+
+#: management/applications/class_webApplication.inc:47
+msgid "Name or id for application"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:51
+#: management/applications/class_applicationGeneric.inc:52
+msgid "Description"
+msgstr "Описание"
+
+#: management/applications/class_webApplication.inc:51
+#: management/applications/class_applicationGeneric.inc:52
+msgid "A short description of this application"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:55
+msgid "URL"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:55
+msgid "Link to this application"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:59
+msgid "Display Name"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:59
+msgid "Displayed name for links to this application"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:65
+#: management/applications/class_applicationGeneric.inc:66
+msgid "Icon"
+msgstr "Пиктограмма"
+
+#: management/applications/class_webApplication.inc:68
+#: management/applications/class_applicationGeneric.inc:69
+msgid "The icon for this application"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:73
+msgid "Icon location"
+msgstr ""
+
+#: management/applications/class_webApplication.inc:73
+msgid "Usual path to this application icon"
+msgstr ""
+
+#: management/applications/class_applicationGeneric.inc:28
+msgid "Application information"
+msgstr ""
+
+#: management/applications/class_applicationGeneric.inc:48
+msgid "Application name"
+msgstr "Приложение"
+
+#: management/applications/class_applicationGeneric.inc:48
+msgid "The name of this application"
+msgstr ""
+
+#: management/applications/class_applicationGeneric.inc:56
+msgid "Execute"
+msgstr "Выполнить"
+
+#: management/applications/class_applicationGeneric.inc:56
+msgid "The application to be executed"
+msgstr ""
+
+#: management/applications/class_applicationGeneric.inc:60
+msgid "Display name"
+msgstr "Отображаемое имя"
+
+#: management/applications/class_applicationGeneric.inc:60
+msgid "The displayed name for this application"
+msgstr ""
+
+#: management/applications/class_applicationGeneric.inc:76
+msgid "Options"
+msgstr "Параметры"
+
+#: management/applications/class_applicationGeneric.inc:79
+msgid "Only executable for member"
+msgstr ""
+
+#: management/applications/class_applicationGeneric.inc:79
+msgid "Only executable by the memebers of the group"
+msgstr ""
+
+#: management/applications/class_applicationGeneric.inc:84
+msgid "Replace user configuration on startup"
+msgstr "Заменять настройки пользователя при запуске"
+
+#: management/applications/class_applicationGeneric.inc:84
+msgid "Replace the user configuration on startup"
+msgstr ""
+
+#: management/applications/class_applicationGeneric.inc:89
+msgid "Place icon on members desktop"
+msgstr "Помещать пиктограмму на рабочие столы членов группы"
+
+#: management/applications/class_applicationGeneric.inc:89
+msgid "Put an icon on the user desktop"
+msgstr ""
+
+#: management/applications/class_applicationGeneric.inc:94
+msgid "Place entry in members startmenu"
+msgstr "Помещать членам группы соответствующий элемент в меню запуска"
+
+#: management/applications/class_applicationGeneric.inc:94
+#: management/applications/class_applicationGeneric.inc:99
+msgid "Put an entry in the startup menu"
+msgstr ""
+
+#: management/applications/class_applicationGeneric.inc:99
+msgid "Place entry in members launch bar"
+msgstr ""
+
+#: management/roles/class_applicationRights.inc:29
+msgid "Applications allowed for this role"
+msgstr ""
+
+#: management/roles/class_applicationRights.inc:45
+msgid "Application list"
+msgstr ""
+
+#: management/roles/class_applicationRights.inc:49
+msgid "The applications users with this role are allowed to launch"
+msgstr ""

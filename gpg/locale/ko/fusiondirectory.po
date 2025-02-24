@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -21,36 +21,38 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: addons/gpg/class_pgpServerInfo.inc:27 addons/gpg/class_pgpServerInfo.inc:28
-#: addons/gpg/class_pgpServerInfo.inc:35 addons/gpg/class_pgpServerInfo.inc:52
+#: backend/gpg/class_pgpServerInfo.inc:27
+#: backend/gpg/class_pgpServerInfo.inc:28
+#: backend/gpg/class_pgpServerInfo.inc:35
+#: backend/gpg/class_pgpServerInfo.inc:52
 msgid "GPG server info"
 msgstr "GPG 서버 정보"
 
-#: addons/gpg/class_pgpServerInfo.inc:56
+#: backend/gpg/class_pgpServerInfo.inc:56
 msgid "Software"
 msgstr "소프트웨어"
 
-#: addons/gpg/class_pgpServerInfo.inc:56
+#: backend/gpg/class_pgpServerInfo.inc:56
 msgid "Which software this GPG key server is running"
 msgstr "이 GPG 키 서버가 실행중인 소프트웨어"
 
-#: addons/gpg/class_pgpServerInfo.inc:61
+#: backend/gpg/class_pgpServerInfo.inc:61
 msgid "GPG version"
 msgstr "GPG 버전"
 
-#: addons/gpg/class_pgpServerInfo.inc:61
+#: backend/gpg/class_pgpServerInfo.inc:61
 msgid "Which version of GPG this key server is running"
 msgstr "이 키 서버가 실행중인 GPG 버전"
 
-#: addons/gpg/class_pgpServerInfo.inc:66
+#: backend/gpg/class_pgpServerInfo.inc:66
 msgid "Branch in which keys are stored"
 msgstr "키가 저장되는 브랜치"
 
-#: addons/gpg/class_pgpServerInfo.inc:70
+#: backend/gpg/class_pgpServerInfo.inc:70
 msgid "Keys RDN"
 msgstr "키 RDN"
 
-#: addons/gpg/class_pgpServerInfo.inc:70
+#: backend/gpg/class_pgpServerInfo.inc:70
 msgid "Branch under base in which keys are stored"
 msgstr "키가 저장되어있는베이스 밑의 브랜치"
 

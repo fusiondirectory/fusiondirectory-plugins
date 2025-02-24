@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-04-25 13:25+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:01+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -21,155 +21,155 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:27
-#: admin/systems/services/quota/class_serviceQuota.inc:28
+#: management/systems/services/quota/class_serviceQuota.inc:27
+#: management/systems/services/quota/class_serviceQuota.inc:28
 msgid "Quota service"
 msgstr "služba kvót"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:28
+#: management/systems/services/quota/class_serviceQuota.inc:28
 msgid "Services"
 msgstr "Služby"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:41
+#: management/systems/services/quota/class_serviceQuota.inc:41
 msgid "Shares"
 msgstr "Sdílení"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:45
+#: management/systems/services/quota/class_serviceQuota.inc:45
 msgid "Quotas for the shares this server hosts"
 msgstr "Kvóty pro sdílení na tomto serveru"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:49
+#: management/systems/services/quota/class_serviceQuota.inc:49
 #: personal/quota/class_quotaAccount.inc:129
 msgid "Device"
 msgstr "Zařízení"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:49
+#: management/systems/services/quota/class_serviceQuota.inc:49
 msgid "Device concerned by this quota"
 msgstr "Zařízení, kterého se tato kvóta týká"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:53
+#: management/systems/services/quota/class_serviceQuota.inc:53
 msgid "Quota block size"
 msgstr "Velikost bloku kvóty"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:53
+#: management/systems/services/quota/class_serviceQuota.inc:53
 msgid "Quota block size on this share (usually 1024)"
 msgstr ""
 "V jak velkých blocích je vyjádřena kvóta na tomto sdílení (obvykle 1024)"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:62
+#: management/systems/services/quota/class_serviceQuota.inc:62
 msgid "Comment"
 msgstr "Komentář"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:62
+#: management/systems/services/quota/class_serviceQuota.inc:62
 msgid "Short comment about this quota"
 msgstr "Stručný komentář k této kvótě"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:77
+#: management/systems/services/quota/class_serviceQuota.inc:77
 msgid "Quota warning message"
 msgstr "Varovná zpráva kvóty"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:80
+#: management/systems/services/quota/class_serviceQuota.inc:80
 msgid "Charset"
 msgstr "Znaková sada"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:80
+#: management/systems/services/quota/class_serviceQuota.inc:80
 msgid "Charset use for the message"
 msgstr "Znaková sada zprávy"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:84
+#: management/systems/services/quota/class_serviceQuota.inc:84
 msgid "Mail command"
 msgstr "Příkaz pro posílání e-mailů"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:84
+#: management/systems/services/quota/class_serviceQuota.inc:84
 msgid "Command allowing the server to send mails"
 msgstr "Příkaz, umožňující serveru posílat e-maily"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: management/systems/services/quota/class_serviceQuota.inc:88
 msgid "Support contact"
 msgstr "Kontakt na podporu"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: management/systems/services/quota/class_serviceQuota.inc:88
 msgid "Email address to contact the administrator"
 msgstr "E-mailová adresa pro kontaktování správce"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: management/systems/services/quota/class_serviceQuota.inc:92
 msgid "From"
 msgstr "od"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: management/systems/services/quota/class_serviceQuota.inc:92
 msgid "Email from which the email is sent"
 msgstr "Adresa, ze které je e-mail poslán"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: management/systems/services/quota/class_serviceQuota.inc:96
 msgid "CC"
 msgstr "v kopii poslat i (CC)"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: management/systems/services/quota/class_serviceQuota.inc:96
 msgid "Send a copy of this email to"
 msgstr "Poslat kopii tohoto e-mailu na"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: management/systems/services/quota/class_serviceQuota.inc:100
 msgid "Subject"
 msgstr "Předmět"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: management/systems/services/quota/class_serviceQuota.inc:100
 msgid "Subject of the sent warning email"
 msgstr "Předmět zaslaného varovného e-mailu"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: management/systems/services/quota/class_serviceQuota.inc:104
 msgid "Content"
 msgstr "Obsah"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: management/systems/services/quota/class_serviceQuota.inc:104
 msgid "Content of the sent email"
 msgstr "Obsah odeslaného e-mailu"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:108
+#: management/systems/services/quota/class_serviceQuota.inc:108
 msgid "Signature"
 msgstr "Podpis"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:108
+#: management/systems/services/quota/class_serviceQuota.inc:108
 msgid "Signature to put at the end of the mail"
 msgstr "Podpis na konec e-mailové zprávy"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:114
+#: management/systems/services/quota/class_serviceQuota.inc:114
 msgid "LDAP message support"
 msgstr "Podpora LDAP zprávy"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:117
+#: management/systems/services/quota/class_serviceQuota.inc:117
 msgid "LDAP server"
 msgstr "LDAP server"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:117
+#: management/systems/services/quota/class_serviceQuota.inc:117
 msgid "The LDAP server to bind to"
 msgstr "LDAP server ke kterému se připojit"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:121
+#: management/systems/services/quota/class_serviceQuota.inc:121
 msgid "Bind user dn"
 msgstr "Rozlišené jméno uživatele, který se připojuje"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:121
+#: management/systems/services/quota/class_serviceQuota.inc:121
 msgid "The user dn to use for bind"
 msgstr "Rozlišené jméno uživatele, kterým se spojit"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:125
+#: management/systems/services/quota/class_serviceQuota.inc:125
 msgid "Bind user password"
 msgstr "Heslo uživatele, kterým se přihlašuje"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:125
+#: management/systems/services/quota/class_serviceQuota.inc:125
 msgid "The password of the user used for bind"
 msgstr "Heslo uživatele, použitého pro spojení"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:158
+#: management/systems/services/quota/class_serviceQuota.inc:158
 msgid "Warning"
 msgstr "Varování"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:158
+#: management/systems/services/quota/class_serviceQuota.inc:158
 #, php-format
 msgid "Invalid value in encodings : %s"
 msgstr "Neplatná hodnota v kódování znaků : %s"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:174
+#: management/systems/services/quota/class_serviceQuota.inc:174
 #, php-format
 msgid "(%s by %s)"
 msgstr "(%s od %s)"

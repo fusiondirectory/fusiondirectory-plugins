@@ -1,14 +1,16 @@
 information:
   name : sudo
   description : Sudo plugin for FusionDirectory
-  version : "1.4"
+  version : "1.5"
   authors :
     - "FusionDirectory"
   status : Stable
   screenshotUrl:
-    - "%to_be_define%"
-  logoUrl : "https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/sudo/html/themes/breezy/icons/48/apps/sudo.png"
-  tags: ["plugin", "sudo"]
+    - "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/sudo/contrib/screenshots/sudo-menu.png"
+  logoUrl : "https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/sudo/html/themes/breezy/icons/48/apps/sudo.png"
+  tags:
+  - user
+  - group
   license: "GPLv2"
   origin: "package"
 
@@ -16,9 +18,10 @@ support:
   provider: fusiondirectory
   homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
   ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
+  documentationUrl : https://fusiondirectory-user-manual.readthedocs.io/en/latest/fusiondirectory/plugins/sudo/index.html
   schemaUrl: "https://schemas.fusiondirectory.org/"
   contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
 
 requirement:
-  fdVersion : 1.4
-  phpVersion : 7.3.0
+  fdVersion : 1.5
+  phpVersion : 7.4

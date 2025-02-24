@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2023-03-01 07:51+0100\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:51+0000\n"
 "Language-Team: Afrikaans (South Africa) (https://app.transifex.com/fusiondirectory/teams/12202/af_ZA/)\n"
 "MIME-Version: 1.0\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Language: af_ZA\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/debconfProfile/class_debconfProfileManagement.inc:34
-#: admin/systems/debconf/class_debconfStartup.inc:31
+#: management/debconfProfile/class_debconfProfileManagement.inc:34
+#: management/systems/debconf/class_debconfStartup.inc:31
 msgid "Debconf"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileManagement.inc:35
+#: management/debconfProfile/class_debconfProfileManagement.inc:35
 msgid "Debconf profile management"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:68
+#: management/debconfProfile/class_debconfProfileGeneric.inc:68
 msgid "There is no template for this profile"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:86
+#: management/debconfProfile/class_debconfProfileGeneric.inc:86
 #, php-format
 msgid "Can't find entry %s in LDAP for profile %s"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:159
+#: management/debconfProfile/class_debconfProfileGeneric.inc:159
 #, php-format
 msgid ""
 "In order to import a debconf file, please run the following command : "
@@ -44,60 +44,60 @@ msgid ""
 "the desired name for the template.<br/>"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:171
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:176
+#: management/debconfProfile/class_debconfProfileGeneric.inc:171
+#: management/debconfProfile/class_debconfProfileGeneric.inc:176
 msgid "Debconf profile"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:172
+#: management/debconfProfile/class_debconfProfileGeneric.inc:172
 msgid "Debconf profile information"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
+#: management/debconfProfile/class_debconfProfileGeneric.inc:190
+#: management/debconfProfile/class_debconfProfileGeneric.inc:193
 msgid "Name"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:192
+#: management/debconfProfile/class_debconfProfileGeneric.inc:192
 msgid "Import a debconf file"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
+#: management/debconfProfile/class_debconfProfileGeneric.inc:193
 msgid "Name of this debconf template"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:197
+#: management/debconfProfile/class_debconfProfileGeneric.inc:197
 msgid "Entries"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:199
+#: management/debconfProfile/class_debconfProfileGeneric.inc:199
 msgid "Debconf template answers"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:214
+#: management/debconfProfile/class_debconfProfileGeneric.inc:214
 msgid "Import"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:32
+#: management/systems/debconf/class_debconfStartup.inc:32
 msgid "Debconf preseed startup"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:46
+#: management/systems/debconf/class_debconfStartup.inc:46
 msgid "Debconf settings"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:49
+#: management/systems/debconf/class_debconfStartup.inc:49
 msgid "Profile"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:49
+#: management/systems/debconf/class_debconfStartup.inc:49
 msgid "Debconf preseed profile to be used for installation"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:53
+#: management/systems/debconf/class_debconfStartup.inc:53
 msgid "Release"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:53
+#: management/systems/debconf/class_debconfStartup.inc:53
 msgid "Debian release to install"
 msgstr ""
