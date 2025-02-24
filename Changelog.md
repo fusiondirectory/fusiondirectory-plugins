@@ -1,3 +1,116 @@
+## %"FusionDirectory 1.5" - 2025-02-24
+
+### Added
+
+#### fusiondirectory
+- fd#6270 [Snapshot] - Enhancement in order to provide a first concept of revision and source reference
+- fd#6301 [CORE] - Tasks Mail must take into account dynGroups
+- fd#6302 [CORE][TASKS] - Tasks must be set as repeatable and updatable
+- fd#6303 [CORE][MAIL] – Attachments for emails must be created as sub nodes
+- fd#6305 [CORE][Task] - type mail should include a BCC field
+- fd#6306 [CORE] - Issues of services not triggered by account deactivation via lock icon on user list
+- fd#6307 [CORE] - Supann life cycle - automation via Orchestrator
+- fd#6309 Support SSHA512 password if overlay pw-sha2 is installed
+- fd#6314 [CORE] - Snapshots - review of the current automatic creation logic
+- fd#6320 [Tasks] - Mail class can have one method static to be reused outside object call by others
+- fd#6323 [Tasks] - LastExec is performed on localTime and should be set in UTC - always
+- fd#6340 Add callerMAIL as macro in simplePlugin
+- fd#6343 [CORE] - New directory structure numbering
+- fd#6350 [Audit] - Account locked is not logged within audit upon clicking on the lock icon
+- fd#6346 [Recovery] - Usage of supannMailPrivee within password recovery
+- fd#6351 [core] - audit logging - allowing to see attributes => values within audit record. With hiding of values if required.
+- fd#6352 [Core] - SimplePlugin - audit section (logging-modify) - must have a way to detect specific changes within a multi evaluated attributes
+- fd#6354 [CORE] - Tasks - Allow subtasks to received helper information as form of references
+- fd#6357 [core] - new token branch with new objectClass allowing management of specific tokens
+- fd#6359 [Core] - Task - main menu allows periodicity of a cyclic setting - one element is empty
+- fd#6361 Creat a column for showing a supanEtatDate
+- fd#6365 [Core] - Reviewing how the locking mechanism logic work - general lock - supann lock.
+
+#### fusiondirectory-plugins
+- fd-plugins#6055 Add a basic kerberos plugin
+- fd-plugins#6203 [Supann-Ex] - Verification of uniqueness, generation of hash based on login ID and time.
+- fd-plugins#6241 Private form must not be related to the plugin invitations
+- fd-plugins#6258 [NewPlugin] - Notifications, based on automatic snapshots, send email to required personal about attributes changes
+- fd-plugins#6259 Proper way to manage supannCivilite
+- fd-plugins#6260 Update yaml with the new screenshot and tags
+- fd-plugins#6267 [webservice] - Force the usage of the timezone configured within FusionDirectory in order to avoid the default GMT
+- fd-plugins#6277 [Mail] - Render mail unique all the time, not only if allowed to be used as authentication
+- fd-plugins#6278 [LifeCycle] - Move lifeCycle from Core to Plugins
+- fd-plugins#6285 [Audit] - A new task allowing a specific retention date of audit logs with automatic deletion
+- fd-plugins#6290 [Notifications] - Allowing awareness on different supann states values
+- fd-plugins#6298 [Audit] - Migration - obsolete attribute in backend config must be set - fdAuditRotationDelay
+- fd-plugins#6299 [Supann] - supannMailPrivee should contains the following tag : {secours}
+- fd-plugins#6300 [UserReminder] - New task allowing to send notification email when supannStatus "sursis" is at 30 and 15 days  of ending the account
+- fd-plugins#6301 [audit] - New backend allowing to hide certain attributes value recorded in audit logs
+- fd-plugins#6305 [Plugins] - fdRPCwebserive - posix force_ids is not taken into consideration correctly
+- fd-plugins#6306 [Notifications] - The Attributes list should not be mandatory - only supann resource.
+- fd-plugins#6307 [Reminder] - Remove manager boolean as forward-to renders this redundant
+- fd-plugins#6318 [Plugins] - supann -  Reviewing how the locking mechanism logic work - general lock - supann lock.
+- fd-plugins#6319 [Plugins] - Reviewing how the locking mechanism logic work - mail resource lock - zimbraAccountStatus update
+
+### Changed
+
+#### fusiondirectory
+- fd#6300 [CORE] - UsersGroupsRolesAttribute attribute must include dyngroup as well
+- fd#6321 [Tasks] - Make the generic tasks even more generic, allowing the object type string to be custom in case of added plugins
+- fd#6324 [Tasks] - Main tasks create slave objects related to a DN - current definition of attributeAccess is string with lifeCycle description
+- fd#6326 [Core] - Add orcid test method
+- fd#6330 [new section] - Workflow to integrate sub menu such as mail template and tasks
+- fd#6334 [CORE] - New behavior for template, automatic saving if no errors
+- fd#6335 [Core] - A new branding and therefore new logo is now available for FusionDirectory
+- fd#6364 [Core] - When lock mechanism is trigger - the user should not be editable if not unlock"
+
+#### fusiondirectory-plugins
+- fd-plugins#6249 Import eduPerson schema for orcid
+- fd-plugins#6272 rename the certificate icon
+- fd-plugins#6280 [Plugins] - update plugins to take into consideration the new directory of CORE structure
+- fd-plugins#6302 [Plugins] - Sinaps - deactivate sinaps in backend when installed - allowing remaining system unblocked
+- fd-plugins#6311 put the version 1.5 in all yaml for FusionDirectory 1.5 and change php version to 7.4
+- fd-plugins#6321 [Plugins] - Unix - trust all report a dn unknown when * is set
+
+### Removed
+
+#### fusiondirectory
+- fd#6333 [Core] - PhpSetup removal of the error collector mail to - considered not useful anymore
+- fd#6337 [Core] - remove the legacy theme
+- fd#6339 [Core] - remove leftover of dashboard in the core
+- fd#6341 [LifeCycle] - Removal of lifeCycle within CORE
+
+#### fusiondirectory-plugins
+- fd-plugins#6271 remove the legacy theme
+- fd-plugins#6275 remove leftover of dashboard in the core
+- fd-plugins#6281 remove ldif from ppolicy plugin
+
+### Fixed
+
+#### fusiondirectory
+- fd#6313 [CORE] - Snapshots - review of the current automatic creation logic
+- fd#6331 Use replacement icons for the one now in the plugins
+- fd#6332 Add an error log when the session is destroyed
+- fd#6360 [Mail] - When supann is available - the supannMailPrivee and potentially other are detected with label
+
+#### fusiondirectory-plugins
+- fd-plugins#6081 Do not record empty memberUid within mixedgroups
+- fd-plugins#6178 [Posix] - Template - TrustMode %askme% set as a service disables the entire table.
+- fd-plugins#6205 [Zimbra] - Lifecycle of Zimbra account - Errors of re-activation and auto-activation not working.
+- fd-plugins#6274 there is error in the variables_webauthn.inc are not correct for our packaged version
+- fd-plugins#6246 Plugin dyngroups missing icons
+- fd-plugins#6255 [Samba] - Samba tab cannot be removed when samba ID mapping is activated
+- fd-plugins#6270 [Kerberos] - Issue declaring class invisible without attrs
+- fd-plugins#6276 [GID - posix group] - issue with template not allowing to set GID.
+- fd-plugins#6322 [Template] - Issue when creating a template with empty password, error message should not be seen
+- fd-plugins#6309 there is a oid used twice in user-reminder
+- fd-plugins#6312 [Plugins] - Reminder attributes fdTasksReminderRecipientsMembers should not be mandatory within ldap
+- fd-plugins#6313 [fd-plugins] - User-reminder issue when supann is subStatus is set to none.
+- fd-plugins#6314 [Plugins] - user-reminder force the nextSubState to be checked
+- fd-plugins#6316 posix group not apply from user template
+- fd-plugins#6323 [Supann] - Supann Civilites is marked as "values" and therefore is badly translated.
+
+### Security
+
+#### fusiondirectory
+- fd#6363 [Security] - path traversal vulnerability - limited to png files
+
 ## %"FusionDirectory 1.4" - 2023-06-13
 
 ### Added
@@ -25,7 +138,7 @@
 - fd#5966 Management configuration system
 - fd#5970 Allow plugins to easily take part in the user locking process
 - fd#5976 icons missing in filter selections in core
-- fd#5979 Samba and FD
+- fd#5979 Samba and Fusiondirectory
 - fd#5980 Management should be a bit more flexible
 - fd#5986 Add a reinitialisation button for the management configuration
 - fd#5999 Allow ObjectsAttribute instances to specify filter elements
@@ -662,7 +775,7 @@
 - fd#5729 PHP error in class_groupManagement.inc
 - fd#5739 Links to objects might fail
 - fd#5742 ACL handling for start/stop/restart service is broken
-- fd#5747 Deletion of objects should not treat ACL on each tab separately
+- fd#5747 Deletion of objects should not treat ACL on each tab separately
 - fd#5787 member_of_group should be set before attribute loading
 - fd#5788 Failed lock attempt gives misleading error (password method does not support locking )
 - fd#5798 Tabs are not working on ogroup templates
@@ -827,7 +940,7 @@
 - fd-plugins#5724 SOA serial is rewriten to each reverse even if no modification is made to any record related to these domains
 - fd-plugins#5725 Crash when I remove IP from a workstation with a DNS record
 - fd-plugins#5729 SOA is not updated in reverse zones if there is no record change
-- fd-plugins#5745 PHP error in OPSI product properties
+- fd-plugins#5745 PHP error in OPSI product properties
 - fd-plugins#5747 Line number in CSV import error messages is incorrect
 - fd-plugins#5754 Forward confirmation to manager does not work when extending the account expiration
 - fd-plugins#5755 User reminder does not support accents in the message
@@ -849,7 +962,7 @@
 - fd#5700 Non-existing classes in pluglist::$info
 - fd#5705 Correct contributing remove part about using the templates link
 - fd#5707 core-fd.schema still has gosa in description of attributes
-- fd#5711 ACL list have a PHP error when there are ACL on objects
+- fd#5711 ACL list have a PHP error when there are ACL on objects
 - fd#5712 Error text is wrong is some cases
 - fd#5724 Error before login on Centos 7
 - fd#5726 Log to fd behind an lemonldap::ng portal show debug log instead of main page
@@ -897,7 +1010,7 @@
 
 #### fusiondirectory
 - fd#5545 Unicity is only tested upon the same objectType
-- fd#5574 Groups RDN configuration is confusing
+- fd#5574 Groups RDN configuration is confusing
 
 #### fusiondirectory-plugins
 - fd-plugins#5315 mail methods code should be reviewed and cleaned
@@ -1115,7 +1228,7 @@
 ### Fixed
 
 #### fusiondirectory
-- fd#5362 PHP errors related to ogroup
+- fd#5362 PHP errors related to ogroup
 - fd#5410 edit conflict warning screen : "read only" button make the same page to reload
 - fd#5422 There seems to be a problem with TimeAttribute
 - fd#5426 Problems with PHP CAS on centos 7
@@ -1198,7 +1311,7 @@
 - fd-plugins#5257 Error in ldap when we will that FAI use all the remain space
 - fd-plugins#5295 Filter problem if dhcp object is in a department
 - fd-plugins#5296 Name dhcp object differently when we use migration-dhcp
-- fd-plugins#5299 When using FD in portal mode, avoid showing applications (which are not web applications)
+- fd-plugins#5299 When using FD in portal mode, avoid showing applications (which are not web applications)
 
 ### Security
 
@@ -1346,7 +1459,7 @@
 - fd#5092 FD should not interfere with form handling
 
 #### fusiondirectory-plugins
-- fd-plugins#5020 PHP errors in DHCP plugin with PHP7
+- fd-plugins#5020 PHP errors in DHCP plugin with PHP7
 - fd-plugins#5026 CSV import bug ?
 - fd-plugins#5032 check that the information for main menu is right in FusionDirectory documentation
 - fd-plugins#5044 Use simpleManagement in GPG plugin
@@ -1457,7 +1570,7 @@
 
 #### fusiondirectory
 - fd#4757 padlock next to user dn in edition screen is confusing
-- fd#4826 File docs/INSTALL must be updated or deleted
+- fd#4826 File docs/INSTALL must be updated or deleted
 
 ### Fixed
 
@@ -1579,7 +1692,7 @@
 - fd-plugins#4630 DNS adding reverse zone issue (tested on FD 1.0.10) in class B and class A
 - fd-plugins#4635 [DNS] Reverse zone association breaks when there are several A record for the same domain.
 - fd-plugins#4636 [SYSTEMS] When add Windows Workstation (winStation) and enable DHCP it will not be enabled when edit again
-- fd-plugins#4637 DNS tab won’t work on winstations
+- fd-plugins#4637 DNS tab won’t work on winstations
 - fd-plugins#4676 Edit IDs problems related to our selenium test
 
 ## %"FusionDirectory 1.0.10" - 2016-03-20
@@ -1699,7 +1812,7 @@
 
 #### fusiondirectory
 - fd#4444 Debug log prevent connection in some cases
-- fd#4452 Adding a user to a group using "Groups and roles" tab creates some PHP errors
+- fd#4452 Adding a user to a group using "Groups and roles" tab creates some PHP errors
 - fd#4464 There are still traces of the rsyslog plugin in the schema and config class
 - fd#4466 fixing deprecated warnings in php7
 
@@ -1742,7 +1855,7 @@
 - fd#4390 bump all copyright to 20xx-2016
 
 #### fusiondirectory-plugins
-- fd-plugins#4111 Clean FAI support daemon method
+- fd-plugins#4111 Clean FAI support daemon method
 - fd-plugins#4227 Change default block size value in 1024
 - fd-plugins#4238 ReadOnlyLDAPAttribute should be moved to class_attribute.inc
 - fd-plugins#4292 Migrate last FAI classes to simplePlugin
@@ -1906,7 +2019,7 @@
 - fd#3248 Plugins needs to be able to know which objectType they are opened as
 - fd#3250 unique is checked only in the object base
 - fd#3299 Use relative path for geticon
-- fd#3317 LDAP reorganization
+- fd#3317 LDAP reorganization
 - fd#3334 userManagement should be using simpleManagement
 - fd#3383 Password change and hooks should be cleaned
 - fd#3384 We need to remove manual handling of foreignKeys
@@ -1918,7 +2031,7 @@
 - fd#3848 generic user view should be reorganized
 - fd#3850 the DESC of each attribute and object should describe exactly the purpose of it
 - fd#3851 it seems the gosaCacheEntry objectClass is no longer used
-- fd#3907 Rework CN and DN related options
+- fd#3907 Rework CN and DN related options
 - fd#3921 User templates should support roles
 - fd#4051 Mac addresses should always be in lowercase
 - fd#4100 The logout screen should be redone (session expiry)
@@ -1977,7 +2090,7 @@
 - fd-plugins#3916 We should remove the class tabs
 - fd-plugins#3981 remove the asterisk plugin from 1.0.9
 - fd-plugins#3992 remove the fax plugin
-- fd-plugins#4034 Remove the FIXME in FAI about priority
+- fd-plugins#4034 Remove the FIXME in FAI about priority
 - fd-plugins#4066 Weblink refers to IPMI
 - fd-plugins#4068 password.tpl is not used anymore it should be deleted
 - fd-plugins#4107 the autodect button for the mac address should be removed
@@ -2012,7 +2125,7 @@
 - fd#4064 PHP error when I delete a template
 - fd#4073 CSV import is broken
 - fd#4092 Base field should show "/" instead of being empty for root.
-- fd#4093 There are HTML errors in the code
+- fd#4093 There are HTML errors in the code
 - fd#4137 Locked icon on users is broken
 - fd#4141 check-deprecated should say which obsolete objectClass an entry is using
 - fd#4144 Reference for ogroup not work
@@ -2025,7 +2138,7 @@
 - fd-plugins#3354 Error about missing FAI class when creating a debian repository
 - fd-plugins#3589 Must set blocksize > 0 to cancel
 - fd-plugins#3740 CSV import is broken
-- fd-plugins#3745 Can’t create FAI profile
+- fd-plugins#3745 Can’t create FAI profile
 - fd-plugins#3747 We cannot set a dhcp for a system
 - fd-plugins#3751 Systems plugin is broken
 - fd-plugins#3795 Copy of fai objects is not working
@@ -2688,7 +2801,7 @@
 - fd-plugins#3053 Wrong objectclass names in Dashboard schema
 - fd-plugins#3058 GUI corruption
 - fd-plugins#3145 when install fusiondirectory-plugins-opsi, php class couldn't be loaded
-- fd-plugins#3148 Argonaut queue is crashing when trying to load FAI logs
+- fd-plugins#3148 Argonaut queue is crashing when trying to load FAI logs
 - fd-plugins#3153 When creating an FAI branch, subbranches should be created as well
 - fd-plugins#3156 some icons are missing I only see the alternate text
 - fd-plugins#3164 Servers service tab causes trouble with pluginfo div
@@ -4242,5 +4355,4 @@
 ## %"FusionDirectory 1.0" - 2011-03-20
 
 - First stable release
-
 
