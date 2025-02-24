@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:50+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Swedish (https://app.transifex.com/fusiondirectory/teams/12202/sv/)\n"
@@ -21,36 +21,59 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/autofs/class_autofsManagement.inc:36
+#: backend/autofs/class_autofsConfig.inc:26
+msgid "Autofs configuration"
+msgstr "Autofs-konfiguration"
+
+#: backend/autofs/class_autofsConfig.inc:27
+msgid "FusionDirectory autofs plugin configuration"
+msgstr "FusionDirectory autofs-plugin-konfiguration"
+
+#: backend/autofs/class_autofsConfig.inc:40
+msgid "AutoFS"
+msgstr ""
+
+#: backend/autofs/class_autofsConfig.inc:43
+msgid "AutoFS RDN"
+msgstr "AutoFS RDN"
+
+#: backend/autofs/class_autofsConfig.inc:43
+msgid "Branch in which automount info will be stored"
+msgstr "Gren där automount-information ska lagras"
+
+#: management/autofs/class_autofsManagement.inc:36
 msgid "Auto fs"
 msgstr "Auto fs"
 
-#: admin/autofs/class_autofsManagement.inc:37
+#: management/autofs/class_autofsManagement.inc:37
 msgid "Auto fs management"
 msgstr "Auto fs-hantering"
 
-#: admin/autofs/class_autofsManagement.inc:38
+#: management/autofs/class_autofsManagement.inc:38
 msgid "Manage auto fs mount points and directories"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:27 admin/autofs/class_nisObject.inc:28
-#: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:51
+#: management/autofs/class_nisObject.inc:27
+#: management/autofs/class_nisObject.inc:28
+#: management/autofs/class_nisObject.inc:31
+#: management/autofs/class_nisObject.inc:51
 msgid "Directory"
 msgstr "Katalog"
 
-#: admin/autofs/class_nisObject.inc:55 admin/autofs/class_nisMap.inc:50
+#: management/autofs/class_nisObject.inc:55
+#: management/autofs/class_nisMap.inc:50
 msgid "Name"
 msgstr "Namn"
 
-#: admin/autofs/class_nisObject.inc:55
+#: management/autofs/class_nisObject.inc:55
 msgid "Name of this directory"
 msgstr "Namn på katalog"
 
-#: admin/autofs/class_nisObject.inc:61
+#: management/autofs/class_nisObject.inc:61
 msgid "Automount entry"
 msgstr "Automontera post"
 
-#: admin/autofs/class_nisObject.inc:61
+#: management/autofs/class_nisObject.inc:61
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
@@ -58,39 +81,20 @@ msgstr ""
 "Posten för den här katalogen för automount-daemonen.\n"
 " Till exempel 'auto.u' eller '-fstype=nfs domain.tld:/mount/directory'"
 
-#: admin/autofs/class_nisObject.inc:65 admin/autofs/class_nisMap.inc:27
-#: admin/autofs/class_nisMap.inc:31 admin/autofs/class_nisMap.inc:46
+#: management/autofs/class_nisObject.inc:65
+#: management/autofs/class_nisMap.inc:27 management/autofs/class_nisMap.inc:31
+#: management/autofs/class_nisMap.inc:46
 msgid "Mount point"
 msgstr "Monteringspunkt"
 
-#: admin/autofs/class_nisObject.inc:65
+#: management/autofs/class_nisObject.inc:65
 msgid "The mount point this directory will be placed in"
 msgstr "Monteringspunkt där katalogen kommer att placeras"
 
-#: admin/autofs/class_nisMap.inc:28
+#: management/autofs/class_nisMap.inc:28
 msgid "Autofs mount point"
 msgstr "Autofs monteringspunkt"
 
-#: admin/autofs/class_nisMap.inc:50
+#: management/autofs/class_nisMap.inc:50
 msgid "Name of the mount point"
 msgstr "Namn på monteringspunkten"
-
-#: config/autofs/class_autofsConfig.inc:26
-msgid "Autofs configuration"
-msgstr "Autofs-konfiguration"
-
-#: config/autofs/class_autofsConfig.inc:27
-msgid "FusionDirectory autofs plugin configuration"
-msgstr "FusionDirectory autofs-plugin-konfiguration"
-
-#: config/autofs/class_autofsConfig.inc:40
-msgid "AutoFS"
-msgstr ""
-
-#: config/autofs/class_autofsConfig.inc:43
-msgid "AutoFS RDN"
-msgstr "AutoFS RDN"
-
-#: config/autofs/class_autofsConfig.inc:43
-msgid "Branch in which automount info will be stored"
-msgstr "Gren där automount-information ska lagras"

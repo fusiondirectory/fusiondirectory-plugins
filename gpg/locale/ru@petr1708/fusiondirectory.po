@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Russian Petrine orthography (https://app.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
@@ -20,6 +20,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru@petr1708\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: backend/gpg/class_pgpServerInfo.inc:27
+#: backend/gpg/class_pgpServerInfo.inc:28
+#: backend/gpg/class_pgpServerInfo.inc:35
+#: backend/gpg/class_pgpServerInfo.inc:52
+msgid "GPG server info"
+msgstr "Информация об GPG сервере"
+
+#: backend/gpg/class_pgpServerInfo.inc:56
+msgid "Software"
+msgstr "Програмное обеспечение"
+
+#: backend/gpg/class_pgpServerInfo.inc:56
+msgid "Which software this GPG key server is running"
+msgstr ""
+
+#: backend/gpg/class_pgpServerInfo.inc:61
+msgid "GPG version"
+msgstr "Версия GPG"
+
+#: backend/gpg/class_pgpServerInfo.inc:61
+msgid "Which version of GPG this key server is running"
+msgstr ""
+
+#: backend/gpg/class_pgpServerInfo.inc:66
+msgid "Branch in which keys are stored"
+msgstr "Ветка в которой хранятся ключи"
+
+#: backend/gpg/class_pgpServerInfo.inc:70
+msgid "Keys RDN"
+msgstr "RDN для ключей"
+
+#: backend/gpg/class_pgpServerInfo.inc:70
+msgid "Branch under base in which keys are stored"
+msgstr "Ветка в которой будут храниться ключи"
 
 #: personal/gpg/class_gpgAccount.inc:28
 msgid "GPG"
@@ -92,38 +127,3 @@ msgstr "Отозван"
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:98
 msgid "Disabled"
 msgstr "Отключен"
-
-#: configuration/gpg/class_pgpServerInfo.inc:27
-#: configuration/gpg/class_pgpServerInfo.inc:28
-#: configuration/gpg/class_pgpServerInfo.inc:35
-#: configuration/gpg/class_pgpServerInfo.inc:52
-msgid "GPG server info"
-msgstr "Информация об GPG сервере"
-
-#: configuration/gpg/class_pgpServerInfo.inc:56
-msgid "Software"
-msgstr "Програмное обеспечение"
-
-#: configuration/gpg/class_pgpServerInfo.inc:56
-msgid "Which software this GPG key server is running"
-msgstr ""
-
-#: configuration/gpg/class_pgpServerInfo.inc:61
-msgid "GPG version"
-msgstr "Версия GPG"
-
-#: configuration/gpg/class_pgpServerInfo.inc:61
-msgid "Which version of GPG this key server is running"
-msgstr ""
-
-#: configuration/gpg/class_pgpServerInfo.inc:66
-msgid "Branch in which keys are stored"
-msgstr "Ветка в которой хранятся ключи"
-
-#: configuration/gpg/class_pgpServerInfo.inc:70
-msgid "Keys RDN"
-msgstr "RDN для ключей"
-
-#: configuration/gpg/class_pgpServerInfo.inc:70
-msgid "Branch under base in which keys are stored"
-msgstr "Ветка в которой будут храниться ключи"

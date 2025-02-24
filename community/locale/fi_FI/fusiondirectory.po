@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Finnish (Finland) (https://app.transifex.com/fusiondirectory/teams/12202/fi_FI/)\n"
@@ -21,146 +21,146 @@ msgstr ""
 "Language: fi_FI\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/departments/community/class_communityOrganization.inc:28
-msgid "Community organization"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:29
-msgid "Community organization dates and alternate address"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:43
-msgid "Membership"
-msgstr "Jäsenyys"
-
-#: admin/departments/community/class_communityOrganization.inc:46
-msgid "Membership type"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:46
-msgid "Membership type of this organization"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:51
-msgid "Agreement signed"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:51
-msgid "Did this member returned the agreement signed"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:55
-msgid "Active"
-msgstr "Voimassa"
-
-#: admin/departments/community/class_communityOrganization.inc:55
-msgid "Is the membership of this organization active"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:59
-msgid "Hidden"
-msgstr "Piilotettu"
-
-#: admin/departments/community/class_communityOrganization.inc:59
-msgid "Should this membership be hidden from listings"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:65
-msgid "Dates"
-msgstr "Päivämäärät"
-
-#: admin/departments/community/class_communityOrganization.inc:68
-msgid "Start date"
-msgstr "Alkupäivämäärä"
-
-#: admin/departments/community/class_communityOrganization.inc:68
-msgid "Date of the beginning"
-msgstr "Alkupäivämäärä"
-
-#: admin/departments/community/class_communityOrganization.inc:72
-msgid "End date"
-msgstr "Loppupäivämäärä"
-
-#: admin/departments/community/class_communityOrganization.inc:72
-msgid "Date of the end"
-msgstr "Loppupäivämäärä"
-
-#: admin/departments/community/class_communityOrganization.inc:79
-msgid "Contact"
-msgstr "Yhteystiedot"
-
-#: admin/departments/community/class_communityOrganization.inc:82
-msgid "First name"
-msgstr "Etunimi"
-
-#: admin/departments/community/class_communityOrganization.inc:86
-msgid "Last name"
-msgstr "Sukunimi"
-
-#: admin/departments/community/class_communityOrganization.inc:90
-msgid "Address"
-msgstr "Osoite"
-
-#: admin/departments/community/class_communityOrganization.inc:90
-msgid "A postal address"
-msgstr "Postiosoite"
-
-#: admin/departments/community/class_communityOrganization.inc:94
-msgid "City"
-msgstr "Kaupunki"
-
-#: admin/departments/community/class_communityOrganization.inc:98
-msgid "State"
-msgstr "Valtio"
-
-#: admin/departments/community/class_communityOrganization.inc:102
-msgid "Country"
-msgstr "Maa"
-
-#: admin/departments/community/class_communityProject.inc:28
-msgid "Community project"
-msgstr "Yhteisön projekti"
-
-#: admin/departments/community/class_communityProject.inc:29
-msgid "Community project dates and alternate address"
-msgstr "Yhteisöprojektin päivämäärät ja vaihtoehtoinen osoite"
-
-#: admin/departments/community/class_communityProject.inc:43
-msgid "Project"
-msgstr "Projekti"
-
-#: admin/departments/community/class_communityProject.inc:46
-msgid "Project full name"
-msgstr "Projektin koko nimi"
-
-#: admin/departments/community/class_communityProject.inc:46
-msgid "Full name of this project"
-msgstr "Tämän projektin koko nimi"
-
-#: admin/departments/community/class_communityProject.inc:50
-msgid "Project key"
-msgstr "Projektin avain"
-
-#: admin/departments/community/class_communityProject.inc:50
-msgid "ID used for this project in other softwares or databases"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:26
+#: backend/community/class_communityConfig.inc:26
 msgid "Community configuration"
 msgstr "Yhteisön asetukset"
 
-#: config/community/class_communityConfig.inc:27
+#: backend/community/class_communityConfig.inc:27
 msgid "FusionDirectory community plugin configuration"
 msgstr ""
 
-#: config/community/class_communityConfig.inc:40
+#: backend/community/class_communityConfig.inc:40
 msgid "Community"
 msgstr "Yhteisö"
 
-#: config/community/class_communityConfig.inc:44
+#: backend/community/class_communityConfig.inc:44
 msgid "Membership type choices"
 msgstr ""
 
-#: config/community/class_communityConfig.inc:44
+#: backend/community/class_communityConfig.inc:44
 msgid "Community membership types available in the user community tab"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:28
+msgid "Community organization"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:29
+msgid "Community organization dates and alternate address"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:43
+msgid "Membership"
+msgstr "Jäsenyys"
+
+#: management/departments/community/class_communityOrganization.inc:46
+msgid "Membership type"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:46
+msgid "Membership type of this organization"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:51
+msgid "Agreement signed"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:51
+msgid "Did this member returned the agreement signed"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:55
+msgid "Active"
+msgstr "Voimassa"
+
+#: management/departments/community/class_communityOrganization.inc:55
+msgid "Is the membership of this organization active"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:59
+msgid "Hidden"
+msgstr "Piilotettu"
+
+#: management/departments/community/class_communityOrganization.inc:59
+msgid "Should this membership be hidden from listings"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:65
+msgid "Dates"
+msgstr "Päivämäärät"
+
+#: management/departments/community/class_communityOrganization.inc:68
+msgid "Start date"
+msgstr "Alkupäivämäärä"
+
+#: management/departments/community/class_communityOrganization.inc:68
+msgid "Date of the beginning"
+msgstr "Alkupäivämäärä"
+
+#: management/departments/community/class_communityOrganization.inc:72
+msgid "End date"
+msgstr "Loppupäivämäärä"
+
+#: management/departments/community/class_communityOrganization.inc:72
+msgid "Date of the end"
+msgstr "Loppupäivämäärä"
+
+#: management/departments/community/class_communityOrganization.inc:79
+msgid "Contact"
+msgstr "Yhteystiedot"
+
+#: management/departments/community/class_communityOrganization.inc:82
+msgid "First name"
+msgstr "Etunimi"
+
+#: management/departments/community/class_communityOrganization.inc:86
+msgid "Last name"
+msgstr "Sukunimi"
+
+#: management/departments/community/class_communityOrganization.inc:90
+msgid "Address"
+msgstr "Osoite"
+
+#: management/departments/community/class_communityOrganization.inc:90
+msgid "A postal address"
+msgstr "Postiosoite"
+
+#: management/departments/community/class_communityOrganization.inc:94
+msgid "City"
+msgstr "Kaupunki"
+
+#: management/departments/community/class_communityOrganization.inc:98
+msgid "State"
+msgstr "Valtio"
+
+#: management/departments/community/class_communityOrganization.inc:102
+msgid "Country"
+msgstr "Maa"
+
+#: management/departments/community/class_communityProject.inc:28
+msgid "Community project"
+msgstr "Yhteisön projekti"
+
+#: management/departments/community/class_communityProject.inc:29
+msgid "Community project dates and alternate address"
+msgstr "Yhteisöprojektin päivämäärät ja vaihtoehtoinen osoite"
+
+#: management/departments/community/class_communityProject.inc:43
+msgid "Project"
+msgstr "Projekti"
+
+#: management/departments/community/class_communityProject.inc:46
+msgid "Project full name"
+msgstr "Projektin koko nimi"
+
+#: management/departments/community/class_communityProject.inc:46
+msgid "Full name of this project"
+msgstr "Tämän projektin koko nimi"
+
+#: management/departments/community/class_communityProject.inc:50
+msgid "Project key"
+msgstr "Projektin avain"
+
+#: management/departments/community/class_communityProject.inc:50
+msgid "ID used for this project in other softwares or databases"
 msgstr ""

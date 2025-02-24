@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:50+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
 "Language-Team: Chinese (https://app.transifex.com/fusiondirectory/teams/12202/zh/)\n"
@@ -21,41 +21,62 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: config/audit/class_auditConfig.inc:26
+#: backend/audit/class_auditConfig.inc:26
 msgid "Audit configuration"
 msgstr ""
 
-#: config/audit/class_auditConfig.inc:27
+#: backend/audit/class_auditConfig.inc:27
 msgid "FusionDirectory audit plugin configuration"
 msgstr ""
 
-#: config/audit/class_auditConfig.inc:40
+#: backend/audit/class_auditConfig.inc:40
 #: reports/audit/class_auditManagement.inc:41
 msgid "Audit"
 msgstr ""
 
-#: config/audit/class_auditConfig.inc:43
+#: backend/audit/class_auditConfig.inc:43
 msgid "Audit RDN"
 msgstr ""
 
-#: config/audit/class_auditConfig.inc:43
+#: backend/audit/class_auditConfig.inc:43
 msgid "Branch in which audit events will be stored"
 msgstr ""
 
-#: config/audit/class_auditConfig.inc:49
+#: backend/audit/class_auditConfig.inc:49
 msgid "Actions to audit"
 msgstr ""
 
-#: config/audit/class_auditConfig.inc:49
+#: backend/audit/class_auditConfig.inc:49
 msgid "Which actions should be stored in LDAP audit log"
 msgstr ""
 
-#: config/audit/class_auditConfig.inc:56
-msgid "Days to keep"
+#: backend/audit/class_auditConfig.inc:57
+msgid "Hide value of below attributes"
 msgstr ""
 
-#: config/audit/class_auditConfig.inc:56
-msgid "Number of days of audit to keep in the LDAP when cleaning"
+#: backend/audit/class_auditConfig.inc:57
+msgid ""
+"Attributes name in ACL format, hiding the values related to set attributes"
+msgstr ""
+
+#: workflow/tasks/class_auditTask.inc:31
+msgid "Tasks Audit"
+msgstr ""
+
+#: workflow/tasks/class_auditTask.inc:32
+msgid "Tasks Audit Object"
+msgstr ""
+
+#: workflow/tasks/class_auditTask.inc:49
+msgid "Schedule Audit Retention"
+msgstr ""
+
+#: workflow/tasks/class_auditTask.inc:52
+msgid "Retaining days"
+msgstr ""
+
+#: workflow/tasks/class_auditTask.inc:52
+msgid "Numbers of days audit logs should be kept before deletion"
 msgstr ""
 
 #: reports/audit/class_auditEvent.inc:29 reports/audit/class_auditEvent.inc:33

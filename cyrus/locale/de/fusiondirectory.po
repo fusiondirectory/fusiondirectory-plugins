@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2021\n"
 "Language-Team: German (https://app.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -22,111 +22,111 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:27
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:28
+#: management/systems/services/cyrus/class_serviceCyrus.inc:27
+#: management/systems/services/cyrus/class_serviceCyrus.inc:28
 msgid "Cyrus (IMAP/POP3)"
 msgstr "Cyrus (IMAP/POP3)"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:28
+#: management/systems/services/cyrus/class_serviceCyrus.inc:28
 msgid "Services"
 msgstr "Dienste"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:45
+#: management/systems/services/cyrus/class_serviceCyrus.inc:45
 msgid "Connection"
 msgstr "Verbindung"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:48
+#: management/systems/services/cyrus/class_serviceCyrus.inc:48
 msgid "Connect URL for Cyrus server"
 msgstr "Verbindungs URL für Cyrus Server"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:52
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:93
+#: management/systems/services/cyrus/class_serviceCyrus.inc:52
+#: management/systems/services/cyrus/class_serviceCyrus.inc:93
 msgid "Hostname"
 msgstr "Hostname"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:52
+#: management/systems/services/cyrus/class_serviceCyrus.inc:52
 msgid "Hostname of the Cyrus server"
 msgstr "Hostname des Cyrusservers"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:56
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:97
+#: management/systems/services/cyrus/class_serviceCyrus.inc:56
+#: management/systems/services/cyrus/class_serviceCyrus.inc:97
 msgid "Port"
 msgstr "Anschluss"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:56
+#: management/systems/services/cyrus/class_serviceCyrus.inc:56
 msgid "Port number on which Cyrus server should be contacted"
 msgstr "Portnummer unter der Cyrusserver kontaktiert werden soll"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:61
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:102
+#: management/systems/services/cyrus/class_serviceCyrus.inc:61
+#: management/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Option"
 msgstr "Option"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:61
+#: management/systems/services/cyrus/class_serviceCyrus.inc:61
 msgid "Options for contacting Cyrus server"
 msgstr "Optionen mit dem Kontakt des Cyrusserver"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:66
+#: management/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Valide certificats"
 msgstr "Gültige Zertifikate"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:66
+#: management/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Weither or not to validate server certificate on connexion"
 msgstr "Ob Serverzertifikate bei der Verbindung überprüft werden sollen"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:76
+#: management/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Admin user"
 msgstr "Administrator"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:76
+#: management/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Imap server admin user"
 msgstr "Imap Server admin Benutzer"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:80
+#: management/systems/services/cyrus/class_serviceCyrus.inc:80
 msgid "Password"
 msgstr "Passwort"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:80
+#: management/systems/services/cyrus/class_serviceCyrus.inc:80
 msgid "Admin user password"
 msgstr "Admin Benutzerpasswort"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:86
+#: management/systems/services/cyrus/class_serviceCyrus.inc:86
 msgid "Sieve"
 msgstr "Sieve"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:89
+#: management/systems/services/cyrus/class_serviceCyrus.inc:89
 msgid "Sieve connect URL for Cyrus server"
 msgstr "Sieve Verbindungs URL für Cyrus Server"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:93
+#: management/systems/services/cyrus/class_serviceCyrus.inc:93
 msgid "Hostname of the Cyrus sieve server"
 msgstr "Hostname des Cyrus sieve-Servers"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:97
+#: management/systems/services/cyrus/class_serviceCyrus.inc:97
 msgid "Port number on which Cyrus sieve server should be contacted"
 msgstr "Portnummer unter der Cyrus sieve Server kontaktiert werden soll"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:102
+#: management/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Options for contacting Cyrus sieve server"
 msgstr "Optionen für den Kontakt des Cyrus sieve Servers"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:113
+#: management/systems/services/cyrus/class_serviceCyrus.inc:113
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:116
+#: management/systems/services/cyrus/class_serviceCyrus.inc:116
 msgid "Use UNIX style"
 msgstr "UNIX-Stil verwenden"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:116
+#: management/systems/services/cyrus/class_serviceCyrus.inc:116
 msgid "Determines if \"foo/bar\" or \"foo.bar\" should be used as namespaces in IMAP"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:122
+#: management/systems/services/cyrus/class_serviceCyrus.inc:122
 msgid "Autocreate folders"
 msgstr "Ordner automatisch erstellen"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:122
+#: management/systems/services/cyrus/class_serviceCyrus.inc:122
 msgid ""
 "List of personal IMAP folders that should be created along initial account "
 "creation."

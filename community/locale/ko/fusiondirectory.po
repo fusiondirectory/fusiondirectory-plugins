@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:51+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -21,146 +21,146 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/departments/community/class_communityOrganization.inc:28
-msgid "Community organization"
-msgstr "커뮤니티 조직"
-
-#: admin/departments/community/class_communityOrganization.inc:29
-msgid "Community organization dates and alternate address"
-msgstr "커뮤니티 조직 날짜 및 대체 주소"
-
-#: admin/departments/community/class_communityOrganization.inc:43
-msgid "Membership"
-msgstr "회원"
-
-#: admin/departments/community/class_communityOrganization.inc:46
-msgid "Membership type"
-msgstr "회원 유형"
-
-#: admin/departments/community/class_communityOrganization.inc:46
-msgid "Membership type of this organization"
-msgstr "조직의 회원 유형"
-
-#: admin/departments/community/class_communityOrganization.inc:51
-msgid "Agreement signed"
-msgstr "계약체결"
-
-#: admin/departments/community/class_communityOrganization.inc:51
-msgid "Did this member returned the agreement signed"
-msgstr "이 회원이 계약서를 반환했습니까"
-
-#: admin/departments/community/class_communityOrganization.inc:55
-msgid "Active"
-msgstr "활성화"
-
-#: admin/departments/community/class_communityOrganization.inc:55
-msgid "Is the membership of this organization active"
-msgstr "이 조직의 회원 자격이 활성화되어 있습니까"
-
-#: admin/departments/community/class_communityOrganization.inc:59
-msgid "Hidden"
-msgstr "숨김"
-
-#: admin/departments/community/class_communityOrganization.inc:59
-msgid "Should this membership be hidden from listings"
-msgstr "이 멤버십을 목록에서 숨겨야합니까"
-
-#: admin/departments/community/class_communityOrganization.inc:65
-msgid "Dates"
-msgstr "일자"
-
-#: admin/departments/community/class_communityOrganization.inc:68
-msgid "Start date"
-msgstr "시작일자"
-
-#: admin/departments/community/class_communityOrganization.inc:68
-msgid "Date of the beginning"
-msgstr "시작날짜"
-
-#: admin/departments/community/class_communityOrganization.inc:72
-msgid "End date"
-msgstr "종료일자"
-
-#: admin/departments/community/class_communityOrganization.inc:72
-msgid "Date of the end"
-msgstr "종료날짜"
-
-#: admin/departments/community/class_communityOrganization.inc:79
-msgid "Contact"
-msgstr "연락처"
-
-#: admin/departments/community/class_communityOrganization.inc:82
-msgid "First name"
-msgstr "이름"
-
-#: admin/departments/community/class_communityOrganization.inc:86
-msgid "Last name"
-msgstr "성"
-
-#: admin/departments/community/class_communityOrganization.inc:90
-msgid "Address"
-msgstr "주소"
-
-#: admin/departments/community/class_communityOrganization.inc:90
-msgid "A postal address"
-msgstr "우편주소"
-
-#: admin/departments/community/class_communityOrganization.inc:94
-msgid "City"
-msgstr "도시"
-
-#: admin/departments/community/class_communityOrganization.inc:98
-msgid "State"
-msgstr "주"
-
-#: admin/departments/community/class_communityOrganization.inc:102
-msgid "Country"
-msgstr "지역"
-
-#: admin/departments/community/class_communityProject.inc:28
-msgid "Community project"
-msgstr "커뮤니티 프로젝트"
-
-#: admin/departments/community/class_communityProject.inc:29
-msgid "Community project dates and alternate address"
-msgstr "커뮤니티 프로젝트 날짜 및 대체 주소"
-
-#: admin/departments/community/class_communityProject.inc:43
-msgid "Project"
-msgstr "프로젝트"
-
-#: admin/departments/community/class_communityProject.inc:46
-msgid "Project full name"
-msgstr "프로젝트 전체 이름"
-
-#: admin/departments/community/class_communityProject.inc:46
-msgid "Full name of this project"
-msgstr "프로젝트 전체 이름"
-
-#: admin/departments/community/class_communityProject.inc:50
-msgid "Project key"
-msgstr "프로젝트 키"
-
-#: admin/departments/community/class_communityProject.inc:50
-msgid "ID used for this project in other softwares or databases"
-msgstr "다른 소프트웨어 또는 데이터베이스에서 이 프로젝트에 사용된 ID"
-
-#: config/community/class_communityConfig.inc:26
+#: backend/community/class_communityConfig.inc:26
 msgid "Community configuration"
 msgstr "커뮤니티 설정"
 
-#: config/community/class_communityConfig.inc:27
+#: backend/community/class_communityConfig.inc:27
 msgid "FusionDirectory community plugin configuration"
 msgstr "FustionDirectory 커뮤니티 플러그인 설정"
 
-#: config/community/class_communityConfig.inc:40
+#: backend/community/class_communityConfig.inc:40
 msgid "Community"
 msgstr "커뮤니티"
 
-#: config/community/class_communityConfig.inc:44
+#: backend/community/class_communityConfig.inc:44
 msgid "Membership type choices"
 msgstr "회원 유형 선택"
 
-#: config/community/class_communityConfig.inc:44
+#: backend/community/class_communityConfig.inc:44
 msgid "Community membership types available in the user community tab"
 msgstr "사용자 커뮤니티 탭에서 사용가능한 커뮤니티 회원 유형"
+
+#: management/departments/community/class_communityOrganization.inc:28
+msgid "Community organization"
+msgstr "커뮤니티 조직"
+
+#: management/departments/community/class_communityOrganization.inc:29
+msgid "Community organization dates and alternate address"
+msgstr "커뮤니티 조직 날짜 및 대체 주소"
+
+#: management/departments/community/class_communityOrganization.inc:43
+msgid "Membership"
+msgstr "회원"
+
+#: management/departments/community/class_communityOrganization.inc:46
+msgid "Membership type"
+msgstr "회원 유형"
+
+#: management/departments/community/class_communityOrganization.inc:46
+msgid "Membership type of this organization"
+msgstr "조직의 회원 유형"
+
+#: management/departments/community/class_communityOrganization.inc:51
+msgid "Agreement signed"
+msgstr "계약체결"
+
+#: management/departments/community/class_communityOrganization.inc:51
+msgid "Did this member returned the agreement signed"
+msgstr "이 회원이 계약서를 반환했습니까"
+
+#: management/departments/community/class_communityOrganization.inc:55
+msgid "Active"
+msgstr "활성화"
+
+#: management/departments/community/class_communityOrganization.inc:55
+msgid "Is the membership of this organization active"
+msgstr "이 조직의 회원 자격이 활성화되어 있습니까"
+
+#: management/departments/community/class_communityOrganization.inc:59
+msgid "Hidden"
+msgstr "숨김"
+
+#: management/departments/community/class_communityOrganization.inc:59
+msgid "Should this membership be hidden from listings"
+msgstr "이 멤버십을 목록에서 숨겨야합니까"
+
+#: management/departments/community/class_communityOrganization.inc:65
+msgid "Dates"
+msgstr "일자"
+
+#: management/departments/community/class_communityOrganization.inc:68
+msgid "Start date"
+msgstr "시작일자"
+
+#: management/departments/community/class_communityOrganization.inc:68
+msgid "Date of the beginning"
+msgstr "시작날짜"
+
+#: management/departments/community/class_communityOrganization.inc:72
+msgid "End date"
+msgstr "종료일자"
+
+#: management/departments/community/class_communityOrganization.inc:72
+msgid "Date of the end"
+msgstr "종료날짜"
+
+#: management/departments/community/class_communityOrganization.inc:79
+msgid "Contact"
+msgstr "연락처"
+
+#: management/departments/community/class_communityOrganization.inc:82
+msgid "First name"
+msgstr "이름"
+
+#: management/departments/community/class_communityOrganization.inc:86
+msgid "Last name"
+msgstr "성"
+
+#: management/departments/community/class_communityOrganization.inc:90
+msgid "Address"
+msgstr "주소"
+
+#: management/departments/community/class_communityOrganization.inc:90
+msgid "A postal address"
+msgstr "우편주소"
+
+#: management/departments/community/class_communityOrganization.inc:94
+msgid "City"
+msgstr "도시"
+
+#: management/departments/community/class_communityOrganization.inc:98
+msgid "State"
+msgstr "주"
+
+#: management/departments/community/class_communityOrganization.inc:102
+msgid "Country"
+msgstr "지역"
+
+#: management/departments/community/class_communityProject.inc:28
+msgid "Community project"
+msgstr "커뮤니티 프로젝트"
+
+#: management/departments/community/class_communityProject.inc:29
+msgid "Community project dates and alternate address"
+msgstr "커뮤니티 프로젝트 날짜 및 대체 주소"
+
+#: management/departments/community/class_communityProject.inc:43
+msgid "Project"
+msgstr "프로젝트"
+
+#: management/departments/community/class_communityProject.inc:46
+msgid "Project full name"
+msgstr "프로젝트 전체 이름"
+
+#: management/departments/community/class_communityProject.inc:46
+msgid "Full name of this project"
+msgstr "프로젝트 전체 이름"
+
+#: management/departments/community/class_communityProject.inc:50
+msgid "Project key"
+msgstr "프로젝트 키"
+
+#: management/departments/community/class_communityProject.inc:50
+msgid "ID used for this project in other softwares or databases"
+msgstr "다른 소프트웨어 또는 데이터베이스에서 이 프로젝트에 사용된 ID"

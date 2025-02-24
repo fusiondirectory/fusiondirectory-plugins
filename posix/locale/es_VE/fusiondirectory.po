@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Spanish (Venezuela) (https://app.transifex.com/fusiondirectory/teams/12202/es_VE/)\n"
@@ -21,123 +21,32 @@ msgstr ""
 "Language: es_VE\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/groups/posix/class_posixGroup.inc:33
-msgid "Group"
-msgstr "Grupo"
-
-#: admin/groups/posix/class_posixGroup.inc:34
-msgid "POSIX group information"
-msgstr "Información de Grupo POSIX"
-
-#: admin/groups/posix/class_posixGroup.inc:37
-msgid "POSIX group"
-msgstr "Grupo POSIX"
-
-#: admin/groups/posix/class_posixGroup.inc:38
-msgid "POSIX user group"
-msgstr "Grupo de Usuarios POSIX"
-
-#: admin/groups/posix/class_posixGroup.inc:57
-msgid "Properties"
-msgstr "Propiedades"
-
-#: admin/groups/posix/class_posixGroup.inc:61
-msgid "Name"
-msgstr "Nombre"
-
-#: admin/groups/posix/class_posixGroup.inc:61
-msgid "Name of this group"
-msgstr "Nombre de este grupo"
-
-#: admin/groups/posix/class_posixGroup.inc:66
-msgid "Description"
-msgstr "Descripción"
-
-#: admin/groups/posix/class_posixGroup.inc:66
-msgid "Short description of this group"
-msgstr "Una descripción corta de este grupo."
-
-#: admin/groups/posix/class_posixGroup.inc:70
-msgid "Force GID"
-msgstr "Forzar GID"
-
-#: admin/groups/posix/class_posixGroup.inc:70
-msgid "Force GID value for this group"
-msgstr "Forzar GID para éste grupo"
-
-#: admin/groups/posix/class_posixGroup.inc:74
-msgid "GID"
-msgstr "GID"
-
-#: admin/groups/posix/class_posixGroup.inc:74
-msgid "GID value for this group"
-msgstr "Valor GID para éste grupo"
-
-#: admin/groups/posix/class_posixGroup.inc:81
-#: admin/groups/posix/class_posixGroup.inc:84
-msgid "Group members"
-msgstr "Miembros del grupo"
-
-#: admin/groups/posix/class_posixGroup.inc:91
-#: personal/posix/class_posixAccount.inc:167
-msgid "System trust"
-msgstr "Sistema de seguridad"
-
-#: admin/groups/posix/class_posixGroup.inc:95
-#: personal/posix/class_posixAccount.inc:171
-msgid "Trust mode"
-msgstr "Modo seguro"
-
-#: admin/groups/posix/class_posixGroup.inc:95
-#: personal/posix/class_posixAccount.inc:171
-msgid "Type of authorization for those hosts"
-msgstr "Tipo de autorización para ésos equipos"
-
-#: admin/groups/posix/class_posixGroup.inc:99
-#: personal/posix/class_posixAccount.inc:175
-msgid "disabled"
-msgstr "desactivado"
-
-#: admin/groups/posix/class_posixGroup.inc:99
-#: personal/posix/class_posixAccount.inc:175
-msgid "full access"
-msgstr "Acceso sin restricciones"
-
-#: admin/groups/posix/class_posixGroup.inc:99
-#: personal/posix/class_posixAccount.inc:175
-msgid "allow access to these hosts"
-msgstr "Permitir el acceso a estos equipos"
-
-#: admin/groups/posix/class_posixGroup.inc:102
-msgid "Only allow this group to connect to this list of hosts"
-msgstr ""
-"Habilitar solamente a éste grupo para conectarse a ésta lista de equipos."
-
-#: config/posix/class_posixConfig.inc:27 config/posix/class_posixConfig.inc:41
+#: backend/posix/class_posixConfig.inc:27
+#: backend/posix/class_posixConfig.inc:41
 msgid "POSIX"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:28
+#: backend/posix/class_posixConfig.inc:28
 msgid "POSIX configuration"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:29
+#: backend/posix/class_posixConfig.inc:29
 msgid "FusionDirectory POSIX plugin configuration"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:45
+#: backend/posix/class_posixConfig.inc:45
 msgid "POSIX groups RDN"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:45
+#: backend/posix/class_posixConfig.inc:45
 msgid "The branch where POSIX groups are stored."
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:50
+#: backend/posix/class_posixConfig.inc:50
 msgid "Group/user min id"
 msgstr "Grupo/usuario min id"
 
-#: config/posix/class_posixConfig.inc:51
+#: backend/posix/class_posixConfig.inc:51
 msgid ""
 "The minimum assignable user or group id to avoid security leaks with id 0 "
 "accounts."
@@ -145,11 +54,11 @@ msgstr ""
 "El número 'id' mínimo asignable a un usuario o grupo para evitar fallas de "
 "seguridad como cuentas de usuario con id '0'."
 
-#: config/posix/class_posixConfig.inc:56
+#: backend/posix/class_posixConfig.inc:56
 msgid "Next id hook"
 msgstr "Siguiente id hook"
 
-#: config/posix/class_posixConfig.inc:56
+#: backend/posix/class_posixConfig.inc:56
 msgid ""
 "A script to be called for finding the next free id number for users or "
 "groups."
@@ -157,91 +66,183 @@ msgstr ""
 "Un script que buscará el siguiente número \"id\" libre para usuarios o "
 "grupos."
 
-#: config/posix/class_posixConfig.inc:60
+#: backend/posix/class_posixConfig.inc:60
 msgid "Base number for user id"
 msgstr "Número base para 'id' de usuario"
 
-#: config/posix/class_posixConfig.inc:61
+#: backend/posix/class_posixConfig.inc:61
 msgid "Where to start looking for a new free user id."
 msgstr "Dónde buscar un id libre de usuario."
 
-#: config/posix/class_posixConfig.inc:66
+#: backend/posix/class_posixConfig.inc:66
 msgid "Base number for group id"
 msgstr "Número base para 'id' de grupo"
 
-#: config/posix/class_posixConfig.inc:67
+#: backend/posix/class_posixConfig.inc:67
 msgid "Where to start looking for a new free group id."
 msgstr "Dónde buscar un id libre de grupo"
 
-#: config/posix/class_posixConfig.inc:72
+#: backend/posix/class_posixConfig.inc:72
 msgid "Id allocation method"
 msgstr "Método para asignar 'ids'"
 
-#: config/posix/class_posixConfig.inc:72
+#: backend/posix/class_posixConfig.inc:72
 msgid "Method to allocate user/group ids"
 msgstr "Método para asignar 'ids' de grupo/usuario"
 
-#: config/posix/class_posixConfig.inc:75
+#: backend/posix/class_posixConfig.inc:75
 msgid "Traditional"
 msgstr "Tradicional"
 
-#: config/posix/class_posixConfig.inc:75
+#: backend/posix/class_posixConfig.inc:75
 msgid "Samba unix id pool"
 msgstr "Samba unix id pool"
 
-#: config/posix/class_posixConfig.inc:78
+#: backend/posix/class_posixConfig.inc:78
 msgid "Pool user id min"
 msgstr "Pool user id min"
 
-#: config/posix/class_posixConfig.inc:78
+#: backend/posix/class_posixConfig.inc:78
 msgid "Minimum value for user id when using pool method"
 msgstr ""
 "Valor mínimo para el valor 'id' del usuario cuando utilice el método 'pool'"
 
-#: config/posix/class_posixConfig.inc:83
+#: backend/posix/class_posixConfig.inc:83
 msgid "Pool user id max"
 msgstr "Pool user id max"
 
-#: config/posix/class_posixConfig.inc:83
+#: backend/posix/class_posixConfig.inc:83
 msgid "Maximum value for user id when using pool method"
 msgstr ""
 "Valor máximo para el valor 'id' del usuario cuando utilice el método 'pool'"
 
-#: config/posix/class_posixConfig.inc:88
+#: backend/posix/class_posixConfig.inc:88
 msgid "Pool group id min"
 msgstr "Pool group id min"
 
-#: config/posix/class_posixConfig.inc:88
+#: backend/posix/class_posixConfig.inc:88
 msgid "Minimum value for group id when using pool method"
 msgstr "Valor mínimo para id de 'grupo' cuando se utilice el método 'pool'"
 
-#: config/posix/class_posixConfig.inc:93
+#: backend/posix/class_posixConfig.inc:93
 msgid "Pool group id max"
 msgstr "Pool group id max"
 
-#: config/posix/class_posixConfig.inc:93
+#: backend/posix/class_posixConfig.inc:93
 msgid "Maximum value for group id when using pool method"
 msgstr "Valor máximo para el group id cuando se utilice el método pool."
 
-#: config/posix/class_posixConfig.inc:100
+#: backend/posix/class_posixConfig.inc:100
 msgid "Shells"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:104
+#: backend/posix/class_posixConfig.inc:104
 msgid "Available shells"
 msgstr "Shells disponibles"
 
-#: config/posix/class_posixConfig.inc:104
+#: backend/posix/class_posixConfig.inc:104
 msgid "Available POSIX shells for FD users."
 msgstr "Shells POSIX disponibles para usuarios de FD."
 
-#: config/posix/class_posixConfig.inc:111
+#: backend/posix/class_posixConfig.inc:111
 msgid "Default shell"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:111
+#: backend/posix/class_posixConfig.inc:111
 msgid "Shell used by default when activating Unix tab."
 msgstr ""
+
+#: management/groups/posix/class_posixGroup.inc:33
+msgid "Group"
+msgstr "Grupo"
+
+#: management/groups/posix/class_posixGroup.inc:34
+msgid "POSIX group information"
+msgstr "Información de Grupo POSIX"
+
+#: management/groups/posix/class_posixGroup.inc:37
+msgid "POSIX group"
+msgstr "Grupo POSIX"
+
+#: management/groups/posix/class_posixGroup.inc:38
+msgid "POSIX user group"
+msgstr "Grupo de Usuarios POSIX"
+
+#: management/groups/posix/class_posixGroup.inc:57
+msgid "Properties"
+msgstr "Propiedades"
+
+#: management/groups/posix/class_posixGroup.inc:61
+msgid "Name"
+msgstr "Nombre"
+
+#: management/groups/posix/class_posixGroup.inc:61
+msgid "Name of this group"
+msgstr "Nombre de este grupo"
+
+#: management/groups/posix/class_posixGroup.inc:66
+msgid "Description"
+msgstr "Descripción"
+
+#: management/groups/posix/class_posixGroup.inc:66
+msgid "Short description of this group"
+msgstr "Una descripción corta de este grupo."
+
+#: management/groups/posix/class_posixGroup.inc:70
+msgid "Force GID"
+msgstr "Forzar GID"
+
+#: management/groups/posix/class_posixGroup.inc:70
+msgid "Force GID value for this group"
+msgstr "Forzar GID para éste grupo"
+
+#: management/groups/posix/class_posixGroup.inc:74
+msgid "GID"
+msgstr "GID"
+
+#: management/groups/posix/class_posixGroup.inc:74
+msgid "GID value for this group"
+msgstr "Valor GID para éste grupo"
+
+#: management/groups/posix/class_posixGroup.inc:81
+#: management/groups/posix/class_posixGroup.inc:84
+msgid "Group members"
+msgstr "Miembros del grupo"
+
+#: management/groups/posix/class_posixGroup.inc:91
+#: personal/posix/class_posixAccount.inc:167
+msgid "System trust"
+msgstr "Sistema de seguridad"
+
+#: management/groups/posix/class_posixGroup.inc:95
+#: personal/posix/class_posixAccount.inc:171
+msgid "Trust mode"
+msgstr "Modo seguro"
+
+#: management/groups/posix/class_posixGroup.inc:95
+#: personal/posix/class_posixAccount.inc:171
+msgid "Type of authorization for those hosts"
+msgstr "Tipo de autorización para ésos equipos"
+
+#: management/groups/posix/class_posixGroup.inc:99
+#: personal/posix/class_posixAccount.inc:175
+msgid "disabled"
+msgstr "desactivado"
+
+#: management/groups/posix/class_posixGroup.inc:99
+#: personal/posix/class_posixAccount.inc:175
+msgid "full access"
+msgstr "Acceso sin restricciones"
+
+#: management/groups/posix/class_posixGroup.inc:99
+#: personal/posix/class_posixAccount.inc:175
+msgid "allow access to these hosts"
+msgstr "Permitir el acceso a estos equipos"
+
+#: management/groups/posix/class_posixGroup.inc:102
+msgid "Only allow this group to connect to this list of hosts"
+msgstr ""
+"Habilitar solamente a éste grupo para conectarse a ésta lista de equipos."
 
 #: personal/posix/class_posixAccount.inc:45
 #: personal/posix/class_posixAccount.inc:77
@@ -396,96 +397,96 @@ msgstr ""
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Permitir a este usuario conectarse a esta lista de hosts."
 
-#: personal/posix/class_posixAccount.inc:246
+#: personal/posix/class_posixAccount.inc:247
 msgid "automatic"
 msgstr "automático"
 
-#: personal/posix/class_posixAccount.inc:305
+#: personal/posix/class_posixAccount.inc:306
 msgid "expired"
 msgstr "expiró"
 
-#: personal/posix/class_posixAccount.inc:307
+#: personal/posix/class_posixAccount.inc:308
 msgid "grace time active"
 msgstr "Periodo de gracia activado"
 
-#: personal/posix/class_posixAccount.inc:310
-#: personal/posix/class_posixAccount.inc:312
-#: personal/posix/class_posixAccount.inc:314
+#: personal/posix/class_posixAccount.inc:311
+#: personal/posix/class_posixAccount.inc:313
+#: personal/posix/class_posixAccount.inc:315
 msgid "active"
 msgstr "activo"
 
-#: personal/posix/class_posixAccount.inc:310
+#: personal/posix/class_posixAccount.inc:311
 msgid "password expired"
 msgstr "la contraseña expiró"
 
-#: personal/posix/class_posixAccount.inc:312
+#: personal/posix/class_posixAccount.inc:313
 msgid "password not changeable"
 msgstr "no puede cambiar la contraseña"
 
-#: personal/posix/class_posixAccount.inc:484
+#: personal/posix/class_posixAccount.inc:492
 #, php-format
 msgid "Group of user %s"
 msgstr "Grupo del usuario %s"
 
-#: personal/posix/class_posixAccount.inc:506
+#: personal/posix/class_posixAccount.inc:514
 #, php-format
 msgid ""
 "Could not create automatic primary group (using gidNumber \"%s\"), because "
 "of the following errors"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:780
-#: personal/posix/class_posixAccount.inc:801
-#: personal/posix/class_posixAccount.inc:1003
-#: personal/posix/class_posixAccount.inc:1020
-#: personal/posix/class_posixAccount.inc:1032
+#: personal/posix/class_posixAccount.inc:788
+#: personal/posix/class_posixAccount.inc:809
+#: personal/posix/class_posixAccount.inc:1011
+#: personal/posix/class_posixAccount.inc:1028
+#: personal/posix/class_posixAccount.inc:1040
 msgid "Warning"
 msgstr "Aviso"
 
-#: personal/posix/class_posixAccount.inc:780
+#: personal/posix/class_posixAccount.inc:788
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:802
+#: personal/posix/class_posixAccount.inc:810
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:831
-#: personal/posix/class_posixAccount.inc:891
+#: personal/posix/class_posixAccount.inc:839
+#: personal/posix/class_posixAccount.inc:899
 #, php-format
 msgid "Cannot allocate a free ID: %s"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:832
+#: personal/posix/class_posixAccount.inc:840
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr "¡%sPoolMin >= %sPoolMax!"
 
-#: personal/posix/class_posixAccount.inc:876
-#: personal/posix/class_posixAccount.inc:912
+#: personal/posix/class_posixAccount.inc:884
+#: personal/posix/class_posixAccount.inc:920
 msgid "Cannot allocate a free ID:"
 msgstr "No se puede asignar un identificador (ID) libre:"
 
-#: personal/posix/class_posixAccount.inc:876
+#: personal/posix/class_posixAccount.inc:884
 msgid "sambaUnixIdPool is not unique!"
 msgstr "¡sambaUnixIdPool no es único!"
 
-#: personal/posix/class_posixAccount.inc:892
+#: personal/posix/class_posixAccount.inc:900
 msgid "no ID available!"
 msgstr "¡No hay ID disponibles!"
 
-#: personal/posix/class_posixAccount.inc:912
+#: personal/posix/class_posixAccount.inc:920
 msgid "maximum tries exceeded!"
 msgstr "¡Excedido el número de intentos máximo!"
 
-#: personal/posix/class_posixAccount.inc:975
+#: personal/posix/class_posixAccount.inc:983
 msgid "Cannot allocate a free ID!"
 msgstr "¡No se puede asignar un identificador (ID) libre!"
 
-#: personal/posix/class_posixAccount.inc:1005
-#: personal/posix/class_posixAccount.inc:1022
+#: personal/posix/class_posixAccount.inc:1013
+#: personal/posix/class_posixAccount.inc:1030
 #, php-format
 msgid ""
 "%s\n"
@@ -493,10 +494,10 @@ msgid ""
 "Using default base!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:1023
+#: personal/posix/class_posixAccount.inc:1031
 msgid "\"nextIdHook\" did not return a valid output!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:1032
+#: personal/posix/class_posixAccount.inc:1040
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr ""

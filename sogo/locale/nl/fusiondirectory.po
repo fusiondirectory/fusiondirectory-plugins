@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:02+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2021\n"
 "Language-Team: Dutch (https://app.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -22,60 +22,63 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/sogo/class_sogoManagement.inc:27
-#: admin/sogo/class_sogoManagement.inc:33 config/sogo/class_sogoConfig.inc:40
-msgid "SOGo"
-msgstr "SOGo"
-
-#: admin/sogo/class_sogoManagement.inc:28
-msgid "SOGo management"
-msgstr "SOGo-beheer"
-
-#: admin/sogo/class_sogoManagement.inc:29
-msgid "Manage SOGo resources"
-msgstr "Beheer SOGo-bronnen"
-
-#: admin/sogo/class_sogoResource.inc:27 admin/sogo/class_sogoResource.inc:28
-#: admin/sogo/class_sogoResource.inc:32 admin/sogo/class_sogoResource.inc:49
-msgid "SOGo resource"
-msgstr "SOGo resource"
-
-#: admin/sogo/class_sogoResource.inc:53
-msgid "Entry name"
-msgstr "Naam item"
-
-#: admin/sogo/class_sogoResource.inc:53
-msgid "Account name"
-msgstr "Accountnaam"
-
-#: admin/sogo/class_sogoResource.inc:57
-msgid "Mail"
-msgstr "E-mail"
-
-#: admin/sogo/class_sogoResource.inc:63
-msgid "description"
-msgstr "beschrijving"
-
-#: admin/sogo/class_sogoResource.inc:67
-msgid "Multiplebookings"
-msgstr "Meerdere boekingen"
-
-#: admin/sogo/class_sogoResource.inc:72
-msgid "Kind"
-msgstr "Soort"
-
-#: config/sogo/class_sogoConfig.inc:26
+#: backend/sogo/class_sogoConfig.inc:26
 msgid "SOGo configuration"
 msgstr "SOGo-configuratie"
 
-#: config/sogo/class_sogoConfig.inc:27
+#: backend/sogo/class_sogoConfig.inc:27
 msgid "FusionDirectory sogo plugin configuration"
 msgstr "FusionDirectory SOGo plugin configuratie"
 
-#: config/sogo/class_sogoConfig.inc:43
+#: backend/sogo/class_sogoConfig.inc:40
+#: management/sogo/class_sogoManagement.inc:27
+#: management/sogo/class_sogoManagement.inc:33
+msgid "SOGo"
+msgstr "SOGo"
+
+#: backend/sogo/class_sogoConfig.inc:43
 msgid "SOGo RDN"
 msgstr "SOGo RDN"
 
-#: config/sogo/class_sogoConfig.inc:43
+#: backend/sogo/class_sogoConfig.inc:43
 msgid "Branch in which SOGo objects will be stored"
 msgstr "Tak waarin  SOGo-objecten zullen opgeslagen worden"
+
+#: management/sogo/class_sogoManagement.inc:28
+msgid "SOGo management"
+msgstr "SOGo-beheer"
+
+#: management/sogo/class_sogoManagement.inc:29
+msgid "Manage SOGo resources"
+msgstr "Beheer SOGo-bronnen"
+
+#: management/sogo/class_sogoResource.inc:27
+#: management/sogo/class_sogoResource.inc:28
+#: management/sogo/class_sogoResource.inc:32
+#: management/sogo/class_sogoResource.inc:49
+msgid "SOGo resource"
+msgstr "SOGo resource"
+
+#: management/sogo/class_sogoResource.inc:53
+msgid "Entry name"
+msgstr "Naam item"
+
+#: management/sogo/class_sogoResource.inc:53
+msgid "Account name"
+msgstr "Accountnaam"
+
+#: management/sogo/class_sogoResource.inc:57
+msgid "Mail"
+msgstr "E-mail"
+
+#: management/sogo/class_sogoResource.inc:63
+msgid "description"
+msgstr "beschrijving"
+
+#: management/sogo/class_sogoResource.inc:67
+msgid "Multiplebookings"
+msgstr "Meerdere boekingen"
+
+#: management/sogo/class_sogoResource.inc:72
+msgid "Kind"
+msgstr "Soort"

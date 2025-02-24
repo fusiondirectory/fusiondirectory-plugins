@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:51+0000\n"
 "Last-Translator: LOUKAS SKOUROLIAKOS, 2021\n"
 "Language-Team: Greek (Greece) (https://app.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -22,146 +22,146 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/departments/community/class_communityOrganization.inc:28
-msgid "Community organization"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:29
-msgid "Community organization dates and alternate address"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:43
-msgid "Membership"
-msgstr "Μέλος Ομάδας"
-
-#: admin/departments/community/class_communityOrganization.inc:46
-msgid "Membership type"
-msgstr "Τύπος Μέλους Ομάδας"
-
-#: admin/departments/community/class_communityOrganization.inc:46
-msgid "Membership type of this organization"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:51
-msgid "Agreement signed"
-msgstr "Συμφωνία υπογράφηκε "
-
-#: admin/departments/community/class_communityOrganization.inc:51
-msgid "Did this member returned the agreement signed"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:55
-msgid "Active"
-msgstr "Ενεργό"
-
-#: admin/departments/community/class_communityOrganization.inc:55
-msgid "Is the membership of this organization active"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:59
-msgid "Hidden"
-msgstr "Κρυφό"
-
-#: admin/departments/community/class_communityOrganization.inc:59
-msgid "Should this membership be hidden from listings"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:65
-msgid "Dates"
-msgstr "Ημερομηνίες"
-
-#: admin/departments/community/class_communityOrganization.inc:68
-msgid "Start date"
-msgstr "Ημερομηνία Εκκίνησης "
-
-#: admin/departments/community/class_communityOrganization.inc:68
-msgid "Date of the beginning"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:72
-msgid "End date"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:72
-msgid "Date of the end"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:79
-msgid "Contact"
-msgstr "Επαφή"
-
-#: admin/departments/community/class_communityOrganization.inc:82
-msgid "First name"
-msgstr "Όνομα"
-
-#: admin/departments/community/class_communityOrganization.inc:86
-msgid "Last name"
-msgstr "Επίθετο"
-
-#: admin/departments/community/class_communityOrganization.inc:90
-msgid "Address"
-msgstr "Διεύθυνση"
-
-#: admin/departments/community/class_communityOrganization.inc:90
-msgid "A postal address"
-msgstr "Μία Ταχυδρομική διεύθυνση"
-
-#: admin/departments/community/class_communityOrganization.inc:94
-msgid "City"
-msgstr "Πόλη"
-
-#: admin/departments/community/class_communityOrganization.inc:98
-msgid "State"
-msgstr "Πολιτεία"
-
-#: admin/departments/community/class_communityOrganization.inc:102
-msgid "Country"
-msgstr "Χώρα"
-
-#: admin/departments/community/class_communityProject.inc:28
-msgid "Community project"
-msgstr "Έργο κοινότητας"
-
-#: admin/departments/community/class_communityProject.inc:29
-msgid "Community project dates and alternate address"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:43
-msgid "Project"
-msgstr "Έργο"
-
-#: admin/departments/community/class_communityProject.inc:46
-msgid "Project full name"
-msgstr "Πλήρες όνομα Έργου"
-
-#: admin/departments/community/class_communityProject.inc:46
-msgid "Full name of this project"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:50
-msgid "Project key"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:50
-msgid "ID used for this project in other softwares or databases"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:26
+#: backend/community/class_communityConfig.inc:26
 msgid "Community configuration"
 msgstr "Ρύθμιση κοινότητας"
 
-#: config/community/class_communityConfig.inc:27
+#: backend/community/class_communityConfig.inc:27
 msgid "FusionDirectory community plugin configuration"
 msgstr ""
 
-#: config/community/class_communityConfig.inc:40
+#: backend/community/class_communityConfig.inc:40
 msgid "Community"
 msgstr "Κοινότητα"
 
-#: config/community/class_communityConfig.inc:44
+#: backend/community/class_communityConfig.inc:44
 msgid "Membership type choices"
 msgstr ""
 
-#: config/community/class_communityConfig.inc:44
+#: backend/community/class_communityConfig.inc:44
 msgid "Community membership types available in the user community tab"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:28
+msgid "Community organization"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:29
+msgid "Community organization dates and alternate address"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:43
+msgid "Membership"
+msgstr "Μέλος Ομάδας"
+
+#: management/departments/community/class_communityOrganization.inc:46
+msgid "Membership type"
+msgstr "Τύπος Μέλους Ομάδας"
+
+#: management/departments/community/class_communityOrganization.inc:46
+msgid "Membership type of this organization"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:51
+msgid "Agreement signed"
+msgstr "Συμφωνία υπογράφηκε "
+
+#: management/departments/community/class_communityOrganization.inc:51
+msgid "Did this member returned the agreement signed"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:55
+msgid "Active"
+msgstr "Ενεργό"
+
+#: management/departments/community/class_communityOrganization.inc:55
+msgid "Is the membership of this organization active"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:59
+msgid "Hidden"
+msgstr "Κρυφό"
+
+#: management/departments/community/class_communityOrganization.inc:59
+msgid "Should this membership be hidden from listings"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:65
+msgid "Dates"
+msgstr "Ημερομηνίες"
+
+#: management/departments/community/class_communityOrganization.inc:68
+msgid "Start date"
+msgstr "Ημερομηνία Εκκίνησης "
+
+#: management/departments/community/class_communityOrganization.inc:68
+msgid "Date of the beginning"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:72
+msgid "End date"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:72
+msgid "Date of the end"
+msgstr ""
+
+#: management/departments/community/class_communityOrganization.inc:79
+msgid "Contact"
+msgstr "Επαφή"
+
+#: management/departments/community/class_communityOrganization.inc:82
+msgid "First name"
+msgstr "Όνομα"
+
+#: management/departments/community/class_communityOrganization.inc:86
+msgid "Last name"
+msgstr "Επίθετο"
+
+#: management/departments/community/class_communityOrganization.inc:90
+msgid "Address"
+msgstr "Διεύθυνση"
+
+#: management/departments/community/class_communityOrganization.inc:90
+msgid "A postal address"
+msgstr "Μία Ταχυδρομική διεύθυνση"
+
+#: management/departments/community/class_communityOrganization.inc:94
+msgid "City"
+msgstr "Πόλη"
+
+#: management/departments/community/class_communityOrganization.inc:98
+msgid "State"
+msgstr "Πολιτεία"
+
+#: management/departments/community/class_communityOrganization.inc:102
+msgid "Country"
+msgstr "Χώρα"
+
+#: management/departments/community/class_communityProject.inc:28
+msgid "Community project"
+msgstr "Έργο κοινότητας"
+
+#: management/departments/community/class_communityProject.inc:29
+msgid "Community project dates and alternate address"
+msgstr ""
+
+#: management/departments/community/class_communityProject.inc:43
+msgid "Project"
+msgstr "Έργο"
+
+#: management/departments/community/class_communityProject.inc:46
+msgid "Project full name"
+msgstr "Πλήρες όνομα Έργου"
+
+#: management/departments/community/class_communityProject.inc:46
+msgid "Full name of this project"
+msgstr ""
+
+#: management/departments/community/class_communityProject.inc:50
+msgid "Project key"
+msgstr ""
+
+#: management/departments/community/class_communityProject.inc:50
+msgid "ID used for this project in other softwares or databases"
 msgstr ""

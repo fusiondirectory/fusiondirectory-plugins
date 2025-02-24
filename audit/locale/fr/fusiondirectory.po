@@ -4,18 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# MCMic, 2018
-# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019
 # fusiondirectory <contact@fusiondirectory.org>, 2023
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:50+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,42 +22,67 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: config/audit/class_auditConfig.inc:26
+#: backend/audit/class_auditConfig.inc:26
 msgid "Audit configuration"
 msgstr "Configuration audit"
 
-#: config/audit/class_auditConfig.inc:27
+#: backend/audit/class_auditConfig.inc:27
 msgid "FusionDirectory audit plugin configuration"
 msgstr "Configuration du plugin audit"
 
-#: config/audit/class_auditConfig.inc:40
+#: backend/audit/class_auditConfig.inc:40
 #: reports/audit/class_auditManagement.inc:41
 msgid "Audit"
 msgstr "Audit"
 
-#: config/audit/class_auditConfig.inc:43
+#: backend/audit/class_auditConfig.inc:43
 msgid "Audit RDN"
 msgstr "Branche audit"
 
-#: config/audit/class_auditConfig.inc:43
+#: backend/audit/class_auditConfig.inc:43
 msgid "Branch in which audit events will be stored"
 msgstr "Branche dans laquelle les évènements d’audit sont stockés"
 
-#: config/audit/class_auditConfig.inc:49
+#: backend/audit/class_auditConfig.inc:49
 msgid "Actions to audit"
 msgstr "Actions à auditer"
 
-#: config/audit/class_auditConfig.inc:49
+#: backend/audit/class_auditConfig.inc:49
 msgid "Which actions should be stored in LDAP audit log"
 msgstr "Quelles actions doivent être stockées dans le journal d'audit"
 
-#: config/audit/class_auditConfig.inc:56
-msgid "Days to keep"
-msgstr "Jours de conservation"
+#: backend/audit/class_auditConfig.inc:57
+msgid "Hide value of below attributes"
+msgstr "Masquer la valeur des attributs ci-dessous"
 
-#: config/audit/class_auditConfig.inc:56
-msgid "Number of days of audit to keep in the LDAP when cleaning"
-msgstr "Nombre de jours d'audit à conserver dans le LDAP lors du nettoyage"
+#: backend/audit/class_auditConfig.inc:57
+msgid ""
+"Attributes name in ACL format, hiding the values related to set attributes"
+msgstr ""
+"Nom des attributs au format ACL, masquant les valeurs liées aux attributs "
+"définis"
+
+#: workflow/tasks/class_auditTask.inc:31
+msgid "Tasks Audit"
+msgstr "Tâches d'audit"
+
+#: workflow/tasks/class_auditTask.inc:32
+msgid "Tasks Audit Object"
+msgstr "Tâches Objet Audit"
+
+#: workflow/tasks/class_auditTask.inc:49
+msgid "Schedule Audit Retention"
+msgstr "Planifier la conservation des audits"
+
+#: workflow/tasks/class_auditTask.inc:52
+msgid "Retaining days"
+msgstr "Temps de rétention en jours"
+
+#: workflow/tasks/class_auditTask.inc:52
+msgid "Numbers of days audit logs should be kept before deletion"
+msgstr ""
+"Nombre de jours pendant lesquels les journaux d'audit doivent être conservés"
+" avant leur suppression"
 
 #: reports/audit/class_auditEvent.inc:29 reports/audit/class_auditEvent.inc:33
 msgid "Audit event"

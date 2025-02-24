@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -21,94 +21,94 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:26
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:27
+#: management/systems/services/dovecot/class_serviceDovecot.inc:26
+#: management/systems/services/dovecot/class_serviceDovecot.inc:27
 msgid "Dovecot (IMAP/POP3)"
 msgstr "Dovecot (IMAP/POP3)"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:27
+#: management/systems/services/dovecot/class_serviceDovecot.inc:27
 msgid "Services"
 msgstr "Service"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:42
+#: management/systems/services/dovecot/class_serviceDovecot.inc:42
 msgid "Dovecot connection"
 msgstr "Connexion Dovecot"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:45
+#: management/systems/services/dovecot/class_serviceDovecot.inc:45
 msgid "Connect URL for Dovecot server"
 msgstr "URL de connexion au serveur Dovecot"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:49
+#: management/systems/services/dovecot/class_serviceDovecot.inc:49
 msgid "Hostname"
 msgstr "Nom de l'hôte"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:49
+#: management/systems/services/dovecot/class_serviceDovecot.inc:49
 msgid "Hostname of the Dovecot server"
 msgstr "Nom d’hôte du serveur Dovecot"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:53
+#: management/systems/services/dovecot/class_serviceDovecot.inc:53
 msgid "Port"
 msgstr "Port"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:53
+#: management/systems/services/dovecot/class_serviceDovecot.inc:53
 msgid "Port number on which Dovecot server should be contacted"
 msgstr "Numéro de port sur ​​lequel le serveur Dovecot doit être contacté"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:58
+#: management/systems/services/dovecot/class_serviceDovecot.inc:58
 msgid "Option"
 msgstr "Option"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:58
+#: management/systems/services/dovecot/class_serviceDovecot.inc:58
 msgid "Options for contacting Dovecot server"
 msgstr "Options pour contacter le serveur Dovecot"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:63
+#: management/systems/services/dovecot/class_serviceDovecot.inc:63
 msgid "Validate TLS/SSL Certificates"
 msgstr "Valider les certificats TLS/SSL"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:63
+#: management/systems/services/dovecot/class_serviceDovecot.inc:63
 msgid "Weither or not to validate server certificates on connection"
 msgstr "Valider ou non le certificat du serveur à la connexion"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:75
+#: management/systems/services/dovecot/class_serviceDovecot.inc:75
 msgid "Master credentials"
 msgstr "Compte Master"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:78
+#: management/systems/services/dovecot/class_serviceDovecot.inc:78
 msgid "Admin user"
 msgstr "Administrateur"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:78
+#: management/systems/services/dovecot/class_serviceDovecot.inc:78
 msgid "Dovecot server admin user"
 msgstr "Administrateur du serveur Dovecot"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:82
+#: management/systems/services/dovecot/class_serviceDovecot.inc:82
 msgid "Password"
 msgstr "Mot de passe"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:82
+#: management/systems/services/dovecot/class_serviceDovecot.inc:82
 msgid "Admin user password"
 msgstr "Mot de passe utilisateur Administrateur"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:86
+#: management/systems/services/dovecot/class_serviceDovecot.inc:86
 msgid "Mail directory"
 msgstr "Répertoire des courriels"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:86
+#: management/systems/services/dovecot/class_serviceDovecot.inc:86
 msgid "Path to the directory in which user maildirs must be created"
 msgstr ""
 "Chemin vers le répertoire dans lequel les boites de courriel doivent être "
 "crées"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:93
+#: management/systems/services/dovecot/class_serviceDovecot.inc:93
 msgid "Options"
 msgstr "Options"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:96
+#: management/systems/services/dovecot/class_serviceDovecot.inc:96
 msgid "Create the user folder via Argonaut"
 msgstr "Créer le répertoire utilisateur via Argonaut"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:96
+#: management/systems/services/dovecot/class_serviceDovecot.inc:96
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr "Utiliser Argonaut pour créer la boite courriel sur le serveur Dovecot"
 

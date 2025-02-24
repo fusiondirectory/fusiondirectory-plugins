@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 20:06+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -21,6 +21,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: backend/webservice/class_webserviceConfig.inc:26
+msgid "Webservice configuration"
+msgstr "웹서비스 설정"
+
+#: backend/webservice/class_webserviceConfig.inc:27
+msgid "FusionDirectory webservice plugin configuration"
+msgstr "FusionDirectory 웹서비스 플러그인 설정"
+
+#: backend/webservice/class_webserviceConfig.inc:40
+msgid "Webservice"
+msgstr "웹서비스"
+
+#: backend/webservice/class_webserviceConfig.inc:43
+msgid "Force SSL"
+msgstr "강제 SSL"
+
+#: backend/webservice/class_webserviceConfig.inc:43
+msgid "Allow only HTTPS JSON-RPC requests"
+msgstr "HTTPS JSON-RPC 요청만 허용"
 
 #: include/webservice/class_fdRPCService.inc:119
 #, php-format
@@ -60,60 +80,40 @@ msgstr "\"%s\" 필드는 여러 값을 가질 수 없음"
 msgid "Unknown field \"%s\""
 msgstr "잘못된 필드 \"%s\""
 
-#: include/webservice/class_fdRPCService.inc:820
+#: include/webservice/class_fdRPCService.inc:824
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr "\"%s\" 계정의 패스워드를 가져올 수 없습니다. 잠겨있지 않습니다."
 
-#: include/webservice/class_fdRPCService.inc:844
+#: include/webservice/class_fdRPCService.inc:848
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr "\"%s\"의 패스워드를 잠글 수 없습니다. \"%s\" 계정이 잠겨있지 않습니다."
 
-#: include/webservice/class_fdRPCService.inc:847
+#: include/webservice/class_fdRPCService.inc:851
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr "LDAP에서 계정 \"%s\"을 찾을 수 없습니다. 잠겨있지 않습니다."
 
-#: include/webservice/class_fdRPCService.inc:889
+#: include/webservice/class_fdRPCService.inc:893
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr "\"%s\" 계정의 패스워드를 가져올 수 없습니다. "
 
-#: include/webservice/class_fdRPCService.inc:896
+#: include/webservice/class_fdRPCService.inc:900
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr "LDAP에서 계정 \"%s\"를 찾을 수 없습니다."
 
-#: include/webservice/class_fdRPCService.inc:913
+#: include/webservice/class_fdRPCService.inc:917
 msgid "Archive action is not available: archive plugin is not installed"
 msgstr "보관 작업이 가능하지 않음 : 보관 플러그인이 설치되지 않았습니다."
 
-#: include/webservice/class_fdRPCService.inc:959
-#: include/webservice/class_fdRPCService.inc:984
+#: include/webservice/class_fdRPCService.inc:963
+#: include/webservice/class_fdRPCService.inc:988
 msgid "Password recovery is not activated"
 msgstr "비밀번호 복구가 활성화되지 않았습니다"
 
-#: include/webservice/class_fdRPCService.inc:994
+#: include/webservice/class_fdRPCService.inc:998
 msgid "This token is invalid"
 msgstr "토큰이 유효하지 않습니다."
-
-#: config/class_webserviceConfig.inc:26
-msgid "Webservice configuration"
-msgstr "웹서비스 설정"
-
-#: config/class_webserviceConfig.inc:27
-msgid "FusionDirectory webservice plugin configuration"
-msgstr "FusionDirectory 웹서비스 플러그인 설정"
-
-#: config/class_webserviceConfig.inc:40
-msgid "Webservice"
-msgstr "웹서비스"
-
-#: config/class_webserviceConfig.inc:43
-msgid "Force SSL"
-msgstr "강제 SSL"
-
-#: config/class_webserviceConfig.inc:43
-msgid "Allow only HTTPS JSON-RPC requests"
-msgstr "HTTPS JSON-RPC 요청만 허용"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2018-08-13 19:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Greek (Greece) (https://app.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -21,113 +21,113 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:27
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:28
+#: management/systems/services/cyrus/class_serviceCyrus.inc:27
+#: management/systems/services/cyrus/class_serviceCyrus.inc:28
 msgid "Cyrus (IMAP/POP3)"
 msgstr "Cyrus (IMAP/POP3)"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:28
+#: management/systems/services/cyrus/class_serviceCyrus.inc:28
 msgid "Services"
 msgstr "Υπηρεσίες"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:45
+#: management/systems/services/cyrus/class_serviceCyrus.inc:45
 msgid "Connection"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:48
+#: management/systems/services/cyrus/class_serviceCyrus.inc:48
 msgid "Connect URL for Cyrus server"
 msgstr "URL σύνδεσης σε διακομιστή Cyrus"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:52
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:93
+#: management/systems/services/cyrus/class_serviceCyrus.inc:52
+#: management/systems/services/cyrus/class_serviceCyrus.inc:93
 msgid "Hostname"
 msgstr "Όνομα συστήματος"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:52
+#: management/systems/services/cyrus/class_serviceCyrus.inc:52
 msgid "Hostname of the Cyrus server"
 msgstr "Όνομα συστήματος του διακομιστή Cyrus "
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:56
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:97
+#: management/systems/services/cyrus/class_serviceCyrus.inc:56
+#: management/systems/services/cyrus/class_serviceCyrus.inc:97
 msgid "Port"
 msgstr "Θύρα"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:56
+#: management/systems/services/cyrus/class_serviceCyrus.inc:56
 msgid "Port number on which Cyrus server should be contacted"
 msgstr "Αριθμός θύρας για την επικοινωνία με τον διακομιστή Cyrus "
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:61
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:102
+#: management/systems/services/cyrus/class_serviceCyrus.inc:61
+#: management/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Option"
 msgstr "Επιλογή"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:61
+#: management/systems/services/cyrus/class_serviceCyrus.inc:61
 msgid "Options for contacting Cyrus server"
 msgstr "Επιλογές επικοινωνίας με τον διακομιστή Cyrus "
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:66
+#: management/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Valide certificats"
 msgstr "Έγκυρα πιστοποιητικά"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:66
+#: management/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Weither or not to validate server certificate on connexion"
 msgstr ""
 "Εάν θα γίνεται επικύρωση ή όχι του πιστοποιητικού του διακομιστή κατά την "
 "σύνδεση"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:76
+#: management/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Admin user"
 msgstr "Διαχειριστής"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:76
+#: management/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Imap server admin user"
 msgstr "Διαχειριστής διακομιστή Imap"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:80
+#: management/systems/services/cyrus/class_serviceCyrus.inc:80
 msgid "Password"
 msgstr "Κωδικός πρόσβασης:"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:80
+#: management/systems/services/cyrus/class_serviceCyrus.inc:80
 msgid "Admin user password"
 msgstr "Κωδικός διαχειριστή"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:86
+#: management/systems/services/cyrus/class_serviceCyrus.inc:86
 msgid "Sieve"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:89
+#: management/systems/services/cyrus/class_serviceCyrus.inc:89
 msgid "Sieve connect URL for Cyrus server"
 msgstr "Sieve σύνδεσης σε διακομιστή Cyrus"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:93
+#: management/systems/services/cyrus/class_serviceCyrus.inc:93
 msgid "Hostname of the Cyrus sieve server"
 msgstr "Όνομα συστήματος του διακομιστή sieve Cyrus "
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:97
+#: management/systems/services/cyrus/class_serviceCyrus.inc:97
 msgid "Port number on which Cyrus sieve server should be contacted"
 msgstr "Αριθμός θύρας για την επικοινωνία με τον διακομιστή sieve Cyrus "
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:102
+#: management/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Options for contacting Cyrus sieve server"
 msgstr "Επιλογές επικοινωνίας με τον διακομιστή Cyrus sieve"
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:113
+#: management/systems/services/cyrus/class_serviceCyrus.inc:113
 msgid "Settings"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:116
+#: management/systems/services/cyrus/class_serviceCyrus.inc:116
 msgid "Use UNIX style"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:116
+#: management/systems/services/cyrus/class_serviceCyrus.inc:116
 msgid "Determines if \"foo/bar\" or \"foo.bar\" should be used as namespaces in IMAP"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:122
+#: management/systems/services/cyrus/class_serviceCyrus.inc:122
 msgid "Autocreate folders"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:122
+#: management/systems/services/cyrus/class_serviceCyrus.inc:122
 msgid ""
 "List of personal IMAP folders that should be created along initial account "
 "creation."

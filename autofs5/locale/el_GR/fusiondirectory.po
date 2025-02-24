@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-13 10:00+0000\n"
+"POT-Creation-Date: 2025-02-11 10:47+0000\n"
 "PO-Revision-Date: 2020-03-11 15:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2020\n"
 "Language-Team: Greek (Greece) (https://app.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -21,58 +21,78 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/autofs5/class_autofs5Management.inc:27
+#: backend/autofs5/class_autofs5Config.inc:26
+msgid "Autofs configuration"
+msgstr "Ρύθμιση Auto fs "
+
+#: backend/autofs5/class_autofs5Config.inc:27
+msgid "FusionDirectory autofs plugin configuration"
+msgstr "Ρύθμιση προσθέτου FusionDirectory autofs"
+
+#: backend/autofs5/class_autofs5Config.inc:40
+msgid "AutoFS"
+msgstr "AutoFS"
+
+#: backend/autofs5/class_autofs5Config.inc:43
+msgid "AutoFS RDN"
+msgstr "AutoFS RDN"
+
+#: backend/autofs5/class_autofs5Config.inc:43
+msgid "Branch in which automount info will be stored"
+msgstr "Κλάδος στον οποίο θα αποθηκεύονται πληροφορίες automount"
+
+#: management/autofs5/class_autofs5Management.inc:27
 msgid "Auto fs"
 msgstr "Auto fs"
 
-#: admin/autofs5/class_autofs5Management.inc:28
+#: management/autofs5/class_autofs5Management.inc:28
 msgid "Auto fs management"
 msgstr "Διαχείριση Auto fs "
 
-#: admin/autofs5/class_autofs5Management.inc:29
+#: management/autofs5/class_autofs5Management.inc:29
 msgid "Manage autofs maps"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:27
-#: admin/autofs5/class_automountMap.inc:28
-#: admin/autofs5/class_automountMap.inc:31
+#: management/autofs5/class_automountMap.inc:27
+#: management/autofs5/class_automountMap.inc:28
+#: management/autofs5/class_automountMap.inc:31
 msgid "Autofs map"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:46
+#: management/autofs5/class_automountMap.inc:46
 msgid "Map"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:50
+#: management/autofs5/class_automountMap.inc:50
 msgid "Name"
 msgstr "Όνομα"
 
-#: admin/autofs5/class_automountMap.inc:50
+#: management/autofs5/class_automountMap.inc:50
 msgid "Name of the map"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:56
-#: admin/autofs5/class_automountMap.inc:60
+#: management/autofs5/class_automountMap.inc:56
+#: management/autofs5/class_automountMap.inc:60
 msgid "Entries"
 msgstr "Καταχωρήσεις"
 
-#: admin/autofs5/class_automountMap.inc:60
+#: management/autofs5/class_automountMap.inc:60
 msgid "Entries in the automount table"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:64
+#: management/autofs5/class_automountMap.inc:64
 msgid "Path"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:64
+#: management/autofs5/class_automountMap.inc:64
 msgid "Absolute (direct) or relative (indirect) path for this entry"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:70
+#: management/autofs5/class_automountMap.inc:70
 msgid "Options"
 msgstr " Επιλογές"
 
-#: admin/autofs5/class_automountMap.inc:70
+#: management/autofs5/class_automountMap.inc:70
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
@@ -80,30 +100,10 @@ msgstr ""
 "Η εγγραφή αυτού του καταλόγου για τον automount daemon.\n"
 " Για παράδειγμα 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 
-#: admin/autofs5/class_automountMap.inc:74
+#: management/autofs5/class_automountMap.inc:74
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: admin/autofs5/class_automountMap.inc:74
+#: management/autofs5/class_automountMap.inc:74
 msgid "Description of this entry"
 msgstr ""
-
-#: config/autofs5/class_autofs5Config.inc:26
-msgid "Autofs configuration"
-msgstr "Ρύθμιση Auto fs "
-
-#: config/autofs5/class_autofs5Config.inc:27
-msgid "FusionDirectory autofs plugin configuration"
-msgstr "Ρύθμιση προσθέτου FusionDirectory autofs"
-
-#: config/autofs5/class_autofs5Config.inc:40
-msgid "AutoFS"
-msgstr "AutoFS"
-
-#: config/autofs5/class_autofs5Config.inc:43
-msgid "AutoFS RDN"
-msgstr "AutoFS RDN"
-
-#: config/autofs5/class_autofs5Config.inc:43
-msgid "Branch in which automount info will be stored"
-msgstr "Κλάδος στον οποίο θα αποθηκεύονται πληροφορίες automount"
