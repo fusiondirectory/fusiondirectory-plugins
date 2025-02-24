@@ -184,7 +184,6 @@ documentation and additional help.
 
 * Christian Kreidl <christian.kreidl@ziti.uni-heidelberg.de>
   ppolicy improvement
-* Kerberos improvement
   
 * Martin Hamant <mh@ow2.org>
   Coded the LockUser fonction for the webservice
@@ -247,3 +246,5 @@ documentation and additional help.
 * Matthew Newton <matthew.newton@networkradius.com>
   EpochDays attributes as human readable    
 
+* Cass Rebbelin <Rebbelin@hisolutions.com>
+  PNG traversal path vulnerability
