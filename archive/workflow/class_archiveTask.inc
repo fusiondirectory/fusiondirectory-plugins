@@ -133,7 +133,7 @@ class archiveTask extends simplePlugin
     $listOfDN = tasks::extractMembersFromGroups($monitoredMembers);
 
     // Call the method from parent tasks object (first tab) to create sub-tasks.
-    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, 'fdTasksGranularDN', NULL, 'Archive');
+    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, 'fdTasksGranularDN', NULL, 'archive');
   }
 
   /**
