@@ -151,22 +151,22 @@ class archiveTask extends simplePlugin
   function save (): array
   {
       // Check if the SupAnn Account Status plugin is available (It should not happen as attributes verification will trigger errors before save)
-      if (!class_available('supannAccountStatus')) {
-          msg_dialog::display(
-              _('Error'),
-              _('The SupAnn Account Status plugin is not activated. This task cannot be saved or executed without it.'),
-              ERROR_DIALOG
-          );
-          return []; // Return an empty array to indicate no action was taken
-      }
-  
+    if (!class_available('supannAccountStatus')) {
+        msg_dialog::display(
+            _('Error'),
+            _('The SupAnn Account Status plugin is not activated. This task cannot be saved or executed without it.'),
+            ERROR_DIALOG
+        );
+        return []; // Return an empty array to indicate no action was taken
+    }
+
       // Verify if this task has to be executed upon saving
       $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
-  
-      if ($execTasks) {
-          $this->generateSlaveTasks();
-      }
-  
+
+    if ($execTasks) {
+        $this->generateSlaveTasks();
+    }
+
       return parent::save();
   }
 }
