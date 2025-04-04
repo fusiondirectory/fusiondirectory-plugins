@@ -1,0 +1,32 @@
+##
+## extractor-fd.schema - Needed by Fusion Directory for extractor plugin
+##
+## Allows extracting LDAP data based on selected members or groups and a chosen format.
+##
+
+# Attributes
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.1 NAME 'fdExtractorTaskMembers'
+    DESC 'Fusion Directory - List of members or groups for extraction tasks'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.2 NAME 'fdExtractorTaskListOfDN'
+    DESC 'Fusion Directory - DNs derived from the selected members/groups'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.3 NAME 'fdExtractorTaskFormat'
+    DESC 'Fusion Directory - Format used for data extraction (CSV for now, extensible later)'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+    SINGLE-VALUE )
+
+# Object Class
+
+objectclass ( 1.3.6.1.4.1.38414.93.2.1 NAME 'fdExtractorTasks'
+    DESC 'Fusion Directory - Extractor tasks plugin object class'
+    SUP top
+    AUXILIARY
+    MUST ( fdExtractorTaskMembers $ fdExtractorTaskFormat )
+    MAY ( fdExtractorTaskListOfDN ) )
