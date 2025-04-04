@@ -1,0 +1,114 @@
+<?php
+/*
+  This code is part of FusionDirectory (http://www.fusiondirectory.org)
+
+  Copyright (C) 2025 FusionDirectory
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
+*/
+
+class extractorTask extends simplePlugin
+{
+  protected $displayHeader = TRUE;
+
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'    => _('Tasks Extractor'),
+      'plDescription'  => _('Tasks Extractor Object'),
+      'plIcon'        => 'geticon.php?context=mimetypes&icon=application-vnd.ms-excel&size=48',
+      'plPriority'     => 42,
+      'plObjectClass'  => ['fdExtractorTasks'],
+      'plFilter'       => '(objectClass=fdExtractorTasks)',
+      'plObjectType'   => ['tasks'],
+      'plConflicts'    => ['tasksMail', 'tasksLifeCycle', 'tasksNotifications', 'auditTasks', 'tasksArchive'],
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
+      'plForeignKeys'  => [],
+    ];
+  }
+
+  static function getAttributesInfo (): array
+  {
+    return [
+    'section1' => [
+        'name'  => _('Members to Extract'),
+        'attrs' => [
+            new UsersGroupsRolesAttribute(
+            _('Selected Members'), _('Users or Groups to extract data from.'),
+            'fdExtractorTaskMembers', TRUE
+            ),
+            new HiddenAttribute(
+            'fdExtractorTaskListOfDN'
+            ),
+        ],
+        ],
+      'section2' => [
+        'name'  => _('Extraction Settings'),
+        'attrs' => [
+          new SelectAttribute(
+            _('Format'), _('Output format for extracted data'),
+            'fdExtractorTaskFormat', TRUE, 
+            ['CSV' => _('CSV (Comma Separated Values)')], 
+            'CSV'
+          ),
+        ]
+      ],
+    ];
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab);
+  }
+
+  /**
+   * Generate slave tasks for extraction
+   */
+  function generateSlaveTasks ()
+  {
+    $selectedMembers = $this->attributesAccess['fdExtractorTaskMembers']->getValue();
+    $listOfDN = tasks::extractMembersFromGroups($selectedMembers);
+    
+    // Store the list of DNs for future use
+    $this->attributesAccess['fdExtractorTaskListOfDN']->setValue($listOfDN);
+    
+    // Call the method from parent tasks object (first tab) to create sub-tasks
+    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, 'fdTasksGranularDN', NULL, 'extract');
+  }
+
+  /**
+   * @return bool
+   */
+  function update (): bool
+  {
+    parent::update();
+    return TRUE;
+  }
+
+  /**
+   * @return array
+   */
+  function save (): array
+  {
+    // Verify if this task has to be executed upon saving
+    $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
+
+    if ($execTasks) {
+      $this->generateSlaveTasks();
+    }
+
+    return parent::save();
+  }
+}
