@@ -60,8 +60,10 @@ class extractorTask extends simplePlugin
           new SelectAttribute(
             _('Format'), _('Output format for extracted data'),
             'fdExtractorTaskFormat', TRUE, 
-            ['CSV' => _('CSV (Comma Separated Values)')], 
-            'CSV'
+            ['CSV'], // Array of choices/keys
+            'CSV',   // Default value
+            [_('CSV (Comma Separated Values)')], // Array of display values corresponding to choices
+            ''      // ACL (empty string means use its own)
           ),
         ]
       ],
