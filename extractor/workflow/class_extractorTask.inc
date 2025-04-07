@@ -59,7 +59,7 @@ class extractorTask extends simplePlugin
         'attrs' => [
           new SelectAttribute(
             _('Format'), _('Output format for extracted data'),
-            'fdExtractorTaskFormat', TRUE, 
+            'fdExtractorTaskFormat', TRUE,
             ['CSV'], // Array of choices/keys
             'CSV',   // Default value
             [_('CSV (Comma Separated Values)')], // Array of display values corresponding to choices
@@ -82,10 +82,10 @@ class extractorTask extends simplePlugin
   {
     $selectedMembers = $this->attributesAccess['fdExtractorTaskMembers']->getValue();
     $listOfDN = tasks::extractMembersFromGroups($selectedMembers);
-    
+
     // Store the list of DNs for future use
     $this->attributesAccess['fdExtractorTaskListOfDN']->setValue($listOfDN);
-    
+
     // Call the method from parent tasks object (first tab) to create sub-tasks
     $this->parent->getBaseObject()->createSlaveTasks($listOfDN, 'fdTasksGranularDN', NULL, 'extract');
   }
