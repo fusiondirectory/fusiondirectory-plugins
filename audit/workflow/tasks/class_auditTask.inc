@@ -22,8 +22,6 @@
 class auditTask extends simplePlugin
 {
   protected $displayHeader = TRUE;
-  // To understand the last Exec mechanism, reference yourself to Notifications tasks.
-  protected $lastExec = NULL;
 
   static function plInfo (): array
   {
@@ -36,7 +34,7 @@ class auditTask extends simplePlugin
       'plFilter'       => '(objectClass=fdAuditTasks)',
       'plObjectType'   => ['tasks'],
       // plConflicts take the name of the object class without the 'fd' in front.
-      'plConflicts'    => ['tasksMail', 'tasksLifeCycle', 'tasksNotifications'],
+      'plConflicts'    => ['tasksMail', 'tasksLifeCycle', 'tasksNotifications', 'tasksArchive', 'tasksReminder'],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
     ];
@@ -45,7 +43,7 @@ class auditTask extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'section1'                => [
+      'section1' => [
         'name'  => _('Schedule Audit Retention'),
         'attrs' => [
           new IntAttribute(
@@ -54,15 +52,37 @@ class auditTask extends simplePlugin
           ),
         ]
       ],
+      'section2' => [
+        'name'  => _('Syslog Transformation'),
+        'attrs' => [
+          new BooleanAttribute(
+            _('Enable Syslog Transformation'), _('Enable transformation of audit logs into syslog format'),
+            'fdAuditSyslogEnabled', FALSE, FALSE
+          ),
+        ]
+      ],
     ];
   }
 
-
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  function __construct($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    // Set the list of available attributes to follow in the set selection
+    // Dynamically disable "Retaining days" if Syslog Transformation is enabled
+    $this->attributesAccess['fdAuditTasksRetention']->setDisabled(
+      $this->attributesAccess['fdAuditSyslogEnabled']->getValue()
+    );
+
+    // Add a listener to update the state dynamically when Syslog Transformation is toggled
+    $this->attributesAccess['fdAuditSyslogEnabled']->setSubmitForm('updateFieldsState');
+  }
+
+  function updateFieldsState()
+  {
+    // Disable "Retaining days" if Syslog Transformation is enabled
+    $this->attributesAccess['fdAuditTasksRetention']->setDisabled(
+      $this->attributesAccess['fdAuditSyslogEnabled']->getValue()
+    );
   }
 
   /**
@@ -71,11 +91,19 @@ class auditTask extends simplePlugin
    */
   function generateSlaveTasks ()
   {
-    // The attribute required to be search in createSlaveTasks
+    // Check if syslog transformation is enabled
+    $syslogEnabled = $this->attributesAccess['fdAuditSyslogEnabled']->getValue();
+
+    // The attribute required to be searched in createSlaveTasks
     $attributeType = 'fdTasksGranularDN';
 
-    // Call the method from parent tasks object (first tab) to create sub-tasks.
-    $this->parent->getBaseObject()->createSlaveTasks(['auditRetentionTask'], $attributeType, NULL, 'Audit');
+    if ($syslogEnabled) {
+      // Create sub-tasks for audit syslog transformation
+      $this->parent->getBaseObject()->createSlaveTasks(['auditSyslogTask'], $attributeType, NULL, 'Audit-Syslog');
+    } else {
+      // Create sub-tasks for audit deletion
+      $this->parent->getBaseObject()->createSlaveTasks(['auditRetentionTask'], $attributeType, NULL, 'Audit');
+    }
   }
 
   /**
@@ -83,6 +111,14 @@ class auditTask extends simplePlugin
    */
   function update (): bool
   {
+    // Ensure that both "deletion" and "syslog" are not activated at the same time
+    $syslogEnabled = $this->attributesAccess['fdAuditSyslogEnabled']->getValue();
+    $retentionDays = $this->attributesAccess['fdAuditTasksRetention']->getValue();
+
+    if ($syslogEnabled && $retentionDays > 0) {
+      throw new Exception(_('Audit deletion and syslog transformation cannot be activated at the same time.'));
+    }
+
     parent::update();
 
     return TRUE;
