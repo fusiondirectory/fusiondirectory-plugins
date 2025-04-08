@@ -64,7 +64,7 @@ class auditTask extends simplePlugin
     ];
   }
 
-  function __construct($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
@@ -77,7 +77,7 @@ class auditTask extends simplePlugin
     $this->attributesAccess['fdAuditSyslogEnabled']->setSubmitForm('updateFieldsState');
   }
 
-  function updateFieldsState()
+  function updateFieldsState ()
   {
     // Disable "Retaining days" if Syslog Transformation is enabled
     $this->attributesAccess['fdAuditTasksRetention']->setDisabled(
