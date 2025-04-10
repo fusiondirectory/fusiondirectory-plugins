@@ -37,7 +37,14 @@ class automaticGroupsTasks extends simplePlugin
       'plObjectClass'  => ['fdTasksAutomaticGroups'],
       'plFilter'       => '(objectClass=fdTasksAutomaticGroups)',
       'plObjectType'   => ['tasks'],
-      'plConflicts'    => ['tasksMail'],
+      'plConflicts'    => [
+        'tasksMail',
+        'taskReminder',         // from user-reminder plugin
+        'notificationsTask',    // from notifications plugin
+        'archiveTask',          // from archive plugin
+        'extractorTask',        // from extractor plugin (if present)
+        'lifecycleTask'         // from lifecycle plugin (if present)
+      ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
     ];
@@ -60,6 +67,7 @@ class automaticGroupsTasks extends simplePlugin
       ],
       'section2'           => [
         'name'  => _('Automatic Group criteria'),
+        'class' => ['fullwidth'],
         'attrs' => [
           new ObjectSelectAttribute(
             _('Target Group'), _('Group where users will be added/removed'),
@@ -81,7 +89,7 @@ class automaticGroupsTasks extends simplePlugin
           ),
         ]
       ],
-      'UserGroupSelection' => [
+      'section3' => [
         'name'  => _('Source Users and/or Groups'),
         'class' => ['fullwidth'],
         'attrs' => [

@@ -47,7 +47,7 @@ objectclass ( 1.3.6.1.4.1.94.2.1
     NAME 'fdTasksAutomaticGroups'
     DESC 'Object class for automatic groups'
     SUP top
-    STRUCTURAL
+    AUXILIARY
     MUST ( fdTasksAutomaticGroupsOfName )
     MAY ( fdTasksAutomaticGroupsListOfDN $ fdTasksAutomaticGroupsResource $ 
           fdTasksAutomaticGroupsState $ fdTasksAutomaticGroupsSubState $ 
