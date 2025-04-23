@@ -26,17 +26,15 @@ class supannObjects extends simplePlugin
       'plShortName'   => _('supannObjects'),
       'plDescription' => _('SupAnn Objects Settings'),
       'plObjectClass' => ['fdSupannObjectsConf'],
-      'plObjectType'  => ['supannObjects' => [
+      'plObjectType'  => ['supannObjectsConf' => [
         'name'        => _('SupAnn Objects'),
         'ou'          => get_ou('supannObjectsRDN'),
         'mainAttr'    => 'fdSupannRessourceLabels',
         'icon'        => 'geticon.php?context=applications&icon=supann-objects&size=16',
-        'nameAttr'    => 'ou',
       ]],
-      'plSearchAttrs' => ['description', 'fdSupannRessourceLabels'],
-      'plAclCategory' => 'supann',
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo(), TRUE)
+      'plSearchAttrs' => [],
+      
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 

@@ -21,33 +21,32 @@
 class supannObjectsManagement extends management
 {
 
-  function __construct ($objectTypes = FALSE, array $filterElementDefinitions = [['TabFilterElement',    []],])
-  {
-    parent::__construct($objectTypes, $filterElementDefinitions);
-  }
+  function __construct ()
+ {
+   parent::__construct();
+ }
 
-  // Actions column are removed compared to parent.
+  // Mirror skip properties from tasksDashboard
+  protected $skipCpHandler        = TRUE;
+  public static $skipSnapshots    = TRUE;
+  public static $skipTemplates    = TRUE;
+
   public static $columns = [
     ['ObjectTypeColumn', []],
     ['LinkColumn',       ['attributes' => 'description',            'label' => 'Description']],
     ['ActionsColumn',    ['label' => 'Actions']],
   ];
-  // No modification tools are required.
-  protected $skipCpHandler        = TRUE;
-  public static $skipSnapshots    = TRUE;
-  public static $skipTemplates    = TRUE;
 
   static function plInfo (): array
   {
     return [
-        'plShortName'   => _('Supann Objects Configuration'),
-        'plDescription' => _('Provide a creation page for Supann objects'),
-        'plTitle'       => _('Supann Objects'),
-        'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
-        'plSection'     => 'accounts',
+        'plShortName'   => _('Supann Objects Management'), 
+        'plDescription' => _('Manage SupAnn Objects entries'),
+        'plTitle'       => _('SupAnn Objects'),
+        'plIcon'        => 'geticon.php?context=applications&icon=supann-objects&size=48',
+        'plSection'     => 'accounts', 
         'plPriority'    => 41,
         'plManages'     => ['supannObjects'],
-        'plProvidedAcls' => [],
     ];
   }
 }
