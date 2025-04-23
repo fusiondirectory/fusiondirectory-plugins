@@ -29,7 +29,7 @@ class supannConfig extends simplePlugin
       'plShortName'     => _('SupAnn'),
       'plTitle'         => _('SupAnn configuration'),
       'plDescription'   => _('FusionDirectory SupAnn plugin configuration'),
-      'plObjectClass'   => ['fdSupannPluginConf', 'fdSupannObjectsConf'], // Added fdSupannObjectsConf
+      'plObjectClass'   => ['fdSupannPluginConf'],
       'plPriority'      => 10,
       'plObjectType'    => ['configuration'],
 

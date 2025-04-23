@@ -21,35 +21,29 @@
 class supannObjectsManagement extends management
 {
 
-  function __construct ()
- {
-   parent::__construct();
- }
-
-  // Mirror skip properties from tasksDashboard
-  protected $skipCpHandler        = TRUE;
-  public static $skipSnapshots    = TRUE;
-  public static $skipTemplates    = TRUE;
+  public static $skipTemplates    = FALSE;
 
   public static $columns = [
-    ['ObjectTypeColumn', []],
-    ['LinkColumn',       ['attributes' => 'description',            'label' => 'Description']],
-    ['ActionsColumn',    ['label' => 'Actions']],
+    ['ObjectTypeColumn',     []],
+    ['Column',               ['attributes' => 'fdSupannResourceStates', 'label' => 'States']],
+    ['Column',               ['attributes' => 'fdSupannRessourceSubStates',   'label' => 'SubStates']],
+    ['LinkColumn',           ['attributes' => 'description',  'label' => 'Description']],
+    ['ActionsColumn',        ['label' => 'Actions']],
   ];
 
   static function plInfo (): array
   {
     return [
-        'plShortName'   => _('Supann Objects Management'), 
-        'plDescription' => _('Manage SupAnn Objects entries'),
+        'plShortName'   => _('Supann Objects Management'),
         'plTitle'       => _('SupAnn Objects'),
+        'plDescription' => _('Manage SupAnn Objects entries'),
         'plIcon'        => 'geticon.php?context=applications&icon=supann-objects&size=48',
         'plSection'     => 'accounts', 
-        'plPriority'    => 41,
-        'plManages'     => ['supannObjects'],
+        'plPriority'    => 0,
+        'plManages'     => ['supannresource','supannsubresource'],
     ];
   }
-}
 
+}
 
 
