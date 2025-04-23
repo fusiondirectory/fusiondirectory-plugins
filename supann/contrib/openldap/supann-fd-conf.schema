@@ -118,7 +118,16 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.19 NAME 'fdSupannCiviliteValues'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
-# Object Class
+# New attribute for SupAnn Objects RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.20 NAME 'fdSupannObjectsRDN'
+  DESC 'FusionDirectory - SupAnn objects RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# Object Classes
+# Main SupAnn Plugin Configuration (unchanged for now)
 objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   DESC 'FusionDirectory SupAnn plugin configuration'
   SUP top AUXILIARY
@@ -131,3 +140,10 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
     fdSupannMailPriveTypes $ fdSupannTelephonePriveTypes $ fdSupannAdressePostalePriveeTypes $
     fdSupannShowAccountStatus $ fdSupannShowCMS $ fdSupannShowFranceConnect $ fdSupannCiviliteValues
   ) )
+
+# New Object Class for SupAnn Objects Configuration
+objectclass ( 1.3.6.1.4.1.38414.17.2.2 NAME 'fdSupannObjectsConf'
+  DESC 'FusionDirectory SupAnn Objects configuration'
+  SUP top AUXILIARY
+  MUST ( fdSupannObjectsRDN $ fdSupannRessourceSubStates )
+  MAY ( fdSupannRessourceLabels $ fdSupannRessourceSubStatesLabels ) )

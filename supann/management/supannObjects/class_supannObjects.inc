@@ -1,0 +1,144 @@
+<?php
+/*
+  This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
+  Copyright (C) 2012-2019  FusionDirectory
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+*/
+
+class supannObjects extends simplePlugin
+{
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'   => _('supannObjects'),
+      'plDescription' => _('SupAnn Objects Settings'),
+      'plObjectClass' => ['fdSupannObjectsConf'],
+      'plObjectType'  => ['supannObjects' => [
+        'name'        => _('SupAnn Objects'),
+        'ou'          => get_ou('supannObjectsRDN'),
+        'mainAttr'    => 'fdSupannRessourceLabels',
+        'icon'        => 'geticon.php?context=applications&icon=supann-objects&size=16',
+        'nameAttr'    => 'ou',
+      ]],
+      'plSearchAttrs' => ['description', 'fdSupannRessourceLabels'],
+      'plAclCategory' => 'supann',
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo(), TRUE)
+    ];
+  }
+
+  static function getAttributesInfo (): array
+  {
+    $officialStates = supannAccountStatus::getOfficialSubstates();
+    $defaultStates  = [];
+    foreach ($officialStates as $state => $substates) {
+      foreach (array_keys($substates) as $substate) {
+        $defaultStates[] = $state.':'.$substate;
+      }
+    }
+    return [
+      'main' => [
+        'name'  => _('SupAnn'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new StringAttribute(
+            _('SupAnn Objects RDN'), _('Branch in which SupAnn resource will be stored'),
+            'fdSupannObjectsRDN', TRUE,
+            'ou=resources'
+          ),
+        ],
+      ],
+      'status' => [
+        'name'  => _('Status'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Custom resources and their labels'),
+              'fdSupannRessourceLabels',
+              [
+                new StringAttribute(
+                  _('Resource'), _('String that will be stored between {} in supannRessourceEtatDate'),
+                  'fdSupannRessourceLabels_resource', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this resource'),
+                  'fdSupannRessourceLabels_label', TRUE
+                ),
+              ],
+              ':',
+              '',
+              _('Custom resources')
+            ),
+            FALSE,
+            [],
+            TRUE
+          ),
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Allowed substates for an account'),
+              'fdSupannRessourceSubStates',
+              [
+                new SelectAttribute(
+                  _('Status'), _('Active status this substatus is tied to'),
+                  'fdSupannRessourceSubStates_status', TRUE,
+                  ['A','I','S'], 'A',
+                  [_('Active'), _('Inactive'), _('Suspended')]
+                ),
+                new StringAttribute(
+                  _('Substatus'), _('LDAP value for this substatus'),
+                  'fdSupannRessourceSubStates_substatus', TRUE
+                ),
+              ],
+              ':',
+              '',
+              _('Substates')
+            ),
+            TRUE,
+            $defaultStates
+          ),
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Labels for custom substates'),
+              'fdSupannRessourceSubStatesLabels',
+              [
+                new SelectAttribute(
+                  _('Substatus'), _('LDAP value for this substatus'),
+                  'fdSupannRessourceSubStatesLabels_substatus', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this substatus'),
+                  'fdSupannRessourceSubStatesLabels_label', TRUE
+                ),
+              ],
+              ':',
+              '',
+              _('Custom labels')
+            ),
+            FALSE,
+            [],
+            TRUE
+          ),
+        ],
+      ],
+    ];
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab);
+  }
+}

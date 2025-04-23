@@ -29,7 +29,7 @@ class supannConfig extends simplePlugin
       'plShortName'     => _('SupAnn'),
       'plTitle'         => _('SupAnn configuration'),
       'plDescription'   => _('FusionDirectory SupAnn plugin configuration'),
-      'plObjectClass'   => ['fdSupannPluginConf'],
+      'plObjectClass'   => ['fdSupannPluginConf', 'fdSupannObjectsConf'], // Added fdSupannObjectsConf
       'plPriority'      => 10,
       'plObjectType'    => ['configuration'],
 
@@ -55,6 +55,11 @@ class supannConfig extends simplePlugin
             _('SupAnn RDN'), _('Branch in which SupAnn structures will be stored'),
             'fdSupannStructuresRDN', TRUE,
             'ou=structures'
+          ),
+          new StringAttribute(
+            _('SupAnn Objects RDN'), _('Branch in which SupAnn resource will be stored'),
+            'fdSupannObjectsRDN', TRUE,
+            'ou=resources'
           ),
           new BooleanAttribute(
             _('SupAnn mail for recovery'), _('Allow the use of mail addresses from the personal mail address field from SupAnn account for password recovery'),
