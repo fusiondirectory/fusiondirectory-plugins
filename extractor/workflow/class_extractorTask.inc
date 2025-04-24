@@ -23,7 +23,7 @@ class extractorTask extends simplePlugin
 {
   protected $displayHeader = TRUE;
 
-  static function plInfo (): array
+  static function plInfo(): array
   {
     return [
       'plShortName'    => _('Tasks Extractor'),
@@ -39,27 +39,31 @@ class extractorTask extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo (): array
+  static function getAttributesInfo(): array
   {
     return [
-    'section1' => [
+      'section1' => [
         'name'  => _('Members to Extract'),
         'attrs' => [
-            new UsersGroupsRolesAttribute(
-            _('Selected Members'), _('Users or Groups to extract data from.'),
-            'fdExtractorTaskMembers', TRUE
-            ),
-            new HiddenAttribute(
+          new UsersGroupsRolesAttribute(
+            _('Selected Members'),
+            _('Users or Groups to extract data from.'),
+            'fdExtractorTaskMembers',
+            TRUE
+          ),
+          new HiddenAttribute(
             'fdExtractorTaskListOfDN'
-            ),
+          ),
         ],
-        ],
+      ],
       'section2' => [
         'name'  => _('Extraction Settings'),
         'attrs' => [
           new SelectAttribute(
-            _('Format'), _('Output format for extracted data'),
-            'fdExtractorTaskFormat', TRUE,
+            _('Format'),
+            _('Output format for extracted data'),
+            'fdExtractorTaskFormat',
+            TRUE,
             ['CSV'], // Array of choices/keys
             'CSV',   // Default value
             [_('CSV (Comma Separated Values)')], // Array of display values corresponding to choices
@@ -70,7 +74,7 @@ class extractorTask extends simplePlugin
     ];
   }
 
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  function __construct($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
   }
@@ -78,22 +82,26 @@ class extractorTask extends simplePlugin
   /**
    * Generate slave tasks for extraction
    */
-  function generateSlaveTasks ()
+  function generateSlaveTasks()
   {
     $selectedMembers = $this->attributesAccess['fdExtractorTaskMembers']->getValue();
     $listOfDN = tasks::extractMembersFromGroups($selectedMembers);
 
-    // Store the list of DNs for future use
+    // Store the list of DNs for future use by the orchestrator
     $this->attributesAccess['fdExtractorTaskListOfDN']->setValue($listOfDN);
 
-    // Call the method from parent tasks object (first tab) to create sub-tasks
-    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, 'fdTasksGranularDN', NULL, 'extract');
+    // Define a single identifier for the bulk extraction task
+    $bulkTaskIdentifier = 'bulkExtractorTask';
+
+    // Call the method from parent tasks object (first tab) to create ONE sub-task for the orchestrator
+    // The orchestrator will handle processing the DNs stored in fdExtractorTaskListOfDN.
+    $this->parent->getBaseObject()->createSlaveTasks([$bulkTaskIdentifier], 'fdTasksGranularDN', NULL, 'extract');
   }
 
   /**
    * @return bool
    */
-  function update (): bool
+  function update(): bool
   {
     parent::update();
     return TRUE;
@@ -102,7 +110,7 @@ class extractorTask extends simplePlugin
   /**
    * @return array
    */
-  function save (): array
+  function save(): array
   {
     // Verify if this task has to be executed upon saving
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
