@@ -71,6 +71,28 @@ class extractorTask extends simplePlugin
           ),
         ]
       ],
+      'section3' => [
+        'name'  => _('Email Notification'),
+        'attrs' => [
+          new UsersGroupsRolesAttribute(
+            _('Recipients'),
+            _('Users or Groups to receive the extract by email.'),
+            'fdExtractorRecipientsMembers',
+            TRUE
+          ),
+          new HiddenArrayAttribute(
+            'fdExtractorListOfRecipientsMails',
+            FALSE,
+            ''
+          ),
+          new MailAttribute(
+            _('Sender email address'),
+            _('Email address from which the extract will be sent'),
+            'fdExtractorEmailSender',
+            TRUE,
+          ),
+        ],
+      ],
     ];
   }
 
@@ -99,11 +121,26 @@ class extractorTask extends simplePlugin
   }
 
   /**
+   * Resolve recipient emails
+   */
+  protected function resolveRecipientEmails(): void
+  {
+    $recipients = $this->attributesAccess['fdExtractorRecipientsMembers']->getValue();
+    $emailsList = tasksMail::getEmailsFromSelectedDN(
+        'gosaMailAccount',
+        'mail',
+        tasks::extractMembersFromGroups($recipients)
+    );
+    $this->attributesAccess['fdExtractorListOfRecipientsMails']->setValue(array_values($emailsList));
+  }
+
+  /**
    * @return bool
    */
   function update(): bool
   {
     parent::update();
+    $this->resolveRecipientEmails();
     return TRUE;
   }
 
@@ -112,13 +149,11 @@ class extractorTask extends simplePlugin
    */
   function save(): array
   {
-    // Verify if this task has to be executed upon saving
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
-
     if ($execTasks) {
-      $this->generateSlaveTasks();
+        $this->generateSlaveTasks();
     }
-
+    $this->resolveRecipientEmails();
     return parent::save();
   }
 }
