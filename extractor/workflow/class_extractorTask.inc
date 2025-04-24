@@ -56,6 +56,17 @@ class extractorTask extends simplePlugin
           ),
         ],
       ],
+      'sectionAttr' => [
+        'name'  => _('Attributes to Extract'),
+        'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
+              _('Attributes'), _('Attributes to extract (leave empty for ALL)'),
+              'fdExtractorTaskAttributes', TRUE
+            ),
+          ),
+        ]
+      ],
       'section2' => [
         'name'  => _('Extraction Settings'),
         'attrs' => [
@@ -99,6 +110,33 @@ class extractorTask extends simplePlugin
   function __construct($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
+
+    // Load available attributes from backend config
+    $this->attributesAccess['fdExtractorTaskAttributes']->attribute->setChoices($this->getAttributesListFromConf());
+  }
+
+  /**
+   * Load extractable attributes from backend config, default to ALL if none set.
+   */
+  protected function getAttributesListFromConf(): array
+  {
+    global $config;
+    $result = [];
+
+    if (!empty($config->current['EXTRACTORCONFATTRIBUTES'])) {
+      if (is_string($config->current['EXTRACTORCONFATTRIBUTES'])) {
+        $result[] = $config->current['EXTRACTORCONFATTRIBUTES'];
+      } else {
+        $result = $config->current['EXTRACTORCONFATTRIBUTES'];
+      }
+    }
+
+    // Ensure 'ALL' is in the array
+    if (!in_array('ALL', $result, TRUE)) {
+      array_unshift($result, 'ALL');
+    }
+
+    return $result;
   }
 
   /**
