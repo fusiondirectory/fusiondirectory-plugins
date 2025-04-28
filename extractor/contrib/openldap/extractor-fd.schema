@@ -22,11 +22,35 @@ attributetype ( 1.3.6.1.4.1.38414.93.1.3 NAME 'fdExtractorTaskFormat'
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
     SINGLE-VALUE )
 
+# Email notification attributes
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.4 NAME 'fdExtractorRecipientsMembers'
+    DESC 'Fusion Directory - Members or groups to receive the extract by email'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.5 NAME 'fdExtractorListOfRecipientsMails'
+    DESC 'Fusion Directory - List of resolved recipient email addresses for extract'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.6 NAME 'fdExtractorEmailSender'
+    DESC 'Fusion Directory - Email address from which the extract will be sent'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+# New attribute for extractable attributes selection
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.7 NAME 'fdExtractorTaskAttributes'
+    DESC 'Fusion Directory - List of LDAP attributes to extract (empty or ALL for all)'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
 # Object Class
 
 objectclass ( 1.3.6.1.4.1.38414.93.2.1 NAME 'fdExtractorTasks'
     DESC 'Fusion Directory - Extractor tasks plugin object class'
     SUP top
     AUXILIARY
-    MUST ( fdExtractorTaskMembers $ fdExtractorTaskFormat )
-    MAY ( fdExtractorTaskListOfDN ) )
+    MUST ( fdExtractorTaskMembers $ fdExtractorTaskFormat $ fdExtractorRecipientsMembers $ fdExtractorListOfRecipientsMails $ fdExtractorEmailSender )
+    MAY ( fdExtractorTaskListOfDN $ fdExtractorTaskAttributes ) )
