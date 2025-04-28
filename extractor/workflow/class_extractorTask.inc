@@ -23,7 +23,7 @@ class extractorTask extends simplePlugin
 {
   protected $displayHeader = TRUE;
 
-  static function plInfo(): array
+  static function plInfo (): array
   {
     return [
       'plShortName'    => _('Tasks Extractor'),
@@ -39,7 +39,7 @@ class extractorTask extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo(): array
+  static function getAttributesInfo (): array
   {
     return [
       'section1' => [
@@ -107,7 +107,7 @@ class extractorTask extends simplePlugin
     ];
   }
 
-  function __construct($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
@@ -118,7 +118,7 @@ class extractorTask extends simplePlugin
   /**
    * Load extractable attributes from backend config, default to ALL if none set.
    */
-  protected function getAttributesListFromConf(): array
+  protected function getAttributesListFromConf (): array
   {
     global $config;
     $result = [];
@@ -142,7 +142,7 @@ class extractorTask extends simplePlugin
   /**
    * Generate slave tasks for extraction
    */
-  function generateSlaveTasks()
+  function generateSlaveTasks ()
   {
     $selectedMembers = $this->attributesAccess['fdExtractorTaskMembers']->getValue();
     $listOfDN = tasks::extractMembersFromGroups($selectedMembers);
@@ -161,7 +161,7 @@ class extractorTask extends simplePlugin
   /**
    * Resolve recipient emails
    */
-  protected function resolveRecipientEmails(): void
+  protected function resolveRecipientEmails (): void
   {
     $recipients = $this->attributesAccess['fdExtractorRecipientsMembers']->getValue();
     $emailsList = tasksMail::getEmailsFromSelectedDN(
@@ -175,7 +175,7 @@ class extractorTask extends simplePlugin
   /**
    * @return bool
    */
-  function update(): bool
+  function update (): bool
   {
     parent::update();
     $this->resolveRecipientEmails();
@@ -185,7 +185,7 @@ class extractorTask extends simplePlugin
   /**
    * @return array
    */
-  function save(): array
+  function save (): array
   {
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
     if ($execTasks) {
