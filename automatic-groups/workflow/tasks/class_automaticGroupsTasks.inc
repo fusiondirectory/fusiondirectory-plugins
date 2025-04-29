@@ -63,12 +63,19 @@ class automaticGroupsTasks extends simplePlugin
           ),
           // Following attributes will contain all the DNs required to be verified by Orchestrator.
           new HiddenArrayAttribute('fdTasksAutomaticGroupsListOfDN', FALSE, ''),
+          // Hidden attributes for dynamic group settings
+          new HiddenAttribute('fdTasksAutomaticGroupsDynamicURL', FALSE),
+          new HiddenAttribute('fdTasksAutomaticGroupsDynamicName', FALSE),
         ]
       ],
       'section2'           => [
         'name'  => _('Automatic Group criteria'),
         'class' => ['fullwidth'],
         'attrs' => [
+          new BooleanAttribute(
+            _('Create Dynamic Group'), _('Create a dynamic group based on SupAnn resource, state and substate'),
+            'fdTasksAutomaticGroupsDynamicGroup', FALSE, FALSE
+          ),
           new ObjectSelectAttribute(
             _('Target Group'), _('Group where users will be added/removed'),
             'fdTasksAutomaticGroupsOfName', TRUE,
@@ -109,6 +116,17 @@ class automaticGroupsTasks extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['fdShowInformation']->setInLdap(FALSE);
+    // Set these attributes to be stored in LDAP
+    $this->attributesAccess['fdTasksAutomaticGroupsDynamicURL']->setInLdap(TRUE);
+    $this->attributesAccess['fdTasksAutomaticGroupsDynamicName']->setInLdap(TRUE);
+
+    // Set up the dynamic behavior for the dynamic group toggle
+    $this->attributesAccess['fdTasksAutomaticGroupsDynamicGroup']->setSubmitForm('updateDynamicGroupFields');
+    
+    // Set up triggers to update the dynamic group URL and name
+    $this->attributesAccess['fdTasksAutomaticGroupsResource']->setSubmitForm('updateDynamicGroupSettings');
+    $this->attributesAccess['fdTasksAutomaticGroupsState']->setSubmitForm('updateDynamicGroupSettings');
+    $this->attributesAccess['fdTasksAutomaticGroupsSubState']->setSubmitForm('updateDynamicGroupSettings');
 
     // SupAnn Status management
     if (class_available('supannAccountStatus')) {
@@ -117,6 +135,9 @@ class automaticGroupsTasks extends simplePlugin
       $warning = new FusionDirectoryWarning(htmlescape(_('The plugin Supann does not seem to be installed!')));
       $warning->display();
     }
+    
+    // Initialize fields state
+    $this->updateDynamicGroupFields();
   }
 
   /**
@@ -152,6 +173,74 @@ class automaticGroupsTasks extends simplePlugin
   }
 
   /**
+   * Toggle fields based on dynamic group selection
+   */
+  function updateDynamicGroupFields()
+  {
+    $isDynamicGroup = $this->attributesAccess['fdTasksAutomaticGroupsDynamicGroup']->getValue();
+    
+    // Toggle the members field
+    $this->attributesAccess['fdTasksAutomaticGroupsMembers']->setDisabled($isDynamicGroup);
+    
+    // Toggle the target group field - required for manual group but not for dynamic group
+    $this->attributesAccess['fdTasksAutomaticGroupsOfName']->setRequired(!$isDynamicGroup);
+    $this->attributesAccess['fdTasksAutomaticGroupsOfName']->setDisabled($isDynamicGroup);
+    
+    // Update the dynamic group settings if we're in dynamic group mode
+    if ($isDynamicGroup) {
+      $this->updateDynamicGroupSettings();
+    }
+  }
+  
+  /**
+   * Update the hidden dynamic group URL and name based on the selected criteria
+   */
+  function updateDynamicGroupSettings()
+  {
+    $isDynamicGroup = $this->attributesAccess['fdTasksAutomaticGroupsDynamicGroup']->getValue();
+    
+    if (!$isDynamicGroup) {
+      return;
+    }
+    
+    // Get the values needed to generate the URL and group name
+    $resource = $this->attributesAccess['fdTasksAutomaticGroupsResource']->getValue();
+    $state = $this->attributesAccess['fdTasksAutomaticGroupsState']->getValue();
+    $subState = $this->attributesAccess['fdTasksAutomaticGroupsSubState']->getValue();
+    
+    // Only proceed if we have the minimum required information
+    if (empty($resource) || empty($state)) {
+      return;
+    }
+    
+    // Generate the dynamic group name
+    $groupName = 'dynamic-' . $resource . '-' . $state;
+    if (!empty($subState)) {
+      $groupName .= '-' . $subState;
+    }
+    
+    // Generate the LDAP filter
+    $filter = '';
+    if (!empty($subState)) {
+      $filter = "(supannRessourceEtat={" . $resource . "}" . $state . ":" . $subState . ")";
+    } else {
+      $filter = "(supannRessourceEtat={" . $resource . "}" . $state . ")";
+    }
+    
+    // Get the base DN from configuration or use a default
+    global $config;
+    $baseDN = $config->current['BASE'] ?? 'dc=example,dc=com';
+    $peopleDN = 'ou=people,' . $baseDN;
+    
+    // Create the complete LDAP URL
+    $ldapUrl = "ldap:///" . $peopleDN . "??one?" . $filter;
+    
+    // Set the hidden field values
+    $this->attributesAccess['fdTasksAutomaticGroupsDynamicName']->setValue($groupName);
+    $this->attributesAccess['fdTasksAutomaticGroupsDynamicURL']->setValue($ldapUrl);
+  }
+
+  /**
    * Retrieve all the DNs from groups or members
    */
   public function getListOfDN (): void
@@ -167,20 +256,37 @@ class automaticGroupsTasks extends simplePlugin
    */
   public function generateSlaveTasks ()
   {
-    $listOfDN = $this->attributesAccess['fdTasksAutomaticGroupsListOfDN']->getValue();
-    // The attribute required to be search in createSlaveTasks
-    $attributeType = 'fdTasksGranularDN';
+    // Check if we're creating a dynamic group or using regular automatic groups
+    $isDynamicGroup = $this->attributesAccess['fdTasksAutomaticGroupsDynamicGroup']->getValue();
+    
+    if ($isDynamicGroup) {
+      // Ensure dynamic URL and name are up to date
+      $this->updateDynamicGroupSettings();
+      
+      // Create just one task for dynamic group creation
+      $this->parent->getBaseObject()->createSlaveTasks(['dynamicGroupTask'], 'fdTasksGranularDN', NULL, 'Dynamic-Group');
+    } else {
+      // Original code for regular automatic groups
+      $listOfDN = $this->attributesAccess['fdTasksAutomaticGroupsListOfDN']->getValue();
+      $attributeType = 'fdTasksGranularDN';
 
-    // Call the method from parent tasks object (first tab) to create sub-tasks.
-    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, $attributeType, NULL, 'Automatic Groups');
+      // Call the method from parent tasks object (first tab) to create sub-tasks.
+      $this->parent->getBaseObject()->createSlaveTasks($listOfDN, $attributeType, NULL, 'Automatic Groups');
+    }
   }
 
   public function update (): bool
   {
     parent::update();
 
-    // Take the list of DN based on the groups or members list selected and fill the related attributes
-    $this->getListOfDN();
+    // If in dynamic group mode, update the dynamic group settings
+    $isDynamicGroup = $this->attributesAccess['fdTasksAutomaticGroupsDynamicGroup']->getValue();
+    if ($isDynamicGroup) {
+      $this->updateDynamicGroupSettings();
+    } else {
+      // Take the list of DN based on the groups or members list selected and fill the related attributes
+      $this->getListOfDN();
+    }
 
     return TRUE;
   }
