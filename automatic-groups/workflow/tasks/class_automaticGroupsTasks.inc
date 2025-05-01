@@ -68,20 +68,20 @@ class automaticGroupsTasks extends simplePlugin
           new HiddenAttribute('fdTasksAutomaticGroupsDynamicName', FALSE),
         ]
       ],
-      'section2'           => [
-        'name'  => _('Automatic Group criteria'),
+      'modeSection' => [
+        'name'  => _('Task Mode'),
         'class' => ['fullwidth'],
         'attrs' => [
           new BooleanAttribute(
             _('Create Dynamic Group'), _('Create a dynamic group based on SupAnn resource, state and substate'),
             'fdTasksAutomaticGroupsDynamicGroup', FALSE, FALSE
           ),
-          new ObjectSelectAttribute(
-            _('Target Group'), _('Group where users will be added/removed'),
-            'fdTasksAutomaticGroupsOfName', TRUE,
-            ['ogroup'], 'dn', 'cn',
-            '(objectClass=groupOfNames)'
-          ),
+        ]
+      ],
+      'supannSection' => [
+        'name'  => _('Resource State Criteria'),
+        'class' => ['fullwidth'],
+        'attrs' => [
           new SelectAttribute(
             _('Resource'), _('Supann resources'),
             'fdTasksAutomaticGroupsResource', TRUE
@@ -96,15 +96,21 @@ class automaticGroupsTasks extends simplePlugin
           ),
         ]
       ],
-      'section3' => [
-        'name'  => _('Source Users and/or Groups'),
+      'manualSection' => [
+        'name'  => _('Manual Group Assignment'),
         'class' => ['fullwidth'],
         'attrs' => [
+          new ObjectSelectAttribute(
+            _('Target Group'), _('Group where users will be added/removed'),
+            'fdTasksAutomaticGroupsOfName', TRUE,
+            ['ogroup'], 'dn', 'cn',
+            '(objectClass=groupOfNames)'
+          ),
           new UsersGroupsRolesAttribute(
             _('Members'), _('Users or groups to check for automatic group assignment.'),
             'fdTasksAutomaticGroupsMembers', TRUE
           ),
-        ],
+        ]
       ],
     ];
   }
@@ -179,12 +185,10 @@ class automaticGroupsTasks extends simplePlugin
   {
     $isDynamicGroup = $this->attributesAccess['fdTasksAutomaticGroupsDynamicGroup']->getValue();
     
-    // Toggle the members field
-    $this->attributesAccess['fdTasksAutomaticGroupsMembers']->setDisabled($isDynamicGroup);
-    
-    // Toggle the target group field - required for manual group but not for dynamic group
+    // Toggle only the manual group assignment fields
     $this->attributesAccess['fdTasksAutomaticGroupsOfName']->setRequired(!$isDynamicGroup);
     $this->attributesAccess['fdTasksAutomaticGroupsOfName']->setDisabled($isDynamicGroup);
+    $this->attributesAccess['fdTasksAutomaticGroupsMembers']->setDisabled($isDynamicGroup);
     
     // Update the dynamic group settings if we're in dynamic group mode
     if ($isDynamicGroup) {
@@ -213,13 +217,13 @@ class automaticGroupsTasks extends simplePlugin
       return;
     }
     
-    // Generate the dynamic group name
-    $groupName = 'dynamic-' . $resource . '-' . $state;
+    // Generate the dynamic group name - ensure all parts are lowercase
+    $groupName = 'dynamic-' . strtolower($resource) . '-' . strtolower($state);
     if (!empty($subState)) {
-      $groupName .= '-' . $subState;
+      $groupName .= '-' . strtolower($subState);
     }
     
-    // Generate the LDAP filter
+    // Generate the LDAP filter - keep original case for the filter
     $filter = '';
     if (!empty($subState)) {
       $filter = "(supannRessourceEtat={" . $resource . "}" . $state . ":" . $subState . ")";
@@ -229,7 +233,7 @@ class automaticGroupsTasks extends simplePlugin
     
     // Get the base DN from configuration or use a default
     global $config;
-    $baseDN = $config->current['BASE'] ?? 'dc=example,dc=com';
+    $baseDN = $config->current['BASE'];
     $peopleDN = 'ou=people,' . $baseDN;
     
     // Create the complete LDAP URL
