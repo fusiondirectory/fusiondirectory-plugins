@@ -62,11 +62,26 @@ attributetype ( 1.3.6.1.4.1.38414.92.1.9 NAME 'fdTasksLifeCyclePostEndDate'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
+## Regex Support Attributes ##
+
+attributetype ( 1.3.6.1.4.1.38414.92.1.10 NAME 'fdTasksLifeCycleRegexActivation'
+  DESC 'Fusion Directory - Tasks for life cycle - enable regex filtering'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.92.1.11 NAME 'fdTasksLifeCycleRegexPattern'
+  DESC 'Fusion Directory - Tasks for life cycle - regex pattern for filtering'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
 # Object Class
 
 objectclass (1.3.6.1.4.1.38414.92.2.1 NAME 'fdTasksLifeCycle'
   DESC 'FusionDirectory - Tasks objects Life Cycle'
   SUP top AUXILIARY
-  MUST ( fdTasksLifeCyclePreResource $ fdTasksLifeCyclePreState $ fdTasksLifeCyclePostResource $ fdTasksLifeCyclePostState)
-  MAY ( fdTasksLifeCyclePreSubState $ fdTasksLifeCyclePostEndDate $ fdTasksLifeCyclePostSubState $ fdTasksLifeCycleMembers
-  $ fdTasksLifeCycleListOfDN ) )
+  MUST ( fdTasksLifeCyclePostResource $ fdTasksLifeCyclePostState )
+  MAY ( fdTasksLifeCyclePreResource $ fdTasksLifeCyclePreState $ fdTasksLifeCyclePreSubState 
+  $ fdTasksLifeCyclePostEndDate $ fdTasksLifeCyclePostSubState $ fdTasksLifeCycleMembers
+  $ fdTasksLifeCycleListOfDN $ fdTasksLifeCycleRegexActivation $ fdTasksLifeCycleRegexPattern ) )
