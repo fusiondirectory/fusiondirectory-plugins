@@ -58,6 +58,20 @@ class tasksLifeCycle extends simplePlugin
           new HiddenArrayAttribute('fdTasksLifeCycleListOfDN', FALSE, ''),
         ]
       ],
+      'regexSection'      => [
+        'name'  => _('Regex Pattern Filtering'),
+        'attrs' => [
+          new BooleanAttribute(
+            _('Enable Regex Filtering'), _('Filter users by regex pattern instead of specific resource states'),
+            'fdTasksLifeCycleRegexActivation', FALSE, FALSE
+          ),
+          new StringAttribute(
+            _('Regex Pattern'), _('Pattern to match supannRessourceEtatDate values (e.g., "{COMPTE}.*" for all accounts, or "{MAIL}A:SupannActif:.*" for active mail resources)'),
+            'fdTasksLifeCycleRegexPattern', FALSE, '', '',
+            '/^.*$/'
+          ),
+        ]
+      ],
       'section3'           => [
         'name'  => _('Post resources details'),
         'attrs' => [
@@ -118,12 +132,41 @@ class tasksLifeCycle extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['fdShowInformation']->setInLdap(FALSE);
 
+    // Setup the behavior for regex activation toggle
+    $this->attributesAccess['fdTasksLifeCycleRegexActivation']->setSubmitForm('updateRegexState');
+
+    // Initial toggle state
+    $this->updateRegexState();
+
     if (class_available('supannAccountStatus')) {
       $this->setSupannStates();
     } else {
       $warning = new FusionDirectoryWarning(htmlescape(_('The plugin Supann does not seem to be installed !')));
       $warning->display();
     }
+  }
+
+  /**
+   * Toggle fields based on regex activation state
+   */
+  function updateRegexState ()
+  {
+    $regexActivated = $this->attributesAccess['fdTasksLifeCycleRegexActivation']->getValue();
+
+    // Toggle Pre-Resource fields
+    $this->attributesAccess['fdTasksLifeCyclePreResource']->setDisabled($regexActivated);
+    $this->attributesAccess['fdTasksLifeCyclePreState']->setDisabled($regexActivated);
+    $this->attributesAccess['fdTasksLifeCyclePreSubState']->setDisabled($regexActivated);
+
+    // Toggle Regex Pattern field
+    $this->attributesAccess['fdTasksLifeCycleRegexPattern']->setDisabled(!$regexActivated);
+
+    // Make Pre-Resource required only when regex is disabled
+    $this->attributesAccess['fdTasksLifeCyclePreResource']->setRequired(!$regexActivated);
+    $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(!$regexActivated);
+
+    // Make Regex Pattern required only when regex is enabled
+    $this->attributesAccess['fdTasksLifeCycleRegexPattern']->setRequired($regexActivated);
   }
 
   /**
@@ -195,6 +238,9 @@ class tasksLifeCycle extends simplePlugin
   public function update (): bool
   {
     parent::update();
+
+    // Toggle fields based on regex activation state
+    $this->updateRegexState();
 
     // Take the list of DN based on the groups or members list selected and filled the related attributes
     $this->getListOfDN();
