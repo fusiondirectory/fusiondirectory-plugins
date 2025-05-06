@@ -58,22 +58,8 @@ class tasksLifeCycle extends simplePlugin
           new HiddenArrayAttribute('fdTasksLifeCycleListOfDN', FALSE, ''),
         ]
       ],
-      'regexSection'      => [
-        'name'  => _('Regex Pattern Filtering'),
-        'attrs' => [
-          new BooleanAttribute(
-            _('Enable Regex Filtering'), _('Filter users by regex pattern instead of specific resource states'),
-            'fdTasksLifeCycleRegexActivation', FALSE, FALSE
-          ),
-          new StringAttribute(
-            _('Regex Pattern'), _('Pattern to match supannRessourceEtatDate values (e.g., "{COMPTE}.*" for all accounts, or "{MAIL}A:SupannActif:.*" for active mail resources)'),
-            'fdTasksLifeCycleRegexPattern', FALSE, '', '',
-            '/^.*$/'
-          ),
-        ]
-      ],
-      'section3'           => [
-        'name'  => _('Post resources details'),
+      'section2'           => [
+        'name'  => _('Future resources details'),
         'attrs' => [
           new SelectAttribute(
             _('Resource'), _('Supann resources'),
@@ -94,8 +80,8 @@ class tasksLifeCycle extends simplePlugin
         ]
       ],
       // Attributes are grouped by section
-      'section2'           => [
-        'name'  => _('Pre / existing resources details'),
+      'section3'           => [
+        'name'  => _('Current resources details'),
         'attrs' => [
           new SelectAttribute(
             _('Resource'), _('Supann resources'),
@@ -111,7 +97,22 @@ class tasksLifeCycle extends simplePlugin
           ),
         ]
       ],
-      'UserGroupSelection' => [
+      'section5'      => [
+        'name'  => _('Regex Pattern Filtering'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new BooleanAttribute(
+            _('Enable Regex Filtering'), _('Filter users by regex pattern instead of specific resource states'),
+            'fdTasksLifeCycleRegexActivation', FALSE, FALSE
+          ),
+          new StringAttribute(
+            _('Regex Pattern'), _('Pattern to match supannRessourceEtatDate values (e.g., "{COMPTE}.*" for all accounts, or "{MAIL}A:SupannActif:.*" for active mail resources)'),
+            'fdTasksLifeCycleRegexPattern', FALSE, '', '',
+            '/^.*$/'
+          ),
+        ]
+      ],
+      'section4' => [
         'name'  => _('Recipients Users and/or Groups'),
         'class' => ['fullwidth'],
         'attrs' => [
