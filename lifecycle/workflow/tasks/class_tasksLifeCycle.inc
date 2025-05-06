@@ -134,7 +134,7 @@ class tasksLifeCycle extends simplePlugin
 
     // Setup the behavior for regex activation toggle
     $this->attributesAccess['fdTasksLifeCycleRegexActivation']->setSubmitForm('updateRegexState');
-    
+
     // Initial toggle state
     $this->updateRegexState();
 
@@ -152,19 +152,19 @@ class tasksLifeCycle extends simplePlugin
   function updateRegexState ()
   {
     $regexActivated = $this->attributesAccess['fdTasksLifeCycleRegexActivation']->getValue();
-    
+
     // Toggle Pre-Resource fields
     $this->attributesAccess['fdTasksLifeCyclePreResource']->setDisabled($regexActivated);
     $this->attributesAccess['fdTasksLifeCyclePreState']->setDisabled($regexActivated);
     $this->attributesAccess['fdTasksLifeCyclePreSubState']->setDisabled($regexActivated);
-    
+
     // Toggle Regex Pattern field
     $this->attributesAccess['fdTasksLifeCycleRegexPattern']->setDisabled(!$regexActivated);
-    
+
     // Make Pre-Resource required only when regex is disabled
     $this->attributesAccess['fdTasksLifeCyclePreResource']->setRequired(!$regexActivated);
     $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(!$regexActivated);
-    
+
     // Make Regex Pattern required only when regex is enabled
     $this->attributesAccess['fdTasksLifeCycleRegexPattern']->setRequired($regexActivated);
   }
@@ -241,7 +241,7 @@ class tasksLifeCycle extends simplePlugin
 
     // Toggle fields based on regex activation state
     $this->updateRegexState();
-    
+
     // Take the list of DN based on the groups or members list selected and filled the related attributes
     $this->getListOfDN();
 
