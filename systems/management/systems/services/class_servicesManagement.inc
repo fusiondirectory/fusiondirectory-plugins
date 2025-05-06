@@ -142,23 +142,6 @@ class servicesManagement extends management implements SimpleTab
 
     $this->actions['remove']->setSeparator(TRUE);
 
-    // Add export actions
-    $exportMenu = [];
-    foreach ($this->exporters as $action => $exporter) {
-      $exportMenu[] = new ServiceAction(
-        $action, $exporter['label'], $exporter['image'],
-        '0', 'export'
-      );
-    }
-    $this->registerAction(
-      new SubMenuAction(
-        'export', _('Export list'), 'geticon.php?context=actions&icon=document-export&size=16',
-        $exportMenu
-      )
-    );
-
-    $this->actions['export']->setSeparator(TRUE);
-
     $this->registerAction(
       new ServiceAction(
         'status', _('Get status'), 'geticon.php?context=actions&icon=view-refresh&size=16',
