@@ -66,7 +66,7 @@ class tasksLifeCycle extends simplePlugin
             'fdTasksLifeCycleRegexActivation', FALSE, FALSE
           ),
           new StringAttribute(
-            _('Regex Pattern'), _('Regular expression pattern to filter users (e.g., "(supannRessourceEtat={COMPTE}*)") - used instead of pre-states'),
+            _('Regex Pattern'), _('Pattern to match supannRessourceEtatDate values (e.g., "{COMPTE}.*" for all accounts, or "{MAIL}A:SupannActif:.*" for active mail resources)'),
             'fdTasksLifeCycleRegexPattern', FALSE, '', '',
             '/^.*$/'
           ),
@@ -149,7 +149,7 @@ class tasksLifeCycle extends simplePlugin
   /**
    * Toggle fields based on regex activation state
    */
-  function updateRegexState()
+  function updateRegexState ()
   {
     $regexActivated = $this->attributesAccess['fdTasksLifeCycleRegexActivation']->getValue();
     
