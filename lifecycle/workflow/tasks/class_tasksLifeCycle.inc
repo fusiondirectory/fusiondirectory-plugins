@@ -62,7 +62,7 @@ class tasksLifeCycle extends simplePlugin
         'name'  => _('Future resources details'),
         'attrs' => [
           new SelectAttribute(
-            _('Resource'), _('Supann resources'),
+            _('Resource'), _('Supann resources or Regex'),
             'fdTasksLifeCyclePostResource', TRUE
           ),
           new SelectAttribute(
@@ -84,7 +84,7 @@ class tasksLifeCycle extends simplePlugin
         'name'  => _('Current resources details'),
         'attrs' => [
           new SelectAttribute(
-            _('Resource'), _('Supann resources'),
+            _('Resource'), _('Supann resources or Regex'),
             'fdTasksLifeCyclePreResource', TRUE
           ),
           new SelectAttribute(
@@ -97,16 +97,12 @@ class tasksLifeCycle extends simplePlugin
           ),
         ]
       ],
-      'section5'      => [
-        'name'  => _('Regex Pattern Filtering'),
+      'sectionRegexPattern'      => [
+        'name'  => _('Regex Pattern Configuration'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new BooleanAttribute(
-            _('Enable Regex Filtering'), _('Filter users by regex pattern instead of specific resource states'),
-            'fdTasksLifeCycleRegexActivation', FALSE, FALSE
-          ),
           new StringAttribute(
-            _('Regex Pattern'), _('Pattern to match supannRessourceEtatDate values (e.g., "{COMPTE}.*" for all accounts, or "{MAIL}A:SupannActif:.*" for active mail resources)'),
+            _('Regex Pattern'), _('Pattern to match supannRessource name (e.g., "COMPTE" or "MAIL"). This pattern is used when "Regex Pattern" is selected as a resource type. It does not filter by state or sub-state.'),
             'fdTasksLifeCycleRegexPattern', FALSE, '', '',
             '/^.*$/'
           ),
@@ -133,10 +129,11 @@ class tasksLifeCycle extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['fdShowInformation']->setInLdap(FALSE);
 
-    // Setup the behavior for regex activation toggle
-    $this->attributesAccess['fdTasksLifeCycleRegexActivation']->setSubmitForm('updateRegexState');
+    // Setup the behavior for resource selection to update regex field states
+    $this->attributesAccess['fdTasksLifeCyclePreResource']->setSubmitForm('updateRegexState');
+    $this->attributesAccess['fdTasksLifeCyclePostResource']->setSubmitForm('updateRegexState');
 
-    // Initial toggle state
+    // Initial state update
     $this->updateRegexState();
 
     if (class_available('supannAccountStatus')) {
@@ -152,22 +149,28 @@ class tasksLifeCycle extends simplePlugin
    */
   function updateRegexState ()
   {
-    $regexActivated = $this->attributesAccess['fdTasksLifeCycleRegexActivation']->getValue();
+    $preResourceValue   = $this->attributesAccess['fdTasksLifeCyclePreResource']->getValue();
+    $postResourceValue  = $this->attributesAccess['fdTasksLifeCyclePostResource']->getValue();
 
-    // Toggle Pre-Resource fields
-    $this->attributesAccess['fdTasksLifeCyclePreResource']->setDisabled($regexActivated);
-    $this->attributesAccess['fdTasksLifeCyclePreState']->setDisabled($regexActivated);
-    $this->attributesAccess['fdTasksLifeCyclePreSubState']->setDisabled($regexActivated);
+    $isPreResourceRegex  = ($preResourceValue === 'REGEX');
+    $isPostResourceRegex = ($postResourceValue === 'REGEX');
 
-    // Toggle Regex Pattern field
-    $this->attributesAccess['fdTasksLifeCycleRegexPattern']->setDisabled(!$regexActivated);
+    // --- Handle Pre-Resource fields (Current resources details) ---
+    // PreState is required if PreResource is selected (it's defined as required initially in getAttributesInfo)
+    $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(!empty($preResourceValue));
+    // PreSubState is never required by this logic, its requirement is static.
 
-    // Make Pre-Resource required only when regex is disabled
-    $this->attributesAccess['fdTasksLifeCyclePreResource']->setRequired(!$regexActivated);
-    $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(!$regexActivated);
 
-    // Make Regex Pattern required only when regex is enabled
-    $this->attributesAccess['fdTasksLifeCycleRegexPattern']->setRequired($regexActivated);
+    // --- Handle Post-Resource fields (Future resources details) ---
+    // PostState is required if PostResource is selected (it's defined as required initially in getAttributesInfo)
+    $this->attributesAccess['fdTasksLifeCyclePostState']->setRequired(!empty($postResourceValue));
+    // PostSubState is never required by this logic, its requirement is static.
+
+    // --- Handle Regex Pattern field ---
+    // Enable Regex Pattern field if EITHER PreResource OR PostResource is 'REGEX'
+    $enableRegexPatternField = $isPreResourceRegex || $isPostResourceRegex;
+    $this->attributesAccess['fdTasksLifeCycleRegexPattern']->setDisabled(!$enableRegexPatternField);
+    $this->attributesAccess['fdTasksLifeCycleRegexPattern']->setRequired($enableRegexPatternField);
   }
 
   /**
@@ -184,6 +187,8 @@ class tasksLifeCycle extends simplePlugin
       list($resource, $label) = explode(':', $line, 2);
       $resources[$resource] = $label;
     }
+    // Add REGEX option
+    $resources['REGEX'] = _('Regex Pattern');
 
     $this->attributesAccess['fdTasksLifeCyclePreResource']->setChoices(array_keys($resources), array_values($resources));
     $this->attributesAccess['fdTasksLifeCyclePostResource']->setChoices(array_keys($resources), array_values($resources));
@@ -240,7 +245,7 @@ class tasksLifeCycle extends simplePlugin
   {
     parent::update();
 
-    // Toggle fields based on regex activation state
+    // Toggle fields based on resource selection state
     $this->updateRegexState();
 
     // Take the list of DN based on the groups or members list selected and filled the related attributes
