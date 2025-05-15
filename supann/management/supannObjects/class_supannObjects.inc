@@ -18,15 +18,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannResourceStates extends simpleplugin
+class supannResourceStates extends simplePlugin
 {
-  static function plInfo (): array
+  public static function plInfo (): array
   {
     return [
       'plShortName'   => _('SupannState'),
       'plDescription' => _('Supann State'),
       'plObjectClass' => ['fdSupannObjects'],
-      'plFilter'      => '(objectClass=SupannObjects)',
+      'plFilter'      => '(objectClass=supannObjects)',
       'plObjectType'  => [
         'supannObjects' => [
           'name'        => _('supannObjects'),
@@ -46,7 +46,6 @@ class supannResourceStates extends simpleplugin
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new BaseSelectorAttribute(get_ou('supannObjectsRDN')),
           new StringAttribute(
             _('Name'), _('The name of the supann resource'),
             'fdSupannResourceName', TRUE
@@ -58,6 +57,18 @@ class supannResourceStates extends simpleplugin
           new StringAttribute(
             _('Description'), _('A short description of supann resource'),
             'description', FALSE
+          ),
+          new StringAttribute(
+            _('Substate name'), _('The name of the supann resource substate'),
+            'fdSupannSubStateName', FALSE
+          ),
+          new StringAttribute(
+            _('Substate label'), _('The label of the supann resource substate'),
+            'fdSupannSubStateLabel', FALSE
+          ),
+          new StringAttribute(
+            _('Resource state'), _('The state of the supann resource (A,S,I)'),
+            'fdSupannRessourceState', FALSE
           ),
         ]
       ],

@@ -30,7 +30,7 @@ class supannObjectsManagement extends management
         'plIcon'        => 'geticon.php?context=applications&icon=supann-objects&size=48',
         'plSection'     => 'accounts',
         'plPriority'    => 0,
-        'plCategory'    => ['supannObjects' => ['description'  => _('supann'),
+        'plCategory'    => ['supannObjects' => ['description'  => _('supannObjects'),
                                   'objectClass'  => ['supannObjects']]],
 
         'plManages'     => ['supannObjects']];
