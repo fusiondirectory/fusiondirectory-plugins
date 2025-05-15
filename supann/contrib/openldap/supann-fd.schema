@@ -33,8 +33,8 @@ attributetype ( 1.3.6.1.4.1.38414.28.1.5 NAME 'fdSupannRessourceState'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
 objectclass ( 1.3.6.1.4.1.38414.28.10.2 NAME 'fdSupannObjects'
+  SUP top
   DESC 'FusionDirectory SupAnn Resource'
-  SUP top AUXILIARY
   MUST ( fdSupannResourceName $ fdSupannRessourceLabel )
   MAY ( description $ fdSupannSubStateName $ fdSupannSubStateLabel $ fdSupannRessourceState ) )
 
