@@ -21,16 +21,6 @@
 class supannObjectsManagement extends management
 {
 
-  public static $skipTemplates    = FALSE;
-
-  public static $columns = [
-    ['ObjectTypeColumn',     []],
-    ['Column',               ['attributes' => 'fdSupannResourceStates', 'label' => 'States']],
-    ['Column',               ['attributes' => 'fdSupannRessourceSubStates',   'label' => 'SubStates']],
-    ['LinkColumn',           ['attributes' => 'description',  'label' => 'Description']],
-    ['ActionsColumn',        ['label' => 'Actions']],
-  ];
-
   static function plInfo (): array
   {
     return [
@@ -38,12 +28,13 @@ class supannObjectsManagement extends management
         'plTitle'       => _('SupAnn Objects'),
         'plDescription' => _('Manage SupAnn Objects entries'),
         'plIcon'        => 'geticon.php?context=applications&icon=supann-objects&size=48',
-        'plSection'     => 'accounts', 
+        'plSection'     => 'accounts',
         'plPriority'    => 0,
-        'plManages'     => ['supannresource','supannsubresource'],
-    ];
-  }
+        'plCategory'    => ['supannObjects' => ['description'  => _('supann'),
+                                  'objectClass'  => ['supannObjects']]],
 
+        'plManages'     => ['supannObjects']];
+  }
 }
 
 

@@ -26,24 +26,15 @@ attributetype ( 1.3.6.1.4.1.38414.28.1.4 NAME 'fdSupannSubStateLabel'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
-attributetype ( 1.3.6.1.4.1.38414.28.1.3 NAME 'fdSupannRessourceState'
+attributetype ( 1.3.6.1.4.1.38414.28.1.5 NAME 'fdSupannRessourceState'
   DESC 'FusionDirectory - State of the ressource by default A,S,I'
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
-
-# 
-objectclass ( 1.3.6.1.4.1.38414.28.10.2 NAME 'fdSupannResource'
+objectclass ( 1.3.6.1.4.1.38414.28.10.2 NAME 'fdSupannObjects'
   DESC 'FusionDirectory SupAnn Resource'
   SUP top AUXILIARY
   MUST ( fdSupannResourceName $ fdSupannRessourceLabel )
-  MAY ( description ) )
-
-# 
-objectclass ( 1.3.6.1.4.1.38414.28.11.2 NAME 'fdSupannResourceSubState'
-  DESC 'FusionDirectory SupAnn resource sub state'
-  SUP top AUXILIARY
-  MUST ( fdSupannSubStateName $ fdSupannRessourceState ) 
-  MAY ( fdSupannSubStateLabel $ description ) )
+  MAY ( description $ fdSupannSubStateName $ fdSupannSubStateLabel $ fdSupannRessourceState ) )
 

@@ -23,16 +23,16 @@ class supannResourceStates extends simpleplugin
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('SupannSubState'),
-      'plDescription' => _('Supann Sub State'),
-      'plObjectClass' => ['fdSupannResourceSubStates'],
-      'plFilter'      => '(objectClass=fdSupannResourceSubStates)',
+      'plShortName'   => _('SupannState'),
+      'plDescription' => _('Supann State'),
+      'plObjectClass' => ['fdSupannObjects'],
+      'plFilter'      => '(objectClass=SupannObjects)',
       'plObjectType'  => [
-        'subresource' => [
-          'name'        => _('SupannSubState'),
-          'description' => _('SupannSubState'),
+        'supannObjects' => [
+          'name'        => _('supannObjects'),
+          'description' => _('supannObjects'),
           'icon'        => 'geticon.php?context=devices&icon=telephone&size=16',
-          'ou'          => get_ou('fdSupannObjectsRDN'),
+          'ou'          => get_ou('supannObjectsRDN'),
         ]
       ],
 
@@ -46,23 +46,14 @@ class supannResourceStates extends simpleplugin
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new BaseSelectorAttribute(get_ou('fdSupannObjectsRDN')),
+          new BaseSelectorAttribute(get_ou('supannObjectsRDN')),
           new StringAttribute(
             _('Name'), _('The name of the supann resource'),
-            'fdSupannSubStateName', TRUE
-          ),
-          new SelectAttribute (
-            _('Status'),                     // Label of the attribute
-            _('Supann Status'),         // Description
-            'fdSupannRessourceState',                    // LDAP name
-            TRUE,                           // Mandatory
-            ['A','S','I'],      // [SelectAttribute] Choices
-            '', // We don't set any default value, it will be the first one
-            ['Active','Sursis','Inactive']       // [SelectAttribute] Output choices
+            'fdSupannResourceName', TRUE
           ),
           new StringAttribute(
             _('Label'), _('The label of the supann resource'),
-            'fdSupannSubStateLabel', FALSE
+            'fdSupannRessourceLabel', TRUE
           ),
           new StringAttribute(
             _('Description'), _('A short description of supann resource'),

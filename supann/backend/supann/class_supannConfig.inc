@@ -57,9 +57,9 @@ class supannConfig extends simplePlugin
             'ou=structures'
           ),
           new StringAttribute(
-            _('SupAnn Objects RDN'), _('Branch in which SupAnn resource will be stored'),
+            _('SupAnn Objects RDN'), _('Branch in which SupAnn Objects will be stored'),
             'fdSupannObjectsRDN', TRUE,
-            'ou=resources'
+            'ou=supannObjects'
           ),
           new BooleanAttribute(
             _('SupAnn mail for recovery'), _('Allow the use of mail addresses from the personal mail address field from SupAnn account for password recovery'),
