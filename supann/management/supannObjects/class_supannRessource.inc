@@ -27,13 +27,13 @@ class supannRessource extends simplePlugin
       'plShortName'   => _('Ressource'),
       'plDescription' => _('SupAnn Ressource'),
       'plObjectClass' => ['fdSupannRessource'],
-      'plFilter'      => '(objectClass=fdSupannRessource)',      
-      'plObjectType'  => ['supannRessource' => 
+      'plFilter'      => '(objectClass=fdSupannRessource)',
+      'plObjectType'  => ['supannRessource' =>
         [
         'name'        => _('SupAnn Ressource'),
         'description' => _('SupAnn Ressource'),
         'ou'          => get_ou('fdSupannRessourceRDN'),
-        'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',        
+        'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',
         'mainAttr'    => 'fdSupannRessourceName',
         ]
        ],

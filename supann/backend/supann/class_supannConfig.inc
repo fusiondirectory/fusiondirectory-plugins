@@ -74,10 +74,10 @@ class supannConfig extends simplePlugin
             _('SupAnn Objects RDN'), _('Branch in which SupAnn SubState Objects will be stored'),
             'fdSupannSubStateRDN', TRUE,
             'ou=substates,ou=supannobjects'
-          ),        
+          ),
         ]
-      ],    
-    
+      ],
+
       'main' => [
         'name'  => _('SupAnn'),
         'class' => ['fullwidth'],

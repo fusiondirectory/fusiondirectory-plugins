@@ -27,13 +27,13 @@ class supannRessourceState extends simplePlugin
       'plShortName'   => _('State'),
       'plDescription' => _('SupAnn State'),
       'plObjectClass' => ['fdSupannRessourceState'],
-      'plFilter'      => '(objectClass=fdSupannRessourceState)',      
-      'plObjectType'  => ['supannRessourceState' => 
+      'plFilter'      => '(objectClass=fdSupannRessourceState)',
+      'plObjectType'  => ['supannRessourceState' =>
         [
         'name'        => _('SupAnn State'),
         'description' => _('SupAnn State'),
         'ou'          => get_ou('fdSupannStateRDN'),
-        'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',        
+        'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',
         'mainAttr'    => 'fdSupannStateName',
         ]
        ],
