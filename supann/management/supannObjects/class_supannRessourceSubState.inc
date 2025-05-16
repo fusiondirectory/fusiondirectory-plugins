@@ -32,7 +32,7 @@ class supannRessourceSubState extends simplePlugin
         [
         'name'        => _('SupAnn Sub State'),
         'description' => _('SupAnn Sub State'),
-        'ou'          => get_ou('fdSupannSubStateRDN'),
+        'ou'          => get_ou('SupannSubStateRDN'),
         'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',
         'mainAttr'    => 'fdSupannSubStateName',
         ]
@@ -56,7 +56,7 @@ class supannRessourceSubState extends simplePlugin
           ),
           new StringAttribute(
             _('Sub State Label'), _('The label of the Supann Sub State'),
-            'fdSupannSubStateLabel', TRUE
+            'fdSupannRessourceLabel', TRUE
           ),
           new StringAttribute(
             _('Sub State Description'), _('The description explaining this Supann Sub State'),
