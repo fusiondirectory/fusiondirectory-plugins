@@ -47,9 +47,8 @@ class supannConfig extends simplePlugin
       }
     }
     return [
-      'main' => [
-        'name'  => _('SupAnn'),
-        'class' => ['fullwidth'],
+      'rdns' => [
+        'name'  => _('LDAP tree for supann'),
         'attrs' => [
           new StringAttribute(
             _('SupAnn RDN'), _('Branch in which SupAnn structures will be stored'),
@@ -59,8 +58,30 @@ class supannConfig extends simplePlugin
           new StringAttribute(
             _('SupAnn Objects RDN'), _('Branch in which SupAnn Objects will be stored'),
             'fdSupannObjectsRDN', TRUE,
-            'ou=supannObjects'
+            'ou=supannobjects'
           ),
+          new StringAttribute(
+            _('SupAnn Objects RDN'), _('Branch in which SupAnn Ressource Objects will be stored'),
+            'fdSupannRessourceRDN', TRUE,
+            'ou=ressources,ou=supannobjects'
+          ),
+          new StringAttribute(
+            _('SupAnn Objects RDN'), _('Branch in which SupAnn State Objects will be stored'),
+            'fdSupannStateRDN', TRUE,
+            'ou=states,ou=supannobjects'
+          ),
+          new StringAttribute(
+            _('SupAnn Objects RDN'), _('Branch in which SupAnn SubState Objects will be stored'),
+            'fdSupannSubStateRDN', TRUE,
+            'ou=substates,ou=supannobjects'
+          ),        
+        ]
+      ],    
+    
+      'main' => [
+        'name'  => _('SupAnn'),
+        'class' => ['fullwidth'],
+        'attrs' => [
           new BooleanAttribute(
             _('SupAnn mail for recovery'), _('Allow the use of mail addresses from the personal mail address field from SupAnn account for password recovery'),
             'fdSupannPasswordRecovery', FALSE,

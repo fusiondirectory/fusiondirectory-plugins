@@ -126,14 +126,38 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.20 NAME 'fdSupannObjectsRDN'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
+# New attribute for SupAnn Objects RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.21 NAME 'fdSupannRessourceRDN'
+  DESC 'FusionDirectory - SupAnn Ressource objects RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+  
+# New attribute for SupAnn Objects RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.22 NAME 'fdSupannStateRDN'
+  DESC 'FusionDirectory - SupAnn State objects RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# New attribute for SupAnn Objects RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.23 NAME 'fdSupannSubStateRDN'
+  DESC 'FusionDirectory - SupAnn Substate objects RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
 # Object Classes
-# Main SupAnn Plugin Configuration (add fdSupannObjectsRDN)
+# Main SupAnn Plugin Configuration 
 objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   DESC 'FusionDirectory SupAnn plugin configuration'
   SUP top AUXILIARY
   MUST ( cn )
   MAY (
-    fdSupannStructuresRDN $ fdSupannObjectsRDN $ fdSupannPasswordRecovery $
+    fdSupannStructuresRDN $ fdSupannObjectsRDN $ fdSupannRessourceRDN $ fdSupannStateRDN $ fdSupannSubStateRDN $ fdSupannPasswordRecovery $
     fdSupannRessourceSubStates $ fdSupannRessourceSubStatesLabels $ fdSupannRessourceLabels $
     fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains $
     fdSupannConsentementObjects $ fdSupannConsentementTypes $ fdSupannShowMailForwardingAddress $

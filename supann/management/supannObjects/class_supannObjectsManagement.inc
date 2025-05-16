@@ -24,16 +24,14 @@ class supannObjectsManagement extends management
   static function plInfo (): array
   {
     return [
-        'plShortName'   => _('Supann Objects Management'),
-        'plTitle'       => _('SupAnn Objects'),
-        'plDescription' => _('Manage SupAnn Objects entries'),
+        'plShortName'   => _('Supann Objects'),
+        'plTitle'       => _('Supann Objects Management'),
+        'plDescription' => _('Manage SupAnn Objects'),
         'plIcon'        => 'geticon.php?context=applications&icon=supann-objects&size=48',
         'plSection'     => 'accounts',
         'plPriority'    => 0,
-        'plCategory'    => ['supannObjects' => ['description'  => _('supannObjects'),
-                                  'objectClass'  => ['supannObjects']]],
-
-        'plManages'     => ['supannObjects']];
+        'plManages'     => ['supannRessource','supannRessourceState','supannRessourceSubState']
+        ];
   }
 }
 
