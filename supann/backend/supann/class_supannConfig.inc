@@ -459,4 +459,39 @@ class supannConfig extends simplePlugin
       $substateChoices
     );
   }
+
+  protected function post_save ()
+  {
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+
+    print_r($config->current['BASE']);
+
+    try {
+      $ldap->create_missing_trees(get_ou('SupannObjectsRDN').$config->current['BASE']);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
+    }
+
+    try {
+      $ldap->create_missing_trees(get_ou('SupannRessourceRDN').get_ou('SupannObjectsRDN').$config->current['BASE']);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
+    }
+
+    try {
+      $ldap->create_missing_trees(get_ou('SupannStateRDN').get_ou('SupannObjectsRDN').$config->current['BASE']);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
+    }
+
+    try {
+      $ldap->create_missing_trees(get_ou('SupannSubStateRDN').get_ou('SupannObjectsRDN').$config->current['BASE']);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
+    }
+
+    parent::post_save();
+  }
 }

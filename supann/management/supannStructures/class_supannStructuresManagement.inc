@@ -38,7 +38,7 @@ class supannStructuresManagement extends management
       'plShortName'   => _('SupAnn structures'),
       'plDescription' => _('SupAnn structures management'),
       'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
-      'plSection'     => 'accounts',
+      'plSection'     => 'supann',
       'plPriority'    => 40,
       'plManages'     => ['etablissement', 'entite'],
 
