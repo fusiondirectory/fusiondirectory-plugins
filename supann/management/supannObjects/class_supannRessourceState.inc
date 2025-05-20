@@ -37,7 +37,7 @@ class supannRessourceState extends simplePlugin
         'mainAttr'    => 'fdSupannStateName',
         ]
        ],
-      'plSearchAttrs' => ['description', 'fdSupannRessourceName'],
+      'plSearchAttrs' => ['description', 'fdSupannStateName'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo(), TRUE)
     ];
