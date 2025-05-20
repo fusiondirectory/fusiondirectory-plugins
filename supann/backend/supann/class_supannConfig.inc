@@ -51,7 +51,7 @@ class supannConfig extends simplePlugin
         'name'  => _('LDAP tree for supann'),
         'attrs' => [
           new StringAttribute(
-            _('SupAnn RDN'), _('Branch in which SupAnn structures will be stored'),
+            _('SupAnn Structures RDN'), _('Branch in which SupAnn structures will be stored'),
             'fdSupannStructuresRDN', TRUE,
             'ou=structures'
           ),
@@ -61,17 +61,17 @@ class supannConfig extends simplePlugin
             'ou=supannobjects'
           ),
           new StringAttribute(
-            _('SupAnn Objects RDN'), _('Branch in which SupAnn Ressource Objects will be stored'),
+            _('SupAnn Resources RDN'), _('Branch in which SupAnn Ressource Objects will be stored'),
             'fdSupannRessourceRDN', TRUE,
             'ou=ressources,ou=supannobjects'
           ),
           new StringAttribute(
-            _('SupAnn Objects RDN'), _('Branch in which SupAnn State Objects will be stored'),
+            _('SupAnn States RDN'), _('Branch in which SupAnn State Objects will be stored'),
             'fdSupannStateRDN', TRUE,
             'ou=states,ou=supannobjects'
           ),
           new StringAttribute(
-            _('SupAnn Objects RDN'), _('Branch in which SupAnn SubState Objects will be stored'),
+            _('SupAnn Sub States RDN'), _('Branch in which SupAnn SubState Objects will be stored'),
             'fdSupannSubStateRDN', TRUE,
             'ou=substates,ou=supannobjects'
           ),
