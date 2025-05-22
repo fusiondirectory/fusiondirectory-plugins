@@ -23,7 +23,25 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
 {
   protected $displayHeader = TRUE;
 
-  protected $substatus;
+  /**
+   * Stores all configured fdSupannRessource objects.
+   * Format: ['ressourceName1' => 'RessourceLabel1', ...]
+   * @var array
+   */
+  protected $configuredResources = [];
+
+  /**
+   * Stores all configured fdSupannRessourceState objects and their linked substates.
+   * Format: [
+   *   'stateName1' => [
+   *     'label' => 'StateLabel1',
+   *     'substates' => ['subStateName1' => 'SubStateLabel1', ...]
+   *   ],
+   *   ...
+   * ]
+   * @var array
+   */
+  protected $configuredStatesWithSubstates = [];
 
   static function plInfo (): array
   {
@@ -111,28 +129,25 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
 
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->substatus = static::getConfiguredSubstates();
+    // Load all configured resources, states, and their linked substates from LDAP
+    $this->loadLdapConfigurations();
 
-    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail')];
-    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource, $label) = explode(':', $line, 2);
-      $resources[$resource] = $label;
-    }
     $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[0]->setChoices(
-      array_keys($resources),
-      array_values($resources)
+      array_keys($this->configuredResources),
+      array_values($this->configuredResources)
     );
 
     $this->attributesAccess['supannRessourceEtatDate']->setLinearRendering(FALSE);
     $this->attributesAccess['supannRessourceEtatDate']->setRequired(TRUE);
     $this->attributesAccess['supannRessourceEtatDate']->setHeaders([
-      _('Resource'),
-      _('Status'),
-      _('Substatus'),
+      _('Resource'), // Populated by fdSupannRessource objects
+      _('State'),    // Populated by fdSupannRessourceState objects
+      _('Substatus'), // Populated by fdSupannRessourceSubState objects linked to the selected State
       _('Begin'),
       _('End'),
       ''
     ]);
+    // Ensure the second dropdown (State) also triggers an update for the third (Substatus)
     $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->setSubmitForm('updateFieldsChoices');
     $this->updateFieldsChoices();
 
@@ -154,11 +169,43 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   /* Update choices of fields which depends on other fields values */
   function updateFieldsChoices ()
   {
-    $substatusChoices = $this->substatus[$this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->getValue()] ?? [];
-    $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[2]->setChoices(
-      array_keys($substatusChoices),
-      array_values($substatusChoices)
+    // Populate the 'State' dropdown (second element)
+    $stateChoices = [];
+    foreach ($this->configuredStatesWithSubstates as $stateName => $stateDetails) {
+        $stateChoices[$stateName] = $stateDetails['label'];
+    }
+    if (empty($stateChoices)) {
+        $stateChoices[''] = _('-- No States Defined --');
+    }
+    $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->setChoices(
+        array_keys($stateChoices),
+        array_values($stateChoices)
     );
+
+    // Update 'Substatus' choices based on the selected 'State'
+    $lines = $this->attributesAccess['supannRessourceEtatDate']->getValue();
+    if (!is_array($lines)) {
+        $lines = [];
+    }
+
+    foreach ($lines as $key => $line) {
+        $selectedStateName = $line[1] ?? null; // Value from the 'State' dropdown
+
+        $substatusChoices = [];
+        if ($selectedStateName && isset($this->configuredStatesWithSubstates[$selectedStateName]['substates'])) {
+            $substatusChoices = $this->configuredStatesWithSubstates[$selectedStateName]['substates'];
+        }
+        
+        if (empty($substatusChoices)) {
+             // Provide a default if no substates or no state selected
+            $substatusChoices[''] = _('-- Select State or No Substates --');
+        }
+
+        $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[2]->setChoicesForLine($key,
+            array_keys($substatusChoices),
+            array_values($substatusChoices)
+        );
+    }
   }
 
   protected function prepare_save (): array
@@ -261,60 +308,67 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     }
   }
 
-  static function getOfficialSubstates (): array
-  {
-    return [
-      'A' => [
-        'SupannAnticipe' => _('Anticipated'),
-        'SupannActif' => _('Active'),
-        'SupannSursis' => _('Extension'),
-      ],
-      'I' => [
-        'SupannPrecree' => _('Pre-created'),
-        'SupannCree' => _('Created'),
-        'SupannExpire' => _('Expired'),
-        'SupannInactif' => _('Inactive'),
-        'SupannSupprDonnees' => _('Data deletion'),
-        'SupannSupprCompte' => _('Account deletion'),
-      ],
-      'S' => [
-        'SupannVerrouille' => _('Locked'),
-        'SupannVerrouAdministratif' => _('Administrative lock'),
-        'SupannVerrouTechnique' => _('Technical lock'),
-      ],
-    ];
-  }
-
-  static function getConfiguredSubstates (): array
+  /**
+   * Loads all fdSupannRessource, fdSupannRessourceState, and linked fdSupannRessourceSubState objects from LDAP.
+   * Populates $this->configuredResources and $this->configuredStatesWithSubstates.
+   */
+  protected function loadLdapConfigurations(): void
   {
     global $config;
+    $ldap = $config->get_ldap_link();
 
-    $officialSubstates = static::getOfficialSubstates();
+    $this->configuredResources = [];
+    $this->configuredStatesWithSubstates = [];
 
-    $substates = [
-      'A' => [],
-      'I' => [],
-      'S' => [],
-    ];
+    // 1. Fetch Resources
+    $ressourcesOu = get_ou('SupannRessourceRDN') . $config->current['BASE'];
+    $ressourceAttributes = ['fdSupannRessourceName', 'fdSupannRessourceLabel'];
+    $ressourceEntriesResult = $ldap->search('(objectClass=fdSupannRessource)', $ressourceAttributes, $ressourcesOu);
 
-    $labels = [];
-
-    foreach ($config->get_cfg_value('SupannRessourceSubStatesLabels', []) as $line) {
-      list($substate, $label) = explode(':', $line, 2);
-      $labels[$substate] = $label;
+    if ($ressourceEntriesResult) {
+        while ($ressourceEntry = $ldap->fetch($ressourceEntriesResult)) {
+            if ($ressourceEntry && isset($ressourceEntry['fdSupannRessourceName'][0])) {
+                $name = $ressourceEntry['fdSupannRessourceName'][0];
+                $label = $ressourceEntry['fdSupannRessourceLabel'][0] ?? $name;
+                $this->configuredResources[$name] = $label;
+            }
+        }
     }
 
-    foreach ($config->get_cfg_value('SupannRessourceSubStates', []) as $line) {
-      list(, $state, $substate) = explode(':', $line, 3);
-      if (isset($officialSubstates[$state][$substate])) {
-        $substates[$state][$substate] = $officialSubstates[$state][$substate];
-      } elseif (isset($labels[$substate])) {
-        $substates[$state][$substate] = $labels[$substate];
-      } else {
-        $substates[$state][$substate] = $substate;
-      }
-    }
+    // 2. Fetch States and their linked Substates
+    $statesOu = get_ou('SupannStateRDN') . $config->current['BASE'];
+    $stateAttributes = ['fdSupannStateName', 'fdSupannRessourceLabel', 'fdSupannSubStateList'];
+    $stateEntriesResult = $ldap->search('(objectClass=fdSupannRessourceState)', $stateAttributes, $statesOu);
 
-    return $substates;
+    if ($stateEntriesResult) {
+        while ($stateEntry = $ldap->fetch($stateEntriesResult)) {
+            if (!$stateEntry || !isset($stateEntry['fdSupannStateName'][0])) {
+                continue;
+            }
+
+            $stateName = $stateEntry['fdSupannStateName'][0];
+            $stateLabel = $stateEntry['fdSupannRessourceLabel'][0] ?? $stateName;
+            
+            $linkedSubstates = [];
+            if (!empty($stateEntry['fdSupannSubStateList'])) {
+                foreach ($stateEntry['fdSupannSubStateList'] as $subStateDN) {
+                    // Fetch the subState by its DN
+                    $subStateResult = $ldap->search('(objectClass=fdSupannRessourceSubState)', ['fdSupannSubStateName', 'fdSupannRessourceLabel'], $subStateDN, 'base');
+                    if ($subStateResult) {
+                        $subStateLdapEntry = $ldap->fetch($subStateResult);
+                        if ($subStateLdapEntry && isset($subStateLdapEntry['fdSupannSubStateName'][0])) {
+                            $subStateNameKey = $subStateLdapEntry['fdSupannSubStateName'][0];
+                            $subStateLabelValue = $subStateLdapEntry['fdSupannRessourceLabel'][0] ?? $subStateNameKey;
+                            $linkedSubstates[$subStateNameKey] = $subStateLabelValue;
+                        }
+                    }
+                }
+            }
+            $this->configuredStatesWithSubstates[$stateName] = [
+                'label' => $stateLabel,
+                'substates' => $linkedSubstates
+            ];
+        }
+    }
   }
 }

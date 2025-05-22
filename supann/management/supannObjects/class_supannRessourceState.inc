@@ -42,11 +42,10 @@ class supannRessourceState extends simplePlugin
       'plForeignKeys' => [
         // Key is the local attribute in this class that stores the DNs
         'fdSupannSubStateRefs' => [
-          // This definition specifies what 'fdSupannSubStateRefs' can point to
           [
-            'supannRessourceSubState', // The objectClass of the referenced object
+            'supannRessourceSubState', // The objectClass of the referenced object (OR THE CLASS NAME ?!)
             'dn',                        // The reference is to the DN of the target object
-            'fdSupannSubStateRefs=%oldvalue%', // A valid LDAP filter for the referenced objects
+            'fdSupannSubStateRefs=%oldvalue%', // A valid LDAP filter for the referenced objects (same as oGroup)
             '*'                          // Attributes to display from the referenced object
           ],
         ]
