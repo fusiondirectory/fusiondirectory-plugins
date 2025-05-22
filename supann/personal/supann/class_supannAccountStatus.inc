@@ -330,6 +330,8 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     if ($ldap->search('(objectClass=fdSupannRessourceState)', $stateAttributes, $statesOu)) {
       error_log("DEBUG: LDAP search for states found " . $ldap->count() . " potential entries.");
       while ($stateEntry = $ldap->fetch()) {
+        error_log("DEBUG: Top of while loop. stateEntry is: " . print_r($stateEntry, true)); // <-- ADD THIS LINE
+
         error_log("DEBUG: Fetched state entry DN: " . ($stateEntry['dn'] ?? 'DN_NOT_AVAILABLE'));
         if (!$stateEntry || !isset($stateEntry['fdSupannStateName'][0])) {
           error_log("DEBUG: Skipping state entry due to missing fdSupannStateName: " . print_r($stateEntry, true));
@@ -348,16 +350,16 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
         if (isset($stateEntry['fdSupannSubStateList'])) {
           if (isset($stateEntry['fdSupannSubStateList']['count'])) {
             for ($i = 0; $i < $stateEntry['fdSupannSubStateList']['count']; $i++) {
-              $this->fetchSubstate($ldap, $stateEntry['fdSupannSubStateList'][$i], $linkedSubstates);
+              $this->fetchSubstate($stateEntry['fdSupannSubStateList'][$i], $linkedSubstates);
             }
           } else if (is_array($stateEntry['fdSupannSubStateList'])) {
             foreach ($stateEntry['fdSupannSubStateList'] as $key => $subStateDN) {
               if ($key !== 'count' && !is_numeric($key)) {
-                $this->fetchSubstate($ldap, $subStateDN, $linkedSubstates);
+                $this->fetchSubstate($subStateDN, $linkedSubstates);
               }
             }
           } else {
-            $this->fetchSubstate($ldap, $stateEntry['fdSupannSubStateList'], $linkedSubstates);
+            $this->fetchSubstate($stateEntry['fdSupannSubStateList'], $linkedSubstates);
           }
         }
 
@@ -379,18 +381,20 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   /**
    * Helper method to fetch a substate by DN and add it to the linkedSubstates array
    *
-   * @param LDAP $ldap The LDAP connection
    * @param string $subStateDN The DN of the substate to fetch
    * @param array &$linkedSubstates Reference to the array of linked substates to populate
    */
-  private function fetchSubstate($ldap, string $subStateDN, array &$linkedSubstates): void
+  private function fetchSubstate(string $subStateDN, array &$linkedSubstates): void
   {
+    global $config;
+    $ldap_inner = $config->get_ldap_link();
+
     if (empty($subStateDN) || strpos($subStateDN, '=') === false) {
       return;
     }
     $subStateAttributes = ['fdSupannSubStateName', 'fdSupannRessourceLabel'];
-    if ($ldap->cat($subStateDN, $subStateAttributes)) {
-      $subStateLdapEntry = $ldap->fetch();
+    if ($ldap_inner->cat($subStateDN, $subStateAttributes)) {
+      $subStateLdapEntry = $ldap_inner->fetch();
       if ($subStateLdapEntry && isset($subStateLdapEntry['fdSupannSubStateName'][0])) {
         $subStateNameKey = $subStateLdapEntry['fdSupannSubStateName'][0];
         $subStateLabelValue = isset($subStateLdapEntry['fdSupannRessourceLabel'][0]) ?
