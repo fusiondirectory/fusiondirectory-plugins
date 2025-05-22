@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2012-2019  FusionDirectory
+  Copyright (C) 2012-2025  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -43,9 +43,14 @@ class supannRessourceState extends simplePlugin
     ];
   }
 
-  // The main function : information about attributes
+  /**
+   * Get the attributes information for the plugin
+   *
+   * @return array
+   */
   static function getAttributesInfo (): array
   {
+    $substates = self::getAvailableSubStates();
     return [
       'main' => [
         'name'  => _('Supann Ressource State'),
@@ -64,6 +69,49 @@ class supannRessourceState extends simplePlugin
           ),
         ]
       ],
+      'substates' => [
+        'name'  => _('Available Sub States'),
+        'attrs' => [
+          new OrderedArrayAttribute(
+            new SelectAttribute(
+              _('Available Sub States'),
+              _('Select one or more available Sub States for this State'),
+              'fdSupannSubStateList',
+              FALSE,
+              array_keys($substates),
+              '',
+              array_values($substates)
+            ),
+            FALSE,
+            [],
+            TRUE // Multi-valued
+          ),
+        ]
+      ],
     ];
+  }
+
+  /**
+   * Get the available sub states from LDAP
+   *
+   * @return array
+   */
+  public static function getAvailableSubStates(): array
+  {
+    global $config;
+    $ou = get_ou('SupannSubStateRDN') . $config->current['BASE'];
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($ou);
+    $ldap->search('(objectClass=fdSupannRessourceSubState)', ['fdSupannSubStateName', 'fdSupannRessourceLabel']);
+
+    $substates = [];
+    while ($attrs = $ldap->fetch()) {
+      if (!empty($attrs['fdSupannSubStateName'][0])) {
+        $key   = $attrs['fdSupannSubStateName'][0];
+        $label = !empty($attrs['fdSupannRessourceLabel'][0]) ? $attrs['fdSupannRessourceLabel'][0] : $key;
+        $substates[$key] = $label;
+      }
+    }
+    return $substates;
   }
 }
