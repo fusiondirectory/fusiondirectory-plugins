@@ -280,7 +280,12 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     $this->configuredStatesWithSubstates = [];
 
     // 1. Fetch Resources
-    $ressourcesOu = get_ou('SupannRessourceRDN') . $config->current['BASE'];
+    $ressourcesOu = get_ou('SupannRessourceRDN');
+    if (stripos($ressourcesOu, $config->current['BASE']) === false) {
+      $ressourcesOu = rtrim($ressourcesOu, ',') . ',' . ltrim($config->current['BASE'], ',');
+    }
+    error_log("DEBUG: Searching resources in base: " . $ressourcesOu);
+
     $ressourceAttributes = ['fdSupannRessourceName', 'fdSupannRessourceLabel'];
     if ($ldap->search('(objectClass=fdSupannRessource)', $ressourceAttributes, $ressourcesOu)) {
       while ($ressourceEntry = $ldap->fetch()) {
@@ -293,19 +298,27 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     }
 
     // 2. Fetch States and their linked Substates
-    $statesOu = get_ou('SupannStateRDN') . $config->current['BASE'];
+    $statesOu = get_ou('SupannStateRDN');
+    if (stripos($statesOu, $config->current['BASE']) === false) {
+      $statesOu = rtrim($statesOu, ',') . ',' . ltrim($config->current['BASE'], ',');
+    }
+    error_log("DEBUG: Searching states in base: " . $statesOu);
+
     $stateAttributes = ['fdSupannStateName', 'fdSupannRessourceLabel', 'fdSupannSubStateList'];
     if ($ldap->search('(objectClass=fdSupannRessourceState)', $stateAttributes, $statesOu)) {
       while ($stateEntry = $ldap->fetch()) {
         if (!$stateEntry || !isset($stateEntry['fdSupannStateName'][0])) {
           continue;
         }
-        $stateName = $stateEntry['fdSupannStateName'][0];
+        $stateName = trim($stateEntry['fdSupannStateName'][0]);
+        if ($stateName === '') {
+          error_log("WARNING: Found state with empty name, skipping.");
+          continue;
+        }
         $stateLabel = $stateEntry['fdSupannRessourceLabel'][0] ?? $stateName;
         $linkedSubstates = [];
 
         if (isset($stateEntry['fdSupannSubStateList'])) {
-          // Handle different possible return formats from LDAP
           if (isset($stateEntry['fdSupannSubStateList']['count'])) {
             for ($i = 0; $i < $stateEntry['fdSupannSubStateList']['count']; $i++) {
               $this->fetchSubstate($ldap, $stateEntry['fdSupannSubStateList'][$i], $linkedSubstates);
@@ -327,6 +340,10 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
         ];
       }
     }
+
+    // Debug: check what was loaded
+    error_log("Loaded resources: " . print_r($this->configuredResources, true));
+    error_log("Loaded states: " . print_r($this->configuredStatesWithSubstates, true));
   }
 
   /**
