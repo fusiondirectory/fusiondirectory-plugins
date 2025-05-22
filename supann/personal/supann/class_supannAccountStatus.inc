@@ -385,26 +385,24 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
             $linkedSubstates = [];
             
             // Process substates DNs from the state object
-            if (!empty($stateEntry['fdSupannSubStateList'])) {
-                $subStateDNs = is_array($stateEntry['fdSupannSubStateList']) ? $stateEntry['fdSupannSubStateList'] : [$stateEntry['fdSupannSubStateList']];
-                
-                foreach ($subStateDNs as $subStateDN) {
-                    // Skip numeric 'count' entry that LDAP operations sometimes include
-                    if (is_int($subStateDN) || $subStateDN === 'count') {
-                        continue;
+            if (isset($stateEntry['fdSupannSubStateList'])) {
+                // Handle different possible return formats from LDAP
+                if (isset($stateEntry['fdSupannSubStateList']['count'])) {
+                    // Standard LDAP array format
+                    for ($i = 0; $i < $stateEntry['fdSupannSubStateList']['count']; $i++) {
+                        $subStateDN = $stateEntry['fdSupannSubStateList'][$i];
+                        $this->fetchSubstate($ldap, $subStateDN, $linkedSubstates);
                     }
-                    
-                    $subStateAttributes = ['fdSupannSubStateName', 'fdSupannRessourceLabel'];
-                    $subStateFilter = '(objectClass=fdSupannRessourceSubState)';
-                    // Use cat() instead of search() with 'base' scope
-                    if ($ldap->cat($subStateDN, $subStateAttributes, $subStateFilter)) {
-                        $subStateLdapEntry = $ldap->fetch();
-                        if ($subStateLdapEntry && isset($subStateLdapEntry['fdSupannSubStateName'][0])) {
-                            $subStateNameKey = $subStateLdapEntry['fdSupannSubStateName'][0];
-                            $subStateLabelValue = $subStateLdapEntry['fdSupannRessourceLabel'][0] ?? $subStateNameKey;
-                            $linkedSubstates[$subStateNameKey] = $subStateLabelValue;
+                } else if (is_array($stateEntry['fdSupannSubStateList'])) {
+                    // Array of values
+                    foreach ($stateEntry['fdSupannSubStateList'] as $key => $subStateDN) {
+                        if ($key !== 'count' && !is_numeric($key)) {
+                            $this->fetchSubstate($ldap, $subStateDN, $linkedSubstates);
                         }
                     }
+                } else {
+                    // Single value
+                    $this->fetchSubstate($ldap, $stateEntry['fdSupannSubStateList'], $linkedSubstates);
                 }
             }
             
@@ -412,6 +410,35 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
                 'label' => $stateLabel,
                 'substates' => $linkedSubstates
             ];
+        }
+    }
+  }
+
+  /**
+   * Helper method to fetch a substate by DN and add it to the linkedSubstates array
+   *
+   * @param LDAP $ldap The LDAP connection
+   * @param string $subStateDN The DN of the substate to fetch
+   * @param array &$linkedSubstates Reference to the array of linked substates to populate
+   */
+  private function fetchSubstate($ldap, string $subStateDN, array &$linkedSubstates): void
+  {
+    // Skip if DN is empty or invalid
+    if (empty($subStateDN) || strpos($subStateDN, '=') === false) {
+        return;
+    }
+    
+    $subStateAttributes = ['fdSupannSubStateName', 'fdSupannRessourceLabel'];
+    
+    // Use cat() without a filter - the DN should be sufficient to identify the entry
+    if ($ldap->cat($subStateDN, $subStateAttributes)) {
+        $subStateLdapEntry = $ldap->fetch();
+        
+        if ($subStateLdapEntry && isset($subStateLdapEntry['fdSupannSubStateName'][0])) {
+            $subStateNameKey = $subStateLdapEntry['fdSupannSubStateName'][0];
+            $subStateLabelValue = isset($subStateLdapEntry['fdSupannRessourceLabel'][0]) ? 
+                $subStateLdapEntry['fdSupannRessourceLabel'][0] : $subStateNameKey;
+            $linkedSubstates[$subStateNameKey] = $subStateLabelValue;
         }
     }
   }
