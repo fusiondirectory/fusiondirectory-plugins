@@ -149,20 +149,23 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   /* Update choices of fields which depends on other fields values */
   function updateFieldsChoices()
   {
-    // Populate the 'State' dropdown (second element)
+    // Populate the 'State' dropdown (second element, index 1)
     $stateChoices = [];
-    foreach ($this->configuredStatesWithSubstates as $stateName => $stateDetails) {
-      $stateChoices[$stateName] = $stateDetails['label'];
+    if (is_array($this->configuredStatesWithSubstates)) {
+      foreach ($this->configuredStatesWithSubstates as $stateName => $stateDetails) {
+        $stateChoices[$stateName] = $stateDetails['label'];
+      }
     }
     if (empty($stateChoices)) {
       $stateChoices[''] = _('-- No States Defined --');
     }
+    // Ensure the attribute path is correct for the 'State' SelectAttribute
     $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->setChoices(
       array_keys($stateChoices),
       array_values($stateChoices)
     );
 
-    // Get the current lines (rows)
+    // Get the current lines (rows of raw strings)
     $lines = $this->attributesAccess['supannRessourceEtatDate']->getValue();
     if (!is_array($lines)) {
       $lines = [];
@@ -171,17 +174,35 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     // Get the substatus SelectAttribute (third element at index 2)
     $substatusAttribute = $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[2];
 
-    // Default choice
+    // Default choice for substates
     $choices = ['' => _('-- Select State or No Substates --')];
 
-    // If editing a row, set choices for that row's state
-    if (count($lines) == 1) {
-      $line = $lines[0];
-      $selectedStateName = $line[1] ?? '';
+    // If editing a row (or a new row is being prepared with values), set choices for that row's state
+    // This typically happens on an AJAX refresh triggered by changing the 'State' dropdown for a specific row.
+    if (count($lines) >= 1) { // Should handle if there's at least one line (could be new or existing)
+      // We assume the context is for the first line if multiple, or the only line.
+      // FusionDirectory's OrderedArrayAttribute AJAX refresh usually focuses on the line being changed.
+      $line_string = $lines[0]; // Get the raw string for the current/first line
+
+      // Get the CompositeAttribute instance to parse the string
+      $compositeAttr = $this->attributesAccess['supannRessourceEtatDate']->attribute;
+      $parsed_components = [];
+      if (!empty($line_string) && is_string($line_string)) {
+        $parsed_components = $compositeAttr->readValues($line_string);
+      }
+
+      // $parsed_components is an array: [Resource, State, Substate, StartDate, EndDate]
+      // Index 1 should be the State name
+      $selectedStateName = $parsed_components[1] ?? '';
+
+      error_log("DEBUG updateFieldsChoices: line_string='{$line_string}', selectedStateName='{$selectedStateName}'"); // Debug
+
       if ($selectedStateName && isset($this->configuredStatesWithSubstates[$selectedStateName]['substates'])) {
         $substates = $this->configuredStatesWithSubstates[$selectedStateName]['substates'];
         if (!empty($substates)) {
           $choices = $substates;
+        } else {
+          $choices = ['' => _('-- No Substates for this State --')];
         }
       }
     }
@@ -296,6 +317,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
         }
       }
     }
+    error_log("Loaded resources: " . print_r($this->configuredResources, true));
 
     // 2. Fetch States and their linked Substates
     $statesOu = get_ou('SupannStateRDN');
@@ -304,15 +326,20 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     }
     error_log("DEBUG: Searching states in base: " . $statesOu);
 
-    $stateAttributes = ['fdSupannStateName', 'fdSupannRessourceLabel', 'fdSupannSubStateList'];
+    $stateAttributes = ['dn', 'fdSupannStateName', 'fdSupannRessourceLabel', 'fdSupannSubStateList'];
     if ($ldap->search('(objectClass=fdSupannRessourceState)', $stateAttributes, $statesOu)) {
+      error_log("DEBUG: LDAP search for states found " . $ldap->count() . " potential entries.");
       while ($stateEntry = $ldap->fetch()) {
+        error_log("DEBUG: Fetched state entry DN: " . ($stateEntry['dn'] ?? 'DN_NOT_AVAILABLE'));
         if (!$stateEntry || !isset($stateEntry['fdSupannStateName'][0])) {
+          error_log("DEBUG: Skipping state entry due to missing fdSupannStateName: " . print_r($stateEntry, true));
           continue;
         }
         $stateName = trim($stateEntry['fdSupannStateName'][0]);
+        error_log("DEBUG: Processing stateName raw: '" . $stateEntry['fdSupannStateName'][0] . "', trimmed: '" . $stateName . "'");
+
         if ($stateName === '') {
-          error_log("WARNING: Found state with empty name, skipping.");
+          error_log("WARNING: Found state with empty name (fdSupannStateName), skipping entry with DN: " . ($stateEntry['dn'] ?? 'DN_NOT_AVAILABLE'));
           continue;
         }
         $stateLabel = $stateEntry['fdSupannRessourceLabel'][0] ?? $stateName;
@@ -334,16 +361,19 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
           }
         }
 
+        error_log("DEBUG: Adding/Updating configuredStatesWithSubstates for KEY='{$stateName}'");
         $this->configuredStatesWithSubstates[$stateName] = [
           'label' => $stateLabel,
           'substates' => $linkedSubstates
         ];
+        error_log("DEBUG: Current count of configuredStatesWithSubstates: " . count($this->configuredStatesWithSubstates));
       }
+      error_log("DEBUG: Finished while loop for fetching states. Keys in configuredStatesWithSubstates: " . implode(', ', array_keys($this->configuredStatesWithSubstates)));
+    } else {
+      error_log("ERROR: LDAP search for states failed. LDAP Error: " . $ldap->get_error());
     }
 
-    // Debug: check what was loaded
-    error_log("Loaded resources: " . print_r($this->configuredResources, true));
-    error_log("Loaded states: " . print_r($this->configuredStatesWithSubstates, true));
+    error_log("Loaded states FINAL: " . print_r($this->configuredStatesWithSubstates, true));
   }
 
   /**
