@@ -39,6 +39,13 @@ class supannRessourceState extends simplePlugin
        ],
       'plSearchAttrs' => ['description', 'fdSupannStateName'],
 
+      'plForeignKeys' => [
+        'fdSupannRessourceSubState' => [
+          // [local attribute, foreign field, filter, display filter]
+          ['fdSupannSubStateList', 'dn', '%b', '*'],
+        ]
+      ],
+
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo(), TRUE)
     ];
   }
@@ -78,9 +85,9 @@ class supannRessourceState extends simplePlugin
               _('Select one or more available Sub States for this State'),
               'fdSupannSubStateList',
               FALSE,
-              array_keys($substates),
+              array_keys($substates), // DNs as values
               '',
-              array_values($substates)
+              array_values($substates) // Labels
             ),
             FALSE,
             [],
@@ -102,14 +109,14 @@ class supannRessourceState extends simplePlugin
     $ou = get_ou('SupannSubStateRDN') . $config->current['BASE'];
     $ldap = $config->get_ldap_link();
     $ldap->cd($ou);
-    $ldap->search('(objectClass=fdSupannRessourceSubState)', ['fdSupannSubStateName', 'fdSupannRessourceLabel']);
+    $ldap->search('(objectClass=fdSupannRessourceSubState)', ['dn', 'fdSupannRessourceLabel']);
 
     $substates = [];
     while ($attrs = $ldap->fetch()) {
-      if (!empty($attrs['fdSupannSubStateName'][0])) {
-        $key   = $attrs['fdSupannSubStateName'][0];
-        $label = !empty($attrs['fdSupannRessourceLabel'][0]) ? $attrs['fdSupannRessourceLabel'][0] : $key;
-        $substates[$key] = $label;
+      if (!empty($attrs['dn'])) {
+        $dn = $attrs['dn'];
+        $label = !empty($attrs['fdSupannRessourceLabel'][0]) ? $attrs['fdSupannRessourceLabel'][0] : $dn;
+        $substates[$dn] = $label;
       }
     }
     return $substates;
