@@ -273,7 +273,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     $ldap = $config->get_ldap_link();
     // FIXME when testing it felt in base, it must be in an OU normally
     $ldap->cd($config->current['BASE']);
-    
+
     /* Get resources from LDAP */
     $resources = [];
     $ldap->search('(objectClass=fdSupannRessource)', ['fdSupannRessourceName','fdSupannRessourceLabel'], 'subtree');
@@ -300,7 +300,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     $ldap = $config->get_ldap_link();
     // FIXME when testing it felt in base, it must be in an OU normally
     $ldap->cd($config->current['BASE']);
-    
+
     /* Get resources from LDAP */
     $states = [];
     // FIXME wrong attribut for label fdSupannRessourceLabel instead of fdSupannStateLabel
@@ -318,7 +318,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
       $states += [$attrs['fdSupannStateName'][0] => $attrs['fdSupannRessourceLabel'][0]];
     }
 
-    # Value if no ressources are found
+    /* Value if no ressources are found */
     if (count($states) < 1) {
       $states = ['' => '-- No states found --'];
     }
@@ -348,10 +348,10 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
       unset($attrs['fdSupannSubStateList']['count']);
 
       /* Prepare the state part
-       * [ 
-       *    'statePart' => [ 
+       * [
+       *    'statePart' => [
        *        'substate1' => 'substate label'
-       *     ] 
+       *     ]
        * ]
        */
       $states[$attrs['fdSupannStateName'][0]] = [];
@@ -360,8 +360,8 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
         $states[$attrs['fdSupannStateName'][0]][] = $dn;
       }
     }
-    
-    # Get substates from LDAP based on $states
+
+    /* Get substates from LDAP based on $states */
     $substates = [];
     foreach ($states as $stateName => $substateDNs) {
       $substates[$stateName] = [];
@@ -374,8 +374,8 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
             continue;
           }
           /* Make the substate part
-           * [ 
-           *    'statePart' => [ 
+           * [
+           *    'statePart' => [
            *        'substate1' => 'substate label'
            *      ]
            *  ]
