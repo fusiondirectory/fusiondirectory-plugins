@@ -135,12 +135,13 @@ class tasksLifeCycle extends simplePlugin
 
     // Define the mandatory ones and get the remaining from configuration.
     $resources = supannAccountStatus::getResources();
+    $states    = supannAccountStatus::getStates();
 
     $this->attributesAccess['fdTasksLifeCyclePreResource']->setChoices(array_keys($resources), array_values($resources));
     $this->attributesAccess['fdTasksLifeCyclePostResource']->setChoices(array_keys($resources), array_values($resources));
     $this->subStates = supannAccountStatus::getConfiguredSubstates(); //Keys are states and Values are subStates
-    $this->attributesAccess['fdTasksLifeCyclePreState']->setChoices(array_keys($this->subStates));
-    $this->attributesAccess['fdTasksLifeCyclePostState']->setChoices(array_keys($this->subStates));
+    $this->attributesAccess['fdTasksLifeCyclePreState']->setChoices(array_keys($states), array_values($states));
+    $this->attributesAccess['fdTasksLifeCyclePostState']->setChoices(array_keys($states), array_values($states));
 
     // Allows the sub states to be listed when state is modified.
     $this->attributesAccess['fdTasksLifeCyclePreState']->setSubmitForm('updateFieldsChoices');

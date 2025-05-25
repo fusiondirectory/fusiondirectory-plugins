@@ -370,10 +370,13 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
       $substates[$stateName] = [];
       foreach ($substateDNs as $substateDN) {
         // FIXME wrong attribute for label fdSupannRessourceLabel instead of fdSupannSubStateLabel
-        $ldap->cat($substateDN);
+        $ldap->cat($substateDN, ['fdSupannSubStateName','fdSupannRessourceLabel']);
         while ($attrs = $ldap->fetch()) {
+          if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceSubState/supannRessourceSubState', 'fdSupannSubStateName'))) {
+            continue;
+          }
           // FIXME wrong attribute for label fdSupannRessourceLabel instead of fdSupannSubStateLabel
-          if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceSubState/supannRessourceSubState', ['fdSupannSubStateName', 'fdSupannRessourceLabel']))) {
+          if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceSubState/supannRessourceSubState', 'fdSupannRessourceLabel'))) {
             continue;
           }
           /* Make the substate part
