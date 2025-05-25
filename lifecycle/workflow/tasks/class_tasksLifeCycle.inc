@@ -134,12 +134,7 @@ class tasksLifeCycle extends simplePlugin
     global $config;
 
     // Define the mandatory ones and get the remaining from configuration.
-    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail')];
-
-    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource, $label) = explode(':', $line, 2);
-      $resources[$resource] = $label;
-    }
+    $resources = static:getResources();
 
     $this->attributesAccess['fdTasksLifeCyclePreResource']->setChoices(array_keys($resources), array_values($resources));
     $this->attributesAccess['fdTasksLifeCyclePostResource']->setChoices(array_keys($resources), array_values($resources));
@@ -212,5 +207,32 @@ class tasksLifeCycle extends simplePlugin
     }
 
     return parent::save();
+  }
+
+  static function getResources (): array
+  {
+    global $config, $ui;
+
+    /* LDAP object */
+    $ldap = $config->get_ldap_link();
+    // FIXME when testing it felt in base, it must be in an OU normally
+    $ldap->cd($config->current['BASE']);
+
+    /* Get resources from LDAP */
+    $resources = [];
+    $ldap->search('(objectClass=fdSupannRessource)', ['fdSupannRessourceName','fdSupannRessourceLabel'], 'subtree');
+    while ($attrs = $ldap->fetch()) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessource/supannRessource', 'fdSupannRessourceName'))) {
+        continue;
+      }
+      $resources += [$attrs['fdSupannRessourceName'][0] => $attrs['fdSupannRessourceLabel'][0]];
+    }
+
+    /* Value if no ressources are found */
+    if (count($resources) < 1) {
+      $resources = ['' => '-- No ressource found --'];
+    }
+
+    return $resources;
   }
 }
