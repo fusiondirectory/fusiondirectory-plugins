@@ -113,7 +113,7 @@ class supannRessourceState extends simplePlugin
    *
    * @return array
    */
-  public static function getAvailableSubStates(): array
+  public static function getAvailableSubStates (): array
   {
     global $config;
     $ou = get_ou('SupannSubStateRDN') . $config->current['BASE'];
