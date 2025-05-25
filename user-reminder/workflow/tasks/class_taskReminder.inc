@@ -185,12 +185,8 @@ class taskReminder extends simplePlugin
     global $config;
 
     // Define the mandatory ones and get the remaining from configuration.
-    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail'), 'NONE' => _('None')];
+    $resources = supannAccountStatus::getResources();
 
-    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource, $label) = explode(':', $line, 2);
-      $resources[$resource] = $label;
-    }
     $this->subStates = supannAccountStatus::getConfiguredSubstates(); //Keys are states and Values are subStates
 
     // Set the resource
