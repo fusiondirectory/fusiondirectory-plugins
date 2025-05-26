@@ -67,6 +67,7 @@ class supannRessourceState extends simplePlugin
       'main' => [
         'name'  => _('Supann Ressource State'),
         'attrs' => [
+          new BaseSelectorAttribute(get_ou('SupannStateRDN')),
           new StringAttribute(
             _('State Name'), _('The name of the Supann State'),
             'fdSupannStateName', TRUE

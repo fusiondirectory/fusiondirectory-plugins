@@ -50,6 +50,7 @@ class supannRessourceSubState extends simplePlugin
       'main' => [
         'name'  => _('Supann Ressource Sub State'),
         'attrs' => [
+          new BaseSelectorAttribute(get_ou('SupannSubStateRDN')),
           new StringAttribute(
             _('Sub State Name'), _('The name of the Supann Sub State'),
             'fdSupannSubStateName', TRUE

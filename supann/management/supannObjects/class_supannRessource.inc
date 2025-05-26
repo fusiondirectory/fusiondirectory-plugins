@@ -47,6 +47,7 @@ class supannRessource extends simplePlugin
       'main' => [
         'name'  => _('Supann Ressource'),
         'attrs' => [
+          new BaseSelectorAttribute(get_ou('SupannRessourceRDN')),
           new StringAttribute(
             _('Ressource Name'), _('The name of the Supann Ressource'),
             'fdSupannRessourceName', TRUE
