@@ -38,6 +38,9 @@ class supannRessourceState extends simplePlugin
         ]
        ],
       'plSearchAttrs' => ['description', 'fdSupannStateName'],
+      'plForeignKeys'  => [
+        'fdSupannSubStateList' => ['supannRessourceSubState','dn','fdSupannSubStateList=%oldvalue%','*']
+      ],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo(), TRUE)
     ];
   }
