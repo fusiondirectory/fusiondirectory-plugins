@@ -42,24 +42,39 @@ class extractorTask extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-    'section1' => [
+      'section1' => [
         'name'  => _('Members to Extract'),
         'attrs' => [
-            new UsersGroupsRolesAttribute(
-            _('Selected Members'), _('Users or Groups to extract data from.'),
-            'fdExtractorTaskMembers', TRUE
-            ),
-            new HiddenAttribute(
+          new UsersGroupsRolesAttribute(
+            _('Selected Members'),
+            _('Users or Groups to extract data from.'),
+            'fdExtractorTaskMembers',
+            TRUE
+          ),
+          new HiddenAttribute(
             'fdExtractorTaskListOfDN'
+          ),
+        ],
+      ],
+      'sectionAttr' => [
+        'name'  => _('Attributes to Extract'),
+        'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
+              _('Attributes'), _('Attributes to extract (leave empty for ALL)'),
+              'fdExtractorTaskAttributes', TRUE
             ),
-        ],
-        ],
+          ),
+        ]
+      ],
       'section2' => [
         'name'  => _('Extraction Settings'),
         'attrs' => [
           new SelectAttribute(
-            _('Format'), _('Output format for extracted data'),
-            'fdExtractorTaskFormat', TRUE,
+            _('Format'),
+            _('Output format for extracted data'),
+            'fdExtractorTaskFormat',
+            TRUE,
             ['CSV'], // Array of choices/keys
             'CSV',   // Default value
             [_('CSV (Comma Separated Values)')], // Array of display values corresponding to choices
@@ -67,12 +82,61 @@ class extractorTask extends simplePlugin
           ),
         ]
       ],
+      'section3' => [
+        'name'  => _('Email Notification'),
+        'attrs' => [
+          new UsersGroupsRolesAttribute(
+            _('Recipients'),
+            _('Users or Groups to receive the extract by email.'),
+            'fdExtractorRecipientsMembers',
+            TRUE
+          ),
+          new HiddenArrayAttribute(
+            'fdExtractorListOfRecipientsMails',
+            FALSE,
+            ''
+          ),
+          new MailAttribute(
+            _('Sender email address'),
+            _('Email address from which the extract will be sent'),
+            'fdExtractorEmailSender',
+            TRUE,
+          ),
+        ],
+      ],
     ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
+
+    // Load available attributes from backend config
+    $this->attributesAccess['fdExtractorTaskAttributes']->attribute->setChoices($this->getAttributesListFromConf());
+  }
+
+  /**
+   * Load extractable attributes from backend config, default to ALL if none set.
+   */
+  protected function getAttributesListFromConf (): array
+  {
+    global $config;
+    $result = [];
+
+    if (!empty($config->current['EXTRACTORCONFATTRIBUTES'])) {
+      if (is_string($config->current['EXTRACTORCONFATTRIBUTES'])) {
+        $result[] = $config->current['EXTRACTORCONFATTRIBUTES'];
+      } else {
+        $result = $config->current['EXTRACTORCONFATTRIBUTES'];
+      }
+    }
+
+    // Ensure 'ALL' is in the array
+    if (!in_array('ALL', $result, TRUE)) {
+      array_unshift($result, 'ALL');
+    }
+
+    return $result;
   }
 
   /**
@@ -83,11 +147,29 @@ class extractorTask extends simplePlugin
     $selectedMembers = $this->attributesAccess['fdExtractorTaskMembers']->getValue();
     $listOfDN = tasks::extractMembersFromGroups($selectedMembers);
 
-    // Store the list of DNs for future use
+    // Store the list of DNs for future use by the orchestrator
     $this->attributesAccess['fdExtractorTaskListOfDN']->setValue($listOfDN);
 
-    // Call the method from parent tasks object (first tab) to create sub-tasks
-    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, 'fdTasksGranularDN', NULL, 'extract');
+    // Define a single identifier for the bulk extraction task
+    $bulkTaskIdentifier = 'bulkExtractorTask';
+
+    // Call the method from parent tasks object (first tab) to create ONE sub-task for the orchestrator
+    // The orchestrator will handle processing the DNs stored in fdExtractorTaskListOfDN.
+    $this->parent->getBaseObject()->createSlaveTasks([$bulkTaskIdentifier], 'fdTasksGranularDN', NULL, 'extract');
+  }
+
+  /**
+   * Resolve recipient emails
+   */
+  protected function resolveRecipientEmails (): void
+  {
+    $recipients = $this->attributesAccess['fdExtractorRecipientsMembers']->getValue();
+    $emailsList = tasksMail::getEmailsFromSelectedDN(
+        'gosaMailAccount',
+        'mail',
+        tasks::extractMembersFromGroups($recipients)
+    );
+    $this->attributesAccess['fdExtractorListOfRecipientsMails']->setValue(array_values($emailsList));
   }
 
   /**
@@ -96,6 +178,7 @@ class extractorTask extends simplePlugin
   function update (): bool
   {
     parent::update();
+    $this->resolveRecipientEmails();
     return TRUE;
   }
 
@@ -104,13 +187,11 @@ class extractorTask extends simplePlugin
    */
   function save (): array
   {
-    // Verify if this task has to be executed upon saving
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
-
     if ($execTasks) {
-      $this->generateSlaveTasks();
+        $this->generateSlaveTasks();
     }
-
+    $this->resolveRecipientEmails();
     return parent::save();
   }
 }
