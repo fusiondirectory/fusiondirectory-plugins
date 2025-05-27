@@ -58,7 +58,7 @@ class supannRessource extends simplePlugin
           ),
           new StringAttribute(
             _('Ressource Description'), _('The description explaining this Supann Ressource'),
-            'description', TRUE
+            'description', FALSE
           ),
         ],
       ],

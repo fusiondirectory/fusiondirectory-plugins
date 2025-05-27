@@ -61,7 +61,7 @@ class supannRessourceSubState extends simplePlugin
           ),
           new StringAttribute(
             _('Sub State Description'), _('The description explaining this Supann Sub State'),
-            'description', TRUE
+            'description', FALSE
           ),
         ]
       ],
