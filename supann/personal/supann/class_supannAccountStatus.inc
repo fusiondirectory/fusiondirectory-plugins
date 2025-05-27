@@ -309,14 +309,12 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     // FIXME wrong attribut for label fdSupannRessourceLabel instead of fdSupannStateLabel
     $ldap->search('(objectClass=fdSupannRessourceState)', ['fdSupannStateName','fdSupannRessourceLabel'], 'subtree');
     while ($attrs = $ldap->fetch()) {
-      // FIXME looks like it nos return 'r' here maybe a quirk in the acl generation???
-      //~ die(print_r($a, TRUE));
-      //~ if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannStateName'))) {
-        //~ continue;
-      //~ }
-      //~ if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannRessourceLabel'))) {
-        //~ continue;
-      //~ }
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannStateName'))) {
+        continue;
+      }
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannRessourceLabel'))) {
+        continue;
+      }
       // FIXME wrong attribut for label fdSupannRessourceLabel instead of fdSupannStateLabel
       $states += [$attrs['fdSupannStateName'][0] => $attrs['fdSupannRessourceLabel'][0]];
     }
@@ -342,10 +340,12 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     $states = [];
     $ldap->search('(objectClass=fdSupannRessourceState)', ['fdSupannStateName','fdSupannStateLabel', 'fdSupannSubStateList'], 'subtree');
     while ($attrs = $ldap->fetch()) {
-      // FIXME looks like it nos return 'r' here maybe a quirk in the acl generation???
-      //~ if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannStateName'))) {
-        //~ continue;
-      //~ }
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannStateName'))) {
+        continue;
+      }
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannSubStateList'))) {
+        continue;
+      }
 
       // FIXME better way to remove the $attrs['fdSupannSubStateList']['count']
       unset($attrs['fdSupannSubStateList']['count']);
