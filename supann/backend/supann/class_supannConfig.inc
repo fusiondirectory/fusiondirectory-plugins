@@ -21,8 +21,6 @@
 
 class supannConfig extends simplePlugin
 {
-  protected $officialSubstates;
-
   static function plInfo (): array
   {
     return [
@@ -39,23 +37,42 @@ class supannConfig extends simplePlugin
 
   static function getAttributesInfo (): array
   {
-    $officialStates = supannAccountStatus::getOfficialSubstates();
-    $defaultStates  = [];
-    foreach ($officialStates as $state => $substates) {
-      foreach (array_keys($substates) as $substate) {
-        $defaultStates[] = $state.':'.$substate;
-      }
-    }
     return [
+      'rdns' => [
+        'name'  => _('LDAP tree for supann'),
+        'attrs' => [
+          new StringAttribute(
+            _('SupAnn Structures RDN'), _('Branch in which SupAnn structures will be stored'),
+            'fdSupannStructuresRDN', TRUE,
+            'ou=structures'
+          ),
+          new StringAttribute(
+            _('SupAnn Objects RDN'), _('Branch in which SupAnn Objects will be stored'),
+            'fdSupannObjectsRDN', TRUE,
+            'ou=supannobjects'
+          ),
+          new StringAttribute(
+            _('SupAnn Resources RDN'), _('Branch in which SupAnn Ressource Objects will be stored'),
+            'fdSupannRessourceRDN', TRUE,
+            'ou=ressources,ou=supannobjects'
+          ),
+          new StringAttribute(
+            _('SupAnn States RDN'), _('Branch in which SupAnn State Objects will be stored'),
+            'fdSupannStateRDN', TRUE,
+            'ou=states,ou=supannobjects'
+          ),
+          new StringAttribute(
+            _('SupAnn Sub States RDN'), _('Branch in which SupAnn SubState Objects will be stored'),
+            'fdSupannSubStateRDN', TRUE,
+            'ou=substates,ou=supannobjects'
+          ),
+        ]
+      ],
+
       'main' => [
         'name'  => _('SupAnn'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new StringAttribute(
-            _('SupAnn RDN'), _('Branch in which SupAnn structures will be stored'),
-            'fdSupannStructuresRDN', TRUE,
-            'ou=structures'
-          ),
           new BooleanAttribute(
             _('SupAnn mail for recovery'), _('Allow the use of mail addresses from the personal mail address field from SupAnn account for password recovery'),
             'fdSupannPasswordRecovery', FALSE,
@@ -142,79 +159,6 @@ class supannConfig extends simplePlugin
             FALSE,
             [ "M.", "Mme"],
             TRUE,
-          ),
-        ],
-      ],
-      'status' => [
-        'name'  => _('Status'),
-        'class' => ['fullwidth'],
-        'attrs' => [
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('Custom resources and their labels'),
-              'fdSupannRessourceLabels',
-              [
-                new StringAttribute(
-                  _('Resource'), _('String that will be stored between {} in supannRessourceEtatDate'),
-                  'fdSupannRessourceLabels_resource', TRUE
-                ),
-                new StringAttribute(
-                  _('Label'), _('Label shown for this resource'),
-                  'fdSupannRessourceLabels_label', TRUE
-                ),
-              ],
-              ':',
-              '',
-              _('Custom resources')
-            ),
-            FALSE,
-            [],
-            TRUE
-          ),
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('Allowed substates for an account'),
-              'fdSupannRessourceSubStates',
-              [
-                new SelectAttribute(
-                  _('Status'), _('Active status this substatus is tied to'),
-                  'fdSupannRessourceSubStates_status', TRUE,
-                  ['A','I','S'], 'A',
-                  [_('Active'), _('Inactive'), _('Suspended')]
-                ),
-                new StringAttribute(
-                  _('Substatus'), _('LDAP value for this substatus'),
-                  'fdSupannRessourceSubStates_substatus', TRUE
-                ),
-              ],
-              ':',
-              '',
-              _('Substates')
-            ),
-            TRUE,
-            $defaultStates
-          ),
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('Labels for custom substates'),
-              'fdSupannRessourceSubStatesLabels',
-              [
-                new SelectAttribute(
-                  _('Substatus'), _('LDAP value for this substatus'),
-                  'fdSupannRessourceSubStatesLabels_substatus', TRUE
-                ),
-                new StringAttribute(
-                  _('Label'), _('Label shown for this substatus'),
-                  'fdSupannRessourceSubStatesLabels_label', TRUE
-                ),
-              ],
-              ':',
-              '',
-              _('Custom labels')
-            ),
-            FALSE,
-            [],
-            TRUE
           ),
         ],
       ],
@@ -412,25 +356,39 @@ class supannConfig extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
-
     parent::__construct($dn, $object, $parent, $mainTab);
-
-    $this->attributesAccess['fdSupannRessourceSubStates']->setSubmitForm('updateFieldsChoices');
-    $this->officialSubstates = array_merge(...array_values(array_map('array_keys', supannAccountStatus::getOfficialSubstates())));
-    $this->updateFieldsChoices();
   }
 
-  function updateFieldsChoices ()
+  protected function post_save ()
   {
-    $substateChoices = [];
-    foreach ($this->fdSupannRessourceSubStates as $line) {
-      list($state, $substate) = explode(':', $line, 2);
-      if (!in_array($substate, $this->officialSubstates)) {
-        $substateChoices[] = $substate;
-      }
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+
+    try {
+      $ldap->create_missing_trees(get_ou('SupannObjectsRDN').$config->current['BASE']);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
     }
-    $this->attributesAccess['fdSupannRessourceSubStatesLabels']->attribute->attributes[0]->setChoices(
-      $substateChoices
-    );
+
+    try {
+      $ldap->create_missing_trees(get_ou('SupannRessourceRDN').get_ou('SupannObjectsRDN').$config->current['BASE']);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
+    }
+
+    try {
+      $ldap->create_missing_trees(get_ou('SupannStateRDN').get_ou('SupannObjectsRDN').$config->current['BASE']);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
+    }
+
+    try {
+      $ldap->create_missing_trees(get_ou('SupannSubStateRDN').get_ou('SupannObjectsRDN').$config->current['BASE']);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
+    }
+
+    parent::post_save();
   }
 }

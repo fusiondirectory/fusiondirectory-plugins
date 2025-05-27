@@ -97,17 +97,13 @@ class archiveTask extends simplePlugin
     global $config;
 
     // Define the mandatory ones and get the remaining from configuration.
-    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail'), 'NONE' => _('None')];
-
-    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource, $label) = explode(':', $line, 2);
-      $resources[$resource] = $label;
-    }
+    $resources = supannAccountStatus::getResources();
+    $states    = supannAccountStatus::getStates();
 
     $this->subStates = supannAccountStatus::getConfiguredSubstates(); // Keys are states and Values are subStates
 
     $this->attributesAccess['fdArchiveTaskResource']->setChoices(array_keys($resources), array_values($resources));
-    $this->attributesAccess['fdArchiveTaskState']->setChoices(array_keys($this->subStates));
+    $this->attributesAccess['fdArchiveTaskState']->setChoices(array_keys($states), array_values($states));
 
     // Allows the sub states to be listed when state is modified.
     $this->attributesAccess['fdArchiveTaskState']->setSubmitForm('updateFieldsChoices');

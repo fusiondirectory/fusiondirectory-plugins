@@ -181,12 +181,9 @@ class tasksLifeCycle extends simplePlugin
     global $config;
 
     // Define the mandatory ones and get the remaining from configuration.
-    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail')];
+    $resources = supannAccountStatus::getResources();
+    $states    = supannAccountStatus::getStates();
 
-    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource, $label) = explode(':', $line, 2);
-      $resources[$resource] = $label;
-    }
     // Add REGEX option
     $resources['REGEX'] = _('Regex Pattern');
 

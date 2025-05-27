@@ -143,16 +143,12 @@ class tasksNotifications extends simplePlugin
     global $config;
 
     // Define the mandatory ones and get the remaining from configuration.
-    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail'), 'NONE' => _('None')];
-
-    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource, $label) = explode(':', $line, 2);
-      $resources[$resource] = $label;
-    }
+    $resources = supannAccountStatus::getResources();
+    $states    = supannAccountStatus::getStates();
 
     $this->attributesAccess['fdTasksNotificationsResource']->setChoices(array_keys($resources), array_values($resources));
     $this->subStates = supannAccountStatus::getConfiguredSubstates(); //Keys are states and Values are subStates
-    $this->attributesAccess['fdTasksNotificationsState']->setChoices(array_keys($this->subStates));
+    $this->attributesAccess['fdTasksNotificationsState']->setChoices(array_keys($states), array_values($states));
 
     // Allows the sub states to be listed when state is modified.
     $this->attributesAccess['fdTasksNotificationsState']->setSubmitForm('updateFieldsChoices');
