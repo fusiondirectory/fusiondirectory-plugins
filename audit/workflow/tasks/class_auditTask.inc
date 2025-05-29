@@ -59,6 +59,10 @@ class auditTask extends simplePlugin
             _('Enable Syslog Transformation'), _('Enable transformation of audit logs into syslog format'),
             'fdAuditSyslogEnabled', FALSE, FALSE
           ),
+          new StringAttribute(
+            _('Syslog Name Prefix'), _('Prefix to use for syslog files name'),
+            'fdAuditSyslogPrefix', FALSE, 'fd_syslog'
+          ),
         ]
       ],
     ];
