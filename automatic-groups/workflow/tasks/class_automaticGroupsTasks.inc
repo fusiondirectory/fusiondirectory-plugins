@@ -37,13 +37,15 @@ class automaticGroupsTasks extends simplePlugin
       'plObjectClass'  => ['fdTasksAutomaticGroups'],
       'plFilter'       => '(objectClass=fdTasksAutomaticGroups)',
       'plObjectType'   => ['tasks'],
-      'plConflicts'    => [
-        'tasksMail',
-        'taskReminder',         // from user-reminder plugin
-        'notificationsTask',    // from notifications plugin
-        'archiveTask',          // from archive plugin
-        'extractorTask',        // from extractor plugin (if present)
-        'lifecycleTask'         // from lifecycle plugin (if present)
+      'plConflicts'    => [ // The name of the class is required, not the object class.
+        'tasksMail',          // from mail plugin (core)
+        'taskReminder',       // from user-reminder plugin
+        'tasksNotifications', // from notifications plugin
+        'archiveTask',        // from archive plugin
+        'extractorTask',      // from extractor plugin (if present)
+        'tasksLifeCycle',     // from lifecycle plugin (if present)
+        'auditTask',          // from archive plugin (if present)
+        //'tasksAutomaticGroups', // from automatic-groups plugin
       ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
