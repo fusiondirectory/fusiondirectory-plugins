@@ -37,8 +37,7 @@ class taskReminder extends simplePlugin
       'plObjectClass'  => ['fdTasksReminder'],
       'plFilter'       => '(objectClass=fdTasksReminder)',
       'plObjectType'   => ['tasks'],
-        'plFilter'       => '(objectClass=fdTasksNotifications)',
-        'plConflicts'    => [ // The name of the class is required, not the object class.
+      'plConflicts'    => [ // The name of the class is required, not the object class.
         'tasksMail',          // from mail plugin (core)
         //'taskReminder',       // from user-reminder plugin
         'tasksNotifications', // from notifications plugin

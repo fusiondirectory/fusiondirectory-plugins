@@ -36,7 +36,8 @@ class tasksNotifications extends simplePlugin
       'plPriority'     => 42,
       'plObjectClass'  => ['fdTasksNotifications'],
       'plFilter'       => '(objectClass=fdTasksNotifications)',
-        'plConflicts'    => [ // The name of the class is required, not the object class.
+      'plObjectType'   => ['tasks'],
+      'plConflicts'    => [ // The name of the class is required, not the object class.
         'tasksMail',          // from mail plugin (core)
         'taskReminder',       // from user-reminder plugin
         //'tasksNotifications', // from notifications plugin
@@ -46,7 +47,6 @@ class tasksNotifications extends simplePlugin
         'auditTask',          // from archive plugin (if present)
         'tasksAutomaticGroups', // from automatic-groups plugin
       ],
-      'plConflicts'    => ['tasksMail', 'tasksLifeCycle'],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
     ];
