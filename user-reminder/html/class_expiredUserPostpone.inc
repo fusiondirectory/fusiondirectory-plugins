@@ -114,7 +114,7 @@ class expiredUserPostpone extends standAlonePage
     /* Retrieve hash from the ldap */
     $ldap = $config->get_ldap_link();
 
-    $dn   = 'ou='.$this->uid.','.get_ou('reminderTokenRDN').get_ou('tokenRDN').$config->current['BASE'];
+    $dn   = 'ou='.$this->uid.','.get_ou('ReminderTokenRDN').$config->current['BASE'];
     $ldap->cat($dn);
     if ($attrs = $ldap->fetch()) {
       $ldap_token = $attrs['userPassword'][0];
@@ -134,7 +134,7 @@ class expiredUserPostpone extends standAlonePage
 
     $ldap = $config->get_ldap_link();
 
-    $dn   = 'ou='.$this->uid.','.get_ou('reminderTokenRDN').get_ou('tokenRDN').$config->current['BASE'];
+    $dn   = 'ou='.$this->uid.','.get_ou('ReminderTokenRDN').$config->current['BASE'];
     $ldap->rmdir($dn);
     if (!$ldap->success()) {
       $this->message[] = $ldap->get_error();

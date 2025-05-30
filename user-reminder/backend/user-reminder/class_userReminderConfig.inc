@@ -41,6 +41,11 @@ class userReminderConfig extends simplePlugin
       'main' => [
         'name'  => _('User reminder settings'),
         'attrs' => [
+          new StringAttribute(
+            _('Reminder RDN'), _('The branch where FusionDirectory reminder tokens are stored'),
+            'fdReminderTokenRDN', TRUE,
+            'ou=reminder,ou=tokens'
+          ),
           new IntAttribute(
             _('Delay before expiration'), _('Days before expiration to send the first mail'),
             'fdUserReminderAlertDelay', TRUE,
@@ -139,11 +144,6 @@ class userReminderConfig extends simplePlugin
             'fdUserReminderConfirmationBody', FALSE,
             _('Dear %1$s,'."\n".' your account %2$s expiration has been successfully postponed.'."\n")
           ),
-          new HiddenAttribute(
-            'fdReminderTokenRDN',
-            FALSE,
-            'ou=reminder'
-          )
         ]
       ],
       'email3' => [
@@ -179,6 +179,21 @@ class userReminderConfig extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
+    global $config;
+    // Check if token branch is here
+    $ldap = $config->get_ldap_link();
+    $tokenBranch = get_ou('ReminderTokenRDN').$config->current['BASE'];
+    $ldap->cat($tokenBranch, ['dn']);
+    if (!$ldap->count()) {
+      $ldap->cd($config->current['BASE']);
+      try {
+        $ldap->create_missing_trees($tokenBranch);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
+      }
+      fusiondirectory_log('Created token branch '.$tokenBranch);
+    }
+
     if (!class_available('ppolicy')) {
       $this->attributesAccess['fdUserReminderForwardPpolicyAlert']->setDisabled(TRUE);
       $this->attributesAccess['fdUserReminderPpolicyAlertSubject']->setDisabled(TRUE);
@@ -198,16 +213,4 @@ class userReminderConfig extends simplePlugin
     );
   }
 
-  protected function post_save ()
-  {
-    global $config;
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    try {
-      $ldap->create_missing_trees(get_ou('reminderTokenRDN').get_ou('tokenRDN').$config->current['BASE']);
-    } catch (FusionDirectoryError $error) {
-      $error->display();
-    }
-    parent::post_save();
-  }
 }
