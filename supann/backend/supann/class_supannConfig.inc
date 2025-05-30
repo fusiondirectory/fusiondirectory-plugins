@@ -357,38 +357,61 @@ class supannConfig extends simplePlugin
   {
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
-  }
 
-  protected function post_save ()
-  {
-    global $config;
+    // Check if supann branch is here
     $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-
-    try {
-      $ldap->create_missing_trees(get_ou('SupannObjectsRDN').$config->current['BASE']);
-    } catch (FusionDirectoryError $error) {
-      $error->display();
+    $tokenBranch = get_ou('SupannObjectsRDN').$config->current['BASE'];
+    $ldap->cat($tokenBranch, ['dn']);
+    if (!$ldap->count()) {
+      $ldap->cd($config->current['BASE']);
+      try {
+        $ldap->create_missing_trees($tokenBranch);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
+      }
+      fusiondirectory_log('Created token branch '.$tokenBranch);
     }
 
-    try {
-      $ldap->create_missing_trees(get_ou('SupannRessourceRDN').get_ou('SupannObjectsRDN').$config->current['BASE']);
-    } catch (FusionDirectoryError $error) {
-      $error->display();
+    // Check if supann ressource branch is here
+    $ldap = $config->get_ldap_link();
+    $tokenBranch = get_ou('SupannRessourceRDN').$config->current['BASE'];
+    $ldap->cat($tokenBranch, ['dn']);
+    if (!$ldap->count()) {
+      $ldap->cd($config->current['BASE']);
+      try {
+        $ldap->create_missing_trees($tokenBranch);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
+      }
+      fusiondirectory_log('Created token branch '.$tokenBranch);
     }
 
-    try {
-      $ldap->create_missing_trees(get_ou('SupannStateRDN').get_ou('SupannObjectsRDN').$config->current['BASE']);
-    } catch (FusionDirectoryError $error) {
-      $error->display();
+    // Check if supann state branch is here
+    $ldap = $config->get_ldap_link();
+    $tokenBranch = get_ou('SupannStateRDN').$config->current['BASE'];
+    $ldap->cat($tokenBranch, ['dn']);
+    if (!$ldap->count()) {
+      $ldap->cd($config->current['BASE']);
+      try {
+        $ldap->create_missing_trees($tokenBranch);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
+      }
+      fusiondirectory_log('Created token branch '.$tokenBranch);
     }
 
-    try {
-      $ldap->create_missing_trees(get_ou('SupannSubStateRDN').get_ou('SupannObjectsRDN').$config->current['BASE']);
-    } catch (FusionDirectoryError $error) {
-      $error->display();
+    // Check if supann substate branch is here
+    $ldap = $config->get_ldap_link();    
+    $tokenBranch = get_ou('SupannStateRDN').$config->current['BASE'];
+    $ldap->cat($tokenBranch, ['dn']);
+    if (!$ldap->count()) {
+      $ldap->cd($config->current['BASE']);
+      try {
+        $ldap->create_missing_trees($tokenBranch);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
+      }
+      fusiondirectory_log('Created token branch '.$tokenBranch);
     }
-
-    parent::post_save();
-  }
+ }
 }
