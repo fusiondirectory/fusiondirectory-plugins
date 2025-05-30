@@ -401,7 +401,7 @@ class supannConfig extends simplePlugin
     }
 
     // Check if supann substate branch is here
-    $ldap = $config->get_ldap_link();    
+    $ldap = $config->get_ldap_link();
     $tokenBranch = get_ou('SupannStateRDN').$config->current['BASE'];
     $ldap->cat($tokenBranch, ['dn']);
     if (!$ldap->count()) {
@@ -413,5 +413,5 @@ class supannConfig extends simplePlugin
       }
       fusiondirectory_log('Created token branch '.$tokenBranch);
     }
- }
+  }
 }
