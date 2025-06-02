@@ -232,10 +232,9 @@ class automaticGroupsTasks extends simplePlugin
     // Get the base DN from configuration or use a default
     global $config;
     $baseDN    = $config->current['BASE'];
-    $peopleDN  = 'ou=people,' . $baseDN;
 
     // Create the complete LDAP URL
-    $ldapUrl = "ldap:///" . $peopleDN . "??one?" . $filter;
+    $ldapUrl = "ldap:///" . $baseDN . "??one?" . $filter;
 
     // Set the hidden field values
     $this->attributesAccess['fdTasksAutomaticGroupsDynamicName']->setValue($groupName);
