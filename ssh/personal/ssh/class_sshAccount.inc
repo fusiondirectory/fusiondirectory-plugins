@@ -22,7 +22,7 @@
 class SSHPublicKeyAttribute extends FileTextAreaAttribute
 {
   /* cache for key extracted information */
-  protected $format = '/^([-[:alnum:]=",.]+\s+)?(disabled-)?(ssh-(dss|rsa|ed25519)|ecdsa-sha2-nistp\d{3})\s+([[:alnum:]+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
+  protected $format = '/^([-[:alnum:]=",.]+\s+)?(disabled-)?(ssh-(dss|rsa|ed25519)|ecdsa-sha2-nistp\d{3}|ecdsa-sk|ed25519-sk)\s+([[:alnum:]+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
 
   function getArrayValue (): array
   {
@@ -38,6 +38,12 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
           break;
         case 'ssh-ed25519':
           $type = 'Ed25519';
+          break;
+        case 'ed25519-sk':
+          $type = 'Ed25519-SK';
+          break;
+        case 'ecdsa-sk':
+          $type = 'ECDSA-SK';
           break;
         default:
           $type = $match[3];
