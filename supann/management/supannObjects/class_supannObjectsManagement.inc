@@ -21,6 +21,8 @@
 class supannObjectsManagement extends management
 {
 
+  public static $skipTemplates = FALSE;
+
   static function plInfo (): array
   {
     return [
