@@ -71,6 +71,9 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
   }
 
   function fingerprint ($data)
+  {
+    $result = md5($data);
+    $result = preg_replace('/(..)/', '\1:', $result);
     return rtrim($result, ':');
   }
 }
