@@ -74,6 +74,11 @@ class supannConfig extends simplePlugin
         'class' => ['fullwidth'],
         'attrs' => [
           new BooleanAttribute(
+            _('SupannRessourceEtatDate integrity'), _('Perform supannRessourceEtatDate integrity'),
+            'fdSupannRessourceEtatDateIntegrity', TRUE,
+            TRUE
+          ),
+          new BooleanAttribute(
             _('SupAnn mail for recovery'), _('Allow the use of mail addresses from the personal mail address field from SupAnn account for password recovery'),
             'fdSupannPasswordRecovery', FALSE,
             TRUE
