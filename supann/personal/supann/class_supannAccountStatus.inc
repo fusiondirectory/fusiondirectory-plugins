@@ -50,6 +50,8 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
+    global $config;
+
     return [
       'status' => [
         'name' => _('Status'),
@@ -62,16 +64,18 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
               [
                 new SelectAttribute(
                   _('Resource'), _('Which resource this state concerns'),
-                  'supannRessourceEtatDate_label', TRUE
+                  'supannRessourceEtatDate_label', TRUE, [],
+                  '', NULL, '', $config->get_cfg_value('SupannRessourceEtatDateIntegrity', 'TRUE')
                 ),
                 new SelectAttribute(
                   _('Status'), _('Active status'),
-                  'supannRessourceEtatDate_status', TRUE
+                  'supannRessourceEtatDate_status', TRUE, [],
+                  '', NULL, '', $config->get_cfg_value('SupannRessourceEtatDateIntegrity', 'TRUE')
                 ),
                 new SelectAttribute(
                   _('Substatus'), _('Substatus'),
                   'supannRessourceEtatDate_substatus', FALSE,
-                  []
+                  [], '', NULL, '', $config->get_cfg_value('SupannRessourceEtatDateIntegrity', 'TRUE')
                 ),
                 new DateAttribute(
                   _('Start date'), _('Date this status started'),
