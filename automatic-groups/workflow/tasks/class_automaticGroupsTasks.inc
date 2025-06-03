@@ -234,7 +234,7 @@ class automaticGroupsTasks extends simplePlugin
     $baseDN    = $config->current['BASE'];
 
     // Create the complete LDAP URL
-    $ldapUrl = "ldap:///" . $baseDN . "??one?" . $filter;
+    $ldapUrl = "ldap:///" . $baseDN . "??sub?" . $filter;
 
     // Set the hidden field values
     $this->attributesAccess['fdTasksAutomaticGroupsDynamicName']->setValue($groupName);
