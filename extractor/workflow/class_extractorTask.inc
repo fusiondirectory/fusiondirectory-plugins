@@ -181,14 +181,16 @@ class extractorTask extends simplePlugin
     $this->attributesAccess['fdExtractorListOfRecipientsMails']->setValue(array_values($emailsList));
   }
 
-  /**
-   * @return bool
-   */
-  function update (): bool
+  function check (): array
   {
-    parent::update();
+    $errors = parent::check();
+
     $this->resolveRecipientEmails();
-    return TRUE;
+    if (count($this->attributesAccess['fdExtractorListOfRecipientsMails']->getValue()) === 0) {
+      $errors[] = new FusionDirectoryError(htmlescape(sprintf(_('User as no email adress'))));
+    }
+
+    return $errors;
   }
 
   /**
@@ -200,7 +202,6 @@ class extractorTask extends simplePlugin
     if ($execTasks) {
         $this->generateSlaveTasks();
     }
-    $this->resolveRecipientEmails();
     return parent::save();
   }
 }
