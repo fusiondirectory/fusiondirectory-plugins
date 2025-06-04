@@ -297,7 +297,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     }
 
     /* Sort */
-    sort($resources);
+    asort($resources);
 
     return $resources;
   }
@@ -332,7 +332,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     }
 
     /* Sort */
-    sort($states);
+    asort($states);
 
     return $states;
   }
@@ -377,7 +377,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     }
 
     /* Sort */
-    sort($states);
+    asort($states);
 
     /* Get substates from LDAP based on $states */
     $substates = [];
@@ -407,7 +407,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
       }
 
       /* Sort */
-      sort($substates[$stateName]);
+      asort($substates[$stateName]);
     }
 
     /* Value if no states are found */
