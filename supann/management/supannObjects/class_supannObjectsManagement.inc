@@ -23,6 +23,14 @@ class supannObjectsManagement extends management
 
   public static $skipTemplates = FALSE;
 
+  public static $columns = [
+    ['ObjectTypeColumn',   []],
+    ['LinkColumn',         ['attributes' => 'nameAttr',                     'label' => 'Name']],
+    ['LinkColumn',         ['attributes' => 'fdSupannRessourceLabel',       'label' => 'Label']],
+    ['LinkColumn',         ['attributes' => 'description',                  'label' => 'Description']],
+    ['ActionsColumn',      ['label' => 'Actions']],
+  ];
+
   static function plInfo (): array
   {
     return [

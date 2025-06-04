@@ -296,6 +296,9 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
       $resources = ['' => '-- No ressource found --'];
     }
 
+    /* Sort */
+    sort($resources);
+
     return $resources;
   }
 
@@ -327,6 +330,9 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     if (count($states) < 1) {
       $states = ['' => '-- No states found --'];
     }
+
+    /* Sort */
+    sort($states);
 
     return $states;
   }
@@ -363,10 +369,15 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
        */
       $states[$attrs['fdSupannStateName'][0]] = [];
 
-      foreach ($attrs['fdSupannSubStateList'] as $dn) {
-        $states[$attrs['fdSupannStateName'][0]][] = $dn;
+      if (isset($attrs['fdSupannSubStateList'])) {
+        foreach ($attrs['fdSupannSubStateList'] as $dn) {
+          $states[$attrs['fdSupannStateName'][0]][] = $dn;
+        }
       }
     }
+
+    /* Sort */
+    sort($states);
 
     /* Get substates from LDAP based on $states */
     $substates = [];
@@ -394,6 +405,9 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
           $substates[$stateName] += [$attrs['fdSupannSubStateName'][0] => $attrs['fdSupannRessourceLabel'][0]];
         }
       }
+
+      /* Sort */
+      sort($substates[$stateName]);
     }
 
     /* Value if no states are found */
