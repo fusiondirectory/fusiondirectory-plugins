@@ -85,16 +85,27 @@ class automaticGroupsTasks extends simplePlugin
         'class' => ['fullwidth'],
         'attrs' => [
           new SelectAttribute(
-            _('Resource'), _('Supann resources'),
-            'fdTasksAutomaticGroupsResource', TRUE
+            _('Resource'), _('Supann resources or Regex'),
+            'fdTasksAutomaticGroupsPreResource', TRUE
           ),
           new SelectAttribute(
             _('State'), _('Resource state'),
-            'fdTasksAutomaticGroupsState', TRUE
+            'fdTasksAutomaticGroupsPreState', TRUE
           ),
           new SelectAttribute(
             _('Sub state'), _('Resource sub state'),
-            'fdTasksAutomaticGroupsSubState', FALSE
+            'fdTasksAutomaticGroupsPreSubState', FALSE
+          ),
+        ]
+      ],
+      'sectionRegexPattern'      => [
+        'name'  => _('Regex Pattern Configuration'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new StringAttribute(
+            _('Regex Pattern'), _('Pattern to match supannRessource name (e.g., "COMPTE" or "MAIL"). This pattern is used when "Regex Pattern" is selected as a resource type. It does not filter by state or sub-state.'),
+            'fdTasksAutomaticGroupsRegexPattern', FALSE, '', '',
+            '/^.*$/'
           ),
         ]
       ],
@@ -124,6 +135,7 @@ class automaticGroupsTasks extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['fdShowInformation']->setInLdap(FALSE);
+
     // Set these attributes to be stored in LDAP
     $this->attributesAccess['fdTasksAutomaticGroupsDynamicURL']->setInLdap(TRUE);
     $this->attributesAccess['fdTasksAutomaticGroupsDynamicName']->setInLdap(TRUE);
@@ -132,9 +144,15 @@ class automaticGroupsTasks extends simplePlugin
     $this->attributesAccess['fdTasksAutomaticGroupsDynamicGroup']->setSubmitForm('updateDynamicGroupFields');
 
     // Set up triggers to update the dynamic group URL and name
-    $this->attributesAccess['fdTasksAutomaticGroupsResource']->setSubmitForm('updateDynamicGroupSettings');
-    $this->attributesAccess['fdTasksAutomaticGroupsState']->setSubmitForm('updateDynamicGroupSettings');
-    $this->attributesAccess['fdTasksAutomaticGroupsSubState']->setSubmitForm('updateDynamicGroupSettings');
+    $this->attributesAccess['fdTasksAutomaticGroupsPreResource']->setSubmitForm('updateDynamicGroupSettings');
+    $this->attributesAccess['fdTasksAutomaticGroupsPreState']->setSubmitForm('updateDynamicGroupSettings');
+    $this->attributesAccess['fdTasksAutomaticGroupsPreSubState']->setSubmitForm('updateDynamicGroupSettings');
+
+    // Setup the behavior for resource selection to update regex field states
+    $this->attributesAccess['fdTasksAutomaticGroupsPreResource']->setSubmitForm('updateRegexState');
+
+    // Initial state update
+    $this->updateRegexState();
 
     // SupAnn Status management
     if (class_available('supannAccountStatus')) {
@@ -149,6 +167,26 @@ class automaticGroupsTasks extends simplePlugin
   }
 
   /**
+   * Toggle fields based on regex activation state
+   */
+  function updateRegexState ()
+  {
+    $preResourceValue   = $this->attributesAccess['fdTasksAutomaticGroupsPreResource']->getValue();
+
+    $isPreResourceRegex  = ($preResourceValue === 'REGEX');
+
+    // --- Handle Pre-Resource fields (Current resources details) ---
+    // PreState is required if PreResource is selected (it's defined as required initially in getAttributesInfo)
+    $this->attributesAccess['fdTasksAutomaticGroupsPreResource']->setRequired(!empty($preResourceValue));
+    // PreSubState is never required by this logic, its requirement is static.
+
+    // --- Handle Regex Pattern field ---
+    // Enable Regex Pattern field if EITHER PreResource is 'REGEX'
+    $enableRegexPatternField = $isPreResourceRegex;
+    $this->attributesAccess['fdTasksAutomaticGroupsRegexPattern']->setDisabled(!$enableRegexPatternField);
+  }
+
+  /**
    *  Set attributes values with defined supann states from configuration
    */
   protected function setSupannStates (): void
@@ -159,21 +197,26 @@ class automaticGroupsTasks extends simplePlugin
     $resources = supannAccountStatus::getResources();
     $states    = supannAccountStatus::getStates();
 
-    $this->attributesAccess['fdTasksAutomaticGroupsResource']->setChoices(array_keys($resources), array_values($resources));
+    // Add REGEX option
+    $resources['REGEX'] = _('Regex Pattern');
+
+    $this->attributesAccess['fdTasksAutomaticGroupsPreResource']->setChoices(array_keys($resources), array_values($resources));
     $this->subStates = supannAccountStatus::getConfiguredSubstates(); //Keys are states and Values are subStates
-    $this->attributesAccess['fdTasksAutomaticGroupsState']->setChoices(array_keys($states), array_values($states));
+    $this->attributesAccess['fdTasksAutomaticGroupsPreState']->setChoices(array_keys($this->subStates));
 
     // Allows the sub states to be listed when state is modified.
-    $this->attributesAccess['fdTasksAutomaticGroupsState']->setSubmitForm('updateFieldsChoices');
+    $this->attributesAccess['fdTasksAutomaticGroupsPreState']->setSubmitForm('updateFieldsChoices');
     // This initial fill the list choices based on registered states.
     $this->updateFieldsChoices();
+
   }
 
   /* Update list of subStates which depends on the state selected */
   function updateFieldsChoices ()
   {
-    $subStatesList = $this->subStates[$this->attributesAccess['fdTasksAutomaticGroupsState']->getValue()] ?? [];
-    $this->attributesAccess['fdTasksAutomaticGroupsSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
+    // Update pre sub states
+    $preSubStatesList = $this->subStates[$this->attributesAccess['fdTasksAutomaticGroupsPreState']->getValue()] ?? [];
+    $this->attributesAccess['fdTasksAutomaticGroupsPreSubState']->setChoices(array_keys($preSubStatesList), array_values($preSubStatesList));
   }
 
   /**
@@ -206,9 +249,9 @@ class automaticGroupsTasks extends simplePlugin
     }
 
     // Get the values needed to generate the URL and group name
-    $resource = $this->attributesAccess['fdTasksAutomaticGroupsResource']->getValue();
-    $state = $this->attributesAccess['fdTasksAutomaticGroupsState']->getValue();
-    $subState = $this->attributesAccess['fdTasksAutomaticGroupsSubState']->getValue();
+    $resource = $this->attributesAccess['fdTasksAutomaticGroupsPreResource']->getValue();
+    $state = $this->attributesAccess['fdTasksAutomaticGroupsPreState']->getValue();
+    $subState = $this->attributesAccess['fdTasksAutomaticGroupsPreSubState']->getValue();
 
     // Only proceed if we have the minimum required information
     if (empty($resource) || empty($state)) {
@@ -280,6 +323,9 @@ class automaticGroupsTasks extends simplePlugin
   {
     parent::update();
 
+    // Toggle fields based on resource selection state
+    $this->updateRegexState();
+
     // If in dynamic group mode, update the dynamic group settings
     $isDynamicGroup = $this->attributesAccess['fdTasksAutomaticGroupsDynamicGroup']->getValue();
     if ($isDynamicGroup) {
@@ -294,7 +340,7 @@ class automaticGroupsTasks extends simplePlugin
 
   function save (): array
   {
-    // Verify if this task has to be executed upon saving.
+    // Verify if this tasks has to be executed upon saving.
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
 
     if ($execTasks) {

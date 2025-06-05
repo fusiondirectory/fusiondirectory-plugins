@@ -65,6 +65,60 @@ attributetype ( 1.3.6.1.4.1.94.1.9
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
     SINGLE-VALUE )
 
+## Previous / existing states ##
+
+attributetype ( 1.3.6.1.4.1.38414.94.1.10 NAME 'fdTasksAutomaticGroupsPreResource'
+  DESC 'Fusion Directory - Tasks for life cycle - previous supann resource'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.94.1.11 NAME 'fdTasksAutomaticGroupsPreState'
+  DESC 'Fusion Directory - Tasks for life cycle - previous supann state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.94.1.12 NAME 'fdTasksAutomaticGroupsPreSubState'
+  DESC 'Fusion Directory - Tasks for life cycle - previous supann sub state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+## Posteriors / new desired states ##
+
+attributetype ( 1.3.6.1.4.1.38414.94.1.13 NAME 'fdTasksAutomaticGroupsPostResource'
+  DESC 'Fusion Directory - Tasks for life cycle - new resource'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.94.1.14 NAME 'fdTasksAutomaticGroupsPostState'
+  DESC 'Fusion Directory - Tasks for life cycle - new state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.94.1.15 NAME 'fdTasksAutomaticGroupsPostSubState'
+  DESC 'Fusion Directory - Tasks for life cycle - new sub state'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.94.1.16 NAME 'fdTasksAutomaticGroupsPostEndDate'
+  DESC 'Fusion Directory - Tasks for life cycle - days to be added to end date'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+## Regex Support Attributes ##
+
+attributetype ( 1.3.6.1.4.1.38414.94.1.17 NAME 'fdTasksAutomaticGroupsRegexPattern'
+  DESC 'Fusion Directory - Tasks for life cycle - regex pattern for filtering'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
 # Define object class
 objectclass ( 1.3.6.1.4.1.94.2.1
     NAME 'fdTasksAutomaticGroups'
@@ -75,4 +129,7 @@ objectclass ( 1.3.6.1.4.1.94.2.1
     MAY ( fdTasksAutomaticGroupsListOfDN $ fdTasksAutomaticGroupsResource $ 
           fdTasksAutomaticGroupsState $ fdTasksAutomaticGroupsSubState $ 
           fdTasksAutomaticGroupsMembers $ fdTasksAutomaticGroupsDynamicGroup $
-          fdTasksAutomaticGroupsDynamicURL $ fdTasksAutomaticGroupsDynamicName ) )
+          fdTasksAutomaticGroupsDynamicURL $ fdTasksAutomaticGroupsDynamicName $
+          fdTasksAutomaticGroupsPreResource $ fdTasksAutomaticGroupsPreState $ fdTasksAutomaticGroupsPreSubState $
+          fdTasksAutomaticGroupsPostResource $ fdTasksAutomaticGroupsPostState $ fdTasksAutomaticGroupsPostSubState $
+          fdTasksAutomaticGroupsPostEndDate $ fdTasksAutomaticGroupsRegexPattern ) )
