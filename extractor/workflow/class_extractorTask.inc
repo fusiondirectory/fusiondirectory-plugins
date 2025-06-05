@@ -187,7 +187,7 @@ class extractorTask extends simplePlugin
 
     $this->resolveRecipientEmails();
     if (count($this->attributesAccess['fdExtractorListOfRecipientsMails']->getValue()) === 0) {
-      $errors[] = new FusionDirectoryError(htmlescape(sprintf(_('User as no email adress'))));
+      $errors[] = new FusionDirectoryError(htmlescape(sprintf(_('User has no email address'))));
     }
 
     return $errors;
