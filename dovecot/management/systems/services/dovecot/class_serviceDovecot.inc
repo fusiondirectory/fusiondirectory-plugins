@@ -82,23 +82,8 @@ class serviceDovecot extends simpleMailMethodService
             _('Password'), _('Admin user password'),
             'fdDovecotPassword', TRUE
           ),
-          new StringAttribute(
-            _('Mail directory'), _('Path to the directory in which user maildirs must be created'),
-            'fdDovecotMailDir', TRUE,
-            '/var/mail'
-          ),
         ]
       ],
-      'options' => [
-        'name'  => _('Options'),
-        'attrs' => [
-          new BooleanAttribute(
-            _('Create the user folder via Argonaut'), _('Use argonaut to create the user mailbox on the Dovecot server'),
-            'fdDovecotArgonautMkdir', TRUE,
-            TRUE
-          ),
-        ]
-      ]
     ];
   }
 }
