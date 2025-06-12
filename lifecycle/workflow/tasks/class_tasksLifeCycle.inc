@@ -123,7 +123,7 @@ class tasksLifeCycle extends simplePlugin
         'attrs' => [
           new BooleanAttribute(
             _('Enable Account Closure'),
-            _('If ticked, and the specified "Current Resource" (or any resource matching the "Regex Pattern" if "Regex Pattern" is selected as resource type for "Current resources details") has a state of "Suspended" (S) or "Inactive" (I), the account will be locked by the backend process.'),
+            _('If ticked, the account will be locked if all "Current Resources" (either the single selected resource, or all resources matching the "Regex Pattern" if that option is chosen for "Current resources details") are in a "Suspended" (S) or "Inactive" (I) state, AND none of these resources are "Active" (A).'),
             'fdTasksLifeCycleEnableAccountClosure',
             FALSE, // Required
             FALSE  // Default value
