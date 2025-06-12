@@ -155,8 +155,12 @@ class tasksLifeCycle extends simplePlugin
     $this->attributesAccess['fdTasksLifeCyclePreResource']->setSubmitForm('updateRegexState');
     $this->attributesAccess['fdTasksLifeCyclePostResource']->setSubmitForm('updateRegexState');
 
-    // Initial state update
+    // Setup behavior for account closure checkbox
+    $this->attributesAccess['fdTasksLifeCycleEnableAccountClosure']->setSubmitForm('updateAccountClosureState');
+
+    // Initial state updates
     $this->updateRegexState();
+    $this->updateAccountClosureState();
 
     if (class_available('supannAccountStatus')) {
       $this->setSupannStates();
@@ -283,5 +287,19 @@ class tasksLifeCycle extends simplePlugin
     }
 
     return parent::save();
+  }
+
+  /**
+   * Toggle fields based on account closure state
+   */
+  function updateAccountClosureState()
+  {
+    $accountClosureEnabled = $this->attributesAccess['fdTasksLifeCycleEnableAccountClosure']->getValue();
+    
+    // When account closure is enabled, disable all post-resource related fields
+    $this->attributesAccess['fdTasksLifeCyclePostResource']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePostState']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePostSubState']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePostEndDate']->setDisabled($accountClosureEnabled);
   }
 }
