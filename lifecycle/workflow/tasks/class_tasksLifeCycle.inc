@@ -296,7 +296,12 @@ class tasksLifeCycle extends simplePlugin
   {
     $accountClosureEnabled = $this->attributesAccess['fdTasksLifeCycleEnableAccountClosure']->getValue();
 
-    // When account closure is enabled, disable all post-resource related fields
+    // When account closure is enabled, disable state-related fields
+    // Pre-resource fields (except the resource selection itself)
+    $this->attributesAccess['fdTasksLifeCyclePreState']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePreSubState']->setDisabled($accountClosureEnabled);
+
+    // All post-resource related fields
     $this->attributesAccess['fdTasksLifeCyclePostResource']->setDisabled($accountClosureEnabled);
     $this->attributesAccess['fdTasksLifeCyclePostState']->setDisabled($accountClosureEnabled);
     $this->attributesAccess['fdTasksLifeCyclePostSubState']->setDisabled($accountClosureEnabled);
