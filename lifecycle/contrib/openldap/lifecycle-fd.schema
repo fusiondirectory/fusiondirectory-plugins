@@ -70,6 +70,14 @@ attributetype ( 1.3.6.1.4.1.38414.92.1.11 NAME 'fdTasksLifeCycleRegexPattern'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
+## Account Closure Attribute ##
+
+attributetype ( 1.3.6.1.4.1.38414.92.1.12 NAME 'fdTasksLifeCycleEnableAccountClosure'
+  DESC 'Fusion Directory - Tasks for life cycle - enable automatic account closure'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
 # Object Class
 
 objectclass (1.3.6.1.4.1.38414.92.2.1 NAME 'fdTasksLifeCycle'
@@ -78,4 +86,4 @@ objectclass (1.3.6.1.4.1.38414.92.2.1 NAME 'fdTasksLifeCycle'
   MUST ( fdTasksLifeCyclePostResource $ fdTasksLifeCyclePostState )
   MAY ( fdTasksLifeCyclePreResource $ fdTasksLifeCyclePreState $ fdTasksLifeCyclePreSubState 
   $ fdTasksLifeCyclePostEndDate $ fdTasksLifeCyclePostSubState $ fdTasksLifeCycleMembers
-  $ fdTasksLifeCycleListOfDN $ fdTasksLifeCycleRegexPattern ) )
+  $ fdTasksLifeCycleListOfDN $ fdTasksLifeCycleRegexPattern $ fdTasksLifeCycleEnableAccountClosure ) )

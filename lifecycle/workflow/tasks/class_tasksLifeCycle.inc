@@ -117,6 +117,19 @@ class tasksLifeCycle extends simplePlugin
           ),
         ]
       ],
+      'sectionAccountClosure' => [
+        'name'  => _('Automatic Account Closure'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new BooleanAttribute(
+            _('Enable Account Closure'),
+            _('If ticked, and the specified "Current Resource" (or any resource matching the "Regex Pattern" if "Regex Pattern" is selected as resource type for "Current resources details") has a state of "Suspended" (S) or "Inactive" (I), the account will be locked by the backend process.'),
+            'fdTasksLifeCycleEnableAccountClosure',
+            FALSE, // Required
+            FALSE  // Default value
+          ),
+        ]
+      ],
       'section4' => [
         'name'  => _('Recipients Users and/or Groups'),
         'class' => ['fullwidth'],
