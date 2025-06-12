@@ -117,6 +117,19 @@ class tasksLifeCycle extends simplePlugin
           ),
         ]
       ],
+      'sectionAccountClosure' => [
+        'name'  => _('Automatic Account Closure'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new BooleanAttribute(
+            _('Enable Account Closure'),
+            _('If ticked, the account will be locked if all "Current Resources" (either the single selected resource, or all resources matching the "Regex Pattern" if that option is chosen for "Current resources details") are in a "Suspended" (S) or "Inactive" (I) state, AND none of these resources are "Active" (A).'),
+            'fdTasksLifeCycleEnableAccountClosure',
+            FALSE, // Required
+            FALSE  // Default value
+          ),
+        ]
+      ],
       'section4' => [
         'name'  => _('Recipients Users and/or Groups'),
         'class' => ['fullwidth'],
@@ -142,8 +155,12 @@ class tasksLifeCycle extends simplePlugin
     $this->attributesAccess['fdTasksLifeCyclePreResource']->setSubmitForm('updateRegexState');
     $this->attributesAccess['fdTasksLifeCyclePostResource']->setSubmitForm('updateRegexState');
 
-    // Initial state update
+    // Setup behavior for account closure checkbox
+    $this->attributesAccess['fdTasksLifeCycleEnableAccountClosure']->setSubmitForm('updateAccountClosureState');
+
+    // Initial state updates
     $this->updateRegexState();
+    $this->updateAccountClosureState();
 
     if (class_available('supannAccountStatus')) {
       $this->setSupannStates();
@@ -270,5 +287,24 @@ class tasksLifeCycle extends simplePlugin
     }
 
     return parent::save();
+  }
+
+  /**
+   * Toggle fields based on account closure state
+   */
+  function updateAccountClosureState ()
+  {
+    $accountClosureEnabled = $this->attributesAccess['fdTasksLifeCycleEnableAccountClosure']->getValue();
+
+    // When account closure is enabled, disable state-related fields
+    // Pre-resource fields (except the resource selection itself)
+    $this->attributesAccess['fdTasksLifeCyclePreState']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePreSubState']->setDisabled($accountClosureEnabled);
+
+    // All post-resource related fields
+    $this->attributesAccess['fdTasksLifeCyclePostResource']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePostState']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePostSubState']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePostEndDate']->setDisabled($accountClosureEnabled);
   }
 }
