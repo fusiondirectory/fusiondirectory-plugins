@@ -171,26 +171,45 @@ class tasksLifeCycle extends simplePlugin
   }
 
   /**
-   * Toggle fields based on regex activation state
+   * Toggle fields based on regex activation state and manage 'required' status.
+   * State/SubState fields are enabled by default here; updateAccountClosureState handles disabling them.
    */
   function updateRegexState ()
   {
     $preResourceValue   = $this->attributesAccess['fdTasksLifeCyclePreResource']->getValue();
     $postResourceValue  = $this->attributesAccess['fdTasksLifeCyclePostResource']->getValue();
+    $accountClosureEnabled = $this->attributesAccess['fdTasksLifeCycleEnableAccountClosure']->getValue();
 
     $isPreResourceRegex  = ($preResourceValue === 'REGEX');
     $isPostResourceRegex = ($postResourceValue === 'REGEX');
 
     // --- Handle Pre-Resource fields (Current resources details) ---
-    // PreState is required if PreResource is selected (it's defined as required initially in getAttributesInfo)
-    $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(!empty($preResourceValue));
-    // PreSubState is never required by this logic, its requirement is static.
+    // Enable PreState and PreSubState by default from this function's perspective.
+    // updateAccountClosureState will disable them if account closure is enabled.
+    if (!$accountClosureEnabled) {
+        $this->attributesAccess['fdTasksLifeCyclePreState']->setDisabled(FALSE);
+        $this->attributesAccess['fdTasksLifeCyclePreSubState']->setDisabled(FALSE);
+        // PreState is required if PreResource is selected and account closure is not enabled.
+        $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(!empty($preResourceValue));
+    } else {
+        // If account closure is enabled, PreState is not required.
+        $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(FALSE);
+    }
 
 
     // --- Handle Post-Resource fields (Future resources details) ---
-    // PostState is required if PostResource is selected (it's defined as required initially in getAttributesInfo)
-    $this->attributesAccess['fdTasksLifeCyclePostState']->setRequired(!empty($postResourceValue));
-    // PostSubState is never required by this logic, its requirement is static.
+    // Enable PostState and PostSubState by default from this function's perspective.
+    // updateAccountClosureState will disable them (and PostResource/PostEndDate) if account closure is enabled.
+    if (!$accountClosureEnabled) {
+        $this->attributesAccess['fdTasksLifeCyclePostState']->setDisabled(FALSE);
+        $this->attributesAccess['fdTasksLifeCyclePostSubState']->setDisabled(FALSE);
+        // PostState is required if PostResource is selected and account closure is not enabled.
+        $this->attributesAccess['fdTasksLifeCyclePostState']->setRequired(!empty($postResourceValue));
+    } else {
+        // If account closure is enabled, PostState is not required.
+        $this->attributesAccess['fdTasksLifeCyclePostState']->setRequired(FALSE);
+    }
+
 
     // --- Handle Regex Pattern field ---
     // Enable Regex Pattern field if EITHER PreResource OR PostResource is 'REGEX'
@@ -296,15 +315,26 @@ class tasksLifeCycle extends simplePlugin
   {
     $accountClosureEnabled = $this->attributesAccess['fdTasksLifeCycleEnableAccountClosure']->getValue();
 
-    // When account closure is enabled, disable state-related fields
-    // Pre-resource fields (except the resource selection itself)
+    // --- Current resources details ---
     $this->attributesAccess['fdTasksLifeCyclePreState']->setDisabled($accountClosureEnabled);
     $this->attributesAccess['fdTasksLifeCyclePreSubState']->setDisabled($accountClosureEnabled);
+    if ($accountClosureEnabled) {
+      $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(FALSE);
+    }
+    // If not $accountClosureEnabled, updateRegexState will handle setRequired for PreState.
 
-    // All post-resource related fields
+    // --- Future resources details ---
     $this->attributesAccess['fdTasksLifeCyclePostResource']->setDisabled($accountClosureEnabled);
     $this->attributesAccess['fdTasksLifeCyclePostState']->setDisabled($accountClosureEnabled);
     $this->attributesAccess['fdTasksLifeCyclePostSubState']->setDisabled($accountClosureEnabled);
     $this->attributesAccess['fdTasksLifeCyclePostEndDate']->setDisabled($accountClosureEnabled);
+    if ($accountClosureEnabled) {
+      $this->attributesAccess['fdTasksLifeCyclePostState']->setRequired(FALSE);
+    }
+    // If not $accountClosureEnabled, updateRegexState will handle setRequired for PostState.
+
+    // Call updateRegexState to ensure 'required' status and Regex field are correctly set
+    // based on current resource selections, especially when disabling account closure.
+    $this->updateRegexState();
   }
 }
