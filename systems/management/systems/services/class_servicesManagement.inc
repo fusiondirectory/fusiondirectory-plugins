@@ -22,12 +22,6 @@
 
 class servicesManagement extends management implements SimpleTab
 {
-  static public $actionStatus = [
-    'start'   => 'running',
-    'stop'    => 'stopped',
-    'restart' => 'running',
-    'status'  => '',
-  ];
 
   protected $skipCpHandler     = TRUE;
 
@@ -140,71 +134,9 @@ class servicesManagement extends management implements SimpleTab
       )
     );
 
-    $this->actions['remove']->setSeparator(TRUE);
-
-    $this->registerAction(
-      new ServiceAction(
-        'status', _('Get status'), 'geticon.php?context=actions&icon=view-refresh&size=16',
-        '1', 'updateServiceStatus',
-        ['simpleServiceStatus:w'],
-        FALSE, TRUE
-      )
-    );
-
-    $this->registerAction(
-      new ServiceAction(
-        'start', _('Start'), 'geticon.php?context=actions&icon=task-start&size=16',
-        '1', 'updateServiceStatus',
-        ['simpleServiceStart:w'],
-        FALSE, TRUE
-      )
-    );
-
-    $this->registerAction(
-      new ServiceAction(
-        'stop', _('Stop'), 'geticon.php?context=actions&icon=task-stop&size=16',
-        '1', 'updateServiceStatus',
-        ['simpleServiceStop:w'],
-        FALSE, TRUE
-      )
-    );
-
-    $this->registerAction(
-      new ServiceAction(
-        'restart', _('Restart'), 'geticon.php?context=actions&icon=view-refresh&size=16',
-        '1', 'updateServiceStatus',
-        ['simpleServiceRestart:w'],
-        FALSE, TRUE
-      )
-    );
-
     $this->registerAction(new HiddenAction('saveService',   'saveService'));
     $this->registerAction(new HiddenAction('cancelService', 'cancelEdit'));
 
-    $this->actions['status']->setEnableFunction([$this, 'enableServiceAction']);
-    $this->actions['start']->setEnableFunction([$this, 'enableServiceAction']);
-    $this->actions['stop']->setEnableFunction([$this, 'enableServiceAction']);
-    $this->actions['restart']->setEnableFunction([$this, 'enableServiceAction']);
-  }
-
-  public function enableServiceAction ($action, ListingEntry $entry = NULL): bool
-  {
-    if ($entry === NULL) {
-      return FALSE;
-    } else {
-      switch ($action) {
-        case 'status':
-          return $entry['AllowStatus'][0];
-        case 'start':
-          return $entry['AllowStart'][0];
-        case 'stop':
-          return $entry['AllowStop'][0];
-        case 'restart':
-          return $entry['AllowRestart'][0];
-        default:
-          return FALSE;
-      }
-    }
   }
 
   protected function updateActionMenu ()
@@ -328,86 +260,6 @@ class servicesManagement extends management implements SimpleTab
     foreach (['cn','dn'] as $var) {
       if (isset($this->$var)) {
         $this->plugins[$service]->$var = $this->$var;
-      }
-    }
-  }
-
-  /*! \brief    Updates the status for a list of services.
-   */
-  function updateServiceStatus (array $action)
-  {
-    /* Skip if this is a new server */
-    if ($this->dn == 'new') {
-      msg_dialog::display(_('Information'), htmlescape(_('Cannot update service status until it has been saved!')), INFO_DIALOG);
-      return;
-    }
-
-    /* Is this an existing action */
-    if (!isset(static::$actionStatus[$action['action']])) {
-      $error = new FusionDirectoryError(
-        htmlescape(sprintf(
-          _('Unknown action "%s"'),
-          $action['action']
-        ))
-      );
-      $error->display();
-      return;
-    }
-
-    /* Handle state changes for services */
-    foreach ($action['targets'] as $service) {
-      $this->updateSingleServiceStatus($action['action'], $service);
-    }
-  }
-
-  /*! \brief    Updates the status of a service and
-   *             calls an external hook if specified in fusiondirectory.conf
-   */
-  private function updateSingleServiceStatus (string $action, string $service)
-  {
-    if ($this->plugins[$service]->is_account) {
-      $this->updateServicesVars($service);
-
-      $s_daemon = new supportDaemon();
-      if ($s_daemon->is_error()) {
-        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
-        $error->display();
-      } else {
-        $target = $this->parent->getBaseObject()->macAddress;
-        if (empty($target)) {
-          $error = new FusionDirectoryError(
-            htmlescape(sprintf(
-              _('Could not get execute action %s on service %s: This server has no mac address.'),
-              $action,
-              $service
-            ))
-          );
-          $error->display();
-          return;
-        }
-        if (is_array($target)) {
-          $target = $target[0];
-        }
-        if ($action == 'status') {
-          $res = $s_daemon->append_call('Service.is_running', $target, ['args' => [$service]]);
-
-          if ($s_daemon->is_error()) {
-            $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
-            $error->display();
-          } else {
-            $this->plugins[$service]->setStatus($res == 'yes' ? 'running' : 'stopped');
-          }
-        } else {
-          $res = $s_daemon->append_call('Service.manage', $target, ['args' => [$service, $action]]);
-
-          if ($s_daemon->is_error()) {
-            $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
-            $error->display();
-          } elseif (preg_match('/^done/', $res)) {
-            $this->plugins[$service]->setStatus(static::$actionStatus[$action]);
-          }
-        }
-        return $res;
       }
     }
   }

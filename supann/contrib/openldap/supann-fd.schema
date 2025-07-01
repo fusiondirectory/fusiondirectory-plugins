@@ -1,0 +1,54 @@
+##
+## supann-fd.schema - Needed by Fusion Directory for managing SupAnn resource
+##
+
+attributetype ( 1.3.6.1.4.1.38414.28.1.1 NAME 'fdSupannRessourceName'
+  DESC 'FusionDirectory - Name of the custom supannRessourceEtatDate'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.28.1.2 NAME 'fdSupannRessourceLabel'
+  DESC 'FusionDirectory - label of the custom supannRessourceEtatDate'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.28.1.3 NAME 'fdSupannStateName'
+  DESC 'FusionDirectory - Name of the supann ressource state'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.28.1.4 NAME 'fdSupannStateState'
+  DESC 'FusionDirectory - State of the ressource by default A,S,I'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.28.1.5 NAME 'fdSupannSubStateName'
+  DESC 'FusionDirectory - Name of the supann resource substate'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.28.1.6 NAME 'fdSupannSubStateList'
+  DESC 'FusionDirectory - dn of all the supann resource substate linked to a state'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+objectclass ( 1.3.6.1.4.1.38414.28.10.2 NAME 'fdSupannRessource'
+  DESC 'FusionDirectory SupAnnRessource'
+  MUST ( fdSupannRessourceName $ fdSupannRessourceLabel )
+  MAY ( description ))
+
+objectclass ( 1.3.6.1.4.1.38414.28.11.2 NAME 'fdSupannRessourceState'
+  DESC 'FusionDirectory SupAnnRessource State'
+  MUST ( fdSupannStateName $ fdSupannRessourceLabel ) 
+  MAY ( description $ fdSupannSubStateList ))
+
+objectclass ( 1.3.6.1.4.1.38414.28.12.2 NAME 'fdSupannRessourceSubState'
+  DESC 'FusionDirectory SupAnnRessourceSubState'
+  MUST ( fdSupannSubStateName $ fdSupannRessourceLabel )
+  MAY ( description ))

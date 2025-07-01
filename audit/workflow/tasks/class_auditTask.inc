@@ -33,8 +33,16 @@ class auditTask extends simplePlugin
       'plObjectClass'  => ['fdAuditTasks'],
       'plFilter'       => '(objectClass=fdAuditTasks)',
       'plObjectType'   => ['tasks'],
-      // plConflicts take the name of the object class without the 'fd' in front.
-      'plConflicts'    => ['tasksMail', 'tasksLifeCycle', 'tasksNotifications', 'tasksArchive', 'tasksReminder'],
+      'plConflicts'    => [ // The name of the class is required, not the object class.
+        'tasksMail',          // from mail plugin (core)
+        'taskReminder',       // from user-reminder plugin
+        'tasksNotifications', // from notifications plugin
+        'archiveTask',        // from archive plugin
+        'extractorTask',      // from extractor plugin (if present)
+        'tasksLifeCycle',     // from lifecycle plugin (if present)
+        //'auditTask',          // from archive plugin (if present)
+        'tasksAutomaticGroups', // from automatic-groups plugin
+      ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
     ];
@@ -59,6 +67,10 @@ class auditTask extends simplePlugin
             _('Enable Syslog Transformation'), _('Enable transformation of audit logs into syslog format'),
             'fdAuditSyslogEnabled', FALSE, FALSE
           ),
+          new StringAttribute(
+            _('Syslog Name Prefix'), _('Prefix to use for syslog files name'),
+            'fdAuditSyslogPrefix', FALSE, 'fd_syslog'
+          ),
         ]
       ],
     ];
@@ -73,6 +85,11 @@ class auditTask extends simplePlugin
       $this->attributesAccess['fdAuditSyslogEnabled']->getValue()
     );
 
+    // Dynamically disable "Syslog Name Prefix" if Syslog Transformation is not enabled
+    $this->attributesAccess['fdAuditSyslogPrefix']->setDisabled(
+      !$this->attributesAccess['fdAuditSyslogEnabled']->getValue()
+    );
+
     // Add a listener to update the state dynamically when Syslog Transformation is toggled
     $this->attributesAccess['fdAuditSyslogEnabled']->setSubmitForm('updateFieldsState');
   }
@@ -82,6 +99,11 @@ class auditTask extends simplePlugin
     // Disable "Retaining days" if Syslog Transformation is enabled
     $this->attributesAccess['fdAuditTasksRetention']->setDisabled(
       $this->attributesAccess['fdAuditSyslogEnabled']->getValue()
+    );
+
+    // Disable "Syslog Name Prefix" if Syslog Transformation is not enabled
+    $this->attributesAccess['fdAuditSyslogPrefix']->setDisabled(
+      !$this->attributesAccess['fdAuditSyslogEnabled']->getValue()
     );
   }
 

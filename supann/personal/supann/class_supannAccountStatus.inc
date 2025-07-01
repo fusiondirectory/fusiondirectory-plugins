@@ -50,6 +50,8 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
+    global $config;
+
     return [
       'status' => [
         'name' => _('Status'),
@@ -62,20 +64,18 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
               [
                 new SelectAttribute(
                   _('Resource'), _('Which resource this state concerns'),
-                  'supannRessourceEtatDate_label', TRUE,
-                  ['COMPTE', 'MAIL'], '',
-                  [_('Account'), _('Mail')]
+                  'supannRessourceEtatDate_label', TRUE, [],
+                  '', NULL, '', $config->get_cfg_value('SupannRessourceEtatDateIntegrity', 'TRUE')
                 ),
                 new SelectAttribute(
                   _('Status'), _('Active status'),
-                  'supannRessourceEtatDate_status', TRUE,
-                  ['A', 'I', 'S'], 'A',
-                  [_('Active'), _('Inactive'), _('Suspended')]
+                  'supannRessourceEtatDate_status', TRUE, [],
+                  '', NULL, '', $config->get_cfg_value('SupannRessourceEtatDateIntegrity', 'TRUE')
                 ),
                 new SelectAttribute(
                   _('Substatus'), _('Substatus'),
                   'supannRessourceEtatDate_substatus', FALSE,
-                  []
+                  [], '', NULL, '', $config->get_cfg_value('SupannRessourceEtatDateIntegrity', 'TRUE')
                 ),
                 new DateAttribute(
                   _('Start date'), _('Date this status started'),
@@ -107,20 +107,28 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    global $config;
+    global $config, $ui;
 
     parent::__construct($dn, $object, $parent, $mainTab);
 
+    /* Get substates from LDAP */
     $this->substatus = static::getConfiguredSubstates();
 
-    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail')];
-    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource, $label) = explode(':', $line, 2);
-      $resources[$resource] = $label;
-    }
+    // Get resources from LDAP */
+    $resources = static::getResources();
+
     $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[0]->setChoices(
       array_keys($resources),
       array_values($resources)
+    );
+
+    /* Get states from LDAP */
+    $states = static::getStates();
+
+    /* Set choices for states */
+    $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->setChoices(
+      array_keys($states),
+      array_values($states)
     );
 
     $this->attributesAccess['supannRessourceEtatDate']->setLinearRendering(FALSE);
@@ -261,60 +269,160 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     }
   }
 
-  static function getOfficialSubstates (): array
+  static function getResources (): array
   {
-    return [
-      'A' => [
-        'SupannAnticipe' => _('Anticipated'),
-        'SupannActif' => _('Active'),
-        'SupannSursis' => _('Extension'),
-      ],
-      'I' => [
-        'SupannPrecree' => _('Pre-created'),
-        'SupannCree' => _('Created'),
-        'SupannExpire' => _('Expired'),
-        'SupannInactif' => _('Inactive'),
-        'SupannSupprDonnees' => _('Data deletion'),
-        'SupannSupprCompte' => _('Account deletion'),
-      ],
-      'S' => [
-        'SupannVerrouille' => _('Locked'),
-        'SupannVerrouAdministratif' => _('Administrative lock'),
-        'SupannVerrouTechnique' => _('Technical lock'),
-      ],
-    ];
+    global $config, $ui;
+
+    /* LDAP object */
+    $ldap = $config->get_ldap_link();
+    // FIXME when testing it felt in base, it must be in an OU normally
+    $ldap->cd($config->current['BASE']);
+
+    /* Get resources from LDAP */
+    $resources = [];
+    $ldap->search('(objectClass=fdSupannRessource)', ['fdSupannRessourceName','fdSupannRessourceLabel'], 'subtree');
+    while ($attrs = $ldap->fetch()) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessource/supannRessource', 'fdSupannRessourceName'))) {
+        continue;
+      }
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessource/supannRessource', 'fdSupannRessourceLabel'))) {
+        continue;
+      }
+      $resources += [$attrs['fdSupannRessourceName'][0] => $attrs['fdSupannRessourceLabel'][0]];
+    }
+
+    /* Value if no ressources are found */
+    if (count($resources) < 1) {
+      $resources = ['' => '-- No ressource found --'];
+    }
+
+    /* Sort */
+    asort($resources);
+
+    return $resources;
+  }
+
+  static function getStates (): array
+  {
+    global $config, $ui;
+
+    /* LDAP object */
+    $ldap = $config->get_ldap_link();
+    // FIXME when testing it felt in base, it must be in an OU normally
+    $ldap->cd($config->current['BASE']);
+
+    /* Get resources from LDAP */
+    $states = [];
+    // FIXME wrong attribut for label fdSupannRessourceLabel instead of fdSupannStateLabel
+    $ldap->search('(objectClass=fdSupannRessourceState)', ['fdSupannStateName','fdSupannRessourceLabel'], 'subtree');
+    while ($attrs = $ldap->fetch()) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannStateName'))) {
+        continue;
+      }
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannRessourceLabel'))) {
+        continue;
+      }
+      // FIXME wrong attribut for label fdSupannRessourceLabel instead of fdSupannStateLabel
+      $states += [$attrs['fdSupannStateName'][0] => $attrs['fdSupannRessourceLabel'][0]];
+    }
+
+    /* Value if no ressources are found */
+    if (count($states) < 1) {
+      $states = ['' => '-- No states found --'];
+    }
+
+    /* Sort */
+    asort($states);
+
+    return $states;
+  }
+
+  static function getSubstates (): array
+  {
+    global $config, $ui;
+
+    /* LDAP object */
+    $ldap = $config->get_ldap_link();
+    /* FIXME when testing it felt in base, it must be in an OU normally */
+    $ldap->cd($config->current['BASE']);
+
+    /* Get states from LDAP */
+    $states = [];
+    $ldap->search('(objectClass=fdSupannRessourceState)', ['fdSupannStateName','fdSupannStateLabel', 'fdSupannSubStateList'], 'subtree');
+    while ($attrs = $ldap->fetch()) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannStateName'))) {
+        continue;
+      }
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceState/supannRessourceState', 'fdSupannSubStateList'))) {
+        continue;
+      }
+
+      // FIXME better way to remove the $attrs['fdSupannSubStateList']['count']
+      unset($attrs['fdSupannSubStateList']['count']);
+
+      /* Prepare the state part
+       * [
+       *    'statePart' => [
+       *        'substate1' => 'substate label'
+       *     ]
+       * ]
+       */
+      $states[$attrs['fdSupannStateName'][0]] = [];
+
+      if (isset($attrs['fdSupannSubStateList'])) {
+        foreach ($attrs['fdSupannSubStateList'] as $dn) {
+          $states[$attrs['fdSupannStateName'][0]][] = $dn;
+        }
+      }
+    }
+
+    /* Sort */
+    asort($states);
+
+    /* Get substates from LDAP based on $states */
+    $substates = [];
+    foreach ($states as $stateName => $substateDNs) {
+      $substates[$stateName] = [];
+      foreach ($substateDNs as $substateDN) {
+        // FIXME wrong attribute for label fdSupannRessourceLabel instead of fdSupannSubStateLabel
+        $ldap->cat($substateDN, ['fdSupannSubStateName','fdSupannRessourceLabel']);
+        while ($attrs = $ldap->fetch()) {
+          if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceSubState/supannRessourceSubState', 'fdSupannSubStateName'))) {
+            continue;
+          }
+          // FIXME wrong attribute for label fdSupannRessourceLabel instead of fdSupannSubStateLabel
+          if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannRessourceSubState/supannRessourceSubState', 'fdSupannRessourceLabel'))) {
+            continue;
+          }
+          /* Make the substate part
+           * [
+           *    'statePart' => [
+           *        'substate1' => 'substate label'
+           *      ]
+           *  ]
+           */
+          // FIXME wrong attribute for label fdSupannRessourceLabel instead of fdSupannSubStateLabel
+          $substates[$stateName] += [$attrs['fdSupannSubStateName'][0] => $attrs['fdSupannRessourceLabel'][0]];
+        }
+      }
+
+      /* Sort */
+      asort($substates[$stateName]);
+    }
+
+    /* Value if no states are found */
+    if (count($states) < 1) {
+      $substates = ['-- No substates found -- ' => ['' => '']];
+    }
+
+    return $substates;
   }
 
   static function getConfiguredSubstates (): array
   {
     global $config;
 
-    $officialSubstates = static::getOfficialSubstates();
-
-    $substates = [
-      'A' => [],
-      'I' => [],
-      'S' => [],
-    ];
-
-    $labels = [];
-
-    foreach ($config->get_cfg_value('SupannRessourceSubStatesLabels', []) as $line) {
-      list($substate, $label) = explode(':', $line, 2);
-      $labels[$substate] = $label;
-    }
-
-    foreach ($config->get_cfg_value('SupannRessourceSubStates', []) as $line) {
-      list(, $state, $substate) = explode(':', $line, 3);
-      if (isset($officialSubstates[$state][$substate])) {
-        $substates[$state][$substate] = $officialSubstates[$state][$substate];
-      } elseif (isset($labels[$substate])) {
-        $substates[$state][$substate] = $labels[$substate];
-      } else {
-        $substates[$state][$substate] = $substate;
-      }
-    }
-
+    $substates = static::getSubstates();
     return $substates;
   }
 }

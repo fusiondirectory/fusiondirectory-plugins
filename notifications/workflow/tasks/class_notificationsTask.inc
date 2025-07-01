@@ -37,7 +37,16 @@ class tasksNotifications extends simplePlugin
       'plObjectClass'  => ['fdTasksNotifications'],
       'plFilter'       => '(objectClass=fdTasksNotifications)',
       'plObjectType'   => ['tasks'],
-      'plConflicts'    => ['tasksMail', 'tasksLifeCycle'],
+      'plConflicts'    => [ // The name of the class is required, not the object class.
+        'tasksMail',          // from mail plugin (core)
+        'taskReminder',       // from user-reminder plugin
+        //'tasksNotifications', // from notifications plugin
+        'archiveTask',        // from archive plugin
+        'extractorTask',      // from extractor plugin (if present)
+        'tasksLifeCycle',     // from lifecycle plugin (if present)
+        'auditTask',          // from archive plugin (if present)
+        'tasksAutomaticGroups', // from automatic-groups plugin
+      ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
     ];
@@ -143,16 +152,12 @@ class tasksNotifications extends simplePlugin
     global $config;
 
     // Define the mandatory ones and get the remaining from configuration.
-    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail'), 'NONE' => _('None')];
-
-    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource, $label) = explode(':', $line, 2);
-      $resources[$resource] = $label;
-    }
+    $resources = supannAccountStatus::getResources();
+    $states    = supannAccountStatus::getStates();
 
     $this->attributesAccess['fdTasksNotificationsResource']->setChoices(array_keys($resources), array_values($resources));
     $this->subStates = supannAccountStatus::getConfiguredSubstates(); //Keys are states and Values are subStates
-    $this->attributesAccess['fdTasksNotificationsState']->setChoices(array_keys($this->subStates));
+    $this->attributesAccess['fdTasksNotificationsState']->setChoices(array_keys($states), array_values($states));
 
     // Allows the sub states to be listed when state is modified.
     $this->attributesAccess['fdTasksNotificationsState']->setSubmitForm('updateFieldsChoices');

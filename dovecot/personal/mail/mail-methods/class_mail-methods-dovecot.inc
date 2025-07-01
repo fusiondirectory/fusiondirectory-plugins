@@ -67,13 +67,7 @@ class mailMethodDovecot extends mailMethod
     if ($this->imap_handle === FALSE) {
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
         "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
-      if ($cfg['mkdir']) {
-        if ($this->argonautCreateFolder()) {
-          $this->imap_handle = @imap_open($cfg['connect'], $cfg['admin'], $cfg['password'], OP_HALFOPEN);
-        } else {
-          return FALSE;
-        }
-      }
+
       if ($this->imap_handle === FALSE) {
         $this->error = imap_last_error();
 
@@ -161,33 +155,6 @@ class mailMethodDovecot extends mailMethod
     return $this->quotaUsage;
   }
 
-  /*
-   * Create the folder for the user INBOX through Argonaut
-   */
-  private function argonautCreateFolder ()
-  {
-    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
-      "<b>Attempting to create folder through Argonaut</b> on server :".$this->mailServer);
-
-    $cfg = $this->getServerConfig();
-    if ($cfg === FALSE) {
-      return FALSE;
-    }
-
-    $o_queue = new supportDaemon();
-    if (!$o_queue->is_error()) {
-      $o_queue->append_call('Dovecot.create_mailbox',
-                            [$cfg['mac']],
-                            ['args' => [$this->account_id, $this->parent->uidNumber, $this->parent->gidNumber]]);
-    }
-    /* If we got an error while connecting or sending the call */
-    if ($o_queue->is_error()) {
-      $this->error = sprintf(_('Error while trying to contact Dovecot server through Argonaut: %s'), $o_queue->get_error());
-      return FALSE;
-    }
-
-    return TRUE;
-  }
 
   /*! \brief  Checks whether this account is removeable or not.
    */

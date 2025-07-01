@@ -37,7 +37,16 @@ class taskReminder extends simplePlugin
       'plObjectClass'  => ['fdTasksReminder'],
       'plFilter'       => '(objectClass=fdTasksReminder)',
       'plObjectType'   => ['tasks'],
-      'plConflicts'    => ['tasksMail', 'tasksLifeCycle', 'tasksNotifications', 'auditTasks'],
+      'plConflicts'    => [ // The name of the class is required, not the object class.
+        'tasksMail',          // from mail plugin (core)
+        //'taskReminder',       // from user-reminder plugin
+        'tasksNotifications', // from notifications plugin
+        'archiveTask',        // from archive plugin
+        'extractorTask',      // from extractor plugin (if present)
+        'tasksLifeCycle',     // from lifecycle plugin (if present)
+        'auditTask',          // from archive plugin (if present)
+        'tasksAutomaticGroups', // from automatic-groups plugin
+      ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
     ];
@@ -185,12 +194,9 @@ class taskReminder extends simplePlugin
     global $config;
 
     // Define the mandatory ones and get the remaining from configuration.
-    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail'), 'NONE' => _('None')];
+    $resources = supannAccountStatus::getResources();
+    $states    = supannAccountStatus::getStates();
 
-    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource, $label) = explode(':', $line, 2);
-      $resources[$resource] = $label;
-    }
     $this->subStates = supannAccountStatus::getConfiguredSubstates(); //Keys are states and Values are subStates
 
     // Set the resource
@@ -198,8 +204,8 @@ class taskReminder extends simplePlugin
     $this->attributesAccess['fdTasksReminderNextResource']->setChoices(array_keys($resources), array_values($resources));
 
     // Set the state
-    $this->attributesAccess['fdTasksReminderState']->setChoices(array_keys($this->subStates));
-    $this->attributesAccess['fdTasksReminderNextState']->setChoices(array_keys($this->subStates));
+    $this->attributesAccess['fdTasksReminderState']->setChoices(array_keys($states), array_values($states));
+    $this->attributesAccess['fdTasksReminderNextState']->setChoices(array_keys($states), array_values($states));
 
     //    // Allows the sub states to be listed when state is modified.
     $this->attributesAccess['fdTasksReminderState']->setSubmitForm('updateFieldsChoices');

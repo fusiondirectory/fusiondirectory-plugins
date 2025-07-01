@@ -37,7 +37,16 @@ class tasksLifeCycle extends simplePlugin
       'plObjectClass'  => ['fdTasksLifeCycle'],
       'plFilter'       => '(objectClass=fdTasksLifeCycle)',
       'plObjectType'   => ['tasks'],
-      'plConflicts'    => ['tasksMail'],
+      'plConflicts'    => [ // The name of the class is required, not the object class.
+        'tasksMail',          // from mail plugin (core)
+        'taskReminder',       // from user-reminder plugin
+        'tasksNotifications', // from notifications plugin
+        'archiveTask',        // from archive plugin
+        'extractorTask',      // from extractor plugin (if present)
+        //'tasksLifeCycle',     // from lifecycle plugin (if present)
+        'auditTask',          // from archive plugin (if present)
+        'tasksAutomaticGroups', // from automatic-groups plugin
+      ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
     ];
@@ -108,6 +117,19 @@ class tasksLifeCycle extends simplePlugin
           ),
         ]
       ],
+      'sectionAccountClosure' => [
+        'name'  => _('Automatic Account Closure'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new BooleanAttribute(
+            _('Enable Account Closure'),
+            _('If ticked, the account will be locked if all "Current Resources" (either the single selected resource, or all resources matching the "Regex Pattern" if that option is chosen for "Current resources details") are in a "Suspended" (S) or "Inactive" (I) state, AND none of these resources are "Active" (A).'),
+            'fdTasksLifeCycleEnableAccountClosure',
+            FALSE, // Required
+            FALSE  // Default value
+          ),
+        ]
+      ],
       'section4' => [
         'name'  => _('Recipients Users and/or Groups'),
         'class' => ['fullwidth'],
@@ -133,8 +155,12 @@ class tasksLifeCycle extends simplePlugin
     $this->attributesAccess['fdTasksLifeCyclePreResource']->setSubmitForm('updateRegexState');
     $this->attributesAccess['fdTasksLifeCyclePostResource']->setSubmitForm('updateRegexState');
 
-    // Initial state update
+    // Setup behavior for account closure checkbox
+    $this->attributesAccess['fdTasksLifeCycleEnableAccountClosure']->setSubmitForm('updateAccountClosureState');
+
+    // Initial state updates
     $this->updateRegexState();
+    $this->updateAccountClosureState();
 
     if (class_available('supannAccountStatus')) {
       $this->setSupannStates();
@@ -145,26 +171,45 @@ class tasksLifeCycle extends simplePlugin
   }
 
   /**
-   * Toggle fields based on regex activation state
+   * Toggle fields based on regex activation state and manage 'required' status.
+   * State/SubState fields are enabled by default here; updateAccountClosureState handles disabling them.
    */
   function updateRegexState ()
   {
     $preResourceValue   = $this->attributesAccess['fdTasksLifeCyclePreResource']->getValue();
     $postResourceValue  = $this->attributesAccess['fdTasksLifeCyclePostResource']->getValue();
+    $accountClosureEnabled = $this->attributesAccess['fdTasksLifeCycleEnableAccountClosure']->getValue();
 
     $isPreResourceRegex  = ($preResourceValue === 'REGEX');
     $isPostResourceRegex = ($postResourceValue === 'REGEX');
 
     // --- Handle Pre-Resource fields (Current resources details) ---
-    // PreState is required if PreResource is selected (it's defined as required initially in getAttributesInfo)
-    $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(!empty($preResourceValue));
-    // PreSubState is never required by this logic, its requirement is static.
+    // Enable PreState and PreSubState by default from this function's perspective.
+    // updateAccountClosureState will disable them if account closure is enabled.
+    if (!$accountClosureEnabled) {
+        $this->attributesAccess['fdTasksLifeCyclePreState']->setDisabled(FALSE);
+        $this->attributesAccess['fdTasksLifeCyclePreSubState']->setDisabled(FALSE);
+        // PreState is required if PreResource is selected and account closure is not enabled.
+        $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(!empty($preResourceValue));
+    } else {
+        // If account closure is enabled, PreState is not required.
+        $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(FALSE);
+    }
 
 
     // --- Handle Post-Resource fields (Future resources details) ---
-    // PostState is required if PostResource is selected (it's defined as required initially in getAttributesInfo)
-    $this->attributesAccess['fdTasksLifeCyclePostState']->setRequired(!empty($postResourceValue));
-    // PostSubState is never required by this logic, its requirement is static.
+    // Enable PostState and PostSubState by default from this function's perspective.
+    // updateAccountClosureState will disable them (and PostResource/PostEndDate) if account closure is enabled.
+    if (!$accountClosureEnabled) {
+        $this->attributesAccess['fdTasksLifeCyclePostState']->setDisabled(FALSE);
+        $this->attributesAccess['fdTasksLifeCyclePostSubState']->setDisabled(FALSE);
+        // PostState is required if PostResource is selected and account closure is not enabled.
+        $this->attributesAccess['fdTasksLifeCyclePostState']->setRequired(!empty($postResourceValue));
+    } else {
+        // If account closure is enabled, PostState is not required.
+        $this->attributesAccess['fdTasksLifeCyclePostState']->setRequired(FALSE);
+    }
+
 
     // --- Handle Regex Pattern field ---
     // Enable Regex Pattern field if EITHER PreResource OR PostResource is 'REGEX'
@@ -181,12 +226,9 @@ class tasksLifeCycle extends simplePlugin
     global $config;
 
     // Define the mandatory ones and get the remaining from configuration.
-    $resources = ['COMPTE' => _('Account'), 'MAIL' => _('Mail')];
+    $resources = supannAccountStatus::getResources();
+    $states    = supannAccountStatus::getStates();
 
-    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
-      list($resource, $label) = explode(':', $line, 2);
-      $resources[$resource] = $label;
-    }
     // Add REGEX option
     $resources['REGEX'] = _('Regex Pattern');
 
@@ -264,5 +306,35 @@ class tasksLifeCycle extends simplePlugin
     }
 
     return parent::save();
+  }
+
+  /**
+   * Toggle fields based on account closure state
+   */
+  function updateAccountClosureState ()
+  {
+    $accountClosureEnabled = $this->attributesAccess['fdTasksLifeCycleEnableAccountClosure']->getValue();
+
+    // --- Current resources details ---
+    $this->attributesAccess['fdTasksLifeCyclePreState']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePreSubState']->setDisabled($accountClosureEnabled);
+    if ($accountClosureEnabled) {
+      $this->attributesAccess['fdTasksLifeCyclePreState']->setRequired(FALSE);
+    }
+    // If not $accountClosureEnabled, updateRegexState will handle setRequired for PreState.
+
+    // --- Future resources details ---
+    $this->attributesAccess['fdTasksLifeCyclePostResource']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePostState']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePostSubState']->setDisabled($accountClosureEnabled);
+    $this->attributesAccess['fdTasksLifeCyclePostEndDate']->setDisabled($accountClosureEnabled);
+    if ($accountClosureEnabled) {
+      $this->attributesAccess['fdTasksLifeCyclePostState']->setRequired(FALSE);
+    }
+    // If not $accountClosureEnabled, updateRegexState will handle setRequired for PostState.
+
+    // Call updateRegexState to ensure 'required' status and Regex field are correctly set
+    // based on current resource selections, especially when disabling account closure.
+    $this->updateRegexState();
   }
 }
