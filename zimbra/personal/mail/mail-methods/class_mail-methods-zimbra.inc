@@ -250,32 +250,38 @@ class mailMethodZimbra extends mailMethod
     return $this->cacheAccount();
   }
 
-  private function cacheAccount ()
+  private function cacheAccount (): bool
   {
     if (empty($this->account_id)) {
-      return FALSE;
+        return FALSE;
     } elseif (isset($this->cachedAccount['account']) && ($this->account_id == $this->cachedAccount['id'])) {
-      return TRUE;
+        return TRUE;
     }
+
+      // Determine the command based on the type (user or group)
     if ($this->type == 'user') {
-      $command    = 'GetAccount';
-      $answerkey  = 'account';
+        $command    = 'GetAccount';
+        $answerKey  = 'account';
     } else {
-      $command    = 'GetGroup';
-      $answerkey  = 'group';
+        $command    = 'GetGroup';
+        $answerKey  = 'group';
     }
-    $answer = $this->query($command, ['name' => $this->account_id], ['account.NO_SUCH_ACCOUNT']);
-    if (($answer !== FALSE) && isset($answer[$answerkey])) {
-      $this->cachedAccount = [
-        'account'   => $answer[$answerkey],
-        'id'        => $this->account_id,
-        'zimbraId'  => $answer[$answerkey]['zimbraId'],
-        'time'      => time()
-      ];
-      $this->cleanCachedAccountArrays();
-      return TRUE;
+
+      // Query Zimbra for the account information
+      $answer = $this->query($command, ['name' => $this->account_id], ['account.NO_SUCH_ACCOUNT']);
+    if (($answer !== FALSE) && isset($answer[$answerKey])) {
+        $this->cachedAccount = [
+            'account'   => $answer[$answerKey],
+            'id'        => $this->account_id,
+            'zimbraId'  => $answer[$answerKey]['zimbraId'],
+            'time'      => time()
+        ];
+
+        // Ensure aliases are properly formatted as an array
+        $this->cleanCachedAccountArrays();
+        return TRUE;
     } else {
-      return FALSE;
+        return FALSE;
     }
   }
 
@@ -424,46 +430,44 @@ class mailMethodZimbra extends mailMethod
     return $this->query($command, $account);
   }
 
-  private function updateAccount (array $infos)
+  private function updateAccount (array $infos): bool
   {
-    /* Step 1 - We fill $account */
-    $account = $this->getAccountArray($infos);
-    unset($account['name']);
-
-    /* Step 2 - We compute diff from server data */
-    $this->cacheAccount();
+      // Step 1 - Retrieve the current account information
+      $this->cacheAccount();
     if ($this->is_error()) {
-      return FALSE;
+        return FALSE;
     }
+
+      // Step 2 - Prepare the account update payload
+      $account = $this->getAccountArray($infos);
+      unset($account['name']); // Remove the name field as it is not needed for updates
+
+      // Step 3 - Compute the diff between the current state and the desired state
     foreach ($account as $key => $value) {
       if (isset($this->cachedAccount['account'][$key])) {
         if (is_array($value) && !is_array($this->cachedAccount['account'][$key])) {
           $this->cachedAccount['account'][$key] = [$this->cachedAccount['account'][$key]];
         }
         if ($this->cachedAccount['account'][$key] == $value) {
-          unset($account[$key]);
+            unset($account[$key]);
         }
       } elseif (empty($value)) {
-        unset($account[$key]);
+          unset($account[$key]);
       }
     }
 
-    /* Step 3 - We send update order if diff is not empty */
+      // Step 4 - Send the update request if there are changes
     if (!empty($account)) {
-      $account['zimbraId'] = $this->cachedAccount['zimbraId'];
-      if ($this->type == 'user') {
-        $command = 'ModifyAccount';
-      } else {
-        $command = 'ModifyGroup';
-      }
-      $answer = $this->query($command, $account);
+        $account['zimbraId'] = $this->cachedAccount['zimbraId'];
+        $command = ($this->type == 'user') ? 'ModifyAccount' : 'ModifyGroup';
+        $answer = $this->query($command, $account);
 
       if ($answer === FALSE) {
-        return FALSE;
+          return FALSE;
       }
     }
 
-    /* Step 4 - Call SetPassword for password change if needed */
+      /* Step 5 - Call SetPassword for password change if needed */
     if (($this->type == 'user') && $infos['password_sync']) {
       $userTab = $this->parent->parent->getBaseObject();
       if ($userTab->attributesAccess['userPassword']->getClear() != '') {
@@ -479,47 +483,81 @@ class mailMethodZimbra extends mailMethod
       }
     }
 
-    return TRUE;
+      return TRUE;
   }
 
+  /**
+   * \brief  Set aliases for the account based on history (zimbra) and current configuration.
+   */
   private function setAliases (array $aliases): bool
   {
-    $initialAliases = ($this->cachedAccount['account']['zimbraMailAlias'] ?? []);
-    $remove = array_diff($initialAliases, $aliases);
-    $add    = array_diff($aliases, $initialAliases);
+      // Get server configuration
+      $infos = $this->getServerConfig();
+    if ($infos === FALSE) {
+        return FALSE;
+    }
+
+      // Retrieve existing aliases from the cached account
+      $initialAliases = ($this->cachedAccount['account']['zimbraMailAlias'] ?? []);
+
+      // Filter aliases to remove based on keep_unknown_aliases setting
+      $remove = array_diff($initialAliases, $aliases);
+      $add    = array_diff($aliases, $initialAliases);
+
+      // If keep_unknown_aliases is set to TRUE, don't remove aliases with domains not known by FusionDirectory
+    if (!empty($remove) && isset($infos['keep_unknown_aliases']) && $infos['keep_unknown_aliases'] === TRUE) {
+        // Get the domain from the server config - this is a known domain
+        $knownDomain = $infos['domain'];
+
+        // Filter out aliases with unknown domains from the removal list
+      foreach ($remove as $key => $alias) {
+          // Extract domain from alias
+          $aliasDomain = substr(strstr($alias, '@'), 1);
+
+          // If the domain is not the known domain, keep the alias
+        if ($aliasDomain !== $knownDomain) {
+          unset($remove[$key]);
+        }
+      }
+    }
+
+      // Remove aliases
     if ($this->type == 'user') {
-      $command = 'RemoveAccountAlias';
+        $command = 'RemoveAccountAlias';
     } else {
-      $command = 'RemoveDistributionListAlias';
+        $command = 'RemoveDistributionListAlias';
     }
     foreach ($remove as $alias) {
       if ($alias === '') {
-        continue;
+          continue;
       }
-      $answer = $this->query(
-        $command,
-        ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias],
-        ['account.NO_SUCH_DOMAIN','account.NO_SUCH_ALIAS']
-      );
+        $answer = $this->query(
+            $command,
+            ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias],
+            ['account.NO_SUCH_DOMAIN', 'account.NO_SUCH_ALIAS']
+        );
       if ($this->is_error()) {
         return FALSE;
       }
     }
+
+      // Add aliases
     if ($this->type == 'user') {
-      $command = 'AddAccountAlias';
+        $command = 'AddAccountAlias';
     } else {
-      $command = 'AddDistributionListAlias';
+        $command = 'AddDistributionListAlias';
     }
     foreach ($add as $alias) {
       if ($alias === '') {
-        continue;
+          continue;
       }
-      $answer = $this->query($command, ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias]);
+        $answer = $this->query($command, ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias]);
       if ($answer === FALSE) {
-        return FALSE;
+          return FALSE;
       }
     }
-    return TRUE;
+
+      return TRUE;
   }
 
   private function updateMembers ()
@@ -789,7 +827,7 @@ class mailMethodZimbra extends mailMethod
                   ['cn', 'fdZimbraServerUri', 'fdZimbraServerMailDomain',
                   'fdZimbraServerUserAgent', 'fdZimbraServerDeletionType', 'fdZimbraServerCreationType',
                   'fdZimbraServerLogin', 'fdZimbraServerPassword', 'fdZimbraServerPasswordSync',
-                  'fdZimbraServerIdAttribute']);
+                  'fdZimbraServerIdAttribute', 'fdZimbraServerKeepUnknownAliases']);
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdZimbraServerMailDomain']['count']);
       foreach ($attrs['fdZimbraServerMailDomain'] as $domainAndCos) {
@@ -801,6 +839,7 @@ class mailMethodZimbra extends mailMethod
           $createMode   = (isset($attrs['fdZimbraServerCreationType'][0]) ? $attrs['fdZimbraServerCreationType'][0] : 'error');
           $pwdSync      = (isset($attrs['fdZimbraServerPasswordSync'][0]) ? ($attrs['fdZimbraServerPasswordSync'][0] === 'TRUE') : TRUE);
           $idAttribute  = (isset($attrs['fdZimbraServerIdAttribute'][0]) ? $attrs['fdZimbraServerIdAttribute'][0] : 'mail');
+          $keepUnknownAliases = (isset($attrs['fdZimbraServerKeepUnknownAliases'][0]) ? ($attrs['fdZimbraServerKeepUnknownAliases'][0] === 'TRUE') : FALSE);
           $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = [
             'server_dn'     => $attrs['dn'],
             'user_agent'    => $attrs['fdZimbraServerUserAgent'][0],
@@ -814,6 +853,7 @@ class mailMethodZimbra extends mailMethod
             'domain'        => $domain,
             'cos_name'      => $cosName,
             'cos_id'        => $cosId,
+            'keep_unknown_aliases' => $keepUnknownAliases,
           ];
         }
       }

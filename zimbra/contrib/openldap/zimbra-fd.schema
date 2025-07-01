@@ -57,6 +57,12 @@ attributetype ( 1.3.6.1.4.1.38414.83.10.9 NAME 'fdZimbraServerCreationType'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
+attributetype ( 1.3.6.1.4.1.38414.83.10.10 NAME 'fdZimbraServerKeepUnknownAliases'
+  DESC 'FusionDirectory - Do not remove aliases if the domain is unknown by FusionDirectory'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE)
+
 # Objectclasses
 objectclass (1.3.6.1.4.1.38414.83.2.1 NAME 'fdZimbraServer' SUP top AUXILIARY
   DESC 'FusionDirectory - Zimbra server description'
@@ -64,6 +70,6 @@ objectclass (1.3.6.1.4.1.38414.83.2.1 NAME 'fdZimbraServer' SUP top AUXILIARY
   MAY  (
     fdZimbraServerMailDomain $ fdZimbraServerDeletionType $
     fdZimbraServerLogin $ fdZimbraServerPassword $ fdZimbraServerPasswordSync $
-    fdZimbraServerIdAttribute $ fdZimbraServerCreationType
+    fdZimbraServerIdAttribute $ fdZimbraServerCreationType $ fdZimbraServerKeepUnknownAliases
   ))
 
