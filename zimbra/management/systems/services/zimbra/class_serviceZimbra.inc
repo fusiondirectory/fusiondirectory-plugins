@@ -65,6 +65,11 @@ class serviceZimbra extends simpleMailMethodService
             'fdZimbraServerPasswordSync', FALSE,
             TRUE
           ),
+          new BooleanAttribute(
+            _('Keep unknown aliases'), _('Do not remove aliases if the domain is unknown by FusionDirectory'),
+            'fdZimbraServerKeepUnknownAliases', FALSE,
+            FALSE
+          ),
           new StringAttribute(
             _('Id attribute'), _('Attribute to use for account id.'),
             'fdZimbraServerIdAttribute', TRUE,
