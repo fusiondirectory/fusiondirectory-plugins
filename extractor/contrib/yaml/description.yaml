@@ -1,0 +1,27 @@
+information:
+  authors:
+    - FusionDirectory
+  description: LDAP data extraction plugin for FusionDirectory
+  license: GPLv2
+  logoUrl: https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/extractor/html/themes/breezy/icons/48/apps/extractor.png
+  name: extractor
+  origin: package
+  screenshotUrl:
+    - https://raw.githubusercontent.com/fusiondirectory/fusiondirectory-plugins/dev/extractor/contrib/screenshots/extractor-task.png
+  status: Stable
+  tags:
+    - user
+    - group
+    - automation
+    - extraction
+  version: '1.0'
+requirement:
+  fdVersion: 1.5
+  phpVersion: 7.4
+support:
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+  documentationUrl: https://fusiondirectory-user-manual.readthedocs.io/
+  homeUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  provider: fusiondirectory
+  schemaUrl: https://schemas.fusiondirectory.org/
+  ticketUrl: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues

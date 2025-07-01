@@ -1,0 +1,78 @@
+# Automatic Groups Schema
+# OID: 1.3.6.1.4.1.94
+
+# Define attributes
+attributetype ( 1.3.6.1.4.1.94.1.1
+    NAME 'fdTasksAutomaticGroupsListOfDN'
+    DESC 'List of DNs to be processed for automatic group assignment'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.94.1.2
+    NAME 'fdTasksAutomaticGroupsOfName'
+    DESC 'Target group where users will be added/removed'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+    SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.94.1.3
+    NAME 'fdTasksAutomaticGroupsResource'
+    DESC 'Supann resource for automatic group assignment'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+    SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.94.1.4
+    NAME 'fdTasksAutomaticGroupsState'
+    DESC 'Supann resource state for automatic group assignment'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+    SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.94.1.5
+    NAME 'fdTasksAutomaticGroupsSubState'
+    DESC 'Supann resource sub state for automatic group assignment'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+    SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.94.1.6
+    NAME 'fdTasksAutomaticGroupsMembers'
+    DESC 'Users or groups to check for automatic group assignment'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+# Add new attribute for dynamic group creation
+attributetype ( 1.3.6.1.4.1.94.1.7
+    NAME 'fdTasksAutomaticGroupsDynamicGroup'
+    DESC 'Boolean to enable dynamic group creation'
+    EQUALITY booleanMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+    SINGLE-VALUE )
+
+# Replace BaseDN attribute with LDAP URL and dynamic group name
+attributetype ( 1.3.6.1.4.1.94.1.8
+    NAME 'fdTasksAutomaticGroupsDynamicURL'
+    DESC 'Pre-computed LDAP URL for dynamic group'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+    SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.94.1.9
+    NAME 'fdTasksAutomaticGroupsDynamicName'
+    DESC 'Pre-computed name for the dynamic group'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+    SINGLE-VALUE )
+
+# Define object class
+objectclass ( 1.3.6.1.4.1.94.2.1
+    NAME 'fdTasksAutomaticGroups'
+    DESC 'Object class for automatic groups'
+    SUP top
+    AUXILIARY
+    MUST ( fdTasksAutomaticGroupsOfName )
+    MAY ( fdTasksAutomaticGroupsListOfDN $ fdTasksAutomaticGroupsResource $ 
+          fdTasksAutomaticGroupsState $ fdTasksAutomaticGroupsSubState $ 
+          fdTasksAutomaticGroupsMembers $ fdTasksAutomaticGroupsDynamicGroup $
+          fdTasksAutomaticGroupsDynamicURL $ fdTasksAutomaticGroupsDynamicName ) )

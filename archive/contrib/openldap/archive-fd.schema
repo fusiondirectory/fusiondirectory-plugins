@@ -44,3 +44,39 @@ objectclass (1.3.6.1.4.1.38414.81.2.1 NAME 'fdArchivedObject'
     fdArchivedField $ fdArchivedUniqueField $
     fdArchivedDateTime $ fdArchivedObjectType $ fdArchivedOriginDn
   ) )
+
+
+
+#### Managing archive tasks ####
+
+# Attributes
+
+attributetype ( 1.3.6.1.4.1.38414.81.1.6 NAME 'fdArchiveTaskResource'
+  DESC 'Fusion Directory - SupAnn resource to be archived'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.81.1.7 NAME 'fdArchiveTaskState'
+  DESC 'Fusion Directory - SupAnn state triggering the archive task'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.81.1.8 NAME 'fdArchiveTaskSubState'
+  DESC 'Fusion Directory - SupAnn sub-state triggering the archive task'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.81.1.9 NAME 'fdArchiveTaskMembers'
+  DESC 'Fusion Directory - List of users or groups to monitor for archiving'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+# Object Class
+
+objectclass ( 1.3.6.1.4.1.38414.81.2.2 NAME 'fdArchiveTasks' SUP top AUXILIARY
+  DESC 'FusionDirectory - Archive tasks plugin Object Class'
+  MUST ( fdArchiveTaskResource $ fdArchiveTaskState $ fdArchiveTaskMembers )
+  MAY  ( fdArchiveTaskSubState ) )
