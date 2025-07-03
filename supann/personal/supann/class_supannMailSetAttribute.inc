@@ -21,9 +21,9 @@
 /*! \brief This class extends SetAttribute to ensure mail validation is performed
  * when adding emails to the set. (Prior to the saving mechanism).
  */
-class MailSetAttribute extends SetAttribute
+class SupannMailSetAttribute extends SetAttribute
 {
-  /*! \brief The constructor of MailSetAttribute
+  /*! \brief The constructor of SupannMailSetAttribute
    *
    *  \param MailAttribute $attribute The mail attribute to make multi-valued with validation
    *  \param array $values The default values

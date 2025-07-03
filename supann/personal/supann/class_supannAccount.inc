@@ -117,13 +117,13 @@ class supannAccount extends simplePlugin
               _('Private phone numbers')
             )
           ),
-          new MailSetAttribute(
+          new SupannMailSetAttribute(
             new MailAttribute(
               _('Other email addresses'), _('supannAutreMail - Other email addresses for this user. Each must be unique'),
               'supannAutreMail', FALSE
             )
           ),
-          new MailSetAttribute(
+          new SupannMailSetAttribute(
             new MailAttribute(
               _('Personal email addresses'), _('supannMailPerso - Personal email addresses for this user'),
               'supannMailPerso', FALSE
