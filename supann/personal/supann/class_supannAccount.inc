@@ -3,7 +3,7 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
 
   Copyright (C) 2010-2012 Antoine Gallavardin
-  Copyright (C) 2013-2020 FusionDirectory
+  Copyright (C) 2013-2025 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -117,13 +117,13 @@ class supannAccount extends simplePlugin
               _('Private phone numbers')
             )
           ),
-          new SetAttribute(
+          new SupannMailSetAttribute(
             new MailAttribute(
               _('Other email addresses'), _('supannAutreMail - Other email addresses for this user. Each must be unique'),
               'supannAutreMail', FALSE
             )
           ),
-          new SetAttribute(
+          new SupannMailSetAttribute(
             new MailAttribute(
               _('Personal email addresses'), _('supannMailPerso - Personal email addresses for this user'),
               'supannMailPerso', FALSE
@@ -236,7 +236,7 @@ class supannAccount extends simplePlugin
           new StringAttribute(
             _('Student ID'), _('supannEtuId - Scolarity id'),
             'supannEtuId', FALSE
-          ),
+          )
         ]
       ],
       'student2' => [
