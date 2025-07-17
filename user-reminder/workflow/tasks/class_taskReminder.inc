@@ -22,10 +22,10 @@
 class taskReminder extends simplePlugin
 {
   protected $displayHeader = TRUE;
-  // LastExec comes from the generic task, it must be filled before saving to get previous lastExec.
-  // Indeed, generic task is saved prior of added tasks plugins. Making lastExec with an updated value before this class
+  // lastActivation comes from the generic task, it must be filled before saving to get previous lastActivation.
+  // Indeed, generic task is saved prior of added tasks plugins. Making lastActivation with an updated value before this class
   // being processed.
-  protected $lastExec = NULL;
+  protected $lastActivation = NULL;
 
   static function plInfo (): array
   {
@@ -154,8 +154,8 @@ class taskReminder extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    // Set the lastExec from generic task before it being updated upon save.
-    $this->lastExec = $this->parent->getBaseObject()->fdTasksLastExec ?? NULL;
+    // Set the lastActivation from generic task before it being updated upon save.
+    $this->lastActivation = $this->parent->getBaseObject()->fdTasksLastActivation ?? NULL;
 
     // Fill in the list of mail template available to the attribute
     $mailTemplates = $this->getMailTemplates();
