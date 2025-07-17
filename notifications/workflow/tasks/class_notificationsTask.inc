@@ -22,10 +22,10 @@
 class tasksNotifications extends simplePlugin
 {
   protected $displayHeader = TRUE;
-  // LastExec comes from the generic task, it must be filled before saving to get previous lastExec.
-  // Indeed, generic task is saved prior of added tasks plugins. Making lastExec with an updated value before this class
+  // lastActivation comes from the generic task, it must be filled before saving to get previous lastActivation.
+  // Indeed, generic task is saved prior of added tasks plugins. Making lastActivation with an updated value before this class
   // being processed.
-  protected $lastExec = NULL;
+  protected $lastActivation = NULL;
 
   static function plInfo (): array
   {
@@ -125,8 +125,8 @@ class tasksNotifications extends simplePlugin
     // Set the list of available attributes to follow in the set selection
     $this->attributesAccess['fdTasksNotificationsAttributes']->attribute->setChoices($this->getAttributesListFromConf());
 
-    // Set the lastExec from generic task before it being updated upon save.
-    $this->lastExec = $this->parent->getBaseObject()->fdTasksLastExec ?? NULL;
+    // Set the lastActivation from generic task before it being updated upon save.
+    $this->lastActivation = $this->parent->getBaseObject()->fdTaskslastActivation ?? NULL;
 
     // This avoids keeping obsolete AuditUsersDN once subtasks have been generated.
     $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setInLdap(FALSE);
@@ -243,15 +243,15 @@ class tasksNotifications extends simplePlugin
    * @return array
    * Note : Return the list of users DN having had an audit listed since the last exec of this task.
    */
-  public function auditDnSinceLastExec (array $dn): array
+  public function auditDnSincelastActivation (array $dn): array
   {
     global $config;
     $result = [];
 
-    if (empty($this->lastExec)) {
-      $unixLastExec = strtotime(date("Y-m-d H:i:s"));
+    if (empty($this->lastActivation)) {
+      $unixlastActivation = strtotime(date("Y-m-d H:i:s"));
     } else { // Convert to unix timestamp
-      $unixLastExec = strtotime($this->lastExec);
+      $unixlastActivation = strtotime($this->lastActivation);
     }
 
     $ldap = $config->get_ldap_link();
@@ -275,7 +275,7 @@ class tasksNotifications extends simplePlugin
         $date->setTimezone(timezone::getDefaultTimeZone());
         $unixAuditTime = $date->getTimestamp(); // Change object dateTime to unix format.
 
-        if ($unixAuditTime >= $unixLastExec) {
+        if ($unixAuditTime >= $unixlastActivation) {
           $result[$attrs['fdAuditObject'][0]][] = $attrs['dn'];
         }
       }
@@ -324,7 +324,7 @@ class tasksNotifications extends simplePlugin
     // Set the DN of all audit user DN since the last exec.
     $monitoredMembers = $this->attributesAccess['fdTasksNotificationsMonitoredMembers']->getValue();
     $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setValue(
-      $this->auditDnSinceLastExec(tasks::extractMembersFromGroups($monitoredMembers))
+      $this->auditDnSincelastActivation(tasks::extractMembersFromGroups($monitoredMembers))
     );
 
     if ($execTasks) {
