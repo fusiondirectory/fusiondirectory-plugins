@@ -126,7 +126,7 @@ class tasksNotifications extends simplePlugin
     $this->attributesAccess['fdTasksNotificationsAttributes']->attribute->setChoices($this->getAttributesListFromConf());
 
     // Set the lastActivation from generic task before it being updated upon save.
-    $this->lastActivation = $this->parent->getBaseObject()->fdTaskslastActivation ?? NULL;
+    $this->lastActivation = $this->parent->getBaseObject()->fdTasksLastActivation ?? NULL;
 
     // This avoids keeping obsolete AuditUsersDN once subtasks have been generated.
     $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setInLdap(FALSE);
@@ -243,15 +243,15 @@ class tasksNotifications extends simplePlugin
    * @return array
    * Note : Return the list of users DN having had an audit listed since the last exec of this task.
    */
-  public function auditDnSincelastActivation (array $dn): array
+  public function auditDnSinceLastActivation (array $dn): array
   {
     global $config;
     $result = [];
 
     if (empty($this->lastActivation)) {
-      $unixlastActivation = strtotime(date("Y-m-d H:i:s"));
+      $unixLastActivation = strtotime(date("Y-m-d H:i:s"));
     } else { // Convert to unix timestamp
-      $unixlastActivation = strtotime($this->lastActivation);
+      $unixLastActivation = strtotime($this->lastActivation);
     }
 
     $ldap = $config->get_ldap_link();
@@ -275,7 +275,7 @@ class tasksNotifications extends simplePlugin
         $date->setTimezone(timezone::getDefaultTimeZone());
         $unixAuditTime = $date->getTimestamp(); // Change object dateTime to unix format.
 
-        if ($unixAuditTime >= $unixlastActivation) {
+        if ($unixAuditTime >= $unixLastActivation) {
           $result[$attrs['fdAuditObject'][0]][] = $attrs['dn'];
         }
       }
@@ -324,7 +324,7 @@ class tasksNotifications extends simplePlugin
     // Set the DN of all audit user DN since the last exec.
     $monitoredMembers = $this->attributesAccess['fdTasksNotificationsMonitoredMembers']->getValue();
     $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setValue(
-      $this->auditDnSincelastActivation(tasks::extractMembersFromGroups($monitoredMembers))
+      $this->auditDnSinceLastActivation(tasks::extractMembersFromGroups($monitoredMembers))
     );
 
     if ($execTasks) {
