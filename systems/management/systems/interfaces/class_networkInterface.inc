@@ -184,7 +184,7 @@ class networkInterface extends simplePlugin
   }
 
   /*!
-   * \brief Generator for IP range
+   * \brief Generator for IP range, yielding only usable host IPs (excludes network and broadcast for IPv4, network for IPv6)
    */
   static public function ipRange (string $cidr)
   {
@@ -216,17 +216,18 @@ class networkInterface extends simplePlugin
 
     if ($size == 4) { // IPv4
       if ($maskBits <= 30) {
-        // Calculate host mask
+        // For subnets /30 and smaller, skip network and broadcast addresses
+        // Calculate host mask (~mask)
         $hostMask = '';
         for ($i = 0; $i < $size; $i++) {
           $hostMask .= chr(~ord($mask[$i]) & 0xFF);
         }
-        // Calculate broadcast
+        // Calculate broadcast: network | hostMask
         $broadcast = '';
         for ($i = 0; $i < $size; $i++) {
           $broadcast .= chr(ord($net[$i]) | ord($hostMask[$i]));
         }
-        // Last usable = broadcast - 1
+        // Last usable IP = broadcast - 1
         $last = static::decrementBinaryIp($broadcast);
         // Start from network + 1
         $long = static::incrementBinaryIp($net);
@@ -235,7 +236,7 @@ class networkInterface extends simplePlugin
           $long = static::incrementBinaryIp($long);
         } while (strcmp($long, $last) <= 0);
       } else {
-        // /31 or /32, include all
+        // For /31 (point-to-point) and /32 (host route), all IPs are usable
         $long = $net;
         do {
           yield inet_ntop($long);
@@ -245,8 +246,10 @@ class networkInterface extends simplePlugin
     } else { // IPv6
       $long = $net;
       if ($maskBits < 128) {
-        $long = static::incrementBinaryIp($long); // skip network
+        // Skip network address for subnets smaller than /128
+        $long = static::incrementBinaryIp($long);
       }
+      // For /128, yield the single IP; for others, yield from network+1 to last
       do {
         yield inet_ntop($long);
         $long = static::incrementBinaryIp($long);
@@ -255,7 +258,7 @@ class networkInterface extends simplePlugin
   }
 
   /*!
-   * \brief Takes an IPv4/IPv6 address in binary format, and increments it by given value
+   * \brief Takes an IPv4/IPv6 address in binary format, and increments it by given value (default 1)
    */
   static protected function incrementBinaryIp (string $addr, int $increment = 1): string
   {
