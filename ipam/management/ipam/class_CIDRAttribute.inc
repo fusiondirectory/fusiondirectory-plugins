@@ -63,7 +63,7 @@ class CIDRAttribute extends StringAttribute
     $fullBytes = intdiv($bits, 8);
     $remainBits = $bits % 8;
     $mask = str_repeat("\xff", $fullBytes);
-  
+
     if ($remainBits) {
       $mask .= chr((0xff << (8 - $remainBits)) & 0xff);
     }
