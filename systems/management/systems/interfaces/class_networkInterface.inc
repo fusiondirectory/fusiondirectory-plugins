@@ -212,12 +212,46 @@ class networkInterface extends simplePlugin
     }
     $mask = str_pad($mask, $size, chr(0));
 
-    $net  = ($net & $mask);
-    $long = ($net & $mask);
-    do {
-      yield inet_ntop($long);
-      $long = static::incrementBinaryIp($long);
-    } while (($long & $mask) == $net);
+    $net = ($net & $mask);
+
+    if ($size == 4) { // IPv4
+      if ($maskBits <= 30) {
+        // Calculate host mask
+        $hostMask = '';
+        for ($i = 0; $i < $size; $i++) {
+          $hostMask .= chr(~ord($mask[$i]) & 0xFF);
+        }
+        // Calculate broadcast
+        $broadcast = '';
+        for ($i = 0; $i < $size; $i++) {
+          $broadcast .= chr(ord($net[$i]) | ord($hostMask[$i]));
+        }
+        // Last usable = broadcast - 1
+        $last = static::decrementBinaryIp($broadcast);
+        // Start from network + 1
+        $long = static::incrementBinaryIp($net);
+        do {
+          yield inet_ntop($long);
+          $long = static::incrementBinaryIp($long);
+        } while (strcmp($long, $last) <= 0);
+      } else {
+        // /31 or /32, include all
+        $long = $net;
+        do {
+          yield inet_ntop($long);
+          $long = static::incrementBinaryIp($long);
+        } while (($long & $mask) == $net);
+      }
+    } else { // IPv6
+      $long = $net;
+      if ($maskBits < 128) {
+        $long = static::incrementBinaryIp($long); // skip network
+      }
+      do {
+        yield inet_ntop($long);
+        $long = static::incrementBinaryIp($long);
+      } while (($long & $mask) == $net);
+    }
   }
 
   /*!
@@ -232,5 +266,22 @@ class networkInterface extends simplePlugin
     }
 
     return $addr;
+  }
+
+  /*!
+   * \brief Takes an IPv4/IPv6 address in binary format, and decrements it by 1
+   */
+  static protected function decrementBinaryIp (string $addr): string
+  {
+    $result = $addr;
+    for ($i = strlen($result) - 1; $i >= 0; --$i) {
+      if (ord($result[$i]) > 0) {
+        $result[$i] = chr(ord($result[$i]) - 1);
+        break;
+      } else {
+        $result[$i] = chr(255);
+      }
+    }
+    return $result;
   }
 }
