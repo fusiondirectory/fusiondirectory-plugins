@@ -88,4 +88,11 @@ class dynamicGroup extends simplePlugin
       ]
     ];
   }
+
+  function resetCopyInfos ()
+  {
+    parent::resetCopyInfos();
+
+    $this->attributesAccess['member']->resetToDefault();
+  }
 }
