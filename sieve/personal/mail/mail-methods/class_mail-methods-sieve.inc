@@ -23,6 +23,11 @@ class mailMethodSieve extends mailMethod
 {
   protected $sieve_handle = NULL;
 
+  static public function serverMatch ($server)
+  {
+    return isset(static::get_server_list()[$server]);
+  }
+
   protected function init ()
   {
     parent::init();
