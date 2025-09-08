@@ -456,22 +456,15 @@ class mailAccount extends simplePlugin
         }
 
         if (!is_integer(strpos($this->gosaMailDeliveryMode, 'C'))) {
-          /* Do not write sieve settings if this account is new and
-             doesn't seem to exist. */
-          if (!$this->initially_was_account && !$this->mailMethod->account_exists()) {
-            @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                   'Skipping sieve settings, the account doesn’t seem to be created already.', '');
-          } else {
-            if (!$this->mailMethod->saveSieveSettings()) {
-              $error = new SimplePluginError(
-                $this,
-                htmlescape(sprintf(
-                             _('Mail error saving sieve settings: %s'),
-                             $this->mailMethod->get_error()
-                           ))
-              );
-              $error->display();
-            }
+          if (!$this->mailMethod->saveSieveSettings()) {
+            $error = new SimplePluginError(
+              $this,
+              htmlescape(sprintf(
+                           _('Mail error saving sieve settings: %s'),
+                           $this->mailMethod->get_error()
+                         ))
+            );
+            $error->display();
           }
         } else {
           if ($this->sieve_management) {
@@ -480,6 +473,7 @@ class mailAccount extends simplePlugin
             $this->sieve_management->save();
           }
         }
+
       }
       $this->mailMethod->disconnect();
     }

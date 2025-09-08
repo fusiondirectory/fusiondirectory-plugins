@@ -436,7 +436,29 @@ class mailMethod
    */
   public function saveSieveSettings ()
   {
+    global $config;
     $this->reset_error();
+
+    // Do not write sieve settings if this account is new and doesn't seem to exist
+    if (!$this->parent->initially_was_account && !$this->account_exists()) {
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+             'Skipping sieve settings, the account doesn’t seem to be created already.', '');
+      return TRUE;
+    }
+
+    // If Sieve plugin is enabled and not already the current mail method, call Sieve save
+    if (isset($config->current['fdSieveEnabled']) && $config->current['fdSieveEnabled']) {
+      if (class_exists('mailMethodSieve') && mailMethodSieve::serverMatch($this->mailServer) && !($this instanceof mailMethodSieve)) {
+        $sieveMethod = mailMethod::getInstance('mailMethodSieve', $this->parent, $this->type);
+        $result = $sieveMethod->saveSieveSettings();
+        $sieveMethod->disconnect();
+        if (!$result) {
+          $this->error = $sieveMethod->get_error();
+          return FALSE;
+        }
+      }
+    }
+
     return TRUE;
   }
 

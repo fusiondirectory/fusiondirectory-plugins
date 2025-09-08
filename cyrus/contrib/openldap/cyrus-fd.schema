@@ -23,7 +23,7 @@ attributetype ( 1.3.6.1.4.1.38414.14.1.3 NAME 'fdCyrusPassword'
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.38414.14.1.4 NAME 'fdCyrusUseSlashes'
-  DESC 'FusionDirectory - Use UNIX style namespaces - sieve server address'
+  DESC 'FusionDirectory - Use UNIX style namespaces in mailbox IDs'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)

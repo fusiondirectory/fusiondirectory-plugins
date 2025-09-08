@@ -1,0 +1,17 @@
+##
+## sieve-fd-conf.schema - Required for sieve plugin backend configuration.
+##
+
+# Attributes
+
+attributetype ( 1.3.6.1.4.1.38414.98.1.1 NAME 'fdSieveEnabled'
+  DESC 'Fusion Directory - Enable Sieve functionality'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+# Object Class
+
+objectclass ( 1.3.6.1.4.1.38414.98.2.1 NAME 'fdSieveConf' SUP top AUXILIARY
+  DESC 'FusionDirectory - Sieve backend plugins Object Class'
+  MAY ( fdSieveEnabled ) )

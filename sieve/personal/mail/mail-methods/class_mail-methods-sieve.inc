@@ -23,8 +23,6 @@ class mailMethodSieve extends mailMethod
 {
   protected $sieve_handle = NULL;
 
-  protected $enableVacationRange = TRUE; // Enable date ranges for vacation
-
   protected function init ()
   {
     parent::init();
@@ -49,9 +47,6 @@ class mailMethodSieve extends mailMethod
       $this->error = 'Invalid connect string';
       return FALSE;
     }
-
-    // Include the sieve library
-    require_once(__DIR__.'/class_sieve.inc');
 
     $this->sieve_handle = new sieve($host, $port, $cfg['admin'], $cfg['password'], $this->getUAttribValue(), $options);
     if (!$this->sieve_handle->sieve_login()) {
@@ -126,7 +121,6 @@ class mailMethodSieve extends mailMethod
 
   protected function generateSieveScript ($vars)
   {
-    // Simple conditional replacement for {if} blocks
     $script = "###FUSIONDIRECTORY\nrequire [\"fileinto\", \"reject\", \"vacation\"];\n\n";
 
     if ($vars['spamfilter'] === 'true') {
@@ -187,6 +181,4 @@ class mailMethodSieve extends mailMethod
 
     return $serverList;
   }
-
-  // Other methods as needed
 }

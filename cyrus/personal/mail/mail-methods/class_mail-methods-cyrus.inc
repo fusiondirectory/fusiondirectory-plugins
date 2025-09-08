@@ -508,12 +508,6 @@ class mailMethodCyrus extends mailMethod
     return TRUE;
   }
 
-  public function saveSieveSettings ()
-  {
-    // Sieve functionality moved to separate sieve plugin
-    return parent::saveSieveSettings();
-  }
-
   static public function get_server_list ()
   {
     global $config;
