@@ -31,8 +31,8 @@ class mailRoutingInfo extends simplePlugin
       'plObjectClass'   => ['inetLocalMailRecipient'],
       'plObjectType'    => ['user'],
       'plDepends'       => ['mailAccount'],
-      'plIcon'          => 'geticon.php?context=applications&icon=mail&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=mail&size=16',
+      'plIcon'          => 'geticon.php?context=applications&icon=migration-mailrouting&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=migration-mailrouting&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
