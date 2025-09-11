@@ -432,14 +432,6 @@ class mailMethod
     return trim($account.$folder.$suffix);
   }
 
-  /*! \brief Saves sieve settings
-   */
-  public function saveSieveSettings ()
-  {
-    $this->reset_error();
-    return TRUE;
-  }
-
   /*! \brief  Creates or Updates the mailAccount represented by this class.
    */
   public function updateMailbox ()
@@ -755,9 +747,6 @@ class mailMethod
         'connect'       => '',
         'admin'         => '',
         'password'      => '',
-        'sieve_server'  => '',
-        'sieve_option'  => '',
-        'sieve_port'    => ''
       ];
     }
 

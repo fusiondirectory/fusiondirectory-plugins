@@ -73,7 +73,7 @@ class MailQuotaAttribute extends UnitIntAttribute
   relevant for mail accounts from/to the LDAP.
 
   It does syntax checking and displays the formulars required.
-  Special handling like sieve or imap actions will be implemented
+  Special handling like imap actions will be implemented
   by the mailMethods.
 
  */
@@ -453,32 +453,6 @@ class mailAccount extends simplePlugin
                        ))
           );
           $error->display();
-        }
-
-        if (!is_integer(strpos($this->gosaMailDeliveryMode, 'C'))) {
-          /* Do not write sieve settings if this account is new and
-             doesn't seem to exist. */
-          if (!$this->initially_was_account && !$this->mailMethod->account_exists()) {
-            @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                   'Skipping sieve settings, the account doesn’t seem to be created already.', '');
-          } else {
-            if (!$this->mailMethod->saveSieveSettings()) {
-              $error = new SimplePluginError(
-                $this,
-                htmlescape(sprintf(
-                             _('Mail error saving sieve settings: %s'),
-                             $this->mailMethod->get_error()
-                           ))
-              );
-              $error->display();
-            }
-          }
-        } else {
-          if ($this->sieve_management) {
-            @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                   'User uses an own sieve script, skipping sieve update.', '');
-            $this->sieve_management->save();
-          }
         }
       }
       $this->mailMethod->disconnect();

@@ -508,123 +508,6 @@ class mailMethodCyrus extends mailMethod
     return TRUE;
   }
 
-  public function saveSieveSettings ()
-  {
-    parent::saveSieveSettings();
-
-    /* Map attribute from parent class
-     */
-    $mail                     = $this->parent->mail;
-    $gosaMailDeliveryMode     = $this->parent->gosaMailDeliveryMode;
-    $gosaMailAlternateAddress = $this->parent->gosaMailAlternateAddress;
-    $gosaVacationMessage      = $this->parent->gosaVacationMessage;
-
-    /* Try to login into sieve
-     */
-    $cfg    = $this->getServerConfig();
-    if ($cfg === FALSE) {
-      return FALSE;
-    }
-    $sieve  = new sieve($cfg["sieve_server"], $cfg["sieve_port"], $cfg["admin"],
-                        $cfg["password"], $this->getUAttribValue(), $cfg["sieve_option"]);
-    if (!$sieve->sieve_login()) {
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $sieve->error_raw, "<b>SIEVE: login failed.</b>");
-      $this->error = $sieve->error_raw;
-      return FALSE;
-    }
-
-    /* Get current sieve script named 'fusiondirectory'.
-        Check if it valid ("###FUSIONDIRECTORY" must be the first string).
-        If it is valid just replace it, if it is NOT valid
-         create a backup of the old
-     */
-    if ($sieve->sieve_listscripts()) {
-      if (in_array('fusiondirectory', $sieve->response)) {
-        $script = "";
-        if (!$sieve->sieve_getscript('fusiondirectory')) {
-          $this->error = sprintf(_('Cannot retrieve SIEVE script: %s'), to_string($sieve->error_raw));
-          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $sieve->error_raw,
-              "<b>SIEVE: Cannot read 'fusiondirectory' sieve script.</b>");
-          return FALSE;
-        }
-
-        $is_valid_script = FALSE;
-        foreach ($sieve->response as $line) {
-          if (empty($line)) {
-            continue;
-          }
-          if (preg_match('/^###FUSIONDIRECTORY/', $line) && strlen($script) == 0) {
-            $is_valid_script = TRUE;
-          }
-          $line   = rtrim($line);
-          $script .= $line;
-        }
-
-        if ($is_valid_script || strlen($script) == 0 || empty($script)) {
-          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "",
-              "<b>SIEVE</b>: Sieve script 'fusiondirectory' was a valid FusionDirectory script and will be replaced.");
-        } else {
-          $new_name = "non_fusiondirectory_".date("Ymd_H-i-s");
-          $sieve->sieve_sendscript($new_name, $script);
-          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $sieve->error_raw,
-              "<b>SIEVE</b>: Non FusionDirectory sieve script. <b>Creating backup of the current sieve script '".$new_name."'.</b>");
-        }
-      }
-    }
-
-
-    /*****
-      Build up new sieve script here.
-     *****/
-
-    /* Only create a new one, if it is not empty */
-    $smarty = get_smarty();
-    if (is_integer(strpos($gosaMailDeliveryMode, "C")) ||
-        is_integer(strpos($gosaMailDeliveryMode, "I")) ||
-        is_integer(strpos($gosaMailDeliveryMode, "V"))) {
-
-      /* Add vacation information */
-      $smarty->assign('vacation', is_integer(strpos($gosaMailDeliveryMode, "V")));
-      if (is_integer(strpos($gosaMailDeliveryMode, "V"))) {
-        /* Sieve wants all destination addresses for the
-           vacation message, so we've to assemble them from
-           mail and mailAlternateAddress */
-        $addrlist = '"'.$mail.'"';
-        foreach ($gosaMailAlternateAddress as $val) {
-          $addrlist .= ", \"$val\"";
-        }
-        $smarty->assign('addrlist', $addrlist);
-        $smarty->assign('vacmsg', addslashes(addslashes($gosaVacationMessage)));
-      }
-
-      /* If no local delivery is wanted, tell the script to discard the mail */
-      $smarty->assign('dropownmail', is_integer(strpos($gosaMailDeliveryMode, "I")));
-
-      $script = $smarty->fetch(get_template_path('sieve_script.tpl', TRUE, dirname(__FILE__)));
-    } else {
-      $script = '';
-    }
-    /****
-      Sieve script build complete
-     ****/
-
-    /* Upload script and make it the default one */
-    if (!$sieve->sieve_sendscript("fusiondirectory", $script)) {
-      $this->error = sprintf(_("Cannot store SIEVE script: %s"), to_string($sieve->error_raw));
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "Error was: ".to_string($sieve->error_raw),
-        "<b>SIEVE: Writing new Sieve script failed!</b>");
-      return FALSE;
-    }
-
-    if (!$sieve->sieve_setactivescript("fusiondirectory")) {
-      $this->error = sprintf(_("Cannot activate SIEVE script: %s"), to_string($sieve->error_raw));
-      return FALSE;
-    }
-
-    $sieve->sieve_logout();
-    return TRUE;
-  }
-
   static public function get_server_list ()
   {
     global $config;
@@ -635,21 +518,16 @@ class mailMethodCyrus extends mailMethod
     $ldap->search('(objectClass=fdCyrusServer)',
                   [
                     'cn','fdCyrusConnect','fdCyrusAdmin','fdCyrusPassword',
-                    'fdCyrusSieveServer','fdCyrusUseSlashes','fdCyrusAutocreateFolders'
+                    'fdCyrusUseSlashes','fdCyrusAutocreateFolders'
                   ]);
     while ($attrs = $ldap->fetch()) {
-      sscanf($attrs['fdCyrusSieveServer'][0], '{%[^{}:]:%d/%[^{}]}', $sieve_server, $sieve_port, $sieve_option);
-
       $serverList[$attrs['cn'][0]] = [
         'server_dn'     => $attrs['dn'],
         'connect'       => $attrs['fdCyrusConnect'][0],
         'admin'         => $attrs['fdCyrusAdmin'][0],
         'password'      => $attrs['fdCyrusPassword'][0],
         'useSlashes'    => ($attrs['fdCyrusUseSlashes'][0] ?? 'FALSE'),
-        'autocreate'    => ($attrs['fdCyrusAutocreateFolders'] ?? []),
-        'sieve_server'  => $sieve_server,
-        'sieve_option'  => $sieve_option,
-        'sieve_port'    => $sieve_port
+        'autocreate'    => ($attrs['fdCyrusAutocreateFolders'] ?? [])
       ];
     }
 
