@@ -73,7 +73,7 @@ class MailQuotaAttribute extends UnitIntAttribute
   relevant for mail accounts from/to the LDAP.
 
   It does syntax checking and displays the formulars required.
-  Special handling like sieve or imap actions will be implemented
+  Special handling like imap actions will be implemented
   by the mailMethods.
 
  */

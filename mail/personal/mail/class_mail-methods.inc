@@ -747,9 +747,6 @@ class mailMethod
         'connect'       => '',
         'admin'         => '',
         'password'      => '',
-        'sieve_server'  => '',
-        'sieve_option'  => '',
-        'sieve_port'    => ''
       ];
     }
 
