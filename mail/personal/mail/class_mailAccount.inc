@@ -454,26 +454,6 @@ class mailAccount extends simplePlugin
           );
           $error->display();
         }
-
-        if (!is_integer(strpos($this->gosaMailDeliveryMode, 'C'))) {
-          if (!$this->mailMethod->saveSieveSettings()) {
-            $error = new SimplePluginError(
-              $this,
-              htmlescape(sprintf(
-                           _('Mail error saving sieve settings: %s'),
-                           $this->mailMethod->get_error()
-                         ))
-            );
-            $error->display();
-          }
-        } else {
-          if ($this->sieve_management) {
-            @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                   'User uses an own sieve script, skipping sieve update.', '');
-            $this->sieve_management->save();
-          }
-        }
-
       }
       $this->mailMethod->disconnect();
     }
