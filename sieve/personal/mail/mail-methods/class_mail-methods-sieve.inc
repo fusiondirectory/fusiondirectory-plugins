@@ -19,6 +19,9 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+require_once 'PEAR.php';
+require_once dirname(__FILE__) . '/Sieve.php';
+
 class mailMethodSieve extends mailMethod
 {
   protected $sieve_handle = NULL;
@@ -53,9 +56,20 @@ class mailMethodSieve extends mailMethod
       return FALSE;
     }
 
-    $this->sieve_handle = new sieve($host, $port, $cfg['admin'], $cfg['password'], $this->getUAttribValue(), $options);
-    if (!$this->sieve_handle->sieve_login()) {
-      $this->error = $this->sieve_handle->error_raw;
+    // Create Net_Sieve instance
+    $this->sieve_handle = new Net_Sieve();
+    
+    // Connect to server
+    $result = $this->sieve_handle->connect($host, $port);
+    if (PEAR::isError($result)) {
+      $this->error = 'Could not connect to Sieve server: ' . $result->getMessage();
+      return FALSE;
+    }
+    
+    // Login using admin credentials and proxy authentication to user if needed
+    $result = $this->sieve_handle->login($cfg['admin'], $cfg['password'], $options, $this->getUAttribValue());
+    if (PEAR::isError($result)) {
+      $this->error = 'Sieve authentication failed: ' . $result->getMessage();
       return FALSE;
     }
 
@@ -67,14 +81,14 @@ class mailMethodSieve extends mailMethod
   {
     parent::disconnect();
     if ($this->sieve_handle) {
-      $this->sieve_handle->sieve_logout();
+      $this->sieve_handle->disconnect();
     }
   }
 
   public function is_connected ()
   {
     $ret = parent::is_connected();
-    return ($ret && $this->sieve_handle && $this->sieve_handle->loggedin);
+    return ($ret && $this->sieve_handle && !PEAR::isError($this->sieve_handle));
   }
 
   public function saveSieveSettings ()
@@ -110,14 +124,10 @@ class mailMethodSieve extends mailMethod
       'dropownmail' => $dropownmail ? 'true' : 'false',
     ]);
 
-    // Upload script
-    if (!$this->sieve_handle->sieve_sendscript("fusiondirectory", $script)) {
-      $this->error = sprintf(_('Cannot store SIEVE script: %s'), $this->sieve_handle->error_raw);
-      return FALSE;
-    }
-
-    if (!$this->sieve_handle->sieve_setactivescript("fusiondirectory")) {
-      $this->error = sprintf(_('Cannot activate SIEVE script: %s'), $this->sieve_handle->error_raw);
+    // Upload script using Net_Sieve
+    $result = $this->sieve_handle->installScript("fusiondirectory", $script, true);
+    if (PEAR::isError($result)) {
+      $this->error = sprintf(_('Cannot store or activate SIEVE script: %s'), $result->getMessage());
       return FALSE;
     }
 
