@@ -57,8 +57,7 @@ class mailMethodSieve extends mailMethod
     }
 
     // Create Net_Sieve instance
-    $this->sieve_handle = new Net_Sieve();
-    
+    $this->sieve_handle = new Net_Sieve();    
     // Connect to server
     $result = $this->sieve_handle->connect($host, $port);
     if (PEAR::isError($result)) {
@@ -125,7 +124,7 @@ class mailMethodSieve extends mailMethod
     ]);
 
     // Upload script using Net_Sieve
-    $result = $this->sieve_handle->installScript("fusiondirectory", $script, true);
+    $result = $this->sieve_handle->installScript("fusiondirectory", $script, TRUE);
     if (PEAR::isError($result)) {
       $this->error = sprintf(_('Cannot store or activate SIEVE script: %s'), $result->getMessage());
       return FALSE;
