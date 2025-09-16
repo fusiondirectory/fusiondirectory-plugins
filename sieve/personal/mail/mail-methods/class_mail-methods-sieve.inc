@@ -57,14 +57,14 @@ class mailMethodSieve extends mailMethod
     }
 
     // Create Net_Sieve instance
-    $this->sieve_handle = new Net_Sieve();    
+    $this->sieve_handle = new Net_Sieve();
     // Connect to server
     $result = $this->sieve_handle->connect($host, $port);
     if (PEAR::isError($result)) {
       $this->error = 'Could not connect to Sieve server: ' . $result->getMessage();
       return FALSE;
     }
-    
+
     // Login using admin credentials and proxy authentication to user if needed
     $result = $this->sieve_handle->login($cfg['admin'], $cfg['password'], $options, $this->getUAttribValue());
     if (PEAR::isError($result)) {
