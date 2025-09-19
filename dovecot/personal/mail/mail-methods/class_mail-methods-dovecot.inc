@@ -26,6 +26,9 @@ class mailMethodDovecot extends mailMethod
   /* Allow modification of the mail server attribute existing mail accounts */
   protected $modifyableServer = FALSE;
 
+  /* Sieve enabled */
+  protected $enableSieve = TRUE;
+
   /* internal */
   protected $imap_handle  = NULL;
   protected $quota_loaded = FALSE;
@@ -171,15 +174,19 @@ class mailMethodDovecot extends mailMethod
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=fdDovecotServer)',
-                  ['cn', 'fdDovecotConnect', 'fdDovecotAdmin', 'fdDovecotPassword', 'fdDovecotArgonautMkdir', 'macAddress']);
+                  ['cn', 'fdDovecotConnect', 'fdDovecotAdmin', 'fdDovecotPassword',
+                  'fdDovecotArgonautMkdir', 'macAddress', 'fdSieveConnect', 'fdSieveAdmin', 'fdSievePassword']);
     while ($attrs = $ldap->fetch()) {
       $serverList[$attrs['cn'][0]] = [
-        'server_dn' => $attrs['dn'],
-        'connect'   => $attrs['fdDovecotConnect'][0],
-        'admin'     => $attrs['fdDovecotAdmin'][0],
-        'password'  => $attrs['fdDovecotPassword'][0],
-        'mkdir'     => (isset($attrs['fdDovecotArgonautMkdir']) ? (strtoupper($attrs['fdDovecotArgonautMkdir'][0]) == 'TRUE') : TRUE),
-        'mac'       => $attrs['macAddress'][0],
+        'server_dn'      => $attrs['dn'],
+        'connect'        => $attrs['fdDovecotConnect'][0],
+        'admin'          => $attrs['fdDovecotAdmin'][0],
+        'password'       => $attrs['fdDovecotPassword'][0],
+        'mkdir'          => (isset($attrs['fdDovecotArgonautMkdir']) ? (strtoupper($attrs['fdDovecotArgonautMkdir'][0]) == 'TRUE') : TRUE),
+        'mac'            => $attrs['macAddress'][0],
+        'sieve_server'   => ($attrs['fdSieveConnect'][0] ?? ''),
+        'sieve_admin'    => ($attrs['fdSieveAdmin'][0] ?? ''),
+        'sieve_password' => ($attrs['fdSievePassword'][0] ?? '')
       ];
     }
 

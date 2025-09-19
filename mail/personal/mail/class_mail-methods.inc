@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2017  FusionDirectory
+  Copyright (C) 2011-2025  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,6 +18,8 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
+
+require_once '/usr/share/php/Net/Sieve.php';
 
 class mailMethod
 {
@@ -75,6 +77,7 @@ class mailMethod
   protected $enableLocalOnly        = TRUE;
   protected $enableForwardOnly      = TRUE;
   protected $enableGroupACLs        = FALSE;
+  protected $enableSieve            = FALSE;
 
   /* Default values */
   protected $quotaValue   = 0;
@@ -432,6 +435,109 @@ class mailMethod
     return trim($account.$folder.$suffix);
   }
 
+  /*! \brief Saves sieve settings
+   */
+  public function saveSieveSettings ()
+  {
+    $this->reset_error();
+
+    // Get configuration from mail-method
+    $cfg = $this->get_server_list()[$this->mailServer];
+
+    // If sieve settings is not set
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "INFO was: <b>SIEVE: Get connection informations</b>");
+    if ( $cfg['sieve_server'] == '' || $cfg['sieve_admin'] == '' || $cfg['sieve_password'] == '') {
+        $this->error = 'Missing sieve configuration';
+        return TRUE;
+    }
+
+    // Parse connect string: {hostname:port/options}
+    if (preg_match('/^\{([^:]+):(\d+)\/([^}]+)\}$/', $cfg['sieve_server'], $matches)) {
+      $host     = $matches[1];
+      $port     = $matches[2];
+      $options  = $matches[3];
+    } else {
+      $this->error = 'Invalid connect string';
+      return FALSE;
+    }
+
+    // Defined boolean for $options
+    if ($options != 'notls') {
+        $options = FALSE;
+    } else {
+        $options = TRUE;
+    }
+
+    // Create Net_Sieve instance
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "INFO was: <b>SIEVE: Create Sieve instance</b>");
+    $sieve = new Net_Sieve($cfg['admin'], $cfg['password'],
+                           $host, $port, '', $this->getUAttribValue(), FALSE, '', $options);
+    if ($sieve->getError()) {
+      $this->error = 'Could not connect and login to Sieve server: ' . $sieve->getError();
+      return FALSE;
+    }
+
+    /* Map attribute from parent class
+     */
+    $mail                     = $this->parent->mail;
+    $gosaMailDeliveryMode     = $this->parent->gosaMailDeliveryMode;
+    $gosaMailAlternateAddress = $this->parent->gosaMailAlternateAddress;
+    $gosaVacationMessage      = $this->parent->gosaVacationMessage;
+
+    /*****
+      Build up new sieve script here.
+     *****/
+
+    /* Only create a new one, if it is not empty */
+    $smarty = get_smarty();
+    if (is_integer(strpos($gosaMailDeliveryMode, "C")) ||
+        is_integer(strpos($gosaMailDeliveryMode, "I")) ||
+        is_integer(strpos($gosaMailDeliveryMode, "V"))) {
+
+      /* Add vacation information */
+      $smarty->assign('vacation', is_integer(strpos($gosaMailDeliveryMode, "V")));
+      if (is_integer(strpos($gosaMailDeliveryMode, "V"))) {
+        /* Sieve wants all destination addresses for the
+           vacation message, so we've to assemble them from
+           mail and mailAlternateAddress */
+        $addrlist = '"'.$mail.'"';
+        foreach ($gosaMailAlternateAddress as $val) {
+          $addrlist .= ", \"$val\"";
+        }
+        $smarty->assign('addrlist', $addrlist);
+        $smarty->assign('vacmsg', addslashes(addslashes($gosaVacationMessage)));
+      }
+
+      /* If no local delivery is wanted, tell the script to discard the mail */
+      $smarty->assign('dropownmail', is_integer(strpos($gosaMailDeliveryMode, "I")));
+
+      $script = $smarty->fetch(get_template_path('mail-methods/sieve_script.tpl', TRUE, dirname(__FILE__)));
+    } else {
+      $script = '';
+    }
+    /****
+      Sieve script build complete
+     ****/
+
+    /* Upload script and make it the default one */
+    if (!$sieve->installScript("fusiondirectory", $script, TRUE)) {
+      $this->error = sprintf(_("Cannot store SIEVE script and active"));
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "Error was: <b>SIEVE: Writing new Sieve script and active failed!</b>");
+      return FALSE;
+    } else {
+      logging::log('security', 'sieve', $this->getUAttribValue(), [], 'Installed a sieve script.');
+    }
+
+    // Disconnect sieve
+    $sieve->disconnect();
+    if ($sieve->getError()) {
+      $this->error = 'Could not disconnect from Sieve server: ' . $sieve->getError();
+      return FALSE;
+    }
+
+    return TRUE;
+  }
+
   /*! \brief  Creates or Updates the mailAccount represented by this class.
    */
   public function updateMailbox ()
@@ -547,6 +653,13 @@ class mailMethod
   public function groupAclsEnabled (): bool
   {
     return $this->enableGroupACLs;
+  }
+
+  /*! \brief  Returns whether sieve is supported for mail-method
+   */
+  public function sieveEnabled (): bool
+  {
+    return $this->enableSieve;
   }
 
   /*! \brief  Returns whether forcing to only send/recieve local mail is possible
@@ -743,10 +856,13 @@ class mailMethod
     $ldap->search('(objectClass=fdImapServer)', ['cn']);
     while ($attrs = $ldap->fetch()) {
       $serverList[$attrs['cn'][0]] = [
-        'server_dn'     => $attrs['dn'],
-        'connect'       => '',
-        'admin'         => '',
-        'password'      => '',
+        'server_dn'      => $attrs['dn'],
+        'connect'        => '',
+        'admin'          => '',
+        'password'       => '',
+        'sieve_server'   => '',
+        'sieve_admin'    => '',
+        'sieve_password' => ''
       ];
     }
 
