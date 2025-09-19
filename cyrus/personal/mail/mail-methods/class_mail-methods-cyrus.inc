@@ -34,6 +34,9 @@ class mailMethodCyrus extends mailMethod
   protected $enableVacationRange    = FALSE;
   protected $enableGroupACLs        = TRUE;
 
+  /* Sieve enabled */
+  protected $enableSieve = TRUE;
+
   protected function init ()
   {
     $cfg = $this->getServerConfig();
@@ -518,16 +521,20 @@ class mailMethodCyrus extends mailMethod
     $ldap->search('(objectClass=fdCyrusServer)',
                   [
                     'cn','fdCyrusConnect','fdCyrusAdmin','fdCyrusPassword',
-                    'fdCyrusUseSlashes','fdCyrusAutocreateFolders'
+                    'fdCyrusUseSlashes','fdCyrusAutocreateFolders',
+                    'fdSieveConnect', 'fdSieveAdmin', 'fdSievePassword'
                   ]);
     while ($attrs = $ldap->fetch()) {
       $serverList[$attrs['cn'][0]] = [
-        'server_dn'     => $attrs['dn'],
-        'connect'       => $attrs['fdCyrusConnect'][0],
-        'admin'         => $attrs['fdCyrusAdmin'][0],
-        'password'      => $attrs['fdCyrusPassword'][0],
-        'useSlashes'    => ($attrs['fdCyrusUseSlashes'][0] ?? 'FALSE'),
-        'autocreate'    => ($attrs['fdCyrusAutocreateFolders'] ?? [])
+        'server_dn'      => $attrs['dn'],
+        'connect'        => $attrs['fdCyrusConnect'][0],
+        'admin'          => $attrs['fdCyrusAdmin'][0],
+        'password'       => $attrs['fdCyrusPassword'][0],
+        'useSlashes'     => ($attrs['fdCyrusUseSlashes'][0] ?? 'FALSE'),
+        'autocreate'     => ($attrs['fdCyrusAutocreateFolders'] ?? []),
+        'sieve_server'   => ($attrs['fdSieveConnect'][0] ?? ''),
+        'sieve_admin'    => ($attrs['fdSieveAdmin'][0] ?? ''),
+        'sieve_password' => ($attrs['fdSievePassword'][0] ?? '')
       ];
     }
 
