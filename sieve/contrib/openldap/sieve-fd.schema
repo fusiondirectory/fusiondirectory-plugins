@@ -25,4 +25,4 @@ attributetype ( 1.3.6.1.4.1.38414.97.1.3 NAME 'fdSievePassword'
 # Objectclasses
 objectclass (1.3.6.1.4.1.38414.97.2.1 NAME 'fdSieveServer' SUP top AUXILIARY
   DESC 'FusionDirectory - Sieve server description'
-  MUST ( cn $ fdSieveConnect $ fdSieveAdmin $ fdSievePassword )
+  MUST ( cn $ fdSieveConnect $ fdSieveAdmin $ fdSievePassword ))
