@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ArgonautSlaveZonesAttribute extends OrderedArrayAttribute
+class DnsSlaveZonesAttribute extends OrderedArrayAttribute
 {
   function __construct (string $label, string $description, string $ldapName, bool $order = TRUE, array $values = [], bool $edit_enabled = FALSE, string $acl = '')
   {
@@ -33,15 +33,15 @@ class ArgonautSlaveZonesAttribute extends OrderedArrayAttribute
         [
           new $zoneAttributeClass(
             _('zone'), _('DNS zone this server should be declared as slave of'),
-            'Ldap2zoneSlaveZone', TRUE
+            'DNSZoneSlaveZone', TRUE
           ),
           new StringAttribute(
             _('master'), _('Master IP(s) for this zone'),
-            'Ldap2zoneSlaveMaster', TRUE
+            'DNSZoneSlaveMaster', TRUE
           ),
           new BooleanAttribute(
             _('reverses'), _('This server should be slave of reverses zones as well'),
-            'Ldap2zoneSlaveReverses', TRUE,
+            'DNSZoneSlaveReverses', TRUE,
             TRUE, '',
             'reverse', 'noreverse'
           )
@@ -68,7 +68,7 @@ class ArgonautSlaveZonesAttribute extends OrderedArrayAttribute
       $attributes = $this->attribute->attributes;
       $attributes[0] = new SelectAttribute(
         _('zone'), _('DNS zone this server should be declared as slave of'),
-        'Ldap2zoneSlaveZone', TRUE,
+        'DNSZoneSlaveZone', TRUE,
         $zones
       );
       $this->attribute->setAttributes($attributes);

@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautDNSConfig extends simpleService
+class serviceDNS extends simpleService
 {
   protected static $showActions = FALSE;
 
@@ -26,14 +26,14 @@ class argonautDNSConfig extends simpleService
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('Argonaut DNS settings'),
-      'plDescription'   => _('Argonaut DNS settings').' ('._('Services').')',
-      'plIcon'          => 'geticon.php?context=applications&icon=argonaut-dns&size=16',
-      'plObjectClass'   => ['argonautDNSConfig'],
+      'plShortName'     => _('DNS settings'),
+      'plDescription'   => _('FusionDirectory Orchestrator DNS settings').' ('._('Services').')',
+      'plIcon'          => 'geticon.php?context=applications&icon=dns&size=16',
+      'plObjectClass'   => ['fdDNSConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'   => [
-        'argonautLdap2zoneSlaveZones' => ['dnsZone','zoneName','(argonautLdap2zoneSlaveZones=%oldvalue%|*)']
+        'fdDNSZoneSlaveZones' => ['dnsZone','zoneName','(fdDNSZoneSlaveZones=%oldvalue%|*)']
       ],
     ];
   }
@@ -46,22 +46,22 @@ class argonautDNSConfig extends simpleService
   {
     return  [
       'main' => [
-        'name'  => _('Ldap2zone global settings'),
+        'name'  => _('DNS global settings'),
         'attrs' => [
           new StringAttribute(
             _('Bind directory'), _('The directory in which conf file must be created'),
-            'argonautLdap2zoneBindDir', TRUE,
+            'fdDNSZoneBindDir', TRUE,
             '/etc/bind'
           ),
           new StringAttribute(
             _('Bind cache directory'), _('The directory in which zone files must be created'),
-            'argonautLdap2zoneBindCacheDir', TRUE,
+            'fdDNSZoneBindCacheDir', TRUE,
             '/var/cache/bind'
           ),
           new IntAttribute(
             _('TTL'),
             _('Time to live'),
-            'argonautLdap2zoneTTL',
+            'fdDNSZoneTTL',
             FALSE,
             FALSE,
             FALSE,
@@ -70,50 +70,50 @@ class argonautDNSConfig extends simpleService
           new StringAttribute(
             _('rndc path'),
             _('path to rndc binary'),
-            'argonautLdap2zoneRndc',
+            'fdDNSZoneRndc',
             FALSE,
             '/usr/sbin/rndc'
           ),
           new StringAttribute(
-            _('Search base'), _('LDAP base in which ldap2zone should search. Only usefull if you got several nodes for the same zone.'),
-            'argonautLdap2zoneSearchBase', FALSE
+            _('Search base'), _('LDAP base where the search should be done. Only usefull if you got several nodes for the same zone.'),
+            'fdDNSZoneSearchBase', FALSE
           ),
         ]
       ],
       'master' => [
-        'name'  => _('Ldap2zone master settings'),
+        'name'  => _('DNS master settings'),
         'attrs' => [
           new BooleanAttribute(
             _('Ignore reverse zone'), _('Do not write reverse zone'),
-            'argonautLdap2zoneNoReverse', FALSE
+            'fdDNSZoneNoReverse', FALSE
           ),
           new SelectAttribute(
             _('Notify'), '',
-            'argonautLdap2zoneNotify', FALSE,
+            'fdDNSZoneNotify', FALSE,
             ['yes','no','explicit']
           ),
           new StringAttribute(
             _('Allow update'), _('Allow update (semicolon separated and ended)'),
-            'argonautLdap2zoneAllowUpdate', FALSE
+            'fdDNSZoneAllowUpdate', FALSE
           ),
           new StringAttribute(
             _('Allow transfer'), _('Allow transfer (semicolon separated and ended)'),
-            'argonautLdap2zoneAllowTransfer', FALSE
+            'fdDNSZoneAllowTransfer', FALSE
           ),
           new SelectAttribute(
             _('Check names'), _('Cause any host name for the zone to be checked for compliance with RFC 952 and RFC 1123 and take the defined action'),
-            'argonautLdap2zoneCheckNames', FALSE,
+            'fdDNSZoneCheckNames', FALSE,
             ['','warn','fail','ignore'], ''
           ),
         ]
       ],
       'slave' => [
-        'name'  => _('Ldap2zone slave settings'),
+        'name'  => _('DNS slave settings'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new ArgonautSlaveZonesAttribute(
+          new DnsSlaveZonesAttribute(
             _('DNS slaves'), _('Manage DNS Slaves'),
-            'argonautLdap2zoneSlaveZones',
+            'fdDNSZoneSlaveZones',
             FALSE,
             [],
             TRUE
