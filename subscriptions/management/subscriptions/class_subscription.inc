@@ -95,11 +95,11 @@ class subscription extends simplePlugin
         'attrs' => [
           new SelectAttribute(
             _('Apt repository'), _('Apt repository'),
-            'fdSubscriptionAptRepository', TRUE
+            'fdSubscriptionAptRepository', FALSE
           ),
           new SelectAttribute(
             _('RPM distribution'), _('RPM distribution'),
-            'fdSubscriptionRpmRepository', TRUE
+            'fdSubscriptionRpmRepository', FALSE
           ),
         ]
       ],
