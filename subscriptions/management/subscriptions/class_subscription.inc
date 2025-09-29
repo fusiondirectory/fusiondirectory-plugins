@@ -24,8 +24,8 @@ class subscription extends simplePlugin
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Subscription'),
-      'plDescription' => _('Subscription'),
+      'plShortName'   => _('Licenses'),
+      'plDescription' => _('Licenses Management'),
       'plObjectClass' => ['fdSubscription'],
       'plObjectType'  => ['subscription' => [
         'name'        => _('Subscription'),
@@ -45,13 +45,13 @@ class subscription extends simplePlugin
         'name'  => _('Information'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('subscriptionRDN')),
-          new HostNameAttribute(_('Name'), _('Name to identify this subscription'), 'cn', TRUE),
+          new HostNameAttribute(_('Name'), _('Name to identify this license'), 'cn', TRUE),
           new TextAreaAttribute(
-            _('Description'), _('Description of this subscription'),
+            _('Description'), _('Description of this license'),
             'description', FALSE
           ),
           new SelectAttribute(
-            _('Type'), _('Subscription type'),
+            _('Type'), _('License type'),
             'fdSubscriptionType', TRUE
           ),
           new StringAttribute(
@@ -64,11 +64,11 @@ class subscription extends simplePlugin
         'name'  => _('Login'),
         'attrs' => [
           new UidAttribute(
-            _('Login'), _('Login for this subscription'),
+            _('Login'), _('Login for this license'),
             'uid', TRUE
           ),
           new PasswordAttribute(
-            _('Password'), _('Password'),
+            _('Password'), _('Password for this license'),
             'userPassword', TRUE
           ),
         ]
@@ -77,15 +77,15 @@ class subscription extends simplePlugin
         'name'  => _('Status'),
         'attrs' => [
           new BooleanAttribute(
-            _('Active'), _('Whether this subscription is active'),
+            _('Active'), _('Whether this license is active'),
             'fdSubscriptionActive', FALSE
           ),
           new GeneralizedTimeDateAttribute(
-            _('Start date'), _('Start date of this subscription'),
+            _('Start date'), _('Start date of this license'),
             'fdSubscriptionStartDate', TRUE
           ),
           new GeneralizedTimeDateAttribute(
-            _('End date'), _('End date of this subscription'),
+            _('End date'), _('End date of this license'),
             'fdSubscriptionEndDate', TRUE
           ),
         ]
@@ -107,7 +107,7 @@ class subscription extends simplePlugin
         'name'  => _('Export'),
         'attrs' => [
           new ButtonAttribute(
-            _('Subscription file'), _('Generate the subscription file to send to the client'),
+            _('License file'), _('Generate the license file to send to the client'),
             'generateSubscriptionFile', _('Generate')
           ),
           new ButtonAttribute(

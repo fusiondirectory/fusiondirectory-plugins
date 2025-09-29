@@ -24,8 +24,8 @@ class subscriptionsConfig extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('Subscriptions'),
-      'plDescription'   => _('FusionDirectory subscriptions plugin configuration'),
+      'plShortName'     => _('Licenses'),
+      'plDescription'   => _('FusionDirectory Licenses plugin configuration'),
       'plObjectClass'   => ['fdSubscriptionsPluginConf'],
       'plObjectType'    => ['configuration'],
       'plIcon'        => 'geticon.php?context=applications&icon=subscriptions&size=48',
@@ -38,21 +38,21 @@ class subscriptionsConfig extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Subscriptions'),
+        'name'  => _('Licenses'),
         'class' => ['fullwidth'],
         'attrs' => [
           new StringAttribute(
-            _('Subscription RDN'), _('Branch in which subscriptions will be stored'),
+            _('Licenses RDN'), _('Branch in which licenses will be stored'),
             'fdSubscriptionRDN', TRUE,
             'ou=subscriptions'
           ),
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
-              _('Subscription types and their labels'),
+              _('Licenses types and their labels'),
               'fdSubscriptionTypes',
               [
                 new StringAttribute(
-                  _('Type'), _('Subscription type'),
+                  _('Type'), _('Licenses type'),
                   'fdSubscriptionTypes_type', TRUE
                 ),
                 new StringAttribute(
@@ -62,7 +62,7 @@ class subscriptionsConfig extends simplePlugin
               ],
               ';',
                   '',
-                  _('Subscription types')
+                  _('Licenses types')
             ),
             FALSE,
             [],
