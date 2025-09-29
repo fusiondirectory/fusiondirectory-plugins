@@ -37,9 +37,9 @@ class subscriptionsManagement extends management
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Subscriptions'),
-      'plTitle'       => _('Subscription management'),
-      'plDescription' => _('Manage subscriptions'),
+      'plShortName'   => _('Licenses'),
+      'plTitle'       => _('Licenses management'),
+      'plDescription' => _('Manage Licenses'),
       'plIcon'        => 'geticon.php?context=applications&icon=subscription&size=48',
       'plSection'     => 'conf',
       'plManages'     => ['subscription'],
