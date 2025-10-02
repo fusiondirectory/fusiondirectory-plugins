@@ -75,14 +75,15 @@ class dynamicGroup extends simplePlugin
       'member URL' => [
         'name'  => _('member URL'),
         'attrs' => [
-          new SetAttribute(
+          new OrderedArrayAttribute(
             new StringAttribute(
               _('member URL'), _('URL of member of this group'),
               'memberURL', FALSE,
               '', '',
               '/^ldap:\/\/\/[\w _=,-]+\?[\w _=,-]*\?\w+\?.+$/',
               'ldap:///BASE_DN??SCOPE?FILTER'
-            )
+            ),
+            FALSE, [], TRUE
           )
         ]
       ]
