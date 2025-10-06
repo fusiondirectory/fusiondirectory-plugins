@@ -28,7 +28,7 @@ class publicFormManagement extends management
       'plTitle'       => _('Public forms management'),
       'plDescription' => _('Manage public forms'),
       'plIcon'        => 'geticon.php?context=types&icon=publicform&size=48',
-      'plSection'     => 'accounts',
+      'plSection'     => 'workflow',
       'plManages'     => ['publicForm'],
     ];
   }
