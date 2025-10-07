@@ -40,7 +40,7 @@ class aliasManagement extends management
       'plTitle'       => _('Alias management'),
       'plDescription' => _('Manage aliases'),
       'plIcon'        => 'geticon.php?context=applications&icon=alias&size=48',
-      'plSection'     => 'accounts',
+      'plSection'     => ['accounts' => ['name' => _('Users and groups'), 'priority' => 0]],
       'plPriority'    => 26,
       'plCategory'    => ['alias' => ['description'  => _('Mail aliases'),
                                                 'objectClass'  => ['mailAliasRedirection','mailAliasDistribution']]],

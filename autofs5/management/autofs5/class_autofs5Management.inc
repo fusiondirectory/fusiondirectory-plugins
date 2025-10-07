@@ -28,7 +28,7 @@ class autofs5Management extends management
       'plTitle'       => _('Auto fs management'),
       'plDescription' => _('Manage autofs maps'),
       'plIcon'        => 'geticon.php?context=applications&icon=autofs&size=48',
-      'plSection'     => 'systems',
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],
       'plPriority'    => 5,
       'plManages'     => ['automountMap'],
     ];

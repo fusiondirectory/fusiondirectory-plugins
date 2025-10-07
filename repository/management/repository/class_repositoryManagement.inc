@@ -28,7 +28,7 @@ class repositoryManagement extends management
       'plTitle'       => _('Repositories management'),
       'plDescription' => _('Manage repositories'),
       'plIcon'        => 'geticon.php?context=applications&icon=repository&size=48',
-      'plSection'     => 'systems',
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],
       'plPriority'    => 22,
       'plCategory'    => ['repository' => [
         'description'  => _('Repository'),

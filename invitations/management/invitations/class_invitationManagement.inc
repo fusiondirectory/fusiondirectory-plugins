@@ -28,7 +28,7 @@ class invitationManagement extends management
       'plTitle'       => _('Invitations management'),
       'plDescription' => _('Manage invitations'),
       'plIcon'        => 'geticon.php?context=types&icon=invitation&size=48',
-      'plSection'     => 'workflow',
+      'plSection'       => ['workflow' => ['name' => _('Workflow'), 'priority' => 2]],
       'plManages'     => ['invitation'],
     ];
   }

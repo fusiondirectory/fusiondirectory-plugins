@@ -41,7 +41,7 @@ class subscriptionsManagement extends management
       'plTitle'       => _('Licenses management'),
       'plDescription' => _('Manage Licenses'),
       'plIcon'        => 'geticon.php?context=applications&icon=subscription&size=48',
-      'plSection'     => 'conf',
+      'plSection'       => ['conf' => ['name' => _('Configuration'), 'priority' => 9]],
       'plManages'     => ['subscription'],
 
       'plProvidedAcls' => []

@@ -28,7 +28,7 @@ class sogoManagement extends management
       'plTitle'       => _('SOGo management'),
       'plDescription' => _('Manage SOGo resources'),
       'plIcon'        => 'geticon.php?context=applications&icon=sogo&size=48',
-      'plSection'     => 'systems',
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],
       'plPriority'    => 50,
       'plCategory'    => ['sogo' => ['description'  => _('SOGo'),
                                               'objectClass'  => ['sogoResource']]],

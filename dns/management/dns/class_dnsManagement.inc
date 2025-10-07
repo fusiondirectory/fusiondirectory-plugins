@@ -37,7 +37,7 @@ class dnsManagement extends management
       'plTitle'       => _('DNS Management'),
       'plDescription' => _('Manage DNS zones and views'),
       'plIcon'        => 'geticon.php?context=applications&icon=dns&size=48',
-      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 3]],
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],
       'plPriority'    => 1,
       'plManages'     => ['dnsZone', 'dnsView', 'dnsAcl'],
     ];

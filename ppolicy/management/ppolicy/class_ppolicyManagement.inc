@@ -29,7 +29,7 @@ class ppolicyManagement extends management
       'plTitle'       => _('Password policies management'),
       'plDescription' => _('Manage password policies'),
       'plIcon'        => 'geticon.php?context=applications&icon=ppolicy&size=48',
-      'plSection'     => ['security' => ['name' => _('Security'), 'priority' => 8]],
+      'plSection'     => ['security' => ['name' => _('Security'), 'priority' => 4]],
       'plPriority'    => 57,
       'plManages'     => ['ppolicy'],
     ];
