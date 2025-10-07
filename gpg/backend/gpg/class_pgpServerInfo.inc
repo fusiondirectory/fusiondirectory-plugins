@@ -26,7 +26,7 @@ class pgpServerInfo extends simplePlugin
     return [
       'plShortName'   => _('GPG server info'),
       'plDescription' => _('GPG server info'),
-      'plSection'     => 'conf',
+      'plSection'       => ['conf' => ['name' => _('Configuration'), 'priority' => 9]],
       'plPriority'    => 5,
       'plIcon'        => 'geticon.php?context=applications&icon=gpg&size=48',
       'plObjectClass' => ['pgpServerInfo'],

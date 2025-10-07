@@ -28,7 +28,7 @@ class ipamManagement extends management
       'plTitle'       => _('IPAM management'),
       'plDescription' => _('Manage VLANs and subnets'),
       'plIcon'        => 'geticon.php?context=applications&icon=ipam&size=48',
-      'plSection'     => 'systems',
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],
       'plPriority'    => 55,
       'plManages'     => ['ipamSubnet', 'ipamVlan'],
     ];

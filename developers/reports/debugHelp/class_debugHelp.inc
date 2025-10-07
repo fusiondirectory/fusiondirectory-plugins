@@ -26,7 +26,7 @@ class debugHelp extends simplePlugin
     return [
       'plShortName'   => _('Debug help'),
       'plDescription' => _('Debug help tools'),
-      'plSection' => ['reporting' => ['name' => _('Reporting'), 'priority' => 5]],
+      'plSection' => ['reporting' => ['name' => _('Reporting'), 'priority' => 7]],
       'plPriority'    => 1,
       'plIcon'        => 'geticon.php?context=categories&icon=applications-development&size=48',
       'plObjectType'  => ['debug' => [
