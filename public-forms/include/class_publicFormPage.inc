@@ -126,6 +126,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormCreationBase'      => 1,
           'fdPublicFormTosUrl'            => 1,
           'fdPublicFormCaptcha'           => 1,
+          'fdPublicFormDefaultLocked'     => 1,
           'fdPublicFormAlteredAttributes' => '*',
         ],
         $this->invitation['fdInvitationFormDN'],
@@ -148,6 +149,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormCreationBase'      => 1,
           'fdPublicFormTosUrl'            => 1,
           'fdPublicFormCaptcha'           => 1,
+          'fdPublicFormDefaultLocked'     => 1,
           'fdPublicFormAlteredAttributes' => '*',
         ],
         NULL,
@@ -270,6 +272,17 @@ class publicFormPage extends standAlonePage
     $userTabObject->getBaseObject()->base = $base;
     // Try to save the object
     $errors = $userTabObject->save();
+
+    // Lock the user after creation if fdPublicFormDefaultLocked is ticked
+    if (isset($this->form['fdPublicFormDefaultLocked']) && ($this->form['fdPublicFormDefaultLocked'] == 'TRUE')) {
+      $o = new userManagement();
+      $o->lockUsers([
+        'targets'   => [$userTabObject->dn],
+        'action'    => 'lockUsers',
+        'subaction' => 'lock'
+      ]);
+    }
+
     if (empty($errors)) {
       $this->done = TRUE;
       if (isset($this->registration)) {

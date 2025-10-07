@@ -88,6 +88,11 @@ class publicForm extends simplePlugin
             'fdPublicFormTosUrl', FALSE
           ),
           new BooleanAttribute(
+            _('Locked by default'), _('Lock the created user by default'),
+            'fdPublicFormDefaultLocked', FALSE,
+            FALSE
+          ),
+          new BooleanAttribute(
             _('Captcha'), _('Add a captcha to the form'),
             'fdPublicFormCaptcha', FALSE,
             FALSE
