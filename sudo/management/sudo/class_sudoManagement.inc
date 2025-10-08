@@ -29,7 +29,7 @@ class sudoManagement extends management
       'plTitle'       => _('Sudo management'),
       'plDescription' => _('Manage sudo roles'),
       'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
-      'plSection'     => ['accounts' => ['name' => _('Users and groups'), 'priority' => 0]],
+      'plSection'     => ['security' => ['name' => _('Security'), 'priority' => 4]],
       'plPriority'    => 45,
       'plManages'     => ['sudo'],
     ];
