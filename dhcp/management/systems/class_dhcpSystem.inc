@@ -163,7 +163,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     global $config, $ui;
 
     if ($this->plugin->is_template) {
-      return;
+      return [];
     }
     $values   = $this->getValue();
     $iValues  = $this->getInitialValue();
@@ -405,10 +405,10 @@ class dhcpSystem extends simplePlugin
       $ldap,
       $baseObject->attributeHaveChanged('cn'),
       $baseObject->attributeHaveChanged('ipHostNumber'),
-      $baseObject->attributeInitialValue('ipHostNumber'),
+      $baseObject->attributeInitialValue('ipHostNumber') == '' ? [] : $baseObject->attributeInitialValue('ipHostNumber'),
       $baseObject->attributeValue('ipHostNumber'),
       $baseObject->attributeHaveChanged('macAddress'),
-      $baseObject->attributeInitialValue('macAddress'),
+      $baseObject->attributeInitialValue('macAddress') == '' ? [] : $baseObject->attributeInitialValue('macAddress'),
       $baseObject->attributeValue('macAddress')
     );
   }
