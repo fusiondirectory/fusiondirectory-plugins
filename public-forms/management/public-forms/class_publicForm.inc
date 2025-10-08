@@ -78,10 +78,10 @@ class publicForm extends simplePlugin
             'fdPublicFormPrivate', FALSE,
             FALSE
           ),
-          new StringAttribute(
+          new BaseSelectorAttribute(get_ou($config->current['BASE']),
             _('Creation base'), _('Base in which objects will get created'),
             'fdPublicFormCreationBase', TRUE,
-            $config->current['BASE']
+            $config->current['BASE'], ''
           ),
           new URLAttribute(
             _('TOS URL'), _('Terms of service URL. If filled, this adds a mandatory checkbox to agree to the terms at this URL.'),
