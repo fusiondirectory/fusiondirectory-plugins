@@ -28,7 +28,7 @@ class applicationManagement extends management
       'plTitle'       => _('Applications management'),
       'plDescription' => _('Manage applications and web applications'),
       'plIcon'        => 'geticon.php?context=categories&icon=applications-other&size=48',
-      'plSection'     => ['accounts' => ['name' => _('Users and groups'), 'priority' => 0]],
+      'plSection'     => ['security' => ['name' => _('Security'), 'priority' => 4]],
       'plPriority'    => 60,
       'plManages'     => ['application', 'webApplication'],
 
