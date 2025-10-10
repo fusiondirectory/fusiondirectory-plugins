@@ -25,8 +25,8 @@ class ejbcaCertificates extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('EJBCA'),
-      'plDescription'   => _('Assign EJBCA certificates to a user'),
+      'plShortName'     => _('Ejbca'),
+      'plDescription'   => _('Assign Ejbca certificates to a user'),
       'plFilter'        => '(objectClass=fdEjbcaCertificates)',
       'plSelfModify'    => TRUE,
       'plObjectClass'   => ['fdEjbcaCertificates'],
@@ -46,7 +46,7 @@ class ejbcaCertificates extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('EJBCA certs'),
+        'name'  => _('Ejbca certs'),
         'class' => ['fullwidth'],
         'attrs' => [
           new EjbcaCertsAttribute(

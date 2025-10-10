@@ -23,12 +23,12 @@ class simpleSecurityObject extends simplePlugin
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Simple security object'),
-      'plDescription' => _('Simple security object'),
+      'plShortName'   => _('Simple Security Object'),
+      'plDescription' => _('Manage simple security objects'),
       'plObjectClass' => ['organizationalRole', 'simpleSecurityObject'],
       'plFilter'      => '(objectClass=simpleSecurityObject)',
       'plObjectType'  => ['simpleSecurityObject' => [
-        'name'        => _('Simple security object'),
+        'name'        => _('Simple Security Object'),
         'aclCategory' => 'dsa',
         'ou'          => get_ou('dsaRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dsa&size=16',

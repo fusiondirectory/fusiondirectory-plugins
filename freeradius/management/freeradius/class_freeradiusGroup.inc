@@ -29,7 +29,7 @@ class freeradiusGroup extends simplePlugin
   {
     return [
       'plShortName'     => _('FreeRADIUS'),
-      'plDescription'   => _('Manage FreeRadius groups'),
+      'plDescription'   => _('Manage FreeRADIUS groups'),
       'plIcon'          => 'geticon.php?context=applications&icon=freeradius&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=freeradius&size=16',
       'plObjectClass'   => ['radiusprofile'],
