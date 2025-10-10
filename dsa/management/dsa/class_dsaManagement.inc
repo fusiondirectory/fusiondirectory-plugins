@@ -24,7 +24,6 @@ class dsaManagement extends management
   {
     return [
       'plShortName'   => _('DSA'),
-      'plTitle'       => _('DSA management'),
       'plDescription' => _('Manage simple security objects'),
       'plIcon'        => 'geticon.php?context=applications&icon=dsa&size=48',
       'plSection'     => ['security' => ['name' => _('Security'), 'priority' => 4]],

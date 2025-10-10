@@ -36,9 +36,8 @@ class aliasManagement extends management
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Aliases'),
-      'plTitle'       => _('Alias management'),
-      'plDescription' => _('Manage aliases'),
+      'plShortName'   => _('Mail Redirections'),
+      'plDescription' => _('Manage mail redirections'),
       'plIcon'        => 'geticon.php?context=applications&icon=alias&size=48',
       'plSection'     => ['accounts' => ['name' => _('Users and groups'), 'priority' => 0]],
       'plPriority'    => 26,

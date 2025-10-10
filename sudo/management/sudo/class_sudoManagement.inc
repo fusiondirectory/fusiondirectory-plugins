@@ -26,7 +26,6 @@ class sudoManagement extends management
   {
     return [
       'plShortName'   => _('Sudo'),
-      'plTitle'       => _('Sudo management'),
       'plDescription' => _('Manage sudo roles'),
       'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
       'plSection'     => ['security' => ['name' => _('Security'), 'priority' => 4]],

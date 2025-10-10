@@ -36,8 +36,7 @@ class ejbcaManagement extends management
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('EJBCA'),
-      'plTitle'       => _('EJBCA certificates management'),
+      'plShortName'   => _('Ejbca'),
       'plDescription' => _('Manage EJBCA certificates'),
       'plIcon'        => 'geticon.php?context=applications&icon=ejbca&size=48',
       'plSection'     => ['Dashboard' => ['name' => _('Dashboard'), 'priority' => 3]],

@@ -35,8 +35,8 @@ class supannStructuresManagement extends management
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('SupAnn structures'),
-      'plDescription' => _('SupAnn structures management'),
+      'plShortName'   => _('SupAnn Structures'),
+      'plDescription' => _('Manage SupAnn structures'),
       'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
       'plSection'     => ['supann' => ['name' => _('Supann'), 'priority' => 1]],
       'plPriority'    => 40,

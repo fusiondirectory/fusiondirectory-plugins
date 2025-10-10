@@ -24,8 +24,7 @@ class autofs5Management extends management
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Auto fs'),
-      'plTitle'       => _('Auto fs management'),
+      'plShortName'   => _('Autofs'),
       'plDescription' => _('Manage autofs maps'),
       'plIcon'        => 'geticon.php?context=applications&icon=autofs&size=48',
       'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],

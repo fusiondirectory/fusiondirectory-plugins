@@ -36,9 +36,9 @@ class archiveManagement extends management
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Archived objects'),
-      'plTitle'       => _('Archived objects'),
-      'plDescription' => _('Browse archived objects'),
+      'plShortName'   => _('Archive'),
+      'plTitle'       => _('Archive Objects'),
+      'plDescription' => _('Manage archived objects'),
       'plIcon'        => 'geticon.php?context=mimetypes&icon=application-x-archive&size=48',
       'plSection' => ['reporting' => ['name' => _('Reporting'), 'priority' => 7]],
       'plPriority'    => 4,

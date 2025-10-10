@@ -24,9 +24,8 @@ class ipamManagement extends management
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('IPAM'),
-      'plTitle'       => _('IPAM management'),
-      'plDescription' => _('Manage VLANs and subnets'),
+      'plShortName'   => _('Ipam'),
+      'plDescription' => _('Manage vlans and subnets'),
       'plIcon'        => 'geticon.php?context=applications&icon=ipam&size=48',
       'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],
       'plPriority'    => 55,

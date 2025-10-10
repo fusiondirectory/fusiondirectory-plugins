@@ -24,8 +24,7 @@ class publicFormManagement extends management
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Public forms'),
-      'plTitle'       => _('Public forms management'),
+      'plShortName'   => _('Public Forms'),
       'plDescription' => _('Manage public forms'),
       'plIcon'        => 'geticon.php?context=types&icon=publicform&size=48',
       'plSection'       => ['workflow' => ['name' => _('Workflow'), 'priority' => 2]],

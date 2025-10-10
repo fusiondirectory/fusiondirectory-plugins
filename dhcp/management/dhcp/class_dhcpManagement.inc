@@ -24,8 +24,7 @@ class dhcpManagement extends management
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('DHCP'),
-      'plTitle'       => _('DHCP Management'),
+      'plShortName'   => _('Dhcp'),
       'plDescription' => _('Manage DHCP configurations'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=48',
       'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],

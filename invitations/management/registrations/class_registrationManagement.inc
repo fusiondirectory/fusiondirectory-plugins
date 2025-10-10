@@ -79,7 +79,6 @@ class registrationManagement extends management
   {
     return [
       'plShortName'   => _('Registrations'),
-      'plTitle'       => _('Registrations management'),
       'plDescription' => _('Manage registrations'),
       'plIcon'        => 'geticon.php?context=types&icon=registration&size=48',
       'plSection'       => ['workflow' => ['name' => _('Workflow'), 'priority' => 2]],

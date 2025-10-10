@@ -25,7 +25,6 @@ class applicationManagement extends management
   {
     return [
       'plShortName'   => _('Applications'),
-      'plTitle'       => _('Applications management'),
       'plDescription' => _('Manage applications and web applications'),
       'plIcon'        => 'geticon.php?context=categories&icon=applications-other&size=48',
       'plSection'     => ['security' => ['name' => _('Security'), 'priority' => 4]],

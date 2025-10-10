@@ -33,8 +33,7 @@ class dnsManagement extends management
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('DNS'),
-      'plTitle'       => _('DNS Management'),
+      'plShortName'   => _('Dns'),
       'plDescription' => _('Manage DNS zones and views'),
       'plIcon'        => 'geticon.php?context=applications&icon=dns&size=48',
       'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],

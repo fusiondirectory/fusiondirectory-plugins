@@ -38,8 +38,7 @@ class subscriptionsManagement extends management
   {
     return [
       'plShortName'   => _('Licenses'),
-      'plTitle'       => _('Licenses management'),
-      'plDescription' => _('Manage Licenses'),
+      'plDescription' => _('Manage licenses'),
       'plIcon'        => 'geticon.php?context=applications&icon=subscription&size=48',
       'plSection'       => ['conf' => ['name' => _('Configuration'), 'priority' => 9]],
       'plManages'     => ['subscription'],
