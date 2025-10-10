@@ -27,10 +27,12 @@ class csvImport extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('CSV import'),
+      'plShortName'   => _('CSV'),
       'plDescription' => _('Import csv data'),
       'plObjectType'  => ['ldapmanager'],
       'plPriority'    => 3,
+
+      'plSection' => ['export' => ['name' => _('Export - Import'), 'priority' => 8]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
