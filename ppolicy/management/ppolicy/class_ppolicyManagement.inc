@@ -25,8 +25,7 @@ class ppolicyManagement extends management
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Password policies'),
-      'plTitle'       => _('Password policies management'),
+      'plShortName'   => _('Password Policies'),
       'plDescription' => _('Manage password policies'),
       'plIcon'        => 'geticon.php?context=applications&icon=ppolicy&size=48',
       'plSection'     => ['security' => ['name' => _('Security'), 'priority' => 4]],

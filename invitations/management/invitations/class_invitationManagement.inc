@@ -25,7 +25,6 @@ class invitationManagement extends management
   {
     return [
       'plShortName'   => _('Invitations'),
-      'plTitle'       => _('Invitations management'),
       'plDescription' => _('Manage invitations'),
       'plIcon'        => 'geticon.php?context=types&icon=invitation&size=48',
       'plSection'       => ['workflow' => ['name' => _('Workflow'), 'priority' => 2]],

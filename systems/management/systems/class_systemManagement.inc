@@ -41,7 +41,6 @@ class systemManagement extends management
   {
     return [
       'plShortName'   => _('Systems'),
-      'plTitle'       => _('Systems Management'),
       'plDescription' => _('Manage servers, computers, printers, phones and other devices'),
       'plIcon'        => 'geticon.php?context=devices&icon=computer&size=48',
       'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],

@@ -35,8 +35,7 @@ class supannObjectsManagement extends management
   {
     return [
         'plShortName'   => _('SupAnn Objects'),
-        'plTitle'       => _('SupAnn Objects Management'),
-        'plDescription' => _('Manage SupAnn Objects'),
+        'plDescription' => _('Manage SupAnn objects'),
         'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
         'plSection'     => ['supann' => ['name' => _('Supann'), 'priority' => 1]],
         'plPriority'    => 0,

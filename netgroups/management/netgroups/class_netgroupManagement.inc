@@ -25,8 +25,7 @@ class netgroupManagement extends management
   {
     return [
       'plShortName'   => _('NIS Netgroups'),
-      'plTitle'       => _('NIS Netgroups management'),
-      'plDescription' => _('Manage NIS Netgroups'),
+      'plDescription' => _('Manage nis netgroups'),
       'plIcon'        => 'geticon.php?context=applications&icon=netgroups&size=48',
       'plSection'     => ['accounts' => ['name' => _('Users and groups'), 'priority' => 0]],
       'plPriority'    => 25,

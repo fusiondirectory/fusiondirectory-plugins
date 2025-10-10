@@ -34,9 +34,8 @@ class sambaDomainManagement extends management
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Samba domains'),
-      'plTitle'       => _('Samba domain management'),
-      'plDescription' => _('Manage Samba domains'),
+      'plShortName'   => _('Samba Domains'),
+      'plDescription' => _('Manage samba domains'),
       'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
       'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],
       'plPriority'    => 40,

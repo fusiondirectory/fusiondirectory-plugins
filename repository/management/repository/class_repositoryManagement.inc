@@ -25,7 +25,6 @@ class repositoryManagement extends management
   {
     return [
       'plShortName'   => _('Repositories'),
-      'plTitle'       => _('Repositories management'),
       'plDescription' => _('Manage repositories'),
       'plIcon'        => 'geticon.php?context=applications&icon=repository&size=48',
       'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 6]],
