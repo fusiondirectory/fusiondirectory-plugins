@@ -28,7 +28,7 @@ class csvImport extends simplePlugin
   {
     return [
       'plShortName'   => _('CSV import'),
-      'plDescription' => _('Import of csv data into the ldap tree'),
+      'plDescription' => _('Import csv data'),
       'plObjectType'  => ['ldapmanager'],
       'plPriority'    => 3,
 

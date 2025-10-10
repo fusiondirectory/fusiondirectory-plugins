@@ -25,8 +25,8 @@ class ldapExport extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Export Manager'),
-      'plDescription' => _('Export the ldap tree to/from LDIF format'),
+      'plShortName'   => _('Export'),
+      'plDescription' => _('Export ldap entries to LDIF format'),
       'plObjectType'  => ['special'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())

@@ -24,15 +24,15 @@ class pgpServerInfo extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('GPG server info'),
-      'plDescription' => _('GPG server info'),
+      'plShortName'   => _('GnuPG Server'),
+      'plDescription' => _('Manage a GnuPG server'),
       'plSection'       => ['conf' => ['name' => _('Configuration'), 'priority' => 9]],
       'plPriority'    => 5,
       'plIcon'        => 'geticon.php?context=applications&icon=gpg&size=48',
       'plObjectClass' => ['pgpServerInfo'],
       'plObjectType'  => [
         'pgpServerInfo' => [
-          'name'        => _('GPG server info'),
+          'name'        => _('GnuPG Server'),
           'icon'        => 'geticon.php?context=applications&icon=gpg&size=16',
           'aclCategory' => 'configuration',
         ]
@@ -49,16 +49,16 @@ class pgpServerInfo extends simplePlugin
     return [
       // Attributes are grouped by section
       'main' => [
-        'name'  => _('GPG server info'),
+        'name'  => _('GnuPG Server'),
         'attrs' => [
           new HiddenAttribute('cn', TRUE, 'pgpServerInfo'),
           new StringAttribute(
-            _('Software'), _('Which software this GPG key server is running'),
+            _('Software'), _('Which software this GnuPG key server is running'),
             'pgpSoftware', FALSE,
             'OpenLDAP 2.4.33'
           ),
           new StringAttribute(
-            _('GPG version'), _('Which version of GPG this key server is running'),
+            _('GPG version'), _('Which version of GnuPG this key server is running'),
             'pgpVersion', FALSE,
             'gpg (GnuPG) 1.4.13'
           ),

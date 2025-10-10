@@ -85,8 +85,8 @@ class sshAccount extends simplePlugin implements UserTabLockingAction
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('SSH'),
-      'plDescription'   => _('Edit user\'s SSH public keys'),
+      'plShortName'     => _('OpenSSH'),
+      'plDescription'   => _('Manage OpenSSH public keys'),
       'plSelfModify'    => TRUE,
       'plDepends'       => ['posixAccount'],
       'plPriority'      => 6,
@@ -104,13 +104,13 @@ class sshAccount extends simplePlugin implements UserTabLockingAction
   {
     return [
       'main' => [
-        'name'  => _('SSH Keys'),
+        'name'  => _('OpenSSH Keys'),
         'icon'  => 'geticon.php?context=status&icon=dialog-password&size=16',
         'class' => ['fullwidth'],
         'attrs' => [
           new OrderedArrayAttribute(
             new SSHPublicKeyAttribute(
-              '', _('SSH public keys for this user'),
+              '', _('OpenSSH public keys for this user'),
               'sshPublicKey'
             ),
             // no order

@@ -26,8 +26,8 @@ class schacAccount extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('SCHAC'),
-      'plDescription' => _('SCHema for ACademia'),
+      'plShortName'   => _('Schac'),
+      'plDescription' => _('Manage attributes for SCHema for ACademia'),
       'plIcon'        => 'geticon.php?context=applications&icon=schac&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=schac&size=16',
       'plSelfModify'  => TRUE,

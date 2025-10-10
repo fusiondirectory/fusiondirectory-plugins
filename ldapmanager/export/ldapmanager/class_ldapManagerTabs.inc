@@ -25,8 +25,8 @@ class ldapManagerTabs extends simpleTabs_noSpecial
   static function plInfo ()
   {
     return [
-      'plShortName'   => _('LDAP import/export'),
-      'plDescription' => _('Allows the import or export of the ldap tree'),
+      'plShortName'   => _('Ldap'),
+      'plDescription' => _('Manage the import or export of ldap entries'),
       'plIcon'        => 'geticon.php?context=applications&icon=ldapmanager&size=48',
       'plPriority'    => 10,
       'plSection' => ['export' => ['name' => _('Export / Import'), 'priority' => 8]],

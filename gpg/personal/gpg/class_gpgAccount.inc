@@ -25,8 +25,8 @@ class gpgAccount extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('GPG'),
-      'plDescription'   => _('Edit user\'s GPG IDs'),
+      'plShortName'     => _('GnuPG'),
+      'plDescription'   => _('Manager user GnuPG IDs'),
       'plSelfModify'    => TRUE,
       'plObjectClass'   => ['fdGpgAccount'],
       'plObjectType'    => ['user'],
@@ -41,7 +41,7 @@ class gpgAccount extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('GPG keys'),
+        'name'  => _('GnuPG keys'),
         'class' => ['fullwidth'],
         'attrs' => [
           new PgpKeysAttribute(

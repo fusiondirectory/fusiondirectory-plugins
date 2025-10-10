@@ -23,7 +23,7 @@ class dsaManagement extends management
   public static function plInfo (): array
   {
     return [
-      'plShortName'   => _('DSA'),
+      'plShortName'   => _('Dsa'),
       'plDescription' => _('Manage simple security objects'),
       'plIcon'        => 'geticon.php?context=applications&icon=dsa&size=48',
       'plSection'     => ['security' => ['name' => _('Security'), 'priority' => 4]],
