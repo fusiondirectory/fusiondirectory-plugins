@@ -70,6 +70,36 @@ class tasksNotifications extends simplePlugin
           ),
         ]
       ],
+      'Future ressources details' => [
+        'name'  => _('Future resources details'),
+        'attrs' => [
+          new SelectAttribute(
+            _('Resource'), _('Supann resources'),
+            'fdTasksNotificationsPostResource', FALSE, [], "None"
+          ),
+          new SelectAttribute(
+            _('State'), _('Resource state'),
+            'fdTasksNotificationsPostState', FALSE, [], "None"
+          ),
+          new SelectAttribute(
+            _('Sub state'), _('Resource sub state'),
+            'fdTasksNotificationsPostSubState', FALSE, [], "None"
+          ),
+        ]
+      ],
+      'UserGroupSelection'      => [
+        'name'  => _('Recipients Users and/or Groups'),
+        'attrs' => [
+          new UsersGroupsRolesAttribute(
+            _('Recipients'), _('Users or Groups requiring to be notified.'),
+            'fdTasksNotificationsRecipientsMembers', TRUE
+          ),
+          new UsersGroupsRolesAttribute(
+            _('Monitored Members'), _('Users or Groups requiring monitoring.'),
+            'fdTasksNotificationsMonitoredMembers', TRUE
+          ),
+        ],
+      ],
       // Attributes are grouped by section
       'supannSection'           => [
         'name'  => _('Add notification when the following Supann state is reached (supannRessourceEtat)'),
@@ -87,19 +117,6 @@ class tasksNotifications extends simplePlugin
             'fdTasksNotificationsSubState', FALSE, [], "None"
           ),
         ]
-      ],
-      'UserGroupSelection'      => [
-        'name'  => _('Recipients Users and/or Groups'),
-        'attrs' => [
-          new UsersGroupsRolesAttribute(
-            _('Recipients'), _('Users or Groups requiring to be notified.'),
-            'fdTasksNotificationsRecipientsMembers', TRUE
-          ),
-          new UsersGroupsRolesAttribute(
-            _('Monitored Members'), _('Users or Groups requiring monitoring.'),
-            'fdTasksNotificationsMonitoredMembers', TRUE
-          ),
-        ],
       ],
       'Mail Template Selection' => [
         'name'  => _('Mail Template'),
@@ -152,15 +169,24 @@ class tasksNotifications extends simplePlugin
     global $config;
 
     // Define the mandatory ones and get the remaining from configuration.
-    $resources = supannAccountStatus::getResources();
-    $states    = supannAccountStatus::getStates();
-
-    $this->attributesAccess['fdTasksNotificationsResource']->setChoices(array_keys($resources), array_values($resources));
+    $resources       = supannAccountStatus::getResources();
+    $states          = supannAccountStatus::getStates();
     $this->subStates = supannAccountStatus::getConfiguredSubstates(); //Keys are states and Values are subStates
+
+    // Montired supann
+    $this->attributesAccess['fdTasksNotificationsResource']->setChoices(array_keys($resources), array_values($resources));
     $this->attributesAccess['fdTasksNotificationsState']->setChoices(array_keys($states), array_values($states));
 
-    // Allows the sub states to be listed when state is modified.
+    // Allows the sub states to be listed when state is modified (monitored)
     $this->attributesAccess['fdTasksNotificationsState']->setSubmitForm('updateFieldsChoices');
+
+    // Next supann value
+    $this->attributesAccess['fdTasksNotificationsPostResource']->setChoices(array_keys($resources), array_values($resources));
+    $this->attributesAccess['fdTasksNotificationsPostState']->setChoices(array_keys($states), array_values($states));
+
+    // Allows the sub states to be listed when state is modified (next supann value)
+    $this->attributesAccess['fdTasksNotificationsPostState']->setSubmitForm('updateFieldsChoices');
+
     // This initial fill the list choices based on registered states.
     $this->updateFieldsChoices();
   }
@@ -171,9 +197,12 @@ class tasksNotifications extends simplePlugin
    */
   function updateFieldsChoices ()
   {
-    // Update the available supann states
+    // Only get the substate list from one of the two because they are the same anyways
     $subStatesList = $this->subStates[$this->attributesAccess['fdTasksNotificationsState']->getValue()] ?? [];
+
+    // Update the available supann states
     $this->attributesAccess['fdTasksNotificationsSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
+    $this->attributesAccess['fdTasksNotificationsPostSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
   }
 
   /**
