@@ -40,12 +40,12 @@ class supannApplications extends simplePlugin
       'main' => [
         'name'  => _('Information'),
         'attrs' => [
-          new mailAttribute(
+          new MailAttribute(
             _('Contact'), _('contact email address, internal or external to the institution'),
             'supannMailContact', FALSE,
             ''
           ),
-          new mailAttribute(
+          new MailAttribute(
             _('Mailbox'), _('email address of the mailbox assigned to the application'),
             'mail', FALSE,
           ),
