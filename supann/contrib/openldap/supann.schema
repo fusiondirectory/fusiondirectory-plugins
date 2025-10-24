@@ -1,15 +1,17 @@
 ##############            schema Supann 	        ##############
 #                            Renater                                 #
-
 # Schema des objets specifiques des recommandations supann
-# Supann 2018 revision 2
-# Version: 2019-11-22
+# Supann 2021
+# Version: 2021-10-01
 
 # Placé sous l'arc 1.3.6.1.4.1.7135.1.2 qui est sous la responsabilité de Renater
 # sous-arc 1 : attributs
 # sous-arc 2 : classes
 # Modifications :
 #
+# 01 oct.  21 (POT) : ajout attribut supannMailContact, classes supannApplication et supannRessource
+# 01 oct.  21 (POT) : changement de syntaxe pour les attributs supannCodeINSEEVilleDeNaissance et supannCodeINSEEPaysDeNaissance : numerique a chaine de caracteres
+#                     ATTENTION : rupture de compatibilite avec l'existant !!!
 # 22 nov.  19 (POT) : ajout attributs supannTelephonePrive et supannMailPrive
 # 08 nov.  19 (POT) : ajout attributs supannConsentement et supannAdressePostalePrivee
 # 08 nov.  19 (POT) : supannCodeProfil devient supannCodePopulation
@@ -32,7 +34,7 @@
 #			passé supannCodeInseeVilleDeNaissance en facultatif dans supannFcPerson (né à l'étranger)
 #			supprimé substringMatch pour supannCmsId et supannCmsAppId
 #			renuméroté attributs à partir de supannCmsDateFin (doublon)
-# 08 sep.  17 (AB) : adaptation pour supann 2018, ajout d'attributs et d'une classe 
+# 08 sep.  17 (AB) : adaptation pour supann 2018, ajout d'attributs et d'une classe
 # 23 nov.  09 (CC) : passage de supannEmpCorps en directoryString
 # 13 nov.  09 (CC) : ajout EQUALITY caseIgnoreMatch à mailForwardingAddress
 # 12 nov.  09 (CC) : retrait supannTypeEntite de supannPerson, ajout de supannTypeEntiteAffectation et supannRefId
@@ -128,7 +130,7 @@ attributetype ( 1.3.6.1.4.1.7135.1.2.1.11 NAME 'supannEmpId'
 	SUBSTR caseExactSubstringsMatch
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} )
 
-attributetype ( 1.3.6.1.4.1.7135.1.2.1.12  NAME 'supannAutreTelephone' 
+attributetype ( 1.3.6.1.4.1.7135.1.2.1.12  NAME 'supannAutreTelephone'
 	SUP telephoneNumber
 	DESC 'numeros de telephone secondaires' )
 
@@ -157,7 +159,7 @@ attributetype ( 1.3.6.1.4.1.7135.1.2.1.16 NAME 'supannTypeEntite'
 	SUBSTR caseIgnoreSubstringsMatch
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} )
 
-attributetype ( 1.3.6.1.4.1.7135.1.2.1.17  NAME 'supannParrainDN' 
+attributetype ( 1.3.6.1.4.1.7135.1.2.1.17  NAME 'supannParrainDN'
 	SUP distinguishedName
 	DESC 'dn du responsable de cette entree' )
 
@@ -168,7 +170,7 @@ attributetype ( 1.3.6.1.4.1.7135.1.2.1.18 NAME 'supannGroupeDateFin'
 	SINGLE-VALUE
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 )
 
-attributetype ( 1.3.6.1.4.1.7135.1.2.1.19  NAME 'supannGroupeAdminDN' 
+attributetype ( 1.3.6.1.4.1.7135.1.2.1.19  NAME 'supannGroupeAdminDN'
 	SUP distinguishedName
 	DESC 'dn des administrateurs du groupe concerne' )
 
@@ -185,7 +187,7 @@ attributetype ( 1.3.6.1.4.1.7135.1.2.1.21 NAME 'supannRole'
 	SUBSTR caseIgnoreSubstringsMatch
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} )
 
-attributetype ( 1.3.6.1.4.1.7135.1.2.1.22  NAME 'supannGroupeLecteurDN' 
+attributetype ( 1.3.6.1.4.1.7135.1.2.1.22  NAME 'supannGroupeLecteurDN'
 	SUP distinguishedName
 	DESC 'dn des entites habilite a lire le contenu d un groupe' )
 
@@ -376,7 +378,7 @@ attributetype ( 1.3.6.1.4.1.7135.1.2.1.53 NAME 'supannCMSSource'
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} )
 
 attributetype ( 1.3.6.1.4.1.7135.1.2.1.54 NAME 'supannRessourceEtatDate'
-	DESC 'etat d une ressource avec possibilité de date de debut et de fin' 
+	DESC 'etat d une ressource avec possibilité de date de debut et de fin'
         EQUALITY caseIgnoreMatch
 	SUBSTR caseIgnoreSubstringsMatch
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{4096} )
@@ -447,30 +449,37 @@ attributetype ( 1.3.6.1.4.1.7135.1.2.1.65 NAME 'supannMailPrive'
 	SUBSTR caseIgnoreSubstringsMatch
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{4096} )
 
+attributetype ( 1.3.6.1.4.1.7135.1.2.1.66 NAME 'supannMailContact'
+    DESC 'adresses mail de contact des responsables de l objet'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{4096} )
+
 # repris du schema Netscape (enlever si conflit) :
-attributeType ( 2.16.840.1.113730.3.1.17 NAME ( 'mailForwardingAddress' ) 
-	DESC 'Netscape Messaging Server 4.x defined attribute' 
-	EQUALITY caseIgnoreMatch 
-	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15  
+attributeType ( 2.16.840.1.113730.3.1.17 NAME ( 'mailForwardingAddress' )
+	DESC 'Netscape Messaging Server 4.x defined attribute'
+	EQUALITY caseIgnoreMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
 	X-ORIGIN 'Netscape Messaging Server 4.x' )
 
 
 ######################## Classes d'objets :
 
 # classe complementaire specifique de supann :
-objectclass ( 1.3.6.1.4.1.7135.1.2.2.1 NAME 'supannPerson' SUP top AUXILIARY
+objectclass ( 1.3.6.1.4.1.7135.1.2.2.1 NAME 'supannPerson'
+    SUP top AUXILIARY
 	DESC 'classe d infos complementaires sur personnes supann'
-	MAY ( supannOrganisme $ supannCivilite $ supannAutreTelephone $ supannAffectation $ 
+	MAY ( supannOrganisme $ supannCivilite $ supannAutreTelephone $ supannAffectation $
 	supannEmpId $ supannCodeINE $ supannEtuId $ supannAliasLogin $ supannParrainDN $
-	supannActivite $ supannEntiteAffectation $ supannEntiteAffectationPrincipale $ 
-	supannMailPerso $ supannRole $ supannRoleEntite $ supannRoleGenerique $ 
+	supannActivite $ supannEntiteAffectation $ supannEntiteAffectationPrincipale $
+	supannMailPerso $ supannRole $ supannRoleEntite $ supannRoleGenerique $
 	supannEtuAnneeInscription $ supannEtuCursusAnnee $ supannEtuDiplome $ supannEtuElementPedagogique $
 	supannEtuEtape $ supannEtuInscription $ supannEtuRegimeInscription $ supannEtuSecteurDisciplinaire $
-	supannEtuTypeDiplome $ supannEtablissement $ supannListeRouge $ 
+	supannEtuTypeDiplome $ supannEtablissement $ supannListeRouge $
 	supannAutreMail $ mailForwardingAddress $ supannEmpCorps $ supannTypeEntiteAffectation $ supannRefId $
-	supannNomDeNaissance $ supannPrenomsEtatCivil $ supannOIDCDateDeNaissance $ supannOIDCGenre $ 
+	supannNomDeNaissance $ supannPrenomsEtatCivil $ supannOIDCDateDeNaissance $ supannOIDCGenre $
 	supannCodeINSEEPaysDeNaissance $ supannCodeINSEEVilleDeNaissance $ supannFCSub $ supannRessourceEtat $ supannRessourceEtatDate $
-	supannEmpProfil $ supannExtProfil $ supannCodePopulation $ supannEmpDateFin $ supannEtuDateFin $ supannExtDateFin $ 
+	supannEmpProfil $ supannExtProfil $ supannCodePopulation $ supannEmpDateFin $ supannEtuDateFin $ supannExtDateFin $
 	supannConsentement $ supannAdressePostalePrivee $ supannTelephonePrive $ supannMailPrive) )
 
 objectclass ( 1.3.6.1.4.1.7135.1.2.2.2 NAME 'supannOrg' SUP top AUXILIARY
@@ -497,3 +506,13 @@ objectclass ( 1.3.6.1.4.1.7135.1.2.2.5 NAME 'supannCMS' SUP top AUXILIARY
 objectclass ( 1.3.6.1.4.1.7135.1.2.2.6 NAME 'supannGroupe' SUP top AUXILIARY
 	DESC 'attributs specifiques des groupes'
 	MAY ( supannGroupeDateFin  $ supannGroupeAdminDN $ supannGroupeLecteurDN $ supannRefId ) )
+
+objectclass ( 1.3.6.1.4.1.7135.1.2.2.7 NAME 'supannApplication'
+    DESC 'application'
+    SUP applicationProcess
+    MAY ( displayName $ labeledURI $ mail $ manager $ owner $ supannMailContact $ supannRefId $ userPassword ) )
+
+objectclass ( 1.3.6.1.4.1.7135.1.2.2.8 NAME 'supannRessource'
+    DESC 'ressource avec gestion etat et cycle de vie'
+    SUP top AUXILIARY
+    MAY ( supannRessourceEtat $ supannRessourceEtatDate ) )
