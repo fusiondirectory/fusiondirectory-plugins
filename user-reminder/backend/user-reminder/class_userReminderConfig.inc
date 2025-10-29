@@ -1,0 +1,74 @@
+<?php
+/*
+  This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
+  Copyright (C) 2016-2019 FusionDirectory
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+*/
+
+class userReminderConfig extends simplePlugin
+{
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'     => _('Reminder'),
+      'plTitle'         => _('User reminder'),
+      'plDescription'   => _('Configuration for the reminder of accounts expiration'),
+      'plObjectClass'   => ['fdUserReminderPluginConf'],
+      'plPriority'      => 16,
+      'plObjectType'    => ['configuration'],
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    ];
+  }
+
+  static function getAttributesInfo (): array
+  {
+    return [
+      'main' => [
+        'name'  => _('User reminder settings'),
+        'attrs' => [
+          new StringAttribute(
+            _('Reminder RDN'), _('The branch where FusionDirectory reminder tokens are stored'),
+            'fdReminderTokenRDN', TRUE,
+            'ou=reminder,ou=tokens'
+          ),
+        ]
+      ],
+    ];
+  }
+
+  function __construct (string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE, array $attributesInfo = NULL)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
+
+    global $config;
+    // Check if token branch is here
+    $ldap = $config->get_ldap_link();
+    $tokenBranch = get_ou('ReminderTokenRDN').$config->current['BASE'];
+    $ldap->cat($tokenBranch, ['dn']);
+    if (!$ldap->count()) {
+      $ldap->cd($config->current['BASE']);
+      try {
+        $ldap->create_missing_trees($tokenBranch);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
+      }
+      fusiondirectory_log('Created token branch '.$tokenBranch);
+    }
+  }
+}
+
