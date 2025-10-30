@@ -46,6 +46,13 @@ class userReminderConfig extends simplePlugin
             'fdReminderTokenRDN', TRUE,
             'ou=reminder,ou=tokens'
           ),
+          new StringAttribute(
+            _('Salt for tokens'),
+            _('Just a security measure, you can put anything in there, even random characters'),
+            'fdReminderSalt',
+            TRUE,
+            "SomethingSecretAndVeryLong"
+          ),
         ]
       ],
     ];
