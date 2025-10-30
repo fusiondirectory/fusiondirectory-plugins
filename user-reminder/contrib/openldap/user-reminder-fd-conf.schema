@@ -232,7 +232,7 @@ objectclass ( 1.3.6.1.4.1.38414.59.2.1 NAME 'fdUserReminderPluginConf'
   fdUserReminderAlertSubject        $ fdUserReminderAlertBody $
   fdUserReminderPpolicyAlertSubject $ fdUserReminderPpolicyAlertBody $
   fdUserReminderForwardPpolicyAlert $ fdUserReminderUseAlternate $
-  fdUserReminderExpiration $ fdUserReminderExpirationSubject $ fdUserReminderExpirationBody $ fdUserReminderForwardExpiration) )
+  fdUserReminderExpiration $ fdUserReminderExpirationSubject $ fdUserReminderExpirationBody $ fdUserReminderForwardExpiration $fdReminderSalt ) )
 
 objectclass ( 1.3.6.1.4.1.38414.59.2.2 NAME 'fdTasksReminder'
   DESC 'FusionDirectory user-reminder plugin workflow tasks'
