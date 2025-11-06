@@ -122,14 +122,13 @@ attributetype ( 1.3.6.1.4.1.38414.94.1.17 NAME 'fdTasksAutomaticGroupsRegexPatte
 # Define object class
 objectclass ( 1.3.6.1.4.1.94.2.1
     NAME 'fdTasksAutomaticGroups'
-    DESC 'Object class for automatic groups'
+    DESC 'FusionDirectory - Automatic groups tasks'
     SUP top
     AUXILIARY
-    MUST ( )
     MAY ( fdTasksAutomaticGroupsOfName $ fdTasksAutomaticGroupsListOfDN $ fdTasksAutomaticGroupsResource $ 
           fdTasksAutomaticGroupsState $ fdTasksAutomaticGroupsSubState $ 
           fdTasksAutomaticGroupsMembers $ fdTasksAutomaticGroupsDynamicGroup $
           fdTasksAutomaticGroupsDynamicURL $ fdTasksAutomaticGroupsDynamicName $
           fdTasksAutomaticGroupsPreResource $ fdTasksAutomaticGroupsPreState $ fdTasksAutomaticGroupsPreSubState $
           fdTasksAutomaticGroupsPostResource $ fdTasksAutomaticGroupsPostState $ fdTasksAutomaticGroupsPostSubState $
-          fdTasksAutomaticGroupsPostEndDate $ fdTasksAutomaticGroupsRegexPattern ) )
+          fdTasksAutomaticGroupsPostEndDate $ fdTasksAutomaticGroupsRegexPattern ))
