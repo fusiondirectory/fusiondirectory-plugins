@@ -41,7 +41,7 @@ class supannApplicationAccountStatus extends simplePlugin
       'plPriority' => 15,
       'plObjectClass'   => ['supannApplication','supannRessource'],
       'plObjectType' => ['webApplication'],
-      'plDepends' => ['supannApplication'],
+      'plDepends' => ['webApplication'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
