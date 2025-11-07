@@ -59,7 +59,17 @@ class ppolicyAccount extends simplePlugin implements UserTabLockingAction
             'pwdReset', FALSE,
             ['', 'TRUE', 'FALSE'], '',
             ['', _('Force password change (resets locking)'), _('Reset locking (same password)')]
-          )
+          ),
+          new GeneralizedTimeDateAttribute(
+            _('Password start time'), _('Date password becomes valid'),
+            'pwdStartTime', FALSE,
+            ''
+          ),
+          new GeneralizedTimeDateAttribute(
+            _('Password end time'), _('Date password becomes invalid'),
+            'pwdEndTime', FALSE,
+            ''
+          ),
         ]
       ]
     ];
