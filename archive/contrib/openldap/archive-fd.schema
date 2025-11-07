@@ -36,17 +36,6 @@ attributetype ( 1.3.6.1.4.1.38414.81.1.5 NAME 'fdArchivedOriginDn'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.12
   SINGLE-VALUE )
 
-# Objectclasses
-objectclass (1.3.6.1.4.1.38414.81.2.1 NAME 'fdArchivedObject'
-  DESC 'FusionDirectory - archived object'
-  MUST ( )
-  MAY (
-    fdArchivedField $ fdArchivedUniqueField $
-    fdArchivedDateTime $ fdArchivedObjectType $ fdArchivedOriginDn
-  ) )
-
-
-
 #### Managing archive tasks ####
 
 # Attributes
@@ -74,9 +63,14 @@ attributetype ( 1.3.6.1.4.1.38414.81.1.9 NAME 'fdArchiveTaskMembers'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
-# Object Class
+# Objectclasses
+
+objectclass (1.3.6.1.4.1.38414.81.2.1 NAME 'fdArchivedObject'
+  DESC 'FusionDirectory - Archived object'
+  MAY ( fdArchivedField $ fdArchivedUniqueField $
+  fdArchivedDateTime $ fdArchivedObjectType $ fdArchivedOriginDn ))
 
 objectclass ( 1.3.6.1.4.1.38414.81.2.2 NAME 'fdArchiveTasks' SUP top AUXILIARY
-  DESC 'FusionDirectory - Archive tasks plugin Object Class'
+  DESC 'FusionDirectory - Archive tasks'
   MUST ( fdArchiveTaskResource $ fdArchiveTaskState $ fdArchiveTaskMembers )
-  MAY  ( fdArchiveTaskSubState ) )
+  MAY  ( fdArchiveTaskSubState ))

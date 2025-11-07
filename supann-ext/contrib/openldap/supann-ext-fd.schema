@@ -64,11 +64,8 @@ attributetype ( 1.3.6.1.4.1.38414.66.1.9 NAME 'fdLocalPopulationCodeConf'
 
 # Object Class
 objectclass (1.3.6.1.4.1.38414.66.2.1 NAME 'fdSupannExt' SUP top AUXILIARY
-  DESC 'FusionDirectory - audit event'
-  MUST ( )
-  MAY  (
-    fdSupannStartDate $ fdSupannEndDate $
-    fdSupannRelationEntiteType $ fdSupannRelationEntiteRole $ fdSupannRelationEntiteCode $
-    fdSupannRelationEntite $ fdEduPersonUniqueIdDns $ fdMainPopulationCodeConf $ fdLocalPopulationCodeConf
-  ) )
+  DESC 'FusionDirectory - Supann Extension'
+  MAY ( fdSupannStartDate $ fdSupannEndDate $
+        fdSupannRelationEntiteType $ fdSupannRelationEntiteRole $ fdSupannRelationEntiteCode $
+        fdSupannRelationEntite $ fdEduPersonUniqueIdDns $ fdMainPopulationCodeConf $ fdLocalPopulationCodeConf ))
 
