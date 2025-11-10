@@ -13,6 +13,5 @@ attributetype ( 1.3.6.1.4.1.38414.91.1.1 NAME 'fdTasksNotificationsConfAttribute
 
 objectclass (1.3.6.1.4.1.38414.91.2.1 NAME 'fdTasksNotificationsConf' SUP top AUXILIARY
   DESC 'FusionDirectory - Notifications backend plugins Object Class'
-  MUST ( )
-  MAY  (fdTasksNotificationsConfAttributes) )
+  MAY  (fdTasksNotificationsConfAttributes))
 

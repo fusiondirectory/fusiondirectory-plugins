@@ -122,9 +122,9 @@ attributetype ( 1.3.6.1.4.1.38414.59.1.19 NAME 'fdUserReminderForwardExpiration'
 ### Workflow Reminder Task attributes ###
 
 attributetype ( 1.3.6.1.4.1.38414.59.1.20 NAME 'fdTasksReminderListOfRecipientsMails'
-    DESC 'Fusion Directory - Following attribute contain the list of members and groups DN recipients to notifications.'
-    EQUALITY caseExactMatch
-    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+  DESC 'Fusion Directory - Following attribute contain the list of members and groups DN recipients to notifications.'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
 attributetype ( 1.3.6.1.4.1.38414.59.1.21 NAME 'fdTasksReminderResource'
   DESC 'Fusion Directory - Tasks for life cycle - new state'
@@ -168,9 +168,9 @@ attributetype ( 1.3.6.1.4.1.38414.59.1.27 NAME 'fdTasksReminderEmailSender'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
 attributetype ( 1.3.6.1.4.1.38414.59.1.28 NAME 'fdTasksReminderRecipientsMembers'
-    DESC 'Fusion Directory - Following attribute contain the list of members and groups to monitor.'
-    EQUALITY caseExactMatch
-    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+  DESC 'Fusion Directory - Following attribute contain the list of members and groups to monitor.'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
 attributetype ( 1.3.6.1.4.1.38414.59.1.29 NAME 'fdTasksReminderMailTemplate'
   DESC 'Fusion Directory - Tasks for mail template objects'
@@ -197,21 +197,27 @@ attributetype ( 1.3.6.1.4.1.38414.59.1.32 NAME 'fdTasksReminderSupannNewEndDate'
   SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.38414.59.1.33 NAME 'fdTasksReminderAccountProlongation'
-		DESC 'Allow a given task to be repeatable'
-		EQUALITY booleanMatch
-		SUBSTR caseIgnoreSubstringsMatch
-		SYNTAX '1.3.6.1.4.1.1466.115.121.1.7')
+  DESC 'Allow a given task to be repeatable'
+  EQUALITY booleanMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX '1.3.6.1.4.1.1466.115.121.1.7')
 
 attributetype ( 1.3.6.1.4.1.38414.59.1.34 NAME 'fdTasksReminderPosix'
-		DESC 'Allow a given task to be repeatable'
-		EQUALITY booleanMatch
-		SUBSTR caseIgnoreSubstringsMatch
-		SYNTAX '1.3.6.1.4.1.1466.115.121.1.7')
+  DESC 'Allow a given task to be repeatable'
+  EQUALITY booleanMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX '1.3.6.1.4.1.1466.115.121.1.7')
 
 attributetype ( 1.3.6.1.4.1.38414.59.1.35 NAME 'fdTasksReminderMembers'
-    DESC 'Fusion Directory - Following attribute contain the list of members and groups to monitor.'
-    EQUALITY caseExactMatch
-    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+  DESC 'Fusion Directory - Following attribute contain the list of members and groups to monitor.'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.36 NAME 'fdReminderSalt'
+  DESC 'Fusion Directory - user reminder token salt'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
 
 # Object Class
 
@@ -226,7 +232,7 @@ objectclass ( 1.3.6.1.4.1.38414.59.2.1 NAME 'fdUserReminderPluginConf'
   fdUserReminderAlertSubject        $ fdUserReminderAlertBody $
   fdUserReminderPpolicyAlertSubject $ fdUserReminderPpolicyAlertBody $
   fdUserReminderForwardPpolicyAlert $ fdUserReminderUseAlternate $
-  fdUserReminderExpiration $ fdUserReminderExpirationSubject $ fdUserReminderExpirationBody $ fdUserReminderForwardExpiration) )
+  fdUserReminderExpiration $ fdUserReminderExpirationSubject $ fdUserReminderExpirationBody $ fdUserReminderForwardExpiration $fdReminderSalt ) )
 
 objectclass ( 1.3.6.1.4.1.38414.59.2.2 NAME 'fdTasksReminder'
   DESC 'FusionDirectory user-reminder plugin workflow tasks'

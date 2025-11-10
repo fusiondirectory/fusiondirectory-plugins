@@ -1,17 +1,23 @@
 #----------------------------------------------------------------------
 #
-# schac v: 20150413-1.5.0
+# schac v: 1.6.0
 #
 # SCHema for ACademia
 # Attribute definitions for individual data
 #
-# The latest version of this document is avaliable at
+# The latest version of this document is available at
 # https://wiki.refeds.org/display/STAN/SCHAC+Releases
 #
 #----------------------------------------------------------------------
 #
 # Changelog
 #
+# 20220523 - 1.6.0 
+#            Clarified ISO-1366 to ISO-3166-1 alpha 2
+#            Added European Student Identifier to examples for schacPersonalUniqueCode
+# 20220310 - 1.6.0 proposed 
+#            Deprecated schacGender
+#            Noted registry reassignment from TERENA to GÉANT
 # 20150413 - 1.5.0
 # 20110705 - 1.4.1 
 # 20110602 - Changed the example of attribute schacPersonalUniqueID from 
@@ -31,23 +37,23 @@
 #          - Changed references from terena.org to terena.org.
 # 20061125 - Changed schacPersonalPosition and schacUserStaus format
 #            and samples
-# 20061017 - Delete shacUUID attribute (TF-EMC2 M�laga)
+# 20061017 - Delete shacUUID attribute (TF-EMC2 Malaga)
 # 20060928 - Changed schacHomeOrganization syntax OID
 #          - New definition of shacUUID attribute
 # 20060504 - 1.2.0 
 #          - Changed schacUserPresenceID syntax from URN to URI. 
-#          - Added references to the TERENA URN registry. 
+#          - Added references to the SCHAC URN registry. 
 #          - Clarify schaExpiryDate scope.
-# 20060327 - SCHAC URN assigned:  urn:mace:terena.org:schac
+# 20060327 - SCHAC URN assigned:  urn:schac.org:schac
 # 20060310 - 1.1.1
 #          - TERENA OID assigned: 1.3.6.1.4.1.25178
 # 20060210 - Second release
 # 20051122 - Initial release
 #
 
-objectIdentifier TERENA 1.3.6.1.4.1.25178 
+objectIdentifier GEANT 1.3.6.1.4.1.25178
 
-objectIdentifier schac TERENA:1
+objectIdentifier schac GEANT:1
 objectIdentifier schacExperimental schac:0
 objectIdentifier schacObjectClass schac:1
 objectIdentifier schacAttributeType schac:2
@@ -82,11 +88,10 @@ attributetype ( schacAttributeType:1
 #
 # schacGender
 #
-# Descrip: The state of being male or female. The gender attribute 
-#          specifies the legal gender of the subject it is associated with.
-#          "Either of the two groups that people, animals and plants are 
-#          divided into according to their function of producing young" 
-#          (Oxford Advanced Learner's Dictionary)
+# Descrip: Deprecated as of SCHAC 1.6.0 | This attribute does 
+#          not have clearly defined applicability, and does 
+#          not align with evolving requirements for gender 
+#          representation
 #
 #  Format: 0  Not known
 #          1  Male
@@ -148,13 +153,13 @@ attributetype ( schacAttributeType:4
 # Descrip: Specifies the (claimed) countries of citizenship for the 
 #          subject it is associated with.
 #
-#  Format: Two-letter country acronym in accordance with ISO 3166.
+#  Format: Two-letter country acronym in accordance with ISO-3166-1 alpha 2.
 #
 # Example: schacCountryOfCitizenship: es
 #
 attributetype ( schacAttributeType:5
     NAME 'schacCountryOfCitizenship'
-    DESC 'Country of citizenship of a person. Format two-letter acronym according to ISO 3166'
+    DESC 'Country of citizenship of a person. Format two-letter acronym according to ISO 3166-1 alpha 2'
     EQUALITY caseIgnoreMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
@@ -266,30 +271,30 @@ attributetype ( schacAttributeType:9
 #
 # Descrip: Type of a Home Organization
 #
-#  Format: urn:mace:terena.org:schac:homeOrganizationType:<country-code>:<string>
+#  Format: urn:schac.org:schac:homeOrganizationType:<country-code>:<string>
 #
-#          - The <country-code> must be a valid two-letter ISO 3166
+#          - The <country-code> must be a valid two-letter ISO 3166-1 alpha 2
 #            country code identifier or the string "int", and assigned by
-#            TERENA URN Registry for this attribute at
-#            http://www.terena.org/registry/terena.org/schac/homeOrganizationType/
+#            SCHAC URN Registry for this attribute at
+#            https://wiki.refeds.org/display/STAN/SCHAC+URN+Registry
 #
 #          - <string> from a nationally controlled vocabulary, published
-#            through the URI identified at the above mentioned TERENA URN 
+#            through the URI identified at the above mentioned SCHAC URN 
 #            registry
 # 
 # Example: Common values:
 #
-#          urn:mace:terena.org:schac:homeOrganizationType:int:university
-#          urn:mace:terena.org:schac:homeOrganizationType:int:uas
-#          urn:mace:terena.org:schac:homeOrganizationType:int:research-institution
-#          urn:mace:terena.org:schac:homeOrganizationType:int:university-hospital
-#          urn:mace:terena.org:schac:homeOrganizationType:int:nren
-#          urn:mace:terena.org:schac:homeOrganizationType:int:other
+#          urn:schac.org:schac:homeOrganizationType:int:university
+#          urn:schac.org:schac:homeOrganizationType:int:uas
+#          urn:schac.org:schac:homeOrganizationType:int:research-institution
+#          urn:schac.org:schac:homeOrganizationType:int:university-hospital
+#          urn:schac.org:schac:homeOrganizationType:int:nren
+#          urn:schac.org:schac:homeOrganizationType:int:other
 #
 #          National extensions:
 #
-#          urn:mace:terena.org:schac:homeOrganizationType:ch:vho
-#          urn:mace:terena.org:schac:homeOrganizationType:es:opi
+#          urn:schac.org:schac:homeOrganizationType:ch:vho
+#          urn:schac.org:schac:homeOrganizationType:es:opi
 #
 attributetype ( schacAttributeType:10
     NAME 'schacHomeOrganizationType'
@@ -303,14 +308,14 @@ attributetype ( schacAttributeType:10
 # Descrip: Specifies the (claimed) country of residence for the subject 
 #          is associated with.
 #
-#  Format: Two-letter country acronym in accordance with ISO 3166 country 
+#  Format: Two-letter country acronym in accordance with ISO-3166-1 alpha 2 country 
 #          code identifier.
 #
 # Example: schacCountryOfResidence: es
 #
 attributetype ( schacAttributeType:11
     NAME 'schacCountryOfResidence'
-    DESC 'Country of residence of a person. Format two-letter acronym according to ISO 3166'
+    DESC 'Country of residence of a person. Format two-letter acronym according to ISO 3166-1 alpha 2'
     EQUALITY caseIgnoreMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
@@ -341,22 +346,22 @@ attributetype ( schacAttributeType:12
 #
 # Descrip: Specifies a personal position inside an institution
 #
-#  Format: urn:mace:terena.org:schac:personalPosition:<country-code>:<domain>:<iNSS>
+#  Format: urn:schac.org:schac:personalPosition:<country-code>:<domain>:<iNSS>
 #
-#          - The <country-code> must be a valid two-letter ISO 3166 country 
+#          - The <country-code> must be a valid two-letter ISO-3166-1 alpha 2 country 
 #            code identifier or the string "int", and assigned by the 
-#            TERENA URN Registry for this attribute at
-#            http://www.terena.org/registry/terena.org/schac/personalPosition/
+#            SCHAC URN Registry for this attribute at
+#            https://wiki.refeds.org/display/STAN/SCHAC+URN+Registry
 #
 #          - <domain> is the institution domain name acording to RFC 1035
 #
 #          - <iNSS> is a Namespace Specific String as defined in RFC 2141 
 #            but case insenstitive. Valid components for it are those 
-#            specified (or explicitly delegated) by the TERENA URN Registry 
+#            specified (or explicitly delegated) by the SCHAC URN Registry 
 #            for this attribute at 
-#            http://www.terena.org/registry/terena.org/schac/personalPosition/
+#            https://wiki.refeds.org/display/STAN/SCHAC+URN+Registry
 #
-# Example: schacPersonalPosition: urn:mace:terena.org:schac:personalPosition:pl:umk.pl:programmer
+# Example: schacPersonalPosition: urn:schac.org:schac:personalPosition:pl:umk.pl:programmer
 #
 attributetype ( schacAttributeType:13
     NAME 'schacPersonalPosition'
@@ -374,25 +379,25 @@ attributetype ( schacAttributeType:13
 #
 #          This might be Student number, Employee number,...
 #
-#  Format: urn:mace:terena.org:schac:personalUniqueCode:<country-code>:<iNSS>
+#  Format: urn:schac.org:schac:personalUniqueCode:<country-code>:<iNSS>
 #
-#          - The <country-code> must be a valid two-letter ISO 3166 country 
+#          - The <country-code> must be a valid two-letter ISO-3166-1 alpha 2 country 
 #            code identifier or the string "int", and assigned by the TERENA 
 #            URN Registry for this attribute at
-#            http://www.terena.org/registry/terena.org/schac/personalUniqueCode/
+#            https://wiki.refeds.org/display/STAN/SCHAC+URN+Registry
 #
 #          - <iNSS> is a Namespace Specific String as defined in RFC 2141
 #            but case insensitive.
 #
 # Example: Common Values:
 #
-#          urn:mace:terena.org:schac:personalUniqueCode:int:studentID:<country-code>:<code>
+#          urn:schac.org:schac:personalUniqueCode:int:studentID:<country-code>:<code>
 #
 #          National extensions:
 #
-#          urn:mace:terena.org:schac:personalUniqueCode:fi:tut.fi:hetu:010161-995A
-#          urn:mace:terena.org:schac:personalUniqueCode:es:uma:estudiante:a3b123c12
-#          urn:mace:terena.org:schac:personalUniqueCode:se:LIN:87654321
+#          urn:schac.org:schac:personalUniqueCode:fi:tut.fi:hetu:010161-995A
+#          urn:schac.org:schac:personalUniqueCode:es:uma:estudiante:a3b123c12
+#          urn:schac.org:schac:personalUniqueCode:se:LIN:87654321
 #
 attributetype ( schacAttributeType:14
     NAME 'schacPersonalUniqueCode'
@@ -409,24 +414,24 @@ attributetype ( schacAttributeType:14
 #          is associated with.
 #          This might be DNI in Spain, FIC in Finland, NIN in Sweden.
 #
-#  Format: urn:mace:terena.org:schac:personalUniqueID:<country-code>:<idType>:<idValue>
+#  Format: urn:schac.org:schac:personalUniqueID:<country-code>:<idType>:<idValue>
 #
-#          - The <country-code> must be a valid two-letter ISO 3166 country 
+#          - The <country-code> must be a valid two-letter ISO-3166-1 alpha 2 country 
 #            code identifier or the string "int", and assigned by the TERENA 
 #            URN Registry for this attribute at
-#            http://www.terena.org/registry/terena.org/schac/personalUniqueID/
+#            https://wiki.refeds.org/display/STAN/SCHAC+URN+Registry
 #
 #          - <idType>. Acceptable values must be declared per each country 
-#            code through the URI identified at the above mentioned TERENA URN 
+#            code through the URI identified at the above mentioned SCHAC URN 
 #            registry.
 #
 #          - <idValue>
 #
 # Example: National extensions
 #
-#          urn:mace:terena.org:schac:personalUniqueID:fi:FIC:260667-123F
-#          urn:mace:terena.org:schac:personalUniqueID:es:DNI:31241312L
-#          urn:mace:terena.org:schac:personalUniquelD:se:NIN:12345678
+#          urn:schac.org:schac:personalUniqueID:fi:FIC:260667-123F
+#          urn:schac.org:schac:personalUniqueID:es:DNI:31241312L
+#          urn:schac.org:schac:personalUniquelD:se:NIN:12345678
 #    
 attributetype ( schacAttributeType:15
     NAME 'schacPersonalUniqueID'
@@ -492,12 +497,12 @@ attributetype ( schacAttributeType:18
 #
 # Descrip: Used to store a set of status of a person as user of services
 #
-#  Format: urn:mace:terena.org:schac:userStatus:<country-code>:<domain>:<iNSS>
+#  Format: urn:schac.org:schac:userStatus:<country-code>:<domain>:<iNSS>
 #
-#          - The <country-code> must be a valid two-letter ISO 3166 country 
+#          - The <country-code> must be a valid two-letter ISO-3166-1 alpha 2 country 
 #            code identifier or the string "int", and assigned by the TERENA 
 #            URN Registry for this attribute at
-#            http://www.terena.org/registry/terena.org/schac/userStatus/
+#            https://wiki.refeds.org/display/STAN/SCHAC+URN+Registry
 #
 #          - <domain> is the institution domain name acording to RFC 1035
 #
@@ -507,14 +512,14 @@ attributetype ( schacAttributeType:18
 # Example: To store different user activity states at University of 
 #          M�laga (uma.es):
 #
-#          urn:mace:terena.org:schac:userStatus:uma.es:affiliation:expired
-#          urn:mace:terena.org:schac:userStatus:uma.es:sendMail:expired
-#          urn:mace:terena.org:schac:userStatus:uma.es:getMail:active
+#          urn:schac.org:schac:userStatus:uma.es:affiliation:expired
+#          urn:schac.org:schac:userStatus:uma.es:sendMail:expired
+#          urn:schac.org:schac:userStatus:uma.es:getMail:active
 #
 #          A parameter in the URN can be used to represent the temporal 
 #          validity of the satus:
 #
-#          urn:mace:terena.org:schac:userStatus:ujl.si:webmail:active+ttl=20060531
+#          urn:schac.org:schac:userStatus:ujl.si:webmail:active+ttl=20060531
 #
 attributetype ( schacAttributeType:19 
     NAME 'schacUserStatus'
@@ -531,7 +536,7 @@ attributetype ( schacAttributeType:19
 #          
 #          The <project-name> must be a name assigned by the TERENA
 #          URN Registry for this attribute at
-#          http://www.terena.org/registry/terena.org/schac/projectSpecificRole/
+#          https://wiki.refeds.org/display/STAN/SCHAC+URN+Registry
 #
 # Example: perfsonar
 #
@@ -546,15 +551,15 @@ attributetype ( schacAttributeType:20
 #
 # Descrip: Used to store a set of roles inside specific projects
 #
-#  Format: urn:mace:terena.org:schac:projectSpecificRole:<project-name>:<iNSS>
+#  Format: urn:schac.org:schac:projectSpecificRole:<project-name>:<iNSS>
 #          
 #          The <project-name> must be a name assigned by the TERENA
 #          URN Registry for this attribute at
-#          http://www.terena.org/registry/terena.org/schac/projectSpecificRole/
+#          https://wiki.refeds.org/display/STAN/SCHAC+URN+Registry
 #          <iNSS> is a Namespace Specific String as defined in RFC 2131 but
 #          case insensitive
 #
-# Example: urn:mace:terena.org:schac:projectSpecificRole:perfsonar:developer
+# Example: urn:schac.org:schac:projectSpecificRole:perfsonar:developer
 #
 attributetype ( schacAttributeType:21
     NAME 'schacProjectSpecificRole'
@@ -570,7 +575,7 @@ objectClass ( schacObjectClass:1
     NAME 'schacPersonalCharacteristics'
     DESC 'Personal characteristics describe the individual person represented by the entry'
     AUXILIARY
-    MAY ( schacMotherTongue $ schacGender $ schacDateOfBirth $ 
+    MAY ( schacMotherTongue $ schacDateOfBirth $ 
           schacPlaceOfBirth $ schacCountryOfCitizenship $ 
           schacSn1 $ schacSn2 $ schacPersonalTitle ) )
 
