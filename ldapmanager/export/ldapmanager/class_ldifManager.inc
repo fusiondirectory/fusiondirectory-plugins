@@ -27,12 +27,15 @@ class ldifManager extends simplePlugin
   {
     return [
       'plShortName'   => _('LDIF'),
-      'plDescription' => _('Export/Import the ldap tree to/from LDIF format'),
+      'plDescription' => _('Manage importing or exporting data in LDIF format'),
+      'plIcon'          => 'geticon.php?context=applications&icon=ldapmanager&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=ldapmanager&size=16',
       'plObjectType'  => ['ldapmanager' => [
         'name'      => _('LDAP Manager'),
-        'tabClass'  => 'ldapManagerTabs',
         'mainAttr'  => FALSE
       ]],
+
+      'plSection' => ['export' => ['name' => _('Export - Import'), 'priority' => 8]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
