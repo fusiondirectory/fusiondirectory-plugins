@@ -29,6 +29,8 @@ class csvImport extends simplePlugin
     return [
       'plShortName'   => _('CSV'),
       'plDescription' => _('Import csv data'),
+      'plIcon'          => 'geticon.php?context=applications&icon=csv&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=csv&size=16',
       'plObjectType'  => ['ldapmanager'],
       'plPriority'    => 3,
 
