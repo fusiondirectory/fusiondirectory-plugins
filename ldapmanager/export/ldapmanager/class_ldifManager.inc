@@ -30,8 +30,8 @@ class ldifManager extends simplePlugin
       'plDescription' => _('Manage importing or exporting data in LDIF format'),
       'plIcon'          => 'geticon.php?context=applications&icon=ldapmanager&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ldapmanager&size=16',
-      'plObjectType'  => ['ldapmanager' => [
-        'name'      => _('LDAP Manager'),
+      'plObjectType'  => ['ldif' => [
+        'name'      => _('LDIF Manager'),
         'mainAttr'  => FALSE
       ]],
 
