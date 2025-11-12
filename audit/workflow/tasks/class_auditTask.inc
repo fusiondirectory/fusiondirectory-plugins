@@ -129,24 +129,6 @@ class auditTask extends simplePlugin
   }
 
   /**
-   * @return bool
-   */
-  function update (): bool
-  {
-    // Ensure that both "deletion" and "syslog" are not activated at the same time
-    $syslogEnabled = $this->attributesAccess['fdAuditSyslogEnabled']->getValue();
-    $retentionDays = $this->attributesAccess['fdAuditTasksRetention']->getValue();
-
-    if ($syslogEnabled && $retentionDays > 0) {
-      throw new Exception(_('Audit deletion and syslog transformation cannot be activated at the same time.'));
-    }
-
-    parent::update();
-
-    return TRUE;
-  }
-
-  /**
    * @return array
    */
   function save (): array
