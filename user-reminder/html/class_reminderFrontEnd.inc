@@ -551,7 +551,7 @@ class reminderFrontEnd extends standAlonePage
     /* Retrieve hash from the ldap */
     $ldap = $config->get_ldap_link();
 
-    $dn = 'cn=' . $this->uid . ',ou=tokens,' . $config->current['BASE'];
+    $dn = 'cn=' . $this->uid . ',' . get_ou('ReminderTokenRDN') . $config->current['BASE'];
     $ldap->cat($dn);
 
     if ($attrs = $ldap->fetch()) {
@@ -582,7 +582,7 @@ class reminderFrontEnd extends standAlonePage
 
     $ldap = $config->get_ldap_link();
 
-    $dn = 'cn=' . $this->uid . ',ou=tokens,' . $config->current['BASE'];
+    $dn = 'cn=' . $this->uid . ',' . get_ou('ReminderTokenRDN') . $config->current['BASE'];
     $ldap->rmdir($dn);
     if (!$ldap->success()) {
       $this->message[] = $ldap->get_error();
