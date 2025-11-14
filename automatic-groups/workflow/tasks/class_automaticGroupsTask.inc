@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class automaticGroupsTasks extends simplePlugin
+class automaticGroupsTask extends simplePlugin
 {
   protected $displayHeader = TRUE;
   /**
@@ -38,14 +38,13 @@ class automaticGroupsTasks extends simplePlugin
       'plFilter'       => '(objectClass=fdTasksAutomaticGroups)',
       'plObjectType'   => ['tasks'],
       'plConflicts'    => [ // The name of the class is required, not the object class.
-        'tasksMail',          // from mail plugin (core)
-        'taskReminder',       // from user-reminder plugin
-        'tasksNotifications', // from notifications plugin
-        'archiveTask',        // from archive plugin
-        'extractorTask',      // from extractor plugin (if present)
-        'tasksLifeCycle',     // from lifecycle plugin (if present)
-        'auditTask',          // from archive plugin (if present)
-        //'tasksAutomaticGroups', // from automatic-groups plugin
+        'auditTask',
+        'archiveTask',          
+        'extractorTask', 
+        'lifeCycleTask', 
+        'mailTask',         
+        'notificationsTask', 
+        'reminderTask', 
       ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],

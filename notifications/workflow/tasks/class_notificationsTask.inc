@@ -38,14 +38,13 @@ class tasksNotifications extends simplePlugin
       'plFilter'       => '(objectClass=fdTasksNotifications)',
       'plObjectType'   => ['tasks'],
       'plConflicts'    => [ // The name of the class is required, not the object class.
-        'tasksMail',          // from mail plugin (core)
-        'taskReminder',       // from user-reminder plugin
-        //'tasksNotifications', // from notifications plugin
-        'archiveTask',        // from archive plugin
-        'extractorTask',      // from extractor plugin (if present)
-        'tasksLifeCycle',     // from lifecycle plugin (if present)
-        'auditTask',          // from archive plugin (if present)
-        'tasksAutomaticGroups', // from automatic-groups plugin
+        'auditTask',
+        'archiveTask',          
+        'automaticGroupsTask', 
+        'extractorTask', 
+        'lifeCycleTask', 
+        'mailTask',         
+        'reminderTask', 
       ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
@@ -259,7 +258,7 @@ class tasksNotifications extends simplePlugin
     // Get the members or groups selected
     $recipients = $this->attributesAccess['fdTasksNotificationsRecipientsMembers']->getValue();
     // Call static function from tasks object in order to get a real list of members and related emails directly.
-    $emailsList = tasksMail::getEmailsFromSelectedDN('gosaMailAccount',
+    $emailsList = mailTask::getEmailsFromSelectedDN('gosaMailAccount',
                                                      'mail',
                                                      tasks::extractMembersFromGroups($recipients)
     );
