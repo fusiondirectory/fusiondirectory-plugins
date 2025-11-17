@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class tasksNotifications extends simplePlugin
+class notificationsTask extends simplePlugin
 {
   protected $displayHeader = TRUE;
   // lastActivation comes from the generic task, it must be filled before saving to get previous lastActivation.
