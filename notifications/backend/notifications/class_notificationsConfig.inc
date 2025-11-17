@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-class tasksNotificationsConf extends simplePlugin
+class notificationsConfig extends simplePlugin
 {
   static function plInfo (): array
   {
