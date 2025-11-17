@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class taskReminder extends simplePlugin
+class reminderTask extends simplePlugin
 {
   protected $displayHeader = TRUE;
   // lastActivation comes from the generic task, it must be filled before saving to get previous lastActivation.
@@ -38,14 +38,13 @@ class taskReminder extends simplePlugin
       'plFilter'       => '(objectClass=fdTasksReminder)',
       'plObjectType'   => ['tasks'],
       'plConflicts'    => [ // The name of the class is required, not the object class.
-        'tasksMail',          // from mail plugin (core)
-        //'taskReminder',       // from user-reminder plugin
-        'tasksNotifications', // from notifications plugin
-        'archiveTask',        // from archive plugin
-        'extractorTask',      // from extractor plugin (if present)
-        'tasksLifeCycle',     // from lifecycle plugin (if present)
-        'auditTask',          // from archive plugin (if present)
-        'tasksAutomaticGroups', // from automatic-groups plugin
+        'auditTask',
+        'archiveTask',
+        'automaticGroupsTask',
+        'extractorTask',
+        'lifeCycleTask',
+        'mailTask',
+        'notificationsTask',
       ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => [],
@@ -259,7 +258,7 @@ class taskReminder extends simplePlugin
     $recipients = $this->attributesAccess['fdTasksReminderRecipientsMembers']->getValue();
 
     // Call static function from tasks object in order to get a real list of members and related emails directly.
-    $recipientsEmailsList = tasksMail::getEmailsFromSelectedDN('gosaMailAccount',
+    $recipientsEmailsList = mailTask::getEmailsFromSelectedDN('gosaMailAccount',
                                                                'mail',
                                                                tasks::extractMembersFromGroups($recipients));
 
