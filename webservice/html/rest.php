@@ -577,12 +577,17 @@ class fdRestService extends fdRPCService
     }
     foreach ($fields as &$section) {
       $attributes = [];
+      $requiredAttributes = [];
       foreach ($section['attrs'] as $attr) {
         if ($object->attrIsReadable($attr)) {
           $attributes[] = $attr->getLdapName();
+          if ($attr->isRequired()) {
+             $requiredAttributes[] = $attr->getLdapName();
+          }
         }
       }
-      $section['attrs'] = $attributes;
+      $section['attrs']         = $attributes;
+      $section['requiredAttrs'] = $requiredAttributes;
     }
     unset($section);
     return ['sections' => $fields, 'sections_order' => array_keys($fields)];
