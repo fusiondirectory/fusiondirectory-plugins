@@ -50,7 +50,7 @@ class supannRessource extends simplePlugin
           new BaseSelectorAttribute(get_ou('SupannRessourceRDN')),
           new StringAttribute(
             _('Ressource Name'), _('The name of the Supann Ressource'),
-            'fdSupannRessourceName', TRUE
+            'fdSupannRessourceName', TRUE, '', '', '/^[a-zA-Z0-9:_\-\.]+$/'
           ),
           new StringAttribute(
             _('Ressource Label'), _('The label of the Supann Ressource'),
