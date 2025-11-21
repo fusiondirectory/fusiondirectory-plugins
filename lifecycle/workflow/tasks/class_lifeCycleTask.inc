@@ -237,7 +237,7 @@ class lifeCycleTask extends simplePlugin
 
     // Set the state
     $this->attributesAccess['fdTasksLifeCyclePreState']->setChoices(array_keys($states), array_values($states));
-    $this->attributesAccess['fdTasksLifeCyclePostState']->setChoices(array_keys($states), array_values($states)); 
+    $this->attributesAccess['fdTasksLifeCyclePostState']->setChoices(array_keys($states), array_values($states));
 
     // Allows the sub states to be listed when state is modified.
     $this->attributesAccess['fdTasksLifeCyclePreState']->setSubmitForm('updateFieldsChoices');
