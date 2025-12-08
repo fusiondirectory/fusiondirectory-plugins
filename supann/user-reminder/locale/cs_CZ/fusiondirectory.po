@@ -1,0 +1,262 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2024
+# fusiondirectory <contact@fusiondirectory.org>, 2025
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
+"PO-Revision-Date: 2018-08-13 20:05+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2025\n"
+"Language-Team: Czech (Czech Republic) (https://app.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: backend/user-reminder/class_userReminderConfig.inc:27
+msgid "Reminder"
+msgstr ""
+
+#: backend/user-reminder/class_userReminderConfig.inc:28
+msgid "User reminder"
+msgstr "Připomínání uživatelů"
+
+#: backend/user-reminder/class_userReminderConfig.inc:29
+msgid "Configuration for the reminder of accounts expiration"
+msgstr "Nastavení připomínání blížícího se konce platnosti uživatelských účtů"
+
+#: backend/user-reminder/class_userReminderConfig.inc:42
+msgid "User reminder settings"
+msgstr "Nastavení připomínání uživatele"
+
+#: backend/user-reminder/class_userReminderConfig.inc:45
+msgid "Reminder RDN"
+msgstr ""
+
+#: backend/user-reminder/class_userReminderConfig.inc:45
+msgid "The branch where FusionDirectory reminder tokens are stored"
+msgstr ""
+
+#: backend/user-reminder/class_userReminderConfig.inc:50
+msgid "Salt for tokens"
+msgstr "Kryptografická „sůl“ pro tokeny"
+
+#: backend/user-reminder/class_userReminderConfig.inc:51
+msgid ""
+"Just a security measure, you can put anything in there, even random "
+"characters"
+msgstr ""
+"Pouze bezpečnostní opatření, můžete zde zadat cokoli, třeba i nahodile "
+"zvolené znaky"
+
+#: workflow/tasks/class_reminderTask.inc:33
+msgid "Tasks Reminder"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:34
+msgid "Tasks User Reminder Object"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:58
+msgid "User Reminder general settings"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:63
+msgid "First reminder"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:63
+#: workflow/tasks/class_reminderTask.inc:96
+msgid "Numbers of days before reaching resource end date"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:70
+msgid "SupannRessourceEtat to be monitored "
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:73
+#: workflow/tasks/class_reminderTask.inc:105
+msgid "Resource"
+msgstr "Prostředek"
+
+#: workflow/tasks/class_reminderTask.inc:73
+#: workflow/tasks/class_reminderTask.inc:105
+msgid "Supann resources"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:77
+#: workflow/tasks/class_reminderTask.inc:109
+msgid "State"
+msgstr "Stát"
+
+#: workflow/tasks/class_reminderTask.inc:77
+#: workflow/tasks/class_reminderTask.inc:109
+msgid "Resource state"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:81
+#: workflow/tasks/class_reminderTask.inc:113
+msgid "Sub state"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:81
+#: workflow/tasks/class_reminderTask.inc:113
+msgid "Resource sub state"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:87
+#: workflow/tasks/class_reminderTask.inc:91
+msgid "Account prolongation"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:91
+msgid "Activate / Deactivate account prolongation (token issue)"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:96
+msgid "Second reminder"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:100
+msgid "Posix"
+msgstr "POSIX"
+
+#: workflow/tasks/class_reminderTask.inc:100
+msgid "Monitor posix end date"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:117
+msgid "Account added duration"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:117
+msgid "Numbers of days to add to the new end date of supann resource"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:123
+#: workflow/tasks/class_reminderTask.inc:126
+msgid "Mail Template"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:126
+msgid "Mail Template Object Selection"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:130
+msgid "Sender email address"
+msgstr "E-mailová adresa odesilatele"
+
+#: workflow/tasks/class_reminderTask.inc:131
+msgid "Email address from which mails will be sent"
+msgstr "E-mailová adresa, ze které budou zprávy posílány"
+
+#: workflow/tasks/class_reminderTask.inc:136
+msgid "Recipients Users and/or Groups"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:139
+msgid "Forward To"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:139
+msgid "Users or Groups requiring to be notified."
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:143
+msgid "Monitored Members"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:143
+msgid "Users or Groups requiring monitoring."
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:2
+#: ihtml/themes/breezy/taskReminder.tpl.c:5
+#: ihtml/themes/breezy/user-reminder.tpl.c:2
+#: ihtml/themes/breezy/user-reminder.tpl.c:5
+msgid "User"
+msgstr "Uživatel"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:8
+msgid "Reminder - Account prolongation"
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:11
+#: ihtml/themes/breezy/taskReminder.tpl.c:14
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:17
+msgid "Enter your ID"
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:20
+msgid "Select ID Type"
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:23
+msgid "Mail"
+msgstr "E-mail"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:26
+msgid "UID"
+msgstr "UID"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:29
+msgid "Supann Alias"
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:32
+msgid "EPPN"
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:35
+msgid "Submit"
+msgstr "Odeslat"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:38
+msgid "Click here to prolonged your account."
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:41
+#: ihtml/themes/breezy/taskReminder.tpl.c:44
+#: ihtml/themes/breezy/user-reminder.tpl.c:11
+#: ihtml/themes/breezy/user-reminder.tpl.c:14
+msgid "Success"
+msgstr "Úspěch"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:47
+msgid "Your account has been prolonged successfully."
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:50
+#: ihtml/themes/breezy/taskReminder.tpl.c:53
+#: ihtml/themes/breezy/user-reminder.tpl.c:20
+#: ihtml/themes/breezy/user-reminder.tpl.c:23
+msgid "Error"
+msgstr "Chyba"
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:56
+msgid "Error, data received are invalid!"
+msgstr ""
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:8
+msgid "Expiration postpone"
+msgstr "Odložení skončení platnosti"
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:17
+msgid "Your expiration has been postponed successfully."
+msgstr "Skončení vaší platnosti bylo úspěšně posunuto."
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:26
+msgid "There was a problem"
+msgstr "Došlo k problému"

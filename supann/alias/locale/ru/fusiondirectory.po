@@ -1,0 +1,160 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2025
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2025-11-18 21:34+0000\n"
+"PO-Revision-Date: 2018-08-13 19:49+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2025\n"
+"Language-Team: Russian (https://app.transifex.com/fusiondirectory/teams/12202/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: backend/alias/class_aliasConfig.inc:26
+msgid "Alias configuration"
+msgstr "Настройка псеводонимов"
+
+#: backend/alias/class_aliasConfig.inc:27
+msgid "FusionDirectory alias plugin configuration"
+msgstr "FusionDirectory настройка плагина псевдонимов."
+
+#: backend/alias/class_aliasConfig.inc:40
+msgid "Alias"
+msgstr "Псеводоним"
+
+#: backend/alias/class_aliasConfig.inc:43
+msgid "Alias RDN"
+msgstr "RDN псевдонимов"
+
+#: backend/alias/class_aliasConfig.inc:43
+msgid "Branch in which aliases will be stored"
+msgstr "Ветка в которой будут храниться псеводонимы"
+
+#: management/alias/class_mailAliasDistribution.inc:26
+#: management/alias/class_mailAliasDistribution.inc:27
+#: management/alias/class_mailAliasDistribution.inc:30
+msgid "Temporary mail distribution"
+msgstr "Временное распространение почты"
+
+#: management/alias/class_mailAliasDistribution.inc:52
+msgid "Mail distribution"
+msgstr "Распространение почты"
+
+#: management/alias/class_mailAliasDistribution.inc:55
+#: management/alias/class_mailAliasRedirection.inc:56
+msgid "Name"
+msgstr "Фамилия"
+
+#: management/alias/class_mailAliasDistribution.inc:55
+msgid "Name to identify this alias"
+msgstr "Имя определяющее этот псеводоним"
+
+#: management/alias/class_mailAliasDistribution.inc:57
+#: management/alias/class_mailAliasRedirection.inc:58
+msgid "Description"
+msgstr "Описание"
+
+#: management/alias/class_mailAliasDistribution.inc:57
+msgid "Description of this alias"
+msgstr "Описание псеводонима"
+
+#: management/alias/class_mailAliasDistribution.inc:61
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+#: management/alias/class_mailAliasDistribution.inc:66
+msgid "Email aliases"
+msgstr "Псевдонимы электронной почты"
+
+#: management/alias/class_mailAliasDistribution.inc:66
+msgid "Aliases for this email address"
+msgstr "Псевдонимы для адреса электронной почты"
+
+#: management/alias/class_mailAliasDistribution.inc:71
+msgid "Mail server"
+msgstr "Почтовый сервер"
+
+#: management/alias/class_mailAliasDistribution.inc:71
+msgid "Mail server for this alias"
+msgstr "Почтовый сервер для этого псевдонима"
+
+#: management/alias/class_mailAliasDistribution.inc:76
+#: management/alias/class_mailAliasRedirection.inc:74
+msgid "Expiration date"
+msgstr "Дата окончания действия"
+
+#: management/alias/class_mailAliasDistribution.inc:76
+msgid ""
+"Date after which the alias should be deleted. Leave empty for no deletion."
+msgstr ""
+"Дата после которой псевдоним будет удален. Оставить пустым, если удалять не "
+"нужно."
+
+#: management/alias/class_mailAliasRedirection.inc:26
+#: management/alias/class_mailAliasRedirection.inc:27
+#: management/alias/class_mailAliasRedirection.inc:30
+msgid "Temporary mail redirection"
+msgstr "Временное перенаправление почты"
+
+#: management/alias/class_mailAliasRedirection.inc:53
+msgid "Mail redirection"
+msgstr "Перенаправление почты"
+
+#: management/alias/class_mailAliasRedirection.inc:56
+msgid "Name to identify this redirection"
+msgstr "Название определяющее это перенаправление"
+
+#: management/alias/class_mailAliasRedirection.inc:58
+msgid "Description of this redirection"
+msgstr "Описание этого перенаправления"
+
+#: management/alias/class_mailAliasRedirection.inc:63
+msgid "Redirect from"
+msgstr "Перенаправить откуда"
+
+#: management/alias/class_mailAliasRedirection.inc:63
+msgid "Mail address from which you want to redirect"
+msgstr "Адрес электронной почты с которого вы хотите перенаправлять"
+
+#: management/alias/class_mailAliasRedirection.inc:69
+msgid "Redirect to"
+msgstr "Перенаправить куда"
+
+#: management/alias/class_mailAliasRedirection.inc:69
+msgid "Destination of this redirection"
+msgstr "Адрес назначения для этого перенаправления"
+
+#: management/alias/class_mailAliasRedirection.inc:74
+msgid ""
+"Date after which the redirection should be deleted. Leave empty for no "
+"deletion."
+msgstr ""
+"Дата после которой перенаправление будет удалено. Оставить пустым, если "
+"удалять не нужно."
+
+#: management/alias/class_aliasManagement.inc:39
+msgid "Mail Redirections"
+msgstr ""
+
+#: management/alias/class_aliasManagement.inc:40
+msgid "Manage mail redirections"
+msgstr ""
+
+#: management/alias/class_aliasManagement.inc:42
+msgid "Users and groups"
+msgstr "Пользователи и группы"
+
+#: management/alias/class_aliasManagement.inc:44
+msgid "Mail aliases"
+msgstr "Псевдонимы для почты"
