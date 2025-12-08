@@ -1,0 +1,367 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2025-11-23 15:01+0000\n"
+"PO-Revision-Date: 2018-08-13 19:57+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
+"Language-Team: Polish (https://app.transifex.com/fusiondirectory/teams/12202/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: backend/mail/class_mailPluginConfig.inc:26
+#: management/groups/mail/class_mailGroup.inc:46
+#: personal/mail/class_mailAccount.inc:93
+msgid "Mail"
+msgstr "Poczta"
+
+#: backend/mail/class_mailPluginConfig.inc:27
+msgid "Mail plugin configuration"
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:40
+#: personal/mail/class_mailAccount.inc:94
+msgid "Mail settings"
+msgstr "Ustawienia pocztowe"
+
+#: backend/mail/class_mailPluginConfig.inc:43
+msgid "Account identification attribute"
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:44
+msgid "Which attribute will be used to create accounts."
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:49
+msgid "User account template"
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:50
+msgid ""
+"Override the user account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:54
+msgid "Group account template"
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:55
+msgid ""
+"Override the group account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:59
+msgid "Delete mailbox on account deletion"
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:60
+msgid ""
+"Determines if the mailbox should be removed from your IMAP server after the "
+"account is deleted in LDAP."
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:64
+msgid "IMAP timeout"
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:65
+msgid "Sets the connection timeout for imap actions."
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:70
+msgid "Shared prefix"
+msgstr ""
+
+#: backend/mail/class_mailPluginConfig.inc:71
+msgid "Prefix to add for mail shared folders."
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:47
+msgid "Group mail options"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:62
+msgid "Information"
+msgstr "Informacja"
+
+#: management/groups/mail/class_mailGroup.inc:65
+#: personal/mail/class_mailAccount.inc:121
+msgid "Primary address"
+msgstr "Adres podstawowy"
+
+#: management/groups/mail/class_mailGroup.inc:65
+msgid "The primary mail address"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:69
+#: personal/mail/class_mailAccount.inc:125
+msgid "Server"
+msgstr "Serwer"
+
+#: management/groups/mail/class_mailGroup.inc:69
+msgid "Email server"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:75
+#: personal/mail/class_mailAccount.inc:141
+msgid "Alternative addresses"
+msgstr "Adresy alternatywne"
+
+#: management/groups/mail/class_mailGroup.inc:75
+msgid "Alternative mail addresses for the group"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:82
+msgid "Options"
+msgstr "Opcje"
+
+#: management/groups/mail/class_mailGroup.inc:85
+msgid "Forward messages to non group members"
+msgstr "Przekaż wiadomości do członków bez grupy"
+
+#: management/groups/mail/class_mailGroup.inc:89
+msgid "Only allowed to receive local mail"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:89
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:94
+msgid "Default ACL"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:94
+msgid "ACL for people not in the group"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:98
+msgid "Members ACL"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:98
+msgid "ACL for members of the group"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:103
+msgid "Special ACLs for specific members"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:107
+msgid "Email"
+msgstr "Email"
+
+#: management/groups/mail/class_mailGroup.inc:112
+msgid "ACL"
+msgstr "ACL"
+
+#: management/groups/mail/class_mailGroup.inc:118
+msgid "Special ACLs"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:291
+#, php-format
+msgid "Several users have uid \"%s\". Ignoring this member."
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:342
+#: personal/mail/class_mailAccount.inc:296
+#: personal/mail/class_mailAccount.inc:416
+#, php-format
+msgid "Mail method cannot connect: %s"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:348
+#: personal/mail/class_mailAccount.inc:444
+#, php-format
+msgid "Cannot update mailbox: %s"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:388
+#: personal/mail/class_mailAccount.inc:507
+#, php-format
+msgid "Cannot remove mailbox, mail method cannot connect: %s"
+msgstr ""
+
+#: management/groups/mail/class_mailGroup.inc:397
+#: personal/mail/class_mailAccount.inc:437
+#: personal/mail/class_mailAccount.inc:516
+#, php-format
+msgid "Cannot remove mailbox: %s"
+msgstr ""
+
+#: management/systems/services/imap/class_serviceIMAP.inc:52
+msgid "IMAP generic service"
+msgstr ""
+
+#: management/systems/services/imap/class_serviceIMAP.inc:53
+msgid "IMAP"
+msgstr ""
+
+#: management/systems/services/imap/class_serviceIMAP.inc:53
+msgid "Services"
+msgstr "Usługi"
+
+#: personal/mail/class_mailAccount.inc:29
+msgid "MiB"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:30
+msgid "GiB"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:31
+msgid "TiB"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:45
+#, php-format
+msgid "Cannot read quota settings: %s"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:58
+msgid "Quota usage"
+msgstr "Użycie Quoty"
+
+#: personal/mail/class_mailAccount.inc:59
+msgid "Part of the quota which is used"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:118
+msgid "Mail account"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:121
+msgid "Primary mail address"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:125
+msgid "Specify the mail server where the user will be hosted on"
+msgstr "Wybierz serwer poczty który będzie przechowywał skrzynkę użytkownika"
+
+#: personal/mail/class_mailAccount.inc:130
+msgid "Quota size"
+msgstr "Rozmiar Quoty"
+
+#: personal/mail/class_mailAccount.inc:130
+msgid "Define quota size in MiB"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:137
+msgid "Other addresses and redirections"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:141
+msgid "List of alternative mail addresses"
+msgstr "Lista alternatywnych adresów pocztowych"
+
+#: personal/mail/class_mailAccount.inc:146
+msgid "Forward messages to"
+msgstr "Przekaż wiadomości do"
+
+#: personal/mail/class_mailAccount.inc:146
+msgid "Addresses to which messages should be forwarded"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:152
+#: personal/mail/class_mailAccount.inc:171
+msgid "Vacation message"
+msgstr "Treść autorespondera"
+
+#: personal/mail/class_mailAccount.inc:155
+msgid "Activate vacation message"
+msgstr "Włącz autoresponder"
+
+#: personal/mail/class_mailAccount.inc:156
+msgid ""
+"Select to automatically response with the vacation message defined below"
+msgstr "Zaznacz aby automatycznie wysyłać autoodpowiedź zdefiniowaną poniżej"
+
+#: personal/mail/class_mailAccount.inc:161
+msgid "from"
+msgstr "od"
+
+#: personal/mail/class_mailAccount.inc:166
+msgid "till"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:177
+msgid "Advanced mail options"
+msgstr "Zaawansowane opcje poczty"
+
+#: personal/mail/class_mailAccount.inc:185
+msgid "User is only allowed to send and receive local mails"
+msgstr "Użytkownik może tylko wysyłać i odbierać lokalną pocztę"
+
+#: personal/mail/class_mailAccount.inc:186
+msgid "Select if user can only send and receive inside his own domain"
+msgstr ""
+"Wybierz jeśli użytkownik może odbierać i wysyłać w obrębie własnej domeny"
+
+#: personal/mail/class_mailAccount.inc:191
+msgid "No delivery to own mailbox"
+msgstr "Nie dostarczaj do własnej skrzynki"
+
+#: personal/mail/class_mailAccount.inc:192
+msgid "Select if you want to forward mails without getting own copies of them"
+msgstr "Zaznacz jeśli chcesz przekazywać pocztę bez zachowania kopii"
+
+#: personal/mail/class_mailAccount.inc:305
+#, php-format
+msgid "Mail method error: %s"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:451
+#, php-format
+msgid "Cannot write quota settings: %s"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:470
+#, php-format
+msgid "Mail error saving sieve settings: %s"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:149
+#, php-format
+msgid "The configured mail attribute \"%s\" is unsupported!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:159
+#, php-format
+msgid "%s (%s)"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:524
+#, php-format
+msgid "Cannot store SIEVE script and active"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:704
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:709
+msgid "Mail server for this account is invalid!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:840
+msgid "Unknown"
+msgstr "Nieznane"
+
+#: personal/mail/class_mail-methods.inc:842
+msgid "Unlimited"
+msgstr ""
