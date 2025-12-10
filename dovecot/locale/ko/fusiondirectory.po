@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -90,28 +90,3 @@ msgstr "패스워드"
 #: management/systems/services/dovecot/class_serviceDovecot.inc:82
 msgid "Admin user password"
 msgstr "관리자 패스워드"
-
-#: management/systems/services/dovecot/class_serviceDovecot.inc:86
-msgid "Mail directory"
-msgstr "메일 디렉토리"
-
-#: management/systems/services/dovecot/class_serviceDovecot.inc:86
-msgid "Path to the directory in which user maildirs must be created"
-msgstr "사용자 maildir을 작성해야하는 디렉토리 경로"
-
-#: management/systems/services/dovecot/class_serviceDovecot.inc:93
-msgid "Options"
-msgstr "옵션"
-
-#: management/systems/services/dovecot/class_serviceDovecot.inc:96
-msgid "Create the user folder via Argonaut"
-msgstr "Argonaut를 통해 사용자 폴더 만들기"
-
-#: management/systems/services/dovecot/class_serviceDovecot.inc:96
-msgid "Use argonaut to create the user mailbox on the Dovecot server"
-msgstr "argonaut를 사용하여 Dovecot 서버에 사용자 사서함을 만듭니다."
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:185
-#, php-format
-msgid "Error while trying to contact Dovecot server through Argonaut: %s"
-msgstr "Argonaut를 통해 Dovecot 서버에 접속하는 동안 오류가 발생했습니다: %s"

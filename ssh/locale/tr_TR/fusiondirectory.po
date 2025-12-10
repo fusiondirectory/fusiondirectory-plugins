@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
 "PO-Revision-Date: 2018-08-13 20:03+0000\n"
 "Last-Translator: abc Def <hdogan1974@gmail.com>, 2020\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/fusiondirectory/teams/12202/tr_TR/)\n"
@@ -21,27 +21,27 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: personal/ssh/class_sshAccount.inc:61
+#: personal/ssh/class_sshAccount.inc:67
 msgid "Unknown public key format!"
 msgstr "Bilinmeyen açık anahtar biçimi!"
 
-#: personal/ssh/class_sshAccount.inc:82
-msgid "SSH"
-msgstr "SSH"
+#: personal/ssh/class_sshAccount.inc:88
+msgid "OpenSSH"
+msgstr ""
 
-#: personal/ssh/class_sshAccount.inc:83
-msgid "Edit user's SSH public keys"
-msgstr "Kullanıcının SSH açık anahtarlarını düzenleme"
-
-#: personal/ssh/class_sshAccount.inc:101
-msgid "SSH Keys"
-msgstr "SSH Anahtarları"
+#: personal/ssh/class_sshAccount.inc:89
+msgid "Manage OpenSSH public keys"
+msgstr ""
 
 #: personal/ssh/class_sshAccount.inc:107
-msgid "SSH public keys for this user"
-msgstr "Bu kullanıcı için SSH açık anahtarları"
+msgid "OpenSSH Keys"
+msgstr ""
 
-#: personal/ssh/class_sshAccount.inc:133
+#: personal/ssh/class_sshAccount.inc:113
+msgid "OpenSSH public keys for this user"
+msgstr ""
+
+#: personal/ssh/class_sshAccount.inc:139
 #, php-format
 msgid "Error : there are several keys with fingerprint %s"
 msgstr "Hata: parmak izine sahip birkaç anahtar var. %s"

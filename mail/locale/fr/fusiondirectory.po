@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2021
-# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021
+# fusiondirectory <contact@fusiondirectory.org>, 2025
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -201,7 +201,7 @@ msgid "Cannot update mailbox: %s"
 msgstr "Impossible de mettre à jour le compte : %s"
 
 #: management/groups/mail/class_mailGroup.inc:388
-#: personal/mail/class_mailAccount.inc:505
+#: personal/mail/class_mailAccount.inc:507
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
@@ -210,7 +210,7 @@ msgstr ""
 
 #: management/groups/mail/class_mailGroup.inc:397
 #: personal/mail/class_mailAccount.inc:437
-#: personal/mail/class_mailAccount.inc:514
+#: personal/mail/class_mailAccount.inc:516
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr "Impossible de supprimer la boite de courriel : %s"
@@ -346,33 +346,38 @@ msgstr "Erreur de méthode de messagerie : %s"
 msgid "Cannot write quota settings: %s"
 msgstr "Impossible d'écrire les paramètres de quota : %s"
 
-#: personal/mail/class_mailAccount.inc:469
+#: personal/mail/class_mailAccount.inc:470
 #, php-format
 msgid "Mail error saving sieve settings: %s"
 msgstr "Erreur lors de l'enregistrement des paramètres Sieve : %s"
 
-#: personal/mail/class_mail-methods.inc:146
+#: personal/mail/class_mail-methods.inc:149
 #, php-format
 msgid "The configured mail attribute \"%s\" is unsupported!"
 msgstr "L'attribut de courriel \"%s\" n'est pas supporté !"
 
-#: personal/mail/class_mail-methods.inc:156
+#: personal/mail/class_mail-methods.inc:159
 #, php-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: personal/mail/class_mail-methods.inc:599
+#: personal/mail/class_mail-methods.inc:524
+#, php-format
+msgid "Cannot store SIEVE script and active"
+msgstr "Impossible de stocker le script SIEVE et l'activer"
+
+#: personal/mail/class_mail-methods.inc:704
 msgid "There are no IMAP compatible mail servers defined!"
 msgstr "Il n'y a aucun serveur IMAP compatibles définis !"
 
-#: personal/mail/class_mail-methods.inc:604
+#: personal/mail/class_mail-methods.inc:709
 msgid "Mail server for this account is invalid!"
 msgstr "Le serveur de messagerie pour ce compte est non valide !"
 
-#: personal/mail/class_mail-methods.inc:735
+#: personal/mail/class_mail-methods.inc:840
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: personal/mail/class_mail-methods.inc:737
+#: personal/mail/class_mail-methods.inc:842
 msgid "Unlimited"
 msgstr "Illimité"

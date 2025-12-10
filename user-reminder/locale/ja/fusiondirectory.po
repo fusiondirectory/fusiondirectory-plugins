@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Language-Team: Japanese (https://app.transifex.com/fusiondirectory/teams/12202/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -34,353 +34,142 @@ msgid "User reminder settings"
 msgstr ""
 
 #: backend/user-reminder/class_userReminderConfig.inc:45
-msgid "Delay before expiration"
+msgid "Reminder RDN"
 msgstr ""
 
 #: backend/user-reminder/class_userReminderConfig.inc:45
-msgid "Days before expiration to send the first mail"
+msgid "The branch where FusionDirectory reminder tokens are stored"
 msgstr ""
 
 #: backend/user-reminder/class_userReminderConfig.inc:50
-msgid "Delay before sending again"
+msgid "Salt for tokens"
 msgstr ""
 
-#: backend/user-reminder/class_userReminderConfig.inc:50
-msgid "Days before sending a second mail (0 to disable)"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:55
-msgid "Extension of the validity"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:55
-msgid "Extension of the duration of the account in days"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:60
-#: workflow/tasks/class_taskReminder.inc:122
-msgid "Sender email address"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:60
-#: workflow/tasks/class_taskReminder.inc:123
-msgid "Email address from which mails will be sent"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:65
-msgid "Allow use of alternate addresses"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:65
+#: backend/user-reminder/class_userReminderConfig.inc:51
 msgid ""
-"Whether the field gosaMailAlternateAddress should be used as well to send "
-"reminders"
+"Just a security measure, you can put anything in there, even random "
+"characters"
 msgstr ""
 
-#: backend/user-reminder/class_userReminderConfig.inc:72
-msgid "Ppolicy email settings"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:75
-#: backend/user-reminder/class_userReminderConfig.inc:101
-msgid "Forward alerts to the manager"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:75
-msgid "Forward ppolicy alerts to the manager"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:80
-#: backend/user-reminder/class_userReminderConfig.inc:106
-#: backend/user-reminder/class_userReminderConfig.inc:132
-#: backend/user-reminder/class_userReminderConfig.inc:163
-msgid "Subject"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:80
-msgid "Subject of the ppolicy alert email"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:82
-msgid "[FusionDirectory] Your password is about to expire"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:85
-#: backend/user-reminder/class_userReminderConfig.inc:137
-#: backend/user-reminder/class_userReminderConfig.inc:168
-#, php-format
-msgid "Body (%s are cn and login)"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:86
-#, php-format
-msgid ""
-"Body of the ppolicy alert email, sent when the user password is about to "
-"expire. Use %s for the cn and uid."
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:88
-#, php-format
-msgid ""
-"Dear %1$s,\n"
-"your password for account %2$s is about to expire, please change your password: \n"
-"https://"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:98
-msgid "Alert email settings"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:106
-msgid "Subject of the alert email"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:108
-msgid "[FusionDirectory] Your account is about to expire"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:111
-#, php-format
-msgid "Body (%s are cn, login, and link token)"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:112
-#, php-format
-msgid ""
-"Body of the alert email, sent when the user is about to expire. Use %s for "
-"the cn, uid and token."
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:114
-#, php-format
-msgid ""
-"Dear %1$s,\n"
-"your account %2$s is about to expire, please use this link to avoid this: \n"
-"https://"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:124
-msgid "Confirmation email settings"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:127
-msgid "Forward confirmation to the manager"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:127
-msgid "Forward account extension confirmation to the manager"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:132
-msgid "Subject of the confirmation email"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:134
-msgid "[FusionDirectory] Your account expiration has been postponed"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:138
-#, php-format
-msgid ""
-"Body of the confirmation email, sent when the user has postponed expiration."
-" Use %s for the cn and uid."
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:140
-#, php-format
-msgid ""
-"Dear %1$s,\n"
-" your account %2$s expiration has been successfully postponed.\n"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:150
-msgid "Expiration email settings"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:153
-msgid "Send an email"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:153
-msgid "Whether to send an email after expiration to inform the user"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:158
-msgid "Forward to the manager"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:158
-msgid "Forward account expiration to the manager"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:163
-msgid "Subject of the expiration email"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:165
-msgid "[FusionDirectory] Your account has expired"
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:169
-#, php-format
-msgid ""
-"Body of the expiration email, sent when the user has expired. Use %s for the"
-" cn and uid."
-msgstr ""
-
-#: backend/user-reminder/class_userReminderConfig.inc:171
-#, php-format
-msgid ""
-"Dear %1$s,\n"
-" your account %2$s has expired.\n"
-msgstr ""
-
-#: workflow/tasks/class_taskReminder.inc:33
+#: workflow/tasks/class_reminderTask.inc:33
 msgid "Tasks Reminder"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:34
+#: workflow/tasks/class_reminderTask.inc:34
 msgid "Tasks User Reminder Object"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:50
+#: workflow/tasks/class_reminderTask.inc:58
 msgid "User Reminder general settings"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:55
+#: workflow/tasks/class_reminderTask.inc:63
 msgid "First reminder"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:55
-#: workflow/tasks/class_taskReminder.inc:88
+#: workflow/tasks/class_reminderTask.inc:63
+#: workflow/tasks/class_reminderTask.inc:96
 msgid "Numbers of days before reaching resource end date"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:62
+#: workflow/tasks/class_reminderTask.inc:70
 msgid "SupannRessourceEtat to be monitored "
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:65
-#: workflow/tasks/class_taskReminder.inc:97
+#: workflow/tasks/class_reminderTask.inc:73
+#: workflow/tasks/class_reminderTask.inc:105
 msgid "Resource"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:65
-#: workflow/tasks/class_taskReminder.inc:97
+#: workflow/tasks/class_reminderTask.inc:73
+#: workflow/tasks/class_reminderTask.inc:105
 msgid "Supann resources"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:69
-#: workflow/tasks/class_taskReminder.inc:101
+#: workflow/tasks/class_reminderTask.inc:77
+#: workflow/tasks/class_reminderTask.inc:109
 msgid "State"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:69
-#: workflow/tasks/class_taskReminder.inc:101
+#: workflow/tasks/class_reminderTask.inc:77
+#: workflow/tasks/class_reminderTask.inc:109
 msgid "Resource state"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:73
-#: workflow/tasks/class_taskReminder.inc:105
+#: workflow/tasks/class_reminderTask.inc:81
+#: workflow/tasks/class_reminderTask.inc:113
 msgid "Sub state"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:73
-#: workflow/tasks/class_taskReminder.inc:105
+#: workflow/tasks/class_reminderTask.inc:81
+#: workflow/tasks/class_reminderTask.inc:113
 msgid "Resource sub state"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:79
-#: workflow/tasks/class_taskReminder.inc:83
+#: workflow/tasks/class_reminderTask.inc:87
+#: workflow/tasks/class_reminderTask.inc:91
 msgid "Account prolongation"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:83
+#: workflow/tasks/class_reminderTask.inc:91
 msgid "Activate / Deactivate account prolongation (token issue)"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:88
+#: workflow/tasks/class_reminderTask.inc:96
 msgid "Second reminder"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:92
+#: workflow/tasks/class_reminderTask.inc:100
 msgid "Posix"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:92
+#: workflow/tasks/class_reminderTask.inc:100
 msgid "Monitor posix end date"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:109
+#: workflow/tasks/class_reminderTask.inc:117
 msgid "Account added duration"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:109
+#: workflow/tasks/class_reminderTask.inc:117
 msgid "Numbers of days to add to the new end date of supann resource"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:115
-#: workflow/tasks/class_taskReminder.inc:118
+#: workflow/tasks/class_reminderTask.inc:123
+#: workflow/tasks/class_reminderTask.inc:126
 msgid "Mail Template"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:118
+#: workflow/tasks/class_reminderTask.inc:126
 msgid "Mail Template Object Selection"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:128
+#: workflow/tasks/class_reminderTask.inc:130
+msgid "Sender email address"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:131
+msgid "Email address from which mails will be sent"
+msgstr ""
+
+#: workflow/tasks/class_reminderTask.inc:136
 msgid "Recipients Users and/or Groups"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:131
+#: workflow/tasks/class_reminderTask.inc:139
 msgid "Forward To"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:131
+#: workflow/tasks/class_reminderTask.inc:139
 msgid "Users or Groups requiring to be notified."
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:135
+#: workflow/tasks/class_reminderTask.inc:143
 msgid "Monitored Members"
 msgstr ""
 
-#: workflow/tasks/class_taskReminder.inc:135
+#: workflow/tasks/class_reminderTask.inc:143
 msgid "Users or Groups requiring monitoring."
-msgstr ""
-
-#: workflow/tasks/class_taskReminder.inc:188
-msgid "Account"
-msgstr ""
-
-#: workflow/tasks/class_taskReminder.inc:188
-#: ihtml/themes/breezy/taskReminder.tpl.c:23
-msgid "Mail"
-msgstr ""
-
-#: workflow/tasks/class_taskReminder.inc:188
-msgid "None"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:70
-msgid "This token is invalid"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:73
-msgid "Token is missing from URL"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:242
-msgid "Contact your administrator, there was a problem with mail server"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:251
-#, php-format
-msgid "Did not find an account with login \"%s\""
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:254
-#, php-format
-msgid "Found multiple accounts with login \"%s\""
 msgstr ""
 
 #: ihtml/themes/breezy/taskReminder.tpl.c:2
@@ -405,6 +194,10 @@ msgstr ""
 
 #: ihtml/themes/breezy/taskReminder.tpl.c:20
 msgid "Select ID Type"
+msgstr ""
+
+#: ihtml/themes/breezy/taskReminder.tpl.c:23
+msgid "Mail"
 msgstr ""
 
 #: ihtml/themes/breezy/taskReminder.tpl.c:26

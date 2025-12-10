@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-12-08 19:12+0000\n"
 "PO-Revision-Date: 2018-08-13 19:52+0000\n"
 "Language-Team: Persian (Iran) (https://app.transifex.com/fusiondirectory/teams/12202/fa_IR/)\n"
 "MIME-Version: 1.0\n"
@@ -25,9 +25,7 @@ msgstr ""
 msgid "FusionDirectory dns plugin configuration"
 msgstr ""
 
-#: backend/dns/class_dnsConfig.inc:41
-#: management/dns/class_dnsManagement.inc:36
-#: management/systems/class_dnsHost.inc:152
+#: backend/dns/class_dnsConfig.inc:41 management/systems/class_dnsHost.inc:152
 msgid "DNS"
 msgstr ""
 
@@ -160,62 +158,16 @@ msgstr ""
 msgid "The ip address match list for this acl"
 msgstr ""
 
-#: management/dns/class_dnsManagement.inc:37
-msgid "DNS Management"
+#: management/dns/class_dnsManagement.inc:36
+msgid "Dns"
 msgstr ""
 
-#: management/dns/class_dnsManagement.inc:38
+#: management/dns/class_dnsManagement.inc:37
 msgid "Manage DNS zones and views"
 msgstr ""
 
-#: management/dns/class_dnsManagement.inc:40
+#: management/dns/class_dnsManagement.inc:39
 msgid "Systems"
-msgstr ""
-
-#: management/dns/class_dnsManagement.inc:54
-#: management/dns/class_dnsManagement.inc:74
-msgid "Refresh Zone"
-msgstr ""
-
-#: management/dns/class_dnsManagement.inc:74
-#, php-format
-msgid "Invalid target \"%s\" passed for action \"%s\""
-msgstr ""
-
-#: management/dns/class_dnsManagement.inc:82
-#: management/dns/class_dnsManagement.inc:89
-#, php-format
-msgid "Could not run ldap2zone: %s"
-msgstr ""
-
-#: management/dns/class_dnsManagement.inc:83
-msgid "More than one server matches the SOA"
-msgstr ""
-
-#: management/dns/class_dnsManagement.inc:90
-#, php-format
-msgid "Could not find the primary server \"%s\""
-msgstr ""
-
-#: management/dns/class_dnsManagement.inc:96
-#: management/systems/class_dnsHost.inc:344
-msgid "Argonaut client needs to be activated to use ldap2zone remotely"
-msgstr ""
-
-#: management/dns/class_dnsManagement.inc:105
-#: management/systems/class_dnsHost.inc:353
-msgid "Cannot use argonaut client on a system without a Mac address"
-msgstr ""
-
-#: management/dns/class_dnsManagement.inc:114
-#: management/systems/class_dnsHost.inc:361
-msgid "Ldap2zone"
-msgstr ""
-
-#: management/dns/class_dnsManagement.inc:114
-#: management/systems/class_dnsHost.inc:361
-#, php-format
-msgid "Ldap2Zone called for zone \"%s\""
 msgstr ""
 
 #: management/dns/class_dnsView.inc:26 management/dns/class_dnsView.inc:27
@@ -699,6 +651,7 @@ msgid ""
 msgstr ""
 
 #: management/dns/class_dnsZone.inc:852
+#: management/systems/services/dns/class_serviceDNS.inc:62
 msgid "TTL"
 msgstr ""
 
@@ -795,8 +748,142 @@ msgstr ""
 msgid "\"%s\" is not a valid modifier for an SPF record"
 msgstr ""
 
+#: management/systems/services/dns/class_serviceDNS.inc:29
+msgid "DNS settings"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:30
+msgid "FusionDirectory Orchestrator DNS settings"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:30
+msgid "Services"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:49
+msgid "DNS global settings"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:52
+msgid "Bind directory"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:52
+msgid "The directory in which conf file must be created"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:57
+msgid "Bind cache directory"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:57
+msgid "The directory in which zone files must be created"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:63
+msgid "Time to live"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:71
+msgid "rndc path"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:72
+msgid "path to rndc binary"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:78
+msgid "Search base"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:78
+msgid ""
+"LDAP base where the search should be done. Only usefull if you got several "
+"nodes for the same zone."
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:84
+msgid "DNS master settings"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:87
+msgid "Ignore reverse zone"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:87
+msgid "Do not write reverse zone"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:91
+msgid "Notify"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:96
+msgid "Allow update"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:96
+msgid "Allow update (semicolon separated and ended)"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:100
+msgid "Allow transfer"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:100
+msgid "Allow transfer (semicolon separated and ended)"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:104
+msgid "Check names"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:104
+msgid ""
+"Cause any host name for the zone to be checked for compliance with RFC 952 "
+"and RFC 1123 and take the defined action"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:111
+msgid "DNS slave settings"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:115
+msgid "DNS slaves"
+msgstr ""
+
+#: management/systems/services/dns/class_serviceDNS.inc:115
+msgid "Manage DNS Slaves"
+msgstr ""
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:35
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:70
+msgid "zone"
+msgstr ""
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:35
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:70
+msgid "DNS zone this server should be declared as slave of"
+msgstr ""
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:39
+msgid "master"
+msgstr ""
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:39
+msgid "Master IP(s) for this zone"
+msgstr ""
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:43
+msgid "reverses"
+msgstr ""
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:43
+msgid "This server should be slave of reverses zones as well"
+msgstr ""
+
 #: management/systems/class_dnsHost.inc:127
-#: management/systems/class_dnsHost.inc:418
+#: management/systems/class_dnsHost.inc:378
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
@@ -829,28 +916,24 @@ msgstr ""
 msgid "The DNS records for zone \"%s\""
 msgstr ""
 
-#: management/systems/class_dnsHost.inc:292
-msgid "Refresh zone file"
-msgstr ""
-
-#: management/systems/class_dnsHost.inc:299
+#: management/systems/class_dnsHost.inc:295
 #, php-format
 msgid "The primary server for zone \"%s\""
 msgstr ""
 
-#: management/systems/class_dnsHost.inc:450
-#: management/systems/class_dnsHost.inc:468
+#: management/systems/class_dnsHost.inc:410
+#: management/systems/class_dnsHost.inc:428
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
 msgstr ""
 
-#: management/systems/class_dnsHost.inc:482
-#: management/systems/class_dnsHost.inc:513
+#: management/systems/class_dnsHost.inc:442
+#: management/systems/class_dnsHost.inc:473
 msgid "DNS update"
 msgstr ""
 
-#: management/systems/class_dnsHost.inc:566
-#: management/systems/class_dnsHost.inc:587
+#: management/systems/class_dnsHost.inc:526
+#: management/systems/class_dnsHost.inc:547
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr ""

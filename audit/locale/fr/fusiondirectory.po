@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
 "PO-Revision-Date: 2018-08-13 19:50+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -62,27 +62,47 @@ msgstr ""
 "Nom des attributs au format ACL, masquant les valeurs liées aux attributs "
 "définis"
 
-#: workflow/tasks/class_auditTask.inc:31
+#: workflow/tasks/class_auditTask.inc:29
 msgid "Tasks Audit"
 msgstr "Tâches d'audit"
 
-#: workflow/tasks/class_auditTask.inc:32
+#: workflow/tasks/class_auditTask.inc:30
 msgid "Tasks Audit Object"
 msgstr "Tâches Objet Audit"
 
-#: workflow/tasks/class_auditTask.inc:49
+#: workflow/tasks/class_auditTask.inc:54
 msgid "Schedule Audit Retention"
 msgstr "Planifier la conservation des audits"
 
-#: workflow/tasks/class_auditTask.inc:52
+#: workflow/tasks/class_auditTask.inc:57
 msgid "Retaining days"
 msgstr "Temps de rétention en jours"
 
-#: workflow/tasks/class_auditTask.inc:52
+#: workflow/tasks/class_auditTask.inc:57
 msgid "Numbers of days audit logs should be kept before deletion"
 msgstr ""
 "Nombre de jours pendant lesquels les journaux d'audit doivent être conservés"
 " avant leur suppression"
+
+#: workflow/tasks/class_auditTask.inc:63
+msgid "Syslog Transformation"
+msgstr "Transformation Syslog"
+
+#: workflow/tasks/class_auditTask.inc:66
+msgid "Enable Syslog Transformation"
+msgstr "Activer la transformation Syslog"
+
+#: workflow/tasks/class_auditTask.inc:66
+msgid "Enable transformation of audit logs into syslog format"
+msgstr "Activer la conversion des journaux d'audit au format syslog"
+
+#: workflow/tasks/class_auditTask.inc:70
+msgid "Syslog Name Prefix"
+msgstr "Préfixe du nom du syslog"
+
+#: workflow/tasks/class_auditTask.inc:70
+msgid "Prefix to use for syslog files name"
+msgstr "Préfixe à utiliser pour les noms de fichiers syslog"
 
 #: reports/audit/class_auditEvent.inc:29 reports/audit/class_auditEvent.inc:33
 msgid "Audit event"

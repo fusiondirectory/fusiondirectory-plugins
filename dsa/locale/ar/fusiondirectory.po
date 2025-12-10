@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Arabic (https://app.transifex.com/fusiondirectory/teams/12202/ar/)\n"
@@ -30,8 +30,7 @@ msgid "FusionDirectory dsa plugin configuration"
 msgstr ""
 
 #: backend/dsa/class_dsaConfig.inc:40
-#: management/dsa/class_dsaManagement.inc:26
-#: management/dsa/class_dsaManagement.inc:32
+#: management/dsa/class_dsaManagement.inc:31
 msgid "DSA"
 msgstr ""
 
@@ -43,17 +42,24 @@ msgstr ""
 msgid "Branch in which Directory Service Account (dsa) will be stored"
 msgstr ""
 
-#: management/dsa/class_dsaManagement.inc:27
-msgid "DSA management"
+#: management/dsa/class_dsaManagement.inc:26
+msgid "Dsa"
 msgstr ""
 
-#: management/dsa/class_dsaManagement.inc:28
+#: management/dsa/class_dsaManagement.inc:27
+#: management/dsa/class_simpleSecurityObject.inc:27
 msgid "Manage simple security objects"
 msgstr ""
 
+#: management/dsa/class_dsaManagement.inc:29
+msgid "Security"
+msgstr ""
+
 #: management/dsa/class_simpleSecurityObject.inc:26
-#: management/dsa/class_simpleSecurityObject.inc:27
 #: management/dsa/class_simpleSecurityObject.inc:31
+msgid "Simple Security Object"
+msgstr ""
+
 #: management/dsa/class_simpleSecurityObject.inc:47
 msgid "Simple security object"
 msgstr ""

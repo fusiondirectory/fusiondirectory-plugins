@@ -5,17 +5,17 @@
 # 
 # Translators:
 # MCMic, 2021
-# fusiondirectory <contact@fusiondirectory.org>, 2021
-# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021
+# fusiondirectory <contact@fusiondirectory.org>, 2025
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
 "PO-Revision-Date: 2021-02-16 15:45+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,24 +26,25 @@ msgstr ""
 #: backend/subscriptions/class_subscriptionsConfig.inc:27
 #: backend/subscriptions/class_subscriptionsConfig.inc:41
 #: management/subscriptions/class_subscriptionsManagement.inc:40
-msgid "Subscriptions"
-msgstr "Abonnements"
+#: management/subscriptions/class_subscription.inc:27
+msgid "Licenses"
+msgstr "Licences"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:28
-msgid "FusionDirectory subscriptions plugin configuration"
-msgstr "Configuration du plugin abonnements"
+msgid "FusionDirectory Licenses plugin configuration"
+msgstr "Configuration du plugin de gestion des licences de FusionDirectory"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:45
-msgid "Subscription RDN"
-msgstr "Abonnement RDN"
+msgid "Licenses RDN"
+msgstr "Branche pour le stockages des licences"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:45
-msgid "Branch in which subscriptions will be stored"
-msgstr "Branche où seront stockés les abonnements "
+msgid "Branch in which licenses will be stored"
+msgstr "Branche dans laquelle les licences seront stockés"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:51
-msgid "Subscription types and their labels"
-msgstr "Type d'abonnement et leurs étiquettes"
+msgid "Licenses types and their labels"
+msgstr "Type de licences et leurs étiquettes"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:55
 #: management/subscriptions/class_subscription.inc:54
@@ -51,9 +52,8 @@ msgid "Type"
 msgstr "Type"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:55
-#: management/subscriptions/class_subscription.inc:54
-msgid "Subscription type"
-msgstr "Type d'inscription"
+msgid "Licenses type"
+msgstr "Types de licences"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:59
 #: backend/subscriptions/class_subscriptionsConfig.inc:85
@@ -66,8 +66,8 @@ msgid "Label shown for this type"
 msgstr "Étiquette affichée pour ce type"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:65
-msgid "Subscription types"
-msgstr "Type d'abonnements"
+msgid "Licenses types"
+msgstr "Types de licences"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:73
 #: backend/subscriptions/class_subscriptionsConfig.inc:92
@@ -111,15 +111,17 @@ msgid "Host for the repositories, to use in auth.conf"
 msgstr "Hôte pour les dépôts, à utiliser dans auth.conf"
 
 #: management/subscriptions/class_subscriptionsManagement.inc:41
-msgid "Subscription management"
-msgstr "Gestion des abonnements"
+msgid "Manage licenses"
+msgstr "Gérer les licences"
 
-#: management/subscriptions/class_subscriptionsManagement.inc:42
-msgid "Manage subscriptions"
-msgstr "Gérer les abonnements"
+#: management/subscriptions/class_subscriptionsManagement.inc:43
+msgid "Configuration"
+msgstr "Configuration"
 
-#: management/subscriptions/class_subscription.inc:27
 #: management/subscriptions/class_subscription.inc:28
+msgid "Licenses Management"
+msgstr "Gestion des licences"
+
 #: management/subscriptions/class_subscription.inc:31
 msgid "Subscription"
 msgstr "Abonnement"
@@ -133,16 +135,20 @@ msgid "Name"
 msgstr "Nom"
 
 #: management/subscriptions/class_subscription.inc:48
-msgid "Name to identify this subscription"
-msgstr "Nom pour identifier cet abonnement"
+msgid "Name to identify this license"
+msgstr "Nom permettant d'identifier cette licence"
 
 #: management/subscriptions/class_subscription.inc:50
 msgid "Description"
 msgstr "Description"
 
 #: management/subscriptions/class_subscription.inc:50
-msgid "Description of this subscription"
-msgstr "Description de cet abonnement"
+msgid "Description of this license"
+msgstr "Description de cette licence"
+
+#: management/subscriptions/class_subscription.inc:54
+msgid "License type"
+msgstr "Type de licence"
 
 #: management/subscriptions/class_subscription.inc:58
 msgid "Contract"
@@ -158,12 +164,16 @@ msgid "Login"
 msgstr "Identifiant"
 
 #: management/subscriptions/class_subscription.inc:67
-msgid "Login for this subscription"
-msgstr "Identifiant de la souscription"
+msgid "Login for this license"
+msgstr "Identifiant de connexion pour cette licence"
 
 #: management/subscriptions/class_subscription.inc:71
 msgid "Password"
 msgstr "Mot de passe"
+
+#: management/subscriptions/class_subscription.inc:71
+msgid "Password for this license"
+msgstr "Mot de passe pour cette licence"
 
 #: management/subscriptions/class_subscription.inc:77
 msgid "Status"
@@ -174,24 +184,24 @@ msgid "Active"
 msgstr "Actif"
 
 #: management/subscriptions/class_subscription.inc:80
-msgid "Whether this subscription is active"
-msgstr "Est ce que cet abonnement est actif ?"
+msgid "Whether this license is active"
+msgstr "Est-ce que cette licence est active ?"
 
 #: management/subscriptions/class_subscription.inc:84
 msgid "Start date"
 msgstr "Date de début"
 
 #: management/subscriptions/class_subscription.inc:84
-msgid "Start date of this subscription"
-msgstr "Date de début de cet abonnement"
+msgid "Start date of this license"
+msgstr "Date de début de cet licence"
 
 #: management/subscriptions/class_subscription.inc:88
 msgid "End date"
 msgstr "Date de fin"
 
 #: management/subscriptions/class_subscription.inc:88
-msgid "End date of this subscription"
-msgstr "Date de fin de cet abonnement"
+msgid "End date of this license"
+msgstr "Date de fin de cet licence"
 
 #: management/subscriptions/class_subscription.inc:94
 msgid "Repositories"
@@ -210,12 +220,12 @@ msgid "Export"
 msgstr "Export"
 
 #: management/subscriptions/class_subscription.inc:110
-msgid "Subscription file"
-msgstr "fichier d'abonnement"
+msgid "License file"
+msgstr "Fichier de licence"
 
 #: management/subscriptions/class_subscription.inc:110
-msgid "Generate the subscription file to send to the client"
-msgstr "Générer le fichier d'abonnement à envoyer au client"
+msgid "Generate the license file to send to the client"
+msgstr "Générer le fichier de licence à envoyer au client"
 
 #: management/subscriptions/class_subscription.inc:111
 #: management/subscriptions/class_subscription.inc:115
