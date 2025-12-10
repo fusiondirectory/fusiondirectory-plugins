@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Portuguese (https://app.transifex.com/fusiondirectory/teams/12202/pt/)\n"
@@ -30,8 +30,6 @@ msgid "FusionDirectory ejbca plugin configuration"
 msgstr ""
 
 #: backend/ejbca/class_ejbcaConfig.inc:41
-#: management/ejbca/class_ejbcaManagement.inc:39
-#: management/ejbca/certificates/class_ejbcaCertificates.inc:28
 msgid "EJBCA"
 msgstr ""
 
@@ -43,24 +41,29 @@ msgstr ""
 msgid "Branch in which ejbca certificates are stored"
 msgstr ""
 
-#: management/ejbca/class_ejbcaManagement.inc:40
-msgid "EJBCA certificates management"
+#: management/ejbca/class_ejbcaManagement.inc:39
+#: management/ejbca/certificates/class_ejbcaCertificates.inc:28
+msgid "Ejbca"
 msgstr ""
 
-#: management/ejbca/class_ejbcaManagement.inc:41
+#: management/ejbca/class_ejbcaManagement.inc:40
 msgid "Manage EJBCA certificates"
 msgstr ""
 
-#: management/ejbca/class_ejbcaManagement.inc:63
+#: management/ejbca/class_ejbcaManagement.inc:42
+msgid "Dashboard"
+msgstr ""
+
+#: management/ejbca/class_ejbcaManagement.inc:62
 msgid "Download"
 msgstr "Download"
 
 #: management/ejbca/certificates/class_ejbcaCertificates.inc:29
-msgid "Assign EJBCA certificates to a user"
+msgid "Assign Ejbca certificates to a user"
 msgstr ""
 
 #: management/ejbca/certificates/class_ejbcaCertificates.inc:49
-msgid "EJBCA certs"
+msgid "Ejbca certs"
 msgstr ""
 
 #: management/ejbca/certificates/class_ejbcaCertificates.inc:53

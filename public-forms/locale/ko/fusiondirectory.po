@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-12-08 19:12+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -31,7 +31,6 @@ msgid "FusionDirectory public forms plugin configuration"
 msgstr "FusionDirectory 공용 양식 플러그인 구성"
 
 #: backend/public-forms/class_publicFormsConfig.inc:40
-#: management/public-forms/class_publicFormManagement.inc:27
 msgid "Public forms"
 msgstr "공개 양식"
 
@@ -107,13 +106,17 @@ msgstr "숨김"
 msgid "Should this field be hidden away"
 msgstr "이 필드는 숨김처리 되어야 합니다."
 
-#: management/public-forms/class_publicFormManagement.inc:28
-msgid "Public forms management"
-msgstr "공용 양식 관리"
+#: management/public-forms/class_publicFormManagement.inc:27
+msgid "Public Forms"
+msgstr ""
 
-#: management/public-forms/class_publicFormManagement.inc:29
+#: management/public-forms/class_publicFormManagement.inc:28
 msgid "Manage public forms"
 msgstr "공용 양식 관리"
+
+#: management/public-forms/class_publicFormManagement.inc:30
+msgid "Workflow"
+msgstr ""
 
 #: management/public-forms/class_publicForm.inc:27
 #: management/public-forms/class_publicForm.inc:31
@@ -125,7 +128,7 @@ msgid "Public form which creates objects inside FusionDirectory"
 msgstr "FusionDirectory 내부에 개체를 생성하는 공용 양식"
 
 #: management/public-forms/class_publicForm.inc:46
-#: include/class_publicFormPage.inc:434
+#: include/class_publicFormPage.inc:447
 msgid "Form"
 msgstr "양식"
 
@@ -204,18 +207,26 @@ msgid ""
 msgstr "서비스 약관 URL. 채워지면 이 URL의 약관에 동의하는 필수 확인란이 추가됩니다."
 
 #: management/public-forms/class_publicForm.inc:91
+msgid "Locked by default"
+msgstr ""
+
+#: management/public-forms/class_publicForm.inc:91
+msgid "Lock the created user by default"
+msgstr ""
+
+#: management/public-forms/class_publicForm.inc:96
 msgid "Captcha"
 msgstr "캡차"
 
-#: management/public-forms/class_publicForm.inc:91
+#: management/public-forms/class_publicForm.inc:96
 msgid "Add a captcha to the form"
 msgstr "양식에 캡차 추가"
 
-#: management/public-forms/class_publicForm.inc:96
+#: management/public-forms/class_publicForm.inc:101
 msgid "Link"
 msgstr "링크"
 
-#: management/public-forms/class_publicForm.inc:96
+#: management/public-forms/class_publicForm.inc:101
 msgid "Link to the public form as currently saved in the LDAP"
 msgstr "현재 LDAP에 저장된 공개 양식에 연결"
 
@@ -243,34 +254,34 @@ msgstr "초대와 일치하는 토큰 \"%s\"이 더 이상 존재하지 않습�
 msgid "Could not find any invitation matching registration with token \"%s\""
 msgstr "\"%s\" 토큰이 있는 등록과 일치하는 초대를 찾을 수 없습니다."
 
-#: include/class_publicFormPage.inc:158
+#: include/class_publicFormPage.inc:160
 msgid "Form name or token missing from URL"
 msgstr "URL에 양식 이름 또는 토큰이 없습니다."
 
-#: include/class_publicFormPage.inc:161
+#: include/class_publicFormPage.inc:163
 #, php-format
 msgid "Form \"%s\" could not be found"
 msgstr "\"%s\"  양식을 찾을 수 없습니다."
 
-#: include/class_publicFormPage.inc:163
+#: include/class_publicFormPage.inc:165
 #, php-format
 msgid "Found several forms named \"%s\""
 msgstr "이름이 \"%s\"인 여러 양식을 찾았습니다."
 
-#: include/class_publicFormPage.inc:178
+#: include/class_publicFormPage.inc:180
 #, php-format
 msgid "Form \"%s\" is private and requires an invitation"
 msgstr "\"%s\" 양식은 비공개이며 초대가 필요합니다."
 
-#: include/class_publicFormPage.inc:246
+#: include/class_publicFormPage.inc:248
 msgid "Captcha code was wrong!"
 msgstr "보안 문자 코드가 잘못되었습니다!"
 
-#: include/class_publicFormPage.inc:254
+#: include/class_publicFormPage.inc:256
 msgid "You need to accept the terms of service to continue!"
 msgstr "계속하려면 서비스 약관에 동의해야합니다!"
 
-#: include/class_publicFormPage.inc:432
+#: include/class_publicFormPage.inc:445
 #, php-format
 msgid "Form - %s"
 msgstr "양식 - %s"

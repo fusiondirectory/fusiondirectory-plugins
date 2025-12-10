@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-12-08 19:12+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: backend/systems/class_systemsPluginConfig.inc:28
 #: management/systems/class_systemManagement.inc:43
-#: management/systems/class_systemManagement.inc:47
+#: management/systems/class_systemManagement.inc:46
 msgid "Systems"
 msgstr "시스템"
 
@@ -521,68 +521,28 @@ msgstr "%s 잠금"
 msgid "This will prevent the %s from being reinstalled"
 msgstr "이렇게하면 %s이 다시 설치되지 않습니다."
 
-#: management/systems/services/class_servicesManagement.inc:71
+#: management/systems/services/class_servicesManagement.inc:65
 #: management/systems/services/shares/class_serviceShare.inc:28
 #: management/systems/services/ldap/class_serviceLDAP.inc:29
 #: management/systems/services/terminal/class_serviceTerminal.inc:28
 msgid "Services"
 msgstr "서비스"
 
-#: management/systems/services/class_servicesManagement.inc:72
+#: management/systems/services/class_servicesManagement.inc:66
 msgid "Server services"
 msgstr "서버 서비스"
 
-#: management/systems/services/class_servicesManagement.inc:128
+#: management/systems/services/class_servicesManagement.inc:122
 msgid "Edit service"
 msgstr "서비스 편집"
 
-#: management/systems/services/class_servicesManagement.inc:137
+#: management/systems/services/class_servicesManagement.inc:131
 msgid "Remove"
 msgstr "제거"
 
-#: management/systems/services/class_servicesManagement.inc:155
-msgid "Export list"
-msgstr "목록 내보내기"
-
-#: management/systems/services/class_servicesManagement.inc:164
-msgid "Get status"
-msgstr "상태 가져 오기"
-
-#: management/systems/services/class_servicesManagement.inc:173
-msgid "Start"
-msgstr "시작"
-
-#: management/systems/services/class_servicesManagement.inc:182
-msgid "Stop"
-msgstr "종료"
-
-#: management/systems/services/class_servicesManagement.inc:191
-msgid "Restart"
-msgstr "재시작"
-
-#: management/systems/services/class_servicesManagement.inc:242
+#: management/systems/services/class_servicesManagement.inc:157
 msgid "Create"
 msgstr "생성"
-
-#: management/systems/services/class_servicesManagement.inc:358
-msgid "Information"
-msgstr "정보"
-
-#: management/systems/services/class_servicesManagement.inc:358
-msgid "Cannot update service status until it has been saved!"
-msgstr "저장 될 때까지 서비스 상태를 업데이트 할 수 없습니다!"
-
-#: management/systems/services/class_servicesManagement.inc:366
-#, php-format
-msgid "Unknown action \"%s\""
-msgstr "알 수없는 작업 \"%s\""
-
-#: management/systems/services/class_servicesManagement.inc:397
-#, php-format
-msgid ""
-"Could not get execute action %s on service %s: This server has no mac "
-"address."
-msgstr "%s  서비스에 대한 %s 실행 작업을 가져올 수 없습니다: 이 서버에는 MAC 주소가 없습니다."
 
 #: management/systems/services/shares/class_serviceShare.inc:27
 #: management/systems/services/shares/class_serviceShare.inc:28
@@ -812,54 +772,8 @@ msgid "A short description of the component"
 msgstr "구성 요소에 대한 간단한 설명"
 
 #: management/systems/class_systemManagement.inc:44
-msgid "Systems Management"
-msgstr "시스템 관리"
-
-#: management/systems/class_systemManagement.inc:45
 msgid "Manage servers, computers, printers, phones and other devices"
 msgstr "서버, 컴퓨터, 프린터, 전화 및 기타 장치 관리"
-
-#: management/systems/class_systemManagement.inc:86
-msgid "Trigger action"
-msgstr "트리거 동작"
-
-#: management/systems/class_systemManagement.inc:92
-msgid "Schedule action"
-msgstr "게획된 동작"
-
-#: management/systems/class_systemManagement.inc:101
-msgid "Ping"
-msgstr "Ping"
-
-#: management/systems/class_systemManagement.inc:133
-#: management/systems/class_systemManagement.inc:213
-#, php-format
-msgid "System %s has no mac address defined, cannot trigger action"
-msgstr "시스템 %s에 MAC 주소가 정의되지 않아 작업을 실행할 수 없습니다."
-
-#: management/systems/class_systemManagement.inc:155
-#, php-format
-msgid "System %s is currently installing"
-msgstr "시스템 %s이(가) 현재 설치 중입니다."
-
-#: management/systems/class_systemManagement.inc:182
-#: management/systems/class_systemManagement.inc:187
-msgid "Action triggered"
-msgstr "실행 된 작업"
-
-#: management/systems/class_systemManagement.inc:182
-#, php-format
-msgid "Action called without error (results were \"%s\")"
-msgstr "오류없이 호출된 작업 (결과는 \"%s\")"
-
-#: management/systems/class_systemManagement.inc:187
-#, php-format
-msgid "Action called without error (result was \"%s\")"
-msgstr "오류없이 호출된 작업 (결과는 \"%s\")"
-
-#: management/systems/class_systemManagement.inc:248
-msgid "Ping results"
-msgstr "Ping 결과"
 
 #: management/systems/class_systemImport.inc:40
 #: management/systems/class_systemImport.inc:60

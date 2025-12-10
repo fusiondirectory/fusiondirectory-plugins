@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-12-08 19:12+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Russian Petrine orthography (https://app.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
@@ -30,7 +30,6 @@ msgid "FusionDirectory public forms plugin configuration"
 msgstr ""
 
 #: backend/public-forms/class_publicFormsConfig.inc:40
-#: management/public-forms/class_publicFormManagement.inc:27
 msgid "Public forms"
 msgstr ""
 
@@ -106,12 +105,16 @@ msgstr ""
 msgid "Should this field be hidden away"
 msgstr ""
 
-#: management/public-forms/class_publicFormManagement.inc:28
-msgid "Public forms management"
+#: management/public-forms/class_publicFormManagement.inc:27
+msgid "Public Forms"
 msgstr ""
 
-#: management/public-forms/class_publicFormManagement.inc:29
+#: management/public-forms/class_publicFormManagement.inc:28
 msgid "Manage public forms"
+msgstr ""
+
+#: management/public-forms/class_publicFormManagement.inc:30
+msgid "Workflow"
 msgstr ""
 
 #: management/public-forms/class_publicForm.inc:27
@@ -124,7 +127,7 @@ msgid "Public form which creates objects inside FusionDirectory"
 msgstr ""
 
 #: management/public-forms/class_publicForm.inc:46
-#: include/class_publicFormPage.inc:434
+#: include/class_publicFormPage.inc:447
 msgid "Form"
 msgstr ""
 
@@ -203,18 +206,26 @@ msgid ""
 msgstr ""
 
 #: management/public-forms/class_publicForm.inc:91
-msgid "Captcha"
+msgid "Locked by default"
 msgstr ""
 
 #: management/public-forms/class_publicForm.inc:91
+msgid "Lock the created user by default"
+msgstr ""
+
+#: management/public-forms/class_publicForm.inc:96
+msgid "Captcha"
+msgstr ""
+
+#: management/public-forms/class_publicForm.inc:96
 msgid "Add a captcha to the form"
 msgstr ""
 
-#: management/public-forms/class_publicForm.inc:96
+#: management/public-forms/class_publicForm.inc:101
 msgid "Link"
 msgstr ""
 
-#: management/public-forms/class_publicForm.inc:96
+#: management/public-forms/class_publicForm.inc:101
 msgid "Link to the public form as currently saved in the LDAP"
 msgstr ""
 
@@ -242,34 +253,34 @@ msgstr ""
 msgid "Could not find any invitation matching registration with token \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:158
+#: include/class_publicFormPage.inc:160
 msgid "Form name or token missing from URL"
-msgstr ""
-
-#: include/class_publicFormPage.inc:161
-#, php-format
-msgid "Form \"%s\" could not be found"
 msgstr ""
 
 #: include/class_publicFormPage.inc:163
 #, php-format
+msgid "Form \"%s\" could not be found"
+msgstr ""
+
+#: include/class_publicFormPage.inc:165
+#, php-format
 msgid "Found several forms named \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:178
+#: include/class_publicFormPage.inc:180
 #, php-format
 msgid "Form \"%s\" is private and requires an invitation"
 msgstr ""
 
-#: include/class_publicFormPage.inc:246
+#: include/class_publicFormPage.inc:248
 msgid "Captcha code was wrong!"
 msgstr ""
 
-#: include/class_publicFormPage.inc:254
+#: include/class_publicFormPage.inc:256
 msgid "You need to accept the terms of service to continue!"
 msgstr ""
 
-#: include/class_publicFormPage.inc:432
+#: include/class_publicFormPage.inc:445
 #, php-format
 msgid "Form - %s"
 msgstr ""

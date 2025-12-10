@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-12-08 19:12+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2021\n"
 "Language-Team: German (https://app.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: backend/systems/class_systemsPluginConfig.inc:28
 #: management/systems/class_systemManagement.inc:43
-#: management/systems/class_systemManagement.inc:47
+#: management/systems/class_systemManagement.inc:46
 msgid "Systems"
 msgstr "Systeme"
 
@@ -521,68 +521,28 @@ msgstr "Sperren dieser %s"
 msgid "This will prevent the %s from being reinstalled"
 msgstr "Dies wird verhindern dass %s neu installiert wird"
 
-#: management/systems/services/class_servicesManagement.inc:71
+#: management/systems/services/class_servicesManagement.inc:65
 #: management/systems/services/shares/class_serviceShare.inc:28
 #: management/systems/services/ldap/class_serviceLDAP.inc:29
 #: management/systems/services/terminal/class_serviceTerminal.inc:28
 msgid "Services"
 msgstr "Dienste"
 
-#: management/systems/services/class_servicesManagement.inc:72
+#: management/systems/services/class_servicesManagement.inc:66
 msgid "Server services"
 msgstr "Serverdienste"
 
-#: management/systems/services/class_servicesManagement.inc:128
+#: management/systems/services/class_servicesManagement.inc:122
 msgid "Edit service"
 msgstr "Dienst bearbeiten"
 
-#: management/systems/services/class_servicesManagement.inc:137
+#: management/systems/services/class_servicesManagement.inc:131
 msgid "Remove"
 msgstr "Entfernen"
 
-#: management/systems/services/class_servicesManagement.inc:155
-msgid "Export list"
-msgstr "Liste exportieren"
-
-#: management/systems/services/class_servicesManagement.inc:164
-msgid "Get status"
-msgstr "Status erhalten"
-
-#: management/systems/services/class_servicesManagement.inc:173
-msgid "Start"
-msgstr "Start"
-
-#: management/systems/services/class_servicesManagement.inc:182
-msgid "Stop"
-msgstr "Beenden"
-
-#: management/systems/services/class_servicesManagement.inc:191
-msgid "Restart"
-msgstr "Neustart"
-
-#: management/systems/services/class_servicesManagement.inc:242
+#: management/systems/services/class_servicesManagement.inc:157
 msgid "Create"
 msgstr "Anlegen"
-
-#: management/systems/services/class_servicesManagement.inc:358
-msgid "Information"
-msgstr "Information"
-
-#: management/systems/services/class_servicesManagement.inc:358
-msgid "Cannot update service status until it has been saved!"
-msgstr "Kann den Dienststatus nicht aktualisieren bis er gespeichert wurde!"
-
-#: management/systems/services/class_servicesManagement.inc:366
-#, php-format
-msgid "Unknown action \"%s\""
-msgstr "Unbekannte Aktion \"%s\""
-
-#: management/systems/services/class_servicesManagement.inc:397
-#, php-format
-msgid ""
-"Could not get execute action %s on service %s: This server has no mac "
-"address."
-msgstr ""
 
 #: management/systems/services/shares/class_serviceShare.inc:27
 #: management/systems/services/shares/class_serviceShare.inc:28
@@ -816,53 +776,7 @@ msgid "A short description of the component"
 msgstr "Eine kurze Beschreibung der Komponente"
 
 #: management/systems/class_systemManagement.inc:44
-msgid "Systems Management"
-msgstr "Systemverwaltung"
-
-#: management/systems/class_systemManagement.inc:45
 msgid "Manage servers, computers, printers, phones and other devices"
-msgstr ""
-
-#: management/systems/class_systemManagement.inc:86
-msgid "Trigger action"
-msgstr "Aktion auslösen"
-
-#: management/systems/class_systemManagement.inc:92
-msgid "Schedule action"
-msgstr "Aktion planen"
-
-#: management/systems/class_systemManagement.inc:101
-msgid "Ping"
-msgstr ""
-
-#: management/systems/class_systemManagement.inc:133
-#: management/systems/class_systemManagement.inc:213
-#, php-format
-msgid "System %s has no mac address defined, cannot trigger action"
-msgstr ""
-
-#: management/systems/class_systemManagement.inc:155
-#, php-format
-msgid "System %s is currently installing"
-msgstr "System %s wird derzeit installiert"
-
-#: management/systems/class_systemManagement.inc:182
-#: management/systems/class_systemManagement.inc:187
-msgid "Action triggered"
-msgstr "Aktion ausgelöst"
-
-#: management/systems/class_systemManagement.inc:182
-#, php-format
-msgid "Action called without error (results were \"%s\")"
-msgstr ""
-
-#: management/systems/class_systemManagement.inc:187
-#, php-format
-msgid "Action called without error (result was \"%s\")"
-msgstr ""
-
-#: management/systems/class_systemManagement.inc:248
-msgid "Ping results"
 msgstr ""
 
 #: management/systems/class_systemImport.inc:40

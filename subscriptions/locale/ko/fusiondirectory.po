@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-12-08 19:12+0000\n"
 "PO-Revision-Date: 2021-02-16 15:45+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
 "Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -25,23 +25,24 @@ msgstr ""
 #: backend/subscriptions/class_subscriptionsConfig.inc:27
 #: backend/subscriptions/class_subscriptionsConfig.inc:41
 #: management/subscriptions/class_subscriptionsManagement.inc:40
-msgid "Subscriptions"
-msgstr "가입"
+#: management/subscriptions/class_subscription.inc:27
+msgid "Licenses"
+msgstr ""
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:28
-msgid "FusionDirectory subscriptions plugin configuration"
+msgid "FusionDirectory Licenses plugin configuration"
 msgstr ""
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:45
-msgid "Subscription RDN"
+msgid "Licenses RDN"
 msgstr ""
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:45
-msgid "Branch in which subscriptions will be stored"
+msgid "Branch in which licenses will be stored"
 msgstr ""
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:51
-msgid "Subscription types and their labels"
+msgid "Licenses types and their labels"
 msgstr ""
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:55
@@ -50,9 +51,8 @@ msgid "Type"
 msgstr "유형"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:55
-#: management/subscriptions/class_subscription.inc:54
-msgid "Subscription type"
-msgstr "가입 유형"
+msgid "Licenses type"
+msgstr ""
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:59
 #: backend/subscriptions/class_subscriptionsConfig.inc:85
@@ -65,7 +65,7 @@ msgid "Label shown for this type"
 msgstr "이 유형에 대해 표시된 라벨"
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:65
-msgid "Subscription types"
+msgid "Licenses types"
 msgstr ""
 
 #: backend/subscriptions/class_subscriptionsConfig.inc:73
@@ -110,15 +110,17 @@ msgid "Host for the repositories, to use in auth.conf"
 msgstr ""
 
 #: management/subscriptions/class_subscriptionsManagement.inc:41
-msgid "Subscription management"
+msgid "Manage licenses"
 msgstr ""
 
-#: management/subscriptions/class_subscriptionsManagement.inc:42
-msgid "Manage subscriptions"
+#: management/subscriptions/class_subscriptionsManagement.inc:43
+msgid "Configuration"
 msgstr ""
 
-#: management/subscriptions/class_subscription.inc:27
 #: management/subscriptions/class_subscription.inc:28
+msgid "Licenses Management"
+msgstr ""
+
 #: management/subscriptions/class_subscription.inc:31
 msgid "Subscription"
 msgstr ""
@@ -132,7 +134,7 @@ msgid "Name"
 msgstr "이름"
 
 #: management/subscriptions/class_subscription.inc:48
-msgid "Name to identify this subscription"
+msgid "Name to identify this license"
 msgstr ""
 
 #: management/subscriptions/class_subscription.inc:50
@@ -140,7 +142,11 @@ msgid "Description"
 msgstr "설명"
 
 #: management/subscriptions/class_subscription.inc:50
-msgid "Description of this subscription"
+msgid "Description of this license"
+msgstr ""
+
+#: management/subscriptions/class_subscription.inc:54
+msgid "License type"
 msgstr ""
 
 #: management/subscriptions/class_subscription.inc:58
@@ -157,12 +163,16 @@ msgid "Login"
 msgstr "로그인"
 
 #: management/subscriptions/class_subscription.inc:67
-msgid "Login for this subscription"
+msgid "Login for this license"
 msgstr ""
 
 #: management/subscriptions/class_subscription.inc:71
 msgid "Password"
 msgstr "패스워드"
+
+#: management/subscriptions/class_subscription.inc:71
+msgid "Password for this license"
+msgstr ""
 
 #: management/subscriptions/class_subscription.inc:77
 msgid "Status"
@@ -173,7 +183,7 @@ msgid "Active"
 msgstr "활성화"
 
 #: management/subscriptions/class_subscription.inc:80
-msgid "Whether this subscription is active"
+msgid "Whether this license is active"
 msgstr ""
 
 #: management/subscriptions/class_subscription.inc:84
@@ -181,7 +191,7 @@ msgid "Start date"
 msgstr "시작일자"
 
 #: management/subscriptions/class_subscription.inc:84
-msgid "Start date of this subscription"
+msgid "Start date of this license"
 msgstr ""
 
 #: management/subscriptions/class_subscription.inc:88
@@ -189,7 +199,7 @@ msgid "End date"
 msgstr "종료일자"
 
 #: management/subscriptions/class_subscription.inc:88
-msgid "End date of this subscription"
+msgid "End date of this license"
 msgstr ""
 
 #: management/subscriptions/class_subscription.inc:94
@@ -209,11 +219,11 @@ msgid "Export"
 msgstr "내보내기"
 
 #: management/subscriptions/class_subscription.inc:110
-msgid "Subscription file"
+msgid "License file"
 msgstr ""
 
 #: management/subscriptions/class_subscription.inc:110
-msgid "Generate the subscription file to send to the client"
+msgid "Generate the license file to send to the client"
 msgstr ""
 
 #: management/subscriptions/class_subscription.inc:111

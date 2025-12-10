@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
 "PO-Revision-Date: 2018-08-13 19:50+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
 "Language-Team: Spanish (Venezuela) (https://app.transifex.com/fusiondirectory/teams/12202/es_VE/)\n"
@@ -59,24 +59,44 @@ msgid ""
 "Attributes name in ACL format, hiding the values related to set attributes"
 msgstr ""
 
-#: workflow/tasks/class_auditTask.inc:31
+#: workflow/tasks/class_auditTask.inc:29
 msgid "Tasks Audit"
 msgstr ""
 
-#: workflow/tasks/class_auditTask.inc:32
+#: workflow/tasks/class_auditTask.inc:30
 msgid "Tasks Audit Object"
 msgstr ""
 
-#: workflow/tasks/class_auditTask.inc:49
+#: workflow/tasks/class_auditTask.inc:54
 msgid "Schedule Audit Retention"
 msgstr ""
 
-#: workflow/tasks/class_auditTask.inc:52
+#: workflow/tasks/class_auditTask.inc:57
 msgid "Retaining days"
 msgstr ""
 
-#: workflow/tasks/class_auditTask.inc:52
+#: workflow/tasks/class_auditTask.inc:57
 msgid "Numbers of days audit logs should be kept before deletion"
+msgstr ""
+
+#: workflow/tasks/class_auditTask.inc:63
+msgid "Syslog Transformation"
+msgstr ""
+
+#: workflow/tasks/class_auditTask.inc:66
+msgid "Enable Syslog Transformation"
+msgstr ""
+
+#: workflow/tasks/class_auditTask.inc:66
+msgid "Enable transformation of audit logs into syslog format"
+msgstr ""
+
+#: workflow/tasks/class_auditTask.inc:70
+msgid "Syslog Name Prefix"
+msgstr ""
+
+#: workflow/tasks/class_auditTask.inc:70
+msgid "Prefix to use for syslog files name"
 msgstr ""
 
 #: reports/audit/class_auditEvent.inc:29 reports/audit/class_auditEvent.inc:33

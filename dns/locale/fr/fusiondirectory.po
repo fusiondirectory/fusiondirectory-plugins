@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2021
-# fusiondirectory <contact@fusiondirectory.org>, 2023
+# fusiondirectory <contact@fusiondirectory.org>, 2025
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-26 17:30+0000\n"
 "PO-Revision-Date: 2018-08-13 19:52+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025\n"
 "Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,9 +30,7 @@ msgstr "Configuration DNS"
 msgid "FusionDirectory dns plugin configuration"
 msgstr "Configuration du plugin DNS"
 
-#: backend/dns/class_dnsConfig.inc:41
-#: management/dns/class_dnsManagement.inc:36
-#: management/systems/class_dnsHost.inc:152
+#: backend/dns/class_dnsConfig.inc:41 management/systems/class_dnsHost.inc:152
 msgid "DNS"
 msgstr "DNS"
 
@@ -177,66 +175,17 @@ msgstr "Liste d'adresses"
 msgid "The ip address match list for this acl"
 msgstr "La liste de correspondance d'adresse IP pour cette ACL"
 
-#: management/dns/class_dnsManagement.inc:37
-msgid "DNS Management"
-msgstr "Gestion des DNS"
+#: management/dns/class_dnsManagement.inc:36
+msgid "Dns"
+msgstr "Dns"
 
-#: management/dns/class_dnsManagement.inc:38
+#: management/dns/class_dnsManagement.inc:37
 msgid "Manage DNS zones and views"
 msgstr "Gérer les zones et les vues DNS"
 
-#: management/dns/class_dnsManagement.inc:40
+#: management/dns/class_dnsManagement.inc:39
 msgid "Systems"
 msgstr "Systèmes"
-
-#: management/dns/class_dnsManagement.inc:54
-#: management/dns/class_dnsManagement.inc:74
-msgid "Refresh Zone"
-msgstr "Rafraîchir une zone"
-
-#: management/dns/class_dnsManagement.inc:74
-#, php-format
-msgid "Invalid target \"%s\" passed for action \"%s\""
-msgstr "Trop de cibles \"%s\" passées pour l'action \"%s\""
-
-#: management/dns/class_dnsManagement.inc:82
-#: management/dns/class_dnsManagement.inc:89
-#, php-format
-msgid "Could not run ldap2zone: %s"
-msgstr "Impossible de lancer ldap2zone : %s"
-
-#: management/dns/class_dnsManagement.inc:83
-msgid "More than one server matches the SOA"
-msgstr "Plus d'un serveur correspond au SOA"
-
-#: management/dns/class_dnsManagement.inc:90
-#, php-format
-msgid "Could not find the primary server \"%s\""
-msgstr "Impossible de trouver le serveur primaire \"%s\""
-
-#: management/dns/class_dnsManagement.inc:96
-#: management/systems/class_dnsHost.inc:344
-msgid "Argonaut client needs to be activated to use ldap2zone remotely"
-msgstr ""
-"Le client Argonaut doit être activé pour utiliser ldap2zone à distance"
-
-#: management/dns/class_dnsManagement.inc:105
-#: management/systems/class_dnsHost.inc:353
-msgid "Cannot use argonaut client on a system without a Mac address"
-msgstr ""
-"Impossible d'utiliser un client argonaut sur un système qui n'a pas "
-"d'adresse mac"
-
-#: management/dns/class_dnsManagement.inc:114
-#: management/systems/class_dnsHost.inc:361
-msgid "Ldap2zone"
-msgstr "Ldap2zone"
-
-#: management/dns/class_dnsManagement.inc:114
-#: management/systems/class_dnsHost.inc:361
-#, php-format
-msgid "Ldap2Zone called for zone \"%s\""
-msgstr "Ldap2Zone appelé pour la zone \"%s\""
 
 #: management/dns/class_dnsView.inc:26 management/dns/class_dnsView.inc:27
 #: management/dns/class_dnsView.inc:30
@@ -770,6 +719,7 @@ msgstr ""
 "temps qui peut s'écouler avant que la zone ne soit plus autoritaire"
 
 #: management/dns/class_dnsZone.inc:852
+#: management/systems/services/dns/class_serviceDNS.inc:62
 msgid "TTL"
 msgstr "TTL"
 
@@ -876,8 +826,148 @@ msgstr "La directive \"%s\" nécessite une valeur dans un enregistrement SPF"
 msgid "\"%s\" is not a valid modifier for an SPF record"
 msgstr "\"%s\" n'est pas un modificateur valide pour un enregistrement SPF"
 
+#: management/systems/services/dns/class_serviceDNS.inc:29
+msgid "DNS settings"
+msgstr "Paramètres DNS"
+
+#: management/systems/services/dns/class_serviceDNS.inc:30
+msgid "FusionDirectory Orchestrator DNS settings"
+msgstr "Paramètres DNS de FusionDirectory Orchestrator"
+
+#: management/systems/services/dns/class_serviceDNS.inc:30
+msgid "Services"
+msgstr "Service"
+
+#: management/systems/services/dns/class_serviceDNS.inc:49
+msgid "DNS global settings"
+msgstr "Paramètres DNS globaux"
+
+#: management/systems/services/dns/class_serviceDNS.inc:52
+msgid "Bind directory"
+msgstr "Répertoire Bind"
+
+#: management/systems/services/dns/class_serviceDNS.inc:52
+msgid "The directory in which conf file must be created"
+msgstr "Le répertoire dans lequel le fichier de configuration doit être créé"
+
+#: management/systems/services/dns/class_serviceDNS.inc:57
+msgid "Bind cache directory"
+msgstr "Répertoire de cache de Bind"
+
+#: management/systems/services/dns/class_serviceDNS.inc:57
+msgid "The directory in which zone files must be created"
+msgstr "Le répertoire dans lequel les fichiers de zones doivent être créés"
+
+#: management/systems/services/dns/class_serviceDNS.inc:63
+msgid "Time to live"
+msgstr "Temps de vie"
+
+#: management/systems/services/dns/class_serviceDNS.inc:71
+msgid "rndc path"
+msgstr "Binaire rndc"
+
+#: management/systems/services/dns/class_serviceDNS.inc:72
+msgid "path to rndc binary"
+msgstr "Chemin vers le binaire rndc"
+
+#: management/systems/services/dns/class_serviceDNS.inc:78
+msgid "Search base"
+msgstr "Base de recherche"
+
+#: management/systems/services/dns/class_serviceDNS.inc:78
+msgid ""
+"LDAP base where the search should be done. Only usefull if you got several "
+"nodes for the same zone."
+msgstr ""
+"Base LDAP où la recherche doit être effectuée. Utile uniquement si vous "
+"disposez de plusieurs nœuds pour la même zone."
+
+#: management/systems/services/dns/class_serviceDNS.inc:84
+msgid "DNS master settings"
+msgstr "Paramètres DNS maitre"
+
+#: management/systems/services/dns/class_serviceDNS.inc:87
+msgid "Ignore reverse zone"
+msgstr "Ignorer la zone inverse"
+
+#: management/systems/services/dns/class_serviceDNS.inc:87
+msgid "Do not write reverse zone"
+msgstr "Ne pas écrire la zone inverse"
+
+#: management/systems/services/dns/class_serviceDNS.inc:91
+msgid "Notify"
+msgstr "Notifier"
+
+#: management/systems/services/dns/class_serviceDNS.inc:96
+msgid "Allow update"
+msgstr "Permettre les updates"
+
+#: management/systems/services/dns/class_serviceDNS.inc:96
+msgid "Allow update (semicolon separated and ended)"
+msgstr ""
+"IPs autorisées à mettre à jour (séparées et terminé par un point-virgule)"
+
+#: management/systems/services/dns/class_serviceDNS.inc:100
+msgid "Allow transfer"
+msgstr "Permettre le transfert"
+
+#: management/systems/services/dns/class_serviceDNS.inc:100
+msgid "Allow transfer (semicolon separated and ended)"
+msgstr ""
+"IPs autorisées à transférer (séparées et terminé par un point-virgule)"
+
+#: management/systems/services/dns/class_serviceDNS.inc:104
+msgid "Check names"
+msgstr "Vérifier les noms"
+
+#: management/systems/services/dns/class_serviceDNS.inc:104
+msgid ""
+"Cause any host name for the zone to be checked for compliance with RFC 952 "
+"and RFC 1123 and take the defined action"
+msgstr ""
+"Force la vérification avec les RFC 952 et RFC 1123 de tout nom d'hôte pour "
+"la zone, le niveau de vérification est en fonction du paramètre choisi"
+
+#: management/systems/services/dns/class_serviceDNS.inc:111
+msgid "DNS slave settings"
+msgstr "Paramètres DNS esclave"
+
+#: management/systems/services/dns/class_serviceDNS.inc:115
+msgid "DNS slaves"
+msgstr "Esclaves DNS"
+
+#: management/systems/services/dns/class_serviceDNS.inc:115
+msgid "Manage DNS Slaves"
+msgstr "Gérer les DNS esclaves"
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:35
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:70
+msgid "zone"
+msgstr "zone"
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:35
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:70
+msgid "DNS zone this server should be declared as slave of"
+msgstr "Zones DNS dont ce serveur doit être déclaré comme esclave"
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:39
+msgid "master"
+msgstr "maître"
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:39
+msgid "Master IP(s) for this zone"
+msgstr "IP(s) maitre(s) pour cette zone"
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:43
+msgid "reverses"
+msgstr "inverses"
+
+#: management/systems/services/dns/class_DnsSlaveZonesAttribute.inc:43
+msgid "This server should be slave of reverses zones as well"
+msgstr "Ce serveur doit aussi être esclave des zones inverses"
+
 #: management/systems/class_dnsHost.inc:127
-#: management/systems/class_dnsHost.inc:418
+#: management/systems/class_dnsHost.inc:378
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
@@ -912,28 +1002,24 @@ msgstr "Serveurs primaires"
 msgid "The DNS records for zone \"%s\""
 msgstr "Les enregistrements DNS pour la zone «%s»"
 
-#: management/systems/class_dnsHost.inc:292
-msgid "Refresh zone file"
-msgstr "Rafraîchir une zone"
-
-#: management/systems/class_dnsHost.inc:299
+#: management/systems/class_dnsHost.inc:295
 #, php-format
 msgid "The primary server for zone \"%s\""
 msgstr "Le serveur primaire pour la zone «%s»"
 
-#: management/systems/class_dnsHost.inc:450
-#: management/systems/class_dnsHost.inc:468
+#: management/systems/class_dnsHost.inc:410
+#: management/systems/class_dnsHost.inc:428
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
 msgstr "%d enregistrements ont été mis à jour de %s vers %s dans la zone %s"
 
-#: management/systems/class_dnsHost.inc:482
-#: management/systems/class_dnsHost.inc:513
+#: management/systems/class_dnsHost.inc:442
+#: management/systems/class_dnsHost.inc:473
 msgid "DNS update"
 msgstr "Mise à jour DNS"
 
-#: management/systems/class_dnsHost.inc:566
-#: management/systems/class_dnsHost.inc:587
+#: management/systems/class_dnsHost.inc:526
+#: management/systems/class_dnsHost.inc:547
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr "%d enregistrements ont été enlevés dans la zone %s"

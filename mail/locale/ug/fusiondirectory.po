@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-02-11 10:47+0000\n"
+"POT-Creation-Date: 2025-11-23 15:01+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
 "Language-Team: Uyghur (https://app.transifex.com/fusiondirectory/teams/12202/ug/)\n"
 "MIME-Version: 1.0\n"
@@ -188,14 +188,14 @@ msgid "Cannot update mailbox: %s"
 msgstr ""
 
 #: management/groups/mail/class_mailGroup.inc:388
-#: personal/mail/class_mailAccount.inc:505
+#: personal/mail/class_mailAccount.inc:507
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
 #: management/groups/mail/class_mailGroup.inc:397
 #: personal/mail/class_mailAccount.inc:437
-#: personal/mail/class_mailAccount.inc:514
+#: personal/mail/class_mailAccount.inc:516
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr ""
@@ -325,33 +325,38 @@ msgstr ""
 msgid "Cannot write quota settings: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:469
+#: personal/mail/class_mailAccount.inc:470
 #, php-format
 msgid "Mail error saving sieve settings: %s"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:146
+#: personal/mail/class_mail-methods.inc:149
 #, php-format
 msgid "The configured mail attribute \"%s\" is unsupported!"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:156
+#: personal/mail/class_mail-methods.inc:159
 #, php-format
 msgid "%s (%s)"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:599
+#: personal/mail/class_mail-methods.inc:524
+#, php-format
+msgid "Cannot store SIEVE script and active"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:704
 msgid "There are no IMAP compatible mail servers defined!"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:604
+#: personal/mail/class_mail-methods.inc:709
 msgid "Mail server for this account is invalid!"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:735
+#: personal/mail/class_mail-methods.inc:840
 msgid "Unknown"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:737
+#: personal/mail/class_mail-methods.inc:842
 msgid "Unlimited"
 msgstr ""
