@@ -165,6 +165,11 @@ class supannConfig extends simplePlugin
             [ "M.", "Mme"],
             TRUE,
           ),
+          new StringAttribute(
+            _('Amount of days for locking manual locking'), _('Amount of days for locking manual locking'),
+            'fdSupannUnlockingDays', TRUE,
+            '365'
+          ),
         ],
       ],
       'cms' => [

@@ -157,6 +157,13 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.5 NAME 'fdSupannRessourceLabels'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
+attributetype ( 1.3.6.1.4.1.38414.17.1.25 NAME 'fdSupannUnlockingDays'
+  DESC 'FusionDirectory - Amount of days for manual locking'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
 # Object Classes
 # Main SupAnn Plugin Configuration 
 
@@ -172,5 +179,6 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
     fdSupannConsentementObjects $ fdSupannConsentementTypes $ fdSupannShowMailForwardingAddress $
     fdSupannMailPriveTypes $ fdSupannTelephonePriveTypes $ fdSupannAdressePostalePriveeTypes $
     fdSupannShowAccountStatus $ fdSupannShowCMS $ fdSupannShowFranceConnect $ fdSupannCiviliteValues $
-    fdSupannRessourceSubStates $ fdSupannRessourceSubStatesLabels $ fdSupannRessourceLabels $ fdSupannRessourceEtatDateIntegrity
+    fdSupannRessourceSubStates $ fdSupannRessourceSubStatesLabels $ fdSupannRessourceLabels $ fdSupannRessourceEtatDateIntegrity $
+    fdSupannUnlockingDays
   ) )
