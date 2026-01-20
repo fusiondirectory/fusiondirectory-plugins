@@ -260,7 +260,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
         $modify['supannRessourceEtat'][]     = '{' . $label . '}S:SupannVerrouille';
       } elseif ((($state == 'S') || ($state == 'I')) && ($mode == 'UNLOCK')) {
         /* Unlock account */
-        $delayDays = $config->get_cfg_value('SupannLockingDays', 365);
+        $delayDays = $config->get_cfg_value('fdSupannUnlockingDays', 365);
         $modify['supannRessourceEtatDate'][] = '{' . $label . '}A:SupannActif:' . date('Ymd') . ':' . date('Ymd', strtotime("+$delayDays days"));
         $modify['supannRessourceEtat'][]     = '{' . $label . '}A:SupannActif';
       } else {
