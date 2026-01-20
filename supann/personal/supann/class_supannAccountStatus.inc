@@ -246,6 +246,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
 
   public function fillLockingLDAPAttrs (string $mode, array &$modify)
   {
+    global $config;
     if (empty($this->supannRessourceEtatDate)) {
       return;
     }
@@ -259,7 +260,8 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
         $modify['supannRessourceEtat'][]     = '{' . $label . '}S:SupannVerrouille';
       } elseif ((($state == 'S') || ($state == 'I')) && ($mode == 'UNLOCK')) {
         /* Unlock account */
-        $modify['supannRessourceEtatDate'][] = '{' . $label . '}A:SupannActif:' . date('Ymd') . ':';
+        $delayDays = $config->get_cfg_value('SupannLockingDays', 365);
+        $modify['supannRessourceEtatDate'][] = '{' . $label . '}A:SupannActif:' . date('Ymd') . ':' . date('Ymd', strtotime("+$delayDays days"));
         $modify['supannRessourceEtat'][]     = '{' . $label . '}A:SupannActif';
       } else {
         /* Do not touch other fields */
