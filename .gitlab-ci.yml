@@ -41,7 +41,7 @@ create_phpstan_rapport:
   script:
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
     - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools -b 63-prepare-phpstan-file-for-php8-as-for-fd-1-6
-    - test -d ../fusiondirectory/ && rm -Rf ../fusiondirectory/
+    - test -d ../fusiondirectory/ && rm -Rf ../fusiondirectory/ -b core-php8-updated
     - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/fd.git ../fusiondirectory
     - composer global require phpstan/phpstan=0.12.94
     - cp ../dev-tools/phpstan/fusiondirectory/1.6/*.neon .
