@@ -104,11 +104,8 @@ build-release:
 trigger-ci-debian-bullseye:
   stage: trigger
   only:
-    - dev
-  variables:
-    GROUP: "$GROUP"
-    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
-    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
+    - php8
   trigger:
     project: debian/bullseye-fusiondirectory-dev
+    branch: "php8"
 
