@@ -26,7 +26,7 @@ class SystemServicesColumn extends Column
 {
   protected $services;
 
-  function __construct (managementListing $parent, array $attributes = NULL, string $label = NULL)
+  function __construct (managementListing $parent, ?array $attributes = NULL, ?string $label = NULL)
   {
     global $config;
 

@@ -104,7 +104,7 @@ class supannFC extends simplePlugin
     ];
   }
 
-  function __construct (string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE)
+  function __construct (?string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 

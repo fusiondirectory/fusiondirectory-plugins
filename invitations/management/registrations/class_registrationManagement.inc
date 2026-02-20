@@ -309,7 +309,7 @@ class registrationManagement extends management
   /*
    * \brief Whether accept and reject actions should be enabled for an entry
    */
-  function enableAcceptReject ($action, ListingEntry $entry = NULL): bool
+  function enableAcceptReject ($action, ?ListingEntry $entry = NULL): bool
   {
     if ($entry !== NULL) {
       /* For entries */

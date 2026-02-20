@@ -419,7 +419,7 @@ class servicesManagement extends management implements SimpleTab
    *
    * \param string $base
    */
-  public function acl_is_removeable (string $base = NULL): bool
+  public function acl_is_removeable (?string $base = NULL): bool
   {
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
@@ -488,7 +488,7 @@ class servicesManagement extends management implements SimpleTab
   /*!
    * \brief Get the acl permissions for an attribute or the plugin itself
    */
-  public function aclGetPermissions ($attribute = '0', string $base = NULL, bool $skipWrite = FALSE): string
+  public function aclGetPermissions ($attribute = '0', ?string $base = NULL, bool $skipWrite = FALSE): string
   {
     return '';
   }

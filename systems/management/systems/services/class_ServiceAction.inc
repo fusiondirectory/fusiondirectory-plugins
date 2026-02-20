@@ -48,7 +48,7 @@ class ServiceAction extends Action
             ' title="'.htmlescape($this->label).'" alt="'.htmlescape($this->label).'" name="listing_'.$this->name.'_'.$entry->row.'"/>';
   }
 
-  function hasPermission (ListingEntry $entry = NULL): bool
+  function hasPermission (?ListingEntry $entry = NULL): bool
   {
     global $ui;
 

@@ -59,7 +59,7 @@ class ldapDump extends simplePlugin
     return TRUE;
   }
 
-  function aclGetPermissions ($attribute = '0', string $base = NULL, bool $skipWrite = FALSE): string
+  function aclGetPermissions ($attribute = '0', ?string $base = NULL, bool $skipWrite = FALSE): string
   {
     global $ui;
     /* You need complete rights on the category to see anything in this tab */

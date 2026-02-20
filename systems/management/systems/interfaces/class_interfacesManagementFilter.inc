@@ -31,7 +31,7 @@ class interfacesManagementFilter extends managementFilter
    *
    * \param string $parent management instance
    */
-  function __construct (management $parent, bool $fixedScope = NULL, array $filterElementDefinitions = [])
+  function __construct (management $parent, ?bool $fixedScope = NULL, array $filterElementDefinitions = [])
   {
     global $config;
 
@@ -56,7 +56,7 @@ class interfacesManagementFilter extends managementFilter
     return $this->entriesCache;
   }
 
-  function updateCache (string $dn, simpleTabs $object = NULL)
+  function updateCache (string $dn, ?simpleTabs $object = NULL)
   {
     if ($object === NULL) {
       if (isset($this->entriesCache[0][$dn])) {

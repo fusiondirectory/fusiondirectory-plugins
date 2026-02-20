@@ -782,7 +782,7 @@ class mailMethod
     return $obj;
   }
 
-  static public function getInstanceFromServer (string $server, $parent, string $type = NULL)
+  static public function getInstanceFromServer (string $server, $parent, ?string $type = NULL)
   {
     /* Intialize the used mailMethod */
     if ($server == '') {

@@ -261,7 +261,7 @@ class fdRestService extends fdRPCService
     );
   }
 
-  protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL): stdClass
+  protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn, ?string $tab = NULL): stdClass
   {
     $this->assertNoInput($input);
 
@@ -383,7 +383,7 @@ class fdRestService extends fdRPCService
     return $this->endpoint_objects_PATCH_2($responseCode, [$tab => $input], $type, $dn);
   }
 
-  protected function endpoint_objects_PUT_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
+  protected function endpoint_objects_PUT_4 (int &$responseCode, $input, string $type, string $dn, ?string $tab = NULL, ?string $attribute = NULL): string
   {
     $this->assertInput($input);
 
