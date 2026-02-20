@@ -605,12 +605,12 @@ class reminderFrontEnd extends standAlonePage
    */
   private function sanitizeInputs (): bool
   {
-    $result = FALSE;
-
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['token']) && isset($_GET['task'])) {
-      // Sanitize and validate input fields
-      $token = filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING);
-      $task  = filter_input(INPUT_GET, 'task', FILTER_SANITIZE_STRING);
+      $result = FALSE;
+
+      // No need to sanitize because they are checked later with isAlphanumeric and in the LDAP
+      $token = $_GET['token'];
+      $task  = $_GET['task'];
 
       // Validate 'token'
       if (!$this->isAlphanumeric($token) || !$this->isAlphanumeric($task)) {
@@ -627,9 +627,11 @@ class reminderFrontEnd extends standAlonePage
 
     // Case of the post submission
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
-      //
+      $result = FALSE;
+
+      // Sanitize login but don't do it for authMethod because they are checked later anyway
       $login      = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_EMAIL);
-      $authMethod = filter_input(INPUT_POST, 'auth', FILTER_SANITIZE_STRING);
+      $authMethod = POST['auth'];
 
       // Validate 'token'
       if (!$this->isAlphanumeric($login)) {
