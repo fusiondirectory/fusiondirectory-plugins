@@ -22,6 +22,11 @@ class partageGroup extends simplePlugin
 {
   protected $displayHeader  = TRUE;
 
+  public $uid;
+  public $cn;
+  public $sn;
+  public $givenName;
+
   static function plInfo (): array
   {
     return [

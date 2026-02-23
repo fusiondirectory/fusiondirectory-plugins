@@ -40,6 +40,12 @@ class mailGroup extends simplePlugin
 {
   protected $displayHeader  = TRUE;
 
+  public $mailMethod;
+  public $uid;
+  public $cn;
+  public $sn;
+  public $givenName;
+
   static function plInfo (): array
   {
     return [

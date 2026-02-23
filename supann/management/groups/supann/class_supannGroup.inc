@@ -22,6 +22,10 @@ class supannGroup extends simplePlugin
 {
   protected $displayHeader  = TRUE;
 
+  public $uid;
+  public $cn;
+  public $sn;
+
   static function plInfo (): array
   {
     return [
