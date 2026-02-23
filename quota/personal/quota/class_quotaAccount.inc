@@ -93,6 +93,8 @@ class quotaAccount extends simplePlugin
 {
   protected $displayHeader  = TRUE;
 
+  public $quotaDeviceParameters;
+
   static function plInfo (): array
   {
     return [
