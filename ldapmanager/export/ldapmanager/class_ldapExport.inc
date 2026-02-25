@@ -21,6 +21,11 @@
 
 class ldapExport extends simplePlugin
 {
+  public $uid;
+  public $cn;
+  public $sn;
+  public $givenName;
+
   /* Return plugin information for acl handling */
   static function plInfo (): array
   {
