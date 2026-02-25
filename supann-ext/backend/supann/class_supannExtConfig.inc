@@ -20,7 +20,7 @@
 
 class supannExtConfig extends simplePlugin
 {
-  public $populatlonCodeMaster;
+  public $populationCodeMaster;
 
   static function plInfo (): array
   {
