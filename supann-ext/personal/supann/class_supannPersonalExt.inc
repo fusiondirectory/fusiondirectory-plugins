@@ -23,7 +23,7 @@ class supannPersonalExt extends simplePlugin
 {
   protected $displayHeader = TRUE;
 
-  public $aUniqueld;
+  public $aUniqueId;
 
   static function plInfo (): array
   {
