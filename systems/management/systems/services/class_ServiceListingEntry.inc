@@ -21,7 +21,7 @@
 
 class ServiceListingEntry extends ListingEntry
 {
-  public function __construct (managementListing $listing, string $name, array $attrs, int $row = NULL)
+  public function __construct (managementListing $listing, string $name, array $attrs, ?int $row = NULL)
   {
     parent::__construct($listing, 'service_'.$name, $name, $attrs, $row);
     $this->aclBase = $listing->parent->dn;
