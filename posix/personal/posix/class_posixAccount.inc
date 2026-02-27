@@ -829,8 +829,8 @@ class posixAccount extends simplePlugin
     global $config;
 
     /* Fill informational values */
-    $min = $config->get_cfg_value("${attrib}PoolMin", 10000);
-    $max = $config->get_cfg_value("${attrib}PoolMax", 40000);
+    $min = $config->get_cfg_value("{$attrib}PoolMin", 10000);
+    $max = $config->get_cfg_value("{$attrib}PoolMax", 40000);
 
     /* Sanity check */
     if ($min >= $max) {
