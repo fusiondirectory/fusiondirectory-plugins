@@ -343,7 +343,7 @@ class posixAccount extends simplePlugin
 
       if ($ldap->count() > 0) {
         /* The copied user had its own group: switch back to automatic */
-        $this->primaryGroup = 0;
+        $this->primaryGroup = '';
       }
     }
 
@@ -443,9 +443,9 @@ class posixAccount extends simplePlugin
      * */
     if ($this->is_template && $this->force_ids) {
       /* Nothing to do in this case */
-    } elseif ($this->is_template && ($this->primaryGroup == 0)) {
+    } elseif ($this->is_template && ($this->primaryGroup == '')) {
       $this->gidNumber = '';
-    } elseif (($this->primaryGroup == 0) || $this->force_ids) {
+    } elseif (($this->primaryGroup == '') || $this->force_ids) {
       /* Search for existing group */
       $ldap = $config->get_ldap_link();
       $ldap->cd($config->current['BASE']);
@@ -745,7 +745,7 @@ class posixAccount extends simplePlugin
     $ret = parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
     if ($field == 'gidNumber') {
       if ($newvalue === NULL) {
-        $this->primaryGroup = 0;
+        $this->primaryGroup = '';
       } else {
         $this->primaryGroup = $this->gidNumber;
       }
