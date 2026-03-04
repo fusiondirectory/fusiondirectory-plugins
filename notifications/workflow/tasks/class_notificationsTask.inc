@@ -27,6 +27,8 @@ class notificationsTask extends simplePlugin
   // being processed.
   protected $lastActivation = NULL;
 
+  public $subStates;
+
   static function plInfo (): array
   {
     return [
