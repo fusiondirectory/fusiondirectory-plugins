@@ -631,7 +631,7 @@ class reminderFrontEnd extends standAlonePage
 
       // Sanitize login but don't do it for authMethod because they are checked later anyway
       $login      = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_EMAIL);
-      $authMethod = POST['auth'];
+      $authMethod = $POST['auth'];
 
       // Validate 'token'
       if (!$this->isAlphanumeric($login)) {
