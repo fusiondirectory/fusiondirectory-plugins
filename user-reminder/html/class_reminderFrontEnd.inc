@@ -605,9 +605,9 @@ class reminderFrontEnd extends standAlonePage
    */
   private function sanitizeInputs (): bool
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['token']) && isset($_GET['task'])) {
-      $result = FALSE;
+    $result = FALSE;
 
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['token']) && isset($_GET['task'])) {
       // No need to sanitize because they are checked later with isAlphanumeric and in the LDAP
       $token = $_GET['token'];
       $task  = $_GET['task'];
@@ -627,8 +627,6 @@ class reminderFrontEnd extends standAlonePage
 
     // Case of the post submission
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
-      $result = FALSE;
-
       // Sanitize login but don't do it for authMethod because they are checked later anyway
       $login      = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_EMAIL);
       $authMethod = $POST['auth'];
