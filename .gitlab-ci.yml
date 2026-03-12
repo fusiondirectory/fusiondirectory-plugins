@@ -42,7 +42,7 @@ create_phpstan_rapport:
   script:
     - test "$SKIP_PHPSTAN" -eq 1 && exit 0
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
-    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools -b 63-prepare-phpstan-file-for-php8-as-for-fd-1-6
+    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools -b php8
     - test -d ../fusiondirectory/ && rm -Rf ../fusiondirectory/
     - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/fd.git ../fusiondirectory -b php8
     - composer global require phpstan/phpstan
