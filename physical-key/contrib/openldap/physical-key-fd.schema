@@ -1,0 +1,20 @@
+##
+## physical-key-fd.schema - Needed by FusionDirectory for physical-key plugin
+##
+## Maintained by the FusionDirectory Project <contact@fusiondirectory.org>
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.98.1.1 NAME 'fdPhysicalKeyTypeValue'
+  DESC 'FusionDirectory - Type and value of the physical key'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  )
+
+# Objectclasses
+
+objectclass ( 1.3.6.1.4.1.38414.98.2.1 NAME 'fdPhysicalKey'
+  SUP top AUXILIARY
+  DESC 'FusionDirectory - physical key'
+  MUST ( fdPhysicalKeyTypeValue ))
