@@ -18,13 +18,13 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class userAsk extends simplePlugin
+class Macro extends simplePlugin
 {
   static function plInfo (): array
   {
      return [
-      'plShortName'     => _('Ask'),
-      'plDescription'   => _('Ask settings'),
+      'plShortName'     => _('Macro'),
+      'plDescription'   => _('Macro settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=nextcloud&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=nextcloud&size=16',
       'plSelfModify'    => FALSE,
@@ -59,7 +59,7 @@ class userAsk extends simplePlugin
 
     return  [
       'main' => [
-        'name'  => _('Ask variables'),
+        'name'  => _('Macro variables'),
         'attrs' => $attrs
       ]
     ];

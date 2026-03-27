@@ -18,16 +18,17 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class askConfig extends multiPluginSection
+class macroConfig extends simplePlugin
 {
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('Ask configuration'),
-      'plDescription'   => _('FusionDirectory ask plugin configuration'),
-      'plObjectClass'   => ['fdAskPluginConf'],
-      'plCategory'      => ['configuration'],
-      'plObjectType'    => ['smallConfig'],
+      'plShortName'     => _('Macro'),
+      'plTitle'         => _('Macro configuration'),
+      'plDescription'   => _('FusionDirectory macro plugin configuration'),
+      'plObjectClass'   => ['fdMacroPluginConf'],
+      'plPriority'      => 18,
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -37,17 +38,17 @@ class askConfig extends multiPluginSection
   {
     return [
       'ask' => [
-        'name'  => _('Ask'),
+        'name'  => _('Macro'),
         'attrs' => [
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
               _('Definition of the attributes to be asked'),
-              'fdAskAttributesList',
+              'fdMacroAttributesList',
               [
                 new SelectAttribute(
                   _('Attribute class'),
                   _('Class name of the attribute'),
-                  'fdAskAttributeClass',
+                  'fdMacroAttributeClass',
                   'FALSE',
                   [
                     'StringAttribute'
@@ -56,14 +57,14 @@ class askConfig extends multiPluginSection
                 new StringAttribute(
                   _('Attribute name'),
                   _('Name of the attribute'),
-                  'fdAskAttributeDescription',
+                  'fdMacroAttributeDescription',
                   FALSE,
                   'AttributeName',
                 ),
                 new StringAttribute(
                   _('Attribute name label'),
                   _('Label of the attribute'),
-                  'fdAskAttributeLabel',
+                  'fdMacroAttributeLabel',
                   FALSE,
                   'AttributeLabel',
                 ),
