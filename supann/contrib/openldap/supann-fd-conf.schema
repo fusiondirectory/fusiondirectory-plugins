@@ -132,11 +132,28 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.23 NAME 'fdSupannSubStateRDN'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
+# New attribute for desactivating the checking of ressource existance
 attributetype ( 1.3.6.1.4.1.38414.17.1.24 NAME 'fdSupannRessourceEtatDateIntegrity'
   DESC 'FusionDirectory - check integrity of SupannRessourceEtatDate when saving'
   EQUALITY booleanMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
+
+# New attribute for automatic end of date on supannRessourceEtatDate
+attributetype ( 1.3.6.1.4.1.38414.17.1.25 NAME 'fdSupannUnlockingDays'
+  DESC 'FusionDirectory - Amount of days for manual locking'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# New attribute for SupAnn Civility RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.26 NAME 'fdSupannCiviliteRDN'
+  DESC 'FusionDirectory - SupAnn Civility objects RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
 
 # Deprecated for next release, they are now migrated to supannObjects
 attributetype ( 1.3.6.1.4.1.38414.17.1.3 NAME 'fdSupannRessourceSubStates'
@@ -157,13 +174,6 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.5 NAME 'fdSupannRessourceLabels'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
-attributetype ( 1.3.6.1.4.1.38414.17.1.25 NAME 'fdSupannUnlockingDays'
-  DESC 'FusionDirectory - Amount of days for manual locking'
-  EQUALITY caseExactIA5Match
-  SUBSTR caseExactIA5SubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
-  SINGLE-VALUE)
-
 # Object Classes
 # Main SupAnn Plugin Configuration 
 
@@ -174,7 +184,8 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   SUP top AUXILIARY
   MUST ( cn )
   MAY (
-    fdSupannStructuresRDN $ fdSupannObjectsRDN $ fdSupannRessourceRDN $ fdSupannStateRDN $ fdSupannSubStateRDN $ fdSupannPasswordRecovery $
+    fdSupannStructuresRDN $ fdSupannObjectsRDN $ fdSupannRessourceRDN $ fdSupannStateRDN $ fdSupannSubStateRDN $  fdSupannCiviliteRDN $
+    fdSupannPasswordRecovery $
     fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains $
     fdSupannConsentementObjects $ fdSupannConsentementTypes $ fdSupannShowMailForwardingAddress $
     fdSupannMailPriveTypes $ fdSupannTelephonePriveTypes $ fdSupannAdressePostalePriveeTypes $
