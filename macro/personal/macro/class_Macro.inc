@@ -30,7 +30,7 @@ class Macro extends simplePlugin
       'plSelfModify'    => FALSE,
       'plObjectType'    => ['user'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo()),
-    ];
+     ];
   }
 
   /*!
