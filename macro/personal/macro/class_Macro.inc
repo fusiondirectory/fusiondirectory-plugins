@@ -40,7 +40,7 @@ class Macro extends simplePlugin
   {
     global $config;
 
-    $attrsList = $config->get_cfg_value("askAttributesList", []);
+    $attrsList = $config->get_cfg_value("MacroAttributesList", []);
     $attrs = [];
     foreach ($attrsList as $attributes) {
       $attributeClass  = explode('|', explode(':', $attributes)[1])[0];
