@@ -584,8 +584,6 @@ class supannAccount extends simplePlugin
     /* Sort */
     asort($civilite);
 
-    print_a($civilite);
-
     return $civilite;
   }
 
