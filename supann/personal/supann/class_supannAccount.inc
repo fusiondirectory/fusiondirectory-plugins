@@ -504,9 +504,6 @@ class supannAccount extends simplePlugin
     // Get supannCivilite from configuration
     $supannCiviliteValues = static::getCivilite();
 
-    // Add actual ldap value
-    $supannCiviliteValues[] = $this->attributesAccess['supannCivilite']->getValue();
-
     // Set the choices for supannCivilite
     $this->attributesAccess['supannCivilite']->setChoices(
      array_keys($supannCiviliteValues),
@@ -573,12 +570,12 @@ class supannAccount extends simplePlugin
 
     /* Get resources from LDAP */
     $civilite = [];
-    $ldap->search('(objectClass=fdSupannCivilite)', ['fdSupannCiviliteLabel'], 'subtree');
+    $ldap->search('(objectClass=fdSupannCivilite)', ['fdSupannCiviliteName','fdSupannCiviliteLabel'], 'subtree');
     while ($attrs = $ldap->fetch()) {
       if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannCivilite/supannCivilite', 'fdSupannCiviliteLabel'))) {
         continue;
       }
-      $civilite[] = $attrs['fdSupannCiviliteLabel'][0];
+      $civilite += [$attrs['fdSupannCiviliteLabel'][0] => $attrs['fdSupannCiviliteName'][0]];
     }
 
     /* Sort */
