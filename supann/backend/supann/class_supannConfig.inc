@@ -66,6 +66,11 @@ class supannConfig extends simplePlugin
             'fdSupannSubStateRDN', TRUE,
             'ou=substates,ou=supannobjects'
           ),
+          new StringAttribute(
+            _('SupAnn Civility'), _('Branch in which SupAnn Civility Objects will be stored'),
+            'fdSupannCiviliteRDN', TRUE,
+            'ou=civilite,ou=supannobjects'
+          ),
         ]
       ],
 
@@ -153,17 +158,6 @@ class supannConfig extends simplePlugin
             FALSE,
             [],
             TRUE
-          ),
-          new OrderedArrayAttribute(
-            new StringAttribute(
-              _('Supann Civilite'),
-              _('Values available for supannCivilite'),
-              'fdSupannCiviliteValues',
-              TRUE,
-            ),
-            FALSE,
-            [ "M.", "Mme"],
-            TRUE,
           ),
           new StringAttribute(
             _('Amount of days for locking manual locking'), _('Amount of days for locking manual locking'),
@@ -422,6 +416,20 @@ class supannConfig extends simplePlugin
         $error->display();
       }
       fusiondirectory_log('Created token branch '.$tokenBranch);
+    }
+
+    // Check if supann civilite branch is here
+    $ldap = $config->get_ldap_link();
+    $civiliteBranch = get_ou('SupannCiviliteRDN').$config->current['BASE'];
+    $ldap->cat($civiliteBranch, ['dn']);
+    if (!$ldap->count()) {
+      $ldap->cd($config->current['BASE']);
+      try {
+        $ldap->create_missing_trees($civiliteBranch);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
+      }
+      fusiondirectory_log('Created supann civilite branch '.$civiliteBranch);
     }
   }
 }
