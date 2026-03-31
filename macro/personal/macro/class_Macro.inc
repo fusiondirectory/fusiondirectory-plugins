@@ -54,7 +54,9 @@ class Macro extends simplePlugin
           FALSE
         );
       }
-      array_push($attrs, $object);
+      if (isset($object)) {
+        array_push($attrs, $object);
+      }
     }
 
     return  [
