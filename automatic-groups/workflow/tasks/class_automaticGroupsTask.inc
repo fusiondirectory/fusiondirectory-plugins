@@ -40,6 +40,7 @@ class automaticGroupsTask extends simplePlugin
       'plConflicts'    => [ // The name of the class is required, not the object class.
         'auditTask',
         'archiveTask',
+        'dnsTask',
         'extractorTask',
         'lifeCycleTask',
         'mailTask',

@@ -111,6 +111,13 @@ attributetype ( 1.3.6.1.4.1.38414.51.13.12 NAME 'fdDNSZoneNotify'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
+# Task attribute
+
+attributetype ( 1.3.6.1.4.1.38414.51.13.13 NAME 'fdDnsZones'
+  DESC 'FusionDirectory - DNS task - zones lists'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.51.2.1 NAME 'fdDNSHost'
   DESC 'FusionDirectory - DNS host'
@@ -138,3 +145,9 @@ objectclass ( 1.3.6.1.4.1.38414.51.2.4 NAME 'fdDNSConfig'
   MAY ( fdDNSZoneAllowUpdate $ fdDNSZoneAllowTransfer $
     fdDNSZoneNoReverse $ fdDNSZoneCheckNames $ fdDNSZoneSearchBase $
     fdDNSZoneSlaveZones $ fdDNSZoneNotify $ fdDNSZoneAllowNotify ) )
+
+# Object Class from task
+
+objectclass ( 1.3.6.1.4.1.38414.51.2.5 NAME 'fdDnsTasks' SUP top AUXILIARY
+  DESC 'FusionDirectory - DNS tasks'
+  MUST ( fdDnsZones ))

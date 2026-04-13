@@ -37,6 +37,7 @@ class extractorTask extends simplePlugin
         'auditTask',
         'archiveTask',
         'automaticGroupsTask',
+        'dnsTask',
         'lifeCycleTask',
         'mailTask',
         'notificationsTask',
