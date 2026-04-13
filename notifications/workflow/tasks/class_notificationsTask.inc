@@ -43,6 +43,7 @@ class notificationsTask extends simplePlugin
         'auditTask',
         'archiveTask',
         'automaticGroupsTask',
+        'dnsTask',
         'extractorTask',
         'lifeCycleTask',
         'mailTask',

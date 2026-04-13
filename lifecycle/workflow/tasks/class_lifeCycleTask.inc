@@ -41,6 +41,7 @@ class lifeCycleTask extends simplePlugin
         'auditTask',
         'archiveTask',
         'automaticGroupsTask',
+        'dnsTask',
         'extractorTask',
         'mailTask',
         'notificationsTask',
