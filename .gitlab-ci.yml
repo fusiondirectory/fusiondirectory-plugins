@@ -26,7 +26,7 @@ create_php_code_sniffer_rapport:
     - branches
   script:
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
-    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
+    - git clone --depth 1 https://gitlab-ci-token:$GITLAB_CI_TOKEN@gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
     - find . -type f -name '*.php' -o -name '*.inc' > ./filelist
     - /root/.composer/vendor/bin/phpcs --ignore=class_sieve.inc --standard=../dev-tools/php-codesniffer-rules/FDStandard/ruleset.xml --file-list=./filelist
     - /root/.composer/vendor/bin/phpcs --config-set installed_paths /PHPCompatibility,/PHPCSUtils
@@ -40,9 +40,9 @@ create_phpstan_rapport:
     - branches
   script:
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
-    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
+    - git clone --depth 1 https://gitlab-ci-token:$GITLAB_CI_TOKEN@gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
     - test -d ../fusiondirectory/ && rm -Rf ../fusiondirectory/
-    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/fd.git ../fusiondirectory
+    - git clone --depth 1 https://gitlab-ci-token:$GITLAB_CI_TOKEN@gitlab.fusiondirectory.org/fusiondirectory/fd.git ../fusiondirectory
     - composer global require phpstan/phpstan=0.12.94
     - cp ../dev-tools/phpstan/fusiondirectory/1.5/*.neon .
     - /root/.composer/vendor/bin/phpstan analyse -c phpstan-plugins.neon
@@ -55,7 +55,7 @@ fusiondirectory-update-locale:
     - dev
   script:
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
-    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
+    - git clone --depth 1 https://gitlab-ci-token:$GITLAB_CI_TOKEN@gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
     - ../dev-tools/locale-scripts/fusiondirectory-update-locale-plugins
 
 # Update transifex
@@ -66,7 +66,7 @@ update-transifex:
     - dev
   script:
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
-    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
+    - git clone --depth 1 https://gitlab-ci-token:$GITLAB_CI_TOKEN@gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
     - echo $'[https://www.transifex.com]\nrest_hostname = '"$TRANSIFEX_REST_HOSTNAME"$'\nusername = '"$TRANSIFEX_USER"$'\ntoken = '"$TRANSIFEX_TOKEN"$'\n' > ~/.transifexrc
     - tx pull -a -f
     - ../dev-tools/locale-scripts/fusiondirectory-update-locale-plugins
