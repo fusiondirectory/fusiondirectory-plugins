@@ -76,7 +76,7 @@ class Macro extends simplePlugin
     }
 
     if (!$this->is_template) {
-      unset($this->attrs);
+      $this->attrs = [];
     }
 
     return $errors;
