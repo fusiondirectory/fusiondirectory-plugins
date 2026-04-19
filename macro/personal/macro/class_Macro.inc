@@ -25,8 +25,8 @@ class Macro extends simplePlugin
      return [
       'plShortName'     => _('Macro'),
       'plDescription'   => _('Macro settings'),
-      'plIcon'          => 'geticon.php?context=applications&icon=nextcloud&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=nextcloud&size=16',
+      'plIcon'          => 'geticon.php?context=applications&icon=macro&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=macro&size=16',
       'plSelfModify'    => FALSE,
       'plObjectType'    => ['user'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo()),
