@@ -27,8 +27,6 @@ class reminderTask extends simplePlugin
   // being processed.
   protected $lastActivation = NULL;
 
-  public $subStates;
-
   static function plInfo (): array
   {
     return [
@@ -43,7 +41,6 @@ class reminderTask extends simplePlugin
         'auditTask',
         'archiveTask',
         'automaticGroupsTask',
-        'dnsTask',
         'extractorTask',
         'lifeCycleTask',
         'mailTask',
