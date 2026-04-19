@@ -41,7 +41,7 @@ class Macro extends simplePlugin
     global $config;
 
     $attrsList = $config->get_cfg_value("MacroAttributesList", []);
-    $attrs = [];
+    $attributesArray = [];
     foreach ($attrsList as $attributes) {
       $attributeClass  = explode('|', explode(':', $attributes)[1])[0];
       $attributeName   = explode('|', explode(':', $attributes)[1])[1];
@@ -55,14 +55,14 @@ class Macro extends simplePlugin
         );
       }
       if (isset($object)) {
-        array_push($attrs, $object);
+        array_push($attributesArray, $object);
       }
     }
 
     return  [
       'main' => [
         'name'  => _('Macro variables'),
-        'attrs' => $attrs
+        'attrs' => $attributesArray
       ]
     ];
   }
