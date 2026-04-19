@@ -43,7 +43,6 @@ class reminderTask extends simplePlugin
         'auditTask',
         'archiveTask',
         'automaticGroupsTask',
-        'dnsTask',
         'extractorTask',
         'lifeCycleTask',
         'mailTask',
