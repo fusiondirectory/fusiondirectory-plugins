@@ -106,7 +106,7 @@ class eduPerson extends simplePlugin
           ),
         ]
       ],
-     'Orgnisation' => [
+      'Orgnisation' => [
         'name'  => _('Organisation'),
         'attrs' => [
           new StringAttribute(
