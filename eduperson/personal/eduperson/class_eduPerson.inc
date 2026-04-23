@@ -106,26 +106,23 @@ class eduPerson extends simplePlugin
           ),
         ]
       ],
-
      'Orgnisation' => [
         'name'  => _('Organisation'),
         'attrs' => [
           new StringAttribute(
-            _('eduPersonOrgDN'), _('eduPersonOrgDN - Main organisation'),
+            _('Organisation DN'), _('eduPersonOrgDN - Main organisation'),
             'eduPersonOrgDN', FALSE
           ),
           new StringAttribute(
-            _('eduPersonPrimaryOrgUnitDN'), _('eduPersonPrimaryOrgUnitDN - Main attachment Unit'),
-            'eduPersonOrgUnitDN', FALSE
+            _('Primary Organisation DN'), _('eduPersonPrimaryOrgUnitDN - Main attachment Unit'),
+            'eduPersonPrimaryOrgUnitDN', FALSE
           ),
-
           new StringAttribute(
-            _('eduPersonOrgUnitDN'), _('eduPersonOrgUnitDN - Main Unit'),
+            _('Unit DN'), _('eduPersonOrgUnitDN - Main Unit'),
             'eduPersonOrgUnitDN', FALSE
           ),
          ]
        ],
-
       'affiliation' => [
         'name'  => _('Affiliation'),
         'attrs' => [
