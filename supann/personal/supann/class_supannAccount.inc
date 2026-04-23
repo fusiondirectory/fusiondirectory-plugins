@@ -31,12 +31,12 @@ class supannAccount extends simplePlugin
     return [
       'plShortName'   => _('SupAnn'),
       'plDescription' => _('SupAnn information management plugin'),
-      'plFilter'      => '(&(objectClass=eduPerson)(objectClass=supannPerson))',
+      'plFilter'      => '(objectClass=supannPerson)',
       'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=supann&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 14,
-      'plObjectClass' => ['eduPerson','supannPerson'],
+      'plObjectClass' => ['supannPerson'],
       'plObjectType'  => ['user'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
@@ -59,14 +59,6 @@ class supannAccount extends simplePlugin
             _('Alias login'), _('supannAliasLogin - An alias for the login of this user'),
             'supannAliasLogin', FALSE
           ),
-          new StringAttribute(
-            _('eduPersonPrincipalName'), _('eduPersonPrincipalName - A name that looks like <id>@<domain> which is unique for this domain, and has not be assigned to anyone else recently'),
-            'eduPersonPrincipalName', FALSE
-          ),
-          new StringAttribute(
-            _('Nickname'), _('eduPersonNickname - Can contain a nickname for this user'),
-            'eduPersonNickname', FALSE
-          ),
           new SetAttribute(
             new StringAttribute(
               _('Ref ids'), _('supannRefId - IDs/links for this user on other systems'),
@@ -74,16 +66,6 @@ class supannAccount extends simplePlugin
               '', '',
                // Validation regexp: it must have a prefix
               '/^{[^}]+}.+$/'
-            )
-          ),
-          new SetAttribute(
-            new StringAttribute(
-              _('ORCID identifiers'), _('eduPersonOrcid - ORCID researcher identifiers belonging to the principal'),
-              'eduPersonOrcid', FALSE,
-              '', '',
-              // Validation regexp: it must be XXXX-XXXX-XXXX-XXXX when X are digits
-              '/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$/',
-              'ORCID account IDs must look like XXXX-XXXX-XXXX-XXXX where X are digits'
             )
           ),
         ]
@@ -203,16 +185,6 @@ class supannAccount extends simplePlugin
       'affiliation' => [
         'name'  => _('Affiliation'),
         'attrs' => [
-          new SelectAttribute(
-            _('Primary affiliation'), _('eduPersonPrimaryAffiliation - Main status of the person'),
-            'eduPersonPrimaryAffiliation', FALSE
-          ),
-          new SetAttribute(
-            new SelectAttribute(
-              _('Affiliations'), _('eduPersonAffiliation - Status of the person: student, BIATOSS, teacher, contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc.'),
-              'eduPersonAffiliation', FALSE
-            )
-          ),
           new SetAttribute(
             new SelectAttribute(
               _('Establishment'), _('supannEtablissement - Institution or unit of administrative attachment of the person'),
@@ -356,7 +328,6 @@ class supannAccount extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['supannRefId']->setUnique('whole');
-    $this->attributesAccess['eduPersonPrincipalName']->setUnique('whole');
     $this->attributesAccess['supannAutreMail']->setUnique('whole');
 
     $this->attributesAccess['mailForwardingAddress']->setVisible($config->get_cfg_value('SupannShowMailForwardingAddress') === 'TRUE');
@@ -410,9 +381,6 @@ class supannAccount extends simplePlugin
   protected function supannInit ()
   {
     global $config;
-
-    list ($codes, $labels) = supann::get_choices_for('affiliation');
-    $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
 
     $this->attributesAccess['supannEtuInscription']->setHeaders([
       _('Establishment'),
@@ -554,10 +522,6 @@ class supannAccount extends simplePlugin
     // supannTypeEntiteAffectation
     $this->attributesAccess['supannRoleEntite']->attribute->attributes[1]->setChoices($code_tent, $label_tent);
 
-    $this->attributesAccess['eduPersonPrimaryAffiliation']->setChoices(
-      $this->attributesAccess['eduPersonAffiliation']->getValue(),
-      $this->attributesAccess['eduPersonAffiliation']->getDisplayValues()
-    );
   }
 
   static function getCivilite (): array
@@ -582,34 +546,6 @@ class supannAccount extends simplePlugin
     asort($civilite);
 
     return $civilite;
-  }
-
-  function check (): array
-  {
-    $errors = parent::check();
-
-    $affiliations = $this->eduPersonAffiliation;
-    if (in_array('member', $affiliations) && in_array('affiliate', $affiliations)) {
-      $errors[] = new SimplePluginCheckError(
-        $this->attributesAccess['eduPersonAffiliation'],
-        htmlescape(_('"member" and "affiliate" values are incompatible for eduPersonAffiliation. Please remove one of them.'))
-      );
-    }
-
-    $orcids = $this->eduPersonOrcid;
-    if (is_array($orcids)) {
-      foreach ($orcids as $orcid) {
-        // phpstan:ignore
-        if (!tests::is_orcid($orcid)) {
-          $errors[] = new SimplePluginCheckError(
-            $this->attributesAccess['eduPersonOrcid'],
-            htmlescape(_('The value "'.$orcid.'" is not a valid orcid id. Please remove it.'))
-          );
-        }
-      }
-    }
-
-    return $errors;
   }
 
   public function update (): bool
