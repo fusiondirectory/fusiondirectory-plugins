@@ -111,11 +111,11 @@ class eduPerson extends simplePlugin
             'eduPersonEntitlement', FALSE
             )
           ),
-          new SelectAttribute(
+          new StringAttribute(
             _('Scoped Affiliation'), _('eduPersonScopedAffiliation -  Affiliation within a particular security domain'),
             'eduPersonScopedAffiliation', FALSE
           ),
-          new SelectAttribute(
+          new StringAttribute(
             _('Assurance'), _('eduPersonAssurance -   identity assurance profiles (IAPs)'),
             'eduPersonAssurance', FALSE
           ),
