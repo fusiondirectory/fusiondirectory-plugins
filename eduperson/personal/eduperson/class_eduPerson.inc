@@ -71,21 +71,6 @@ class eduPerson extends simplePlugin
           )
         ]
        ],
-      'affiliation' => [
-        'name'  => _('Affiliation'),
-        'attrs' => [
-          new SelectAttribute(
-            _('Primary affiliation'), _('eduPersonPrimaryAffiliation - Main status of the person'),
-            'eduPersonPrimaryAffiliation', FALSE
-          ),
-          new SetAttribute(
-            new SelectAttribute(
-              _('Affiliations'), _('eduPersonAffiliation - Status of the person: student, BIATOSS, teacher, contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc.'),
-              'eduPersonAffiliation', FALSE
-            )
-          )
-         ]
-       ],
       'Federation' => [
         'name'  => _('Federation and Access'),
         'attrs' => [
@@ -121,6 +106,42 @@ class eduPerson extends simplePlugin
           ),
         ]
       ],
+
+     'Orgnisation' => [
+        'name'  => _('Organisation'),
+        'attrs' => [
+          new StringAttribute(
+            _('eduPersonOrgDN'), _('eduPersonOrgDN - Main organisation'),
+            'eduPersonOrgDN', FALSE
+          ),
+          new StringAttribute(
+            _('eduPersonPrimaryOrgUnitDN'), _('eduPersonPrimaryOrgUnitDN - Main attachment Unit'),
+            'eduPersonOrgUnitDN', FALSE
+          ),
+
+          new StringAttribute(
+            _('eduPersonOrgUnitDN'), _('eduPersonOrgUnitDN - Main Unit'),
+            'eduPersonOrgUnitDN', FALSE
+          ),
+         ]
+       ],
+
+      'affiliation' => [
+        'name'  => _('Affiliation'),
+        'attrs' => [
+          new SelectAttribute(
+            _('Primary affiliation'), _('eduPersonPrimaryAffiliation - Main status of the person'),
+            'eduPersonPrimaryAffiliation', FALSE
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Affiliations'), _('eduPersonAffiliation - Status of the person: student, BIATOSS, teacher, contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc.'),
+              'eduPersonAffiliation', FALSE
+            )
+          )
+         ]
+       ],
+
     ];
   }
 
