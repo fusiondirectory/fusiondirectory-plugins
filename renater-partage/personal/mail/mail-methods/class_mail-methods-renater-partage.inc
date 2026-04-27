@@ -848,6 +848,15 @@ class mailMethodRenaterPartage extends mailMethod
           return FALSE;
         }
 
+        /* Handle aliases */
+        if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
+          $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
+          $aliases        = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
+          if (!$this->setAliases($initialAliases, $aliases)) {
+            return FALSE;
+          }
+        }
+
         return TRUE;
       }
 
