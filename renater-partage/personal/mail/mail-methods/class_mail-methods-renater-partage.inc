@@ -852,6 +852,13 @@ class mailMethodRenaterPartage extends mailMethod
         if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
           $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
           $aliases        = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
+
+          // When using a template the value is in $initialAliases and $aliases
+          // So if $initialAliases = $aliases empty $initialAliases so that we will add $aliases
+          if ($initialAliases == $aliases) {
+            $initialAliases = [];
+          }
+
           if (!$this->setAliases($initialAliases, $aliases)) {
             return FALSE;
           }
