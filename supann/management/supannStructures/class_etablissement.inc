@@ -32,7 +32,7 @@ class etablissement extends simplePlugin
     return [
       'plShortName'   => _('Establishment'),
       'plDescription' => _('SupAnn Establishment Settings'),
-      'plObjectClass' => ['supannEntite','organization','supannOrg','eduOrg'],
+      'plObjectClass' => ['supannEntite','organization','supannOrg'],
       'plFilter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
       'plObjectType'  => ['etablissement' => [
         'name'        => _('SupAnn Establishment'),
@@ -123,22 +123,6 @@ class etablissement extends simplePlugin
               '/^{[^}]+}.+$/'
             )
           ),
-          new StringAttribute(
-            _('Legal name'), _('The legal name of this establishment'),
-            'eduOrgLegalName', TRUE
-          ),
-          new URLAttribute(
-            _('Home page URI'), _('The URI of this establishment website home page'),
-            'eduOrgHomePageURI', FALSE
-          ),
-          new URLAttribute(
-            _('Institution URI'), _('The URI of this establishment institution website'),
-            'eduOrgSuperiorURI', FALSE
-          ),
-          new URLAttribute(
-            _('White pages URI'), _('The URI of this establishment white pages'),
-            'eduOrgWhitePagesURI', FALSE
-          ),
         ]
       ],
     ];
@@ -158,7 +142,6 @@ class etablissement extends simplePlugin
     $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
     $this->attributesAccess['supannRefId']->setUnique('whole', '(objectClass=supannEntite)');
     $this->attributesAccess['supannEtablissement']->setUnique('one');
-    $this->attributesAccess['eduOrgLegalName']->setUnique('one');
 
     $rootCode = $this->get_root_code();
     $this->attributesAccess['set_root']->setInLdap(FALSE);
@@ -190,7 +173,7 @@ class etablissement extends simplePlugin
       $baseAttrs = $ldap->fetch();
       unset($baseAttrs['objectClass']['count']);
       $rootAttrs = [];
-      $rootAttrs['objectClass'] = array_remove_entries(['supannOrg','eduOrg'], $baseAttrs['objectClass']);
+      $rootAttrs['objectClass'] = array_remove_entries(['supannOrg'], $baseAttrs['objectClass']);
       foreach (static::$rootAttributes as $rootAttribute) {
         $rootAttrs[$rootAttribute] = [];
       }
@@ -237,7 +220,7 @@ class etablissement extends simplePlugin
       if ($rootMode == 'remove') {
         /* Remove SupAnn attributes from root node */
         $rootAttrs = [];
-        $rootAttrs['objectClass'] = array_remove_entries(['supannOrg','eduOrg'], $baseAttrs['objectClass']);
+        $rootAttrs['objectClass'] = array_remove_entries(['supannOrg'], $baseAttrs['objectClass']);
         foreach (static::$rootAttributes as $rootAttribute) {
           $rootAttrs[$rootAttribute] = [];
         }
@@ -257,7 +240,7 @@ class etablissement extends simplePlugin
             unset($rootAttrs[$key]['count']);
           }
         }
-        $rootAttrs['objectClass'] = array_merge_unique($baseAttrs['objectClass'], ['dcObject','organization','supannOrg','eduOrg']);
+        $rootAttrs['objectClass'] = array_merge_unique($baseAttrs['objectClass'], ['dcObject','organization','supannOrg']);
       }
       $ldap->cd($config->current['BASE']);
       $ldap->modify($rootAttrs);

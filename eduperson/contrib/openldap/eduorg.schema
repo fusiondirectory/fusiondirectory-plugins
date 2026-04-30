@@ -1,0 +1,144 @@
+#
+# eduOrg Objectclass version 1.1 (2002-10-23)
+#
+# See http://www.educause.edu/eduperson for background and usage
+#
+#
+# NOTE TO OpenLDAP DIRECTORY USERS (noted 2002-10-23)
+#
+#       If you have difficulty using this LDIF then you should try
+#       changing the "attributetypes:" to "attributetype" and
+#       "objectclasses:" to "objectclass" and retry...
+#
+#
+# When modifying objectclass eduOrg --
+#                we first must delete the objectclass
+# and then re-add -- make sure all replicas are functioning.  Try to do this
+# during an inactive period of services (if possible).
+#
+# Modifying schema may only affect the instance being modified --
+#                     it may NOT replicate!
+#
+# check your server documentation to verify this.
+#
+#
+#
+# 1.3.6.1.4.1.5923 is the toplevel OID for this work
+#	For a layout of the OID space, please refer to the
+#	eduPerson objectclass LDIF.
+#
+#
+#
+# CHANGELOG
+#
+#   May 01, 2002	(gettes@georgetown.edu) Original version 1.0 experimental
+#   Oct 23, 2002	(gettes@georgetown.edu) fix typo in objectclass spec
+#                                               changed tabs to spaces
+#                                               add cn to objectclass
+#                                               No longer experimental
+#
+#
+#
+#  USAGE:
+#
+#	This LDIF file makes modifications to the cn=schema tree
+#	which should modify the user portion of the schema of your
+#	directory (if that concept exists).  The LDIF is constructed
+#	to perform this modification in one update.  Should any portion
+#	fail, then the entire update will fail and no change should be
+#	made.  The first part of the LDIF is to delete any attributes
+#	that may have already been defined so that they can be readded
+#	in the next section. Same methodology applies to the objectclasses
+#	which follows.
+#
+#	This file contains lines with trailing spaces so that continuation
+#	of lines work properly.  Please make sure this is respected or you
+#	may have difficulty in applying the LDIF.
+#
+#
+#
+#dn: cn=schema
+#changetype: modify
+#
+# if you need to change the definition of an attribute,
+#            then first delete and re-add in one step
+#
+# if this is the first time you are adding the eduOrg
+# objectclass using this LDIF file, then you should comment
+# out the delete attributetypes modification since this will
+# fail. Alternatively, if your ldapmodify has a switch to continue
+# on errors, then just use that switch -- if you're careful
+#
+#
+#
+#delete: attributetypes
+#attributetypes: ( 1.3.6.1.4.1.5923.1.2.1.2 NAME 'eduOrgHomePageURI' )
+#attributetypes: ( 1.3.6.1.4.1.5923.1.2.1.3 NAME 'eduOrgIdentityAuthNPolicyURI' )
+#attributetypes: ( 1.3.6.1.4.1.5923.1.2.1.4 NAME 'eduOrgLegalName' )
+#attributetypes: ( 1.3.6.1.4.1.5923.1.2.1.5 NAME 'eduOrgSuperiorURI' )
+#attributetypes: ( 1.3.6.1.4.1.5923.1.2.1.6 NAME 'eduOrgWhitePagesURI' )
+#-
+#
+# re-add the attributes -- in case there is a change of definition
+#
+#
+# "eduOrg" attributes
+#
+
+attributetype ( 1.3.6.1.4.1.5923.1.2.1.2 NAME 'eduOrgHomePageURI'
+  DESC 'eduOrg per Internet2 and EDUCAUSE'
+  EQUALITY caseExactIA5Match
+  SYNTAX '1.3.6.1.4.1.1466.115.121.1.26' )
+
+attributetype ( 1.3.6.1.4.1.5923.1.2.1.3 NAME 'eduOrgIdentityAuthNPolicyURI'
+  DESC 'eduOrg per Internet2 and EDUCAUSE'
+  EQUALITY caseExactIA5Match
+  SYNTAX '1.3.6.1.4.1.1466.115.121.1.26' )
+
+attributetype ( 1.3.6.1.4.1.5923.1.2.1.4 NAME 'eduOrgLegalName'
+  DESC 'eduOrg per Internet2 and EDUCAUSE'
+  EQUALITY caseIgnoreMatch
+  SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+
+attributetype ( 1.3.6.1.4.1.5923.1.2.1.5  NAME 'eduOrgSuperiorURI'
+  DESC 'eduOrg per Internet2 and EDUCAUSE'
+  EQUALITY caseExactIA5Match
+  SYNTAX '1.3.6.1.4.1.1466.115.121.1.26' )
+
+attributetype ( 1.3.6.1.4.1.5923.1.2.1.6 NAME 'eduOrgWhitePagesURI'
+  DESC 'eduOrg per Internet2 and EDUCAUSE'
+  EQUALITY caseExactIA5Match
+  SYNTAX '1.3.6.1.4.1.1466.115.121.1.26' )
+
+#
+#
+#
+# eduOrg objectclass definition
+# can only be done after attributes established
+#
+# if this is the first time you are adding the eduOrg
+# objectclass using this LDIF file, then you should comment
+# out the delete objectclasses modification since this will
+# fail. Alternatively, if your ldapmodify has a switch to continue
+# on errors, then just use that switch -- if you're careful
+#
+#delete: objectclasses
+#objectclasses: ( 1.3.6.1.4.1.5923.1.2.2
+# NAME 'eduOrg'
+# )
+#-
+#
+# now re-add the objectclass properly defined.
+#
+#add: objectclasses
+
+objectclass ( 1.3.6.1.4.1.5923.1.2.2 NAME 'eduOrg'
+ AUXILIARY
+ MAY ( cn $ eduOrgHomePageURI $
+ eduOrgIdentityAuthNPolicyURI $ eduOrgLegalName $
+ eduOrgSuperiorURI $ eduOrgWhitePagesURI
+ ))
+#-
+#
+# end of LDIF
+#
