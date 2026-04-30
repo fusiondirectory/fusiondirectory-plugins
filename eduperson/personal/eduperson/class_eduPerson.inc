@@ -28,6 +28,8 @@ class eduPerson extends simplePlugin
     return [
       'plShortName'   => _('eduPerson'),
       'plDescription' => _('Eduperson'),
+      'plIcon'        => 'geticon.php?context=applications&icon=eduperson&size=48',
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=eduperson&size=16',
       'plObjectType'  => ['user'],
       'plObjectClass' => ['eduPerson','fdEduPerson'],
 
