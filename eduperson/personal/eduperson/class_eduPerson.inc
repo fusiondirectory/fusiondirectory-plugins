@@ -91,7 +91,6 @@ class eduPerson extends simplePlugin
           new SelectAttribute(
             _('Entitlement'), _('eduPersonEntitlement - Access right to external applications'),
             'eduPersonEntitlement', FALSE
-            )
           ),
           new StringAttribute(
             _('Scoped Affiliation'), _('eduPersonScopedAffiliation -  Affiliation within a particular security domain'),
