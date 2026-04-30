@@ -19,15 +19,15 @@
   Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannStructureExt extends simplePlugin
+class supannStructureSinaps extends simplePlugin
 {
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('SUPANN-Ext'),
-      'plDescription' => _('SUPANN Non-Official Extension'),
+      'plShortName'   => _('Sinaps Structures'),
+      'plDescription' => _('Manage sinaps strctures'),
       'plObjectType'  => ['entite', 'etablissement'],
-      'plObjectClass' => ['fdSupannExt'],
+      'plObjectClass' => ['fdSupannSinapsStructure'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
