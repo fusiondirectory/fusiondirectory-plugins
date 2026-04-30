@@ -29,7 +29,7 @@ class eduPerson extends simplePlugin
       'plShortName'   => _('eduPerson'),
       'plDescription' => _('Eduperson'),
       'plObjectType'  => ['user'],
-      'plObjectClass' => ['eduPerson'],
+      'plObjectClass' => ['eduPerson','fdEduPerson'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -86,12 +86,7 @@ class eduPerson extends simplePlugin
             _('Establishment DNS'), _('DNS of the related users base establishment'),
             'fdEduPersonUniqueIdDns', FALSE
           ),
-          new StringAttribute(
-            _('Establishment DNS'), _('DNS of the related users base establishment'),
-            'fdEduPersonUniqueIdDns', FALSE
-          ),
-          new SetAttribute(
-            new StringAttribute(
+          new SelectAttribute(
             _('Entitlement'), _('eduPersonEntitlement - Access right to external applications'),
             'eduPersonEntitlement', FALSE
             )
