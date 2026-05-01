@@ -32,7 +32,7 @@ class etablissement extends simplePlugin
     return [
       'plShortName'   => _('Establishment'),
       'plDescription' => _('SupAnn Establishment Settings'),
-      'plObjectClass' => ['supannEntite','organization','supannOrg'],
+      'plObjectClass' => ['supannEntite','organization','supannOrg','eduOrg'],
       'plFilter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
       'plObjectType'  => ['etablissement' => [
         'name'        => _('SupAnn Establishment'),
@@ -240,7 +240,7 @@ class etablissement extends simplePlugin
             unset($rootAttrs[$key]['count']);
           }
         }
-        $rootAttrs['objectClass'] = array_merge_unique($baseAttrs['objectClass'], ['dcObject','organization','supannOrg']);
+        $rootAttrs['objectClass'] = array_merge_unique($baseAttrs['objectClass'], ['dcObject','organization','supannOrg','eduOrg']);
       }
       $ldap->cd($config->current['BASE']);
       $ldap->modify($rootAttrs);
