@@ -88,9 +88,11 @@ class eduPerson extends simplePlugin
             _('Establishment DNS'), _('DNS of the related users base establishment'),
             'fdEduPersonUniqueIdDns', FALSE
           ),
-          new SelectAttribute(
-            _('Entitlement'), _('eduPersonEntitlement - Access right to external applications'),
-            'eduPersonEntitlement', FALSE
+          new SetAttribute(
+            new StringAttribute(
+              _('Entitlement'), _('eduPersonEntitlement - Access right to external applications'),
+              'eduPersonEntitlement', FALSE
+            )
           ),
           new StringAttribute(
             _('Scoped Affiliation'), _('eduPersonScopedAffiliation -  Affiliation within a particular security domain'),
