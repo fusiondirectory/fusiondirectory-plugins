@@ -304,7 +304,7 @@ class eduPerson extends simplePlugin
 
   protected function setGeneratedUniqueID () : void
   {
-    $aUniqueId="";
+    $aUniqueId = "";
 
     $this->aUniqueId = $this->generateUniqueUserId();
     $this->attributesAccess['eduPersonUniqueId']->setValue($this->aUniqueId);
