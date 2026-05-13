@@ -34,16 +34,22 @@ class SupannOrderedArrayAttribute extends OrderedArrayAttribute
       $this->attribute->setValue('');
       $this->attribute->supannGetValues($values);
     }
+
     foreach ($values as $ldapName => $array) {
-      if ($this->plugin->attributesAccess[$ldapName]->isVisible()) {
-        continue;
+
+      if (isset($this->plugin->attributesAccess[$ldapName])) {
+        if ($this->plugin->attributesAccess[$ldapName]->isVisible()) {
+          continue;
+        }
+
+        if ($append) {
+          $newValues = array_unique(array_merge($this->plugin->attributesAccess[$ldapName]->getValue(), array_values($array)));
+        } else {
+          $newValues = array_values($array);
+        }
+
+        $this->plugin->attributesAccess[$ldapName]->setValue($newValues);
       }
-      if ($append) {
-        $newValues = array_unique(array_merge($this->plugin->attributesAccess[$ldapName]->getValue(), array_values($array)));
-      } else {
-        $newValues = array_values($array);
-      }
-      $this->plugin->attributesAccess[$ldapName]->setValue($newValues);
     }
   }
 }

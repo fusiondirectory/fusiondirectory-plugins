@@ -60,7 +60,7 @@ class schacAccount extends simplePlugin
     parent::update();
 
     if (!$this->is_template) {
-      if (($supannTab = $this->parent->getTabOrServiceObject('supannAccount')) !== FALSE) {
+      if (($supannTab = $this->parent->getTabOrServiceObject('supannAccountStudent')) !== FALSE) {
         $ine = $supannTab->supannCodeINE;
         $uniquecodes = $this->schacPersonalUniqueCode;
         foreach ($uniquecodes as $key => $uniquecode) {
