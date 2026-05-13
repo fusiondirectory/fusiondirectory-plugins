@@ -70,6 +70,68 @@ class supannAccount extends simplePlugin
           ),
         ]
       ],
+      'affectation' => [
+        'name'  => _('Assignment'),
+        'attrs' => [
+          new SelectAttribute(
+            _('Primary assignment'), _('supannEntiteAffectationPrincipale - Main assignment of the person'),
+            'supannEntiteAffectationPrincipale', FALSE
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Assignments'), _('supannEntiteAffectation - Represents assignments of the person in an institution, a component, service, etc.'),
+              'supannEntiteAffectation', FALSE
+            )
+          ),
+          new SetAttribute(
+            new SupannPrefixedSelectAttribute(
+              _('Entity types'), _('supannTypeEntiteAffectation - Types of the entities this person is assigned to'),
+              'supannTypeEntiteAffectation', FALSE, 'entite'
+            )
+          ),
+        ]
+      ],
+      'affiliation' => [
+        'name'  => _('Affiliation'),
+        'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
+              _('Establishment'), _('supannEtablissement - Institution or unit of administrative attachment of the person'),
+              'supannEtablissement', FALSE
+            )
+          ),
+          new ObjectsAttribute(
+            _('Parrain'), _('supannParrainDN - Person or structure responsible for this user'),
+            'supannParrainDN', FALSE,
+            ['user','entite','ogroup','group']
+          )
+        ]
+      ],
+      'consentement' => [
+        'name'      => _('Consent'),
+        'class'     => ['fullwidth'],
+        'attrs'     => [
+          new OrderedArrayAttribute(
+            new CompositeAttribute(
+              _('supannConsentement - user consent on the usage of his information'),
+              'supannConsentement',
+              [
+                new SelectAttribute('', '', 'supannConsentement_prefix', TRUE),
+                new SelectAttribute('', '', 'supannConsentement_content', TRUE)
+              ],
+              '/^{(.*)}(.*)$/',
+              '{%s}%s',
+              '',
+              _('Consent')
+            ),
+            // no order
+            FALSE,
+            [],
+            // edit button
+            TRUE
+          )
+        ]
+      ],
       'contact' => [
         'name'  => _('Contact'),
         'attrs' => [
@@ -161,163 +223,6 @@ class supannAccount extends simplePlugin
           ),
         ]
       ],
-      'affectation' => [
-        'name'  => _('Assignment'),
-        'attrs' => [
-          new SelectAttribute(
-            _('Primary assignment'), _('supannEntiteAffectationPrincipale - Main assignment of the person'),
-            'supannEntiteAffectationPrincipale', FALSE
-          ),
-          new SetAttribute(
-            new SelectAttribute(
-              _('Assignments'), _('supannEntiteAffectation - Represents assignments of the person in an institution, a component, service, etc.'),
-              'supannEntiteAffectation', FALSE
-            )
-          ),
-          new SetAttribute(
-            new SupannPrefixedSelectAttribute(
-              _('Entity types'), _('supannTypeEntiteAffectation - Types of the entities this person is assigned to'),
-              'supannTypeEntiteAffectation', FALSE, 'entite'
-            )
-          ),
-        ]
-      ],
-      'affiliation' => [
-        'name'  => _('Affiliation'),
-        'attrs' => [
-          new SetAttribute(
-            new SelectAttribute(
-              _('Establishment'), _('supannEtablissement - Institution or unit of administrative attachment of the person'),
-              'supannEtablissement', FALSE
-            )
-          ),
-          new ObjectsAttribute(
-            _('Parrain'), _('supannParrainDN - Person or structure responsible for this user'),
-            'supannParrainDN', FALSE,
-            ['user','entite','ogroup','group']
-          )
-        ]
-      ],
-      'student' => [
-        'name'  => _('Student profile'),
-        'attrs' => [
-          new StringAttribute(
-            _('INE code'), _('supannCodeINE - INE code of this student'),
-            'supannCodeINE', FALSE
-          ),
-          new StringAttribute(
-            _('Student ID'), _('supannEtuId - Scolarity id'),
-            'supannEtuId', FALSE
-          )
-        ]
-      ],
-      'student2' => [
-        'name'      => _('Student registrations'),
-        'class'     => ['fullwidth'],
-        'template'  => get_template_path('student_subscription.tpl', TRUE, dirname(__FILE__)),
-        'attrs'     => [
-          /* These attributes are handled by the SupannEtuInscriptionAttribute */
-          new HiddenAttribute('supannEtuAnneeInscription'),
-          new HiddenAttribute('supannEtuRegimeInscription'),
-          new HiddenAttribute('supannEtuSecteurDisciplinaire'),
-          new HiddenAttribute('supannEtuTypeDiplome'),
-          new HiddenAttribute('supannEtuCursusAnnee'),
-          new HiddenAttribute('supannEtuDiplome'),
-          new HiddenAttribute('supannEtuEtape'),
-          new HiddenAttribute('supannEtuElementPedagogique'),
-          new SupannOrderedArrayAttribute(
-            new SupannEtuInscriptionAttribute(
-              _('supannEtuInscription - Registrations for this student'),
-              'supannEtuInscription'
-            ),
-            // no order
-            FALSE,
-            [],
-            // no edit button
-            FALSE
-          )
-        ]
-      ],
-      'personnal' => [
-        'name'  => _('Personal profile'),
-        'attrs' => [
-          new StringAttribute(
-            _('Personal ID'), _('supannEmpId - Employee identifier'),
-            'supannEmpId', FALSE
-          ),
-          new SupannPrefixedSelectAttribute(
-            _('Personal corps'), _('supannEmpCorps'),
-            'supannEmpCorps', FALSE, 'corps'
-          ),
-          new SetAttribute(
-            new SupannPrefixedSelectAttribute(
-              _('Activity'), _('supannActivite - Category of profession'),
-              'supannActivite', FALSE, 'activite'
-            )
-          )
-        ]
-      ],
-      'personnal2' => [
-        'name'      => _('Roles'),
-        'class'     => ['fullwidth'],
-        'attrs'     => [
-          /* These attributes are handled by the SupannOrderedArrayAttribute */
-          new HiddenAttribute('supannRoleGenerique'),
-          new SupannOrderedArrayAttribute(
-            new SupannCompositeAttribute(
-              _('supannRoleEntite'),
-              'supannRoleEntite',
-              [
-                new SupannPrefixedSelectAttribute(
-                  _('Generic role'), _('supannRoleGenerique - Generic role of the person in the facility'),
-                  'supannRoleGenerique_role', TRUE, 'role'
-                ),
-                new SelectAttribute(
-                  _('Entity type'), _('supannTypeEntiteAffectation - type of the assigned entity'),
-                  'supannTypeEntiteAffectation_type', TRUE
-                ),
-                new SelectAttribute(
-                  _('Entity'), _('supannEntiteAffectation - Represents assignments of the person in an institution, a component, service, etc.'),
-                  'supannEntiteAffectation_code', FALSE
-                ),
-              ],
-              '',
-              // no label
-              ''
-            ),
-            // no order
-            FALSE,
-            [],
-            // no edit button
-            FALSE
-          )
-        ]
-      ],
-      'consentement' => [
-        'name'      => _('Consent'),
-        'class'     => ['fullwidth'],
-        'attrs'     => [
-          new OrderedArrayAttribute(
-            new CompositeAttribute(
-              _('supannConsentement - user consent on the usage of his information'),
-              'supannConsentement',
-              [
-                new SelectAttribute('', '', 'supannConsentement_prefix', TRUE),
-                new SelectAttribute('', '', 'supannConsentement_content', TRUE)
-              ],
-              '/^{(.*)}(.*)$/',
-              '{%s}%s',
-              '',
-              _('Consent')
-            ),
-            // no order
-            FALSE,
-            [],
-            // edit button
-            TRUE
-          )
-        ]
-      ],
     ];
   }
 
@@ -372,30 +277,13 @@ class supannAccount extends simplePlugin
     array_multisort($label_etablissements,  $code_etablissements);
 
     $this->attributesAccess['supannEntiteAffectation']->attribute->setChoices($code_entites, $label_entites);
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[6]->setChoices($code_entites, $label_entites);
     $this->attributesAccess['supannEtablissement']->attribute->setChoices($code_etablissements, $label_etablissements);
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[0]->setChoices($code_etablissements, $label_etablissements);
     $this->supannInit();
   }
 
   protected function supannInit ()
   {
     global $config;
-
-    $this->attributesAccess['supannEtuInscription']->setHeaders([
-      _('Establishment'),
-      _('Year'),
-      _('Registration type'),
-      _('Sector'),
-      _('Diploma type'),
-      _('Curriculum'),
-      _('Entity'),
-      _('Diploma'),
-      _('Step'),
-      _('Element'),
-      ''
-    ]);
-    $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
 
     /* supannMailPrive */
     $mailPriveTypes = [
@@ -491,13 +379,7 @@ class supannAccount extends simplePlugin
     /* Values */
     $supannEtablissement      = $this->supannEtablissement;
     $supannEntiteAffectation  = $this->supannEntiteAffectation;
-    foreach ($this->supannEtuInscription as $inscription) {
-      $values = $this->attributesAccess['supannEtuInscription']->attribute->readValues($inscription);
-      $supannEtablissement[]  = $values[0];
-      if (!empty($values[6])) {
-        $supannEntiteAffectation[]  = $values[6];
-      }
-    }
+
     $this->supannEtablissement      = array_values(array_unique($supannEtablissement));
     $this->supannEntiteAffectation  = array_values(array_unique($supannEntiteAffectation));
 
@@ -515,12 +397,6 @@ class supannAccount extends simplePlugin
     $this->attributesAccess['supannEntiteAffectationPrincipale']->setChoices(
       $code_ent, $label_ent
     );
-    // supannEntiteAffectation
-    $this->attributesAccess['supannRoleEntite']->attribute->attributes[2]->setChoices($code_ent, $label_ent);
-    $code_tent   = $this->attributesAccess['supannTypeEntiteAffectation']->getValue();
-    $label_tent  = $this->attributesAccess['supannTypeEntiteAffectation']->getDisplayValues();
-    // supannTypeEntiteAffectation
-    $this->attributesAccess['supannRoleEntite']->attribute->attributes[1]->setChoices($code_tent, $label_tent);
 
   }
 
@@ -563,8 +439,6 @@ class supannAccount extends simplePlugin
 
   protected function prepare_save (): array
   {
-    $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
-    $this->attributesAccess['supannRoleEntite']->supannPrepareSave();
     return parent::prepare_save();
   }
 }

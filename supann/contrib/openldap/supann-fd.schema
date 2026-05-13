@@ -57,7 +57,7 @@ objectclass ( 1.3.6.1.4.1.38414.28.10.2 NAME 'fdSupannRessource'
 
 objectclass ( 1.3.6.1.4.1.38414.28.11.2 NAME 'fdSupannRessourceState'
   DESC 'FusionDirectory SupAnnRessource State'
-  MUST ( fdSupannStateName $ fdSupannRessourceLabel ) 
+  MUST ( fdSupannStateName $ fdSupannRessourceLabel )
   MAY ( description $ fdSupannSubStateList ))
 
 objectclass ( 1.3.6.1.4.1.38414.28.12.2 NAME 'fdSupannRessourceSubState'
@@ -71,6 +71,13 @@ objectclass ( 1.3.6.1.4.1.38414.28.10.4 NAME 'fdSupannCivilite'
   MAY ( description ))
 
 objectclass ( 1.3.6.1.4.1.38414.88.2.1 NAME 'fdFranceConnect' SUP top AUXILIARY
-	DESC 'Identité de personne FranceConnect'
-	MAY ( supannNomDeNaissance $ supannPrenomsEtatCivil $ supannOIDCDateDeNaissance $
-	supannOIDCGenre $ supannCodeINSEEPaysDeNaissance $ supannFCSub $ supannCodeINSEEVilleDeNaissance ))
+  DESC 'FusionDirectory - Supann FranceConnect tab attributes'
+  MAY ( supannNomDeNaissance $  supannPrenomsEtatCivil $ supannOIDCDateDeNaissance $ supannOIDCGenre $ supannCodeINSEEPaysDeNaissance $ supannFCSub $ supannCodeINSEEVilleDeNaissance ))
+
+objectclass ( 1.3.6.1.4.1.38414.88.3.1 NAME 'fdSupannStudent' SUP top AUXILIARY
+  DESC 'FusionDirectory - Supann Student tab attributes'
+  MAY ( supannCodeINE $ supannEtuInscription ))
+
+objectclass ( 1.3.6.1.4.1.38414.88.4.1 NAME 'fdSupannEmployee' SUP top AUXILIARY
+  DESC 'FusionDirectory - Supann Employee attributes'
+  MAY ( supannEmpId $ supannEmpCorps $ supannActivite $ supannRoleGenerique $ supannRoleEntite ))
