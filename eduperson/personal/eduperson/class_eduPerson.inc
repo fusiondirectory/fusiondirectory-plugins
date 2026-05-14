@@ -23,6 +23,9 @@ class eduPerson extends simplePlugin
 {
   protected $displayHeader = TRUE;
 
+  public $aUniqueId;
+  public $fromTemplate;
+
   static function plInfo (): array
   {
     return [
