@@ -68,11 +68,22 @@ class supannAccount extends simplePlugin
               '/^{[^}]+}.+$/'
             )
           ),
+          new ObjectsAttribute(
+            _('Parrain'), _('supannParrainDN - Person or structure responsible for this user'),
+            'supannParrainDN', FALSE,
+            ['user','entite','ogroup','group']
+          )
         ]
       ],
       'affectation' => [
-        'name'  => _('Assignment'),
+        'name'  => _('Affiliation and Assignment'),
         'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
+              _('Establishment'), _('supannEtablissement - Institution or unit of administrative attachment of the person'),
+              'supannEtablissement', FALSE
+            )
+          ),
           new SelectAttribute(
             _('Primary assignment'), _('supannEntiteAffectationPrincipale - Main assignment of the person'),
             'supannEntiteAffectationPrincipale', FALSE
@@ -89,47 +100,6 @@ class supannAccount extends simplePlugin
               'supannTypeEntiteAffectation', FALSE, 'entite'
             )
           ),
-        ]
-      ],
-      'affiliation' => [
-        'name'  => _('Affiliation'),
-        'attrs' => [
-          new SetAttribute(
-            new SelectAttribute(
-              _('Establishment'), _('supannEtablissement - Institution or unit of administrative attachment of the person'),
-              'supannEtablissement', FALSE
-            )
-          ),
-          new ObjectsAttribute(
-            _('Parrain'), _('supannParrainDN - Person or structure responsible for this user'),
-            'supannParrainDN', FALSE,
-            ['user','entite','ogroup','group']
-          )
-        ]
-      ],
-      'consentement' => [
-        'name'      => _('Consent'),
-        'class'     => ['fullwidth'],
-        'attrs'     => [
-          new OrderedArrayAttribute(
-            new CompositeAttribute(
-              _('supannConsentement - user consent on the usage of his information'),
-              'supannConsentement',
-              [
-                new SelectAttribute('', '', 'supannConsentement_prefix', TRUE),
-                new SelectAttribute('', '', 'supannConsentement_content', TRUE)
-              ],
-              '/^{(.*)}(.*)$/',
-              '{%s}%s',
-              '',
-              _('Consent')
-            ),
-            // no order
-            FALSE,
-            [],
-            // edit button
-            TRUE
-          )
         ]
       ],
       'contact' => [
@@ -221,6 +191,31 @@ class supannAccount extends simplePlugin
             _('Forward messages to'), _('Addresses to which messages should be forwarded'),
             'mailForwardingAddress'
           ),
+        ]
+      ],
+      'consentement' => [
+        'name'      => _('Consent'),
+        'class'     => ['fullwidth'],
+        'attrs'     => [
+          new OrderedArrayAttribute(
+            new CompositeAttribute(
+              _('supannConsentement - user consent on the usage of his information'),
+              'supannConsentement',
+              [
+                new SelectAttribute('', '', 'supannConsentement_prefix', TRUE),
+                new SelectAttribute('', '', 'supannConsentement_content', TRUE)
+              ],
+              '/^{(.*)}(.*)$/',
+              '{%s}%s',
+              '',
+              _('Consent')
+            ),
+            // no order
+            FALSE,
+            [],
+            // edit button
+            TRUE
+          )
         ]
       ],
     ];
