@@ -37,6 +37,7 @@ class supannAccountEmployee extends simplePlugin
       'plPriority'    => 14,
       'plObjectClass' => ['fdSupannEmployee'],
       'plObjectType'  => ['user'],
+      'plDepends' => ['supannAccount'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
