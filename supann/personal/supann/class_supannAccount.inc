@@ -193,6 +193,17 @@ class supannAccount extends simplePlugin
           ),
         ]
       ],
+      'populationCode' => [
+        'name'  => _('Population Code'),
+        'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
+              'Main Code', _('Main Population Code'),
+              'supannCodePopulation', FALSE,
+            ),
+          ),
+        ]
+      ],
       'consentement' => [
         'name'      => _('Consent'),
         'class'     => ['fullwidth'],
@@ -273,6 +284,7 @@ class supannAccount extends simplePlugin
 
     $this->attributesAccess['supannEntiteAffectation']->attribute->setChoices($code_entites, $label_entites);
     $this->attributesAccess['supannEtablissement']->attribute->setChoices($code_etablissements, $label_etablissements);
+
     $this->supannInit();
   }
 
@@ -351,6 +363,11 @@ class supannAccount extends simplePlugin
     }
     $this->attributesAccess['supannConsentement']->attribute->attributes[1]->setChoices($types, $typeLabels);
 
+    $aCodePopulation = $this->getLdapPopulationCodes();
+    if (!empty($aCodePopulation)) {
+      $this->attributesAccess['supannCodePopulation']->attribute->setChoices($aCodePopulation);
+    }
+
     /* supannCivilite */
     // Get supannCivilite from configuration
     $supannCiviliteValues = static::getCivilite();
@@ -417,6 +434,41 @@ class supannAccount extends simplePlugin
     asort($civilite);
 
     return $civilite;
+  }
+
+  /*
+   * Return table of existing Population Codes containing main's and local's
+   */
+  protected function getLdapPopulationCodes (): array
+  {
+    global $config;
+    $result = [];
+    $populationCodes = [];
+
+    $ldap = $config->get_ldap_link();
+    $dn = 'cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE'];
+    $ldap->cd($dn);
+    $ldap->search('(objectClass=fdSupannExt)');
+
+    while ($attrs = $ldap->fetch()) {
+      if (isset($attrs['fdMainPopulationCodeConf'][0])) {
+        $populationCodes[] = $attrs['fdMainPopulationCodeConf'];
+      }
+      if (isset($attrs['fdLocalPopulationCodeConf'][0])) {
+        $populationCodes[] = $attrs['fdLocalPopulationCodeConf'];
+      }
+    }
+
+    //Verification if the values within the multidim assoc array match the patterns
+    for ($i = 0; $i < count($populationCodes); $i++) {
+      foreach ($populationCodes[$i] as $key => $value) {
+        if (preg_match('/^{/', $value)) {
+          $result[] = $value;
+        }
+      }
+    }
+
+    return $result;
   }
 
   public function update (): bool
