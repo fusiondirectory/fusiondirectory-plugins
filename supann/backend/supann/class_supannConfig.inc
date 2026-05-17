@@ -270,6 +270,33 @@ class supannConfig extends simplePlugin
           ),
         ]
       ],
+      'mainPopulationCodeConf' => [
+        'name'  => _('Main Population Codes'),
+        'attrs' => [
+         new SetAttribute(
+            new CompositeAttribute(
+              _('Main Codes Configuration'),
+              'fdMainPopulationCodeConf',
+              [
+               new SelectAttribute(
+                  _('Prefix'),    _('Prefix Of The Main Population Code'),
+                  'fdsupannMainPopulationCodePrefix', FALSE,
+                  ['SUPANN']
+                ),
+               new StringAttribute(
+                  _('Main Population Code'), _('Main Population Code'),
+                  'fdMainPopulationCode', FALSE, ''
+                ),
+              ],
+              '/.*/',
+              '{%s}%s',
+              '',
+              _('Main Population Codes')
+            )
+          ),
+        ]
+      ],
+
       'consent' => [
         'name'  => _('Consent'),
         'class' => ['fullwidth'],
