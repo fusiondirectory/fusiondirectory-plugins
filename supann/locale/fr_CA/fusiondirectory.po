@@ -7,16 +7,16 @@
 # Thibault Paul M Dockx, 2025
 # MCMic, 2025
 # fusiondirectory <contact@fusiondirectory.org>, 2025
-# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2025-11-26 17:30+0000\n"
+"POT-Creation-Date: 2026-04-23 13:08+0000\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2025\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2026\n"
 "Language-Team: French (Canada) (https://app.transifex.com/fusiondirectory/teams/12202/fr_CA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: backend/supann/class_supannConfig.inc:27
-#: backend/supann/class_supannConfig.inc:73
+#: backend/supann/class_supannConfig.inc:78
 #: management/applications/supann/class_supannApplications.inc:28
 #: management/groups/supann/class_supannGroup.inc:28
 #: personal/supann/class_supannAccount.inc:32
@@ -42,7 +42,7 @@ msgstr "Configuration du plugin SupAnn"
 
 #: backend/supann/class_supannConfig.inc:42
 msgid "LDAP tree for supann"
-msgstr ""
+msgstr "Arbre LDAP Supann"
 
 #: backend/supann/class_supannConfig.inc:45
 msgid "SupAnn Structures RDN"
@@ -84,19 +84,30 @@ msgstr "Branche des sous états SupAnn"
 msgid "Branch in which SupAnn SubState Objects will be stored"
 msgstr "Branche où seront stockés les sous états SupAnn"
 
-#: backend/supann/class_supannConfig.inc:77
+#: backend/supann/class_supannConfig.inc:70
+#: management/supannObjects/class_supannCivilite.inc:27
+#: management/supannObjects/class_supannCivilite.inc:32
+#: management/supannObjects/class_supannCivilite.inc:33
+msgid "SupAnn Civility"
+msgstr "Civilité"
+
+#: backend/supann/class_supannConfig.inc:70
+msgid "Branch in which SupAnn Civility Objects will be stored"
+msgstr "Branche où seront stockés les objets civilité SupAnn"
+
+#: backend/supann/class_supannConfig.inc:82
 msgid "SupannRessourceEtatDate integrity"
 msgstr "Intégrité des objets SupannRessourceEtatDate "
 
-#: backend/supann/class_supannConfig.inc:77
+#: backend/supann/class_supannConfig.inc:82
 msgid "Perform supannRessourceEtatDate integrity"
 msgstr "Activer l'intégrité supannRessourceEtatDate"
 
-#: backend/supann/class_supannConfig.inc:82
+#: backend/supann/class_supannConfig.inc:87
 msgid "SupAnn mail for recovery"
 msgstr "Attribut mail SupAnn utilise pour récupérer son mot de passe"
 
-#: backend/supann/class_supannConfig.inc:82
+#: backend/supann/class_supannConfig.inc:87
 msgid ""
 "Allow the use of mail addresses from the personal mail address field from "
 "SupAnn account for password recovery"
@@ -104,25 +115,25 @@ msgstr ""
 "Autoriser les utilisateurs à utiliser leur adresse de courriel SupAnn "
 "personnelle pour la récupération de leur mot de passe"
 
-#: backend/supann/class_supannConfig.inc:87
+#: backend/supann/class_supannConfig.inc:92
 msgid "Show mailForwardingAddress field"
 msgstr "Afficher le champ Adresse de réacheminement du courrier"
 
-#: backend/supann/class_supannConfig.inc:87
+#: backend/supann/class_supannConfig.inc:92
 msgid "Show the field mailForwardingAddress as an editable field"
 msgstr "Afficher le champ mailForwardingAddress en tant que champ modifiable"
 
-#: backend/supann/class_supannConfig.inc:93
-#: backend/supann/class_supannConfig.inc:115
-#: backend/supann/class_supannConfig.inc:137
+#: backend/supann/class_supannConfig.inc:98
+#: backend/supann/class_supannConfig.inc:120
+#: backend/supann/class_supannConfig.inc:142
 msgid "Custom types and their labels"
 msgstr "Types personnalisés et leurs étiquettes"
 
-#: backend/supann/class_supannConfig.inc:97
-#: backend/supann/class_supannConfig.inc:119
-#: backend/supann/class_supannConfig.inc:141
-#: backend/supann/class_supannConfig.inc:180
-#: backend/supann/class_supannConfig.inc:311
+#: backend/supann/class_supannConfig.inc:102
+#: backend/supann/class_supannConfig.inc:124
+#: backend/supann/class_supannConfig.inc:146
+#: backend/supann/class_supannConfig.inc:179
+#: backend/supann/class_supannConfig.inc:310
 #: personal/supann/class_supannCMS.inc:103
 #: personal/supann/class_supannCMS.inc:113
 #: personal/supann/class_SupannCMSAffectationAttribute.inc:44
@@ -130,63 +141,59 @@ msgstr "Types personnalisés et leurs étiquettes"
 msgid "Type"
 msgstr "Type"
 
-#: backend/supann/class_supannConfig.inc:97
+#: backend/supann/class_supannConfig.inc:102
 msgid "String that will be stored between {} in supannMailPrive"
 msgstr "Chaîne qui sera stockée entre {} dans supannMailPrive"
 
-#: backend/supann/class_supannConfig.inc:101
-#: backend/supann/class_supannConfig.inc:123
-#: backend/supann/class_supannConfig.inc:145
-#: backend/supann/class_supannConfig.inc:184
-#: backend/supann/class_supannConfig.inc:231
-#: backend/supann/class_supannConfig.inc:288
-#: backend/supann/class_supannConfig.inc:315
+#: backend/supann/class_supannConfig.inc:106
+#: backend/supann/class_supannConfig.inc:128
+#: backend/supann/class_supannConfig.inc:150
+#: backend/supann/class_supannConfig.inc:183
+#: backend/supann/class_supannConfig.inc:230
+#: backend/supann/class_supannConfig.inc:287
+#: backend/supann/class_supannConfig.inc:314
 msgid "Label"
 msgstr "Étiquette"
 
-#: backend/supann/class_supannConfig.inc:101
-#: backend/supann/class_supannConfig.inc:123
-#: backend/supann/class_supannConfig.inc:145
-#: backend/supann/class_supannConfig.inc:184
-#: backend/supann/class_supannConfig.inc:315
+#: backend/supann/class_supannConfig.inc:106
+#: backend/supann/class_supannConfig.inc:128
+#: backend/supann/class_supannConfig.inc:150
+#: backend/supann/class_supannConfig.inc:183
+#: backend/supann/class_supannConfig.inc:314
 msgid "Label shown for this type"
 msgstr "Étiquette affichée pour ce type"
 
-#: backend/supann/class_supannConfig.inc:107
+#: backend/supann/class_supannConfig.inc:112
 msgid "Custom supannMailPrive types"
 msgstr "Types personnalisés de supannMailPrive"
 
-#: backend/supann/class_supannConfig.inc:119
+#: backend/supann/class_supannConfig.inc:124
 msgid "String that will be stored between {} in supannTelephonePrive"
 msgstr "Chaîne qui sera stockée entre {} dans supannTelephonePrive"
 
-#: backend/supann/class_supannConfig.inc:129
+#: backend/supann/class_supannConfig.inc:134
 msgid "Custom supannTelephonePrive types"
 msgstr "Types personnalisés de supannTelephonePrive"
 
-#: backend/supann/class_supannConfig.inc:141
+#: backend/supann/class_supannConfig.inc:146
 msgid "String that will be stored between {} in supannAdressePostalePrivee"
 msgstr "Chaîne qui sera stockée entre {} dans supannAdressePostalePrivee"
 
-#: backend/supann/class_supannConfig.inc:151
+#: backend/supann/class_supannConfig.inc:156
 msgid "Custom supannAdressePostalePrivee types"
 msgstr "Types personnalisés supannAdressePostalePrivee"
 
-#: backend/supann/class_supannConfig.inc:159
-msgid "Supann Civilite"
-msgstr "Civilité"
+#: backend/supann/class_supannConfig.inc:163
+msgid "Amount of days for locking manual locking"
+msgstr "Nombre de jours pour la date de fin automatique"
 
-#: backend/supann/class_supannConfig.inc:160
-msgid "Values available for supannCivilite"
-msgstr "Valeurs disponibles pour supannCivilite"
-
-#: backend/supann/class_supannConfig.inc:171
-#: backend/supann/class_supannConfig.inc:347
+#: backend/supann/class_supannConfig.inc:170
+#: backend/supann/class_supannConfig.inc:346
 #: personal/supann/class_supannCMS.inc:33
 msgid "Multiservice card"
 msgstr "Carte multi service"
 
-#: backend/supann/class_supannConfig.inc:176
+#: backend/supann/class_supannConfig.inc:175
 msgid ""
 "Card types and their labels. Please prefix with {ORIGIN} for non standard "
 "types."
@@ -194,138 +201,138 @@ msgstr ""
 "Types de cartes et leurs étiquettes. Veuillez préfixer avec {ORIGIN} pour "
 "les types non standard."
 
-#: backend/supann/class_supannConfig.inc:180
+#: backend/supann/class_supannConfig.inc:179
 msgid "Card type"
 msgstr "Type de carte"
 
-#: backend/supann/class_supannConfig.inc:190
+#: backend/supann/class_supannConfig.inc:189
 msgid "Card types"
 msgstr "Types de cartes"
 
-#: backend/supann/class_supannConfig.inc:207
+#: backend/supann/class_supannConfig.inc:206
 msgid "Card sources"
 msgstr "Source des cartes"
 
-#: backend/supann/class_supannConfig.inc:207
+#: backend/supann/class_supannConfig.inc:206
 msgid "Multi service card possible sources, with format system@domain"
 msgstr ""
 "Sources possibles pour les cartes multi-services au format système@domaine"
 
-#: backend/supann/class_supannConfig.inc:215
+#: backend/supann/class_supannConfig.inc:214
 msgid "Allowed formats for multiservice cards"
 msgstr "Formats autorisés pour les cartes multi services"
 
-#: backend/supann/class_supannConfig.inc:219
+#: backend/supann/class_supannConfig.inc:218
 msgid "Technology"
 msgstr "Technologie"
 
-#: backend/supann/class_supannConfig.inc:219
+#: backend/supann/class_supannConfig.inc:218
 msgid "Technology name in uppercase"
 msgstr "Nom de la technologie en majuscule"
 
-#: backend/supann/class_supannConfig.inc:225
+#: backend/supann/class_supannConfig.inc:224
 msgid "Encoding"
 msgstr "Encodage"
 
-#: backend/supann/class_supannConfig.inc:225
+#: backend/supann/class_supannConfig.inc:224
 msgid "Encoding name in uppercase"
 msgstr "Nom d'encodage en majuscules"
 
-#: backend/supann/class_supannConfig.inc:231
+#: backend/supann/class_supannConfig.inc:230
 msgid "Format label"
 msgstr "Étiquette de format"
 
-#: backend/supann/class_supannConfig.inc:240
+#: backend/supann/class_supannConfig.inc:239
 msgid "Card formats"
 msgstr "Formats de carte"
 
-#: backend/supann/class_supannConfig.inc:248
+#: backend/supann/class_supannConfig.inc:247
 msgid "Domains for card applications"
 msgstr "Domaines d'application de la carte"
 
-#: backend/supann/class_supannConfig.inc:252
+#: backend/supann/class_supannConfig.inc:251
 msgid "Option"
 msgstr "Option"
 
-#: backend/supann/class_supannConfig.inc:252
+#: backend/supann/class_supannConfig.inc:251
 msgid "Attribute option to use, starting with x-"
 msgstr "Option d'attribut à utiliser, en commençant par x-"
 
-#: backend/supann/class_supannConfig.inc:258
+#: backend/supann/class_supannConfig.inc:257
 #: personal/supann/class_supannCMS.inc:115
 #: personal/supann/class_SupannCMSAppAffectationAttribute.inc:47
 msgid "Domain"
 msgstr "Domaine"
 
-#: backend/supann/class_supannConfig.inc:258
+#: backend/supann/class_supannConfig.inc:257
 msgid "Domain to use"
 msgstr "Domaine à utiliser"
 
-#: backend/supann/class_supannConfig.inc:266
+#: backend/supann/class_supannConfig.inc:265
 msgid "Card application domains"
 msgstr "Domaines d'application de la carte"
 
-#: backend/supann/class_supannConfig.inc:275
+#: backend/supann/class_supannConfig.inc:274
 #: personal/supann/class_supannAccount.inc:325
 #: personal/supann/class_supannAccount.inc:339
 msgid "Consent"
 msgstr "Consentement"
 
-#: backend/supann/class_supannConfig.inc:280
+#: backend/supann/class_supannConfig.inc:279
 msgid "Objects which may be used as tag in supannConsentement"
 msgstr "Objets qui peuvent être utilisés comme balise dans supannConsentement"
 
-#: backend/supann/class_supannConfig.inc:284
+#: backend/supann/class_supannConfig.inc:283
 msgid "Object"
 msgstr "Objet"
 
-#: backend/supann/class_supannConfig.inc:284
+#: backend/supann/class_supannConfig.inc:283
 msgid "Consent object"
 msgstr "Objet de consentement"
 
-#: backend/supann/class_supannConfig.inc:288
+#: backend/supann/class_supannConfig.inc:287
 msgid "Label shown for this object"
 msgstr "Libellé affiché pour cet objet"
 
-#: backend/supann/class_supannConfig.inc:294
+#: backend/supann/class_supannConfig.inc:293
 msgid "Consent objects"
 msgstr "Objets de consentement"
 
-#: backend/supann/class_supannConfig.inc:307
+#: backend/supann/class_supannConfig.inc:306
 msgid "Types which may be used as value in supannConsentement"
 msgstr "Types qui peuvent être utilisés comme valeur dans supannConsentement"
 
-#: backend/supann/class_supannConfig.inc:311
+#: backend/supann/class_supannConfig.inc:310
 msgid "Consent type"
 msgstr "Type de consentement"
 
-#: backend/supann/class_supannConfig.inc:321
+#: backend/supann/class_supannConfig.inc:320
 msgid "Consent types"
 msgstr "Types de consentement"
 
-#: backend/supann/class_supannConfig.inc:339
+#: backend/supann/class_supannConfig.inc:338
 msgid "Features"
 msgstr "Caractéristiques"
 
-#: backend/supann/class_supannConfig.inc:342
+#: backend/supann/class_supannConfig.inc:341
 #: personal/supann/class_supannAccountStatus.inc:35
 msgid "SupAnn status"
 msgstr "État SupAnn"
 
-#: backend/supann/class_supannConfig.inc:342
+#: backend/supann/class_supannConfig.inc:341
 msgid "Show SupAnn status tab"
 msgstr "Afficher l'onglet Statut de SupAnn"
 
-#: backend/supann/class_supannConfig.inc:347
+#: backend/supann/class_supannConfig.inc:346
 msgid "Show Multiservice card tab"
 msgstr "Afficher l'onglet Carte multiservice"
 
-#: backend/supann/class_supannConfig.inc:352
+#: backend/supann/class_supannConfig.inc:351
 #: personal/supann/class_supannFC.inc:33
 msgid "France Connect"
 msgstr "France Connect"
 
-#: backend/supann/class_supannConfig.inc:352
+#: backend/supann/class_supannConfig.inc:351
 msgid "Show France Connect tab"
 msgstr "Afficher l'onglet France Connect"
 
@@ -577,6 +584,38 @@ msgstr "Description de la ressource"
 #: management/supannObjects/class_supannRessource.inc:60
 msgid "The description explaining this Supann Ressource"
 msgstr "La description expliquant cette ressource Supann"
+
+#: management/supannObjects/class_supannCivilite.inc:26
+msgid "Civility"
+msgstr "Civilité"
+
+#: management/supannObjects/class_supannCivilite.inc:48
+msgid "Supann Civility"
+msgstr "Civilité"
+
+#: management/supannObjects/class_supannCivilite.inc:52
+msgid "Civility Name"
+msgstr "Nom de la civilité"
+
+#: management/supannObjects/class_supannCivilite.inc:52
+msgid "The name of the Supann Civility"
+msgstr "Le nom de la civilité"
+
+#: management/supannObjects/class_supannCivilite.inc:56
+msgid "Civility Label"
+msgstr "Étiquette de la civilité"
+
+#: management/supannObjects/class_supannCivilite.inc:56
+msgid "The label of the Supann Civility"
+msgstr "L'étiquette de la civilité SupAnn"
+
+#: management/supannObjects/class_supannCivilite.inc:60
+msgid "Civility Description"
+msgstr "Description de la civilité"
+
+#: management/supannObjects/class_supannCivilite.inc:60
+msgid "The description explaining this Supann Civility"
+msgstr "La description expliquant cette civilité"
 
 #: management/supannObjects/class_supannRessourceState.inc:27
 msgid "State"
@@ -1472,7 +1511,7 @@ msgstr "Ligne fixe professionnelle"
 msgid "Emergency phone"
 msgstr "Téléphone d'urgence"
 
-#: personal/supann/class_supannAccount.inc:573
+#: personal/supann/class_supannAccount.inc:595
 msgid ""
 "\"member\" and \"affiliate\" values are incompatible for "
 "eduPersonAffiliation. Please remove one of them."
@@ -1480,7 +1519,7 @@ msgstr ""
 "Les valeurs \"member\" et \"affiliate\" sont incompatibles pour "
 "eduPersonAffiliation. Veuillez retirer l’une des deux."
 
-#: personal/supann/class_supannAccount.inc:584
+#: personal/supann/class_supannAccount.inc:606
 msgid "The value \""
 msgstr "La valeur «"
 
