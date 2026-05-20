@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-20 17:03+0100\n"
+"POT-Creation-Date: 2026-05-20 17:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,37 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: addons/gpg/class_pgpServerInfo.inc:27 addons/gpg/class_pgpServerInfo.inc:28
-#: addons/gpg/class_pgpServerInfo.inc:35 addons/gpg/class_pgpServerInfo.inc:52
-msgid "GPG server info"
+#: personal/gpg/class_gpgAccount.inc:28
+msgid "GnuPG"
 msgstr ""
 
-#: addons/gpg/class_pgpServerInfo.inc:56
-msgid "Software"
+#: personal/gpg/class_gpgAccount.inc:29
+msgid "Manager user GnuPG IDs"
 msgstr ""
 
-#: addons/gpg/class_pgpServerInfo.inc:56
-msgid "Which software this GPG key server is running"
+#: personal/gpg/class_gpgAccount.inc:44
+msgid "GnuPG keys"
 msgstr ""
 
-#: addons/gpg/class_pgpServerInfo.inc:61
-msgid "GPG version"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:61
-msgid "Which version of GPG this key server is running"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:66
-msgid "Branch in which keys are stored"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:70
-msgid "Keys RDN"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:70
-msgid "Branch under base in which keys are stored"
+#: personal/gpg/class_gpgAccount.inc:48
+msgid "GPG keys of this user"
 msgstr ""
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:27
@@ -67,61 +50,83 @@ msgid "PGP Key information"
 msgstr ""
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:66
-msgid "Configuration error"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:66
 msgid "You need to configure GPG base dn through the addons section first"
 msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:89
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:90
 msgid "Cert ID"
 msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:90
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:91
 msgid "Key ID"
 msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:91
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:92
 msgid "User ID"
 msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:92
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:93
 msgid "Creation time"
 msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:93
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:94
 msgid "Expiration"
 msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:94
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:95
 msgid "Algorithm"
 msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:95
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:96
 msgid "Size"
 msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:96
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:97
 msgid "Revoked"
 msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:97
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:98
 msgid "Disabled"
 msgstr ""
 
-#: personal/gpg/class_gpgAccount.inc:28
-msgid "GPG"
+#: backend/gpg/class_pgpServerInfo.inc:27
+#: backend/gpg/class_pgpServerInfo.inc:35
+#: backend/gpg/class_pgpServerInfo.inc:52
+msgid "GnuPG Server"
 msgstr ""
 
-#: personal/gpg/class_gpgAccount.inc:29
-msgid "Edit user's GPG IDs"
+#: backend/gpg/class_pgpServerInfo.inc:28
+msgid "Manage a GnuPG server"
 msgstr ""
 
-#: personal/gpg/class_gpgAccount.inc:44
-msgid "GPG keys"
+#: backend/gpg/class_pgpServerInfo.inc:29
+msgid "Configuration"
 msgstr ""
 
-#: personal/gpg/class_gpgAccount.inc:48
-msgid "GPG keys of this user"
+#: backend/gpg/class_pgpServerInfo.inc:56
+msgid "Software"
+msgstr ""
+
+#: backend/gpg/class_pgpServerInfo.inc:56
+msgid "Which software this GnuPG key server is running"
+msgstr ""
+
+#: backend/gpg/class_pgpServerInfo.inc:61
+msgid "GPG version"
+msgstr ""
+
+#: backend/gpg/class_pgpServerInfo.inc:61
+msgid "Which version of GnuPG this key server is running"
+msgstr ""
+
+#: backend/gpg/class_pgpServerInfo.inc:66
+msgid "Branch in which keys are stored"
+msgstr ""
+
+#: backend/gpg/class_pgpServerInfo.inc:70
+msgid "Keys RDN"
+msgstr ""
+
+#: backend/gpg/class_pgpServerInfo.inc:70
+msgid "Branch under base in which keys are stored"
 msgstr ""

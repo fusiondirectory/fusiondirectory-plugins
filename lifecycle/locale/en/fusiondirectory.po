@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-20 23:08+0200\n"
+"POT-Creation-Date: 2026-05-20 17:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,86 +17,111 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: configuration/class_tasksLifeCycle.inc:33
+#: workflow/tasks/class_lifeCycleTask.inc:33
 msgid "Tasks Life Cycle"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:34
+#: workflow/tasks/class_lifeCycleTask.inc:34
 msgid "Tasks Life Cycle Object"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:51
+#: workflow/tasks/class_lifeCycleTask.inc:59
 msgid ""
 "We recommend the task redundancy to be set to daily, and the case New "
 "Members Only to be unpicked"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:62
-msgid "Post resources details"
+#: workflow/tasks/class_lifeCycleTask.inc:70
+msgid "Future resources details"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:65
-#: configuration/class_tasksLifeCycle.inc:87
+#: workflow/tasks/class_lifeCycleTask.inc:73
+#: workflow/tasks/class_lifeCycleTask.inc:95
 msgid "Resource"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:65
-#: configuration/class_tasksLifeCycle.inc:87
-msgid "Supann resources"
+#: workflow/tasks/class_lifeCycleTask.inc:73
+#: workflow/tasks/class_lifeCycleTask.inc:95
+msgid "Supann resources or Regex"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:69
-#: configuration/class_tasksLifeCycle.inc:91
+#: workflow/tasks/class_lifeCycleTask.inc:77
+#: workflow/tasks/class_lifeCycleTask.inc:99
 msgid "State"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:69
-#: configuration/class_tasksLifeCycle.inc:91
+#: workflow/tasks/class_lifeCycleTask.inc:77
+#: workflow/tasks/class_lifeCycleTask.inc:99
 msgid "Resource state"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:73
-#: configuration/class_tasksLifeCycle.inc:95
+#: workflow/tasks/class_lifeCycleTask.inc:81
+#: workflow/tasks/class_lifeCycleTask.inc:103
 msgid "Sub state"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:73
-#: configuration/class_tasksLifeCycle.inc:95
+#: workflow/tasks/class_lifeCycleTask.inc:81
+#: workflow/tasks/class_lifeCycleTask.inc:103
 msgid "Resource sub state"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:77
+#: workflow/tasks/class_lifeCycleTask.inc:85
 msgid "Extra days to add"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:77
+#: workflow/tasks/class_lifeCycleTask.inc:85
 msgid "Extra days to be added after today"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:84
-msgid "Pre / existing resources details"
+#: workflow/tasks/class_lifeCycleTask.inc:92
+msgid "Current resources details"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:101
+#: workflow/tasks/class_lifeCycleTask.inc:109
+msgid "Regex Pattern Configuration"
+msgstr ""
+
+#: workflow/tasks/class_lifeCycleTask.inc:113
+#: workflow/tasks/class_lifeCycleTask.inc:232
+msgid "Regex Pattern"
+msgstr ""
+
+#: workflow/tasks/class_lifeCycleTask.inc:113
+msgid ""
+"Pattern to match supannRessource name (e.g., \"COMPTE\" or \"MAIL\"). This "
+"pattern is used when \"Regex Pattern\" is selected as a resource type. It "
+"does not filter by state or sub-state."
+msgstr ""
+
+#: workflow/tasks/class_lifeCycleTask.inc:120
+msgid "Automatic Account Closure"
+msgstr ""
+
+#: workflow/tasks/class_lifeCycleTask.inc:124
+msgid "Enable Account Closure"
+msgstr ""
+
+#: workflow/tasks/class_lifeCycleTask.inc:125
+msgid ""
+"If ticked, the account will be locked if all \"Current Resources\" (either "
+"the single selected resource, or all resources matching the \"Regex "
+"Pattern\" if that option is chosen for \"Current resources details\") are in "
+"a \"Suspended\" (S) or \"Inactive\" (I) state, AND none of these resources "
+"are \"Active\" (A)."
+msgstr ""
+
+#: workflow/tasks/class_lifeCycleTask.inc:133
 msgid "Recipients Users and/or Groups"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:105
+#: workflow/tasks/class_lifeCycleTask.inc:137
 msgid "Members"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:105
+#: workflow/tasks/class_lifeCycleTask.inc:137
 msgid "Users or groups to assign to this task."
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:124
+#: workflow/tasks/class_lifeCycleTask.inc:167
 msgid "The plugin Supann does not seem to be installed !"
-msgstr ""
-
-#: configuration/class_tasksLifeCycle.inc:138
-msgid "Account"
-msgstr ""
-
-#: configuration/class_tasksLifeCycle.inc:138
-msgid "Mail"
 msgstr ""

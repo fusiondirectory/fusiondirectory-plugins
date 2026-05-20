@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-04-07 16:47+0200\n"
+"POT-Creation-Date: 2026-05-20 17:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,162 +17,166 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: config/ipam/class_ipamConfig.inc:27
-msgid "IPAM configuration"
+#: management/ipam/class_CIDRAttribute.inc:90
+#, php-format
+msgid "Not a network address (host bits set). Expected %s/%d"
 msgstr ""
 
-#: config/ipam/class_ipamConfig.inc:28
-msgid "FusionDirectory ipam plugin configuration"
+#: management/ipam/class_ipamManagement.inc:27
+msgid "Ipam"
 msgstr ""
 
-#: config/ipam/class_ipamConfig.inc:41 admin/ipam/class_ipamManagement.inc:27
-msgid "IPAM"
+#: management/ipam/class_ipamManagement.inc:28
+msgid "Manage vlans and subnets"
 msgstr ""
 
-#: config/ipam/class_ipamConfig.inc:44
-msgid "Subnet RDN"
+#: management/ipam/class_ipamManagement.inc:30
+msgid "Systems"
 msgstr ""
 
-#: config/ipam/class_ipamConfig.inc:44
-msgid "Branch in which IPAM subnets info will be stored"
-msgstr ""
-
-#: config/ipam/class_ipamConfig.inc:49
-msgid "VLAN RDN"
-msgstr ""
-
-#: config/ipam/class_ipamConfig.inc:49
-msgid "Branch in which IPAM VLAN info will be stored"
-msgstr ""
-
-#: admin/ipam/class_ipamManagement.inc:28
-msgid "IPAM management"
-msgstr ""
-
-#: admin/ipam/class_ipamManagement.inc:29
-msgid "Manage VLANs and subnets"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:27 admin/ipam/class_ipamSubnet.inc:31
-msgid "Subnet"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:28
-msgid "Subnet IPAM object"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:44 admin/ipam/class_ipamVlan.inc:44
-msgid "General information"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:48 admin/ipam/class_ipamVlan.inc:48
-msgid "Name"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:48 admin/ipam/class_ipamVlan.inc:48
-msgid "Subnet name"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:52 admin/ipam/class_ipamVlan.inc:52
-msgid "Description"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:52 admin/ipam/class_ipamVlan.inc:52
-msgid "Description of this simple security object"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:56 admin/ipam/class_ipamVlan.inc:56
-msgid "Active"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:56 admin/ipam/class_ipamVlan.inc:56
-msgid "Is this subnet active"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:60 admin/ipam/class_ipamVlan.inc:60
-msgid "Organization"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:60 admin/ipam/class_ipamVlan.inc:60
-msgid "Subnet organization"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:64
-msgid "Type"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:64
-msgid "Subnet type"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:68 admin/ipam/class_ipamVlan.inc:74
-msgid "Applicant"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:72
-msgid "Allocation date"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:76
-msgid "Release date"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:83
-msgid "IP information"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:86
-msgid "IP"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:86
-msgid "Subnet IP"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:90
-msgid "Netmask"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:90
-msgid "Subnet netmask"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:94
-msgid "Gateway"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:94
-msgid "Gateway IP"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:98
-msgid "Broadcast"
-msgstr ""
-
-#: admin/ipam/class_ipamSubnet.inc:98
-msgid "Broadcast IP"
-msgstr ""
-
-#: admin/ipam/class_ipamVlan.inc:27 admin/ipam/class_ipamVlan.inc:31
+#: management/ipam/class_ipamVlan.inc:27 management/ipam/class_ipamVlan.inc:31
 msgid "VLAN"
 msgstr ""
 
-#: admin/ipam/class_ipamVlan.inc:28
+#: management/ipam/class_ipamVlan.inc:28
 msgid "VLAN IPAM object"
 msgstr ""
 
-#: admin/ipam/class_ipamVlan.inc:64
+#: management/ipam/class_ipamVlan.inc:44
+#: management/ipam/class_ipamSubnet.inc:47
+msgid "General information"
+msgstr ""
+
+#: management/ipam/class_ipamVlan.inc:48
+#: management/ipam/class_ipamSubnet.inc:51
+msgid "Name"
+msgstr ""
+
+#: management/ipam/class_ipamVlan.inc:48
+#: management/ipam/class_ipamSubnet.inc:51
+msgid "Subnet name"
+msgstr ""
+
+#: management/ipam/class_ipamVlan.inc:52
+#: management/ipam/class_ipamSubnet.inc:55
+msgid "Description"
+msgstr ""
+
+#: management/ipam/class_ipamVlan.inc:52
+#: management/ipam/class_ipamSubnet.inc:55
+msgid "Description of this simple security object"
+msgstr ""
+
+#: management/ipam/class_ipamVlan.inc:56
+#: management/ipam/class_ipamSubnet.inc:59
+msgid "Active"
+msgstr ""
+
+#: management/ipam/class_ipamVlan.inc:56
+#: management/ipam/class_ipamSubnet.inc:59
+msgid "Is this subnet active"
+msgstr ""
+
+#: management/ipam/class_ipamVlan.inc:61
+#: management/ipam/class_ipamSubnet.inc:64
+msgid "Organization"
+msgstr ""
+
+#: management/ipam/class_ipamVlan.inc:61
+#: management/ipam/class_ipamSubnet.inc:64
+msgid "Subnet organization"
+msgstr ""
+
+#: management/ipam/class_ipamVlan.inc:65
 msgid "Inner ID"
 msgstr ""
 
-#: admin/ipam/class_ipamVlan.inc:64
+#: management/ipam/class_ipamVlan.inc:65
 msgid "Inner VLAN ID"
 msgstr ""
 
-#: admin/ipam/class_ipamVlan.inc:69
+#: management/ipam/class_ipamVlan.inc:70
 msgid "QinQ ID"
 msgstr ""
 
-#: admin/ipam/class_ipamVlan.inc:69
+#: management/ipam/class_ipamVlan.inc:70
 msgid "QinQ VLAN ID"
+msgstr ""
+
+#: management/ipam/class_ipamVlan.inc:75
+#: management/ipam/class_ipamSubnet.inc:72
+msgid "Applicant"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:27
+#: management/ipam/class_ipamSubnet.inc:31
+msgid "Subnet"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:28
+msgid "Subnet IPAM object"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:68
+msgid "Type"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:68
+msgid "Subnet type"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:76
+msgid "Allocation date"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:80
+msgid "Release date"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:85
+msgid "VLANs"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:85
+msgid "VLANs linked to this subnet"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:92
+msgid "IP information"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:95
+msgid "IP"
+msgstr ""
+
+#: management/ipam/class_ipamSubnet.inc:95
+msgid "Subnet IP and mask size in CIDR notation"
+msgstr ""
+
+#: backend/ipam/class_ipamConfig.inc:27
+msgid "IPAM configuration"
+msgstr ""
+
+#: backend/ipam/class_ipamConfig.inc:28
+msgid "FusionDirectory ipam plugin configuration"
+msgstr ""
+
+#: backend/ipam/class_ipamConfig.inc:41
+msgid "IPAM"
+msgstr ""
+
+#: backend/ipam/class_ipamConfig.inc:44
+msgid "Subnet RDN"
+msgstr ""
+
+#: backend/ipam/class_ipamConfig.inc:44
+msgid "Branch in which IPAM subnets info will be stored"
+msgstr ""
+
+#: backend/ipam/class_ipamConfig.inc:49
+msgid "VLAN RDN"
+msgstr ""
+
+#: backend/ipam/class_ipamConfig.inc:49
+msgid "Branch in which IPAM VLAN info will be stored"
 msgstr ""
