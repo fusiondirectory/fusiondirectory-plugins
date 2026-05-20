@@ -1,253 +1,501 @@
 [main]
 host = https://www.transifex.com
 
-[o:fusiondirectory:p:FusionDirectory-14:r:alias]
-file_filter = alias/locale/<lang>/fusiondirectory.po
-source_file = alias/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:alias]
+file_filter   = translations/FusionDirectory.alias/<lang>.po
+source_file   = translations/FusionDirectory.alias/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = alias
 
-[o:fusiondirectory:p:FusionDirectory-14:r:applications]
-file_filter = applications/locale/<lang>/fusiondirectory.po
-source_file = applications/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:applications]
+file_filter   = translations/FusionDirectory.applications/<lang>.po
+source_file   = translations/FusionDirectory.applications/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = applications
 
-[o:fusiondirectory:p:FusionDirectory-14:r:audit]
-file_filter = audit/locale/<lang>/fusiondirectory.po
-source_file = audit/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:archive]
+file_filter   = translations/FusionDirectory.archive/<lang>.po
+source_file   = translations/FusionDirectory.archive/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = archive
 
-[o:fusiondirectory:p:FusionDirectory-14:r:autofs5]
-file_filter = autofs5/locale/<lang>/fusiondirectory.po
-source_file = autofs5/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:audit]
+file_filter   = translations/FusionDirectory.audit/<lang>.po
+source_file   = translations/FusionDirectory.audit/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = audit
 
-[o:fusiondirectory:p:FusionDirectory-14:r:certificates]
-file_filter = certificates/locale/<lang>/fusiondirectory.po
-source_file = certificates/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:automatic-groups]
+file_filter   = translations/FusionDirectory.automatic-groups/<lang>.po
+source_file   = translations/FusionDirectory.automatic-groups/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = automatic-groups
 
-[o:fusiondirectory:p:FusionDirectory-14:r:community]
-file_filter = community/locale/<lang>/fusiondirectory.po
-source_file = community/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:autofs5]
+file_filter   = translations/FusionDirectory.autofs5/<lang>.po
+source_file   = translations/FusionDirectory.autofs5/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = autofs5
 
-[o:fusiondirectory:p:FusionDirectory-14:r:cyrus]
-file_filter = cyrus/locale/<lang>/fusiondirectory.po
-source_file = cyrus/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:certificates]
+file_filter   = translations/FusionDirectory.certificates/<lang>.po
+source_file   = translations/FusionDirectory.certificates/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = certificates
 
-[o:fusiondirectory:p:FusionDirectory-14:r:developers]
-file_filter = developers/locale/<lang>/fusiondirectory.po
-source_file = developers/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:community]
+file_filter   = translations/FusionDirectory.community/<lang>.po
+source_file   = translations/FusionDirectory.community/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = community
 
-[o:fusiondirectory:p:FusionDirectory-14:r:dhcp]
-file_filter = dhcp/locale/<lang>/fusiondirectory.po
-source_file = dhcp/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:cyrus]
+file_filter   = translations/FusionDirectory.cyrus/<lang>.po
+source_file   = translations/FusionDirectory.cyrus/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = cyrus
 
-[o:fusiondirectory:p:FusionDirectory-14:r:dns]
-file_filter = dns/locale/<lang>/fusiondirectory.po
-source_file = dns/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:developers]
+file_filter   = translations/FusionDirectory.developers/<lang>.po
+source_file   = translations/FusionDirectory.developers/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = developers
 
-[o:fusiondirectory:p:FusionDirectory-14:r:dovecot]
-file_filter = dovecot/locale/<lang>/fusiondirectory.po
-source_file = dovecot/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:dhcp]
+file_filter   = translations/FusionDirectory.dhcp/<lang>.po
+source_file   = translations/FusionDirectory.dhcp/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = dhcp
 
-[o:fusiondirectory:p:FusionDirectory-14:r:dsa]
-file_filter = dsa/locale/<lang>/fusiondirectory.po
-source_file = dsa/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:dns]
+file_filter   = translations/FusionDirectory.dns/<lang>.po
+source_file   = translations/FusionDirectory.dns/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = dns
 
-[o:fusiondirectory:p:FusionDirectory-14:r:dyngroups]
-file_filter = dyngroups/locale/<lang>/fusiondirectory.po
-source_file = dyngroups/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:dovecot]
+file_filter   = translations/FusionDirectory.dovecot/<lang>.po
+source_file   = translations/FusionDirectory.dovecot/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = dovecot
 
-[o:fusiondirectory:p:FusionDirectory-14:r:ejbca]
-file_filter = ejbca/locale/<lang>/fusiondirectory.po
-source_file = ejbca/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:dsa]
+file_filter   = translations/FusionDirectory.dsa/<lang>.po
+source_file   = translations/FusionDirectory.dsa/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = dsa
 
-[o:fusiondirectory:p:FusionDirectory-14:r:freeradius]
-file_filter = freeradius/locale/<lang>/fusiondirectory.po
-source_file = freeradius/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:dyngroups]
+file_filter   = translations/FusionDirectory.dyngroups/<lang>.po
+source_file   = translations/FusionDirectory.dyngroups/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = dyngroups
 
-[o:fusiondirectory:p:FusionDirectory-14:r:gpg]
-file_filter = gpg/locale/<lang>/fusiondirectory.po
-source_file = gpg/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:eduperson]
+file_filter   = translations/FusionDirectory.eduperson/<lang>.po
+source_file   = translations/FusionDirectory.eduperson/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = eduperson
 
-[o:fusiondirectory:p:FusionDirectory-14:r:invitations]
-file_filter = invitations/locale/<lang>/fusiondirectory.po
-source_file = invitations/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:ejbca]
+file_filter   = translations/FusionDirectory.ejbca/<lang>.po
+source_file   = translations/FusionDirectory.ejbca/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = ejbca
 
-[o:fusiondirectory:p:FusionDirectory-14:r:ipmi]
-file_filter = ipmi/locale/<lang>/fusiondirectory.po
-source_file = ipmi/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:extractor]
+file_filter   = translations/FusionDirectory.extractor/<lang>.po
+source_file   = translations/FusionDirectory.extractor/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = extractor
 
-[o:fusiondirectory:p:FusionDirectory-14:r:ldapdump]
-file_filter = ldapdump/locale/<lang>/fusiondirectory.po
-source_file = ldapdump/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:freeradius]
+file_filter   = translations/FusionDirectory.freeradius/<lang>.po
+source_file   = translations/FusionDirectory.freeradius/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = freeradius
 
-[o:fusiondirectory:p:FusionDirectory-14:r:ldapmanager]
-file_filter = ldapmanager/locale/<lang>/fusiondirectory.po
-source_file = ldapmanager/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:gpg]
+file_filter   = translations/FusionDirectory.gpg/<lang>.po
+source_file   = translations/FusionDirectory.gpg/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = gpg
 
-[o:fusiondirectory:p:FusionDirectory-14:r:mail]
-file_filter = mail/locale/<lang>/fusiondirectory.po
-source_file = mail/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:invitations]
+file_filter   = translations/FusionDirectory.invitations/<lang>.po
+source_file   = translations/FusionDirectory.invitations/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = invitations
 
-[o:fusiondirectory:p:FusionDirectory-14:r:mailinblack]
-file_filter = mailinblack/locale/<lang>/fusiondirectory.po
-source_file = mailinblack/locale/en/fusiondirectory.po
-source_lang = en
 
-[o:fusiondirectory:p:FusionDirectory-14:r:migration-mailrouting]
-file_filter = migration-mailrouting/locale/<lang>/fusiondirectory.po
-source_file = migration-mailrouting/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:ipam]
+file_filter   = translations/FusionDirectory.ipam/<lang>.po
+source_file   = translations/FusionDirectory.ipam/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = ipam
 
-[o:fusiondirectory:p:FusionDirectory-14:r:mixedgroups]
-file_filter = mixedgroups/locale/<lang>/fusiondirectory.po
-source_file = mixedgroups/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:ipmi]
+file_filter   = translations/FusionDirectory.ipmi/<lang>.po
+source_file   = translations/FusionDirectory.ipmi/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = ipmi
 
-[o:fusiondirectory:p:FusionDirectory-14:r:netgroups]
-file_filter = netgroups/locale/<lang>/fusiondirectory.po
-source_file = netgroups/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:kerberos]
+file_filter   = translations/FusionDirectory.kerberos/<lang>.po
+source_file   = translations/FusionDirectory.kerberos/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = kerberos
 
-[o:fusiondirectory:p:FusionDirectory-14:r:personal]
-file_filter = personal/locale/<lang>/fusiondirectory.po
-source_file = personal/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:ldapdump]
+file_filter   = translations/FusionDirectory.ldapdump/<lang>.po
+source_file   = translations/FusionDirectory.ldapdump/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = ldapdump
 
-[o:fusiondirectory:p:FusionDirectory-14:r:posix]
-file_filter = posix/locale/<lang>/fusiondirectory.po
-source_file = posix/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:ldapmanager]
+file_filter   = translations/FusionDirectory.ldapmanager/<lang>.po
+source_file   = translations/FusionDirectory.ldapmanager/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = ldapmanager
 
-[o:fusiondirectory:p:FusionDirectory-14:r:postfix]
-file_filter = postfix/locale/<lang>/fusiondirectory.po
-source_file = postfix/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:lifecycle]
+file_filter   = translations/FusionDirectory.lifecycle/<lang>.po
+source_file   = translations/FusionDirectory.lifecycle/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = lifecycle
 
-[o:fusiondirectory:p:FusionDirectory-14:r:ppolicy]
-file_filter = ppolicy/locale/<lang>/fusiondirectory.po
-source_file = ppolicy/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:macro]
+file_filter   = translations/FusionDirectory.macro/<lang>.po
+source_file   = translations/FusionDirectory.macro/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = macro
 
-[o:fusiondirectory:p:FusionDirectory-14:r:public-forms]
-file_filter = public-forms/locale/<lang>/fusiondirectory.po
-source_file = public-forms/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:mail]
+file_filter   = translations/FusionDirectory.mail/<lang>.po
+source_file   = translations/FusionDirectory.mail/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = mail
 
-[o:fusiondirectory:p:FusionDirectory-14:r:pureftpd]
-file_filter = pureftpd/locale/<lang>/fusiondirectory.po
-source_file = pureftpd/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:mailinblack]
+file_filter   = translations/FusionDirectory.mailinblack/<lang>.po
+source_file   = translations/FusionDirectory.mailinblack/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = mailinblack
 
-[o:fusiondirectory:p:FusionDirectory-14:r:quota]
-file_filter = quota/locale/<lang>/fusiondirectory.po
-source_file = quota/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:migration-mailrouting]
+file_filter   = translations/FusionDirectory.migration-mailrouting/<lang>.po
+source_file   = translations/FusionDirectory.migration-mailrouting/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = migration-mailrouting
 
-[o:fusiondirectory:p:FusionDirectory-14:r:renater-partage]
-file_filter = renater-partage/locale/<lang>/fusiondirectory.po
-source_file = renater-partage/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:mixedgroups]
+file_filter   = translations/FusionDirectory.mixedgroups/<lang>.po
+source_file   = translations/FusionDirectory.mixedgroups/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = mixedgroups
 
-[o:fusiondirectory:p:FusionDirectory-14:r:repository]
-file_filter = repository/locale/<lang>/fusiondirectory.po
-source_file = repository/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:netgroups]
+file_filter   = translations/FusionDirectory.netgroups/<lang>.po
+source_file   = translations/FusionDirectory.netgroups/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = netgroups
 
-[o:fusiondirectory:p:FusionDirectory-14:r:samba]
-file_filter = samba/locale/<lang>/fusiondirectory.po
-source_file = samba/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:nextcloud]
+file_filter   = translations/FusionDirectory.nextcloud/<lang>.po
+source_file   = translations/FusionDirectory.nextcloud/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = nextcloud
 
-[o:fusiondirectory:p:FusionDirectory-14:r:schac]
-file_filter = schac/locale/<lang>/fusiondirectory.po
-source_file = schac/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:notifications]
+file_filter   = translations/FusionDirectory.notifications/<lang>.po
+source_file   = translations/FusionDirectory.notifications/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = notifications
 
-[o:fusiondirectory:p:FusionDirectory-14:r:sieve]
-file_filter = sieve/locale/<lang>/fusiondirectory.po
-source_file = sieve/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:personal]
+file_filter   = translations/FusionDirectory.personal/<lang>.po
+source_file   = translations/FusionDirectory.personal/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = personal
 
-[o:fusiondirectory:p:FusionDirectory-14:r:sinaps]
-file_filter = sinaps/locale/<lang>/fusiondirectory.po
-source_file = sinaps/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:physical-key]
+file_filter   = translations/FusionDirectory.physical-key/<lang>.po
+source_file   = translations/FusionDirectory.physical-key/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = physical-key
 
-[o:fusiondirectory:p:FusionDirectory-14:r:sogo]
-file_filter = sogo/locale/<lang>/fusiondirectory.po
-source_file = sogo/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:posix]
+file_filter   = translations/FusionDirectory.posix/<lang>.po
+source_file   = translations/FusionDirectory.posix/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = posix
 
-[o:fusiondirectory:p:FusionDirectory-14:r:spamassassin]
-file_filter = spamassassin/locale/<lang>/fusiondirectory.po
-source_file = spamassassin/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:postfix]
+file_filter   = translations/FusionDirectory.postfix/<lang>.po
+source_file   = translations/FusionDirectory.postfix/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = postfix
 
-[o:fusiondirectory:p:FusionDirectory-14:r:ssh]
-file_filter = ssh/locale/<lang>/fusiondirectory.po
-source_file = ssh/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:ppolicy]
+file_filter   = translations/FusionDirectory.ppolicy/<lang>.po
+source_file   = translations/FusionDirectory.ppolicy/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = ppolicy
 
-[o:fusiondirectory:p:FusionDirectory-14:r:subscriptions]
-file_filter = subscriptions/locale/<lang>/fusiondirectory.po
-source_file = subscriptions/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:public-forms]
+file_filter   = translations/FusionDirectory.public-forms/<lang>.po
+source_file   = translations/FusionDirectory.public-forms/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = public-forms
 
-[o:fusiondirectory:p:FusionDirectory-14:r:sudo]
-file_filter = sudo/locale/<lang>/fusiondirectory.po
-source_file = sudo/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:pureftpd]
+file_filter   = translations/FusionDirectory.pureftpd/<lang>.po
+source_file   = translations/FusionDirectory.pureftpd/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = pureftpd
 
-[o:fusiondirectory:p:FusionDirectory-14:r:supann]
-file_filter = supann/locale/<lang>/fusiondirectory.po
-source_file = supann/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:quota]
+file_filter   = translations/FusionDirectory.quota/<lang>.po
+source_file   = translations/FusionDirectory.quota/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = quota
 
-[o:fusiondirectory:p:FusionDirectory-14:r:systems]
-file_filter = systems/locale/<lang>/fusiondirectory.po
-source_file = systems/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:renater-partage]
+file_filter   = translations/FusionDirectory.renater-partage/<lang>.po
+source_file   = translations/FusionDirectory.renater-partage/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = renater-partage
 
-[o:fusiondirectory:p:FusionDirectory-14:r:user-reminder]
-file_filter = user-reminder/locale/<lang>/fusiondirectory.po
-source_file = user-reminder/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:repository]
+file_filter   = translations/FusionDirectory.repository/<lang>.po
+source_file   = translations/FusionDirectory.repository/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = repository
 
-[o:fusiondirectory:p:FusionDirectory-14:r:webauthn]
-file_filter = weblink/locale/<lang>/fusiondirectory.po
-source_file = weblink/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:samba]
+file_filter   = translations/FusionDirectory.samba/<lang>.po
+source_file   = translations/FusionDirectory.samba/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = samba
 
-[o:fusiondirectory:p:FusionDirectory-14:r:weblink]
-file_filter = weblink/locale/<lang>/fusiondirectory.po
-source_file = weblink/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:schac]
+file_filter   = translations/FusionDirectory.schac/<lang>.po
+source_file   = translations/FusionDirectory.schac/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = schac
 
-[o:fusiondirectory:p:FusionDirectory-14:r:webservice]
-file_filter = webservice/locale/<lang>/fusiondirectory.po
-source_file = webservice/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:sieve]
+file_filter   = translations/FusionDirectory.sieve/<lang>.po
+source_file   = translations/FusionDirectory.sieve/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = sieve
 
-[o:fusiondirectory:p:FusionDirectory-14:r:zimbra]
-file_filter = zimbra/locale/<lang>/fusiondirectory.po
-source_file = zimbra/locale/en/fusiondirectory.po
-source_lang = en
+[o:fusiondirectory:p:FusionDirectory:r:sinaps]
+file_filter   = translations/FusionDirectory.sinaps/<lang>.po
+source_file   = translations/FusionDirectory.sinaps/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = sinaps
+
+[o:fusiondirectory:p:FusionDirectory:r:sogo]
+file_filter   = translations/FusionDirectory.sogo/<lang>.po
+source_file   = translations/FusionDirectory.sogo/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = sogo
+
+[o:fusiondirectory:p:FusionDirectory:r:spamassassin]
+file_filter   = translations/FusionDirectory.spamassassin/<lang>.po
+source_file   = translations/FusionDirectory.spamassassin/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = spamassassin
+
+[o:fusiondirectory:p:FusionDirectory:r:ssh]
+file_filter   = translations/FusionDirectory.ssh/<lang>.po
+source_file   = translations/FusionDirectory.ssh/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = ssh
+
+[o:fusiondirectory:p:FusionDirectory:r:subscriptions]
+file_filter   = translations/FusionDirectory.subscriptions/<lang>.po
+source_file   = translations/FusionDirectory.subscriptions/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = subscriptions
+
+[o:fusiondirectory:p:FusionDirectory:r:sudo]
+file_filter   = translations/FusionDirectory.sudo/<lang>.po
+source_file   = translations/FusionDirectory.sudo/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = sudo
+
+[o:fusiondirectory:p:FusionDirectory:r:supann]
+file_filter   = translations/FusionDirectory.supann/<lang>.po
+source_file   = translations/FusionDirectory.supann/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = supann
+
+[o:fusiondirectory:p:FusionDirectory:r:systems]
+file_filter   = translations/FusionDirectory.systems/<lang>.po
+source_file   = translations/FusionDirectory.systems/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = systems
+
+[o:fusiondirectory:p:FusionDirectory:r:user-reminder]
+file_filter   = translations/FusionDirectory.user-reminder/<lang>.po
+source_file   = translations/FusionDirectory.user-reminder/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = user-reminder
+
+[o:fusiondirectory:p:FusionDirectory:r:webauthn]
+file_filter   = translations/FusionDirectory.webauthn/<lang>.po
+source_file   = translations/FusionDirectory.webauthn/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = webauthn
+
+[o:fusiondirectory:p:FusionDirectory:r:weblink]
+file_filter   = translations/FusionDirectory.weblink/<lang>.po
+source_file   = translations/FusionDirectory.weblink/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = weblink
+
+[o:fusiondirectory:p:FusionDirectory:r:webservice]
+file_filter   = translations/FusionDirectory.webservice/<lang>.po
+source_file   = translations/FusionDirectory.webservice/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = webservice
+
+[o:fusiondirectory:p:FusionDirectory:r:zimbra]
+file_filter   = translations/FusionDirectory.zimbra/<lang>.po
+source_file   = translations/FusionDirectory.zimbra/en.po
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = zimbra
+
+
+
+
+
+
+
+
+
 
