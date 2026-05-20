@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-20 17:03+0100\n"
+"POT-Creation-Date: 2026-05-20 19:37+0200\n"
 "PO-Revision-Date: 2026-05-20 17:00+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2026\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/fusiondirectory/teams/12202/pt_BR/)\n"
@@ -21,60 +21,63 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: config/sogo/class_sogoConfig.inc:26
-msgid "SOGo configuration"
-msgstr "Configuração de SOGo"
-
-#: config/sogo/class_sogoConfig.inc:27
-msgid "FusionDirectory sogo plugin configuration"
-msgstr "Configuração do plugin FusionDirectory sogo"
-
-#: config/sogo/class_sogoConfig.inc:40 admin/sogo/class_sogoManagement.inc:27
-#: admin/sogo/class_sogoManagement.inc:33
+#: management/sogo/class_sogoManagement.inc:27
+#: management/sogo/class_sogoManagement.inc:32
+#: backend/sogo/class_sogoConfig.inc:40
 msgid "SOGo"
 msgstr "SOGo"
 
-#: config/sogo/class_sogoConfig.inc:43
-msgid "SOGo RDN"
-msgstr "SOGo RDN"
-
-#: config/sogo/class_sogoConfig.inc:43
-msgid "Branch in which SOGo objects will be stored"
+#: management/sogo/class_sogoManagement.inc:28
+msgid "Manage SOGo resources"
 msgstr ""
 
-#: admin/sogo/class_sogoResource.inc:26 admin/sogo/class_sogoResource.inc:27
-#: admin/sogo/class_sogoResource.inc:31 admin/sogo/class_sogoResource.inc:48
+#: management/sogo/class_sogoManagement.inc:30
+msgid "Systems"
+msgstr "Sistemas"
+
+#: management/sogo/class_sogoResource.inc:27
+#: management/sogo/class_sogoResource.inc:28
+#: management/sogo/class_sogoResource.inc:32
+#: management/sogo/class_sogoResource.inc:49
 msgid "SOGo resource"
 msgstr "Recurso SOGo"
 
-#: admin/sogo/class_sogoResource.inc:52
+#: management/sogo/class_sogoResource.inc:53
 msgid "Entry name"
 msgstr "Nome de entrada"
 
-#: admin/sogo/class_sogoResource.inc:52
+#: management/sogo/class_sogoResource.inc:53
 msgid "Account name"
 msgstr "Nome de conta"
 
-#: admin/sogo/class_sogoResource.inc:56
+#: management/sogo/class_sogoResource.inc:57
 msgid "Mail"
 msgstr "Correio"
 
-#: admin/sogo/class_sogoResource.inc:62
+#: management/sogo/class_sogoResource.inc:63
 msgid "description"
 msgstr "descrição"
 
-#: admin/sogo/class_sogoResource.inc:66
+#: management/sogo/class_sogoResource.inc:67
 msgid "Multiplebookings"
 msgstr "Multiplebookings"
 
-#: admin/sogo/class_sogoResource.inc:71
+#: management/sogo/class_sogoResource.inc:72
 msgid "Kind"
 msgstr "Tipo"
 
-#: admin/sogo/class_sogoManagement.inc:28
-msgid "SOGo management"
-msgstr "Gerenciar SOGo"
+#: backend/sogo/class_sogoConfig.inc:26
+msgid "SOGo configuration"
+msgstr "Configuração de SOGo"
 
-#: admin/sogo/class_sogoManagement.inc:29
-msgid "Manage SOGo resources"
+#: backend/sogo/class_sogoConfig.inc:27
+msgid "FusionDirectory sogo plugin configuration"
+msgstr "Configuração do plugin FusionDirectory sogo"
+
+#: backend/sogo/class_sogoConfig.inc:43
+msgid "SOGo RDN"
+msgstr "SOGo RDN"
+
+#: backend/sogo/class_sogoConfig.inc:43
+msgid "Branch in which SOGo objects will be stored"
 msgstr ""
