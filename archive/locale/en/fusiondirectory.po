@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-10-13 12:08+0200\n"
+"POT-Creation-Date: 2026-05-20 17:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,131 +17,209 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: config/archive/class_archiveConfig.inc:27
-msgid "Archive configuration"
-msgstr ""
-
-#: config/archive/class_archiveConfig.inc:28
-msgid "FusionDirectory archive plugin configuration"
-msgstr ""
-
-#: config/archive/class_archiveConfig.inc:41
-#: admin/archive/class_archivedObject.inc:133
+#: management/archive/class_archiveManagement.inc:39
+#: management/archive/class_archivedObject.inc:133
+#: backend/archive/class_archiveConfig.inc:41
 msgid "Archive"
 msgstr ""
 
-#: config/archive/class_archiveConfig.inc:44
-msgid "Archive RDN"
+#: management/archive/class_archiveManagement.inc:40
+msgid "Archive Objects"
 msgstr ""
 
-#: config/archive/class_archiveConfig.inc:44
-msgid "Branch in which archived objects will be stored"
+#: management/archive/class_archiveManagement.inc:41
+msgid "Manage archived objects"
 msgstr ""
 
-#: config/archive/class_archiveConfig.inc:50
-msgid "Use this to hide some menu entry to specific groups of users"
+#: management/archive/class_archiveManagement.inc:43
+msgid "Reporting"
 msgstr ""
 
-#: config/archive/class_archiveConfig.inc:54
-msgid "Type"
+#: management/archive/class_archiveManagement.inc:62
+msgid "Archived types"
 msgstr ""
 
-#: config/archive/class_archiveConfig.inc:54
-#: admin/archive/class_archivedObject.inc:68
-msgid "Object type"
+#: management/archive/class_archiveManagement.inc:64
+msgid "Date"
 msgstr ""
 
-#: config/archive/class_archiveConfig.inc:60
-#: admin/archive/class_archivedObject.inc:51
+#: management/archive/class_ArchivedFieldsAttribute.inc:33
+msgid "Field"
+msgstr ""
+
+#: management/archive/class_ArchivedFieldsAttribute.inc:33
+msgid "Value"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:29
+#: management/archive/class_archivedObject.inc:33
+msgid "Archived Object"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:30
+msgid "An object which have been archived through archive plugin"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:48
+msgid "Data"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:51
+#: backend/archive/class_archiveConfig.inc:61
+#: backend/archive/class_archiveConfig.inc:89
 msgid "Fields"
 msgstr ""
 
-#: config/archive/class_archiveConfig.inc:60
-msgid "Comma separated list of fields to archive for history purposes"
+#: management/archive/class_archivedObject.inc:51
+msgid "Archived fields"
 msgstr ""
 
-#: config/archive/class_archiveConfig.inc:64
-#: admin/archive/class_archivedObject.inc:55
+#: management/archive/class_archivedObject.inc:55
+#: backend/archive/class_archiveConfig.inc:65
 msgid "Unique fields"
 msgstr ""
 
-#: config/archive/class_archiveConfig.inc:64
+#: management/archive/class_archivedObject.inc:55
+msgid "Archived unique fields"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:61
+msgid "Origin"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:64
+msgid "Time"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:64
+msgid "Date and time this object was archived"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:68
+#: backend/archive/class_archiveConfig.inc:55
+msgid "Object type"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:72
+msgid "Origin DN"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:72
+msgid "DN of the object before deletion"
+msgstr ""
+
+#: management/archive/class_archivedObject.inc:225
+#, php-format
+msgid "No configuration found for archiving type %s"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:30
+msgid "Tasks Archive"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:31
+msgid "Tasks Archive Object"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:55
+msgid "SupAnn Resource Archiving Settings"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:58
+msgid "Resource"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:58
+msgid "Supann resources"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:62
+msgid "State"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:62
+msgid "Resource state"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:66
+msgid "Sub state"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:66
+msgid "Resource sub state"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:72
+msgid "Recipients Users and/or Groups"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:75
+msgid "Monitored Members"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:75
+msgid "Users or Groups requiring monitoring for archiving."
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:92
+msgid "Warning"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:93
+msgid ""
+"The SupAnn Account Status plugin is not activated. This task cannot function "
+"properly without it."
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:160
+msgid "Error"
+msgstr ""
+
+#: workflow/tasks/class_archiveTask.inc:161
+msgid ""
+"The SupAnn Account Status plugin is not activated. This task cannot be saved "
+"or executed without it."
+msgstr ""
+
+#: backend/archive/class_archiveConfig.inc:27
+msgid "Archive configuration"
+msgstr ""
+
+#: backend/archive/class_archiveConfig.inc:28
+msgid "FusionDirectory archive plugin configuration"
+msgstr ""
+
+#: backend/archive/class_archiveConfig.inc:45
+msgid "Archive RDN"
+msgstr ""
+
+#: backend/archive/class_archiveConfig.inc:45
+msgid "Branch in which archived objects will be stored"
+msgstr ""
+
+#: backend/archive/class_archiveConfig.inc:51
+msgid "Use this to hide some menu entry to specific groups of users"
+msgstr ""
+
+#: backend/archive/class_archiveConfig.inc:55
+#: backend/archive/class_archiveConfig.inc:88
+msgid "Type"
+msgstr ""
+
+#: backend/archive/class_archiveConfig.inc:61
+msgid "Comma separated list of fields to archive for history purposes"
+msgstr ""
+
+#: backend/archive/class_archiveConfig.inc:65
 msgid ""
 "Comma separated list of fields to archive for history purposes and unicity "
 "checks"
 msgstr ""
 
-#: config/archive/class_archiveConfig.inc:69
+#: backend/archive/class_archiveConfig.inc:70
 msgid "Type and fields"
 msgstr ""
 
-#: admin/archive/class_archivedObject.inc:29
-#: admin/archive/class_archivedObject.inc:33
-msgid "Archived Object"
-msgstr ""
-
-#: admin/archive/class_archivedObject.inc:30
-msgid "An object which have been archived through archive plugin"
-msgstr ""
-
-#: admin/archive/class_archivedObject.inc:48
-msgid "Data"
-msgstr ""
-
-#: admin/archive/class_archivedObject.inc:51
-msgid "Archived fields"
-msgstr ""
-
-#: admin/archive/class_archivedObject.inc:55
-msgid "Archived unique fields"
-msgstr ""
-
-#: admin/archive/class_archivedObject.inc:61
-msgid "Origin"
-msgstr ""
-
-#: admin/archive/class_archivedObject.inc:64
-msgid "Time"
-msgstr ""
-
-#: admin/archive/class_archivedObject.inc:64
-msgid "Date and time this object was archived"
-msgstr ""
-
-#: admin/archive/class_archivedObject.inc:72
-msgid "Origin DN"
-msgstr ""
-
-#: admin/archive/class_archivedObject.inc:72
-msgid "DN of the object before deletion"
-msgstr ""
-
-#: admin/archive/class_archivedObject.inc:207
-#, php-format
-msgid "No configuration found for archiving type %s"
-msgstr ""
-
-#: admin/archive/class_archiveManagement.inc:39
-#: admin/archive/class_archiveManagement.inc:40
-msgid "Archived objects"
-msgstr ""
-
-#: admin/archive/class_archiveManagement.inc:41
-msgid "Browse archived objects"
-msgstr ""
-
-#: admin/archive/class_archiveManagement.inc:61
-msgid "Archived types"
-msgstr ""
-
-#: admin/archive/class_archiveManagement.inc:63
-msgid "Date"
-msgstr ""
-
-#: admin/archive/class_ArchivedFieldsAttribute.inc:33
-msgid "Field"
-msgstr ""
-
-#: admin/archive/class_ArchivedFieldsAttribute.inc:33
-msgid "Value"
+#: backend/archive/class_archiveConfig.inc:90
+msgid "Unique Fields"
 msgstr ""

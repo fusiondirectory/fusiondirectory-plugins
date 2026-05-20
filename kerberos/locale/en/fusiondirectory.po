@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-19 15:52+0200\n"
+"POT-Creation-Date: 2026-05-20 17:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,18 +17,354 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: personal/kerberos/class_kerberosAccount.inc:29
+#: personal/kerberos/class_KrbExtraDataAttribute.inc:60
+msgid "Last modification"
+msgstr ""
+
+#: personal/kerberos/class_KrbExtraDataAttribute.inc:64
+#, php-format
+msgid "%s - by \"%s\""
+msgstr ""
+
+#: personal/kerberos/class_KrbExtraDataAttribute.inc:67
+msgid "Master-key version number"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:27
+msgid ""
+"The krbTicketFlags attribute holds information about the kerberos flags for "
+"a principal"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:81
 msgid "Kerberos"
 msgstr ""
 
-#: personal/kerberos/class_kerberosAccount.inc:30
+#: personal/kerberos/class_kerberosAccount.inc:82
 msgid "Kerberos tab"
 msgstr ""
 
-#: personal/kerberos/class_kerberosAccount.inc:46
+#: personal/kerberos/class_kerberosAccount.inc:98
 msgid "krbPrincipalAux"
 msgstr ""
 
+#: personal/kerberos/class_kerberosAccount.inc:102
+msgid "krbPrincipalName"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:102
+msgid "This is the principal name in the RFC 1964 specified format"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:107
+msgid "krbCanonicalName"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:107
+msgid ""
+"If there are multiple krbPrincipalName values for an entry, this is the "
+"canonical principal name in the RFC 1964 specified format."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:111
+msgid "krbUPEnabled"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:111
+msgid ""
+"This flag is used to find whether directory User Password has to be used as "
+"kerberos password"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:119
+msgid "krbTicketPolicyReference"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:119
+msgid "FDN pointing to a Kerberos Ticket Policy object."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:123
+msgid "krbPrincipalExpiration"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:123
+msgid "The time at which the principal expires"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:127
+msgid "krbPasswordExpiration"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:127
+msgid "The time at which the principal's password expires"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:131
+msgid "krbPwdPolicyReference"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:131
+msgid "FDN pointing to a Kerberos Password Policy object"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:135
+msgid "krbPrincipalType"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:135
+msgid ""
+"This specifies the type of the principal, the types could be any of the "
+"types mentioned in section 6.2 of RFC 4120"
+msgstr ""
+
 #: personal/kerberos/class_kerberosAccount.inc:141
-msgid "krbTicketPolicyAux"
+msgid "krbPwdHistory"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:141
+msgid ""
+"This attribute holds the principal's old keys (krbPwdHistory) that is "
+"encrypted with the kadmin/history key. The attribute is ASN.1 encoded."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:146
+msgid "krbLastPwdChange"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:146
+msgid ""
+"The time at which the principal's password last password change happened."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:150
+msgid "krbLastAdminUnlock"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:150
+msgid "The time at which the principal was last administratively unlocked."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:155
+msgid "krbPrincipalAliases"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:155
+msgid ""
+"This stores the alternate principal names for the principal in the RFC 1964 "
+"specified format"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:160
+msgid "krbLastSuccessfulAuth"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:160
+msgid ""
+"The time at which the principal's last successful authentication happened."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:164
+msgid "krbLastFailedAuth"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:164
+msgid "The time at which the principal's last failed authentication happened."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:168
+msgid "krbLoginFailedCount"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:168
+msgid ""
+"This attribute stores the number of failed authentication attempts happened "
+"for the principal since the last successful authentication."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:173
+msgid "krbExtraData"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:173
+msgid "This attribute holds the application specific data."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:183
+msgid "krbAllowedToDelegateTo"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:183
+msgid "A list of services to which a service principal can delegate."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:189
+msgid "krbPrincipalAuthInd"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:189
+msgid ""
+"A list of authentication indicator strings, one of which must be satisfied "
+"to authenticate to the principal as a service."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:197
+msgid "Ticket Flags and Timing"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:203
+msgid "Prohibit postdated tickets"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:203
+msgid "Prohibit the principal to obtain postdateable tickets."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:208
+msgid "Prohibit forwardable tickets"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:208
+msgid ""
+"Prohibit the principal to obtain a session key for another user, permitting "
+"user-to-user authentication for this principal."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:213
+msgid "Disallow Ticket-Granting Service"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:213
+msgid ""
+"Disallow a principal to obtain tickets based on a ticket-granting-ticket, "
+"rather than repeating the authentication process that was used to obtain the "
+"TGT."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:218
+msgid "Prohibit renewable tickets"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:218
+msgid "Prohibit the principal to obtain renewable tickets."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:223
+msgid "Disallow proxiable tickets"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:223
+msgid "Prohibit the principal to obtain proxy tickets."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:228
+msgid "Disallow user to user authentification"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:228
+msgid ""
+"Enabling this flag disallows the principal to obtain a session key for "
+"another user, permitting user-to-user authentication for this principal."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:233
+msgid "Forbid ticket issuance"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:233
+msgid ""
+"Enabling this flag essentially deactivates the principal within this realm."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:238
+msgid "Preauthentication required"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:238
+msgid ""
+"If this flag is enabled on a client principal, then that principal is "
+"required to preauthenticate to the KDC before receiving any tickets. On a "
+"service principal, enabling this flag means that service tickets for this "
+"principal will only be issued to clients with a TGT that has the "
+"preauthenticated bit set."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:243
+msgid "Hardware preauthentication"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:243
+msgid ""
+"If this flag is enabled, then the principal is required to preauthenticate "
+"using a hardware device before receiving any tickets."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:248
+msgid "Force a password change"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:248
+msgid "Enabling this flag forces a password change for this principal."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:253
+#: personal/kerberos/class_kerberosAccount.inc:258
+msgid "UNKNOWN"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:253
+msgid "Unknown Flag 0x00000400"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:258
+msgid "Unknown Flag 0x00000800"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:263
+msgid "Prohibit issuance of service tickets"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:263
+msgid "Prohibit the KDC to issue service tickets for this principal."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:268
+msgid "Password change service"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:268
+msgid ""
+"If this flag is enabled, it marks this principal as a password change "
+"service. This should only be used in special cases, for example, if a user "
+"password has expired, then the user has to get tickets for that principal "
+"without going through the normal password authentication in order to be able "
+"to change the password."
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:273
+msgid "SUPPORT_DESMD5"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:278
+msgid "NEW_PRINC"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:285
+msgid "Maximum ticket lifetime"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:285
+msgid "The maximum ticket lifetime for a principal in seconds"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:290
+msgid "Maximum renewable lifetime"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:290
+msgid "Maximum renewable lifetime for a principal's ticket in seconds"
+msgstr ""
+
+#: personal/kerberos/class_kerberosAccount.inc:310
+msgid "Never"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-06-20 23:08+0200\n"
+"POT-Creation-Date: 2026-05-20 17:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,86 +17,96 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: configuration/class_tasksLifeCycle.inc:33
-msgid "Tasks Life Cycle"
+#: workflow/tasks/class_automaticGroupsTask.inc:33
+msgid "Tasks Automatic Groups"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:34
-msgid "Tasks Life Cycle Object"
+#: workflow/tasks/class_automaticGroupsTask.inc:34
+msgid "Tasks Automatic Groups Object"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:51
+#: workflow/tasks/class_automaticGroupsTask.inc:59
 msgid ""
 "We recommend the task redundancy to be set to daily, and the case New "
 "Members Only to be unpicked"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:62
-msgid "Post resources details"
+#: workflow/tasks/class_automaticGroupsTask.inc:73
+msgid "Task Mode"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:65
-#: configuration/class_tasksLifeCycle.inc:87
+#: workflow/tasks/class_automaticGroupsTask.inc:77
+msgid "Create Dynamic Group"
+msgstr ""
+
+#: workflow/tasks/class_automaticGroupsTask.inc:77
+msgid "Create a dynamic group based on SupAnn resource, state and substate"
+msgstr ""
+
+#: workflow/tasks/class_automaticGroupsTask.inc:83
+msgid "Resource State Criteria"
+msgstr ""
+
+#: workflow/tasks/class_automaticGroupsTask.inc:87
 msgid "Resource"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:65
-#: configuration/class_tasksLifeCycle.inc:87
-msgid "Supann resources"
+#: workflow/tasks/class_automaticGroupsTask.inc:87
+msgid "Supann resources or Regex"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:69
-#: configuration/class_tasksLifeCycle.inc:91
+#: workflow/tasks/class_automaticGroupsTask.inc:91
 msgid "State"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:69
-#: configuration/class_tasksLifeCycle.inc:91
+#: workflow/tasks/class_automaticGroupsTask.inc:91
 msgid "Resource state"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:73
-#: configuration/class_tasksLifeCycle.inc:95
+#: workflow/tasks/class_automaticGroupsTask.inc:95
 msgid "Sub state"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:73
-#: configuration/class_tasksLifeCycle.inc:95
+#: workflow/tasks/class_automaticGroupsTask.inc:95
 msgid "Resource sub state"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:77
-msgid "Extra days to add"
+#: workflow/tasks/class_automaticGroupsTask.inc:101
+msgid "Regex Pattern Configuration"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:77
-msgid "Extra days to be added after today"
+#: workflow/tasks/class_automaticGroupsTask.inc:105
+#: workflow/tasks/class_automaticGroupsTask.inc:200
+msgid "Regex Pattern"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:84
-msgid "Pre / existing resources details"
+#: workflow/tasks/class_automaticGroupsTask.inc:105
+msgid ""
+"Pattern to match supannRessource name (e.g., \"COMPTE\" or \"MAIL\"). This "
+"pattern is used when \"Regex Pattern\" is selected as a resource type. It "
+"does not filter by state or sub-state."
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:101
-msgid "Recipients Users and/or Groups"
+#: workflow/tasks/class_automaticGroupsTask.inc:112
+msgid "Manual Group Assignment"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:105
+#: workflow/tasks/class_automaticGroupsTask.inc:116
+msgid "Target Group"
+msgstr ""
+
+#: workflow/tasks/class_automaticGroupsTask.inc:116
+msgid "Group where users will be added/removed"
+msgstr ""
+
+#: workflow/tasks/class_automaticGroupsTask.inc:122
 msgid "Members"
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:105
-msgid "Users or groups to assign to this task."
+#: workflow/tasks/class_automaticGroupsTask.inc:122
+msgid "Users or groups to check for automatic group assignment."
 msgstr ""
 
-#: configuration/class_tasksLifeCycle.inc:124
-msgid "The plugin Supann does not seem to be installed !"
-msgstr ""
-
-#: configuration/class_tasksLifeCycle.inc:138
-msgid "Account"
-msgstr ""
-
-#: configuration/class_tasksLifeCycle.inc:138
-msgid "Mail"
+#: workflow/tasks/class_automaticGroupsTask.inc:160
+msgid "The plugin Supann does not seem to be installed!"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2024-04-13 16:35+0200\n"
+"POT-Creation-Date: 2026-05-20 17:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,75 +17,115 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: configuration/tasks/class_notificationsTask.inc:33
+#: workflow/tasks/class_notificationsTask.inc:35
 msgid "Tasks Notifications"
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:34
+#: workflow/tasks/class_notificationsTask.inc:36
 msgid "Tasks Notifications Object"
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:50
+#: workflow/tasks/class_notificationsTask.inc:60
 msgid "Modified attributes list to be notified"
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:58
+#: workflow/tasks/class_notificationsTask.inc:68
 msgid "Any changes listed to set attributes will trigger a notification"
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:65
+#: workflow/tasks/class_notificationsTask.inc:75
+msgid "Future resources details"
+msgstr ""
+
+#: workflow/tasks/class_notificationsTask.inc:78
+#: workflow/tasks/class_notificationsTask.inc:109
+msgid "Resource"
+msgstr ""
+
+#: workflow/tasks/class_notificationsTask.inc:78
+#: workflow/tasks/class_notificationsTask.inc:109
+msgid "Supann resources"
+msgstr ""
+
+#: workflow/tasks/class_notificationsTask.inc:82
+#: workflow/tasks/class_notificationsTask.inc:113
+msgid "State"
+msgstr ""
+
+#: workflow/tasks/class_notificationsTask.inc:82
+#: workflow/tasks/class_notificationsTask.inc:113
+msgid "Resource state"
+msgstr ""
+
+#: workflow/tasks/class_notificationsTask.inc:86
+#: workflow/tasks/class_notificationsTask.inc:117
+msgid "Sub state"
+msgstr ""
+
+#: workflow/tasks/class_notificationsTask.inc:86
+#: workflow/tasks/class_notificationsTask.inc:117
+msgid "Resource sub state"
+msgstr ""
+
+#: workflow/tasks/class_notificationsTask.inc:92
 msgid "Recipients Users and/or Groups"
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:68
+#: workflow/tasks/class_notificationsTask.inc:95
 msgid "Recipients"
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:68
+#: workflow/tasks/class_notificationsTask.inc:95
 msgid "Users or Groups requiring to be notified."
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:72
+#: workflow/tasks/class_notificationsTask.inc:99
 msgid "Monitored Members"
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:72
+#: workflow/tasks/class_notificationsTask.inc:99
 msgid "Users or Groups requiring monitoring."
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:78
-#: configuration/tasks/class_notificationsTask.inc:81
+#: workflow/tasks/class_notificationsTask.inc:106
+msgid ""
+"Add notification when the following Supann state is reached "
+"(supannRessourceEtat)"
+msgstr ""
+
+#: workflow/tasks/class_notificationsTask.inc:123
+#: workflow/tasks/class_notificationsTask.inc:126
 msgid "Mail Template"
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:81
+#: workflow/tasks/class_notificationsTask.inc:126
 msgid "Mail Template Object Selection"
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:85
+#: workflow/tasks/class_notificationsTask.inc:130
 msgid "Sender email address"
 msgstr ""
 
-#: configuration/tasks/class_notificationsTask.inc:86
+#: workflow/tasks/class_notificationsTask.inc:131
 msgid "Email address from which mails will be sent"
 msgstr ""
 
-#: configuration/config/class_notificationsConfig.inc:28
+#: backend/notifications/class_notificationsConfig.inc:28
 msgid "Notifications"
 msgstr ""
 
-#: configuration/config/class_notificationsConfig.inc:29
+#: backend/notifications/class_notificationsConfig.inc:29
 msgid "Tasks Notifications Configuration"
 msgstr ""
 
-#: configuration/config/class_notificationsConfig.inc:41
+#: backend/notifications/class_notificationsConfig.inc:41
 msgid "Notifications Tasks Configuration"
 msgstr ""
 
-#: configuration/config/class_notificationsConfig.inc:45
+#: backend/notifications/class_notificationsConfig.inc:45
 msgid "Attributes name"
 msgstr ""
 
-#: configuration/config/class_notificationsConfig.inc:45
+#: backend/notifications/class_notificationsConfig.inc:45
 msgid "Attributes name in ACL format"
 msgstr ""

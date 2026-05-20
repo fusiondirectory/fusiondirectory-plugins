@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-20 17:03+0100\n"
+"POT-Creation-Date: 2026-05-20 17:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,31 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: personal/ssh/class_sshAccount.inc:61
-msgid "Upload error"
-msgstr ""
-
-#: personal/ssh/class_sshAccount.inc:61
+#: personal/ssh/class_sshAccount.inc:67
 msgid "Unknown public key format!"
 msgstr ""
 
-#: personal/ssh/class_sshAccount.inc:81
-msgid "SSH"
+#: personal/ssh/class_sshAccount.inc:88
+msgid "OpenSSH"
 msgstr ""
 
-#: personal/ssh/class_sshAccount.inc:82
-msgid "Edit user's SSH public keys"
+#: personal/ssh/class_sshAccount.inc:89
+msgid "Manage OpenSSH public keys"
 msgstr ""
 
-#: personal/ssh/class_sshAccount.inc:100
-msgid "SSH Keys"
+#: personal/ssh/class_sshAccount.inc:107
+msgid "OpenSSH Keys"
 msgstr ""
 
-#: personal/ssh/class_sshAccount.inc:106
-msgid "SSH public keys for this user"
+#: personal/ssh/class_sshAccount.inc:113
+msgid "OpenSSH public keys for this user"
 msgstr ""
 
-#: personal/ssh/class_sshAccount.inc:130
+#: personal/ssh/class_sshAccount.inc:139
 #, php-format
 msgid "Error : there are several keys with fingerprint %s"
 msgstr ""
