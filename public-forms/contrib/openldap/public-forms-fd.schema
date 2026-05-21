@@ -72,6 +72,7 @@ attributetype ( 1.3.6.1.4.1.38414.67.10.10 NAME 'fdPublicFormCaptcha'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+# TODO must be removed for 1.7
 attributetype ( 1.3.6.1.4.1.38414.67.10.11 NAME 'fdPublicFormDefaultLocked'
   DESC 'FusionDirectory - Whether this form should create locked user by default'
   EQUALITY booleanMatch
