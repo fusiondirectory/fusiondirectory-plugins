@@ -28,6 +28,11 @@ class supannAccountEmployee extends simplePlugin
 
   static function plInfo (): array
   {
+    global $config;
+    if ($config->get_cfg_value('SupannShowEmployee', 'TRUE') !== 'TRUE') {
+      return [];
+    }
+
     return [
       'plShortName'   => _('SupAnn Employee'),
       'plDescription' => _('SupAnn Employee Account Management'),

@@ -365,6 +365,16 @@ class supannConfig extends simplePlugin
         'name'  => _('Features'),
         'attrs' => [
           new BooleanAttribute(
+            _('Student Profile'), _('Show Student tab'),
+            'fdSupannShowStudent', FALSE,
+            TRUE
+          ),
+          new BooleanAttribute(
+            _('Employee Profile'), _('Show Employee tab'),
+            'fdSupannShowEmployee', FALSE,
+            TRUE
+          ),
+          new BooleanAttribute(
             _('SupAnn status'), _('Show SupAnn status tab'),
             'fdSupannShowAccountStatus', FALSE,
             TRUE

@@ -28,6 +28,11 @@ class supannAccountStudent extends simplePlugin
 
   static function plInfo (): array
   {
+    global $config;
+    if ($config->get_cfg_value('SupannShowStudent', 'TRUE') !== 'TRUE') {
+      return [];
+    }
+
     return [
       'plShortName'   => _('SupAnn Student'),
       'plDescription' => _('SupAnn Student Account management'),
