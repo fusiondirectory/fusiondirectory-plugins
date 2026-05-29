@@ -21,6 +21,8 @@
 
 class supannStructureSinaps extends simplePlugin
 {
+  protected $displayHeader = TRUE;
+
   static function plInfo (): array
   {
     return [
