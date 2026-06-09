@@ -150,7 +150,7 @@ class extractorTask extends simplePlugin
   /**
    * Generate slave tasks for extraction
    */
-  function generateSlaveTasks ()
+  function generateSubTasks ()
   {
     $selectedMembers = $this->attributesAccess['fdExtractorTaskMembers']->getValue();
     $listOfDN = tasks::extractMembersFromGroups($selectedMembers);
@@ -163,7 +163,7 @@ class extractorTask extends simplePlugin
 
     // Call the method from parent tasks object (first tab) to create ONE sub-task for the orchestrator
     // The orchestrator will handle processing the DNs stored in fdExtractorTaskListOfDN.
-    $this->parent->getBaseObject()->createSlaveTasks([$bulkTaskIdentifier], 'fdTasksGranularDN', NULL, 'extract');
+    $this->parent->getBaseObject()->createSubTasks([$bulkTaskIdentifier], 'fdTasksGranularDN', NULL, 'extract');
   }
 
   /**
@@ -199,7 +199,7 @@ class extractorTask extends simplePlugin
   {
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
     if ($execTasks) {
-        $this->generateSlaveTasks();
+        $this->generateSubTasks();
     }
     return parent::save();
   }

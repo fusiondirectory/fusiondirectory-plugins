@@ -131,13 +131,13 @@ class archiveTask extends simplePlugin
   /**
    * Generate slave tasks for archiving
    */
-  function generateSlaveTasks ()
+  function generateSubTasks ()
   {
     $monitoredMembers = $this->attributesAccess['fdArchiveTaskMembers']->getValue();
     $listOfDN = tasks::extractMembersFromGroups($monitoredMembers);
 
     // Call the method from parent tasks object (first tab) to create sub-tasks.
-    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, 'fdTasksGranularDN', NULL, 'archive');
+    $this->parent->getBaseObject()->createSubTasks($listOfDN, 'fdTasksGranularDN', NULL, 'archive');
   }
 
   /**
@@ -168,7 +168,7 @@ class archiveTask extends simplePlugin
       $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
 
     if ($execTasks) {
-        $this->generateSlaveTasks();
+        $this->generateSubTasks();
     }
 
       return parent::save();

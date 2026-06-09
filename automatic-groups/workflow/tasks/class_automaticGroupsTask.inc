@@ -297,7 +297,7 @@ class automaticGroupsTask extends simplePlugin
   /**
    * Generate slave tasks for automatic group assignment
    */
-  public function generateSlaveTasks ()
+  public function generateSubTasks ()
   {
     // Check if we're creating a dynamic group or using regular automatic groups
     $isDynamicGroup = $this->attributesAccess['fdTasksAutomaticGroupsDynamicGroup']->getValue();
@@ -307,14 +307,14 @@ class automaticGroupsTask extends simplePlugin
       $this->updateDynamicGroupSettings();
 
       // Create just one task for dynamic group creation
-      $this->parent->getBaseObject()->createSlaveTasks(['dynamicGroupTask'], 'fdTasksGranularDN', NULL, 'Dynamic-Group');
+      $this->parent->getBaseObject()->createSubTasks(['dynamicGroupTask'], 'fdTasksGranularDN', NULL, 'Dynamic-Group');
     } else {
       // Original code for regular automatic groups
       $listOfDN = $this->attributesAccess['fdTasksAutomaticGroupsListOfDN']->getValue();
       $attributeType = 'fdTasksGranularDN';
 
       // Call the method from parent tasks object (first tab) to create sub-tasks.
-      $this->parent->getBaseObject()->createSlaveTasks($listOfDN, $attributeType, NULL, 'Automatic Groups');
+      $this->parent->getBaseObject()->createSubTasks($listOfDN, $attributeType, NULL, 'Automatic Groups');
     }
   }
 
@@ -343,7 +343,7 @@ class automaticGroupsTask extends simplePlugin
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
 
     if ($execTasks) {
-      $this->generateSlaveTasks();
+      $this->generateSubTasks();
     }
 
     return parent::save();

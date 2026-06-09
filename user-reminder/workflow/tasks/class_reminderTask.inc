@@ -273,22 +273,22 @@ class reminderTask extends simplePlugin
    * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
-  function generateSlaveTasks ($monitoredDN)
+  function generateSubTasks ($monitoredDN)
   {
-    // The attribute required to be search in createSlaveTasks
+    // The attribute required to be search in createSubTasks
     $attributeType                       = 'fdTasksGranularDN';
     $firstCall['helper']['reminderTime'] = $this->attributesAccess['fdTasksReminderFirstCall']->getValue();
 
     // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
     // Create the first sub task with primary call
-    $this->parent->getBaseObject()->createSlaveTasks($monitoredDN, $attributeType, $firstCall, 'Reminder');
+    $this->parent->getBaseObject()->createSubTasks($monitoredDN, $attributeType, $firstCall, 'Reminder');
 
     // Create the second sub task with secondary call (if present).
     if (!empty($this->attributesAccess['fdTasksReminderSecondCall']->getValue() &&
       $this->attributesAccess['fdTasksReminderAccountProlongation']->getValue())) {
 
       $secondCall['helper']['reminderTime'] = $this->attributesAccess['fdTasksReminderSecondCall']->getValue();
-      $this->parent->getBaseObject()->createSlaveTasks($monitoredDN, $attributeType, $secondCall, 'Reminder');
+      $this->parent->getBaseObject()->createSubTasks($monitoredDN, $attributeType, $secondCall, 'Reminder');
     }
   }
 
@@ -317,7 +317,7 @@ class reminderTask extends simplePlugin
     $monitoredMembers = $this->attributesAccess['fdTasksReminderMembers']->getValue();
 
     if ($execTasks) {
-      $this->generateSlaveTasks(tasks::extractMembersFromGroups($monitoredMembers));
+      $this->generateSubTasks(tasks::extractMembersFromGroups($monitoredMembers));
     }
 
     return parent::save();
