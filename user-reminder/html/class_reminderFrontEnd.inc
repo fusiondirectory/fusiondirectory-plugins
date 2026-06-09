@@ -656,7 +656,7 @@ class reminderFrontEnd extends standAlonePage
     $result = FALSE;
 
     if (!empty($this->task['name'])) {
-      $dn = 'cn=' . $this->task['name'] . ',ou=tasks,' . $config->current['BASE'];
+      $dn = 'cn=' . $this->task['name'] . get_ou('MainTasksRDN') . $config->current['BASE'];
       // Retrieve tasks information
       $ldap->cat($dn);
       if ($attrs = $ldap->fetch()) {
