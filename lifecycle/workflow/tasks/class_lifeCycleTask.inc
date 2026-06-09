@@ -274,14 +274,14 @@ class lifeCycleTask extends simplePlugin
    * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
-  public function generateSlaveTasks ()
+  public function generateSubTasks ()
   {
     $listOfDN = $this->attributesAccess['fdTasksLifeCycleListOfDN']->getValue();
-    // The attribute required to be search in createSlaveTasks
+    // The attribute required to be search in createSubTasks
     $attributeType = 'fdTasksGranularDN';
 
     // Call the method from parent tasks object (first tab) to create sub-tasks.
-    $this->parent->getBaseObject()->createSlaveTasks($listOfDN, $attributeType, NULL, 'Life Cycle');
+    $this->parent->getBaseObject()->createSubTasks($listOfDN, $attributeType, NULL, 'Life Cycle');
   }
 
   public function update (): bool
@@ -303,7 +303,7 @@ class lifeCycleTask extends simplePlugin
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
 
     if ($execTasks) {
-      $this->generateSlaveTasks();
+      $this->generateSubTasks();
     }
 
     return parent::save();

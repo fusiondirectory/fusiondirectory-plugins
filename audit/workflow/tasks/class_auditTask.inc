@@ -110,20 +110,20 @@ class auditTask extends simplePlugin
    * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
-  function generateSlaveTasks ()
+  function generateSubTasks ()
   {
     // Check if syslog transformation is enabled
     $syslogEnabled = $this->attributesAccess['fdAuditSyslogEnabled']->getValue();
 
-    // The attribute required to be searched in createSlaveTasks
+    // The attribute required to be searched in createSubTasks
     $attributeType = 'fdTasksGranularDN';
 
     if ($syslogEnabled) {
       // Create sub-tasks for audit syslog transformation
-      $this->parent->getBaseObject()->createSlaveTasks(['auditSyslogTask'], $attributeType, NULL, 'Audit-Syslog');
+      $this->parent->getBaseObject()->createSubTasks(['auditSyslogTask'], $attributeType, NULL, 'Audit-Syslog');
     } else {
       // Create sub-tasks for audit deletion
-      $this->parent->getBaseObject()->createSlaveTasks(['auditRetentionTask'], $attributeType, NULL, 'Audit');
+      $this->parent->getBaseObject()->createSubTasks(['auditRetentionTask'], $attributeType, NULL, 'Audit');
     }
   }
 
@@ -136,7 +136,7 @@ class auditTask extends simplePlugin
     $execTasks = $this->parent->getBaseObject()->fdSubTasksActivation ?? NULL;
 
     if ($execTasks) {
-      $this->generateSlaveTasks();
+      $this->generateSubTasks();
     }
 
     return parent::save();

@@ -318,16 +318,16 @@ class notificationsTask extends simplePlugin
    * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
-  function generateSlaveTasks ()
+  function generateSubTasks ()
   {
     $listOfDN = $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->getValue();
-    // The attribute required to be search in createSlaveTasks
+    // The attribute required to be search in createSubTasks
     $attributeType = 'fdTasksGranularDN';
     // Store the full associative array coming from the list of new audit user DN, containing all audit DN related to that user.
     $attrs['ref'] = $listOfDN;
 
     // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
-    $this->parent->getBaseObject()->createSlaveTasks(array_keys($listOfDN), $attributeType, $attrs, 'Notifications');
+    $this->parent->getBaseObject()->createSubTasks(array_keys($listOfDN), $attributeType, $attrs, 'Notifications');
   }
 
   /**
@@ -358,7 +358,7 @@ class notificationsTask extends simplePlugin
     );
 
     if ($execTasks) {
-      $this->generateSlaveTasks();
+      $this->generateSubTasks();
     }
 
     return parent::save();
