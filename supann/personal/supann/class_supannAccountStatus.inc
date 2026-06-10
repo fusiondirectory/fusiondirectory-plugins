@@ -24,6 +24,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   protected $displayHeader = TRUE;
 
   protected $substatus;
+  protected $focusedField;
 
   static function plInfo (): array
   {
