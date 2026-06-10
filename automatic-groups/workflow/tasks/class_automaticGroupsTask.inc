@@ -307,14 +307,14 @@ class automaticGroupsTask extends simplePlugin
       $this->updateDynamicGroupSettings();
 
       // Create just one task for dynamic group creation
-      $this->parent->getBaseObject()->createSubTasks(['dynamicGroupTask'], 'fdTasksGranularDN', NULL, 'Dynamic-Group');
+      $this->parent->getBaseObject()->createSubTasks(['dynamicGroupTask'], 'fdTasksGranularDN', NULL, 'automaticGroupsDynamic');
     } else {
       // Original code for regular automatic groups
       $listOfDN = $this->attributesAccess['fdTasksAutomaticGroupsListOfDN']->getValue();
       $attributeType = 'fdTasksGranularDN';
 
       // Call the method from parent tasks object (first tab) to create sub-tasks.
-      $this->parent->getBaseObject()->createSubTasks($listOfDN, $attributeType, NULL, 'Automatic Groups');
+      $this->parent->getBaseObject()->createSubTasks($listOfDN, $attributeType, NULL, 'automaticGroups');
     }
   }
 

@@ -281,14 +281,14 @@ class reminderTask extends simplePlugin
 
     // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
     // Create the first sub task with primary call
-    $this->parent->getBaseObject()->createSubTasks($monitoredDN, $attributeType, $firstCall, 'Reminder');
+    $this->parent->getBaseObject()->createSubTasks($monitoredDN, $attributeType, $firstCall, 'reminder');
 
     // Create the second sub task with secondary call (if present).
     if (!empty($this->attributesAccess['fdTasksReminderSecondCall']->getValue() &&
       $this->attributesAccess['fdTasksReminderAccountProlongation']->getValue())) {
 
       $secondCall['helper']['reminderTime'] = $this->attributesAccess['fdTasksReminderSecondCall']->getValue();
-      $this->parent->getBaseObject()->createSubTasks($monitoredDN, $attributeType, $secondCall, 'Reminder');
+      $this->parent->getBaseObject()->createSubTasks($monitoredDN, $attributeType, $secondCall, 'reminder');
     }
   }
 

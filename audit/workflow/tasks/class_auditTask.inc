@@ -120,10 +120,10 @@ class auditTask extends simplePlugin
 
     if ($syslogEnabled) {
       // Create sub-tasks for audit syslog transformation
-      $this->parent->getBaseObject()->createSubTasks(['auditSyslogTask'], $attributeType, NULL, 'Audit-Syslog');
+      $this->parent->getBaseObject()->createSubTasks(['auditSyslogTask'], $attributeType, NULL, 'auditSyslog');
     } else {
       // Create sub-tasks for audit deletion
-      $this->parent->getBaseObject()->createSubTasks(['auditRetentionTask'], $attributeType, NULL, 'Audit');
+      $this->parent->getBaseObject()->createSubTasks(['auditRetentionTask'], $attributeType, NULL, 'audit');
     }
   }
 

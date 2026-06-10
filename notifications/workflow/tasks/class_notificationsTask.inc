@@ -327,7 +327,7 @@ class notificationsTask extends simplePlugin
     $attrs['ref'] = $listOfDN;
 
     // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
-    $this->parent->getBaseObject()->createSubTasks(array_keys($listOfDN), $attributeType, $attrs, 'Notifications');
+    $this->parent->getBaseObject()->createSubTasks(array_keys($listOfDN), $attributeType, $attrs, 'notifications');
   }
 
   /**

@@ -281,7 +281,7 @@ class lifeCycleTask extends simplePlugin
     $attributeType = 'fdTasksGranularDN';
 
     // Call the method from parent tasks object (first tab) to create sub-tasks.
-    $this->parent->getBaseObject()->createSubTasks($listOfDN, $attributeType, NULL, 'Life Cycle');
+    $this->parent->getBaseObject()->createSubTasks($listOfDN, $attributeType, NULL, 'lifeCycle');
   }
 
   public function update (): bool
