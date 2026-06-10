@@ -265,7 +265,7 @@ class networkInterface extends simplePlugin
     for ($i = strlen($addr) - 1; $increment > 0 && $i >= 0; --$i) {
       $val        = ord($addr[$i]) + $increment;
       $increment  = $val / 256;
-      $addr[$i]   = chr($val % 256);
+      $addr[$i]   = chr(intval($val) % 256);
     }
 
     return $addr;
