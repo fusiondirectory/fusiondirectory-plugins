@@ -212,6 +212,10 @@ class networkInterface extends simplePlugin
     }
     $mask = str_pad($mask, $size, chr(0));
 
+    /* Address as written, before masking. Host bits mark the highest reserved
+       address; allocation starts at the next one. Host bits 0 (a network
+       address) keep the original behaviour. */
+    $requested = $net;
     $net = ($net & $mask);
 
     if ($size == 4) { // IPv4
@@ -229,15 +233,15 @@ class networkInterface extends simplePlugin
         }
         // Last usable IP = broadcast - 1
         $last = static::decrementBinaryIp($broadcast);
-        // Start from network + 1
-        $long = static::incrementBinaryIp($net);
+        // Start after the requested address (network + 1 when host bits are 0)
+        $long = static::incrementBinaryIp($requested);
         do {
           yield inet_ntop($long);
           $long = static::incrementBinaryIp($long);
         } while (strcmp($long, $last) <= 0);
       } else {
         // For /31 (point-to-point) and /32 (host route), all IPs are usable
-        $long = $net;
+        $long = (strcmp($requested, $net) > 0 ? static::incrementBinaryIp($requested) : $net);
         do {
           yield inet_ntop($long);
           $long = static::incrementBinaryIp($long);
@@ -246,8 +250,8 @@ class networkInterface extends simplePlugin
     } else { // IPv6
       $long = $net;
       if ($maskBits < 128) {
-        // Skip network address for subnets smaller than /128
-        $long = static::incrementBinaryIp($long);
+        // Skip the network address; host bits set a higher lower bound
+        $long = static::incrementBinaryIp($requested);
       }
       // For /128, yield the single IP; for others, yield from network+1 to last
       do {
