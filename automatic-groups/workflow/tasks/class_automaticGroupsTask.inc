@@ -33,6 +33,7 @@ class automaticGroupsTask extends simplePlugin
       'plShortName'    => _('Tasks Automatic Groups'),
       'plDescription'  => _('Tasks Automatic Groups Object'),
       'plIcon'         => 'geticon.php?context=applications&icon=automatic-groups&size=48',
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=automatic-groups&size=16',
       'plPriority'     => 42,
       'plObjectClass'  => ['fdTasksAutomaticGroups'],
       'plFilter'       => '(objectClass=fdTasksAutomaticGroups)',

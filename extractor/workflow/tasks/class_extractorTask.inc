@@ -28,7 +28,8 @@ class extractorTask extends simplePlugin
     return [
       'plShortName'    => _('Tasks Extractor'),
       'plDescription'  => _('Tasks Extractor Object'),
-      'plIcon'        => 'geticon.php?context=applications&icon=extractor-task&size=48',
+      'plIcon'         => 'geticon.php?context=applications&icon=extractor-task&size=48',
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=extractor-task&size=16',
       'plPriority'     => 42,
       'plObjectClass'  => ['fdExtractorTasks'],
       'plFilter'       => '(objectClass=fdExtractorTasks)',

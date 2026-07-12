@@ -29,7 +29,8 @@ class archiveTask extends simplePlugin
     return [
       'plShortName'    => _('Tasks Archive'),
       'plDescription'  => _('Tasks Archive Object'),
-      'plIcon'        => 'geticon.php?context=mimetypes&icon=application-x-archive&size=48',
+      'plIcon'         => 'geticon.php?context=mimetypes&icon=application-x-archive&size=48',
+      'plSmallIcon'    => 'geticon.php?context=mimetypes&icon=application-x-archive&size=16',
       'plPriority'     => 42,
       'plObjectClass'  => ['fdArchiveTasks'],
       'plFilter'       => '(objectClass=fdArchiveTasks)',

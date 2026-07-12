@@ -33,6 +33,7 @@ class lifeCycleTask extends simplePlugin
       'plShortName'    => _('Tasks Life Cycle'),
       'plDescription'  => _('Tasks Life Cycle Object'),
       'plIcon'         => 'geticon.php?context=applications&icon=lifecycle&size=48',
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=lifecycle&size=16',
       'plPriority'     => 42,
       'plObjectClass'  => ['fdTasksLifeCycle'],
       'plFilter'       => '(objectClass=fdTasksLifeCycle)',
