@@ -34,7 +34,8 @@ class notificationsTask extends simplePlugin
     return [
       'plShortName'    => _('Tasks Notifications'),
       'plDescription'  => _('Tasks Notifications Object'),
-      'plIcon'         => 'geticon.php?context=applications&icon=notifications&size=16',
+      'plIcon'         => 'geticon.php?context=applications&icon=notifications&size=48',
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=notifications&size=16',
       'plPriority'     => 42,
       'plObjectClass'  => ['fdTasksNotifications'],
       'plFilter'       => '(objectClass=fdTasksNotifications)',

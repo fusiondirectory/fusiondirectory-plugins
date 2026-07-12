@@ -34,7 +34,8 @@ class reminderTask extends simplePlugin
     return [
       'plShortName'    => _('Tasks Reminder'),
       'plDescription'  => _('Tasks User Reminder Object'),
-      'plIcon'         => 'geticon.php?context=applications&icon=Reminder&size=16',
+      'plIcon'         => 'geticon.php?context=applications&icon=Reminder&size=48',
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=Reminder&size=16',
       'plPriority'     => 42,
       'plObjectClass'  => ['fdTasksReminder'],
       'plFilter'       => '(objectClass=fdTasksReminder)',

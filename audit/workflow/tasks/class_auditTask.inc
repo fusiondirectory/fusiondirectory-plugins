@@ -28,7 +28,8 @@ class auditTask extends simplePlugin
     return [
       'plShortName'    => _('Tasks Audit'),
       'plDescription'  => _('Tasks Audit Object'),
-      'plIcon'         => 'geticon.php?context=applications&icon=audit&size=16',
+      'plIcon'         => 'geticon.php?context=applications&icon=audit&size=48',
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=audit&size=16',
       'plPriority'     => 42,
       'plObjectClass'  => ['fdAuditTasks'],
       'plFilter'       => '(objectClass=fdAuditTasks)',
