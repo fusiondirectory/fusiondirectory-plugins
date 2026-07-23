@@ -60,8 +60,6 @@ class reminderTask extends simplePlugin
       'section1' => [
         'name'  => _('User Reminder general settings'),
         'attrs' => [
-          // Following hidden attributes contain the list of members emails that should receive a reminder
-          new HiddenArrayAttribute('fdTasksReminderListOfRecipientsMails', FALSE, ''),
           new IntAttribute(
             _('First reminder'), _('Numbers of days before reaching resource end date'),
             'fdTasksReminderFirstCall', TRUE, '0', FALSE, '30'
@@ -252,25 +250,6 @@ class reminderTask extends simplePlugin
   }
 
   /**
-   * Retrieve all the DNs from groups or members, recipients and monitored members.
-   * As both require receiving a reminder.
-   */
-  protected function getListOfDN (): void
-  {
-    // Get the members or groups selected
-    $recipients = $this->attributesAccess['fdTasksReminderRecipientsMembers']->getValue();
-
-    // Call static function from tasks object in order to get a real list of members and related emails directly.
-    $recipientsEmailsList = mailTask::getEmailsFromSelectedDN('gosaMailAccount',
-                                                               'mail',
-                                                               tasks::extractMembersFromGroups($recipients));
-
-    // Fill the attribute with emails.
-    $this->attributesAccess['fdTasksReminderListOfRecipientsMails']->setValue(array_values($recipientsEmailsList));
-  }
-
-
-  /**
    * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
@@ -299,10 +278,6 @@ class reminderTask extends simplePlugin
   function update (): bool
   {
     parent::update();
-
-    // Take the list of DN based on the groups or members list selected and filled the related attributes
-    $this->getListOfDN();
-
     return TRUE;
   }
 
