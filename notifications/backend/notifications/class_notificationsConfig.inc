@@ -45,6 +45,7 @@ class notificationsConfig extends simplePlugin
               _('Attributes name'), _('Attributes name in ACL format'),
               'fdTasksNotificationsConfAttributes', FALSE, ''
             ),
+            ['cn', 'sn', 'givenName', 'mail', 'userPassword'],
           ),
         ]
       ]

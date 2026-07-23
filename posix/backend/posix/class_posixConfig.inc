@@ -109,7 +109,8 @@ class posixConfig extends simplePlugin
           ),
           new SelectAttribute(
             _('Default shell'), _('Shell used by default when activating Unix tab.'),
-            'fdDefaultShell', TRUE
+            'fdDefaultShell', TRUE,
+            [], '/bin/bash'
           ),
         ]
       ],
@@ -121,6 +122,7 @@ class posixConfig extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     $this->attributesAccess['fdDefaultShell']->setChoices($this->fdShells);
+    $this->attributesAccess['fdDefaultShell']->setDefaultValue('/bin/bash');
 
     $this->attributesAccess['fdIdAllocationMethod']->setManagedAttributes(
       [

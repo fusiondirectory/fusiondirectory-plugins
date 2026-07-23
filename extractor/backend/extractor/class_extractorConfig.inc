@@ -43,6 +43,7 @@ class extractorConfig extends simplePlugin
               _('Attributes name'), _('Attributes name in ACL format'),
               'fdExtractorConfAttributes', FALSE, ''
             ),
+            ['cn', 'sn', 'givenName', 'mail'],
           ),
         ]
       ]

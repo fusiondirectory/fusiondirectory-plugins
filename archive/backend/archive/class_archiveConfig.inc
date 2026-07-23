@@ -71,7 +71,7 @@ class archiveConfig extends multiPluginSection
             ),
             // no order
             FALSE,
-            [],
+            ['USER|mail,uid,sn,givenName|uid,mail'],
             TRUE
           ),
         ]

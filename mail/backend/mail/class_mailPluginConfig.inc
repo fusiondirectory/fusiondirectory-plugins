@@ -48,12 +48,14 @@ class mailPluginConfig extends simplePlugin
           new StringAttribute(
             _('User account template'),
             _('Override the user account creation syntax. Default is %PREFIX%%UATTRIB%.'),
-            'fdMailUserCreation'
+            'fdMailUserCreation', FALSE,
+            '%PREFIX%%UATTRIB%'
           ),
           new StringAttribute(
             _('Group account template'),
             _('Override the group account creation syntax. Default is %PREFIX%%UATTRIB%.'),
-            'fdMailFolderCreation'
+            'fdMailFolderCreation', FALSE,
+            '%PREFIX%%UATTRIB%'
           ),
           new BooleanAttribute(
             _('Delete mailbox on account deletion'),
@@ -64,7 +66,7 @@ class mailPluginConfig extends simplePlugin
             _('IMAP timeout'),
             _('Sets the connection timeout for imap actions.'),
             'fdImapTimeout', FALSE,
-            0, FALSE
+            0, FALSE, 10
           ),
           new StringAttribute(
             _('Shared prefix'),

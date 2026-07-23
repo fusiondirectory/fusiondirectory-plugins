@@ -42,7 +42,7 @@ class PartageConf extends simplePlugin
            new SelectAttribute(
               _('Mailbox actions upon user mail tab removal'),    _('Option to take in case of user mail tab removal'),
               'fdRenaterPartageConfDeleteOption', TRUE,
-               [  'delete',   'disable'], '',
+               [  'delete',   'disable'], 'disable',
               [_('Delete'),_('Disable')]
            ),
            new BooleanAttribute(
