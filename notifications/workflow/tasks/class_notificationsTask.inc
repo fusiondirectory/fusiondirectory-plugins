@@ -62,8 +62,6 @@ class notificationsTask extends simplePlugin
         'attrs' => [
           // Following attribute will contain all the DNs where a new snapshot was taken, required by orchestrator.
           new HiddenArrayAttribute('fdTasksNotificationsListOfNewAuditUsersDN', FALSE, ''),
-          // Following attribute contain the list of members emails that should receive a notification.
-          new HiddenArrayAttribute('fdTasksNotificationsListOfRecipientsMails', FALSE, ''),
           new SetAttribute(
             new SelectAttribute(
               'Attributes', _('Any changes listed to set attributes will trigger a notification'),
@@ -254,23 +252,6 @@ class notificationsTask extends simplePlugin
   }
 
   /**
-   * Retrieve all the DNs from groups or members
-   */
-  protected function getListOfDN (): void
-  {
-    // Get the members or groups selected
-    $recipients = $this->attributesAccess['fdTasksNotificationsRecipientsMembers']->getValue();
-    // Call static function from tasks object in order to get a real list of members and related emails directly.
-    $emailsList = mailTask::getEmailsFromSelectedDN('gosaMailAccount',
-                                                     'mail',
-                                                     tasks::extractMembersFromGroups($recipients)
-    );
-
-    // Fill the attribute with emails.
-    $this->attributesAccess['fdTasksNotificationsListOfRecipientsMails']->setValue(array_values($emailsList));
-  }
-
-  /**
    * @return array
    * Note : Return the list of users DN having had an audit listed since the last exec of this task.
    */
@@ -337,10 +318,6 @@ class notificationsTask extends simplePlugin
   function update (): bool
   {
     parent::update();
-
-    // Take the list of DN based on the groups or members list selected and filled the related attributes
-    $this->getListOfDN();
-
     return TRUE;
   }
 

@@ -100,11 +100,6 @@ class extractorTask extends simplePlugin
             'fdExtractorRecipientsMembers',
             TRUE
           ),
-          new HiddenArrayAttribute(
-            'fdExtractorListOfRecipientsMails',
-            FALSE,
-            ''
-          ),
           new MailAttribute(
             _('Sender email address'),
             _('Email address from which the extract will be sent'),
@@ -167,29 +162,9 @@ class extractorTask extends simplePlugin
     $this->parent->getBaseObject()->createSubTasks([$bulkTaskIdentifier], 'fdTasksGranularDN', NULL, 'extract');
   }
 
-  /**
-   * Resolve recipient emails
-   */
-  protected function resolveRecipientEmails (): void
-  {
-    $recipients = $this->attributesAccess['fdExtractorRecipientsMembers']->getValue();
-    $emailsList = mailTask::getEmailsFromSelectedDN(
-        'gosaMailAccount',
-        'mail',
-        tasks::extractMembersFromGroups($recipients)
-    );
-    $this->attributesAccess['fdExtractorListOfRecipientsMails']->setValue(array_values($emailsList));
-  }
-
   function check (): array
   {
     $errors = parent::check();
-
-    $this->resolveRecipientEmails();
-    if (count($this->attributesAccess['fdExtractorListOfRecipientsMails']->getValue()) === 0) {
-      $errors[] = new FusionDirectoryError(htmlescape(sprintf(_('User has no email address'))));
-    }
-
     return $errors;
   }
 

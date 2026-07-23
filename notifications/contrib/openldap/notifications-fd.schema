@@ -9,70 +9,65 @@ attributetype ( 1.3.6.1.4.1.38414.90.1.1 NAME 'fdTasksNotificationsListOfNewAudi
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.2 NAME 'fdTasksNotificationsListOfRecipientsMails'
-  DESC 'FusionDirectory - Following attribute contain the list of members emails that should receive a notification.'
-  EQUALITY caseExactMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )\
-
-attributetype ( 1.3.6.1.4.1.38414.90.1.3 NAME 'fdTasksNotificationsRecipientsMembers'
+attributetype ( 1.3.6.1.4.1.38414.90.1.2 NAME 'fdTasksNotificationsRecipientsMembers'
     DESC 'FusionDirectory - Following attribute contain the list of members and groups DN recipients to notifications.'
     EQUALITY caseExactMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.4 NAME 'fdTasksNotificationsMonitoredMembers'
+attributetype ( 1.3.6.1.4.1.38414.90.1.3 NAME 'fdTasksNotificationsMonitoredMembers'
     DESC 'FusionDirectory - Following attribute contain the list of members and groups to monitor.'
     EQUALITY caseExactMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.5 NAME 'fdTasksNotificationsAttributes'
+attributetype ( 1.3.6.1.4.1.38414.90.1.4 NAME 'fdTasksNotificationsAttributes'
   DESC 'FusionDirectory - Tasks for life cycle - new sub state'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.6 NAME 'fdTasksNotificationsMailTemplate'
+attributetype ( 1.3.6.1.4.1.38414.90.1.5 NAME 'fdTasksNotificationsMailTemplate'
   DESC 'FusionDirectory - Tasks for mail template objects'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.7 NAME 'fdTasksNotificationsEmailSender'
+attributetype ( 1.3.6.1.4.1.38414.90.1.6 NAME 'fdTasksNotificationsEmailSender'
   DESC 'FusionDirectory - Emails derived from DN'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
 # Supann states attributes
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.8 NAME 'fdTasksNotificationsResource'
+attributetype ( 1.3.6.1.4.1.38414.90.1.7 NAME 'fdTasksNotificationsResource'
   DESC 'FusionDirectory - Monitored resource'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.9 NAME 'fdTasksNotificationsState'
+attributetype ( 1.3.6.1.4.1.38414.90.1.8 NAME 'fdTasksNotificationsState'
   DESC 'FusionDirectory - Monitored state'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.10 NAME 'fdTasksNotificationsSubState'
+attributetype ( 1.3.6.1.4.1.38414.90.1.9 NAME 'fdTasksNotificationsSubState'
   DESC 'FusionDirectory - Monitored substate'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.11 NAME 'fdTasksNotificationsPostResource'
+attributetype ( 1.3.6.1.4.1.38414.90.1.10 NAME 'fdTasksNotificationsPostResource'
   DESC 'FusionDirectory - Next resource value'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.12 NAME 'fdTasksNotificationsPostState'
+attributetype ( 1.3.6.1.4.1.38414.90.1.11 NAME 'fdTasksNotificationsPostState'
   DESC 'FusionDirectory - Next resource state value'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.90.1.13 NAME 'fdTasksNotificationsPostSubState'
+attributetype ( 1.3.6.1.4.1.38414.90.1.12 NAME 'fdTasksNotificationsPostSubState'
   DESC 'FusionDirectory - Next resource substate value'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
@@ -83,7 +78,7 @@ attributetype ( 1.3.6.1.4.1.38414.90.1.13 NAME 'fdTasksNotificationsPostSubState
 objectclass (1.3.6.1.4.1.38414.90.2.1 NAME 'fdTasksNotifications' SUP top AUXILIARY
   DESC 'FusionDirectory - Notifications plugins Object Class'
   MUST ( fdTasksNotificationsAttributes $ fdTasksNotificationsRecipientsMembers $
-  fdTasksNotificationsListOfRecipientsMails $ fdTasksNotificationsMonitoredMembers $ fdTasksNotificationsMailTemplate $
+  fdTasksNotificationsMonitoredMembers $ fdTasksNotificationsMailTemplate $
   fdTasksNotificationsEmailSender)
   MAY  ( fdTasksNotificationsListOfNewAuditUsersDN $ fdTasksNotificationsResource $ fdTasksNotificationsState 
   $ fdTasksNotificationsSubState $ fdTasksNotificationsPostResource $ fdTasksNotificationsPostState 
