@@ -302,14 +302,16 @@ class notificationsTask extends simplePlugin
    */
   function generateSubTasks ()
   {
-    $listOfDN = $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->getValue();
+    $listOfDN = tasks::extractMembersFromGroups(
+      $this->attributesAccess['fdTasksNotificationsRecipientsMembers']->getValue()
+    );
     // The attribute required to be search in createSubTasks
     $attributeType = 'fdTasksGranularDN';
     // Store the full associative array coming from the list of new audit user DN, containing all audit DN related to that user.
-    $attrs['ref'] = $listOfDN;
+    $attrs['ref'] = $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->getValue();
 
     // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
-    $this->parent->getBaseObject()->createSubTasks(array_keys($listOfDN), $attributeType, $attrs, 'notifications');
+    $this->parent->getBaseObject()->createSubTasks($listOfDN, $attributeType, $attrs, 'notifications');
   }
 
   /**
