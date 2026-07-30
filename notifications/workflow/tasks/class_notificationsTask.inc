@@ -288,7 +288,8 @@ class notificationsTask extends simplePlugin
         $unixAuditTime = $date->getTimestamp(); // Change object dateTime to unix format.
 
         if ($unixAuditTime >= $unixLastActivation) {
-          $result[$attrs['fdAuditObject'][0]][] = $attrs['dn'];
+          // The format is "userDN|auditDN" so we can later in Orchestrator assign the audit change with the monitored member
+          $result[] = $attrs['fdAuditObject'][0] . "|" . $attrs['dn'];
         }
       }
     }
@@ -306,7 +307,7 @@ class notificationsTask extends simplePlugin
       $this->attributesAccess['fdTasksNotificationsRecipientsMembers']->getValue()
     );
     // The attribute required to be search in createSubTasks
-    $attributeType = 'fdTasksGranularDN';
+    $attributeType = 'fdTasksGranularNotificationDN';
     // Store the full associative array coming from the list of new audit user DN, containing all audit DN related to that user.
     $attrs['ref'] = $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->getValue();
 
