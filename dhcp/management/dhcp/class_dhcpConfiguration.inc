@@ -125,12 +125,6 @@ class dhcpConfiguration extends simplePlugin
     $this->ldap_error = 'Success';
     /* Save dhcp settings */
     $ldap   = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    try {
-      $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
-    } catch (FusionDirectoryError $error) {
-      return [$error];
-    }
     $cache  = $this->attributesAccess['dhcpSections']->getCache();
     $errors = [];
     $new    = ($this->orig_dn == 'new');

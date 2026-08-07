@@ -61,21 +61,6 @@ class userReminderConfig extends simplePlugin
   function __construct (?string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE, ?array $attributesInfo = NULL)
   {
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
-
-    global $config;
-    // Check if token branch is here
-    $ldap = $config->get_ldap_link();
-    $tokenBranch = get_ou('ReminderTokenRDN').$config->current['BASE'];
-    $ldap->cat($tokenBranch, ['dn']);
-    if (!$ldap->count()) {
-      $ldap->cd($config->current['BASE']);
-      try {
-        $ldap->create_missing_trees($tokenBranch);
-      } catch (FusionDirectoryError $error) {
-        $error->display();
-      }
-      fusiondirectory_log('Created token branch '.$tokenBranch);
-    }
   }
 }
 
