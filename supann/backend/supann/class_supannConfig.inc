@@ -71,6 +71,11 @@ class supannConfig extends simplePlugin
             'fdSupannCiviliteRDN', TRUE,
             'ou=civilite,ou=supannobjects'
           ),
+          new StringAttribute(
+            _('SupAnn Consent RDN'), _('Branch in which SupAnn Consent Objects will be stored'),
+            'fdSupannConsentRDN', TRUE,
+            'ou=consent,ou=supannobjects'
+          ),
         ]
       ],
 
@@ -297,70 +302,6 @@ class supannConfig extends simplePlugin
         ]
       ],
 
-      'consent' => [
-        'name'  => _('Consent'),
-        'class' => ['fullwidth'],
-        'attrs' => [
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('Objects which may be used as tag in supannConsentement'),
-              'fdSupannConsentementObjects',
-              [
-                new StringAttribute(
-                  _('Object'), _('Consent object'),
-                  'fdSupannConsentementObjects_object', TRUE
-                ),
-                new StringAttribute(
-                  _('Label'), _('Label shown for this object'),
-                  'fdSupannConsentementObjects_label', TRUE
-                ),
-              ],
-              ';',
-              '',
-              _('Consent objects')
-            ),
-            FALSE,
-            [
-              'JPEGPHOTO;Picture',
-              'SUPANNMAILPERSO;Personal email',
-              'MAIL;Email',
-              'MOBILE;Mobile',
-            ],
-            TRUE
-          ),
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('Types which may be used as value in supannConsentement'),
-              'fdSupannConsentementTypes',
-              [
-                new StringAttribute(
-                  _('Type'), _('Consent type'),
-                  'fdSupannConsentementTypes_type', TRUE
-                ),
-                new StringAttribute(
-                  _('Label'), _('Label shown for this type'),
-                  'fdSupannConsentementTypes_label', TRUE
-                ),
-              ],
-              ';',
-              '',
-              _('Consent types')
-            ),
-            FALSE,
-            [
-              'PUBLIC;Public',
-              'AUTH;Authenticated',
-              'PR;Resource people',
-              'APPRENANTS;APPRENANTS',
-              'INTERNE;Intern',
-              'FER;FER',
-              'EDUGAIN;EduGAIN',
-              'CGU;CGU',
-            ],
-            TRUE
-          ),
-        ]
-      ],
       'features' => [
         'name'  => _('Features'),
         'attrs' => [

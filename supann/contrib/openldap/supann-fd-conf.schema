@@ -167,6 +167,14 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.28 NAME 'fdSupannShowEmployee'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+# New attribute for SupAnn Consent RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.29 NAME 'fdSupannConsentRDN'
+  DESC 'FusionDirectory - SupAnn Consent objects RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
 
 
 # Deprecated for next release, they are now migrated to supannObjects
@@ -222,7 +230,7 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   SUP top AUXILIARY
   MUST ( cn )
   MAY (
-    fdSupannStructuresRDN $ fdSupannObjectsRDN $ fdSupannRessourceRDN $ fdSupannStateRDN $ fdSupannSubStateRDN $  fdSupannCiviliteRDN $
+    fdSupannStructuresRDN $ fdSupannObjectsRDN $ fdSupannRessourceRDN $ fdSupannStateRDN $ fdSupannSubStateRDN $ fdSupannCiviliteRDN $ fdSupannConsentRDN $
     fdSupannPasswordRecovery $
     fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains $
     fdSupannConsentementObjects $ fdSupannConsentementTypes $ fdSupannShowMailForwardingAddress $

@@ -345,23 +345,17 @@ class supannAccount extends simplePlugin
     );
 
     /* supannConsentement */
-    $objects      = [];
-    $objectLabels = [];
-    foreach ($config->get_cfg_value('SupannConsentementObjects', []) as $supannConsentementObject) {
-      list($object, $label) = explode(';', $supannConsentementObject);
-      $objects[]      = $object;
-      $objectLabels[] = $label;
-    }
-    $this->attributesAccess['supannConsentement']->attribute->attributes[0]->setChoices($objects, $objectLabels);
+    $consentObjects = static::getConsentObjects();
+    $this->attributesAccess['supannConsentement']->attribute->attributes[0]->setChoices(
+      array_keys($consentObjects),
+      array_values($consentObjects)
+    );
 
-    $types      = [];
-    $typeLabels = [];
-    foreach ($config->get_cfg_value('SupannConsentementTypes', []) as $supannConsentementType) {
-      list($type, $label) = explode(';', $supannConsentementType);
-      $types[]      = $type;
-      $typeLabels[] = $label;
-    }
-    $this->attributesAccess['supannConsentement']->attribute->attributes[1]->setChoices($types, $typeLabels);
+    $consentTypes = static::getConsentTypes();
+    $this->attributesAccess['supannConsentement']->attribute->attributes[1]->setChoices(
+      array_keys($consentTypes),
+      array_values($consentTypes)
+    );
 
     $aCodePopulation = $this->getLdapPopulationCodes();
     if (!empty($aCodePopulation)) {
@@ -434,6 +428,46 @@ class supannAccount extends simplePlugin
     asort($civilite);
 
     return $civilite;
+  }
+
+  static function getConsentObjects (): array
+  {
+    global $config, $ui;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd(get_ou('SupannConsentRDN').$config->current['BASE']);
+
+    $objects = [];
+    $ldap->search('(objectClass=fdSupannConsentObject)', ['fdSupannConsentObjectName','fdSupannConsentObjectLabel'], 'subtree');
+    while ($attrs = $ldap->fetch()) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannConsentObject/supannConsentObject', 'fdSupannConsentObjectLabel'))) {
+        continue;
+      }
+      $objects[$attrs['fdSupannConsentObjectName'][0]] = $attrs['fdSupannConsentObjectLabel'][0];
+    }
+
+    asort($objects);
+    return $objects;
+  }
+
+  static function getConsentTypes (): array
+  {
+    global $config, $ui;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd(get_ou('SupannConsentRDN').$config->current['BASE']);
+
+    $types = [];
+    $ldap->search('(objectClass=fdSupannConsentType)', ['fdSupannConsentTypeName','fdSupannConsentTypeLabel'], 'subtree');
+    while ($attrs = $ldap->fetch()) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannConsentType/supannConsentType', 'fdSupannConsentTypeLabel'))) {
+        continue;
+      }
+      $types[$attrs['fdSupannConsentTypeName'][0]] = $attrs['fdSupannConsentTypeLabel'][0];
+    }
+
+    asort($types);
+    return $types;
   }
 
   /*

@@ -39,7 +39,7 @@ class supannObjectsManagement extends management
         'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
         'plSection'     => ['supann' => ['name' => _('Supann'), 'priority' => 1]],
         'plPriority'    => 0,
-        'plManages'     => ['supannRessource','supannRessourceState','supannRessourceSubState','supannCivilite']
+        'plManages'     => ['supannRessource','supannRessourceState','supannRessourceSubState','supannCivilite','supannConsentObject','supannConsentType']
         ];
   }
 }
