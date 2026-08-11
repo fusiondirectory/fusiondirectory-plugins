@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2013-2020 FusionDirectory
+  Copyright (C) 2013-2026 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,6 +21,9 @@
 
 class supannConfig extends simplePlugin
 {
+
+  protected $populationCodeMaster;
+
   static function plInfo (): array
   {
     return [
@@ -353,7 +356,7 @@ class supannConfig extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=fdSupannExt))');
+    $ldap->search('(&(fdSupannPluginConf))');
 
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['fdMainPopulationCodeConf'][0])) {
@@ -415,10 +418,6 @@ class supannConfig extends simplePlugin
     $this->populationCodeMaster += $this->attributesAccess['fdMainPopulationCodeConf']->getValue();
     $this->populationCodeMaster = array_unique($this->populationCodeMaster);
 
-    $this->attributesAccess['fdLocalPopulationCodeConf']->attribute->attributes[0]->setChoices(
-      array_values($this->populationCodeMaster)
-    );
-
     $this->attributesAccess['fdMainPopulationCodeConf']->setValue(
       array_values($this->populationCodeMaster)
     );
@@ -430,36 +429,8 @@ class supannConfig extends simplePlugin
   public function update (): bool
   {
     parent::update();
-    $this->updateFieldsChoicesAndValues();
-    $this->attributesAccess['fdLocalPopulationCodeConf']->setValue($this->deleteLocalPopuplationCode());
 
     return TRUE;
-  }
-
-  /*
-   *  Local Population Code is deleted if the parent/main code is not existing.
-   */
-  protected function deleteLocalPopuplationCode () : array
-  {
-    $result = [];
-    foreach ($this->attributesAccess['fdMainPopulationCodeConf']->getValue() as $mCodes) {
-      foreach ($this->attributesAccess['fdLocalPopulationCodeConf']->getValue() as $lCodes) {
-        preg_match('/^{.*}(.*)/', $mCodes, $mainMatch);
-        preg_match('/^{.*}(.*):/', $lCodes, $localMatch);
-        if (isset($mainMatch[1], $localMatch[1]) && $mainMatch[1] == $localMatch[1]) {
-          $result[] = $lCodes;
-        }
-      }
-    }
-    return $result;
-  }
-
-  protected function updateFieldsChoicesAndValues ()
-  {
-    $this->attributesAccess['fdLocalPopulationCodeConf']->attribute->attributes[0]->setChoices(
-      $this->attributesAccess['fdMainPopulationCodeConf']->getValue(),
-      $this->attributesAccess['fdMainPopulationCodeConf']->getDisplayValues()
-    );
   }
 
   /*
