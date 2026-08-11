@@ -42,12 +42,12 @@ class applicationsPluginConfig extends multiPluginSection
           new StringAttribute(
             _('Application RDN'), _('Branch in which applications will be stored'),
             'fdApplicationsRDN', TRUE,
-            'ou=apps'
+            'ou=applications'
           ),
           new StringAttribute(
             _('Web applications RDN'), _('Branch in which web applications will be stored'),
             'fdWebappsRDN', TRUE,
-            'ou=apps'
+            'ou=applications'
           ),
           new SelectAttribute(
             _('Show web applications in menu'), _('Whether to show web applications in FD main menu'),
