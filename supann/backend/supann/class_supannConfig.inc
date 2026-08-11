@@ -79,6 +79,11 @@ class supannConfig extends simplePlugin
             'fdSupannConsentRDN', TRUE,
             'ou=consent,ou=supannobjects'
           ),
+          new StringAttribute(
+            _('SupAnn Population Code RDN'), _('Branch in which SupAnn Population Code Objects will be stored'),
+            'fdSupannPopulationCodeRDN', TRUE,
+            'ou=populationcodes,ou=supannobjects'
+          ),
         ]
       ],
 
@@ -275,32 +280,6 @@ class supannConfig extends simplePlugin
             FALSE,
             [],
             TRUE
-          ),
-        ]
-      ],
-      'mainPopulationCodeConf' => [
-        'name'  => _('Main Population Codes'),
-        'attrs' => [
-         new SetAttribute(
-            new CompositeAttribute(
-              _('Main Codes Configuration'),
-              'fdMainPopulationCodeConf',
-              [
-               new SelectAttribute(
-                  _('Prefix'),    _('Prefix Of The Main Population Code'),
-                  'fdsupannMainPopulationCodePrefix', FALSE,
-                  ['SUPANN']
-                ),
-               new StringAttribute(
-                  _('Main Population Code'), _('Main Population Code'),
-                  'fdMainPopulationCode', FALSE, ''
-                ),
-              ],
-              '/.*/',
-              '{%s}%s',
-              '',
-              _('Main Population Codes')
-            )
           ),
         ]
       ],
