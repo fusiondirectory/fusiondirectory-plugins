@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2015-2022 FusionDirectory
+  Copyright (C) 2015-2026 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -36,6 +36,12 @@ class posixConfig extends simplePlugin
 
   static function getAttributesInfo (): array
   {
+    $fdShellsArray = [
+      '/bin/ash','/bin/bash','/bin/csh','/bin/sh','/bin/ksh',
+      '/bin/tcsh','/bin/dash','/bin/zsh','/sbin/nologin',
+      '/bin/false', '/usr/bin/git-shell'
+    ];
+
     return [
       'main' => [
         'name'  => _('POSIX'),
@@ -104,12 +110,11 @@ class posixConfig extends simplePlugin
               _('Available shells'), _('Available POSIX shells for FD users.'),
               'fdShells', FALSE
             ),
-            ['/bin/ash','/bin/bash','/bin/csh','/bin/sh','/bin/ksh',
-                  '/bin/tcsh','/bin/dash','/bin/zsh','/sbin/nologin', '/bin/false', '/usr/bin/git-shell']
+            $fdShellsArray
           ),
           new SelectAttribute(
             _('Default shell'), _('Shell used by default when activating Unix tab.'),
-            'fdDefaultShell', TRUE
+            'fdDefaultShell', TRUE, $fdShellsArray, '/bin/bash'
           ),
         ]
       ],

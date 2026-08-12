@@ -48,7 +48,8 @@ class ppolicyConfig extends multiPluginSection
           ),
           new StringAttribute(
             _('Default ppolicy dn'), _('What you put as default ppolicy in the overlay config'),
-            'fdPpolicyDefaultDn', FALSE
+            'fdPpolicyDefaultDn', FALSE,
+            'cn=default'
           ),
           new HiddenAttribute('fdPpolicyDefaultCn'),
         ]

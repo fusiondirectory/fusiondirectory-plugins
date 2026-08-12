@@ -57,6 +57,7 @@ class auditConfig extends multiPluginSection
               _('Hide value of below attributes'), _('Attributes name in ACL format, hiding the values related to set attributes'),
               'fdAuditConfHiddenAttrValues', FALSE
             ),
+            ['userPassword'],
           ),
         ]
       ],
