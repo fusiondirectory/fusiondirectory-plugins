@@ -482,7 +482,7 @@ class supannAccount extends simplePlugin
     $ldap = $config->get_ldap_link();
     $dn = 'cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE'];
     $ldap->cd($dn);
-    $ldap->search('(objectClass=fdSupannExt)');
+    $ldap->search('(objectClass=fdSupannPluginConf)');
 
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['fdMainPopulationCodeConf'][0])) {
