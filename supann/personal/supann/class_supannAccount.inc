@@ -416,12 +416,12 @@ class supannAccount extends simplePlugin
 
     /* Get resources from LDAP */
     $civilite = [];
-    $ldap->search('(objectClass=fdSupannCivilite)', ['fdSupannCiviliteName','fdSupannCiviliteLabel'], 'subtree');
+    $ldap->search('(objectClass=fdSupannCivilite)', ['fdSupannCiviliteName','fdSupannLabel'], 'subtree');
     while ($attrs = $ldap->fetch()) {
-      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannCivilite/supannCivilite', 'fdSupannCiviliteLabel'))) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannCivilite/supannCivilite', 'fdSupannLabel'))) {
         continue;
       }
-      $civilite += [$attrs['fdSupannCiviliteLabel'][0] => $attrs['fdSupannCiviliteName'][0]];
+      $civilite += [$attrs['fdSupannLabel'][0] => $attrs['fdSupannCiviliteName'][0]];
     }
 
     /* Sort */

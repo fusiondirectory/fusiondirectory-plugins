@@ -26,7 +26,7 @@ class supannObjectsManagement extends management
   public static $columns = [
     ['ObjectTypeColumn',   []],
     ['LinkColumn',         ['attributes' => 'nameAttr',                     'label' => 'Name']],
-    ['LinkColumn',         ['attributes' => 'fdSupannRessourceLabel',       'label' => 'Label']],
+    ['LinkColumn',         ['attributes' => 'fdSupannLabel',       'label' => 'Label']],
     ['LinkColumn',         ['attributes' => 'description',                  'label' => 'Description']],
     ['ActionsColumn',      ['label' => 'Actions']],
   ];

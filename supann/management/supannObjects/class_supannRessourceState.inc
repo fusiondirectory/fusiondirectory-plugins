@@ -64,7 +64,7 @@ class supannRessourceState extends simplePlugin
           ),
           new StringAttribute(
             _('State Label'), _('The label of the Supann State'),
-            'fdSupannRessourceLabel', TRUE
+            'fdSupannLabel', TRUE
           ),
           new StringAttribute(
             _('State Description'), _('The description explaining this Supann State'),
@@ -105,13 +105,13 @@ class supannRessourceState extends simplePlugin
     $ou = get_ou('SupannSubStateRDN') . $config->current['BASE'];
     $ldap = $config->get_ldap_link();
     $ldap->cd($ou);
-    $ldap->search('(objectClass=fdSupannRessourceSubState)', ['dn', 'fdSupannRessourceLabel']);
+    $ldap->search('(objectClass=fdSupannRessourceSubState)', ['dn', 'fdSupannLabel']);
 
     $substates = [];
     while ($attrs = $ldap->fetch()) {
       if (!empty($attrs['dn'])) {
         $dn = $attrs['dn'];
-        $label = !empty($attrs['fdSupannRessourceLabel'][0]) ? $attrs['fdSupannRessourceLabel'][0] : $dn;
+        $label = !empty($attrs['fdSupannLabel'][0]) ? $attrs['fdSupannLabel'][0] : $dn;
         $substates[$dn] = $label;
       }
     }

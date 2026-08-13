@@ -54,7 +54,7 @@ class supannCivilite extends simplePlugin
           ),
           new StringAttribute(
             _('Civility Label'), _('The label of the Supann Civility'),
-            'fdSupannCiviliteLabel', TRUE
+            'fdSupannLabel', TRUE
           ),
           new StringAttribute(
             _('Civility Description'), _('The description explaining this Supann Civility'),
