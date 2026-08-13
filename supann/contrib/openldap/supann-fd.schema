@@ -112,7 +112,7 @@ objectclass ( 1.3.6.1.4.1.38414.28.10.4 NAME 'fdSupannCivilite'
 
 objectclass ( 1.3.6.1.4.1.38414.28.10.5 NAME 'fdSupannPopulationCode'
   DESC 'FusionDirectory SupAnn Population Code'
-  MUST ( fdSupannPopulationCodeName $ fdSupannPopulationCodeLabel )
+  MUST ( fdSupannPopulationCodeName $ fdSupannLabel )
   MAY ( description ))
 
 objectclass ( 1.3.6.1.4.1.38414.28.13.2 NAME 'fdSupannConsentObject'
