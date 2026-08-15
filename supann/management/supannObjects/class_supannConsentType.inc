@@ -54,7 +54,7 @@ class supannConsentType extends simplePlugin
           ),
           new StringAttribute(
             _('Consent Type Label'), _('The label of the Supann Consent Type'),
-            'fdSupannConsentTypeLabel', TRUE
+            'fdSupannLabel', TRUE
           ),
           new StringAttribute(
             _('Consent Type Description'), _('The description explaining this Supann Consent Type'),

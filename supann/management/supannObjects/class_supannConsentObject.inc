@@ -54,7 +54,7 @@ class supannConsentObject extends simplePlugin
           ),
           new StringAttribute(
             _('Consent Object Label'), _('The label of the Supann Consent Object'),
-            'fdSupannConsentObjectLabel', TRUE
+            'fdSupannLabel', TRUE
           ),
           new StringAttribute(
             _('Consent Object Description'), _('The description explaining this Supann Consent Object'),
