@@ -479,14 +479,13 @@ class supannAccount extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd(get_ou('SupannPopulationCodeRDN').$config->current['BASE']);
-
     $populationCodes = [];
-    $ldap->search('(objectClass=fdSupannPopulationCode)', ['fdSupannPopulationCodeName','fdSupannPopulationCodeLabel'], 'subtree');
+    $ldap->search('(objectClass=fdSupannPopulationCode)', ['fdSupannPopulationCodeName','fdSupannLabel'], 'subtree');
     while ($attrs = $ldap->fetch()) {
-      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannCodePopulation/supannCodePopulation', 'fdSupannPopulationCodeLabel'))) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannCodePopulation/supannCodePopulation', 'fdSupannLabel'))) {
         continue;
       }
-      $populationCodes[$attrs['fdSupannPopulationCodeName'][0]] = $attrs['fdSupannPopulationCodeLabel'][0];
+      $populationCodes[$attrs['fdSupannPopulationCodeName'][0]] = $attrs['fdSupannLabel'][0];
     }
 
     /* Sort */
