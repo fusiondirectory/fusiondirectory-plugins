@@ -490,7 +490,7 @@ class supannAccount extends simplePlugin
 
     /* Sort */
     asort($populationCodes);
- 
+
     return $populationCodes;
   }
 
