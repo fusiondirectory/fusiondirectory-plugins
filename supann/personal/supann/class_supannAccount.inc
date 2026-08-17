@@ -357,9 +357,9 @@ class supannAccount extends simplePlugin
       array_values($consentTypes)
     );
 
-    $aCodePopulation = $this->getLdapPopulationCodes();
+    $aCodePopulation = static::getPopulationCodes();
     if (!empty($aCodePopulation)) {
-      $this->attributesAccess['supannCodePopulation']->attribute->setChoices($aCodePopulation);
+      $this->attributesAccess['supannCodePopulation']->attribute->setChoices(array_keys($aCodePopulation), array_values($aCodePopulation));
     }
 
     /* supannCivilite */
@@ -471,38 +471,27 @@ class supannAccount extends simplePlugin
   }
 
   /*
-   * Return table of existing Population Codes containing main's and local's
+   * Return table of existing Population Codes as [name => label]
    */
-  protected function getLdapPopulationCodes (): array
+  static function getPopulationCodes (): array
   {
-    global $config;
-    $result = [];
-    $populationCodes = [];
+    global $config, $ui;
 
     $ldap = $config->get_ldap_link();
-    $dn = 'cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE'];
-    $ldap->cd($dn);
-    $ldap->search('(objectClass=fdSupannPluginConf)');
-
+    $ldap->cd(get_ou('SupannPopulationCodeRDN').$config->current['BASE']);
+    $populationCodes = [];
+    $ldap->search('(objectClass=fdSupannPopulationCode)', ['fdSupannPopulationCodeName','fdSupannLabel'], 'subtree');
     while ($attrs = $ldap->fetch()) {
-      if (isset($attrs['fdMainPopulationCodeConf'][0])) {
-        $populationCodes[] = $attrs['fdMainPopulationCodeConf'];
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannCodePopulation/supannCodePopulation', 'fdSupannLabel'))) {
+        continue;
       }
-      if (isset($attrs['fdLocalPopulationCodeConf'][0])) {
-        $populationCodes[] = $attrs['fdLocalPopulationCodeConf'];
-      }
+      $populationCodes[$attrs['fdSupannPopulationCodeName'][0]] = $attrs['fdSupannLabel'][0];
     }
 
-    //Verification if the values within the multidim assoc array match the patterns
-    for ($i = 0; $i < count($populationCodes); $i++) {
-      foreach ($populationCodes[$i] as $key => $value) {
-        if (preg_match('/^{/', $value)) {
-          $result[] = $value;
-        }
-      }
-    }
+    /* Sort */
+    asort($populationCodes);
 
-    return $result;
+    return $populationCodes;
   }
 
   public function update (): bool

@@ -79,6 +79,11 @@ class supannConfig extends simplePlugin
             'fdSupannConsentRDN', TRUE,
             'ou=consent,ou=supannobjects'
           ),
+          new StringAttribute(
+            _('SupAnn Population Code RDN'), _('Branch in which SupAnn Population Code Objects will be stored'),
+            'fdSupannPopulationCodeRDN', TRUE,
+            'ou=populationcodes,ou=supannobjects'
+          ),
         ]
       ],
 
@@ -278,32 +283,6 @@ class supannConfig extends simplePlugin
           ),
         ]
       ],
-      'mainPopulationCodeConf' => [
-        'name'  => _('Main Population Codes'),
-        'attrs' => [
-         new SetAttribute(
-            new CompositeAttribute(
-              _('Main Codes Configuration'),
-              'fdMainPopulationCodeConf',
-              [
-               new SelectAttribute(
-                  _('Prefix'),    _('Prefix Of The Main Population Code'),
-                  'fdsupannMainPopulationCodePrefix', FALSE,
-                  ['SUPANN']
-                ),
-               new StringAttribute(
-                  _('Main Population Code'), _('Main Population Code'),
-                  'fdMainPopulationCode', FALSE, ''
-                ),
-              ],
-              '/.*/',
-              '{%s}%s',
-              '',
-              _('Main Population Codes')
-            )
-          ),
-        ]
-      ],
 
       'features' => [
         'name'  => _('Features'),
@@ -337,111 +316,4 @@ class supannConfig extends simplePlugin
       ],
     ];
   }
-
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
-  {
-    global $config;
-    parent::__construct($dn, $object, $parent, $mainTab);
-
-    $this->setBasicMainCodes();
-  }
-
-  /*
-   * Return table of existing populationCodeMaster
-   */
-  protected function getLdapMainPopulationCodes (): array
-  {
-    global $config;
-    $popCodeMaster = [];
-
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(fdSupannPluginConf))');
-
-    while ($attrs = $ldap->fetch()) {
-      if (isset($attrs['fdMainPopulationCodeConf'][0])) {
-        $popCodeMaster[] = $attrs['fdMainPopulationCodeConf'];
-      }
-    }
-
-    return $popCodeMaster;
-  }
-
-  /*
-   * Required to make sure the basic template of population code is always available.
-   * In the tabl of Main and Local sections.
-   */
-  protected function setBasicMainCodes () : void
-  {
-    $this->populationCodeMaster = [
-      '{SUPANN}P'    => _('{SUPANN}P'),
-      '{SUPANN}PX'    => _('{SUPANN}PX'),
-      '{SUPANN}PXE'    => _('{SUPANN}PXE'),
-      '{SUPANN}PXL'    => _('{SUPANN}PXL'),
-      '{SUPANN}PXR'    => _('{SUPANN}PXR'),
-      '{SUPANN}PXSP'    => _('{SUPANN}PXSP'),
-      '{SUPANN}PXU'    => _('{SUPANN}PXU'),
-      '{SUPANN}R'    => _('{SUPANN}R'),
-      '{SUPANN}RG'   => _('{SUPANN}RG'),
-      '{SUPANN}RGI' => _('{SUPANN}RGI'),
-      '{SUPANN}RGIE' => _('{SUPANN}RGIE'),
-      '{SUPANN}RGIS' => _('{SUPANN}RGIS'),
-      '{SUPANN}RGN' => _('{SUPANN}RGN'),
-      '{SUPANN}RGNC' => _('{SUPANN}RGNC'),
-      '{SUPANN}RGNCC' => _('{SUPANN}RGNCC'),
-      '{SUPANN}RGNCD' => _('{SUPANN}RGNCD'),
-      '{SUPANN}RGNE' => _('{SUPANN}RGNE'),
-      '{SUPANN}RGNF' => _('{SUPANN}RGNF'),
-      '{SUPANN}RGNFA' => _('{SUPANN}RGNFA'),
-      '{SUPANN}RGNFC' => _('{SUPANN}RGNFC'),
-      '{SUPANN}RGNFD' => _('{SUPANN}RGNFD'),
-      '{SUPANN}RGNS' => _('{SUPANN}RGNS'),
-      '{SUPANN}RGNSP' => _('{SUPANN}RGNSP'),
-      '{SUPANN}RGP'  => _('{SUPANN}RGP'),
-      '{SUPANN}RGPE'  => _('{SUPANN}RGPE'),
-      '{SUPANN}RGPET'  => _('{SUPANN}RGPET'),
-      '{SUPANN}RGPF' => _('{SUPANN}RGPF'),
-      '{SUPANN}RGPFT' => _('{SUPANN}RGPFT'),
-      '{SUPANN}RGPST' => _('{SUPANN}RGPST'),
-      '{SUPANN}RHTC' => _('{SUPANN}RHTC'),
-      '{SUPANN}RHTCE' => _('{SUPANN}RHTCE'),
-      '{SUPANN}RHJCF' => _('{SUPANN}RHJCF'),
-      '{SUPANN}RHJSG' => _('{SUPANN}RHJSG'),
-      '{SUPANN}RHLE' => _('{SUPANN}RHLE'),
-      '{SUPANN}RHLS' => _('{SUPANN}RHLS'),
-      '{SUPANN}RHMF' => _('{SUPANN}RHMF'),
-      '{SUPANN}RHTSO' => _('{SUPANN}RHTSO'),
-      '{SUPANN}TER' => _('{SUPANN}TER'),
-    ];
-
-    //Getting values from LDAP already registered and add the default ones, making array unique if already defined.
-    $this->populationCodeMaster += $this->attributesAccess['fdMainPopulationCodeConf']->getValue();
-    $this->populationCodeMaster = array_unique($this->populationCodeMaster);
-
-    $this->attributesAccess['fdMainPopulationCodeConf']->setValue(
-      array_values($this->populationCodeMaster)
-    );
-  }
-
-  /*
-   * Must return bool to be compliant with the interface
-   */
-  public function update (): bool
-  {
-    parent::update();
-
-    return TRUE;
-  }
-
-  /*
-   * Save method, by interface rule, must remain public
-   */
-  public function save (): array
-  {
-    $this->setBasicMainCodes();
-
-    $errors = parent::save();
-    return $errors;
-  }
-
 }
