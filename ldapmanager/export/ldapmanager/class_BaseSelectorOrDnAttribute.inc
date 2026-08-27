@@ -3,7 +3,7 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2019  FusionDirectory
+  Copyright (C) 2011-2026  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,10 +26,14 @@ class BaseSelectorOrDnAttribute extends BaseSelectorAttribute
   {
     global $config;
     if (!$this->disabled && $this->isVisible()) {
-      if (isset($_POST[$this->getHtmlId()])) {
+      // New base is in bs_rebase_PID in base64
+      $formInput = str_replace('input', 'rebase', $this->getHtmlId());
+
+      if (isset($_POST[$formInput])) {
         $ldap = $config->get_ldap_link();
-        if ($ldap->dn_exists($_POST[$this->getHtmlId()])) {
-          $this->setValue($_POST[$this->getHtmlId()]);
+        $dn   = base64_decode($_POST[$formInput]);
+        if ($ldap->dn_exists($dn)) {
+          $this->setValue($dn);
           return;
         }
       }
