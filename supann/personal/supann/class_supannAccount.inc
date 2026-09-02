@@ -421,7 +421,7 @@ class supannAccount extends simplePlugin
       if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannCivilite/supannCivilite', 'fdSupannLabel'))) {
         continue;
       }
-      $civilite += [$attrs['fdSupannLabel'][0] => $attrs['fdSupannCiviliteName'][0]];
+      $civilite[$attrs['fdSupannCiviliteName'][0]] = $attrs['fdSupannLabel'][0];
     }
 
     /* Sort */
