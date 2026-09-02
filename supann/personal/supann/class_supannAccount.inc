@@ -438,12 +438,12 @@ class supannAccount extends simplePlugin
     $ldap->cd(get_ou('SupannConsentRDN').$config->current['BASE']);
 
     $objects = [];
-    $ldap->search('(objectClass=fdSupannConsentObject)', ['fdSupannConsentObjectName','fdSupannConsentObjectLabel'], 'subtree');
+    $ldap->search('(objectClass=fdSupannConsentObject)', ['fdSupannConsentObjectName','fdSupannLabel'], 'subtree');
     while ($attrs = $ldap->fetch()) {
-      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannConsentObject/supannConsentObject', 'fdSupannConsentObjectLabel'))) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannConsentObject/supannConsentObject', 'fdSupannLabel'))) {
         continue;
       }
-      $objects[$attrs['fdSupannConsentObjectName'][0]] = $attrs['fdSupannConsentObjectLabel'][0];
+      $objects[$attrs['fdSupannConsentObjectName'][0]] = $attrs['fdSupannLabel'][0];
     }
 
     asort($objects);
@@ -458,12 +458,12 @@ class supannAccount extends simplePlugin
     $ldap->cd(get_ou('SupannConsentRDN').$config->current['BASE']);
 
     $types = [];
-    $ldap->search('(objectClass=fdSupannConsentType)', ['fdSupannConsentTypeName','fdSupannConsentTypeLabel'], 'subtree');
+    $ldap->search('(objectClass=fdSupannConsentType)', ['fdSupannConsentTypeName','fdSupannLabel'], 'subtree');
     while ($attrs = $ldap->fetch()) {
-      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannConsentType/supannConsentType', 'fdSupannConsentTypeLabel'))) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], 'supannConsentType/supannConsentType', 'fdSupannLabel'))) {
         continue;
       }
-      $types[$attrs['fdSupannConsentTypeName'][0]] = $attrs['fdSupannConsentTypeLabel'][0];
+      $types[$attrs['fdSupannConsentTypeName'][0]] = $attrs['fdSupannLabel'][0];
     }
 
     asort($types);
