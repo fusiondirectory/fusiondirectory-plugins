@@ -293,7 +293,7 @@ class reminderTask extends simplePlugin
     $monitoredMembers = $this->attributesAccess['fdTasksReminderMembers']->getValue();
 
     if ($execTasks) {
-      $this->generateSubTasks(tasks::extractMembersFromGroups($monitoredMembers));
+      $this->generateSubTasks($monitoredMembers);
     }
 
     return parent::save();

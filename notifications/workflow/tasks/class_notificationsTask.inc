@@ -61,7 +61,6 @@ class notificationsTask extends simplePlugin
         'name'  => _('Modified attributes list to be notified'),
         'attrs' => [
           // Following attribute will contain all the DNs where a new snapshot was taken, required by orchestrator.
-          new HiddenArrayAttribute('fdTasksNotificationsListOfNewAuditUsersDN', FALSE, ''),
           new SetAttribute(
             new SelectAttribute(
               'Attributes', _('Any changes listed to set attributes will trigger a notification'),
@@ -252,66 +251,19 @@ class notificationsTask extends simplePlugin
   }
 
   /**
-   * @return array
-   * Note : Return the list of users DN having had an audit listed since the last exec of this task.
-   */
-  public function auditDnSinceLastActivation (array $dn): array
-  {
-    global $config;
-    $result = [];
-
-    if (empty($this->lastActivation)) {
-      $unixLastActivation = strtotime(date("Y-m-d H:i:s"));
-    } else { // Convert to unix timestamp
-      $unixLastActivation = strtotime($this->lastActivation);
-    }
-
-    $ldap = $config->get_ldap_link();
-    // Restrict search on the OU of audit specified in backend.
-    $ldap->cd(get_ou('auditRDN') . $config->current['BASE']);
-
-    // Create a long filter to enhance ldap searching pattern
-    $ldapFilter = '';
-    foreach ($dn as $monitoredMember) {
-      $ldapFilter .= '(fdAuditObject=' . $monitoredMember . ')';
-    }
-
-    $ldap->search('(&(objectClass=fdAuditEvent)(|' . $ldapFilter . '))', ['fdAuditDateTime', 'fdAuditObject']);
-
-    while ($attrs = $ldap->fetch()) {
-      if (!empty($attrs['fdAuditDateTime'][0])) {
-
-        // Convert generic time to DateTime object. (Generic time with Z are in UTC)
-        $date = DateTime::createFromFormat('YmdHis.u\Z', $attrs['fdAuditDateTime'][0], new DateTimeZone('UTC'));
-        // Convert to defined local timezone.
-        $date->setTimezone(timezone::getDefaultTimeZone());
-        $unixAuditTime = $date->getTimestamp(); // Change object dateTime to unix format.
-
-        if ($unixAuditTime >= $unixLastActivation) {
-          // The format is "userDN|auditDN" so we can later in Orchestrator assign the audit change with the monitored member
-          $result[] = $attrs['fdAuditObject'][0] . "|" . $attrs['dn'];
-        }
-      }
-    }
-
-    return $result;
-  }
-
-  /**
    * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
   function generateSubTasks ()
   {
-    $listOfDN = tasks::extractMembersFromGroups(
-      $this->attributesAccess['fdTasksNotificationsRecipientsMembers']->getValue()
-    );
+    $listOfDN = $this->attributesAccess['fdTasksNotificationsRecipientsMembers']->getValue();
+
     // The attribute required to be search in createSubTasks
     $attributeType = 'fdTasksGranularNotificationDN';
     // Store the full associative array coming from the list of new audit user DN, containing all audit DN related to that user.
     $attrs['ref'] = $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->getValue();
 
-    // Call the method from parent tasks object (first tab) to create sub-tasks. listOfDN keys contains the UID of the users.
+    // Call the method from parent tasks object (first tab) to create sub-tasks.
     $this->parent->getBaseObject()->createSubTasks($listOfDN, $attributeType, $attrs, 'notifications');
   }
 
@@ -334,9 +286,6 @@ class notificationsTask extends simplePlugin
 
     // Set the DN of all audit user DN since the last exec.
     $monitoredMembers = $this->attributesAccess['fdTasksNotificationsMonitoredMembers']->getValue();
-    $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setValue(
-      $this->auditDnSinceLastActivation(tasks::extractMembersFromGroups($monitoredMembers))
-    );
 
     if ($execTasks) {
       $this->generateSubTasks();

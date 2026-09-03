@@ -63,8 +63,6 @@ class lifeCycleTask extends simplePlugin
           new HiddenAttribute(
             'fdShowInformation', FALSE,
           ),
-          // Following attributes will contain all the DNs required to be verified by Orchestrator.
-          new HiddenArrayAttribute('fdTasksLifeCycleListOfDN', FALSE, ''),
         ]
       ],
       'section2'           => [
@@ -260,24 +258,12 @@ class lifeCycleTask extends simplePlugin
   }
 
   /**
-   * Retrieve all the DNs from groups or members
-   */
-  public function getListOfDN (): void
-  {
-    // Get the members or groups selected
-    $membersAndGroups = $this->attributesAccess['fdTasksLifeCycleMembers']->getValue();
-    // Call static function from tasks object, always return an array.
-    $this->attributesAccess['fdTasksLifeCycleListOfDN']->setValue(array_values(tasks::extractMembersFromGroups($membersAndGroups)));
-  }
-
-
-  /**
    * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
   public function generateSubTasks ()
   {
-    $listOfDN = $this->attributesAccess['fdTasksLifeCycleListOfDN']->getValue();
+    $listOfDN = $this->attributesAccess['fdTasksLifeCycleMembers']->getValue();
     // The attribute required to be search in createSubTasks
     $attributeType = 'fdTasksGranularDN';
 
@@ -291,9 +277,6 @@ class lifeCycleTask extends simplePlugin
 
     // Toggle fields based on resource selection state
     $this->updateRegexState();
-
-    // Take the list of DN based on the groups or members list selected and filled the related attributes
-    $this->getListOfDN();
 
     return TRUE;
   }

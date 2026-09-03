@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
 
-  Copyright (C) 2025 FusionDirectory
+  Copyright (C) 2025-2026 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -59,9 +59,6 @@ class extractorTask extends simplePlugin
             _('Users or Groups to extract data from.'),
             'fdExtractorTaskMembers',
             TRUE
-          ),
-          new HiddenAttribute(
-            'fdExtractorTaskListOfDN'
           ),
         ],
       ],
@@ -149,17 +146,9 @@ class extractorTask extends simplePlugin
   function generateSubTasks ()
   {
     $selectedMembers = $this->attributesAccess['fdExtractorTaskMembers']->getValue();
-    $listOfDN = tasks::extractMembersFromGroups($selectedMembers);
-
-    // Store the list of DNs for future use by the orchestrator
-    $this->attributesAccess['fdExtractorTaskListOfDN']->setValue($listOfDN);
-
-    // Define a single identifier for the bulk extraction task
-    $bulkTaskIdentifier = 'bulkExtractorTask';
 
     // Call the method from parent tasks object (first tab) to create ONE sub-task for the orchestrator
-    // The orchestrator will handle processing the DNs stored in fdExtractorTaskListOfDN.
-    $this->parent->getBaseObject()->createSubTasks([$bulkTaskIdentifier], 'fdTasksGranularDN', NULL, 'extract');
+    $this->parent->getBaseObject()->createSubTasks($selectedMembers, 'fdTasksGranularDN', NULL, 'extract');
   }
 
   function check (): array
