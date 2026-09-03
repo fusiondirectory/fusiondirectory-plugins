@@ -135,10 +135,9 @@ class archiveTask extends simplePlugin
   function generateSubTasks ()
   {
     $monitoredMembers = $this->attributesAccess['fdArchiveTaskMembers']->getValue();
-    $listOfDN = tasks::extractMembersFromGroups($monitoredMembers);
 
     // Call the method from parent tasks object (first tab) to create sub-tasks.
-    $this->parent->getBaseObject()->createSubTasks($listOfDN, 'fdTasksGranularDN', NULL, 'archive');
+    $this->parent->getBaseObject()->createSubTasks($monitoredMembers, 'fdTasksGranularDN', NULL, 'archive');
   }
 
   /**
