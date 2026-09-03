@@ -63,8 +63,6 @@ class automaticGroupsTask extends simplePlugin
           new HiddenAttribute(
             'fdShowInformation', FALSE,
           ),
-          // Following attributes will contain all the DNs required to be verified by Orchestrator.
-          new HiddenArrayAttribute('fdTasksAutomaticGroupsListOfDN', FALSE, ''),
           // Hidden attributes for dynamic group settings
           new HiddenAttribute('fdTasksAutomaticGroupsDynamicURL', FALSE),
           new HiddenAttribute('fdTasksAutomaticGroupsDynamicName', FALSE),
