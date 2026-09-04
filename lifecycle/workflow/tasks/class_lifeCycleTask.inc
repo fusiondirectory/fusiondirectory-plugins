@@ -55,17 +55,7 @@ class lifeCycleTask extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'section1'           => [
-        'class' => ['fullwidth', 'information'],
-        'name'  => _('We recommend the task redundancy to be set to daily, and the case New Members Only to be unpicked'),
-        'attrs' => [
-          // This hiddenAttribute is only present to show the information label on the section.
-          new HiddenAttribute(
-            'fdShowInformation', FALSE,
-          ),
-        ]
-      ],
-      'section2'           => [
+      'section2' => [
         'name'  => _('Future resources details'),
         'attrs' => [
           new SelectAttribute(
@@ -86,7 +76,6 @@ class lifeCycleTask extends simplePlugin
           ),
         ]
       ],
-      // Attributes are grouped by section
       'section3'           => [
         'name'  => _('Current resources details'),
         'attrs' => [
@@ -147,7 +136,6 @@ class lifeCycleTask extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
-    $this->attributesAccess['fdShowInformation']->setInLdap(FALSE);
 
     // Setup the behavior for resource selection to update regex field states
     $this->attributesAccess['fdTasksLifeCyclePreResource']->setSubmitForm('updateRegexState');
