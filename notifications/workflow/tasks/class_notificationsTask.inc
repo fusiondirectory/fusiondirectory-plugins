@@ -144,9 +144,6 @@ class notificationsTask extends simplePlugin
     // Set the lastActivation from generic task before it being updated upon save.
     $this->lastActivation = $this->parent->getBaseObject()->fdTasksLastActivation ?? NULL;
 
-    // This avoids keeping obsolete AuditUsersDN once subtasks have been generated.
-    $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->setInLdap(FALSE);
-
     // Fill in the list of mail template available to the attribute
     $mailTemplates = $this->getMailTemplates();
     $this->attributesAccess['fdTasksNotificationsMailTemplate']->setChoices(
@@ -251,7 +248,7 @@ class notificationsTask extends simplePlugin
   }
 
   /**
-   * Generate slave tasks, careful that main task cannot be changed cause subtasks are not updated.
+   * Generate subtasks, careful that main task cannot be changed cause subtasks are not updated.
    * It would be dangerous to edit subs tasks if some are under processed already.
    */
   function generateSubTasks ()
@@ -260,8 +257,7 @@ class notificationsTask extends simplePlugin
 
     // The attribute required to be search in createSubTasks
     $attributeType = 'fdTasksGranularNotificationDN';
-    // Store the full associative array coming from the list of new audit user DN, containing all audit DN related to that user.
-    $attrs['ref'] = $this->attributesAccess['fdTasksNotificationsListOfNewAuditUsersDN']->getValue();
+    $attrs['ref'] = $this->attributesAccess['fdTasksNotificationsMonitoredMembers']->getValue();
 
     // Call the method from parent tasks object (first tab) to create sub-tasks.
     $this->parent->getBaseObject()->createSubTasks($listOfDN, $attributeType, $attrs, 'notifications');
