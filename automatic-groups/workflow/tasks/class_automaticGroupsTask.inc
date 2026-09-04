@@ -55,19 +55,6 @@ class automaticGroupsTask extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'section1'           => [
-        'class' => ['fullwidth', 'information'],
-        'name'  => _('We recommend the task redundancy to be set to daily, and the case New Members Only to be unpicked'),
-        'attrs' => [
-          // This hiddenAttribute is only present to show the information label on the section.
-          new HiddenAttribute(
-            'fdShowInformation', FALSE,
-          ),
-          // Hidden attributes for dynamic group settings
-          new HiddenAttribute('fdTasksAutomaticGroupsDynamicURL', FALSE),
-          new HiddenAttribute('fdTasksAutomaticGroupsDynamicName', FALSE),
-        ]
-      ],
       'modeSection' => [
         'name'  => _('Task Mode'),
         'class' => ['fullwidth'],
@@ -75,6 +62,12 @@ class automaticGroupsTask extends simplePlugin
           new BooleanAttribute(
             _('Create Dynamic Group'), _('Create a dynamic group based on SupAnn resource, state and substate'),
             'fdTasksAutomaticGroupsDynamicGroup', FALSE, FALSE
+          ),
+          new HiddenAttribute(
+          'fdTasksAutomaticGroupsDynamicURL', FALSE
+          ),
+          new HiddenAttribute(
+          'fdTasksAutomaticGroupsDynamicName', FALSE
           ),
         ]
       ],
@@ -132,7 +125,6 @@ class automaticGroupsTask extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
-    $this->attributesAccess['fdShowInformation']->setInLdap(FALSE);
 
     // Set these attributes to be stored in LDAP
     $this->attributesAccess['fdTasksAutomaticGroupsDynamicURL']->setInLdap(TRUE);
