@@ -192,7 +192,7 @@ class automaticGroupsTask extends simplePlugin
 
     $this->attributesAccess['fdTasksAutomaticGroupsPreResource']->setChoices(array_keys($resources), array_values($resources));
     $this->subStates = supannAccountStatus::getConfiguredSubstates(); //Keys are states and Values are subStates
-    $this->attributesAccess['fdTasksAutomaticGroupsPreState']->setChoices(array_keys($this->subStates));
+    $this->attributesAccess['fdTasksAutomaticGroupsPreState']->setChoices(array_keys($states), array_values($states));
 
     // Allows the sub states to be listed when state is modified.
     $this->attributesAccess['fdTasksAutomaticGroupsPreState']->setSubmitForm('updateFieldsChoices');
