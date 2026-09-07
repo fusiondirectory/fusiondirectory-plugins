@@ -63,11 +63,11 @@ class lifeCycleTask extends simplePlugin
             'fdTasksLifeCyclePostResource', TRUE
           ),
           new SelectAttribute(
-            _('State'), _('Resource state'),
+            _('Status'), _('Resource state'),
             'fdTasksLifeCyclePostState', TRUE
           ),
           new SelectAttribute(
-            _('Sub state'), _('Resource sub state'),
+            _('Substatus'), _('Resource sub state'),
             'fdTasksLifeCyclePostSubState', FALSE
           ),
           new IntAttribute(

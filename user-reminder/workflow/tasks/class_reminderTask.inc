@@ -107,11 +107,11 @@ class reminderTask extends simplePlugin
             'fdTasksReminderNextResource', FALSE, [], "None"
           ),
           new SelectAttribute(
-            _('State'), _('Resource state'),
+            _('Status'), _('Resource state'),
             'fdTasksReminderNextState', FALSE, [], "None"
           ),
           new SelectAttribute(
-            _('Sub state'), _('Resource sub state'),
+            _('Substatus'), _('Resource sub state'),
             'fdTasksReminderNextSubState', FALSE, [], "None"
           ),
           new IntAttribute(
