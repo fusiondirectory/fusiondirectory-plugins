@@ -84,11 +84,11 @@ class lifeCycleTask extends simplePlugin
             'fdTasksLifeCyclePreResource', TRUE
           ),
           new SelectAttribute(
-            _('State'), _('Resource state'),
+            _('Status'), _('Resource state'),
             'fdTasksLifeCyclePreState', TRUE
           ),
           new SelectAttribute(
-            _('Sub state'), _('Resource sub state'),
+            _('Substatus'), _('Resource sub state'),
             'fdTasksLifeCyclePreSubState', FALSE
           ),
         ]

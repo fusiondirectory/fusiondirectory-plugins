@@ -80,11 +80,11 @@ class automaticGroupsTask extends simplePlugin
             'fdTasksAutomaticGroupsPreResource', TRUE
           ),
           new SelectAttribute(
-            _('State'), _('Resource state'),
+            _('Status'), _('Resource state'),
             'fdTasksAutomaticGroupsPreState', TRUE
           ),
           new SelectAttribute(
-            _('Sub state'), _('Resource sub state'),
+            _('Substatus'), _('Resource sub state'),
             'fdTasksAutomaticGroupsPreSubState', FALSE
           ),
         ]
