@@ -108,11 +108,11 @@ class notificationsTask extends simplePlugin
             'fdTasksNotificationsResource', TRUE, [], "None"
           ),
           new SelectAttribute(
-            _('State'), _('Resource state'),
+            _('Status'), _('Resource state'),
             'fdTasksNotificationsState', TRUE, [], "None"
           ),
           new SelectAttribute(
-            _('Sub state'), _('Resource sub state'),
+            _('Substatus'), _('Resource sub state'),
             'fdTasksNotificationsSubState', FALSE, [], "None"
           ),
         ]
