@@ -110,6 +110,15 @@ class supannAccountEmployee extends simplePlugin
     ];
   }
 
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    global $config;
+
+    parent::__construct($dn, $object, $parent, $mainTab);
+
+    $this->attributesAccess['supannEmpId']->setUnique('whole');
+  }
+
   /* Update choices of fields which depends on other fields values */
   protected function updateFieldsChoicesAndValues ()
   {
