@@ -101,6 +101,9 @@ class supannAccountStudent extends simplePlugin
 
     parent::__construct($dn, $object, $parent, $mainTab);
 
+    $this->attributesAccess['supannEtuId']->setUnique('whole');
+    $this->attributesAccess['supannCodeINE']->setUnique('whole');
+
     /* list of entity stored in LDAP tree */
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);

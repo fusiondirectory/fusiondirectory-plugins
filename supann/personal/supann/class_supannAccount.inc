@@ -240,6 +240,7 @@ class supannAccount extends simplePlugin
 
     $this->attributesAccess['supannRefId']->setUnique('whole');
     $this->attributesAccess['supannAutreMail']->setUnique('whole');
+    $this->attributesAccess['supannAliasLogin']->setUnique('whole');
 
     $this->attributesAccess['mailForwardingAddress']->setVisible($config->get_cfg_value('SupannShowMailForwardingAddress') === 'TRUE');
 
