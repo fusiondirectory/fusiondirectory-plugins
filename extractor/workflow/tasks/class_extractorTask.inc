@@ -145,10 +145,10 @@ class extractorTask extends simplePlugin
    */
   function generateSubTasks ()
   {
-    $selectedMembers = $this->attributesAccess['fdExtractorTaskMembers']->getValue();
+    $recipientMembers = $this->attributesAccess['fdExtractorRecipientsMembers']->getValue();
 
     // Call the method from parent tasks object (first tab) to create ONE sub-task for the orchestrator
-    $this->parent->getBaseObject()->createSubTasks($selectedMembers, 'fdTasksGranularDN', NULL, 'extract');
+    $this->parent->getBaseObject()->createSubTasks($recipientMembers, 'fdTasksGranularDN', NULL, 'extract');
   }
 
   function check (): array
