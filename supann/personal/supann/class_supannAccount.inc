@@ -3,7 +3,7 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
 
   Copyright (C) 2010-2012 Antoine Gallavardin
-  Copyright (C) 2013-2025 FusionDirectory
+  Copyright (C) 2013-2026 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -287,6 +287,12 @@ class supannAccount extends simplePlugin
     $this->attributesAccess['supannEtablissement']->attribute->setChoices($code_etablissements, $label_etablissements);
 
     $this->supannInit();
+
+    // Disable supannCodePopulation if fdSupannCodePopulationMode is FALSE
+    // Careful get_cfg_value return a string not a boolean
+    if ($config->get_cfg_value('SupannCodePopulationMode', TRUE) === "FALSE") {
+      $this->attributesAccess['supannCodePopulation']->setDisabled(TRUE);
+    }
   }
 
   protected function supannInit ()
