@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2018-2019  FusionDirectory
+  Copyright (C) 2018-2026  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,14 +24,13 @@ class auditSecurity extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Security'),
-      'plDescription' => _('Security audit'),
-      'plObjectType'  => ['user'],
-      'plSelfModify'  => TRUE,
-      'plIcon'          => 'geticon.php?context=applications&icon=audit&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=audit&size=16',
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'    => _('Security'),
+      'plDescription'  => _('Security audit'),
+      'plObjectType'   => ['user'],
+      'plSelfModify'   => TRUE,
+      'plIcon'         => 'geticon.php?context=applications&icon=audit&size=48',
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=audit&size=16',
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
@@ -45,6 +44,24 @@ class auditSecurity extends simplePlugin
           new AuditLogAttribute(
             '', _('Important events involving your account'),
             'fdAuditSecurityLog'
+          ),
+          new CompositeAttribute(
+            _('Starting from'),
+            'auditStart',
+            [
+              new GeneralizedTimeDateAttribute(
+                _('Starting from'), '',
+                'auditStartDate', TRUE,
+              ),
+              new ButtonAttribute(
+                '', '',
+                'auditStartButton', _('Apply filter'), 'update', TRUE
+              ),
+            ],
+            TRUE,
+            '',
+            '',
+            _('Starting from'),
           ),
         ],
       ],
@@ -66,6 +83,14 @@ class auditSecurity extends simplePlugin
 
   protected function loadEvents ()
   {
+    $auditStartDatetime = new DateTime(
+      $this->attributesAccess['auditStart']->attributes[0]->getValue(),
+      timezone::utc()
+    );
+    $auditStartDatetime->setTimeZone(timezone::getDefaultTimeZone());
+
+    $auditStart = LdapGeneralizedTime::toString($auditStartDatetime);
+
     $events = objects::ls(
       'auditEvent',
       [
@@ -79,21 +104,17 @@ class auditSecurity extends simplePlugin
         'fdAuditResult'     => 1
       ],
       NULL,
-      '(|'.
+
         '(&'.
-          '(fdAuditAction=security)'.
+          '(ObjectClass=fdAuditEvent)'.
+          '(fdAuditDateTime>='.ldap_escape_f($auditStart).')'.
           '(|'.
             '(fdAuditObject='.ldap_escape_f($this->getUid()).')'.
             '(fdAuditObject='.ldap_escape_f($this->dn).')'.
-            '(fdAuditAuthorDN='.ldap_escape_f($this->dn).')'.
           ')'.
-        ')'.
-        '(&'.
-          '(fdAuditAttributes=userPassword)'.
-          '(fdAuditObject='.ldap_escape_f($this->dn).')'.
-        ')'.
-      ')'
+        ')'
     );
+
     uasort(
       $events,
       function ($event1, $event2)
