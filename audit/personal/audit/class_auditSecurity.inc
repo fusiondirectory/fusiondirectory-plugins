@@ -108,10 +108,7 @@ class auditSecurity extends simplePlugin
         '(&'.
           '(ObjectClass=fdAuditEvent)'.
           '(fdAuditDateTime>='.ldap_escape_f($auditStart).')'.
-          '(|'.
-            '(fdAuditObject='.ldap_escape_f($this->getUid()).')'.
-            '(fdAuditObject='.ldap_escape_f($this->dn).')'.
-          ')'.
+          '(fdAuditObject='.ldap_escape_f($this->dn).')'.
         ')'
     );
 
