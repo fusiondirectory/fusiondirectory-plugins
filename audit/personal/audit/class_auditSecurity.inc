@@ -129,18 +129,6 @@ class auditSecurity extends simplePlugin
     return TRUE;
   }
 
-  protected function getUid (): string
-  {
-    if (isset($this->parent)) {
-      $baseobject = $this->parent->getBaseObject();
-      return $baseobject->uid;
-    }
-    if (isset($this->attrs['uid'][0])) {
-      return $this->attrs['uid'][0];
-    }
-    return '';
-  }
-
   function check (): array
   {
     return [];
