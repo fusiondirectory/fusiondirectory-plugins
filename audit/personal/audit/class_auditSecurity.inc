@@ -55,7 +55,7 @@ class auditSecurity extends simplePlugin
               ),
               new ButtonAttribute(
                 '', '',
-                'auditStartButton', _('Apply filter'), 'update', TRUE
+                'auditStartButton', _('Apply filter'), 'loadEvents', TRUE
               ),
             ],
             TRUE,
@@ -81,7 +81,7 @@ class auditSecurity extends simplePlugin
     ]);
   }
 
-  protected function loadEvents ()
+  public function loadEvents ()
   {
     $auditStartDatetime = new DateTime(
       $this->attributesAccess['auditStart']->attributes[0]->getValue(),
@@ -120,13 +120,6 @@ class auditSecurity extends simplePlugin
       }
     );
     $this->fdAuditSecurityLog = $events;
-  }
-
-  public function update (): bool
-  {
-    parent::update();
-    $this->loadEvents();
-    return TRUE;
   }
 
   function check (): array
