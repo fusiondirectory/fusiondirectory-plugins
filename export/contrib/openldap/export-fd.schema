@@ -1,0 +1,51 @@
+##
+## export-fd.schema - Needed by Fusion Directory for export plugin
+##
+## Allows exporting LDAP data based on selected members or groups and a chosen format.
+##
+
+# Attributes
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.1 NAME ( 'fdExportTaskMembers' )
+    DESC 'Fusion Directory - List of members or groups for export tasks'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.2 NAME ( 'fdExportTaskListOfDN' )
+    DESC 'Fusion Directory - DNs derived from the selected members/groups'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.3 NAME ( 'fdExportTaskFormat' )
+    DESC 'Fusion Directory - Format used for data export (CSV for now, extensible later)'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+    SINGLE-VALUE )
+
+# Email notification attributes
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.4 NAME ( 'fdExportRecipientsMembers' )
+    DESC 'Fusion Directory - Members or groups to receive the export by email'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.5 NAME ( 'fdExportEmailSender' )
+    DESC 'Fusion Directory - Email address from which the export will be sent'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+# New attribute for export attributes selection
+
+attributetype ( 1.3.6.1.4.1.38414.93.1.6 NAME ( 'fdExportTaskAttributes' )
+    DESC 'Fusion Directory - List of LDAP attributes to export (empty or ALL for all)'
+    EQUALITY caseExactMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+# Object Class
+
+objectclass ( 1.3.6.1.4.1.38414.93.2.1 NAME ( 'fdExportTasks' )
+    DESC 'Fusion Directory - Export tasks plugin object class'
+    SUP top
+    AUXILIARY
+    MUST ( fdExportTaskMembers $ fdExportTaskFormat $ fdExportRecipientsMembers $ fdExportEmailSender )
+    MAY ( fdExportTaskListOfDN $ fdExportTaskAttributes ) )

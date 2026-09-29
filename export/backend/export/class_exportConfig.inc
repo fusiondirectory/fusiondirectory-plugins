@@ -18,15 +18,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-class extractorConfig extends simplePlugin
+class exportConfig extends simplePlugin
 {
   static function plInfo (): array
   {
     return [
-      'plShortName'    => _('Extractor'),
-      'plDescription'  => _('Extractor Tasks Configuration'),
+      'plShortName'    => _('Export'),
+      'plDescription'  => _('Export Tasks Configuration'),
       'plObjectType'   => ['configuration'],
-      'plObjectClass'  => ['fdExtractorConf'],
+      'plObjectClass'  => ['fdExportConf'],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
@@ -35,13 +35,13 @@ class extractorConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'extractorConfigInformation' => [
-        'name'  => _('Extractor Tasks Configuration'),
+      'exportConfig' => [
+        'name'  => _('Export Tasks Configuration'),
         'attrs' => [
           new SetAttribute(
             new StringAttribute(
-              _('Attributes name'), _('Attributes name in ACL format'),
-              'fdExtractorConfAttributes', FALSE, ''
+              _('Attributes name'), _('Attributes names'),
+              'fdExportAllowedAttributes', FALSE, ''
             ),
             ['cn', 'sn', 'givenName', 'mail'],
           ),

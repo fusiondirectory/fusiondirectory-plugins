@@ -44,7 +44,7 @@ class notificationsTask extends simplePlugin
         'auditTask',
         'archiveTask',
         'automaticGroupsTask',
-        'extractorTask',
+        'exportTask',
         'lifeCycleTask',
         'mailTask',
         'reminderTask',
