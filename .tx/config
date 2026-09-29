@@ -137,13 +137,13 @@ type          = PO
 minimum_perc  = 0
 resource_name = ejbca
 
-[o:fusiondirectory:p:FusionDirectory:r:extractor]
-file_filter   = extractor/locale/<lang>/fusiondirectory.po
-source_file   = extractor/locale/en/fusiondirectory.po
+[o:fusiondirectory:p:FusionDirectory:r:export]
+file_filter   = export/locale/<lang>/fusiondirectory.po
+source_file   = export/locale/en/fusiondirectory.po
 source_lang   = en
 type          = PO
 minimum_perc  = 0
-resource_name = extractor
+resource_name = export
 
 [o:fusiondirectory:p:FusionDirectory:r:freeradius]
 file_filter   = freeradius/locale/<lang>/fusiondirectory.po

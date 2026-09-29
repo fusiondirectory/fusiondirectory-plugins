@@ -44,7 +44,7 @@ class reminderTask extends simplePlugin
         'auditTask',
         'archiveTask',
         'automaticGroupsTask',
-        'extractorTask',
+        'exportTask',
         'lifeCycleTask',
         'mailTask',
         'notificationsTask',

@@ -37,7 +37,7 @@ class auditTask extends simplePlugin
       'plConflicts'    => [ // The name of the class is required, not the object class.
         'archiveTask',
         'automaticGroupsTask',
-        'extractorTask',
+        'exportTask',
         'lifeCycleTask',
         'mailTask',
         'notificationsTask',

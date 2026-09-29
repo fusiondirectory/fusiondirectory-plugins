@@ -19,22 +19,22 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class extractorTask extends simplePlugin
+class exportTask extends simplePlugin
 {
   protected $displayHeader = TRUE;
 
   static function plInfo (): array
   {
     return [
-      'plShortName'    => _('Tasks Extractor'),
-      'plDescription'  => _('Tasks Extractor Object'),
-      'plIcon'         => 'geticon.php?context=applications&icon=extractor-task&size=48',
-      'plSmallIcon'    => 'geticon.php?context=applications&icon=extractor-task&size=16',
+      'plShortName'    => _('Tasks Export'),
+      'plDescription'  => _('Tasks objects Exportation'),
+      'plIcon'         => 'geticon.php?context=applications&icon=export-task&size=48',
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=export-task&size=16',
       'plPriority'     => 42,
-      'plObjectClass'  => ['fdExtractorTasks'],
-      'plFilter'       => '(objectClass=fdExtractorTasks)',
+      'plObjectClass'  => ['fdExportTasks'],
+      'plFilter'       => '(objectClass=fdExportTasks)',
       'plObjectType'   => ['tasks'],
-      'plConflicts'    => [ // The name of the class is required, not the object class.
+      'plConflicts'    => [
         'auditTask',
         'archiveTask',
         'automaticGroupsTask',
@@ -51,56 +51,56 @@ class extractorTask extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'section1' => [
-        'name'  => _('Members to Extract'),
+      'exportmembers' => [
+        'name'  => _('Members to Export'),
         'attrs' => [
           new UsersGroupsRolesAttribute(
             _('Selected Members'),
-            _('Users or Groups to extract data from.'),
-            'fdExtractorTaskMembers',
+            _('Users or Groups to export data from.'),
+            'fdExportTaskMembers',
             TRUE
           ),
         ],
       ],
-      'sectionAttr' => [
-        'name'  => _('Attributes to Extract'),
+      'attributes' => [
+        'name'  => _('Attributes to Export'),
         'attrs' => [
           new SetAttribute(
             new SelectAttribute(
-              _('Attributes'), _('Attributes to extract (leave empty for ALL)'),
-              'fdExtractorTaskAttributes', TRUE
+              _('Attributes'), _('Attributes to export'),
+              'fdExportTaskAttributes', TRUE
             ),
           ),
         ]
       ],
-      'section2' => [
-        'name'  => _('Extraction Settings'),
+      'exportformat' => [
+        'name'  => _('Export format'),
         'attrs' => [
           new SelectAttribute(
             _('Format'),
-            _('Output format for extracted data'),
-            'fdExtractorTaskFormat',
+            _('Output format for exported data'),
+            'fdExportTaskFormat',
             TRUE,
-            ['CSV'], // Array of choices/keys
-            'CSV',   // Default value
-            [_('CSV (Comma Separated Values)')], // Array of display values corresponding to choices
-            ''      // ACL (empty string means use its own)
+            ['CSV'],
+            'CSV',
+            [_('CSV (Comma Separated Values)')],
+            ''
           ),
         ]
       ],
-      'section3' => [
-        'name'  => _('Email Notification'),
+      'email' => [
+        'name'  => _('Email Notifications'),
         'attrs' => [
           new UsersGroupsRolesAttribute(
             _('Recipients'),
-            _('Users or Groups to receive the extract by email.'),
-            'fdExtractorRecipientsMembers',
+            _('Users or Groups to receive the export by email.'),
+            'fdExportRecipientsMembers',
             TRUE
           ),
           new MailAttribute(
             _('Sender email address'),
-            _('Email address from which the extract will be sent'),
-            'fdExtractorEmailSender',
+            _('Email address from which the export will be sent'),
+            'fdExportEmailSender',
             TRUE,
           ),
         ],
@@ -113,11 +113,11 @@ class extractorTask extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     // Load available attributes from backend config
-    $this->attributesAccess['fdExtractorTaskAttributes']->attribute->setChoices($this->getAttributesListFromConf());
+    $this->attributesAccess['fdExportTaskAttributes']->attribute->setChoices($this->getAttributesListFromConf());
   }
 
   /**
-   * Load extractable attributes from backend config, default to ALL if none set.
+   * Load export attributes from backend config, default to ALL if none set.
    */
   protected function getAttributesListFromConf (): array
   {
@@ -141,14 +141,14 @@ class extractorTask extends simplePlugin
   }
 
   /**
-   * Generate slave tasks for extraction
+   * Generate  subtasks for export
    */
   function generateSubTasks ()
   {
-    $recipientMembers = $this->attributesAccess['fdExtractorRecipientsMembers']->getValue();
+    $selectedMembers = $this->attributesAccess['fdExportTaskMembers']->getValue();
 
     // Call the method from parent tasks object (first tab) to create ONE sub-task for the orchestrator
-    $this->parent->getBaseObject()->createSubTasks($recipientMembers, 'fdTasksGranularDN', NULL, 'extract');
+    $this->parent->getBaseObject()->createSubTasks($selectedMembers, 'fdTasksGranularDN', NULL, 'export');
   }
 
   function check (): array

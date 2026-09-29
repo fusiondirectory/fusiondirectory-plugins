@@ -1,0 +1,17 @@
+##
+## export-fd-conf.schema - Required for export plugin backend configuration.
+##
+
+# Attributes
+
+attributetype ( 1.3.6.1.4.1.38414.96.1.1 NAME ( 'fdExportAllowedAttributes' )
+  DESC 'Fusion Directory - Export allowed attributes'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+# Object Class
+
+objectclass ( 1.3.6.1.4.1.38414.96.2.1 NAME ( 'fdExportConf' )
+  SUP top AUXILIARY
+  DESC 'FusionDirectory - Export configuration backend ObjectClass'
+  MAY ( fdExportAllowedAttributes ) )
