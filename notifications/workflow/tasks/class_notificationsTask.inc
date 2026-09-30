@@ -56,15 +56,17 @@ class notificationsTask extends simplePlugin
 
   static function getAttributesInfo (): array
   {
+    global $config;
     return [
-      'section1'                => [
+      'section1' => [
         'name'  => _('Modified attributes list to be notified'),
         'attrs' => [
           // Following attribute will contain all the DNs where a new snapshot was taken, required by orchestrator.
           new SetAttribute(
             new SelectAttribute(
               'Attributes', _('Any changes listed to set attributes will trigger a notification'),
-              'fdTasksNotificationsAttributes', TRUE
+              'fdTasksNotificationsAttributes', TRUE,
+              $config->get_cfg_value('TasksNotificationsConfAttributes', [])
             ),
           ),
         ]
@@ -99,7 +101,6 @@ class notificationsTask extends simplePlugin
           ),
         ],
       ],
-      // Attributes are grouped by section
       'supannSection'           => [
         'name'  => _('Add notification when the following Supann state is reached (supannRessourceEtat)'),
         'attrs' => [
@@ -137,9 +138,6 @@ class notificationsTask extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
-
-    // Set the list of available attributes to follow in the set selection
-    $this->attributesAccess['fdTasksNotificationsAttributes']->attribute->setChoices($this->getAttributesListFromConf());
 
     // Set the lastActivation from generic task before it being updated upon save.
     $this->lastActivation = $this->parent->getBaseObject()->fdTasksLastActivation ?? NULL;
@@ -199,32 +197,6 @@ class notificationsTask extends simplePlugin
     // Update the available supann states
     $this->attributesAccess['fdTasksNotificationsSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
     $this->attributesAccess['fdTasksNotificationsPostSubState']->setChoices(array_keys($subStatesList), array_values($subStatesList));
-  }
-
-  /**
-   * @return array
-   * Note: This method is required because setAttribute can contain one value STRING or multiple ARRAY but,
-   * selectAttribute only accepts arrays.
-   */
-  protected function getAttributesListFromConf (): array
-  {
-    global $config;
-    $result = [];
-
-    if (!empty($config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'])) {
-      if (is_string($config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'])) {
-        $result[] = $config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'];
-      } else {
-        $result = $config->current['TASKSNOTIFICATIONSCONFATTRIBUTES'];
-      }
-    }
-
-    // Ensure 'None' is in the array
-    if (!in_array('None', $result, TRUE)) {
-      array_unshift($result, 'None'); // Add 'None' at the beginning
-    }
-
-    return $result;
   }
 
   /**

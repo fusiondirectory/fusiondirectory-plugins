@@ -50,6 +50,7 @@ class exportTask extends simplePlugin
 
   static function getAttributesInfo (): array
   {
+    global $config;
     return [
       'exportmembers' => [
         'name'  => _('Members to Export'),
@@ -68,7 +69,8 @@ class exportTask extends simplePlugin
           new SetAttribute(
             new SelectAttribute(
               _('Attributes'), _('Attributes to export'),
-              'fdExportTaskAttributes', TRUE
+              'fdExportTaskAttributes', TRUE,
+              $config->get_cfg_value('ExportAllowedAttributes', [])
             ),
           ),
         ]
@@ -106,38 +108,6 @@ class exportTask extends simplePlugin
         ],
       ],
     ];
-  }
-
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
-  {
-    parent::__construct($dn, $object, $parent, $mainTab);
-
-    // Load available attributes from backend config
-    $this->attributesAccess['fdExportTaskAttributes']->attribute->setChoices($this->getAttributesListFromConf());
-  }
-
-  /**
-   * Load export attributes from backend config, default to ALL if none set.
-   */
-  protected function getAttributesListFromConf (): array
-  {
-    global $config;
-    $result = [];
-
-    if (!empty($config->current['EXTRACTORCONFATTRIBUTES'])) {
-      if (is_string($config->current['EXTRACTORCONFATTRIBUTES'])) {
-        $result[] = $config->current['EXTRACTORCONFATTRIBUTES'];
-      } else {
-        $result = $config->current['EXTRACTORCONFATTRIBUTES'];
-      }
-    }
-
-    // Ensure 'ALL' is in the array
-    if (!in_array('ALL', $result, TRUE)) {
-      array_unshift($result, 'ALL');
-    }
-
-    return $result;
   }
 
   /**
