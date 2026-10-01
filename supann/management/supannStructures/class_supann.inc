@@ -115,7 +115,7 @@ class supann
     } else {
       $result = [];
     }
-    
+
     return $result;
   }
 }
