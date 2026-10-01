@@ -113,7 +113,7 @@ class supann
     if (isset($result)) {
       LDAP::unsetCountKeys($result);
     } else {
-      result = [];
+      $result = [];
     }
     
     return $result;
