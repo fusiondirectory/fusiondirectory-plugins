@@ -85,7 +85,7 @@ class supann
   }
 
   /*! \brief Return the informations for a specific supannCodePopulation */
-  static function get_supannCodePopulation_info(string $codePopulation) : array
+  static function get_supannCodePopulation_info (string $codePopulation) : array
   {
     global $config;
 
@@ -95,7 +95,7 @@ class supann
       'fdSupannPopulationCodeWeight',
       'fdSupannPopulationEduPersonAffiliation',
       'fdSupannPopulationEduPersonPrimaryAffiliation'
-    ]);    
+    ]);
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['fdSupannPopulationEduPersonAffiliation'])) {
         $result['eduPersonAffiliation'] = $attrs['fdSupannPopulationEduPersonAffiliation'];
