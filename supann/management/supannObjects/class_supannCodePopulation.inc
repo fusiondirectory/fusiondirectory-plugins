@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2012-2019  FusionDirectory
+  Copyright (C) 2012-2026  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -59,6 +59,26 @@ class supannCodePopulation extends simplePlugin
           new StringAttribute(
             _('Population Code Description'), _('The description explaining this Supann Population Code'),
             'description', FALSE
+          ),
+          new IntAttribute(
+            _('Weight'), _('Weight for primary affiliation determination when multiple codes are present (higher wins)'),
+            'fdSupannPopulationCodeWeight', TRUE,
+            0, FALSE
+          ),
+        ],
+      ],
+      'affiliations' => [
+        'name'  => _('eduPerson Affiliation Mapping'),
+        'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
+              _('Affiliations'), _('eduPersonAffiliation values mapped for this population code'),
+              'fdSupannPopulationEduPersonAffiliation', TRUE
+            )
+          ),
+          new SelectAttribute(
+            _('Primary Affiliation'), _('eduPersonPrimaryAffiliation value mapped for this population code'),
+            'fdSupannPopulationEduPersonPrimaryAffiliation', TRUE
           ),
         ],
       ],

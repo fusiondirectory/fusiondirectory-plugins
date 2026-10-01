@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2016  FusionDirectory
+  Copyright (C) 2012-2026  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -82,5 +82,40 @@ class supann
     } else {
       return $str;
     }
+  }
+
+  /*! \brief Return the informations for a specific supannCodePopulation */
+  static function get_supannCodePopulation_info (string $codePopulation) : array
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd(get_ou('SupannObjectsRDN').$config->current['BASE']);
+    $ldap->search("(&(objectClass=fdSupannPopulationCode)(fdSupannPopulationCodeName=$codePopulation))", [
+      'fdSupannPopulationCodeWeight',
+      'fdSupannPopulationEduPersonAffiliation',
+      'fdSupannPopulationEduPersonPrimaryAffiliation'
+    ]);
+    while ($attrs = $ldap->fetch()) {
+      if (isset($attrs['fdSupannPopulationEduPersonAffiliation'])) {
+        $result['eduPersonAffiliation'] = $attrs['fdSupannPopulationEduPersonAffiliation'];
+      }
+
+      if (isset($attrs['fdSupannPopulationEduPersonPrimaryAffiliation'])) {
+        $result['eduPersonPrimaryAffiliation'] = $attrs['fdSupannPopulationEduPersonPrimaryAffiliation'];
+      }
+
+      if (isset($attrs['fdSupannPopulationCodeWeight'])) {
+        $result['weight'] = $attrs['fdSupannPopulationCodeWeight'];
+      }
+    }
+
+    if (isset($result)) {
+      LDAP::unsetCountKeys($result);
+    } else {
+      $result = [];
+    }
+
+    return $result;
   }
 }

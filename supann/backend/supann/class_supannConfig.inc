@@ -312,6 +312,11 @@ class supannConfig extends simplePlugin
             'fdSupannShowFranceConnect', FALSE,
             TRUE
           ),
+          new BooleanAttribute(
+            _('Supann code Population Mode'), _('Enable Supann code Population Mode'),
+            'fdSupannCodePopulationMode', TRUE,
+            TRUE
+          ),
         ],
       ],
     ];

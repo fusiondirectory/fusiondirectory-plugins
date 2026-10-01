@@ -173,6 +173,12 @@ class eduPerson extends simplePlugin
       $this->setGeneratedUniqueID();
     }
     $this->eduPersonInit();
+
+    // Disable eduPersonAffiliation and eduPersonPrimaryAffiliation
+    if ($config->get_cfg_value('SupannCodePopulationMode', TRUE) === "TRUE") {
+      $this->attributesAccess['eduPersonAffiliation']->setDisabled(TRUE);
+      $this->attributesAccess['eduPersonPrimaryAffiliation']->setDisabled(TRUE);
+    }
   }
 
   protected function eduPersonInit ()
@@ -310,5 +316,4 @@ class eduPerson extends simplePlugin
     $aUniqueId = $this->generateUniqueUserId();
     $this->attributesAccess['eduPersonUniqueId']->setValue($aUniqueId);
   }
-
 }

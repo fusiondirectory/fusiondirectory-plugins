@@ -3,7 +3,7 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
 
   Copyright (C) 2010-2012 Antoine Gallavardin
-  Copyright (C) 2013-2025 FusionDirectory
+  Copyright (C) 2013-2026 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -46,6 +46,41 @@ class supannAccount extends simplePlugin
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
+    global $config;
+
+    // Add edupersonAffiliation when we are in fdSupannCodePopulationMode
+    if ($config->get_cfg_value('SupannCodePopulationMode', TRUE) === "TRUE") {
+      $populationCodeArray = [
+        'name'  => _('Population Code'),
+        'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
+              'Main Code', _('Main Population Code'),
+              'supannCodePopulation', FALSE,
+            ),
+          ),
+          new HiddenAttribute(
+            'eduPersonPrimaryAffiliation', FALSE
+          ),
+          new HiddenArrayAttribute(
+            'eduPersonAffiliation', FALSE
+          )
+        ]
+      ];
+    } else {
+      $populationCodeArray = [
+        'name'  => _('Population Code'),
+        'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
+              'Main Code', _('Main Population Code'),
+              'supannCodePopulation', FALSE,
+            )
+          )
+        ]
+      ];
+    }
+
     return [
       'identity' => [
         'name'  => _('Identity'),
@@ -193,17 +228,7 @@ class supannAccount extends simplePlugin
           ),
         ]
       ],
-      'populationCode' => [
-        'name'  => _('Population Code'),
-        'attrs' => [
-          new SetAttribute(
-            new SelectAttribute(
-              'Main Code', _('Main Population Code'),
-              'supannCodePopulation', FALSE,
-            ),
-          ),
-        ]
-      ],
+      'populationCode' => $populationCodeArray,
       'consentement' => [
         'name'      => _('Consent'),
         'class'     => ['fullwidth'],
@@ -287,6 +312,12 @@ class supannAccount extends simplePlugin
     $this->attributesAccess['supannEtablissement']->attribute->setChoices($code_etablissements, $label_etablissements);
 
     $this->supannInit();
+
+    // Disable supannCodePopulation if fdSupannCodePopulationMode is FALSE
+    // Careful get_cfg_value return a string not a boolean
+    if ($config->get_cfg_value('SupannCodePopulationMode', TRUE) === "FALSE") {
+      $this->attributesAccess['supannCodePopulation']->setDisabled(TRUE);
+    }
   }
 
   protected function supannInit ()
@@ -510,6 +541,76 @@ class supannAccount extends simplePlugin
 
   protected function prepare_save (): array
   {
-    return parent::prepare_save();
+    global $config;
+
+    $errors = parent::prepare_save();
+
+    // If fdSupannCodePopulationMode is TRUE
+    // Then add eduPersonAffiliation and eduPersonPrimaryAffiliation based on supannCodePopulation
+    // Careful get_cfg_value return a string not a boolean
+    if ($config->get_cfg_value('SupannCodePopulationMode', TRUE) === "TRUE") {
+      // Final decision variables
+      $finalEduPersonAffiliation        = [];
+      $finalWeight                      = 0;
+      $finalEduPersonPrimaryAffiliation = '';
+      $finalCodePopulation              = '';
+
+      // Retrieve informations for each supanCodePopulation
+      foreach ($this->attrs['supannCodePopulation'] as $codePopulation) {
+        $values = supann::get_supannCodePopulation_info($codePopulation);
+
+        // Get all values
+        $eduPersonAffiliation        = $values['eduPersonAffiliation'];
+        $eduPersonPrimaryAffiliation = $values['eduPersonPrimaryAffiliation'][0];
+        $weight                      = $values['weight'][0];
+
+        // Merge all the eduPersonAffiliation
+        $finalEduPersonAffiliation = array_merge($finalEduPersonAffiliation, $eduPersonAffiliation);
+
+        // Define eduPersonPrimaryAffiliation with the higher weight
+        // If weight and finalWeight are equal then we use the shortest codePopulation length
+        // If codePopulation length are equals then display an error
+        if ($weight > $finalWeight) {
+          $finalWeight                      = $weight;
+          $finalEduPersonPrimaryAffiliation = $eduPersonPrimaryAffiliation;
+          $finalCodePopulation              = $codePopulation;
+        } else if ($weight == $finalWeight) {
+          if (strlen($codePopulation) < strlen($finalCodePopulation)) {
+            $finalWeight                      = $weight;
+            $finalEduPersonPrimaryAffiliation = $eduPersonPrimaryAffiliation;
+            $finalCodePopulation              = $codePopulation;
+          } else if (strlen($codePopulation) == strlen($finalCodePopulation)) {
+            $errors[] = "We cannot decide the priority between $codePopulation and $finalCodePopulation.";
+          }
+        }
+      }
+
+      // Define the final attributes to be saved for eduPerson or unset them if empty
+      if (! empty($finalEduPersonAffiliation)) {
+        $this->attrs['eduPersonAffiliation']        = $finalEduPersonAffiliation;
+        $this->attrs['eduPersonPrimaryAffiliation'] = $finalEduPersonPrimaryAffiliation;
+
+        // Add to objectClass if not there only if finalEduPersonAffiliation is not empty
+        if (! in_array("eduPerson", $this->attrs['objectClass'])) {
+          $this->attrs['objectClass'] = array_merge(
+            $this->attrs['objectClass'], ['eduPerson']
+          );
+        }
+        if (! in_array("fdEduPerson", $this->attrs['objectClass'])) {
+          $this->attrs['objectClass'] = array_merge(
+            $this->attrs['objectClass'], ['fdEduPerson']
+          );
+        }
+      } else {
+        $this->attrs['eduPersonAffiliation']        = [];
+        // To empty a SelectAttribute it is an array
+        $this->attrs['eduPersonPrimaryAffiliation'] = [];
+
+        // We let the objectClass to be removed with eduPerson tab
+        // They are optional so it's alright and also we cannot know if another field is used in eduPerson
+      }
+    }
+
+    return $errors;
   }
 }
