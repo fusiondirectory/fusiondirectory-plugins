@@ -110,8 +110,12 @@ class supann
       }
     }
 
-    ldap::unsetCountKeys($result);
-
+    if (isset($result)) {
+      LDAP::unsetCountKeys($result);
+    } else {
+      result = [];
+    }
+    
     return $result;
   }
 }
