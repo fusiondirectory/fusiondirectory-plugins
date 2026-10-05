@@ -565,7 +565,12 @@ class supannAccount extends simplePlugin
         $weight                      = $values['weight'][0];
 
         // Merge all the eduPersonAffiliation
-        $finalEduPersonAffiliation = array_merge($finalEduPersonAffiliation, $eduPersonAffiliation);
+        if (isset($eduPersonPrimaryAffiliation)) {
+          $finalEduPersonAffiliation = array_merge($finalEduPersonAffiliation, $eduPersonAffiliation);
+        } else {
+          $errors[] = "Missing information for $codePopulation you need to update it";
+          continue;
+        }
 
         // Define eduPersonPrimaryAffiliation with the higher weight
         // If weight and finalWeight are equal then we use the shortest codePopulation length

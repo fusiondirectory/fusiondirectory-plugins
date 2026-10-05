@@ -84,4 +84,54 @@ class supannCodePopulation extends simplePlugin
       ],
     ];
   }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab);
+    $this->eduPersonInit();
+  }
+
+  protected function eduPersonInit ()
+  {
+    global $config;
+
+    // to be changed to a supann object !!
+    list ($codes, $labels) = supann::get_choices_for('affiliation');
+    $this->attributesAccess['fdSupannPopulationEduPersonAffiliation']->attribute->setChoices($codes, $labels);
+
+    $this->updateFieldsChoicesAndValues();
+  }
+
+  /* Update choices of fields which depends on other fields values */
+  protected function updateFieldsChoicesAndValues ()
+  {
+    global $config;
+
+    $this->attributesAccess['fdSupannPopulationEduPersonPrimaryAffiliation']->setChoices(
+      $this->attributesAccess['fdSupannPopulationEduPersonAffiliation']->getValue(),
+      $this->attributesAccess['fdSupannPopulationEduPersonAffiliation']->getDisplayValues()
+    );
+  }
+
+  function check (): array
+  {
+    $errors = parent::check();
+
+    $affiliations = $this->fdSupannPopulationEduPersonAffiliation;
+    if (in_array('member', $affiliations) && in_array('affiliate', $affiliations)) {
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['fdSupannPopulationEduPersonAffiliation'],
+        htmlescape(_('"member" and "affiliate" values are incompatible for fdSupannPopulationEduPersonAffiliation. Please remove one of them.'))
+      );
+    }
+
+    return $errors;
+  }
+
+  public function update (): bool
+  {
+    parent::update();
+    $this->updateFieldsChoicesAndValues();
+    return TRUE;
+  }
 }

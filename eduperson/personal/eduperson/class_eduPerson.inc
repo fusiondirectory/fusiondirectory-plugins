@@ -316,4 +316,11 @@ class eduPerson extends simplePlugin
     $aUniqueId = $this->generateUniqueUserId();
     $this->attributesAccess['eduPersonUniqueId']->setValue($aUniqueId);
   }
+
+  public function update (): bool
+  {
+    parent::update();
+    $this->updateFieldsChoicesAndValues();
+    return TRUE;
+  }
 }
