@@ -592,7 +592,7 @@ class supannAccount extends simplePlugin
 
       // Define the final attributes to be saved for eduPerson or unset them if empty
       if (! empty($finalEduPersonAffiliation)) {
-        $this->attrs['eduPersonAffiliation']        = $finalEduPersonAffiliation;
+        $this->attrs['eduPersonAffiliation']        = array_unique($finalEduPersonAffiliation);
         $this->attrs['eduPersonPrimaryAffiliation'] = $finalEduPersonPrimaryAffiliation;
 
         // Add to objectClass if not there only if finalEduPersonAffiliation is not empty
