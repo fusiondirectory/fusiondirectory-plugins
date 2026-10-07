@@ -3,7 +3,7 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2022  FusionDirectory
+  Copyright (C) 2011-2026  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -914,14 +914,6 @@ class posixAccount extends simplePlugin
         return $oldAttr;
       }
     }
-
-    /* Bail out if we had problems getting the next id */
-    if (!$tries) {
-      $error = new FusionDirectoryError(htmlescape(_('Cannot allocate a free ID:').' '._('maximum tries exceeded!')));
-      $error->display();
-    }
-
-    return $id;
   }
 
   /*!

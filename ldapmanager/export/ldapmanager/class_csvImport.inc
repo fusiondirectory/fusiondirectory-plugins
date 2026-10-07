@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2015-2019 FusionDirectory
+  Copyright (C) 2015-2026 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -324,38 +324,36 @@ class csvImport extends simplePlugin
     if ($anz > 1) {
 
       /* Generate array with output info  */
-      if (is_array($lines)) {
-        foreach ($lines as $line) {
-          $line_data = [];
-          $rest = 0;
-          $cnt  = 0;
+      foreach ($lines as $line) {
+        $line_data = [];
+        $rest = 0;
+        $cnt  = 0;
 
-          /* dont use comments or empty lines */
-          if ((substr(trim($line), 0, 1) == "#") || (empty($line))) {
-            continue;
-          }
-
-          /* get all elements  */
-          $cells  = str_getcsv($line, $this->separator);
-
-          /* attach all elements to data array */
-          if (is_array($cells)) {
-            foreach ($cells as $cell) {
-              $cnt++;
-              $line_data[] = trim($cell);
-            }
-          }
-
-          /* cell count less than anz, attach some empty fields */
-          if (($cnt < $anz) && ($cnt > 0)) {
-            $rest = $anz - $cnt;
-            for ($i = 0; $i < $rest; $i++) {
-              $line_data[] = "";
-            }
-          }
-
-          $data[] = $line_data;
+        /* dont use comments or empty lines */
+        if ((substr(trim($line), 0, 1) == "#") || (empty($line))) {
+          continue;
         }
+
+        /* get all elements  */
+        $cells  = str_getcsv($line, $this->separator);
+
+        /* attach all elements to data array */
+        if (is_array($cells)) {
+          foreach ($cells as $cell) {
+            $cnt++;
+            $line_data[] = trim($cell);
+          }
+        }
+
+        /* cell count less than anz, attach some empty fields */
+        if (($cnt < $anz) && ($cnt > 0)) {
+          $rest = $anz - $cnt;
+          for ($i = 0; $i < $rest; $i++) {
+            $line_data[] = "";
+          }
+        }
+
+        $data[] = $line_data;
       }
     }
 
