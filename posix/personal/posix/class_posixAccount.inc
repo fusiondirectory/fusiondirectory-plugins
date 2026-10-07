@@ -914,14 +914,6 @@ class posixAccount extends simplePlugin
         return $oldAttr;
       }
     }
-
-    /* Bail out if we had problems getting the next id */
-    if ($tries == -1) {
-      $error = new FusionDirectoryError(htmlescape(_('Cannot allocate a free ID:').' '._('maximum tries exceeded!')));
-      $error->display();
-    }
-
-    return $id;
   }
 
   /*!
