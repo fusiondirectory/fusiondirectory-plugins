@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2018  FusionDirectory
+  Copyright (C) 2015-2026  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -218,7 +218,7 @@ class dnsHost extends simplePlugin
     $counts = array_count_values($this->zonesCache);
     foreach ($this->zonesCache as $dn => &$name) {
       if ($counts[$name] > 1) {
-        $name .= ' ('.preg_replace(['/^[^,]+,/', '/,'.preg_quote($config->current['BASE']).'$/'], '', $dn).')';
+        $name .= ' ('.preg_replace(['/^[^,]+,/', '/,'.preg_quote($config->current['BASE'], '/').'$/'], '', $dn).')';
       }
     }
     unset($name);
