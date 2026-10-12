@@ -3,106 +3,102 @@
 ##
 
 # Postfix
-attributetype ( 1.3.6.1.4.1.38414.10.11.1 NAME 'postfixHeaderSizeLimit'
+attributetype ( 1.3.6.1.4.1.38414.102.1.1 NAME 'postfixHeaderSizeLimit'
   DESC 'Keep postfix header-size-limit variable'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.11.2 NAME 'postfixMailboxSizeLimit'
+attributetype ( 1.3.6.1.4.1.38414.102.1.2 NAME 'postfixMailboxSizeLimit'
   DESC 'Keep postfix mailbox-size-limit variable'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.11.3 NAME 'postfixMessageSizeLimit'
+attributetype ( 1.3.6.1.4.1.38414.102.1.3 NAME 'postfixMessageSizeLimit'
   DESC 'Keep postfix message-size-limit variable'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.11.4 NAME 'postfixMyDestinations'
+attributetype ( 1.3.6.1.4.1.38414.102.1.4 NAME 'postfixMyDestinations'
   DESC 'Keep postfix mydestinations variable'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
-attributetype ( 1.3.6.1.4.1.38414.10.11.5 NAME 'postfixMyDomain'
+attributetype ( 1.3.6.1.4.1.38414.102.1.5 NAME 'postfixMyDomain'
   DESC 'Keep postfix mydomain variable'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.11.6 NAME 'postfixMyHostname'
+attributetype ( 1.3.6.1.4.1.38414.102.1.6 NAME 'postfixMyHostname'
   DESC 'Keep postfix myhostname variable'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.11.7 NAME 'postfixMyNetworks'
+attributetype ( 1.3.6.1.4.1.38414.102.1.7 NAME 'postfixMyNetworks'
   DESC 'Keep postfix mynetworks variable'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.11.8 NAME 'postfixRelayhost'
+attributetype ( 1.3.6.1.4.1.38414.102.1.8 NAME 'postfixRelayhost'
   DESC 'Keep postfix relayhost variable'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.11.10 NAME 'postfixSenderRestrictions'
+attributetype ( 1.3.6.1.4.1.38414.102.1.10 NAME 'postfixSenderRestrictions'
   DESC 'Keep postfix sender restrictions'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
-attributetype ( 1.3.6.1.4.1.38414.10.11.11 NAME 'postfixRecipientRestrictions'
+attributetype ( 1.3.6.1.4.1.38414.102.1.11 NAME 'postfixRecipientRestrictions'
   DESC 'Keep postfix transport tables'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
-attributetype ( 1.3.6.1.4.1.38414.10.12.1 NAME 'fdTransportTableMatch'
+attributetype ( 1.3.6.1.4.1.38414.102.1.13 NAME 'fdTransportTableMatch'
   DESC 'FusionDirectory - postfix transport table matching pattern'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.12.2 NAME 'fdTransportTableRule'
+attributetype ( 1.3.6.1.4.1.38414.102.1.14 NAME 'fdTransportTableRule'
   DESC 'FusionDirectory - postfix transport table rule as transport:nexthop'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.12.3 NAME 'fdCatchallTableDomain'
+attributetype ( 1.3.6.1.4.1.38414.102.1.15 NAME 'fdCatchallTableDomain'
   DESC 'FusionDirectory - postfix catchall table domain'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.12.4 NAME 'fdCatchallTableRecipient'
+attributetype ( 1.3.6.1.4.1.38414.102.1.16 NAME 'fdCatchallTableRecipient'
   DESC 'FusionDirectory - postfix catchall table recipient'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.12.5 NAME 'fdDomainAliasTableFrom'
+attributetype ( 1.3.6.1.4.1.38414.102.1.17 NAME 'fdDomainAliasTableFrom'
   DESC 'FusionDirectory - postfix domain alias table from'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.10.12.6 NAME 'fdDomainAliasTableTo'
+attributetype ( 1.3.6.1.4.1.38414.102.1.18 NAME 'fdDomainAliasTableTo'
   DESC 'FusionDirectory - postfix domain alias table to'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-# 1.3.6.1.4.1.38414.10.13.1 is used by mail-fd.schema
-
 # Object classes
 
-# 1.3.6.1.4.1.38414.10.2.2 is used by mail-fd.schema
-
-objectclass (1.3.6.1.4.1.38414.10.2.3 NAME 'fdPostfixServer' SUP top AUXILIARY
+objectclass (1.3.6.1.4.1.38414.102.2.1 NAME 'fdPostfixServer' SUP top AUXILIARY
   DESC 'FusionDirectory - Postfix server definition'
   MUST ( cn )
   MAY  ( description $ postfixHeaderSizeLimit $
@@ -111,19 +107,17 @@ objectclass (1.3.6.1.4.1.38414.10.2.3 NAME 'fdPostfixServer' SUP top AUXILIARY
          postfixRelayhost $
          postfixSenderRestrictions $ postfixRecipientRestrictions ) )
 
-objectclass (1.3.6.1.4.1.38414.10.2.4 NAME 'fdPostfixTransportTable'
+objectclass (1.3.6.1.4.1.38414.102.2.2 NAME 'fdPostfixTransportTable'
   DESC 'FusionDirectory - Postfix transport table line'
   MUST ( fdTransportTableMatch $ fdTransportTableRule )
   MAY  (  ) )
 
-# 1.3.6.1.4.1.38414.10.2.5 is used by mail-fd.schema
-
-objectclass (1.3.6.1.4.1.38414.10.2.6 NAME 'fdPostfixCatchallTable'
+objectclass (1.3.6.1.4.1.38414.102.2.3 NAME 'fdPostfixCatchallTable'
   DESC 'FusionDirectory - Postfix catchall table line'
   MUST ( fdCatchallTableDomain $ fdCatchallTableRecipient )
   MAY  (  ) )
 
-objectclass (1.3.6.1.4.1.38414.10.2.7 NAME 'fdPostfixDomainAliasTable'
+objectclass (1.3.6.1.4.1.38414.102.2.4 NAME 'fdPostfixDomainAliasTable'
   DESC 'FusionDirectory - Postfix domain alias table line'
   MUST ( fdDomainAliasTableFrom $ fdDomainAliasTableTo )
   MAY  (  ) )
