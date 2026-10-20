@@ -84,6 +84,21 @@ class supannConfig extends simplePlugin
             'fdSupannPopulationCodeRDN', TRUE,
             'ou=populationcodes,ou=supannobjects'
           ),
+          new StringAttribute(
+            _('SupAnn Lists RDN'), _('Branch in which SupAnn Lists will be stored'),
+            'fdSupannListsRDN', TRUE,
+            'ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn Prefix RDN'), _('Branch in which SupAnn Prefix Objects will be stored'),
+            'fdSupannPrefixRDN', TRUE,
+            'ou=prefix,ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn Activite RDN'), _('Branch in which SupAnn Activite Objects will be stored'),
+            'fdSupannActiviteRDN', TRUE,
+            'ou=activite,ou=supannlists'
+          ),
         ]
       ],
 

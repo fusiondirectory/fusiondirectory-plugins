@@ -189,6 +189,30 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.31 NAME 'fdSupannCodePopulationMode'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+# New attribute for SupAnn Activite RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.32 NAME 'fdSupannActiviteRDN'
+  DESC 'FusionDirectory - SupAnn Activite RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# New attribute for SupAnn Prefix RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.33 NAME 'fdSupannPrefixRDN'
+  DESC 'FusionDirectory - SupAnn Prefix RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# New attribute for SupAnn Lists RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.34 NAME 'fdSupannListsRDN'
+  DESC 'FusionDirectory - SupAnn Lists RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
 # Deprecated for next release, they are now migrated to supannObjects
 attributetype ( 1.3.6.1.4.1.38414.17.1.3 NAME 'fdSupannRessourceSubStates'
   DESC 'FusionDirectory - SupAnn supannRessourceEtatDate allowed substates - format state:substate'
@@ -243,7 +267,7 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   MUST ( cn )
   MAY (
     fdSupannStructuresRDN $ fdSupannObjectsRDN $ fdSupannRessourceRDN $ fdSupannStateRDN $ fdSupannSubStateRDN $ fdSupannCiviliteRDN $
-    fdSupannConsentRDN $ fdSupannPopulationCodeRDN $
+    fdSupannConsentRDN $ fdSupannPopulationCodeRDN $ fdSupannActiviteRDN $ fdSupannPrefixRDN $ fdSupannListsRDN $
     fdSupannPasswordRecovery $
     fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains $
     fdSupannConsentementObjects $ fdSupannConsentementTypes $ fdSupannShowMailForwardingAddress $

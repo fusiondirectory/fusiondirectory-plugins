@@ -24,6 +24,19 @@ class supann
 
   static function get_prefixed_choices_for (string $shortname, $processLabel = 'supann::truncate_label')
   {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd(get_ou('SupannListsRDN').$config->current['BASE']);
+    $ldap->search("(&(objectClass=fdSupannPopulationCode)(fdSupannPopulationCodeName=$codePopulation))", [
+      'fdSupannPopulationCodeWeight',
+      'fdSupannPopulationEduPersonAffiliation',
+      'fdSupannPopulationEduPersonPrimaryAffiliation'
+    ]);
+//    while ($attrs = $ldap->fetch()) {
+
+
+//fuck
     $dir  = @opendir(SUPANN_DIR);
     $m    = [];
     $res  = [];
