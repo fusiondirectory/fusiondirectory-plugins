@@ -50,7 +50,7 @@ class supannActivite extends simplePlugin
           new BaseSelectorAttribute(get_ou('SupannActiviteRDN')),
           new StringAttribute(
             _('Activite Name'), _('The name of this Supann Activite'),
-            'fdSupannName', TRUE
+            'fdSupannName', TRUE, '', '', '/^{.+?}.+$/', '{PREFIX}VALUE'
           ),
           new StringAttribute(
             _('Activite Label'), _('The label of this Supann Activite'),
