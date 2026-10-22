@@ -41,7 +41,8 @@ class supannListsManagement extends management
         'plPriority'    => 0,
         'plManages'     => [
           'supannPrefix',
-          'supannActivite'
+          'supannActivite',
+          'supannCorps'
           ]
         ];
   }

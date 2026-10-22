@@ -99,6 +99,11 @@ class supannConfig extends simplePlugin
             'fdSupannActiviteRDN', TRUE,
             'ou=activite,ou=supannlists'
           ),
+          new StringAttribute(
+            _('SupAnn Corps RDN'), _('Branch in which SupAnn Corps Objects will be stored'),
+            'fdSupannCorpsRDN', TRUE,
+            'ou=corps,ou=supannlists'
+          ),
         ]
       ],
 
