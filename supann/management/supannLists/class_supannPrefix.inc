@@ -71,7 +71,8 @@ class supannPrefix extends simplePlugin
             'fdSupannList',
             FALSE,
             [
-              'supannActivite'
+              'supannActivite',
+              'supannCorps',
             ],
           ),
         ]
@@ -108,9 +109,15 @@ class supannPrefix extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
     foreach ($this->attrs as $attr => $value) {
       if ($attr == 'objectClass') {
-        // Get the objectClass that is not fdSupannPrefix
-        $oc = array_diff($value, ['fdSupannPrefix'])[0];
-        break;
+        // Remove count
+        unset($value['count']);
+        foreach ($value as $objectClassValue) {
+          if ($objectClassValue != 'fdSupannPrefix') {
+            // Get the objectClass that is not fdSupannPrefix
+            $oc = array_diff($value, ['fdSupannPrefix']);
+            break;
+          }
+        }
       }
     }
 
