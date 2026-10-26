@@ -139,11 +139,11 @@ class supannPrefix extends simplePlugin
   {
     // Get the value from fdSupannTypeObjectclass
     $oc = $this->attributesAccess['fdSupannTypeObjectclass']->getValue();
-    
+
     if ($oc == 'Aucun') {
       return [_('Select a Type for the Supann prefix')];
     }
-    
+
     return parent::prepare_save();
   }
 

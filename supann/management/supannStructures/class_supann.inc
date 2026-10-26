@@ -45,7 +45,7 @@ class supann
       // Get choices
       $choices = self::get_choices_for($shortname, $attrs['fdSupannList'], $processLabel);
 
-      /* Format is 
+      /* Format is
          PREFIX => [
            [
              CODE1,
