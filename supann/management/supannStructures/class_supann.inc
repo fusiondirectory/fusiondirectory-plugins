@@ -24,54 +24,73 @@ class supann
 
   static function get_prefixed_choices_for (string $shortname, $processLabel = 'supann::truncate_label')
   {
-    $dir  = @opendir(SUPANN_DIR);
-    $m    = [];
-    $res  = [];
+    global $config;
 
-    while ($file = readdir($dir)) {
-      if (preg_match('/^'.$shortname.'_(.+)$/', $file, $m)) {
-        $prefix = $m[1];
-        $res[$prefix] =& static::get_choices_for($file, '', $processLabel);
-      }
+    $ldap = $config->get_ldap_link();
+    $ldap->cd(get_ou('SupannPrefix').get_ou('SupannListsRDN').$config->current['BASE']);
+    $ldap->search("(&(objectClass=fdSupannPrefix)(objectClass=fdSupann" . $shortname . "))", [
+      'fdSupannName',
+      'fdSupannList'
+    ]);
+
+    $res = [];
+    while ($attrs = $ldap->fetch()) {
+      $prefix        = $attrs['fdSupannName'][0];
+      $choicesCodes  = [];
+      $choicesLabels = [];
+
+      // Remove count
+      unset($attrs['fdSupannList']['count']);
+
+      // Get choices
+      $choices = self::get_choices_for($shortname, $attrs['fdSupannList'], $processLabel);
+
+      /* Format is
+         PREFIX => [
+           [
+             CODE1,
+             CODE2,
+             ...
+           ],
+           [
+             LABEL1,
+             LABEL2,
+             ...
+           ]
+         ]
+      */
+      $res[$prefix] = $choices;
     }
-    closedir($dir);
+
     ksort($res);
     return $res;
   }
 
-  static function &get_choices_for (string $type, string $prefix = '', $processLabel = 'supann::truncate_label')
+  static function get_choices_for (string $shortname, array|string $dns = '', $processLabel = 'supann::truncate_label')
   {
-    if (isset(static::$choices_for[$prefix.$type])) {
-      return static::$choices_for[$prefix.$type];
-    }
-    $entity_codes   = [];
-    $entity_labels  = [];
-    if (file_exists(SUPANN_DIR.'/'.$type)) {
-      $entiteList = fopen(SUPANN_DIR.'/'.$type, 'r');
-      if ($entiteList === FALSE) {
-        $error = new FusionDirectoryError(
-          htmlescape(sprintf(
-            _('Cannot read file: "%s"'),
-            SUPANN_DIR.'/'.$type
-          ))
-        );
-        $error->display();
-        return [[], []];
-      }
-      while (($line = fgets($entiteList)) !== FALSE) {
-        $line = trim($line);
-        if (!preg_match('/^#/', $line) && !empty($line)) {
-          $entite_line = explode(';', $line, 2);
+    global $config;
 
-          $entity_codes[]   = $prefix.$entite_line[0];
-          $entity_labels[]  = $processLabel($entite_line[1]);
-        }
+    $ldap = $config->get_ldap_link();
+
+    $choicesCodes  = [];
+    $choicesLabels = [];
+
+    foreach ($dns as $dn) {
+      $ldap->cd($dn);
+      $ldap->search('(objectClass=fdSupann' . $shortname . ')', [
+        'fdSupannName',
+        'fdSupannLabel'
+      ]);
+
+      while ($dnAttrs = $ldap->fetch()) {
+        // fdSupannName contain the prefix but the functions doesn't want it
+        $choicesCodes[]  = explode("}", $dnAttrs['fdSupannName'][0])[1];
+        $choicesLabels[] = $processLabel($dnAttrs['fdSupannLabel'][0]);
       }
-      fclose($entiteList);
     }
-    array_multisort($entity_labels, $entity_codes);
-    static::$choices_for[$prefix.$type] = [$entity_codes, $entity_labels];
-    return static::$choices_for[$prefix.$type];
+
+    array_multisort($choicesLabels, $choicesCodes);
+    return [$choicesCodes, $choicesLabels];
   }
 
   /*! \brief Returns the $len first chars and "…" after if text is longer */

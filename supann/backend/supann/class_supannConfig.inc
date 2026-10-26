@@ -84,6 +84,56 @@ class supannConfig extends simplePlugin
             'fdSupannPopulationCodeRDN', TRUE,
             'ou=populationcodes,ou=supannobjects'
           ),
+          new StringAttribute(
+            _('SupAnn Lists RDN'), _('Branch in which SupAnn Lists will be stored'),
+            'fdSupannListsRDN', TRUE,
+            'ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn Prefix RDN'), _('Branch in which SupAnn Prefix Objects will be stored'),
+            'fdSupannPrefixRDN', TRUE,
+            'ou=prefix,ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn Activite RDN'), _('Branch in which SupAnn Activite Objects will be stored'),
+            'fdSupannActiviteRDN', TRUE,
+            'ou=activite,ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn Corps RDN'), _('Branch in which SupAnn Corps Objects will be stored'),
+            'fdSupannCorpsRDN', TRUE,
+            'ou=corps,ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn Discipline RDN'), _('Branch in which SupAnn Discipline Objects will be stored'),
+            'fdSupannDisciplineRDN', TRUE,
+            'ou=discipline,ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn Entite RDN'), _('Branch in which SupAnn Entite Objects will be stored'),
+            'fdSupannEntiteRDN', TRUE,
+            'ou=entite,ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn Etablissement RDN'), _('Branch in which SupAnn Etablissement Objects will be stored'),
+            'fdSupannEtablissementRDN', TRUE,
+            'ou=etablissement,ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn EtuRegimeInscription RDN'), _('Branch in which SupAnn EtuRegimeInscription Objects will be stored'),
+            'fdSupannEtuRegimeInscriptionRDN', TRUE,
+            'ou=eturegimeinscription,ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn Role RDN'), _('Branch in which SupAnn Role Objects will be stored'),
+            'fdSupannRoleRDN', TRUE,
+            'ou=role,ou=supannlists'
+          ),
+          new StringAttribute(
+            _('SupAnn TypeDiplome RDN'), _('Branch in which SupAnn TypeDiplome Objects will be stored'),
+            'fdSupannTypeDiplomeRDN', TRUE,
+            'ou=typediplome,ou=supannlists'
+          ),
         ]
       ],
 
