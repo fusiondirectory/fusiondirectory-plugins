@@ -199,7 +199,7 @@ class eduPerson extends simplePlugin
       'emeritus',
       'teacher',
       'registered-reader',
-    ]','
+    ];
 
     $labels = [
       'Personne en formation (student)',
