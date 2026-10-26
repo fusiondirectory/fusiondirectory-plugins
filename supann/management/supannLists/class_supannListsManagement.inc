@@ -42,7 +42,13 @@ class supannListsManagement extends management
         'plManages'     => [
           'supannPrefix',
           'supannActivite',
-          'supannCorps'
+          'supannCorps',
+          'supannDiscipline',
+          'supannEntite',
+          'supannEtablissement',
+          'supannEtuRegimeInscription',
+          'supannRole',
+          'supannTypeDiplome'
           ]
         ];
   }
