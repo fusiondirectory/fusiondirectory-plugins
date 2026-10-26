@@ -185,10 +185,39 @@ class eduPerson extends simplePlugin
   {
     global $config;
 
-    // to be changed to a supann object !!
-    list ($codes, $labels) = supann::get_choices_for('affiliation');
-    $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
+    $codes = [
+      'student',
+      'faculty',
+      'staff',
+      'employee',
+      'member',
+      'affiliate',
+      'alum',
+      'library-walk-in',
+      'researcher',
+      'retired',
+      'emeritus',
+      'teacher',
+      'registered-reader',
+    ];
 
+    $labels = [
+      "Personne en formation (student)",
+      "Personnel pédagogique (faculty)",
+      "Personnel non pédagogique (staff)",
+      "Personnel rémunéré (employee)",
+      "Personne interne à l'établissement (member)",
+      "Personne externe à l'établissement (affiliate)",
+      "Ancien étudiant gardant des relations avec l'établissement (alum)",
+      "Lecteur autorisé à la bibliothèque (obsolète - library-walk-in)",
+      "Personnel assurant une activité de recherche (researcher)",
+      "Personne à la retraite gardant des relations avec l'établissement (retired)",
+      "Professeur ayant obtenu l'éméritat (emeritus)",
+      "Personnel assurant une activité d'enseignement (teacher)",
+      "Lecteur autorisé à la bibliothèque (registered-reader)"
+    ];
+
+    $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
     $this->updateFieldsChoicesAndValues();
   }
 
