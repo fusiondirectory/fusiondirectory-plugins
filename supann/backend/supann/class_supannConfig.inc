@@ -90,11 +90,6 @@ class supannConfig extends simplePlugin
             'ou=supannlists'
           ),
           new StringAttribute(
-            _('SupAnn Prefix RDN'), _('Branch in which SupAnn Prefix Objects will be stored'),
-            'fdSupannPrefixRDN', TRUE,
-            'ou=prefix,ou=supannlists'
-          ),
-          new StringAttribute(
             _('SupAnn Activite RDN'), _('Branch in which SupAnn Activite Objects will be stored'),
             'fdSupannActiviteRDN', TRUE,
             'ou=activite,ou=supannlists'

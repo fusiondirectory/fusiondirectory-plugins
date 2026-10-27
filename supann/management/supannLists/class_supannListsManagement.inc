@@ -43,6 +43,7 @@ class supannListsManagement extends management
           'supannPrefix',
           'supannActivite',
           'supannCorps',
+          'supannDiplome',
           'supannDiscipline',
           'supannEntite',
           'supannEtablissement',

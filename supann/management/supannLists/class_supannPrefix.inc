@@ -31,7 +31,7 @@ class supannPrefix extends simplePlugin
         'supannPrefix' => [
           'name'         => _('SupAnn Prefix'),
           'description'  => _('SupAnn Prefix'),
-          'ou'           => get_ou('SupannPrefixRDN'),
+          'ou'           => get_ou('SupannListsRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
           'mainAttr'     => 'fdSupannName',
         ],
@@ -47,7 +47,7 @@ class supannPrefix extends simplePlugin
       'main' => [
         'name'  => _('Supann Prefix'),
         'attrs' => [
-          new BaseSelectorAttribute(get_ou('SupannPrefixRDN')),
+//          new BaseSelectorAttribute(get_ou('SupannPrefixRDN')),
           new StringAttribute(
             _('Prefix Name'), _('The name of this Supann Prefix'),
             'fdSupannName', TRUE
@@ -73,6 +73,13 @@ class supannPrefix extends simplePlugin
             [
               'supannActivite',
               'supannCorps',
+              'supannDiplome',
+              'supannDiscipline',
+              'supannEntite',
+              'supannEtablissement',
+              'supannEtuRegimeInscription',
+              'supannRole',
+              'supannTypeDiplome'
             ],
           ),
         ]

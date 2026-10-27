@@ -197,16 +197,8 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.32 NAME 'fdSupannActiviteRDN'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-# New attribute for SupAnn Prefix RDN
-attributetype ( 1.3.6.1.4.1.38414.17.1.33 NAME 'fdSupannPrefixRDN'
-  DESC 'FusionDirectory - SupAnn Prefix RDN'
-  EQUALITY caseExactIA5Match
-  SUBSTR caseExactIA5SubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
-  SINGLE-VALUE)
-
 # New attribute for SupAnn Lists RDN
-attributetype ( 1.3.6.1.4.1.38414.17.1.34 NAME 'fdSupannListsRDN'
+attributetype ( 1.3.6.1.4.1.38414.17.1.33 NAME 'fdSupannListsRDN'
   DESC 'FusionDirectory - SupAnn Lists RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
@@ -214,7 +206,7 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.34 NAME 'fdSupannListsRDN'
   SINGLE-VALUE)
 
 # New attribute for SupAnn Corps RDN
-attributetype ( 1.3.6.1.4.1.38414.17.1.35 NAME 'fdSupannCorpsRDN'
+attributetype ( 1.3.6.1.4.1.38414.17.1.34 NAME 'fdSupannCorpsRDN'
   DESC 'FusionDirectory - SupAnn Corps RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
@@ -222,7 +214,7 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.35 NAME 'fdSupannCorpsRDN'
   SINGLE-VALUE)
 
 # New attribute for SupAnn Discipline RDN
-attributetype ( 1.3.6.1.4.1.38414.17.1.36 NAME 'fdSupannDisciplineRDN'
+attributetype ( 1.3.6.1.4.1.38414.17.1.35 NAME 'fdSupannDisciplineRDN'
   DESC 'FusionDirectory - SupAnn Discipline RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
@@ -230,7 +222,7 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.36 NAME 'fdSupannDisciplineRDN'
   SINGLE-VALUE)
 
 # New attribute for SupAnn Entite RDN
-attributetype ( 1.3.6.1.4.1.38414.17.1.37 NAME 'fdSupannEntiteRDN'
+attributetype ( 1.3.6.1.4.1.38414.17.1.36 NAME 'fdSupannEntiteRDN'
   DESC 'FusionDirectory - SupAnn Entite RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
@@ -238,7 +230,7 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.37 NAME 'fdSupannEntiteRDN'
   SINGLE-VALUE)
 
 # New attribute for SupAnn Etablissement RDN
-attributetype ( 1.3.6.1.4.1.38414.17.1.38 NAME 'fdSupannEtablissementRDN'
+attributetype ( 1.3.6.1.4.1.38414.17.1.37 NAME 'fdSupannEtablissementRDN'
   DESC 'FusionDirectory - SupAnn Etablissement RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
@@ -246,7 +238,7 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.38 NAME 'fdSupannEtablissementRDN'
   SINGLE-VALUE)
 
 # New attribute for SupAnn EtuRegimeInscription RDN
-attributetype ( 1.3.6.1.4.1.38414.17.1.39 NAME 'fdSupannEtuRegimeInscriptionRDN'
+attributetype ( 1.3.6.1.4.1.38414.17.1.38 NAME 'fdSupannEtuRegimeInscriptionRDN'
   DESC 'FusionDirectory - SupAnn EtuRegimeInscription RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
@@ -254,7 +246,7 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.39 NAME 'fdSupannEtuRegimeInscriptionRDN'
   SINGLE-VALUE)
 
 # New attribute for SupAnn Role RDN
-attributetype ( 1.3.6.1.4.1.38414.17.1.40 NAME 'fdSupannRoleRDN'
+attributetype ( 1.3.6.1.4.1.38414.17.1.39 NAME 'fdSupannRoleRDN'
   DESC 'FusionDirectory - SupAnn Role RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
@@ -262,8 +254,16 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.40 NAME 'fdSupannRoleRDN'
   SINGLE-VALUE)
 
 # New attribute for SupAnn TypeDiplome RDN
-attributetype ( 1.3.6.1.4.1.38414.17.1.41 NAME 'fdSupannTypeDiplomeRDN'
+attributetype ( 1.3.6.1.4.1.38414.17.1.40 NAME 'fdSupannTypeDiplomeRDN'
   DESC 'FusionDirectory - SupAnn TypeDiplome RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# New attribute for SupAnn Diplome RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.41 NAME 'fdSupannDiplomeRDN'
+  DESC 'FusionDirectory - SupAnn Diplome RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
@@ -323,9 +323,9 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   MUST ( cn )
   MAY (
     fdSupannStructuresRDN $ fdSupannObjectsRDN $ fdSupannRessourceRDN $ fdSupannStateRDN $ fdSupannSubStateRDN $ fdSupannCiviliteRDN $
-    fdSupannConsentRDN $ fdSupannPopulationCodeRDN $ fdSupannActiviteRDN $ fdSupannPrefixRDN $ fdSupannListsRDN $
+    fdSupannConsentRDN $ fdSupannPopulationCodeRDN $ fdSupannActiviteRDN $ fdSupannListsRDN $
     fdSupannCorpsRDN $ fdSupannDisciplineRDN $ fdSupannEntiteRDN $ fdSupannEtablissementRDN $
-    fdSupannEtuRegimeInscriptionRDN $ fdSupannRoleRDN $ fdSupannTypeDiplomeRDN $
+    fdSupannEtuRegimeInscriptionRDN $ fdSupannRoleRDN $ fdSupannTypeDiplomeRDN $ fdSupannDiplomeRDN $
     fdSupannPasswordRecovery $
     fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains $
     fdSupannConsentementObjects $ fdSupannConsentementTypes $ fdSupannShowMailForwardingAddress $

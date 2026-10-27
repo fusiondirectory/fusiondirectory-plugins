@@ -27,7 +27,7 @@ class supann
     global $config;
 
     $ldap = $config->get_ldap_link();
-    $ldap->cd(get_ou('SupannPrefix').get_ou('SupannListsRDN').$config->current['BASE']);
+    $ldap->cd(get_ou('SupannListsRDN').$config->current['BASE']);
     $ldap->search("(&(objectClass=fdSupannPrefix)(objectClass=fdSupann" . $shortname . "))", [
       'fdSupannName',
       'fdSupannList'
