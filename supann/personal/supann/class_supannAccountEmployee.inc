@@ -59,6 +59,11 @@ class supannAccountEmployee extends simplePlugin
             _('Personal ID'), _('supannEmpId - Employee identifier'),
             'supannEmpId', FALSE
           ),
+          new GeneralizedTimeDateAttribute(
+            _('End contract'), _('date of the end of the contract'),
+            'supannEmpDateFin', FALSE,
+            ''
+          ),
           new SupannPrefixedSelectAttribute(
             _('Personal corps'), _('supannEmpCorps'),
             'supannEmpCorps', FALSE, 'corps'
