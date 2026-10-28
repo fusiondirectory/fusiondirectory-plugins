@@ -27,8 +27,8 @@ class supann
     global $config;
 
     $ldap = $config->get_ldap_link();
-    $ldap->cd(get_ou('SupannListsRDN').$config->current['BASE']);
-    $ldap->search("(&(objectClass=fdSupannPrefix)(objectClass=fdSupann" . $shortname . "))", [
+    $ldap->cd(get_ou('SupannPrefixRDN').$config->current['BASE']);
+    $ldap->search("(&(objectClass=fdSupannPrefix)(fdSupannType=" . $shortname . "))", [
       'fdSupannName',
       'fdSupannList'
     ]);
@@ -66,7 +66,7 @@ class supann
     return $res;
   }
 
-  static function get_choices_for (string $shortname, array|string $dns = '', $processLabel = 'supann::truncate_label')
+  static function get_choices_for (string $shortname, array|string|null $dns = '', $processLabel = 'supann::truncate_label')
   {
     global $config;
 

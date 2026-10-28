@@ -269,6 +269,14 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.41 NAME 'fdSupannDiplomeRDN'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
+# New attribute for SupAnn Prefix RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.42 NAME 'fdSupannPrefixRDN'
+  DESC 'FusionDirectory - SupAnn Prefix RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
 # Deprecated for next release, they are now migrated to supannObjects
 attributetype ( 1.3.6.1.4.1.38414.17.1.3 NAME 'fdSupannRessourceSubStates'
   DESC 'FusionDirectory - SupAnn supannRessourceEtatDate allowed substates - format state:substate'
@@ -326,6 +334,7 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
     fdSupannConsentRDN $ fdSupannPopulationCodeRDN $ fdSupannActiviteRDN $ fdSupannListsRDN $
     fdSupannCorpsRDN $ fdSupannDisciplineRDN $ fdSupannEntiteRDN $ fdSupannEtablissementRDN $
     fdSupannEtuRegimeInscriptionRDN $ fdSupannRoleRDN $ fdSupannTypeDiplomeRDN $ fdSupannDiplomeRDN $
+    fdSupannPrefixRDN $
     fdSupannPasswordRecovery $
     fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains $
     fdSupannConsentementObjects $ fdSupannConsentementTypes $ fdSupannShowMailForwardingAddress $

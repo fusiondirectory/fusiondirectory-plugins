@@ -129,6 +129,11 @@ class supannConfig extends simplePlugin
             'fdSupannTypeDiplomeRDN', TRUE,
             'ou=typediplome,ou=supannlists'
           ),
+          new StringAttribute(
+            _('SupAnn Prefix RDN'), _('Branch in which SupAnn Prefix Objects will be stored'),
+            'fdSupannPrefixRDN', TRUE,
+            'ou=prefix,ou=supannlists'
+          ),
         ]
       ],
 

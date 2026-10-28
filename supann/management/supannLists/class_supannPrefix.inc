@@ -31,7 +31,7 @@ class supannPrefix extends simplePlugin
         'supannPrefix' => [
           'name'         => _('SupAnn Prefix'),
           'description'  => _('SupAnn Prefix'),
-          'ou'           => get_ou('SupannListsRDN'),
+          'ou'           => get_ou('SupannPrefixRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
           'mainAttr'     => 'fdSupannName',
         ],
@@ -47,7 +47,6 @@ class supannPrefix extends simplePlugin
       'main' => [
         'name'  => _('Supann Prefix'),
         'attrs' => [
-//          new BaseSelectorAttribute(get_ou('SupannPrefixRDN')),
           new StringAttribute(
             _('Prefix Name'), _('The name of this Supann Prefix'),
             'fdSupannName', TRUE
@@ -90,7 +89,7 @@ class supannPrefix extends simplePlugin
           new SelectAttribute(
             _('Type Lists'),
             _('Select one type for the Prefix'),
-            'fdSupannTypeObjectclass',
+            'fdSupannType',
             TRUE,
             [
               'Aucun',
@@ -111,56 +110,71 @@ class supannPrefix extends simplePlugin
     ];
   }
 
-  public function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  public function compute_dn (): string
   {
-    parent::__construct($dn, $object, $parent, $mainTab);
-    foreach ($this->attrs as $attr => $value) {
-      if ($attr == 'objectClass') {
-        // Remove count
-        unset($value['count']);
-        foreach ($value as $objectClassValue) {
-          if ($objectClassValue != 'fdSupannPrefix') {
-            // Get the objectClass that is not fdSupannPrefix
-            $oc = array_diff($value, ['fdSupannPrefix']);
-            break;
-          }
-        }
-      }
+    global $config;
+    if (!$this->mainTab) {
+      throw new FatalError(htmlescape(_('Only main tab can compute dn')));
     }
-
-    // Set the value of oc as choice for fdSupannTypeObjectclass without fdSupann
-    if (!empty($oc)) {
-      $this->attributesAccess['fdSupannTypeObjectclass']->setValue(
-        str_replace("fdSupann", "", $oc)
+    if (!isset($this->parent) || !($this->parent instanceof simpleTabs)) {
+      throw new FatalError(
+        htmlescape(sprintf(
+                     _('Could not compute dn: no parent tab class for "%s"'),
+                     get_class($this)
+                   ))
       );
     }
-  }
+    $infos = $this->parent->objectInfos();
+    if ($infos === FALSE) {
+      throw new FatalError(
+        htmlescape(sprintf(
+                     _('Could not compute dn: could not find objectType info from tab class "%s"'),
+                     get_class($this->parent)
+                   ))
+      );
+    }
+    $attr = $infos['mainAttr'];
+    $ou   = $infos['ou'];
 
-  public function mergeObjectClasses ($oc) : array
-  {
-    $oc = ['fdSupann' . $this->attributesAccess['fdSupannTypeObjectclass']->getValue()];
-    return parent::mergeObjectClasses($oc);
+    // Change $this->dn to be in the ou of the type
+    $typeValue = $this->attributesAccess['fdSupannType']->getValue();
+    $typeRDN   = get_ou('Supann' . $typeValue . 'RDN');
+
+    // Remove SupannListsRDN from typeRDN
+    $typeRDN = str_replace(
+      get_ou('SupannListsRDN'),
+      '',
+      $typeRDN
+    );
+
+    // Actual dn is fdSupannName=<name>,ou=prefix,<base>
+    $ou = str_replace(
+      get_ou('SupannPrefixRDN'),
+      $typeRDN . get_ou('SupannPrefixRDN'),
+      $ou
+    );
+
+    if (isset($this->base)) {
+      $base = $this->base;
+    } else {
+      $base = $config->current['BASE'];
+    }
+    if ($this->is_template) {
+      return 'cn=' . ldap_escape_dn($this->_template_cn) . ',ou=templates,' . $ou . $base;
+    }
+
+    return $attr . '=' . ldap_escape_dn($this->attributesAccess[$attr]->computeLdapValue()) . ',' . $ou . $base;
   }
 
   public function prepare_save (): array
   {
     // Get the value from fdSupannTypeObjectclass
-    $oc = $this->attributesAccess['fdSupannTypeObjectclass']->getValue();
+    $oc = $this->attributesAccess['fdSupannType']->getValue();
 
     if ($oc == 'Aucun') {
       return [_('Select a Type for the Supann prefix')];
     }
 
     return parent::prepare_save();
-  }
-
-  public function save () : array
-  {
-    // Disable save in LDAP for fdSupannTypeObjectclass
-    $this->attributesAccess['fdSupannTypeObjectclass']->setInLdap(FALSE);
-
-    // Save and return errors
-    $errors = parent::save();
-    return $errors;
   }
 }
