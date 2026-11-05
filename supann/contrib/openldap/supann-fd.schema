@@ -122,8 +122,22 @@ attributetype ( 1.3.6.1.4.1.38414.28.1.19 NAME 'fdSupannList'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
-attributetype ( 1.3.6.1.4.1.38414.28.1.20 NAME 'fdSupannType'
-  DESC 'FusionDirectory - SupAnn type'
+attributetype ( 1.3.6.1.4.1.38414.28.1.20 NAME 'fdSupannDiplomeType'
+  DESC 'FusionDirectory - Type Diplome related to a Diplome entry'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.28.1.21 NAME 'fdSupannDisciplineSector'
+  DESC 'FusionDirectory - Discipline sector related to a Diplome entry'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.28.1.22 NAME 'fdSupannType'
+  DESC 'FusionDirectory - Type of a supannPrefix'
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
@@ -171,12 +185,12 @@ objectclass ( 1.3.6.1.4.1.38414.88.2.1 NAME 'fdFranceConnect' SUP top AUXILIARY
 
 objectclass ( 1.3.6.1.4.1.38414.88.3.1 NAME 'fdSupannStudent' SUP top AUXILIARY
   DESC 'FusionDirectory - Supann Student tab attributes'
-  MAY ( supannCodeINE $ supannEtuInscription $ supannEtuAnneeInscription $ supannEtuRegimeInscription $
+  MAY ( supannCodeINE $ supannEtuDateFin $ supannEtuInscription $ supannEtuAnneeInscription $ supannEtuRegimeInscription $
         supannEtuSecteurDisciplinaire $ supannEtuTypeDiplome $ supannEtuCursusAnnee $ supannEtuDiplome $ supannEtuElementPedagogique ))
 
 objectclass ( 1.3.6.1.4.1.38414.88.4.1 NAME 'fdSupannEmployee' SUP top AUXILIARY
   DESC 'FusionDirectory - Supann Employee attributes'
-  MAY ( supannEmpId $ supannEmpCorps $ supannActivite $ supannRoleGenerique $ supannRoleEntite ))
+  MAY ( supannEmpId $ supannEmpDateFin $ supannEmpCorps $ supannActivite $ supannRoleGenerique $ supannRoleEntite ))
 
 objectclass ( 1.3.6.1.4.1.38414.88.5.1 NAME 'fdSupannActivite'
   DESC 'FusionDirectory - Supann Activite objectClass'
@@ -223,7 +237,11 @@ objectclass ( 1.3.6.1.4.1.38414.88.13.1 NAME 'fdSupannTypeDiplome'
   MUST ( fdSupannName $ fdSupannLabel )
   MAY ( description ))
 
-objectclass ( 1.3.6.1.4.1.38414.88.14.1 NAME 'fdSupannDiplome'
+objectclass ( 1.3.6.1.4.1.38414.88.14.1 NAME 'fdSupannExternal' SUP top AUXILIARY
+  DESC 'FusionDirectory - Supann External attributes'
+  MAY ( supannExtDateFin ))
+
+objectclass ( 1.3.6.1.4.1.38414.88.15.1 NAME 'fdSupannDiplome'
   DESC 'FusionDirectory - Supann Diplome objectClass'
-  MUST ( fdSupannName $ fdSupannLabel )
+  MUST ( fdSupannName $ fdSupannLabel $ fdSupannDiplomeType $ fdSupannDisciplineSector )
   MAY ( description ))
