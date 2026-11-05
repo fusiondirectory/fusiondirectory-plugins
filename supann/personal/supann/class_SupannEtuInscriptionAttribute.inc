@@ -3,7 +3,7 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
 
   Copyright (C) 2010-2012 Antoine Gallavardin
-  Copyright (C) 2013-2020 FusionDirectory
+  Copyright (C) 2013-2026 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -73,30 +73,45 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
     parent::__construct($description, $ldapName, $attributes, $acl, $label);
 
     /* supannEtuRegimeInscription */
-    list ($codes, $labels) = supann::get_choices_for('eturegimeinscription_SISE', '{SISE}');
-    $key = array_search('{SISE}$', $codes);
-    if ($key !== FALSE) {
-      /* Move "empty" value as first one */
-      array_unshift($codes,   ...array_splice($codes,   $key, 1));
-      array_unshift($labels,  ...array_splice($labels,  $key, 1));
+    $supannEtuRigimeInscription = supann::get_prefixed_choices_for('eturegimeinscription');
+
+    // Get only SISE (I don't know why but we only took SISE choices)
+    if (!(empty($supannEtuRigimeInscription))) {
+      list ($codes, $labels) = $supannEtuRigimeInscription['SISE'];
+      $key = array_search('{SISE}$', $codes);
+      if ($key !== FALSE) {
+        /* Move "empty" value as first one */
+        array_unshift($codes,   ...array_splice($codes,   $key, 1));
+        array_unshift($labels,  ...array_splice($labels,  $key, 1));
+      }
+      $this->attributes[2]->setChoices($codes, $labels);
     }
-    $this->attributes[2]->setChoices($codes, $labels);
 
     /* supannEtuSecteurDisciplinaire */
-    list ($codes, $labels) = supann::get_choices_for('discipline_SISE', '{SISE}');
-    $key = array_search('{SISE}-', $codes);
-    if ($key !== FALSE) {
-      /* Move "empty" value as first one */
-      array_unshift($codes,   ...array_splice($codes,   $key, 1));
-      array_unshift($labels,  ...array_splice($labels,  $key, 1));
+    $supannEtuSecteurDisciplinaire = supann::get_prefixed_choices_for('discipline');
+
+    // Get only SISE (I don't know why but we only took SISE choices)
+    if (!(empty($supannEtuSecteurDisciplinaire))) {
+      list ($codes, $labels) = $supannEtuSecteurDisciplinaire['SISE'];
+      $key = array_search('{SISE}-', $codes);
+      if ($key !== FALSE) {
+        /* Move "empty" value as first one */
+        array_unshift($codes,   ...array_splice($codes,   $key, 1));
+        array_unshift($labels,  ...array_splice($labels,  $key, 1));
+      }
+      $this->attributes[3]->setChoices($codes, $labels);
+      $this->attributes[3]->setSubmitForm(TRUE);
     }
-    $this->attributes[3]->setChoices($codes, $labels);
-    $this->attributes[3]->setSubmitForm(TRUE);
 
     /* supannEtuTypeDiplome */
-    list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
-    $this->attributes[4]->setChoices($codes, $labels);
-    $this->attributes[4]->setSubmitForm(TRUE);
+    $supannEtuTypeDiplome = supann::get_prefixed_choices_for('typediplome');
+
+    // Get only SISE (I don't know why but we only took SISE choices)
+    if (!(empty($supannEtuTypeDiplome))) {
+      list ($codes, $labels) = $supannEtuTypeDiplome['SISE'];
+      $this->attributes[4]->setChoices($codes, $labels);
+      $this->attributes[4]->setSubmitForm(TRUE);
+    }
 
     $prefixedChoices = supann::get_prefixed_choices_for(
       'diplome',
@@ -105,7 +120,6 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
         return explode(';', $line);
       }
     );
-
     $this->diplomas = [];
     foreach ($prefixedChoices as $prefix => $choices) {
       list($choicesId, $choicesLines) = $choices;
@@ -114,19 +128,10 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
         if (!empty($label2)) {
           $label1 .= ' - '.$label2;
         }
-        if ($type[0] != '{') {
-          // $type cannot be used with another prefix than {SISE}
-          $type = '{SISE}'.$type;
-        }
-        if ($sectdisc[0] != '{') {
-          // $sectdisc cannot be used with another prefix than {SISE}
-          $sectdisc = '{SISE}'.$sectdisc;
-        }
         $this->diplomas[$type][$sectdisc][$prefix][0][] = $id;
         $this->diplomas[$type][$sectdisc][$prefix][1][] = $label1;
       }
     }
-
     $this->supannUpdateSelect();
   }
 

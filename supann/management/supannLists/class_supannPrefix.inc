@@ -80,6 +80,9 @@ class supannPrefix extends simplePlugin
               'supannRole',
               'supannTypeDiplome'
             ],
+            [],
+            'dn',
+            'fdSupannLabel'
           ),
         ]
       ],

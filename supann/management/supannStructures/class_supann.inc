@@ -27,7 +27,7 @@ class supann
     global $config;
 
     $ldap = $config->get_ldap_link();
-    $ldap->cd(get_ou('SupannPrefixRDN').$config->current['BASE']);
+    $ldap->cd(get_ou('SupannPrefix').get_ou('SupannListsRDN').$config->current['BASE']);
     $ldap->search("(&(objectClass=fdSupannPrefix)(fdSupannType=" . $shortname . "))", [
       'fdSupannName',
       'fdSupannList'
@@ -66,7 +66,7 @@ class supann
     return $res;
   }
 
-  static function get_choices_for (string $shortname, array|string|null $dns = '', $processLabel = 'supann::truncate_label')
+  static function get_choices_for (string $shortname, array|string|NULL $dns = '', $processLabel = 'supann::truncate_label')
   {
     global $config;
 
@@ -79,16 +79,28 @@ class supann
       $ldap->cd($dn);
       $ldap->search('(objectClass=fdSupann' . $shortname . ')', [
         'fdSupannName',
+        'fdSupannDiplomeType',
+        'fdSupannDisciplineSector',
         'fdSupannLabel'
       ]);
 
       while ($dnAttrs = $ldap->fetch()) {
         // fdSupannName contain the prefix but the functions doesn't want it
         $choicesCodes[]  = explode("}", $dnAttrs['fdSupannName'][0])[1];
-        $choicesLabels[] = $processLabel($dnAttrs['fdSupannLabel'][0]);
+
+        // Prepare the line that will be processed by processLabel function
+        // The format is different if shortname  == 'diplome'
+        if ($shortname == 'diplome') {
+          $typeDiplome = explode("}", $dnAttrs['fdSupannDiplomeType'][0])[1];
+          $sectDisc    = explode("}", $dnAttrs['fdSupannDisciplineSector'][0])[1];
+          $line        = $typeDiplome . ';' . $sectDisc . ';' . $dnAttrs['fdSupannLabel'][0];
+        } else {
+          $line = $dnAttrs['fdSupannLabel'][0];
+        }
+
+        $choicesLabels[] = $processLabel($line);
       }
     }
-
     array_multisort($choicesLabels, $choicesCodes);
     return [$choicesCodes, $choicesLabels];
   }
