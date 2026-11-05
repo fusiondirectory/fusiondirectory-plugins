@@ -33,7 +33,7 @@ class supannDiscipline extends simplePlugin
           'description'  => _('SupAnn Discipline'),
           'ou'           => get_ou('SupannDisciplineRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],

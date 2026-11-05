@@ -33,7 +33,7 @@ class supannRole extends simplePlugin
           'description'  => _('SupAnn Role'),
           'ou'           => get_ou('SupannRoleRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],

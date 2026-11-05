@@ -33,7 +33,7 @@ class supannCorps extends simplePlugin
           'description'  => _('SupAnn Corps'),
           'ou'           => get_ou('SupannCorpsRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],

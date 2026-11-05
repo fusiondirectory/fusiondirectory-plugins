@@ -33,7 +33,7 @@ class supannEtablissement extends simplePlugin
           'description'  => _('SupAnn Etablissement'),
           'ou'           => get_ou('SupannEtablissementRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],

@@ -33,7 +33,7 @@ class supannEtuRegimeInscription extends simplePlugin
           'description'  => _('SupAnn EtuRegimeInscription'),
           'ou'           => get_ou('SupannEtuRegimeInscriptionRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],

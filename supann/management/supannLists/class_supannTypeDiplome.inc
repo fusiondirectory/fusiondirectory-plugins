@@ -33,7 +33,7 @@ class supannTypeDiplome extends simplePlugin
           'description'  => _('SupAnn TypeDiplome'),
           'ou'           => get_ou('SupannTypeDiplomeRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],
