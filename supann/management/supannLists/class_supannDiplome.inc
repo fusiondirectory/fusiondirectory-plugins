@@ -85,7 +85,7 @@ class supannDiplome extends simplePlugin
             _('Type Diplome'),
             _('Select one Type Diplome'),
             'fdSupannDiplomeType',
-            FALSE,
+            TRUE,
             [
               'supannTypeDiplome'
             ],
@@ -102,7 +102,7 @@ class supannDiplome extends simplePlugin
             _('Discipline Sector'),
             _('Select one Discipline Sector'),
             'fdSupannDisciplineSector',
-            FALSE,
+            TRUE,
             [
               'supannDiscipline'
             ],

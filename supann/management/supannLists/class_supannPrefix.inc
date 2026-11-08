@@ -36,6 +36,19 @@ class supannPrefix extends simplePlugin
           'mainAttr'     => 'fdSupannName',
         ],
       ],
+      'plForeignKeys' => [
+        'fdSupannList' => [
+          ['supannActivite'],
+          ['supannCorps'],
+          ['supannDiplome'],
+          ['supannDiscipline'],
+          ['supannEntite'],
+          ['supannEtablissement'],
+          ['supannEtuRegimeInscription'],
+          ['supannRole'],
+          ['supannTypeDiplome']
+        ]
+      ],
       'plSearchAttrs'  => ['description', 'fdSupannName'],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo(), TRUE),
     ];
