@@ -42,12 +42,17 @@ class supannConfig extends simplePlugin
   {
     return [
       'rdns' => [
-        'name'  => _('LDAP tree for supann'),
+        'name'  => _('top branches for supann'),
         'attrs' => [
           new StringAttribute(
             _('SupAnn Structures RDN'), _('Branch in which SupAnn structures will be stored'),
             'fdSupannStructuresRDN', TRUE,
             'ou=structures'
+          ),
+          new StringAttribute(
+            _('SupAnn Lists RDN'), _('Branch in which SupAnn Lists will be stored'),
+            'fdSupannListsRDN', TRUE,
+            'ou=supannlists'
           ),
           new StringAttribute(
             _('SupAnn Objects RDN'), _('Branch in which SupAnn Objects will be stored'),
@@ -108,16 +113,6 @@ class supannConfig extends simplePlugin
             _('SupAnn Discipline RDN'), _('Branch in which SupAnn Discipline Objects will be stored'),
             'fdSupannDisciplineRDN', TRUE,
             'ou=discipline,ou=supannlists'
-          ),
-          new StringAttribute(
-            _('SupAnn Entite RDN'), _('Branch in which SupAnn Entite Objects will be stored'),
-            'fdSupannEntiteRDN', TRUE,
-            'ou=entite,ou=supannlists'
-          ),
-          new StringAttribute(
-            _('SupAnn Etablissement RDN'), _('Branch in which SupAnn Etablissement Objects will be stored'),
-            'fdSupannEtablissementRDN', TRUE,
-            'ou=etablissement,ou=supannlists'
           ),
           new StringAttribute(
             _('SupAnn EtuRegimeInscription RDN'), _('Branch in which SupAnn EtuRegimeInscription Objects will be stored'),
