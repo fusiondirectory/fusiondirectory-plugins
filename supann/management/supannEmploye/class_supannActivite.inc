@@ -18,22 +18,22 @@
   Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannEntite extends simplePlugin
+class supannActivite extends simplePlugin
 {
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('SupAnn Entite'),
-      'plDescription' => _('SupAnn Entite'),
-      'plObjectClass' => ['fdSupannEntite'],
-      'plFilter'      => '(objectClass=fdSupannEntite)',
+      'plShortName'   => _('SupAnn Activite'),
+      'plDescription' => _('SupAnn Activite'),
+      'plObjectClass' => ['fdSupannActivite'],
+      'plFilter'      => '(objectClass=fdSupannActivite)',
       'plObjectType'  => [
-        'supannEntite' => [
-          'name'         => _('SupAnn Entite'),
-          'description'  => _('SupAnn Entite'),
-          'ou'           => get_ou('SupannEntiteRDN'),
+        'supannActivite' => [
+          'name'         => _('SupAnn Activite'),
+          'description'  => _('SupAnn Activite'),
+          'ou'           => get_ou('SupannActiviteRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],
@@ -45,19 +45,19 @@ class supannEntite extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Supann Entite'),
+        'name'  => _('Supann Activite'),
         'attrs' => [
-          new BaseSelectorAttribute(get_ou('SupannEntiteRDN')),
+          new BaseSelectorAttribute(get_ou('SupannActiviteRDN')),
           new StringAttribute(
-            _('Entite Name'), _('The name of this Supann Entite'),
+            _('Activite Name'), _('The name of this Supann Activite'),
             'fdSupannName', TRUE, '', '', '/^{.+?}.+$/', '{PREFIX}VALUE'
           ),
           new StringAttribute(
-            _('Entite Label'), _('The label of this Supann Entite'),
+            _('Activite Label'), _('The label of this Supann Activite'),
             'fdSupannLabel', TRUE
           ),
           new StringAttribute(
-            _('Entite Description'), _('The description explaining this Supann Entite'),
+            _('Activite Description'), _('The description explaining this Supann Activite'),
             'description', FALSE
           ),
         ],

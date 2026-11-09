@@ -18,30 +18,29 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannObjectsManagement extends management
+class supannPopulationManagement extends management
 {
 
   public static $skipTemplates = FALSE;
 
   public static $columns = [
     ['ObjectTypeColumn',   []],
-    ['LinkColumn',         ['attributes' => 'nameAttr',                     'label' => 'Name']],
-    ['LinkColumn',         ['attributes' => 'fdSupannLabel',       'label' => 'Label']],
-    ['LinkColumn',         ['attributes' => 'description',                  'label' => 'Description']],
+    ['LinkColumn',         ['attributes' => 'nameAttr', 'label' => 'Name']],
+    ['LinkColumn',         ['attributes' => 'fdSupannLabel', 'label' => 'Label']],
+    ['LinkColumn',         ['attributes' => 'description', 'label' => 'Description']],
     ['ActionsColumn',      ['label' => 'Actions']],
   ];
 
   static function plInfo (): array
   {
     return [
-        'plShortName'   => _('SupAnn Objects'),
-        'plDescription' => _('Manage SupAnn objects'),
+        'plShortName'   => _('SupAnn Population'),
+        'plDescription' => _('Manage SupAnn Population objects'),
         'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
-        'plSection'     => ['supann' => ['name' => _('Supann'), 'priority' => 1]],
+        'plSection'     => ['supann' => ['name' => _('Supann Objects'), 'priority' => 1]],
         'plPriority'    => 0,
         'plManages'     => [
-          'supannRessource', 'supannRessourceState', 'supannRessourceSubState',
-          'supannCivilite', 'supannConsentObject', 'supannConsentType','supannCodePopulation'
+          'supannCodePopulation'
           ]
         ];
   }

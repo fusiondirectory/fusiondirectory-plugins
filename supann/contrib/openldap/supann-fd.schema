@@ -122,6 +122,27 @@ attributetype ( 1.3.6.1.4.1.38414.28.1.19 NAME 'fdSupannList'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
+attributetype ( 1.3.6.1.4.1.38414.28.1.20 NAME 'fdSupannDiplomeType'
+  DESC 'FusionDirectory - Type Diplome related to a Diplome entry'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.28.1.21 NAME 'fdSupannDisciplineSector'
+  DESC 'FusionDirectory - Discipline sector related to a Diplome entry'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.28.1.22 NAME 'fdSupannType'
+  DESC 'FusionDirectory - Type of a supannPrefix'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
 objectclass ( 1.3.6.1.4.1.38414.28.10.2 NAME 'fdSupannRessource'
   DESC 'FusionDirectory SupAnnRessource'
   MUST ( fdSupannRessourceName $ fdSupannLabel )
@@ -176,9 +197,9 @@ objectclass ( 1.3.6.1.4.1.38414.88.5.1 NAME 'fdSupannActivite'
   MUST ( fdSupannName $ fdSupannLabel )
   MAY ( description ))
 
-objectclass ( 1.3.6.1.4.1.38414.88.6.1 NAME 'fdSupannPrefix' SUP top AUXILIARY
+objectclass ( 1.3.6.1.4.1.38414.88.6.1 NAME 'fdSupannPrefix'
   DESC 'FusionDirectory - Supann Prefix objectClass'
-  MUST ( fdSupannName $ fdSupannLabel )
+  MUST ( fdSupannName $ fdSupannLabel $ fdSupannType )
   MAY ( description $ fdSupannList ))
 
 objectclass ( 1.3.6.1.4.1.38414.88.7.1 NAME 'fdSupannCorps'
@@ -219,3 +240,8 @@ objectclass ( 1.3.6.1.4.1.38414.88.13.1 NAME 'fdSupannTypeDiplome'
 objectclass ( 1.3.6.1.4.1.38414.88.14.1 NAME 'fdSupannExternal' SUP top AUXILIARY
   DESC 'FusionDirectory - Supann External attributes'
   MAY ( supannExtDateFin ))
+
+objectclass ( 1.3.6.1.4.1.38414.88.15.1 NAME 'fdSupannDiplome'
+  DESC 'FusionDirectory - Supann Diplome objectClass'
+  MUST ( fdSupannName $ fdSupannLabel $ fdSupannDiplomeType $ fdSupannDisciplineSector )
+  MAY ( description ))

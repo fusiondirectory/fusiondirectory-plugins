@@ -18,22 +18,22 @@
   Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannEtablissement extends simplePlugin
+class supannRole extends simplePlugin
 {
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('SupAnn Etablissement'),
-      'plDescription' => _('SupAnn Etablissement'),
-      'plObjectClass' => ['fdSupannEtablissement'],
-      'plFilter'      => '(objectClass=fdSupannEtablissement)',
+      'plShortName'   => _('SupAnn Role'),
+      'plDescription' => _('SupAnn Role'),
+      'plObjectClass' => ['fdSupannRole'],
+      'plFilter'      => '(objectClass=fdSupannRole)',
       'plObjectType'  => [
-        'supannEtablissement' => [
-          'name'         => _('SupAnn Etablissement'),
-          'description'  => _('SupAnn Etablissement'),
-          'ou'           => get_ou('SupannEtablissementRDN'),
+        'supannRole' => [
+          'name'         => _('SupAnn Role'),
+          'description'  => _('SupAnn Role'),
+          'ou'           => get_ou('SupannRoleRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],
@@ -45,19 +45,19 @@ class supannEtablissement extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Supann Etablissement'),
+        'name'  => _('Supann Role'),
         'attrs' => [
-          new BaseSelectorAttribute(get_ou('SupannEtablissementRDN')),
+          new BaseSelectorAttribute(get_ou('SupannRoleRDN')),
           new StringAttribute(
-            _('Etablissement Name'), _('The name of this Supann Etablissement'),
+            _('Role Name'), _('The name of this Supann Role'),
             'fdSupannName', TRUE, '', '', '/^{.+?}.+$/', '{PREFIX}VALUE'
           ),
           new StringAttribute(
-            _('Etablissement Label'), _('The label of this Supann Etablissement'),
+            _('Role Label'), _('The label of this Supann Role'),
             'fdSupannLabel', TRUE
           ),
           new StringAttribute(
-            _('Etablissement Description'), _('The description explaining this Supann Etablissement'),
+            _('Role Description'), _('The description explaining this Supann Role'),
             'description', FALSE
           ),
         ],

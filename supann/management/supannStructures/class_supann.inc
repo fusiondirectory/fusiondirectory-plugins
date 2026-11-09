@@ -28,7 +28,7 @@ class supann
 
     $ldap = $config->get_ldap_link();
     $ldap->cd(get_ou('SupannPrefix').get_ou('SupannListsRDN').$config->current['BASE']);
-    $ldap->search("(&(objectClass=fdSupannPrefix)(objectClass=fdSupann" . $shortname . "))", [
+    $ldap->search("(&(objectClass=fdSupannPrefix)(fdSupannType=" . $shortname . "))", [
       'fdSupannName',
       'fdSupannList'
     ]);
@@ -66,7 +66,7 @@ class supann
     return $res;
   }
 
-  static function get_choices_for (string $shortname, array|string $dns = '', $processLabel = 'supann::truncate_label')
+  static function get_choices_for (string $shortname, array|NULL $dns = [], $processLabel = 'supann::truncate_label', string $filter = '', bool $removePrefix = TRUE)
   {
     global $config;
 
@@ -75,20 +75,41 @@ class supann
     $choicesCodes  = [];
     $choicesLabels = [];
 
+    // Define filter if not set
+    if ($filter == '') {
+      $filter = '(objectClass=fdSupann' . $shortname . ')';
+    }
+
     foreach ($dns as $dn) {
       $ldap->cd($dn);
-      $ldap->search('(objectClass=fdSupann' . $shortname . ')', [
+      $ldap->search($filter, [
         'fdSupannName',
+        'fdSupannDiplomeType',
+        'fdSupannDisciplineSector',
         'fdSupannLabel'
       ]);
 
       while ($dnAttrs = $ldap->fetch()) {
-        // fdSupannName contain the prefix but the functions doesn't want it
-        $choicesCodes[]  = explode("}", $dnAttrs['fdSupannName'][0])[1];
-        $choicesLabels[] = $processLabel($dnAttrs['fdSupannLabel'][0]);
+        // fdSupannName contain the prefix but the functions doesn't want it but we want in general
+        if ($removePrefix) {
+          $choicesCodes[]  = explode("}", $dnAttrs['fdSupannName'][0])[1];
+        } else {
+          $choicesCodes[]  = $dnAttrs['fdSupannName'][0];
+        }
+
+        // Prepare the line that will be processed by processLabel function
+        // The format is different if shortname  == 'diplome'
+        if ($shortname == 'diplome') {
+          $typeDiplome = explode("}", $dnAttrs['fdSupannDiplomeType'][0])[1];
+          $sectDisc    = explode("}", $dnAttrs['fdSupannDisciplineSector'][0])[1];
+          $line        = $typeDiplome . ';' . $sectDisc . ';' . $dnAttrs['fdSupannLabel'][0];
+        } else {
+          $line = $dnAttrs['fdSupannLabel'][0];
+        }
+
+        $choicesLabels[] = $processLabel($line);
       }
     }
-
     array_multisort($choicesLabels, $choicesCodes);
     return [$choicesCodes, $choicesLabels];
   }

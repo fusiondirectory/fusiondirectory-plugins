@@ -18,22 +18,22 @@
   Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannCorps extends simplePlugin
+class supannEntityType extends simplePlugin
 {
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('SupAnn Corps'),
-      'plDescription' => _('SupAnn Corps'),
-      'plObjectClass' => ['fdSupannCorps'],
-      'plFilter'      => '(objectClass=fdSupannCorps)',
+      'plShortName'   => _('SupAnn Entity'),
+      'plDescription' => _('SupAnn Entity'),
+      'plObjectClass' => ['fdSupannEntite'],
+      'plFilter'      => '(objectClass=fdSupannEntite)',
       'plObjectType'  => [
-        'supannCorps' => [
-          'name'         => _('SupAnn Corps'),
-          'description'  => _('SupAnn Corps'),
-          'ou'           => get_ou('SupannCorpsRDN'),
+        'supannEntite' => [
+          'name'         => _('SupAnn Entity Type'),
+          'description'  => _('SupAnn Entity Type'),
+          'ou'           => get_ou('SupannEntiteRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],
@@ -45,19 +45,19 @@ class supannCorps extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Supann Corps'),
+        'name'  => _('Supann Entity'),
         'attrs' => [
-          new BaseSelectorAttribute(get_ou('SupannCorpsRDN')),
+          new BaseSelectorAttribute(get_ou('SupannEntiteRDN')),
           new StringAttribute(
-            _('Corps Name'), _('The name of this Supann Corps'),
+            _('Entity Type Name'), _('The name of this Supann Entity type'),
             'fdSupannName', TRUE, '', '', '/^{.+?}.+$/', '{PREFIX}VALUE'
           ),
           new StringAttribute(
-            _('Corps Label'), _('The label of this Supann Corps'),
+            _('Entity Label'), _('The label of this Supann Entity type'),
             'fdSupannLabel', TRUE
           ),
           new StringAttribute(
-            _('Corps Description'), _('The description explaining this Supann Corps'),
+            _('Entite type description'), _('The description explaining this Supann Entite type'),
             'description', FALSE
           ),
         ],

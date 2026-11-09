@@ -62,12 +62,7 @@ class supannAccountStudent extends simplePlugin
           new StringAttribute(
             _('Student ID'), _('supannEtuId - Scolarity id'),
             'supannEtuId', FALSE
-          ),
-          new GeneralizedTimeDateAttribute(
-            _('End scolarity'), _('date of the end of the scolarity'),
-            'supannEtuDateFin', FALSE,
-            ''
-          ),
+          )
         ]
       ],
       'student2' => [

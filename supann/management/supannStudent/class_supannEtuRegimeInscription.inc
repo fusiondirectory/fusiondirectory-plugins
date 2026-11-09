@@ -18,22 +18,22 @@
   Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannDiscipline extends simplePlugin
+class supannEtuRegimeInscription extends simplePlugin
 {
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('SupAnn Discipline'),
-      'plDescription' => _('SupAnn Discipline'),
-      'plObjectClass' => ['fdSupannDiscipline'],
-      'plFilter'      => '(objectClass=fdSupannDiscipline)',
+      'plShortName'   => _('SupAnn EtuRegimeInscription'),
+      'plDescription' => _('SupAnn EtuRegimeInscription'),
+      'plObjectClass' => ['fdSupannEtuRegimeInscription'],
+      'plFilter'      => '(objectClass=fdSupannEtuRegimeInscription)',
       'plObjectType'  => [
-        'supannDiscipline' => [
-          'name'         => _('SupAnn Discipline'),
-          'description'  => _('SupAnn Discipline'),
-          'ou'           => get_ou('SupannDisciplineRDN'),
+        'supannEtuRegimeInscription' => [
+          'name'         => _('SupAnn EtuRegimeInscription'),
+          'description'  => _('SupAnn EtuRegimeInscription'),
+          'ou'           => get_ou('SupannEtuRegimeInscriptionRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],
@@ -45,19 +45,19 @@ class supannDiscipline extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Supann Discipline'),
+        'name'  => _('Supann EtuRegimeInscription'),
         'attrs' => [
-          new BaseSelectorAttribute(get_ou('SupannDisciplineRDN')),
+          new BaseSelectorAttribute(get_ou('SupannEtuRegimeInscriptionRDN')),
           new StringAttribute(
-            _('Discipline Name'), _('The name of this Supann Discipline'),
+            _('EtuRegimeInscription Name'), _('The name of this Supann EtuRegimeInscription'),
             'fdSupannName', TRUE, '', '', '/^{.+?}.+$/', '{PREFIX}VALUE'
           ),
           new StringAttribute(
-            _('Discipline Label'), _('The label of this Supann Discipline'),
+            _('EtuRegimeInscription Label'), _('The label of this Supann EtuRegimeInscription'),
             'fdSupannLabel', TRUE
           ),
           new StringAttribute(
-            _('Discipline Description'), _('The description explaining this Supann Discipline'),
+            _('EtuRegimeInscription Description'), _('The description explaining this Supann EtuRegimeInscription'),
             'description', FALSE
           ),
         ],

@@ -18,22 +18,22 @@
   Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannRole extends simplePlugin
+class supannCorps extends simplePlugin
 {
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('SupAnn Role'),
-      'plDescription' => _('SupAnn Role'),
-      'plObjectClass' => ['fdSupannRole'],
-      'plFilter'      => '(objectClass=fdSupannRole)',
+      'plShortName'   => _('SupAnn Corps'),
+      'plDescription' => _('SupAnn Corps'),
+      'plObjectClass' => ['fdSupannCorps'],
+      'plFilter'      => '(objectClass=fdSupannCorps)',
       'plObjectType'  => [
-        'supannRole' => [
-          'name'         => _('SupAnn Role'),
-          'description'  => _('SupAnn Role'),
-          'ou'           => get_ou('SupannRoleRDN'),
+        'supannCorps' => [
+          'name'         => _('SupAnn Corps'),
+          'description'  => _('SupAnn Corps'),
+          'ou'           => get_ou('SupannCorpsRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],
@@ -45,19 +45,19 @@ class supannRole extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Supann Role'),
+        'name'  => _('Supann Corps'),
         'attrs' => [
-          new BaseSelectorAttribute(get_ou('SupannRoleRDN')),
+          new BaseSelectorAttribute(get_ou('SupannCorpsRDN')),
           new StringAttribute(
-            _('Role Name'), _('The name of this Supann Role'),
+            _('Corps Name'), _('The name of this Supann Corps'),
             'fdSupannName', TRUE, '', '', '/^{.+?}.+$/', '{PREFIX}VALUE'
           ),
           new StringAttribute(
-            _('Role Label'), _('The label of this Supann Role'),
+            _('Corps Label'), _('The label of this Supann Corps'),
             'fdSupannLabel', TRUE
           ),
           new StringAttribute(
-            _('Role Description'), _('The description explaining this Supann Role'),
+            _('Corps Description'), _('The description explaining this Supann Corps'),
             'description', FALSE
           ),
         ],

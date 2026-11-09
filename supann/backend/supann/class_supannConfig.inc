@@ -42,7 +42,7 @@ class supannConfig extends simplePlugin
   {
     return [
       'rdns' => [
-        'name'  => _('LDAP tree for supann'),
+        'name'  => _('SupAnn top'),
         'attrs' => [
           new StringAttribute(
             _('SupAnn Structures RDN'), _('Branch in which SupAnn structures will be stored'),
@@ -50,25 +50,20 @@ class supannConfig extends simplePlugin
             'ou=structures'
           ),
           new StringAttribute(
+            _('SupAnn Lists RDN'), _('Branch in which SupAnn Lists will be stored'),
+            'fdSupannListsRDN', TRUE,
+            'ou=supannlists'
+          ),
+          new StringAttribute(
             _('SupAnn Objects RDN'), _('Branch in which SupAnn Objects will be stored'),
             'fdSupannObjectsRDN', TRUE,
             'ou=supannobjects'
           ),
-          new StringAttribute(
-            _('SupAnn Resources RDN'), _('Branch in which SupAnn Ressource Objects will be stored'),
-            'fdSupannRessourceRDN', TRUE,
-            'ou=ressources,ou=supannobjects'
-          ),
-          new StringAttribute(
-            _('SupAnn States RDN'), _('Branch in which SupAnn State Objects will be stored'),
-            'fdSupannStateRDN', TRUE,
-            'ou=states,ou=supannobjects'
-          ),
-          new StringAttribute(
-            _('SupAnn Sub States RDN'), _('Branch in which SupAnn SubState Objects will be stored'),
-            'fdSupannSubStateRDN', TRUE,
-            'ou=substates,ou=supannobjects'
-          ),
+        ],
+      ],
+      'global' => [
+        'name'  => _('SupAnn main'),
+        'attrs' => [
           new StringAttribute(
             _('SupAnn Civility'), _('Branch in which SupAnn Civility Objects will be stored'),
             'fdSupannCiviliteRDN', TRUE,
@@ -85,15 +80,15 @@ class supannConfig extends simplePlugin
             'ou=populationcodes,ou=supannobjects'
           ),
           new StringAttribute(
-            _('SupAnn Lists RDN'), _('Branch in which SupAnn Lists will be stored'),
-            'fdSupannListsRDN', TRUE,
-            'ou=supannlists'
-          ),
-          new StringAttribute(
             _('SupAnn Prefix RDN'), _('Branch in which SupAnn Prefix Objects will be stored'),
             'fdSupannPrefixRDN', TRUE,
             'ou=prefix,ou=supannlists'
           ),
+        ],
+      ],
+      'employee' => [
+        'name'  => _('SupAnn Employee'),
+        'attrs' => [
           new StringAttribute(
             _('SupAnn Activite RDN'), _('Branch in which SupAnn Activite Objects will be stored'),
             'fdSupannActiviteRDN', TRUE,
@@ -105,19 +100,19 @@ class supannConfig extends simplePlugin
             'ou=corps,ou=supannlists'
           ),
           new StringAttribute(
+            _('SupAnn Role RDN'), _('Branch in which SupAnn Role Objects will be stored'),
+            'fdSupannRoleRDN', TRUE,
+            'ou=role,ou=supannlists'
+          ),
+         ],
+       ],
+      'etudiant' => [
+        'name'  => _('SupAnn Etudiant'),
+        'attrs' => [
+          new StringAttribute(
             _('SupAnn Discipline RDN'), _('Branch in which SupAnn Discipline Objects will be stored'),
             'fdSupannDisciplineRDN', TRUE,
             'ou=discipline,ou=supannlists'
-          ),
-          new StringAttribute(
-            _('SupAnn Entite RDN'), _('Branch in which SupAnn Entite Objects will be stored'),
-            'fdSupannEntiteRDN', TRUE,
-            'ou=entite,ou=supannlists'
-          ),
-          new StringAttribute(
-            _('SupAnn Etablissement RDN'), _('Branch in which SupAnn Etablissement Objects will be stored'),
-            'fdSupannEtablissementRDN', TRUE,
-            'ou=etablissement,ou=supannlists'
           ),
           new StringAttribute(
             _('SupAnn EtuRegimeInscription RDN'), _('Branch in which SupAnn EtuRegimeInscription Objects will be stored'),
@@ -125,18 +120,37 @@ class supannConfig extends simplePlugin
             'ou=eturegimeinscription,ou=supannlists'
           ),
           new StringAttribute(
-            _('SupAnn Role RDN'), _('Branch in which SupAnn Role Objects will be stored'),
-            'fdSupannRoleRDN', TRUE,
-            'ou=role,ou=supannlists'
-          ),
-          new StringAttribute(
             _('SupAnn TypeDiplome RDN'), _('Branch in which SupAnn TypeDiplome Objects will be stored'),
             'fdSupannTypeDiplomeRDN', TRUE,
             'ou=typediplome,ou=supannlists'
           ),
+          new StringAttribute(
+            _('SupAnn Diplome RDN'), _('Branch in which SupAnn Diplome Objects will be stored'),
+            'fdSupannDiplomeRDN', TRUE,
+            'ou=diplome,ou=supannlists'
+          ),
         ]
       ],
-
+      'resources' => [
+        'name'  => _('SupAnn Ressources'),
+        'attrs' => [
+          new StringAttribute(
+              _('SupAnn Resources RDN'), _('Branch in which SupAnn Ressource Objects will be stored'),
+              'fdSupannRessourceRDN', TRUE,
+              'ou=ressources,ou=supannobjects'
+          ),
+          new StringAttribute(
+            _('SupAnn States RDN'), _('Branch in which SupAnn State Objects will be stored'),
+            'fdSupannStateRDN', TRUE,
+            'ou=states,ou=supannobjects'
+          ),
+          new StringAttribute(
+            _('SupAnn Sub States RDN'), _('Branch in which SupAnn SubState Objects will be stored'),
+            'fdSupannSubStateRDN', TRUE,
+            'ou=substates,ou=supannobjects'
+          ),
+         ],
+       ],
       'main' => [
         'name'  => _('SupAnn'),
         'class' => ['fullwidth'],

@@ -18,22 +18,22 @@
   Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannActivite extends simplePlugin
+class supannDiscipline extends simplePlugin
 {
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('SupAnn Activite'),
-      'plDescription' => _('SupAnn Activite'),
-      'plObjectClass' => ['fdSupannActivite'],
-      'plFilter'      => '(objectClass=fdSupannActivite)',
+      'plShortName'   => _('SupAnn Discipline'),
+      'plDescription' => _('SupAnn Discipline'),
+      'plObjectClass' => ['fdSupannDiscipline'],
+      'plFilter'      => '(objectClass=fdSupannDiscipline)',
       'plObjectType'  => [
-        'supannActivite' => [
-          'name'         => _('SupAnn Activite'),
-          'description'  => _('SupAnn Activite'),
-          'ou'           => get_ou('SupannActiviteRDN'),
+        'supannDiscipline' => [
+          'name'         => _('SupAnn Discipline'),
+          'description'  => _('SupAnn Discipline'),
+          'ou'           => get_ou('SupannDisciplineRDN'),
           'icon'         => 'geticon.php?context=applications&icon=supann-entite&size=16',
-          'mainAttr'     => 'fdSupannLabel',
+          'mainAttr'     => 'fdSupannName',
         ],
       ],
       'plSearchAttrs'  => ['description', 'fdSupannName', 'fdSupannLabel'],
@@ -45,19 +45,19 @@ class supannActivite extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Supann Activite'),
+        'name'  => _('Supann Discipline'),
         'attrs' => [
-          new BaseSelectorAttribute(get_ou('SupannActiviteRDN')),
+          new BaseSelectorAttribute(get_ou('SupannDisciplineRDN')),
           new StringAttribute(
-            _('Activite Name'), _('The name of this Supann Activite'),
+            _('Discipline Name'), _('The name of this Supann Discipline'),
             'fdSupannName', TRUE, '', '', '/^{.+?}.+$/', '{PREFIX}VALUE'
           ),
           new StringAttribute(
-            _('Activite Label'), _('The label of this Supann Activite'),
+            _('Discipline Label'), _('The label of this Supann Discipline'),
             'fdSupannLabel', TRUE
           ),
           new StringAttribute(
-            _('Activite Description'), _('The description explaining this Supann Activite'),
+            _('Discipline Description'), _('The description explaining this Supann Discipline'),
             'description', FALSE
           ),
         ],
