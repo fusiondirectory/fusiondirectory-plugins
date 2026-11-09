@@ -66,7 +66,7 @@ class supann
     return $res;
   }
 
-  static function get_choices_for (string $shortname, array|string|NULL $dns = '', $processLabel = 'supann::truncate_label')
+  static function get_choices_for (string $shortname, array|NULL $dns = [], $processLabel = 'supann::truncate_label', string $filter='', bool $removePrefix = TRUE)
   {
     global $config;
 
@@ -75,9 +75,14 @@ class supann
     $choicesCodes  = [];
     $choicesLabels = [];
 
+    // Define filter if not set
+    if ($filter == '') {
+      $filter = '(objectClass=fdSupann' . $shortname . ')';
+    }
+
     foreach ($dns as $dn) {
       $ldap->cd($dn);
-      $ldap->search('(objectClass=fdSupann' . $shortname . ')', [
+      $ldap->search($filter, [
         'fdSupannName',
         'fdSupannDiplomeType',
         'fdSupannDisciplineSector',
@@ -85,8 +90,12 @@ class supann
       ]);
 
       while ($dnAttrs = $ldap->fetch()) {
-        // fdSupannName contain the prefix but the functions doesn't want it
-        $choicesCodes[]  = explode("}", $dnAttrs['fdSupannName'][0])[1];
+        // fdSupannName contain the prefix but the functions doesn't want it but we want in general
+        if ($removePrefix) {
+          $choicesCodes[]  = explode("}", $dnAttrs['fdSupannName'][0])[1];
+        } else {
+          $choicesCodes[]  = $dnAttrs['fdSupannName'][0];
+        }
 
         // Prepare the line that will be processed by processLabel function
         // The format is different if shortname  == 'diplome'

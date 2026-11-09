@@ -113,32 +113,47 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
       $this->attributes[4]->setSubmitForm(TRUE);
     }
 
-    $prefixedChoices = supann::get_prefixed_choices_for(
-      'diplome',
-      function ($line)
-      {
-        return explode(';', $line);
-      }
-    );
-    $this->diplomas = [];
-    foreach ($prefixedChoices as $prefix => $choices) {
-      list($choicesId, $choicesLines) = $choices;
-      foreach ($choicesId as $i => $id) {
-        list($type,$sectdisc,$label1,$label2) = $choicesLines[$i];
-        if (!empty($label2)) {
-          $label1 .= ' - '.$label2;
-        }
-        $this->diplomas[$type][$sectdisc][$prefix][0][] = $id;
-        $this->diplomas[$type][$sectdisc][$prefix][1][] = $label1;
-      }
-    }
     $this->supannUpdateSelect();
   }
 
   protected function supannUpdateSelect ()
   {
-    $sectdisc = $this->attributes[3]->getValue();
-    $type     = $this->attributes[4]->getValue();
+    global $config;
+
+    // We can only use SISE so we force them here
+    $sectdisc = '{SISE}' . $this->attributes[3]->getValue();
+    $type     = '{SISE}' . $this->attributes[4]->getValue();
+
+    $getDiplomes = supann::get_choices_for(
+      'diplome',
+      [get_ou('SupannDiplomeRDN') . $config->current['BASE']],
+      function ($line)
+      {
+        return explode(';', $line);
+      },
+      '(&(objectClass=fdSupannDiplome)(fdSupannDisciplineSector=' . $sectdisc . ')(fdSupannDiplomeType=' . $type . '))',
+      FALSE
+    );
+
+    // Convert getDiplomes format [codes, labels] to code => labels if codes is not emtpy
+    $diplomes = array_combine($getDiplomes[0], $getDiplomes[1]);
+
+    $this->diplomas = [];
+    foreach ($diplomes as $choice => $choicesLines) {
+      // Define prefix based on choice (fdSupannName of diplome)
+      $prefix = explode('}', explode('{', $choice)[1])[0];
+
+      // Define code from choice without prefix
+      $code = explode('}', $choice)[1];
+
+      list($type,$sectdisc,$label1,$label2) = $choicesLines;
+      if (!empty($label2)) {
+        $label1 .= ' - '.$label2;
+      }
+
+      $this->diplomas[$type][$sectdisc][$prefix][0][] = $code;
+      $this->diplomas[$type][$sectdisc][$prefix][1][] = $label1;
+    }
     $this->attributes[7]->setPrefixedChoices($this->diplomas[$type][$sectdisc] ?? []);
   }
 
