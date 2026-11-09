@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2026  FusionDirectory
+  Copyright (C) 2011-2025  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,38 +18,29 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class supannListsManagement extends management
+class supannPopulationManagement extends management
 {
 
   public static $skipTemplates = FALSE;
 
   public static $columns = [
     ['ObjectTypeColumn',   []],
-    ['LinkColumn',         ['attributes' => 'fdSupannName',  'label' => 'Name']],
+    ['LinkColumn',         ['attributes' => 'nameAttr', 'label' => 'Name']],
     ['LinkColumn',         ['attributes' => 'fdSupannLabel', 'label' => 'Label']],
-    ['LinkColumn',         ['attributes' => 'description',   'label' => 'Description']],
+    ['LinkColumn',         ['attributes' => 'description', 'label' => 'Description']],
     ['ActionsColumn',      ['label' => 'Actions']],
   ];
 
   static function plInfo (): array
   {
     return [
-        'plShortName'   => _('SupAnn Lists'),
-        'plDescription' => _('Manage SupAnn lists'),
+        'plShortName'   => _('SupAnn Population'),
+        'plDescription' => _('Manage SupAnn Population objects'),
         'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
-        'plSection'     => ['supann' => ['name' => _('Supann'), 'priority' => 1]],
+        'plSection'     => ['supann' => ['name' => _('Supann Objects'), 'priority' => 1]],
         'plPriority'    => 0,
         'plManages'     => [
-          'supannPrefix',
-          'supannActivite',
-          'supannCorps',
-          'supannDiplome',
-          'supannDiscipline',
-          'supannEntite',
-          'supannEtablissement',
-          'supannEtuRegimeInscription',
-          'supannRole',
-          'supannTypeDiplome'
+          'supannCodePopulation'
           ]
         ];
   }
