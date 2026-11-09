@@ -113,18 +113,18 @@ class supannCodePopulation extends simplePlugin
 
     $labels = [
       "Personne en formation (student)",
-      "Personnel p  dagogique (faculty)",
-      "Personnel non p  dagogique (staff)",
-      "Personnel r  mun  r   (employee)",
-      "Personne interne    l'  tablissement (member)",
-      "Personne externe    l'  tablissement (affiliate)",
-      "Ancien   tudiant gardant des relations avec l'  tablissement (alum)",
-      "Lecteur autoris      la biblioth  que (obsol  te - library-walk-in)",
-      "Personnel assurant une activit   de recherche (researcher)",
-      "Personne    la retraite gardant des relations avec l'  tablissement (retired)",
-      "Professeur ayant obtenu l'  m  ritat (emeritus)",
-      "Personnel assurant une activit   d'enseignement (teacher)",
-      "Lecteur autoris      la biblioth  que (registered-reader)"
+      "Personnel pédagogique (faculty)",
+      "Personnel non pédagogique (staff)",
+      "Personnel rémunéré (employee)",
+      "Personne interne à l'établissement (member)",
+      "Personne externe à l'établissement (affiliate)",
+      "Ancien étudiant gardant des relations avec l'établissement (alum)",
+      "Lecteur autorisé à la bibliothèque (obsolete - library-walk-in)",
+      "Personnel assurant une activité  de recherche (researcher)",
+      "Personnel à la retraite gardant des relations avec l'établissement (retired)",
+      "Professeur ayant obtenu l'éméritat (emeritus)",
+      "Personnel assurant une activité d'enseignement (teacher)",
+      "Lecteur autorisé à la bibliothéque (registered-reader)"
     ];
     $this->attributesAccess['fdSupannPopulationEduPersonAffiliation']->attribute->setChoices($codes, $labels);
 
