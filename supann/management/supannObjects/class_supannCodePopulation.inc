@@ -95,8 +95,37 @@ class supannCodePopulation extends simplePlugin
   {
     global $config;
 
-    // to be changed to a supann object !!
-    list ($codes, $labels) = supann::get_choices_for('affiliation');
+    $codes = [
+      'student',
+      'faculty',
+      'staff',
+      'employee',
+      'member',
+      'affiliate',
+      'alum',
+      'library-walk-in',
+      'researcher',
+      'retired',
+      'emeritus',
+      'teacher',
+      'registered-reader',
+    ];
+
+    $labels = [
+      "Personne en formation (student)",
+      "Personnel p  dagogique (faculty)",
+      "Personnel non p  dagogique (staff)",
+      "Personnel r  mun  r   (employee)",
+      "Personne interne    l'  tablissement (member)",
+      "Personne externe    l'  tablissement (affiliate)",
+      "Ancien   tudiant gardant des relations avec l'  tablissement (alum)",
+      "Lecteur autoris      la biblioth  que (obsol  te - library-walk-in)",
+      "Personnel assurant une activit   de recherche (researcher)",
+      "Personne    la retraite gardant des relations avec l'  tablissement (retired)",
+      "Professeur ayant obtenu l'  m  ritat (emeritus)",
+      "Personnel assurant une activit   d'enseignement (teacher)",
+      "Lecteur autoris      la biblioth  que (registered-reader)"
+    ];
     $this->attributesAccess['fdSupannPopulationEduPersonAffiliation']->attribute->setChoices($codes, $labels);
 
     $this->updateFieldsChoicesAndValues();
