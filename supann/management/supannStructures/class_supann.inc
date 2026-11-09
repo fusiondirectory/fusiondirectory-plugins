@@ -66,7 +66,7 @@ class supann
     return $res;
   }
 
-  static function get_choices_for (string $shortname, array|NULL $dns = [], $processLabel = 'supann::truncate_label', string $filter='', bool $removePrefix = TRUE)
+  static function get_choices_for (string $shortname, array|NULL $dns = [], $processLabel = 'supann::truncate_label', string $filter = '', bool $removePrefix = TRUE)
   {
     global $config;
 
