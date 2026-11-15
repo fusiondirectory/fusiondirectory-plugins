@@ -84,6 +84,11 @@ class supannConfig extends simplePlugin
             'fdSupannPrefixRDN', TRUE,
             'ou=prefix,ou=supannlists'
           ),
+          new StringAttribute(
+            _('SupAnn Entite RDN'), _('Branch in which SupAnn Entite Objects will be stored'),
+            'fdSupannEntiteRDN', TRUE,
+            'ou=entite,ou=supannlists'
+          ),
         ],
       ],
       'employee' => [
