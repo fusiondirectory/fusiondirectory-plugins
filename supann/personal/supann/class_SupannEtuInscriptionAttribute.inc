@@ -120,9 +120,8 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
   {
     global $config;
 
-    // We can only use SISE so we force them here
-    $sectdisc = '{SISE}' . $this->attributes[3]->getValue();
-    $type     = '{SISE}' . $this->attributes[4]->getValue();
+    $sectdisc = $this->attributes[3]->getValue();
+    $type     = $this->attributes[4]->getValue();
 
     $getDiplomes = supann::get_choices_for(
       'diplome',
@@ -131,8 +130,7 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
       {
         return explode(';', $line);
       },
-      '(&(objectClass=fdSupannDiplome)(fdSupannDisciplineSector=' . $sectdisc . ')(fdSupannDiplomeType=' . $type . '))',
-      FALSE
+      '(&(objectClass=fdSupannDiplome)(fdSupannDisciplineSector=' . $sectdisc . ')(fdSupannDiplomeType=' . $type . '))'
     );
 
     // Convert getDiplomes format [codes, labels] to code => labels if codes is not emtpy
