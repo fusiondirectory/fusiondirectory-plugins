@@ -562,6 +562,11 @@ class reminderFrontEnd extends standAlonePage
       // This will serve to update supann Status
       $this->userDN = $attrs['fdTokenUserDN'][0];
 
+      // Verify that the authenticated user matches the token's target user
+      if ($this->userDN !== $attrs['dn']) {
+        return FALSE;
+      }
+
       // Check timestamp in UTC format
       if ($ldapToken === $token && $tokenType === 'reminder') {
         if (time() < $tokenDate) {
