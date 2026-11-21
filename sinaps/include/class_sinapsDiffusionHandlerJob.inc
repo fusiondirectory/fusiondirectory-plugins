@@ -88,7 +88,7 @@ class sinapsDiffusionHandlerJob
     if (!preg_match('/^{'.$this->uuidPrefix.'}/', $uuid)) {
       $uuid = '{'.$this->uuidPrefix.'}'.$uuid;
     }
-    $entites = objects::ls(['entite','etablissement'], ['supannCodeEntite' => 1, 'supannTypeEntite' => 1], NULL, '(supannRefId='.$uuid.')');
+    $entites = objects::ls(['entite','etablissement'], ['supannCodeEntite' => 1, 'supannTypeEntite' => 1], NULL, '(supannRefId='.ldap_escape_f($uuid).')');
     if (empty($entites)) {
       $error = 'Could not find entite '.$uuid;
       $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 10, $error));
@@ -138,7 +138,7 @@ class sinapsDiffusionHandlerJob
   {
     $uuid     = $values['entite']['supannRefId'][0];
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
-    $entites  = objects::ls('entite', ['supannRefId' => '*'], NULL, '(supannRefId='.$uuid.')');
+    $entites  = objects::ls('entite', ['supannRefId' => '*'], NULL, '(supannRefId='.ldap_escape_f($uuid).')');
     $message  = 'Entite created';
     if (empty($entites)) {
       $dn = '';
@@ -170,7 +170,7 @@ class sinapsDiffusionHandlerJob
   {
     $uuid     = $values['supannAccount']['supannRefId'][0];
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
-    $users    = objects::ls('user', ['supannRefId' => '*'], NULL, '(supannRefId='.$uuid.')');
+    $users    = objects::ls('user', ['supannRefId' => '*'], NULL, '(supannRefId='.ldap_escape_f($uuid).')');
     $message  = 'User created';
     if (!empty($users)) {
       if (count($users) > 1) {
