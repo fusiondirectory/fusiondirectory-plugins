@@ -242,8 +242,7 @@ class fdRestService extends fdRPCService
   {
     $this->assertNoInput($input);
 
-    $filter = isset($_GET['filter']) ? ldap_escape_f($_GET['filter']) : '';
-    return (object)$this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), $filter, ($_GET['scope'] ?? 'subtree'), ($_GET['templates'] ?? FALSE));
+    return (object)$this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''), ($_GET['scope'] ?? 'subtree'), ($_GET['templates'] ?? FALSE));
   }
 
   protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn): array
