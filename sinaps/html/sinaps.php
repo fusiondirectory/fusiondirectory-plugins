@@ -88,6 +88,8 @@ class sinapsHandler extends standAlonePage
       return;
     }
 
+    /* Prevent path traversal */
+    $fileName = basename($fileName);
     $fileName = $this->dumpFolder.'/'.$fileName;
 
     $fp = fopenWithErrorHandling($fileName, 'w');

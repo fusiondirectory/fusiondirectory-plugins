@@ -118,6 +118,8 @@ class sinapsDiffusionHandlerJob
       return;
     }
 
+    /* Prevent path traversal */
+    $fileName = basename($fileName);
     $fileName = $dumpFolder.'/'.$fileName;
 
     $fp = fopenWithErrorHandling($fileName, 'w');
