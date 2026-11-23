@@ -41,6 +41,7 @@ class reminderFrontEnd extends standAlonePage
   private $userDN; //string
   private $message; //array
   private $authMethod; //The dropdown menu item selection.
+  private $searchDn; // string representing the DN that is found based on the login method
 
   /**
    * @return bool
@@ -170,8 +171,9 @@ class reminderFrontEnd extends standAlonePage
     while ($attrs = $ldap->fetch()) {
       if ($this->login === $attrs['eduPersonPrincipalName'][0]) {
         // Simply get the uid format of the DN as pure string
-        $this->uid = $this->getUIDasString($attrs['dn']);
-        $result    = TRUE;
+        $this->uid      = $this->getUIDasString($attrs['dn']);
+        $this->searchDn = $attrs['dn'];
+        $result         = TRUE;
       }
     }
 
@@ -194,8 +196,9 @@ class reminderFrontEnd extends standAlonePage
     while ($attrs = $ldap->fetch()) {
       if ($this->login === $attrs['mail'][0]) {
         // Simply get the uid format of the DN as pure string
-        $this->uid = $this->getUIDasString($attrs['dn']);
-        $result    = TRUE;
+        $this->uid      = $this->getUIDasString($attrs['dn']);
+        $this->searchDn = $attrs['dn'];
+        $result         = TRUE;
       }
     }
 
@@ -218,8 +221,9 @@ class reminderFrontEnd extends standAlonePage
     while ($attrs = $ldap->fetch()) {
       if ($this->login === $attrs['supannAliasLogin'][0]) {
         // Simply get the uid format of the DN as pure string
-        $this->uid = $this->getUIDasString($attrs['dn']);
-        $result    = TRUE;
+        $this->uid      = $this->getUIDasString($attrs['dn']);
+        $this->searchDn = $attrs['dn'];
+        $result         = TRUE;
       }
     }
 
@@ -563,8 +567,8 @@ class reminderFrontEnd extends standAlonePage
       $this->userDN = $attrs['fdTokenUserDN'][0];
 
       // Verify that the authenticated user matches the token's target user
-      if ($this->userDN !== $attrs['dn']) {
-        return FALSE;
+      if ($this->userDN !== $this->searchDn) {
+          return FALSE;
       }
 
       // Check timestamp in UTC format
