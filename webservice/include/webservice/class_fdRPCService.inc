@@ -108,7 +108,7 @@ class fdRPCService
 
   public static function initiateRPCSession ($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL, bool $userLogin = TRUE)
   {
-    global $config, $class_mapping, $BASE_DIR, $ui, $ssl;
+    global $config, $class_mapping, $BASE_DIR, $ui;
 
     session::start($id);
 
@@ -148,10 +148,9 @@ class fdRPCService
       }
       session::global_set('DEBUGLEVEL', 0);
 
-      if (($ssl != '') &&
-            (($config->get_cfg_value('webserviceForceSSL', 'TRUE') == 'TRUE') ||
-             ($config->get_cfg_value('forcessl') == 'TRUE'))) {
-        throw new FusionDirectoryException("HTTP connexions are not allowed, please use HTTPS: $ssl\n");
+      if ((!URL::sslOn()) &&
+            ($config->get_cfg_value('webserviceForceSSL', 'TRUE') == 'TRUE')) {
+        throw new FusionDirectoryException("HTTP connexions are not allowed, please use HTTPS\n");
       }
 
       if ($userLogin) {
