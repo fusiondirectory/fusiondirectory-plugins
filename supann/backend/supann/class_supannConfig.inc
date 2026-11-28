@@ -156,6 +156,31 @@ class supannConfig extends simplePlugin
           ),
          ],
        ],
+      'prive' => [
+        'name'  => _('SupAnn Prive'),
+        'attrs' => [
+          new StringAttribute(
+              _('SupAnn Prive RDN'), _('Branch in which SupAnn Prive Objects will be stored'),
+              'fdSupannPriveRDN', TRUE,
+              'ou=prive,ou=supannobjects'
+          ),
+          new StringAttribute(
+              _('SupAnn Prive Mail RDN'), _('Branch in which SupAnn Prive Mail Objects will be stored'),
+              'fdSupannPriveMailRDN', TRUE,
+              'ou=mail,ou=prive,ou=supannobjects'
+          ),
+          new StringAttribute(
+              _('SupAnn Prive Telephone RDN'), _('Branch in which SupAnn Prive Telephone Objects will be stored'),
+              'fdSupannPriveTelephoneRDN', TRUE,
+              'ou=telephone,ou=prive,ou=supannobjects'
+          ),
+          new StringAttribute(
+              _('SupAnn Prive AdressePostale RDN'), _('Branch in which SupAnn Prive Adresse Objects will be stored'),
+              'fdSupannPriveAdressePostaleRDN', TRUE,
+              'ou=adressePostale,ou=prive,ou=supannobjects'
+          ),
+         ],
+       ],
       'main' => [
         'name'  => _('SupAnn'),
         'class' => ['fullwidth'],
@@ -175,72 +200,6 @@ class supannConfig extends simplePlugin
             'fdSupannShowMailForwardingAddress', FALSE,
             FALSE
           ),
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('Custom types and their labels'),
-              'fdSupannMailPriveTypes',
-              [
-                new StringAttribute(
-                  _('Type'), _('String that will be stored between {} in supannMailPrive'),
-                  'fdSupannMailPriveTypes_type', TRUE
-                ),
-                new StringAttribute(
-                  _('Label'), _('Label shown for this type'),
-                  'fdSupannMailPriveTypes_label', TRUE
-                ),
-              ],
-              ':',
-              '',
-              _('Custom supannMailPrive types')
-            ),
-            FALSE,
-            [],
-            TRUE
-          ),
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('Custom types and their labels'),
-              'fdSupannTelephonePriveTypes',
-              [
-                new StringAttribute(
-                  _('Type'), _('String that will be stored between {} in supannTelephonePrive'),
-                  'fdSupannTelephonePriveTypes_type', TRUE
-                ),
-                new StringAttribute(
-                  _('Label'), _('Label shown for this type'),
-                  'fdSupannTelephonePriveTypes_label', TRUE
-                ),
-              ],
-              ':',
-              '',
-              _('Custom supannTelephonePrive types')
-            ),
-            FALSE,
-            [],
-            TRUE
-          ),
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('Custom types and their labels'),
-              'fdSupannAdressePostalePriveeTypes',
-              [
-                new StringAttribute(
-                  _('Type'), _('String that will be stored between {} in supannAdressePostalePrivee'),
-                  'fdSupannAdressePostalePriveeTypes_type', TRUE
-                ),
-                new StringAttribute(
-                  _('Label'), _('Label shown for this type'),
-                  'fdSupannAdressePostalePriveeTypes_label', TRUE
-                ),
-              ],
-              ':',
-              '',
-              _('Custom supannAdressePostalePrivee types')
-            ),
-            FALSE,
-            [],
-            TRUE
-          ),
           new StringAttribute(
             _('Amount of days for locking manual locking'), _('Amount of days for locking manual locking'),
             'fdSupannUnlockingDays', TRUE,
@@ -248,111 +207,6 @@ class supannConfig extends simplePlugin
           ),
         ],
       ],
-      'cms' => [
-        'name'  => _('Multiservice card'),
-        'class' => ['fullwidth'],
-        'attrs' => [
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('Card types and their labels. Please prefix with {ORIGIN} for non standard types.'),
-              'fdSupannCMSTypes',
-              [
-                new StringAttribute(
-                  _('Type'), _('Card type'),
-                  'fdSupannCMSTypes_type', TRUE
-                ),
-                new StringAttribute(
-                  _('Label'), _('Label shown for this type'),
-                  'fdSupannCMSTypes_label', TRUE
-                ),
-              ],
-              ';',
-              '',
-              _('Card types')
-            ),
-            FALSE,
-            [
-              'etudiant;étudiant',
-              'personnel;professionnelle',
-              'visiteur;visiteur, anonyme',
-              'invite;invité, nominative',
-              'lecteur;lecteur de bibliothèque',
-              'prestataire;prestataire de services',
-              'vehicule;véhicule',
-              'externe;externe',
-            ],
-            TRUE
-          ),
-          new SetAttribute(
-            new StringAttribute(
-              _('Card sources'), _('Multi service card possible sources, with format system@domain'),
-              'fdSupannCMSSources', FALSE,
-              '', '',
-              '/^.+@.+$/', 'unicampus@univ.example.com'
-            )
-          ),
-          new OrderedArrayAttribute(
-            new CompositeAttribute(
-              _('Allowed formats for multiservice cards'),
-              'fdSupannCMSFormats',
-              [
-                new StringAttribute(
-                  _('Technology'), _('Technology name in uppercase'),
-                  'fdSupannCMSFormats_techno', TRUE,
-                  '', '',
-                  '/^[A-Z]+$/', 'MIFARE'
-                ),
-                new StringAttribute(
-                  _('Encoding'), _('Encoding name in uppercase'),
-                  'fdSupannCMSFormats_encoding', TRUE,
-                  '', '',
-                  '/^[A-Z]+$/', 'XLSB'
-                ),
-                new StringAttribute(
-                  _('Label'), _('Format label'),
-                  'fdSupannCMSFormats_label', TRUE,
-                  '', '',
-                  '', 'Mifare XLSB'
-                ),
-              ],
-              '/^([A-Z]*):([A-Z]*);(.*)$/',
-              '%s:%s;%s',
-              '',
-              _('Card formats')
-            ),
-            FALSE,
-            ['MIFARE:XLSB;Mifare XLSB'],
-            TRUE
-          ),
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('Domains for card applications'),
-              'fdSupannCMSAppDomains',
-              [
-                new StringAttribute(
-                  _('Option'), _('Attribute option to use, starting with x-'),
-                  'fdSupannCMSAppDomains_option', TRUE,
-                  '', '',
-                  '/^x-.+$/', 'x-biblio-xlsb'
-                ),
-                new StringAttribute(
-                  _('Domain'), _('Domain to use'),
-                  'fdSupannCMSAppDomains_domain', TRUE,
-                  '', '',
-                  '', 'xlsb.biblio.univ.example.com'
-                ),
-              ],
-              ';',
-              '',
-              _('Card application domains')
-            ),
-            FALSE,
-            [],
-            TRUE
-          ),
-        ]
-      ],
-
       'features' => [
         'name'  => _('Features'),
         'attrs' => [
