@@ -245,3 +245,18 @@ objectclass ( 1.3.6.1.4.1.38414.88.15.1 NAME 'fdSupannDiplome'
   DESC 'FusionDirectory - Supann Diplome objectClass'
   MUST ( fdSupannName $ fdSupannLabel $ fdSupannDiplomeType $ fdSupannDisciplineSector )
   MAY ( description ))
+
+objectclass ( 1.3.6.1.4.1.38414.88.16.1 NAME 'fdSupannPriveMail'
+  DESC 'FusionDirectory - Supann Prive Mail objectClass'
+  MUST ( fdSupannName $ fdSupannLabel )
+  MAY ( description ))
+
+objectclass ( 1.3.6.1.4.1.38414.88.17.1 NAME 'fdSupannPriveTelephone'
+  DESC 'FusionDirectory - Supann Prive Telephone objectClass'
+  MUST ( fdSupannName $ fdSupannLabel )
+  MAY ( description ))
+
+objectclass ( 1.3.6.1.4.1.38414.88.18.1 NAME 'fdSupannPriveAdressePostale'
+  DESC 'FusionDirectory - Supann Prive AdressePostale objectClass'
+  MUST ( fdSupannName $ fdSupannLabel )
+  MAY ( description ))

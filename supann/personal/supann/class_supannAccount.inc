@@ -325,52 +325,33 @@ class supannAccount extends simplePlugin
     global $config;
 
     /* supannMailPrive */
-    $mailPriveTypes = [
-      'PERSO'   => _('Personal'),
-      'PARENTS' => _('Legal representative'),
-      'PRO'     => _('Professional'),
-      'SECOURS' => _('Emergency'),
-      'TEMP'    => _('Temporary'),
-    ];
-    foreach ($config->get_cfg_value('SupannMailPriveTypes', []) as $line) {
-      list($type,$label) = explode(':', $line, 2);
-      $mailPriveTypes[$type] = $label;
-    }
+    $mailPriveTypes = static::getSupannObjects(
+      'fdSupannPriveMailRDN',
+      'fdSupannPriveMail',
+      'supannPriveMail'
+    );
     $this->attributesAccess['supannMailPrive']->attribute->attributes[0]->setChoices(
       array_keys($mailPriveTypes),
       array_values($mailPriveTypes)
     );
 
     /* supannTelephonePrive */
-    $telephonePriveTypes = [
-      'MOBPERSO'    => _('Personal mobile'),
-      'FIXEPERSO'   => _('Personal landline'),
-      'MOBPARENTS'  => _('Legal guardian mobile'),
-      'FIXEPARENTS' => _('Legal guardian landline'),
-      'MOBPRO'      => _('Professional mobile'),
-      'FIXEPRO'     => _('Professional landline'),
-      'SECOURS'     => _('Emergency phone'),
-    ];
-    foreach ($config->get_cfg_value('SupannTelephonePriveTypes', []) as $line) {
-      list($type,$label) = explode(':', $line, 2);
-      $telephonePriveTypes[$type] = $label;
-    }
+    $telephonePriveTypes = static::getSupannObjects(
+      'fdSupannPriveTelephoneRDN',
+      'fdSupannPriveTelephone',
+      'supannPriveTelephone'
+    );
     $this->attributesAccess['supannTelephonePrive']->attribute->attributes[0]->setChoices(
       array_keys($telephonePriveTypes),
       array_values($telephonePriveTypes)
     );
 
     /* supannAdressePostalePrivee */
-    $adressePostalePriveeTypes = [
-      'PERSO'   => _('Personal'),
-      'PARENTS' => _('Legal representative'),
-      'PRO'     => _('Professional'),
-      'TEMP'    => _('Temporary'),
-    ];
-    foreach ($config->get_cfg_value('SupannAdressePostalePriveeTypes', []) as $line) {
-      list($type,$label) = explode(':', $line, 2);
-      $adressePostalePriveeTypes[$type] = $label;
-    }
+    $adressePostalePriveeTypes = static::getSupannObjects(
+      'fdSupannPriveAdressePostaleRDN',
+      'fdSupannPriveAdressePostale',
+      'supannPriveAdressePostale'
+    );
     $this->attributesAccess['supannAdressePostalePrivee']->attribute->attributes[0]->setChoices(
       array_keys($adressePostalePriveeTypes),
       array_values($adressePostalePriveeTypes)
@@ -460,6 +441,26 @@ class supannAccount extends simplePlugin
     asort($civilite);
 
     return $civilite;
+  }
+
+  static function getSupannObjects (string $rdn, string $objectClass, string $class): array
+  {
+    global $config, $ui;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd(get_ou($rdn).$config->current['BASE']);
+
+    $objects = [];
+    $ldap->search("(objectClass=$objectClass)", ['fdSupannName','fdSupannLabel'], 'subtree');
+    while ($attrs = $ldap->fetch()) {
+      if (!preg_match('/r/', $ui->get_permissions($attrs['dn'], "$class/$class", 'fdSupannLabel'))) {
+        continue;
+      }
+      $objects[$attrs['fdSupannName'][0]] = $attrs['fdSupannLabel'][0];
+    }
+
+    asort($objects);
+    return $objects;
   }
 
   static function getConsentObjects (): array

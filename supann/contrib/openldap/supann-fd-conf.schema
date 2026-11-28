@@ -277,6 +277,38 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.42 NAME 'fdSupannPrefixRDN'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
+# New attribute for SupAnn Prive RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.43 NAME 'fdSupannPriveRDN'
+  DESC 'FusionDirectory - SupAnn Prive RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# New attribute for SupAnn Prive Mail RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.44 NAME 'fdSupannPriveMailRDN'
+  DESC 'FusionDirectory - SupAnn Prive Mail RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# New attribute for SupAnn Prive Telephone RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.45 NAME 'fdSupannPriveTelephoneRDN'
+  DESC 'FusionDirectory - SupAnn Prive Telephone RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# New attribute for SupAnn Prive AdressePostale RDN
+attributetype ( 1.3.6.1.4.1.38414.17.1.46 NAME 'fdSupannPriveAdressePostaleRDN'
+  DESC 'FusionDirectory - SupAnn Prive AdressePostale RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
 # Deprecated for next release, they are now migrated to supannObjects
 attributetype ( 1.3.6.1.4.1.38414.17.1.3 NAME 'fdSupannRessourceSubStates'
   DESC 'FusionDirectory - SupAnn supannRessourceEtatDate allowed substates - format state:substate'
@@ -334,7 +366,8 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
     fdSupannConsentRDN $ fdSupannPopulationCodeRDN $ fdSupannActiviteRDN $ fdSupannListsRDN $
     fdSupannCorpsRDN $ fdSupannDisciplineRDN $ fdSupannEntiteRDN $ fdSupannEtablissementRDN $
     fdSupannEtuRegimeInscriptionRDN $ fdSupannRoleRDN $ fdSupannTypeDiplomeRDN $ fdSupannDiplomeRDN $
-    fdSupannPrefixRDN $
+    fdSupannPrefixRDN $ fdSupannPriveRDN $ fdSupannPriveMailRDN $ fdSupannPriveTelephoneRDN $
+    fdSupannPriveAdressePostaleRDN $
     fdSupannPasswordRecovery $
     fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains $
     fdSupannConsentementObjects $ fdSupannConsentementTypes $ fdSupannShowMailForwardingAddress $
